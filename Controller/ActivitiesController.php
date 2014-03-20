@@ -56,6 +56,13 @@
    		}
    		$options = array('conditions' => array('Agent.' . $this->Agent->primaryKey => $id));
    		$this->set('agent', $this->Agent->find('first', $options));
+   		
+   		//vistas Sitio...
+   		if (!$this->Site->exists($id)) {
+   			throw new NotFoundException(__('Invalid site'));
+   		}
+   		$options = array('conditions' => array('Site.' . $this->Site->primaryKey => $id));
+   		$this->set('site', $this->Site->find('first', $options));
    }
    
    //funcion para agregar datos de meeting...
@@ -90,6 +97,20 @@
    		$people = $this->Agent->Person->find('list');
    		$zones = $this->Agent->Zone->find('list');
    		$this->set(compact('people', 'zones'));
+   		
+   		//agregar sitios...
+   		if ($this->request->is('post')) {
+   			$this->Site->create();
+   			if ($this->Site->save($this->request->data)) {
+   				$this->Session->setFlash(__('The site has been saved.'));
+   				return $this->redirect(array('action' => 'index'));
+   			} else {
+   				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
+   			}
+   		}
+   		$neighborhoods = $this->Site->Neighborhood->find('list');
+   		$siteTypes = $this->Site->SiteType->find('list');
+   		$this->set(compact('neighborhoods', 'siteTypes'));
    }
    
    //funcion para Editar datos de meeting...
@@ -118,7 +139,8 @@
    		}
    		$sites = $this->Meeting->Site->find('list');
    		$this->set(compact('sites'));
-   		//Editar Agregar...
+   		
+   		//Editar Agente...
    		if (!$this->Agent->exists($id)) {
    			throw new NotFoundException(__('Invalid agent'));
    		}
@@ -136,6 +158,25 @@
    		$people = $this->Agent->Person->find('list');
    		$zones = $this->Agent->Zone->find('list');
    		$this->set(compact('people', 'zones'));
+   		
+   		//Editar Sitios...
+   		if (!$this->Site->exists($id)) {
+   			throw new NotFoundException(__('Invalid site'));
+   		}
+   		if ($this->request->is(array('post', 'put'))) {
+   			if ($this->Site->save($this->request->data)) {
+   				$this->Session->setFlash(__('The site has been saved.'));
+   				return $this->redirect(array('action' => 'index'));
+   			} else {
+   				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
+   			}
+   		} else {
+   			$options = array('conditions' => array('Site.' . $this->Site->primaryKey => $id));
+   			$this->request->data = $this->Site->find('first', $options);
+   		}
+   		$neighborhoods = $this->Site->Neighborhood->find('list');
+   		$siteTypes = $this->Site->SiteType->find('list');
+   		$this->set(compact('neighborhoods', 'siteTypes'));
    }
    
     //funcion para Eliminar datos de meeting...
@@ -156,6 +197,7 @@
    			$this->Session->setFlash(__('The meeting could not be deleted. Please, try again.'));
    		}
    		return $this->redirect(array('action' => 'index'));
+   		
    		//Eliminar Agente...
    		$this->Agent->id = $id;
    		if (!$this->Agent->exists()) {
@@ -166,6 +208,18 @@
    			$this->Session->setFlash(__('The agent has been deleted.'));
    		} else {
    			$this->Session->setFlash(__('The agent could not be deleted. Please, try again.'));
+   		}
+   		return $this->redirect(array('action' => 'index'));
+   		   		
+   		//Eliminar Sitio...
+   		if (!$this->Site->exists()) {
+   			throw new NotFoundException(__('Invalid site'));
+   		}
+   		$this->request->onlyAllow('post', 'delete');
+   		if ($this->Site->delete()) {
+   			$this->Session->setFlash(__('The site has been deleted.'));
+   		} else {
+   			$this->Session->setFlash(__('The site could not be deleted. Please, try again.'));
    		}
    		return $this->redirect(array('action' => 'index'));
    }
