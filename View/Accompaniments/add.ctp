@@ -1,7 +1,7 @@
 <div class="accompaniments form">
 <?php echo $this->Form->create('Accompaniment'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Accompaniment'); ?></legend>
+		<legend><?php echo __('Agregar acompañamiento'); ?></legend>
 	<?php
 		echo $this->Form->input('accompaniment_type');
 		echo $this->Form->input('accompaniment_description');
