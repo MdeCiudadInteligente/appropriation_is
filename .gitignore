@@ -1,13 +1,14 @@
 # User specific & automatically generated files #
 #################################################
-/app/Config/database.php
-/app/tmp
+/Config/database.php
+/tmp/
 /lib/Cake/Console/Templates/skel/tmp/
 /plugins
 /vendors
 /build
 /dist
 /tags
+/webroot/
 
 # OS generated files #
 ######################
@@ -19,3 +20,9 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# Eclipse generated files #
+######################
+.buildpath
+.project
+.settings/
