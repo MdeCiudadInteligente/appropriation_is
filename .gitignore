@@ -1,7 +1,11 @@
 # User specific & automatically generated files #
 #################################################
 /Config/database.php
+<<<<<<< HEAD
 /tmp/
+=======
+/tmp
+>>>>>>> 15117ecc5bb914733bdad7f3cdfffe31035aef33
 /lib/Cake/Console/Templates/skel/tmp/
 /plugins
 /vendors
