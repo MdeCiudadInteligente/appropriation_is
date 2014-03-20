@@ -45,6 +45,7 @@
 		'trace' => true
 	));
 
+	
 /**
  * Configure the Exception handler used for uncaught exceptions. By default,
  * ErrorHandler::handleException() is used. It will display a HTML page for the exception, and
@@ -74,7 +75,8 @@
 /**
  * Application wide charset encoding
  */
-	Configure::write('App.encoding', 'UTF-8');
+	//Para idioma en español
+	Configure::write('App.encoding', 'iso-8859-1');
 
 /**
  * To configure CakePHP *not* to use mod_rewrite and to
