@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 class ActivitiesController extends AppController {
 	
-	var $uses = array('Meeting');
+	var $uses = array('Meeting','Accompaniment');
 	public $components = array('Paginator');
    
    public function index(){
