@@ -17,9 +17,9 @@
 			<?php echo $this->Html->link($meeting['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Are you sure you want to delete # %s?', $meeting['Meeting']['id_meeting'])); ?>
+			<?php echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Meetings','action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Está seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -51,6 +51,8 @@
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'Sites', 'action' => 'add')); ?> </li>		
 	</ul>
 </div>
+
+
 <div class="agents index">
 	<h2><?php echo __('Agents'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -70,8 +72,8 @@
 			<?php echo $this->Html->link($agent['Zone']['id_zone'], array('controller' => 'zones', 'action' => 'view', $agent['Zone']['id_zone'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $agent['Agent']['id_agent'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $agent['Agent']['id_agent'])); ?>
+			<?php echo $this->Html->link(__('View'), array('controller' => 'Agents','action' => 'view', $agent['Agent']['id_agent'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Agents','action' => 'edit', $agent['Agent']['id_agent'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $agent['Agent']['id_agent']), null, __('Are you sure you want to delete # %s?', $agent['Agent']['id_agent'])); ?>
 		</td>
 	</tr>
@@ -91,6 +93,8 @@
 	?>
 	</div>
 </div>
+
+
 <div class="sites index">
 	<h2><?php echo __('Sites'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -118,8 +122,8 @@
 			<?php echo $this->Html->link($site['SiteType']['id_site_type'], array('controller' => 'site_types', 'action' => 'view', $site['SiteType']['id_site_type'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $site['Site']['id_site'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $site['Site']['id_site'])); ?>
+			<?php echo $this->Html->link(__('View'), array('controller' => 'Sites','action' => 'view', $site['Site']['id_site'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Sites','action' => 'edit', $site['Site']['id_site'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $site['Site']['id_site']), null, __('Are you sure you want to delete # %s?', $site['Site']['id_site'])); ?>
 		</td>
 	</tr>

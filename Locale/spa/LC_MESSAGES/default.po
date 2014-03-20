@@ -261,17 +261,20 @@ msgstr "Lista Acompañamiento"
 msgid "Zone Name"
 msgstr "Nombre Zona"
 
-msgid ""
-msgstr ""
+msgid "Meetings"
+msgstr "Reuniones"
 
-msgid ""
-msgstr ""
+msgid "Sites"
+msgstr "Sitios"
 
-msgid ""
-msgstr ""
+msgid "Id Meeting"
+msgstr "Id Reunión"
 
-msgid ""
-msgstr ""
+msgid "Id Agent"
+msgstr "Id Agente"
+
+msgid "Id Site"
+msgstr "Id Sitio"
 
 msgid ""
 msgstr ""
