@@ -114,8 +114,7 @@
    }*/
    
 
-  
-   
+
 
    //funcion para Editar datos de meeting...
  /*  public function edit($id = null) 
