@@ -31,7 +31,7 @@ class AppController extends Controller {
 		'Session',
         'Auth' => array(
             'loginRedirect' => array(
-                'controller' => 'users',
+                'controller' => 'activities',
                 'action' => 'index'
             ),
             'logoutRedirect' => array(
@@ -74,7 +74,7 @@ class AppController extends Controller {
     	
     }
     	public function beforeFilter() {
-        $this->Auth->allow('index', 'view');
+        //$this->Auth->allow('index', 'view');
         if ($this->Session->check('Config.language')) {
         	Configure::write('Config.language', $this->Session->read('Config.language'));
         }
