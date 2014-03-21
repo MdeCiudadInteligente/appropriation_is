@@ -2,8 +2,11 @@
 <?php echo $this->Form->create('Meeting'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Meeting'); ?></legend>
-	<?php
-		echo $this->Form->input('meeting_type');
+	<?php		
+		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
+		echo $this->Form->input('meeting_title');
+		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
+		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));
 		echo $this->Form->input('adjunct');
 		echo $this->Form->input('site_id');
 	?>

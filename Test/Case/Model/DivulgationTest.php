@@ -1,11 +1,11 @@
 <?php
-App::uses('Meeting', 'Model');
+App::uses('Divulgation', 'Model');
 
 /**
- * Meeting Test Case
+ * Divulgation Test Case
  *
  */
-class MeetingTest extends CakeTestCase {
+class DivulgationTest extends CakeTestCase {
 
 /**
  * Fixtures
@@ -13,7 +13,7 @@ class MeetingTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.meeting',
+		'app.divulgation',
 		'app.site',
 		'app.neighborhood',
 		'app.commune',
@@ -24,6 +24,7 @@ class MeetingTest extends CakeTestCase {
 		'app.user',
 		'app.site_type',
 		'app.accompaniment',
+		'app.meeting',
 		'app.meeting_person'
 	);
 
@@ -34,7 +35,7 @@ class MeetingTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->Meeting = ClassRegistry::init('Meeting');
+		$this->Divulgation = ClassRegistry::init('Divulgation');
 	}
 
 /**
@@ -43,7 +44,7 @@ class MeetingTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->Meeting);
+		unset($this->Divulgation);
 
 		parent::tearDown();
 	}

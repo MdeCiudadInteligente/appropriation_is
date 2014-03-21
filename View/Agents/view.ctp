@@ -33,8 +33,7 @@
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<div class="related">
-	<h3><?php echo __('Related Users'); ?></h3>
+<?php /*?<div class="related">	
 	<?php if (!empty($agent['User'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
@@ -53,18 +52,12 @@
 			<td><?php echo $user['permission_level']; ?></td>
 			<td><?php echo $user['agent_id']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'users', 'action' => 'view', $user['idusers'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'users', 'action' => 'edit', $user['idusers'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'users', 'action' => 'delete', $user['idusers']), null, __('Are you sure you want to delete # %s?', $user['idusers'])); ?>
+				<?php echo $this->Html->link(__('View'), array('controller' => 'users', 'action' => 'view', $user['id_user'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'users', 'action' => 'edit', $user['id_user'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'users', 'action' => 'delete', $user['id_user']), null, __('Are you sure you want to delete # %s?', $user['id_user'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
-</div>
+</div><?php */?>

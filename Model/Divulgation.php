@@ -1,19 +1,25 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Meeting Model
+ * Divulgation Model
  *
  * @property Site $Site
- * @property MeetingPerson $MeetingPerson
  */
-class Meeting extends AppModel {
+class Divulgation extends AppModel {
 
 /**
  * Primary key field
  *
  * @var string
  */
-	public $primaryKey = 'id_meeting';
+	public $primaryKey = 'id_divulgation';
+
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'id_divulgation';
 
 /**
  * Validation rules
@@ -21,7 +27,7 @@ class Meeting extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'id_meeting' => array(
+		'id_divulgation' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -31,7 +37,7 @@ class Meeting extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'meeting_type' => array(
+		'divulgation_name' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -41,7 +47,7 @@ class Meeting extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'meeting_title' => array(
+		'divulgation_type' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -51,7 +57,7 @@ class Meeting extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'meeting_description' => array(
+		'divulgation_description' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -61,7 +67,27 @@ class Meeting extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'meeting_commitments' => array(
+		'participant_number' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'activity_place' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'adjunct' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -99,26 +125,4 @@ class Meeting extends AppModel {
 			'order' => ''
 		)
 	);
-
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $hasMany = array(
-		'MeetingPerson' => array(
-			'className' => 'MeetingPerson',
-			'foreignKey' => 'meeting_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
-
 }

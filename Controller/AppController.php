@@ -68,10 +68,18 @@ class AppController extends Controller {
     	}
     	
 
+<<<<<<< HEAD
     	
     	// Default deny
     	return false;
     	
+=======
+    public function beforeFilter() {
+        $this->Auth->allow('index', 'view');
+        if ($this->Session->check('Config.language')) {
+        	Configure::write('Config.language', $this->Session->read('Config.language'));
+        }
+>>>>>>> dde7a345a95f025357da75909ad3e3f1e0fcb939
     }
   
    /*
@@ -82,4 +90,5 @@ class AppController extends Controller {
     }*/
     //...
 }
+
 
