@@ -48,14 +48,20 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+	<?php
+	$usuario_level= $this->Session->read('Auth.User.permission_level');
+	if ($usuario_level === '2'||$usuario_level === '1'){?>
 		<li><?php echo $this->Html->link(__('New Meeting'), array('controller' => 'Meetings', 'action' => 'add')); ?> </li>	
 		<li><?php echo $this->Html->link(__('New Accompaniment'), array('controller' => 'Accompaniments', 'action' => 'add')); ?> </li>	
 		<li><?php echo $this->Html->link(__('New Divulgation'), array('controller' => 'Divulgations', 'action' => 'add')); ?> </li>	
+	<?php }?>
+	<?php if ($usuario_level === '1'){?>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'Users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Person'), array('controller' => 'People', 'action' => 'add')); ?> </li>	
 		<li><?php echo $this->Html->link(__('New Agent'), array('controller' => 'Agents', 'action' => 'add')); ?> </li>	
 		<li><?php echo $this->Html->link(__('New Site Type'), array('controller' => 'SiteTypes', 'action' => 'add')); ?> </li>			
-		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'Sites', 'action' => 'add')); ?> </li>		
+		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'Sites', 'action' => 'add')); ?> </li>	
+	<?php }?>	
 	</ul>
 </div>
 
