@@ -276,56 +276,56 @@ msgstr "Id Agente"
 msgid "Id Site"
 msgstr "Id Sitio"
 
-msgid ""
-msgstr ""
+msgid "Meeting Title"
+msgstr "Título Reunión"
 
-msgid ""
-msgstr ""
+msgid "Meeting Description"
+msgstr "Descripción Reunión"
 
-msgid ""
-msgstr ""
+msgid "Meeting Commitments"
+msgstr "Compromisos Reunión"
 
-msgid ""
-msgstr ""
+msgid "Accompaniments"
+msgstr "Acompañamientos"
 
-msgid ""
-msgstr ""
+msgid "Id Accompaniment"
+msgstr "Id Acompañamiento"
 
-msgid ""
-msgstr ""
+msgid "Divulgation Name"
+msgstr "Nombre Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Id Divulgation"
+msgstr "Id Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Divulgations"
+msgstr "Divulgaciones"
 
-msgid ""
-msgstr ""
+msgid "Divulgation Type"
+msgstr "Tipo Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Divulgation Description"
+msgstr "Descripción Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Activity Place"
+msgstr "Lugar Actividad"
 
-msgid ""
-msgstr ""
+msgid "New Divulgation"
+msgstr "Nueva Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Add Divulgation"
+msgstr "Añadir Divulgación"
 
-msgid ""
-msgstr ""
+msgid "The meeting could not be saved. Please, try again."
+msgstr "La reunión no se pudo guardar. Por favor, inténtalo de nuevo."
 
-msgid ""
-msgstr ""
+msgid "The meeting has been saved."
+msgstr "La reunión se ha guardado"
 
-msgid ""
-msgstr ""
+msgid "Add Meeting"
+msgstr "Agregar reunión"
 
-msgid ""
-msgstr ""
+msgid "The accompaniment has been saved."
+msgstr "El acompañamiento se ha guardado."
 
 msgid ""
 msgstr ""

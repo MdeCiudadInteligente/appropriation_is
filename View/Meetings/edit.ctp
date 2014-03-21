@@ -5,6 +5,9 @@
 	<?php
 		echo $this->Form->input('id_meeting');
 		echo $this->Form->input('meeting_type');
+		echo $this->Form->input('meeting_title');
+		echo $this->Form->input('meeting_description');
+		echo $this->Form->input('meeting_commitments');
 		echo $this->Form->input('adjunct');
 		echo $this->Form->input('site_id');
 	?>

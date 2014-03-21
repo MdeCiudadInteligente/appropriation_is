@@ -1,5 +1,5 @@
 <div class="accompaniments index">
-	<h2><?php echo __('Acompañamientos'); ?></h2>
+	<h2><?php echo __('Accompaniments'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id_accompaniment'); ?></th>

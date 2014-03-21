@@ -4,6 +4,9 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id_meeting'); ?></th>
 			<th><?php echo $this->Paginator->sort('meeting_type'); ?></th>
+			<th><?php echo $this->Paginator->sort('meeting_title'); ?></th>
+			<th><?php echo $this->Paginator->sort('meeting_description'); ?></th>
+			<th><?php echo $this->Paginator->sort('meeting_commitments'); ?></th>
 			<th><?php echo $this->Paginator->sort('adjunct'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -12,6 +15,9 @@
 	<tr>
 		<td><?php echo h($meeting['Meeting']['id_meeting']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['meeting_type']); ?>&nbsp;</td>
+		<td><?php echo h($meeting['Meeting']['meeting_title']); ?>&nbsp;</td>
+		<td><?php echo h($meeting['Meeting']['meeting_description']); ?>&nbsp;</td>
+		<td><?php echo h($meeting['Meeting']['meeting_commitments']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['adjunct']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($meeting['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
@@ -19,7 +25,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Meetings','action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Está seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Meetings','action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Está seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -44,6 +50,7 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('New Meeting'), array('controller' => 'Meetings', 'action' => 'add')); ?> </li>	
 		<li><?php echo $this->Html->link(__('New Accompaniment'), array('controller' => 'Accompaniments', 'action' => 'add')); ?> </li>	
+		<li><?php echo $this->Html->link(__('New Divulgation'), array('controller' => 'Divulgations', 'action' => 'add')); ?> </li>	
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'Users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Person'), array('controller' => 'People', 'action' => 'add')); ?> </li>	
 		<li><?php echo $this->Html->link(__('New Agent'), array('controller' => 'Agents', 'action' => 'add')); ?> </li>	
@@ -53,28 +60,32 @@
 </div>
 
 
-<div class="agents index">
-	<h2><?php echo __('Agents'); ?></h2>
+<div class="accompaniments index">
+	<h2><?php echo __('Accompaniments'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_agent'); ?></th>
-			<th><?php echo $this->Paginator->sort('person_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('zone_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('id_accompaniment'); ?></th>
+			<th><?php echo $this->Paginator->sort('accompaniment_type'); ?></th>
+			<th><?php echo $this->Paginator->sort('accompaniment_description'); ?></th>
+			<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
+			<th><?php echo $this->Paginator->sort('adjunct'); ?></th>
+			<th><?php echo $this->Paginator->sort('site_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
-	<?php foreach ($agents as $agent): ?>
+	<?php foreach ($accompaniments as $accompaniment): ?>
 	<tr>
-		<td><?php echo h($agent['Agent']['id_agent']); ?>&nbsp;</td>		
+		<td><?php echo h($accompaniment['Accompaniment']['id_accompaniment']); ?>&nbsp;</td>
+		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>&nbsp;</td>
+		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_description']); ?>&nbsp;</td>
+		<td><?php echo h($accompaniment['Accompaniment']['participant_number']); ?>&nbsp;</td>
+		<td><?php echo h($accompaniment['Accompaniment']['adjunct']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($agent['Person']['name'], array('controller' => 'people', 'action' => 'view', $agent['Person']['id_person'])); ?>
+			<?php echo $this->Html->link($accompaniment['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?>
 		</td>
-		<td>
-			<?php echo $this->Html->link($agent['Zone']['id_zone'], array('controller' => 'zones', 'action' => 'view', $agent['Zone']['id_zone'])); ?>
-		</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('controller' => 'Agents','action' => 'view', $agent['Agent']['id_agent'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Agents','action' => 'edit', $agent['Agent']['id_agent'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $agent['Agent']['id_agent']), null, __('Are you sure you want to delete # %s?', $agent['Agent']['id_agent'])); ?>
+		<td class="actions">		
+			<?php echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Accompaniments','action' => 'edit', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Accompaniments','action' => 'delete', $accompaniment['Accompaniment']['id_accompaniment']), null, __('Are you sure you want to delete # %s?', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -94,37 +105,36 @@
 	</div>
 </div>
 
-
-<div class="sites index">
-	<h2><?php echo __('Sites'); ?></h2>
+<div class="divulgations index">
+	<h2><?php echo __('Divulgations'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_site'); ?></th>
-			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('site_phone'); ?></th>
-			<th><?php echo $this->Paginator->sort('site_address'); ?></th>
-			<th><?php echo $this->Paginator->sort('site_mail'); ?></th>
-			<th><?php echo $this->Paginator->sort('neighborhood_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('site_type_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('id_divulgation'); ?></th>
+			<th><?php echo $this->Paginator->sort('divulgation_name'); ?></th>
+			<th><?php echo $this->Paginator->sort('divulgation_type'); ?></th>
+			<th><?php echo $this->Paginator->sort('divulgation_description'); ?></th>
+			<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
+			<th><?php echo $this->Paginator->sort('activity_place'); ?></th>
+			<th><?php echo $this->Paginator->sort('adjunct'); ?></th>
+			<th><?php echo $this->Paginator->sort('site_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
-	<?php foreach ($sites as $site): ?>
+	<?php foreach ($divulgations as $divulgation): ?>
 	<tr>
-		<td><?php echo h($site['Site']['id_site']); ?>&nbsp;</td>
-		<td><?php echo h($site['Site']['site_name']); ?>&nbsp;</td>
-		<td><?php echo h($site['Site']['site_phone']); ?>&nbsp;</td>
-		<td><?php echo h($site['Site']['site_address']); ?>&nbsp;</td>
-		<td><?php echo h($site['Site']['site_mail']); ?>&nbsp;</td>		
+		<td><?php echo h($divulgation['Divulgation']['id_divulgation']); ?>&nbsp;</td>
+		<td><?php echo h($divulgation['Divulgation']['divulgation_name']); ?>&nbsp;</td>
+		<td><?php echo h($divulgation['Divulgation']['divulgation_type']); ?>&nbsp;</td>
+		<td><?php echo h($divulgation['Divulgation']['divulgation_description']); ?>&nbsp;</td>
+		<td><?php echo h($divulgation['Divulgation']['participant_number']); ?>&nbsp;</td>
+		<td><?php echo h($divulgation['Divulgation']['activity_place']); ?>&nbsp;</td>
+		<td><?php echo h($divulgation['Divulgation']['adjunct']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($site['Neighborhood']['id_neighborhood'], array('controller' => 'neighborhoods', 'action' => 'view', $site['Neighborhood']['id_neighborhood'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($site['SiteType']['id_site_type'], array('controller' => 'site_types', 'action' => 'view', $site['SiteType']['id_site_type'])); ?>
+			<?php echo $this->Html->link($divulgation['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('controller' => 'Sites','action' => 'view', $site['Site']['id_site'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Sites','action' => 'edit', $site['Site']['id_site'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $site['Site']['id_site']), null, __('Are you sure you want to delete # %s?', $site['Site']['id_site'])); ?>
+			<?php echo $this->Html->link(__('View'), array('controller' => 'Divulgations','action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Divulgations','action' => 'edit', $divulgation['Divulgation']['id_divulgation'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Divulgations','action' => 'delete', $divulgation['Divulgation']['id_divulgation']), null, __('Are you sure you want to delete # %s?', $divulgation['Divulgation']['id_divulgation'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
