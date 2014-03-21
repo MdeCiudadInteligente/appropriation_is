@@ -38,13 +38,48 @@ class AppController extends Controller {
                 'controller' => 'users',
                 'action' => 'login',
                 'home'
-            )
+            ),
+       'authorize' => array('Controller')
         )
     );
+  /*  public function isAuthorized($user) {
+    	// Admin can access every action
+    	if ((isset($user['permission_level']) && $user['permission_level'] === '1') || (isset($user['permission_level'])&& $user['permission_level'] === '1' )) {
+    		return true;
+    	}
+    
+    	// Default deny
+    	return false;
+    }*/
+   
+    public function isAuthorized($user) {
+    	// Any registered user can access public functions
+    	/*if (empty($this->request->params['admin'])) {
+    		return true;
+    	}
+    
+    // Only admins can access admin functions
+    	if (isset($this->request->params['admin'])) {
+    		return (bool)($user['role'] === '2');
+    	}*/
+    
+    	if (isset($user['permission_level']) && $user['permission_level'] === '1') {
+    		return true;
+    	}
+    	
 
-    public function beforeFilter() {
-        $this->Auth->allow('index', 'view');
+    	
+    	// Default deny
+    	return false;
+    	
     }
+  
+   /*
+    
+    public function beforeFilter() {
+       $this->Auth->allow('index', 'view');
+    	
+    }*/
     //...
 }
 
