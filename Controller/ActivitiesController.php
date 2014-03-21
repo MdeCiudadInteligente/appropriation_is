@@ -113,10 +113,8 @@
    		$this->set(compact('neighborhoods', 'siteTypes'));
    }*/
    
-<<<<<<< HEAD
-  
-   
-=======
+
+
    //funcion para Editar datos de meeting...
  /*  public function edit($id = null) 
    {
@@ -230,8 +228,7 @@
    }
    */
   
-  
->>>>>>> dde7a345a95f025357da75909ad3e3f1e0fcb939
+
 }
    
 
