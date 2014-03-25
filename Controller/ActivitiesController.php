@@ -5,6 +5,10 @@
 	var $uses = array('Meeting','Accompaniment','Divulgation');	
 	public $components = array('Paginator');
 	
+	public $paginate = array(
+			'limit' => 2
+	);
+	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
@@ -39,18 +43,20 @@
    	//obteniedo los datos que trae la variable $divulgation...
    	$this->set('divulgations', $divulgation);
    	
+   	//Se define la configuración del paginador con la variable paginate previamente definida
+   	$this->Paginator->settings = $this->paginate;
    	
    	//Paginación Meeting...
-   	$this->Meeting->recursive = 0;
-   	$this->set('meetings', $this->Paginator->paginate());
+   	//$this->Meeting->recursive = 0;
+   	$this->set('meetings', $this->Paginator->paginate('Meeting'));
    	
    	//Paginación Agent...
-   	//$this->Agent->recursive = 0;
-   	//$this->set('agents', $this->Paginator->paginate());
+   	//$this->Accompaniments->recursive = 0;
+   	$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
    	
    	//Paginación Site...
    	//$this->Site->recursive = 0;
-   	//$this->set('sites', $this->Paginator->paginate());
+   	$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
    	 
    	
    }
