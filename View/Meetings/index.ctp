@@ -18,7 +18,8 @@
 		<td><?php echo h($meeting['Meeting']['meeting_title']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['meeting_description']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['meeting_commitments']); ?>&nbsp;</td>
-		<td><?php echo h($meeting['Meeting']['adjunct']); ?>&nbsp;</td>
+		<td><?php echo  $this->Html->link($meeting['Meeting']['adjunct'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['adjunct'])); ?>&nbsp;</td> 
+<!--  		<td><?php //echo h($meeting['Meeting']['adjunct']); ?>&nbsp;</td>-->
 		<td>
 			<?php echo $this->Html->link($meeting['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
 		</td>

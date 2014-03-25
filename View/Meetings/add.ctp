@@ -1,5 +1,5 @@
 <div class="meetings form">
-<?php echo $this->Form->create('Meeting'); ?>
+<?php echo $this->Form->create('Meeting',array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Add Meeting'); ?></legend>
 	<?php		
@@ -7,7 +7,8 @@
 		echo $this->Form->input('meeting_title');
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));
-		echo $this->Form->input('adjunct');
+		echo $this->Form->input('adjunct',array('type'=>'file'));
+		echo $this->Form->input('dir',array('type'=>'hidden'));
 		echo $this->Form->input('site_id');
 	?>
 	</fieldset>
