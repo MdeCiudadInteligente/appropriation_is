@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-1395753347
-=======
-1395716305
->>>>>>> bc95b198f59f6a50b6fcbe9b22d0c92e54754fbe
+1395774251
 a:5:{s:7:"id_user";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:3:"key";s:7:"primary";}s:8:"username";a:6:{s:4:"type";s:6:"string";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:45;s:7:"collate";s:17:"latin1_swedish_ci";s:7:"charset";s:6:"latin1";}s:8:"password";a:6:{s:4:"type";s:6:"string";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:45;s:7:"collate";s:17:"latin1_swedish_ci";s:7:"charset";s:6:"latin1";}s:16:"permission_level";a:4:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;}s:8:"agent_id";a:7:{s:4:"type";s:6:"string";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:45;s:3:"key";s:5:"index";s:7:"collate";s:17:"latin1_swedish_ci";s:7:"charset";s:6:"latin1";}}
