@@ -20,6 +20,20 @@ class AccompanimentsController extends AppController {
  *
  * @return void
  */
+	public function isAuthorized($user) {
+		// Any registered user can access public functions
+	
+	
+		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+			return true;
+		}
+			
+	
+		// Default deny
+		//return false;
+			
+	}
+	
 	public function index() {
 		$this->Accompaniment->recursive = 0;
 		$this->set('accompaniments', $this->Paginator->paginate());
