@@ -7,7 +7,9 @@
 		echo $this->Form->input('accompaniment_type');
 		echo $this->Form->input('accompaniment_description');
 		echo $this->Form->input('participant_number');
-		echo $this->Form->input('adjunct');
+		echo $this->Form->input('accompaniment_adjunct');
+		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file'));
+		echo $this->Form->input('dir',array('type'=>'hidden'));
 		echo $this->Form->input('site_id');
 	?>
 	</fieldset>

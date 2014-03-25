@@ -6,13 +6,15 @@
 		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
 		echo $this->Form->input('meeting_title');
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
-		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));
-		echo $this->Form->input('adjunct',array('type'=>'file'));
-		echo $this->Form->input('dir',array('type'=>'hidden'));
+		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));	
+		echo $this->Form->input('meeting_adjunct',array('type'=>'file'));
+		echo $this->Form->input('dir',array('type'=>'hidden'));		
 		echo $this->Form->input('site_id');
+
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
+
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

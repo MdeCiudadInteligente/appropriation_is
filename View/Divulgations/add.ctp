@@ -1,5 +1,5 @@
 <div class="divulgations form">
-<?php echo $this->Form->create('Divulgation'); ?>
+<?php echo $this->Form->create('Divulgation',array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Add Divulgation'); ?></legend>
 	<?php
@@ -8,7 +8,8 @@
 		echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('participant_number');
 		echo $this->Form->input('activity_place');
-		echo $this->Form->input('adjunct');
+		echo $this->Form->input('divulgation_adjunct',array('type'=>'file'));
+		echo $this->Form->input('dir',array('type'=>'hidden'));
 		echo $this->Form->input('site_id');
 	?>
 	</fieldset>

@@ -16,7 +16,8 @@
 		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>&nbsp;</td>
 		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_description']); ?>&nbsp;</td>
 		<td><?php echo h($accompaniment['Accompaniment']['participant_number']); ?>&nbsp;</td>
-		<td><?php echo h($accompaniment['Accompaniment']['adjunct']); ?>&nbsp;</td>
+		<!--  <td><?php //echo h($accompaniment['Accompaniment']['adjunct']); ?>&nbsp;</td>-->
+		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => $accompaniment['Accompaniment']['dir'].'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($accompaniment['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?>
 		</td>

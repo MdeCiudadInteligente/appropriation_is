@@ -9,7 +9,9 @@
 		echo $this->Form->input('divulgation_description');
 		echo $this->Form->input('participant_number');
 		echo $this->Form->input('activity_place');
-		echo $this->Form->input('adjunct');
+		echo $this->Form->input('divulgation_adjunct');
+		echo $this->Form->input('divulgation_adjunct',array('type'=>'file'));
+		echo $this->Form->input('dir',array('type'=>'hidden'));
 		echo $this->Form->input('site_id');
 	?>
 	</fieldset>

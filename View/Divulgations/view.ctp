@@ -31,9 +31,9 @@
 			<?php echo h($divulgation['Divulgation']['activity_place']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Adjunct'); ?></dt>
+		<dt><?php echo __('Divulgation Adjunct'); ?></dt>
 		<dd>
-			<?php echo h($divulgation['Divulgation']['adjunct']); ?>
+			<?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct'],array('controller' => 'webroot','action' => $divulgation['Divulgation']['dir'].'/'.$divulgation['Divulgation']['divulgation_adjunct'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Site'); ?></dt>

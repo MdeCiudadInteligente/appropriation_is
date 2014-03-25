@@ -15,7 +15,7 @@ class Meeting extends AppModel {
  */
 	public $primaryKey = 'id_meeting';
 	var $actsAs = array(
-			'MeioUpload.MeioUpload' => array('adjunct')
+			'MeioUpload.MeioUpload' => array('meeting_adjunct')
 	);
 /**
  * Validation rules
