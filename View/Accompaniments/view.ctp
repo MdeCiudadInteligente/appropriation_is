@@ -26,6 +26,16 @@
 			<?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => $accompaniment['Accompaniment']['dir'].'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Accompaniment Adjunct1'); ?></dt>
+		<dd>
+			<?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => $accompaniment['Accompaniment']['dir'].'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Accompaniment Adjunct2'); ?></dt>
+		<dd>
+			<?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => $accompaniment['Accompaniment']['dir'].'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Site'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($accompaniment['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?>

@@ -31,6 +31,16 @@
 			<?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['meeting_adjunct'])); ?> 
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Meeting Adjunct1'); ?></dt>
+		<dd>
+			<?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct1'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['meeting_adjunct1'])); ?> 
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Meeting Adjunct2'); ?></dt>
+		<dd>
+			<?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct2'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['meeting_adjunct2'])); ?> 
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Site'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($meeting['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
