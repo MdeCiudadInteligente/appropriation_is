@@ -13,7 +13,9 @@ class Accompaniment extends AppModel {
  * @var string
  */
 	public $primaryKey = 'id_accompaniment';
-
+	var $actsAs = array(
+			'MeioUpload.MeioUpload' => array('accompaniment_adjunct')
+	);
 /**
  * Display field
  *

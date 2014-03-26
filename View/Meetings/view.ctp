@@ -26,9 +26,9 @@
 			<?php echo h($meeting['Meeting']['meeting_commitments']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Adjunct'); ?></dt>
+		<dt><?php echo __('Meeting Adjunct'); ?></dt>
 		<dd>
-			<?php echo h($meeting['Meeting']['adjunct']); ?>
+			<?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['meeting_adjunct'])); ?> 
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Site'); ?></dt>

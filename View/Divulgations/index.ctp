@@ -20,7 +20,8 @@
 		<td><?php echo h($divulgation['Divulgation']['divulgation_description']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['participant_number']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['activity_place']); ?>&nbsp;</td>
-		<td><?php echo h($divulgation['Divulgation']['adjunct']); ?>&nbsp;</td>
+		<!--  <td><?php //echo h($divulgation['Divulgation']['adjunct']); ?>&nbsp;</td>-->
+		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct'],array('controller' => 'webroot','action' => $divulgation['Divulgation']['dir'].'/'.$divulgation['Divulgation']['divulgation_adjunct'])); ?>&nbsp;</td> 
 		<td>
 			<?php echo $this->Html->link($divulgation['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
 		</td>

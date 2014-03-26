@@ -21,9 +21,9 @@
 			<?php echo h($accompaniment['Accompaniment']['participant_number']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Adjunct'); ?></dt>
+		<dt><?php echo __('Accompaniment Adjunct'); ?></dt>
 		<dd>
-			<?php echo h($accompaniment['Accompaniment']['adjunct']); ?>
+			<?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => $accompaniment['Accompaniment']['dir'].'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Site'); ?></dt>

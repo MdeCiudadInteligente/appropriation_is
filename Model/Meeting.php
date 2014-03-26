@@ -17,7 +17,7 @@ class Meeting extends AppModel {
 
 	/*public $displayField = 'id_meeting';*/
 	var $actsAs = array(
-			'MeioUpload.MeioUpload' => array('adjunct')
+			'MeioUpload.MeioUpload' => array('meeting_adjunct')
 	);
 /**
  * Validation rules

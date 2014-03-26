@@ -1,5 +1,5 @@
 <div class="accompaniments form">
-<?php echo $this->Form->create('Accompaniment'); ?>
+<?php echo $this->Form->create('Accompaniment',array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Agregar acompañamiento'); ?></legend>
 	<?php
@@ -7,7 +7,9 @@
 				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC')));
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('participant_number');
-		echo $this->Form->input('adjunct');
+		//echo $this->Form->input('adjunct');
+		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file'));
+		echo $this->Form->input('dir',array('type'=>'hidden'));
 		echo $this->Form->input('site_id');
 	?>
 	</fieldset>
