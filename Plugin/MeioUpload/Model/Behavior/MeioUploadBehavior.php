@@ -45,9 +45,9 @@ class MeioUploadBehavior extends ModelBehavior {
 				'application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/pdf','application/vnd.oasis.opendocument.text',
 				'application/vnd.ms-xpsdocument','text/rtf','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.ms-excel.sheet.macroEnabled.12',
 				'application/vnd.openxmlformats-officedocument.spreadsheetml.template','application/vnd.ms-excel.template.macroEnabled.12','application/vnd.ms-excel.sheet.binary.macroEnabled.12',
-				'application/vnd.ms-excel.addin.macroEnabled.12','application/vnd.openxmlformats-officedocument.presentationml.presentation','application/vnd.ms-excel'),
+				'application/vnd.ms-excel.addin.macroEnabled.12','application/vnd.openxmlformats-officedocument.presentationml.presentation','application/vnd.ms-excel','application/x-rar-compressed','application/octet-stream','application/zip','application/octet-stream'),
 		'allowedExt' => array('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.ico','.doc','docx','.pdf','.odt','.xps','.rtf','.xl','.xla','.xlb','.xlc','.xld','.xlk','.xll','.xlm','.xls','.xlt','.xlv
-	.xlw','xlsx'),
+	.xlw','xlsx','gz','gzip','.zip','.rar'),
 		'default' => false, // Not sure what this does
 		'zoomCrop' => false, // Whether to use ZoomCrop or not with PHPThumb
 		'thumbnails' => true,
@@ -89,12 +89,12 @@ class MeioUploadBehavior extends ModelBehavior {
 			'check' => true,
 			'last' => true
 		),
-		'Empty' => array(
+		/*'Empty' => array(
 			'rule' => array('uploadCheckEmpty'),
 			'check' => true,
 			'on' => 'create',
-			'last' => true
-		),
+			'last' => true 
+		),*/
 		'UploadError' => array(
 			'rule' => array('uploadCheckUploadError'),
 			'check' => true,

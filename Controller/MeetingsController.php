@@ -60,9 +60,10 @@ class MeetingsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			/*$valor=$this->request;*/
 			$this->Meeting->create();
 			if ($this->Meeting->save($this->request->data)) {
-				$this->Session->setFlash(__('The meeting has been saved.'));
+				$this->Session->setFlash(/*print_r($valor).*/__(' The meeting has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The meeting could not be saved. Please, try again.'));

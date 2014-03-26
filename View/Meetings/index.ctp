@@ -8,6 +8,8 @@
 			<th><?php echo $this->Paginator->sort('meeting_description'); ?></th>
 			<th><?php echo $this->Paginator->sort('meeting_commitments'); ?></th>
 			<th><?php echo $this->Paginator->sort('meeting_adjunct'); ?></th>
+			<th><?php echo $this->Paginator->sort('meeting_adjunct1'); ?></th>
+			<th><?php echo $this->Paginator->sort('meeting_adjunct2'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -19,9 +21,10 @@
 		<td><?php echo h($meeting['Meeting']['meeting_description']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['meeting_commitments']); ?>&nbsp;</td>
 	
-		<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['meeting_adjunct'])); ?>&nbsp;</td> 
-		<!--  		
-		<td><?php //echo h($meeting['Meeting']['adjunct']); ?>&nbsp;</td>-->
+		<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['meeting_adjunct'])); ?>&nbsp;</td> 	
+		<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct1'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['meeting_adjunct1'])); ?>&nbsp;</td>		
+		<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct2'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['meeting_adjunct2'])); ?>&nbsp;</td>
+		<!--  <td><?php //echo h($meeting['Meeting']['adjunct']); ?>&nbsp;</td>-->
 		<td>
 			<?php echo $this->Html->link($meeting['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
 		</td>
