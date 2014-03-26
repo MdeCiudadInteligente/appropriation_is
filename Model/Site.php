@@ -23,7 +23,7 @@ class Site extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id_site';
+	public $displayField = 'site_name';
 
 /**
  * Validation rules

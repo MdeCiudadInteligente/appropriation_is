@@ -14,6 +14,8 @@ class Meeting extends AppModel {
  * @var string
  */
 	public $primaryKey = 'id_meeting';
+
+	/*public $displayField = 'id_meeting';*/
 	var $actsAs = array(
 			'MeioUpload.MeioUpload' => array('adjunct')
 	);
