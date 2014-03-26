@@ -2,8 +2,10 @@
 <?php echo $this->Form->create('Commune'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Commune'); ?></legend>
-	<?php
-		echo $this->Form->input('commune_name');
+	<?php		
+		echo $this->Form->input('commune_name',array ('options' => array ('1 - Popular'=>'1 - Popular','2 - Santa Cruz'=>'2 - Santa Cruz' ,'3 - Manrique'=>'3 - Manrique','4 - Aranjuez'=>'4 - Aranjuez',
+		'5 - Castilla'=>'5 - Castilla','6 - Doce De Octubre'=>'6 - Doce De Octubre','7 - Robledo'=>'7 - Robledo','8 - VIlla Hermosa'=>'8 - VIlla Hermosa','9 - Buenos Aires'=>'9 - Buenos Aires',
+				'10 - la Candelaria'=>'10 - la Candelaria','11 - Laureles - Estadio'=>'11 - Laureles - Estadio')));
 		echo $this->Form->input('zone_id');
 	?>
 	</fieldset>

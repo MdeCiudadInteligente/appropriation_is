@@ -19,10 +19,10 @@
 		<td><?php echo h($site['Site']['site_address']); ?>&nbsp;</td>
 		<td><?php echo h($site['Site']['site_mail']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($site['Neighborhood']['id_neighborhood'], array('controller' => 'neighborhoods', 'action' => 'view', $site['Neighborhood']['id_neighborhood'])); ?>
+			<?php echo $this->Html->link($site['Neighborhood']['neighborhood_name'], array('controller' => 'neighborhoods', 'action' => 'view', $site['Neighborhood']['id_neighborhood'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($site['SiteType']['id_site_type'], array('controller' => 'site_types', 'action' => 'view', $site['SiteType']['id_site_type'])); ?>
+			<?php echo $this->Html->link($site['SiteType']['site_type'], array('controller' => 'site_types', 'action' => 'view', $site['SiteType']['id_site_type'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $site['Site']['id_site'])); ?>

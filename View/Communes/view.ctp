@@ -31,6 +31,7 @@
 		<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'neighborhoods', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+<?php /*
 <div class="related">
 	<h3><?php echo __('Related Neighborhoods'); ?></h3>
 	<?php if (!empty($commune['Neighborhood'])): ?>
@@ -61,4 +62,4 @@
 			<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'neighborhoods', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
-</div>
+</div> */?>

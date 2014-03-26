@@ -20,7 +20,7 @@ class Commune extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id_commune';
+	public $displayField = 'commune_name';
 
 /**
  * Validation rules

@@ -21,7 +21,7 @@ class Agent extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id_agent';
+	public $displayField = 'agent_name';
 
 /**
  * Validation rules

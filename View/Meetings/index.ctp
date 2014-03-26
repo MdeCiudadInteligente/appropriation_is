@@ -26,7 +26,7 @@
 		<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct2'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'2/'.$meeting['Meeting']['meeting_adjunct2'])); ?>&nbsp;</td>
 		<!--  <td><?php //echo h($meeting['Meeting']['adjunct']); ?>&nbsp;</td>-->
 		<td>
-			<?php echo $this->Html->link($meeting['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
+			<?php echo $this->Html->link($meeting['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $meeting['Meeting']['id_meeting'])); ?>

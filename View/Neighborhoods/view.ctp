@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('Commune'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($neighborhood['Commune']['id_commune'], array('controller' => 'communes', 'action' => 'view', $neighborhood['Commune']['id_commune'])); ?>
+			<?php echo $this->Html->link($neighborhood['Commune']['commune_name'], array('controller' => 'communes', 'action' => 'view', $neighborhood['Commune']['id_commune'])); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -31,6 +31,7 @@
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+<?php /*
 <div class="related">
 	<h3><?php echo __('Related Sites'); ?></h3>
 	<?php if (!empty($neighborhood['Site'])): ?>
@@ -69,4 +70,4 @@
 			<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
-</div>
+</div> */?>

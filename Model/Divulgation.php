@@ -21,7 +21,7 @@ class Divulgation extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id_divulgation';
+	public $displayField = 'divulgation_name';
 
 /**
  * Validation rules

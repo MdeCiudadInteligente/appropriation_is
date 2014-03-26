@@ -29,6 +29,7 @@
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+<?php /*
 <div class="related">
 	<h3><?php echo __('Related Sites'); ?></h3>
 	<?php if (!empty($siteType['Site'])): ?>
@@ -67,4 +68,4 @@
 			<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
-</div>
+</div> */?>

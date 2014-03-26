@@ -12,7 +12,7 @@
 		<td><?php echo h($neighborhood['Neighborhood']['id_neighborhood']); ?>&nbsp;</td>
 		<td><?php echo h($neighborhood['Neighborhood']['neighborhood_name']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($neighborhood['Commune']['id_commune'], array('controller' => 'communes', 'action' => 'view', $neighborhood['Commune']['id_commune'])); ?>
+			<?php echo $this->Html->link($neighborhood['Commune']['commune_name'], array('controller' => 'communes', 'action' => 'view', $neighborhood['Commune']['id_commune'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $neighborhood['Neighborhood']['id_neighborhood'])); ?>

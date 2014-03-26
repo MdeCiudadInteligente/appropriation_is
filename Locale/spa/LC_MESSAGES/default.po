@@ -327,11 +327,11 @@ msgstr "Agregar reunión"
 msgid "The accompaniment has been saved."
 msgstr "El acompañamiento se ha guardado."
 
-msgid ""
-msgstr ""
+msgid "Site Estado"
+msgstr "Estado Sitio"
 
-msgid ""
-msgstr ""
+msgid "List Divulgations"
+msgstr "Lista Divulgación"
 
 msgid ""
 msgstr ""

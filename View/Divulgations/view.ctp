@@ -38,7 +38,7 @@
 		</dd>
 		<dt><?php echo __('Site'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($divulgation['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
+			<?php echo $this->Html->link($divulgation['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

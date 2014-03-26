@@ -8,7 +8,7 @@
 			<th><?php echo $this->Paginator->sort('meeting_description'); ?></th>
 			<th><?php echo $this->Paginator->sort('meeting_commitments'); ?></th>
 			<th><?php echo $this->Paginator->sort('adjunct'); ?></th>
-			<th><?php echo $this->Paginator->sort('site_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($meetings as $meeting): ?>
@@ -21,7 +21,7 @@
 		<!-- <td><?php //echo h($meeting['Meeting']['meeting_adjunct']); ?>&nbsp;</td>-->
 		<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['meeting_adjunct'])); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($meeting['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
+			<?php echo $this->Html->link($meeting['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
@@ -76,7 +76,7 @@
 			<th><?php echo $this->Paginator->sort('accompaniment_description'); ?></th>
 			<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
 			<th><?php echo $this->Paginator->sort('adjunct'); ?></th>
-			<th><?php echo $this->Paginator->sort('site_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($accompaniments as $accompaniment): ?>
@@ -88,7 +88,7 @@
 		<!--  <td><?php //echo h($accompaniment['Accompaniment']['accompaniment_adjunct']); ?>&nbsp;</td>-->
 		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => $accompaniment['Accompaniment']['dir'].'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($accompaniment['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?>
+			<?php echo $this->Html->link($accompaniment['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?>
 		</td>
 		<td class="actions">		
 			<?php echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
@@ -124,7 +124,7 @@
 			<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
 			<th><?php echo $this->Paginator->sort('activity_place'); ?></th>
 			<th><?php echo $this->Paginator->sort('adjunct'); ?></th>
-			<th><?php echo $this->Paginator->sort('site_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($divulgations as $divulgation): ?>
@@ -138,7 +138,7 @@
 	<!--  	<td><?php //echo h($divulgation['Divulgation']['divulgation_adjunct']); ?>&nbsp;</td>-->
 	<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct'],array('controller' => 'webroot','action' => $divulgation['Divulgation']['dir'].'/'.$divulgation['Divulgation']['divulgation_adjunct'])); ?>&nbsp;</td> 
 		<td>
-			<?php echo $this->Html->link($divulgation['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
+			<?php echo $this->Html->link($divulgation['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('controller' => 'Divulgations','action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>

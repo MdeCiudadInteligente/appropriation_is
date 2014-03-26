@@ -33,13 +33,17 @@
 		</dd>
 		<dt><?php echo __('Meeting Adjunct1'); ?></dt>
 		<dd>
-			<?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct1'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'/'.$meeting['Meeting']['meeting_adjunct1'])); ?> 
+			<?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct1'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'1/'.$meeting['Meeting']['meeting_adjunct1'])); ?> 
 			&nbsp;
 		</dd>
-
+		<dt><?php echo __('Meeting Adjunct2'); ?></dt>
+		<dd>
+			<?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct2'],array('controller' => 'webroot','action' => $meeting['Meeting']['dir'].'2/'.$meeting['Meeting']['meeting_adjunct2'])); ?> 
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Site'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($meeting['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
+			<?php echo $this->Html->link($meeting['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

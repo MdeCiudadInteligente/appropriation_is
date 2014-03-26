@@ -28,7 +28,7 @@
 		</dd>
 		<dt><?php echo __('Neighborhood'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($site['Neighborhood']['id_neighborhood'], array('controller' => 'neighborhoods', 'action' => 'view', $site['Neighborhood']['id_neighborhood'])); ?>
+			<?php echo $this->Html->link($site['Neighborhood']['neighborhood_name'], array('controller' => 'neighborhoods', 'action' => 'view', $site['Neighborhood']['id_neighborhood'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Site Type'); ?></dt>
@@ -57,6 +57,7 @@
 		<li><?php echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+<?php /*
 <div class="related">
 	<h3><?php echo __('Related Accompaniments'); ?></h3>
 	<?php if (!empty($site['Accompaniment'])): ?>
@@ -66,7 +67,9 @@
 		<th><?php echo __('Accompaniment Type'); ?></th>
 		<th><?php echo __('Accompaniment Description'); ?></th>
 		<th><?php echo __('Participant Number'); ?></th>
-		<th><?php echo __('Adjunct'); ?></th>
+		<th><?php echo __('meeting_adjunct'); ?></th>
+		<th><?php echo __('meeting_adjunct1'); ?></th>
+		<th><?php echo __('meeting_adjunct1'); ?></th>
 		<th><?php echo __('Site Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -76,7 +79,9 @@
 			<td><?php echo $accompaniment['accompaniment_type']; ?></td>
 			<td><?php echo $accompaniment['accompaniment_description']; ?></td>
 			<td><?php echo $accompaniment['participant_number']; ?></td>
-			<td><?php echo $accompaniment['adjunct']; ?></td>
+			<td><?php echo $accompaniment['meeting_adjunct']; ?></td>
+			<td><?php echo $accompaniment['meeting_adjunct1']; ?></td>
+			<td><?php echo $accompaniment['meeting_adjunct1']; ?></td>
 			<td><?php echo $accompaniment['site_id']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'accompaniments', 'action' => 'view', $accompaniment['id_accompaniment'])); ?>
@@ -94,14 +99,16 @@
 		</ul>
 	</div>
 </div>
-<div class="related">
+ </html><div class="related">
 	<h3><?php echo __('Related Meetings'); ?></h3>
 	<?php if (!empty($site['Meeting'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id Meeting'); ?></th>
 		<th><?php echo __('Meeting Type'); ?></th>
-		<th><?php echo __('Adjunct'); ?></th>
+		<th><?php echo __('meeting_adjunct'); ?></th>
+		<th><?php echo __('meeting_adjunct1'); ?></th>
+		<th><?php echo __('meeting_adjunct1'); ?></th>
 		<th><?php echo __('Site Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -109,7 +116,9 @@
 		<tr>
 			<td><?php echo $meeting['id_meeting']; ?></td>
 			<td><?php echo $meeting['meeting_type']; ?></td>
-			<td><?php echo $meeting['adjunct']; ?></td>
+			<td><?php echo $accompaniment['meeting_adjunct']; ?></td>
+			<td><?php echo $accompaniment['meeting_adjunct1']; ?></td>
+			<td><?php echo $accompaniment['meeting_adjunct1']; ?></td>
 			<td><?php echo $meeting['site_id']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'meetings', 'action' => 'view', $meeting['id_meeting'])); ?>
@@ -159,4 +168,4 @@
 			<li><?php echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
-</div>
+</div>*/?>
