@@ -8,8 +8,7 @@
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));	
 		echo $this->Form->input('meeting_adjunct',array('type'=>'file'/*,'multiple'*/));		
-		echo $this->Form->input('meeting_adjunct1',array('type'=>'file'));
-		echo $this->Form->input('meeting_adjunct2',array('type'=>'file'));
+		echo $this->Form->input('meeting_adjunct1',array('type'=>'file'));		
 		echo $this->Form->input('dir',array('type'=>'hidden'));
 		echo $this->Form->input('site_id');
 		
