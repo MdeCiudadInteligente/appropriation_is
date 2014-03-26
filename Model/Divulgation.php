@@ -14,7 +14,7 @@ class Divulgation extends AppModel {
  */
 	public $primaryKey = 'id_divulgation';
 	var $actsAs = array(
-			'MeioUpload.MeioUpload' => array('divulgation_adjunct')
+			'MeioUpload.MeioUpload' => array('divulgation_adjunct2','divulgation_adjunct1','divulgation_adjunct')
 	);
 /**
  * Display field
