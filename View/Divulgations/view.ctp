@@ -33,7 +33,17 @@
 		</dd>
 		<dt><?php echo __('Divulgation Adjunct'); ?></dt>
 		<dd>
-			<?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct'],array('controller' => 'webroot','action' => $divulgation['Divulgation']['dir'].'/'.$divulgation['Divulgation']['divulgation_adjunct'])); ?>
+			<?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct/'.$divulgation['Divulgation']['divulgation_adjunct'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Divulgation Adjunct1'); ?></dt>
+		<dd>
+			<?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct1'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct1/'.$divulgation['Divulgation']['divulgation_adjunct1'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Divulgation Adjunct2'); ?></dt>
+		<dd>
+			<?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Site'); ?></dt>
