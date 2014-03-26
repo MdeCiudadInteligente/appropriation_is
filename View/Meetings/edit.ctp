@@ -8,7 +8,7 @@
 		echo $this->Form->input('meeting_title');
 		echo $this->Form->input('meeting_description');
 		echo $this->Form->input('meeting_commitments');
-		echo $this->Form->input('meeting_adjunct');
+		echo $this->Form->input('meeting_adjunct',array('disabled'=>'disabled'));
 		echo $this->Form->input('meeting_adjunct',array('type'=>'file'));
 		echo $this->Form->input('dir',array('type'=>'hidden'));
 		echo $this->Form->input('site_id');
