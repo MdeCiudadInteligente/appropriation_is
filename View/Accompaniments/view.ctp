@@ -50,7 +50,11 @@
 		<li><?php echo $this->Form->postLink(__('Delete Accompaniment'), array('action' => 'delete', $accompaniment['Accompaniment']['id_accompaniment']), null, __('Are you sure you want to delete # %s?', $accompaniment['Accompaniment']['id_accompaniment'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Accompaniments'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Accompaniment'), array('action' => 'add')); ?> </li>
+				<?php 
+		$usuario_level= $this->Session->read('Auth.User.permission_level');
+		if ($usuario_level === '1'){?>
 		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
+		<?php }?>
 	</ul>
 </div>
