@@ -2,8 +2,8 @@
 <?php echo $this->Form->create('Zone'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Zone'); ?></legend>
-	<?php
-		echo $this->Form->input('zone_name');
+	<?php		
+		echo $this->Form->input('zone_name',array ('options' => array ('1'=>'1','2'=>'2' ,'3'=>'3','4'=>'4')));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

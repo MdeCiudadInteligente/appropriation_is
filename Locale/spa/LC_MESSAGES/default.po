@@ -196,13 +196,13 @@ msgid "Commune"
 msgstr "Comuna"
 
 msgid "Owners"
-msgstr "Propietarios"
+msgstr "Encargados"
 
 msgid "Owner"
-msgstr "Propietario"
+msgstr "Encargado"
 
 msgid "New Owner"
-msgstr "Nuevo Propietario"
+msgstr "Nuevo Encargado"
 
 msgid "Roll"
 msgstr "Rol"
@@ -333,8 +333,8 @@ msgstr "Estado Sitio"
 msgid "List Divulgations"
 msgstr "Lista Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Add Person"
+msgstr "Añadir Persona"
 
 msgid ""
 msgstr ""
