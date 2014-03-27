@@ -2,7 +2,6 @@
 	<h2><?php echo __('Accompaniments'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_accompaniment'); ?></th>
 			<th><?php echo $this->Paginator->sort('accompaniment_type'); ?></th>
 			<th><?php echo $this->Paginator->sort('accompaniment_description'); ?></th>
 			<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
@@ -14,7 +13,6 @@
 	</tr>
 	<?php foreach ($accompaniments as $accompaniment): ?>
 	<tr>
-		<td><?php echo h($accompaniment['Accompaniment']['id_accompaniment']); ?>&nbsp;</td>
 		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>&nbsp;</td>
 		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_description']); ?>&nbsp;</td>
 		<td><?php echo h($accompaniment['Accompaniment']['participant_number']); ?>&nbsp;</td>

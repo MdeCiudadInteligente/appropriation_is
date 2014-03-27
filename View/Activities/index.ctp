@@ -2,7 +2,6 @@
 	<h2><?php echo __('Meetings'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-		<th><?php echo $this->Paginator->sort('id_meeting'); ?></th>
 		<th><?php echo $this->Paginator->sort('meeting_type'); ?></th>
 		<th><?php echo $this->Paginator->sort('meeting_title'); ?></th>
 		<th><?php echo $this->Paginator->sort('meeting_description'); ?></th>
@@ -17,7 +16,6 @@
 	</tr>
 	<?php foreach ($meetings as $meeting): ?>
 	<tr>
-		<td><?php echo h($meeting['Meeting']['id_meeting']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['meeting_type']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['meeting_title']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['meeting_description']); ?>&nbsp;</td>
@@ -77,7 +75,6 @@
 	<h2><?php echo __('Accompaniments'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-		<th><?php echo $this->Paginator->sort('id_accompaniment'); ?></th>
 		<th><?php echo $this->Paginator->sort('accompaniment_type'); ?></th>
 		<th><?php echo $this->Paginator->sort('accompaniment_description'); ?></th>
 		<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
@@ -91,7 +88,6 @@
 	</tr>
 	<?php foreach ($accompaniments as $accompaniment): ?>
 	<tr>
-		<td><?php echo h($accompaniment['Accompaniment']['id_accompaniment']); ?>&nbsp;</td>
 		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>&nbsp;</td>
 		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_description']); ?>&nbsp;</td>
 		<td><?php echo h($accompaniment['Accompaniment']['participant_number']); ?>&nbsp;</td>
@@ -129,7 +125,6 @@
 	<h2><?php echo __('Divulgations'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-		<th><?php echo $this->Paginator->sort('id_divulgation'); ?></th>
 		<th><?php echo $this->Paginator->sort('divulgation_name'); ?></th>
 		<th><?php echo $this->Paginator->sort('divulgation_type'); ?></th>
 		<th><?php echo $this->Paginator->sort('divulgation_description'); ?></th>
@@ -145,7 +140,6 @@
 	</tr>
 	<?php foreach ($divulgations as $divulgation): ?>
 	<tr>
-		<td><?php echo h($divulgation['Divulgation']['id_divulgation']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['divulgation_name']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['divulgation_type']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['divulgation_description']); ?>&nbsp;</td>

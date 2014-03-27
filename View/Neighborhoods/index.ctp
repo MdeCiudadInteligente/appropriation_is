@@ -2,14 +2,12 @@
 	<h2><?php echo __('Neighborhoods'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_neighborhood'); ?></th>
 			<th><?php echo $this->Paginator->sort('neighborhood_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('commune_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($neighborhoods as $neighborhood): ?>
 	<tr>
-		<td><?php echo h($neighborhood['Neighborhood']['id_neighborhood']); ?>&nbsp;</td>
 		<td><?php echo h($neighborhood['Neighborhood']['neighborhood_name']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($neighborhood['Commune']['commune_name'], array('controller' => 'communes', 'action' => 'view', $neighborhood['Commune']['id_commune'])); ?>

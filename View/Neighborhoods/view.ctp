@@ -1,11 +1,6 @@
 <div class="neighborhoods view">
 <h2><?php echo __('Neighborhood'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id Neighborhood'); ?></dt>
-		<dd>
-			<?php echo h($neighborhood['Neighborhood']['id_neighborhood']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Neighborhood Name'); ?></dt>
 		<dd>
 			<?php echo h($neighborhood['Neighborhood']['neighborhood_name']); ?>

@@ -1,11 +1,6 @@
 <div class="accompaniments view">
 <h2><?php echo __('Accompaniment'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id Accompaniment'); ?></dt>
-		<dd>
-			<?php echo h($accompaniment['Accompaniment']['id_accompaniment']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Accompaniment Type'); ?></dt>
 		<dd>
 			<?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>

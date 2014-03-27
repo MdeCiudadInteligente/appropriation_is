@@ -1,11 +1,6 @@
 <div class="sites view">
 <h2><?php echo __('Site'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id Site'); ?></dt>
-		<dd>
-			<?php echo h($site['Site']['id_site']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Site Name'); ?></dt>
 		<dd>
 			<?php echo h($site['Site']['site_name']); ?>

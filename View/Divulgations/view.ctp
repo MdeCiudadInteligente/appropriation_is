@@ -1,11 +1,6 @@
 <div class="divulgations view">
 <h2><?php echo __('Divulgation'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id Divulgation'); ?></dt>
-		<dd>
-			<?php echo h($divulgation['Divulgation']['id_divulgation']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Divulgation Name'); ?></dt>
 		<dd>
 			<?php echo h($divulgation['Divulgation']['divulgation_name']); ?>

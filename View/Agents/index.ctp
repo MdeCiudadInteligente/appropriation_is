@@ -2,14 +2,12 @@
 	<h2><?php echo __('Agents'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_agent'); ?></th>
 			<th><?php echo $this->Paginator->sort('person_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('zone_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($agents as $agent): ?>
 	<tr>
-		<td><?php echo h($agent['Agent']['id_agent']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($agent['Person']['name'], array('controller' => 'people', 'action' => 'view', $agent['Person']['id_person'])); ?>
 		</td>

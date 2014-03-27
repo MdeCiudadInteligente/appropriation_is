@@ -2,13 +2,11 @@
 	<h2><?php echo __('Zones'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_zone'); ?></th>
-			<th><?php echo $this->Paginator->sort('zone_name'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+		<th><?php echo $this->Paginator->sort('zone_name'); ?></th>
+		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($zones as $zone): ?>
 	<tr>
-		<td><?php echo h($zone['Zone']['id_zone']); ?>&nbsp;</td>
 		<td><?php echo h($zone['Zone']['zone_name']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $zone['Zone']['id_zone'])); ?>

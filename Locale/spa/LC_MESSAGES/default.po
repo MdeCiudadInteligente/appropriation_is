@@ -229,7 +229,7 @@ msgid "List Agents"
 msgstr "Lista Agentes"
 
 msgid "List Owners"
-msgstr "Lista Propietario"
+msgstr "Lista Encargado"
 
 msgid "Site Name"
 msgstr "Nombre Sitio"
@@ -336,11 +336,11 @@ msgstr "Lista Divulgación"
 msgid "Add Person"
 msgstr "Añadir Persona"
 
-msgid ""
-msgstr ""
+msgid "Main Menu"
+msgstr "Menú Principal"
 
-msgid ""
-msgstr ""
+msgid "Close Section"
+msgstr "Cerrar Sesión"
 
 msgid ""
 msgstr ""

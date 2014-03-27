@@ -1,11 +1,6 @@
 <div class="communes view">
 <h2><?php echo __('Commune'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id Commune'); ?></dt>
-		<dd>
-			<?php echo h($commune['Commune']['id_commune']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Commune Name'); ?></dt>
 		<dd>
 			<?php echo h($commune['Commune']['commune_name']); ?>

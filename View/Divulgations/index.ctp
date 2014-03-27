@@ -2,7 +2,6 @@
 	<h2><?php echo __('Divulgations'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_divulgation'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_type'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_description'); ?></th>
@@ -16,7 +15,6 @@
 	</tr>
 	<?php foreach ($divulgations as $divulgation): ?>
 	<tr>
-		<td><?php echo h($divulgation['Divulgation']['id_divulgation']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['divulgation_name']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['divulgation_type']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['divulgation_description']); ?>&nbsp;</td>

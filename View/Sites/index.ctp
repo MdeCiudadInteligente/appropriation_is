@@ -2,7 +2,6 @@
 	<h2><?php echo __('Sites'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_site'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_phone'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_address'); ?></th>
@@ -13,7 +12,6 @@
 	</tr>
 	<?php foreach ($sites as $site): ?>
 	<tr>
-		<td><?php echo h($site['Site']['id_site']); ?>&nbsp;</td>
 		<td><?php echo h($site['Site']['site_name']); ?>&nbsp;</td>
 		<td><?php echo h($site['Site']['site_phone']); ?>&nbsp;</td>
 		<td><?php echo h($site['Site']['site_address']); ?>&nbsp;</td>

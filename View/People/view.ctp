@@ -51,7 +51,7 @@
 		<li><?php echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-	<div class="related">
+<?php /*	<div class="related">
 		<h3><?php echo __('Related Agents'); ?></h3>
 	<?php if (!empty($person['Agent'])): ?>
 		<dl>
@@ -102,5 +102,5 @@
 				<li><?php echo $this->Html->link(__('Edit Owner'), array('controller' => 'owners', 'action' => 'edit', $person['Owner']['id_owner'])); ?></li>
 			</ul>
 		</div>
-	</div>
+	</div>  */?>
 	

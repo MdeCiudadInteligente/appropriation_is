@@ -2,14 +2,12 @@
 	<h2><?php echo __('Site Types'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_site_type'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_type'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_estado'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($siteTypes as $siteType): ?>
 	<tr>
-		<td><?php echo h($siteType['SiteType']['id_site_type']); ?>&nbsp;</td>
 		<td><?php echo h($siteType['SiteType']['site_type']); ?>&nbsp;</td>
 		<td><?php echo h($siteType['SiteType']['site_estado']); ?>&nbsp;</td>
 		<td class="actions">
