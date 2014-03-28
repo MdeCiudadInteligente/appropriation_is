@@ -20,7 +20,7 @@ class Zone extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id_zone';
+	public $displayField = 'zone_name';
 
 /**
  * Validation rules

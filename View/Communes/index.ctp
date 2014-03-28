@@ -2,14 +2,12 @@
 	<h2><?php echo __('Communes'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_commune'); ?></th>
 			<th><?php echo $this->Paginator->sort('commune_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('zone_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($communes as $commune): ?>
-	<tr>
-		<td><?php echo h($commune['Commune']['id_commune']); ?>&nbsp;</td>
+	<tr> 
 		<td><?php echo h($commune['Commune']['commune_name']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($commune['Zone']['id_zone'], array('controller' => 'zones', 'action' => 'view', $commune['Zone']['id_zone'])); ?>
@@ -39,10 +37,12 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Commune'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Zones'), array('controller' => 'zones', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Zone'), array('controller' => 'zones', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Neighborhoods'), array('controller' => 'neighborhoods', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'neighborhoods', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

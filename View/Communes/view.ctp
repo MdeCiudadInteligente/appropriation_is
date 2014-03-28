@@ -1,11 +1,6 @@
 <div class="communes view">
 <h2><?php echo __('Commune'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id Commune'); ?></dt>
-		<dd>
-			<?php echo h($commune['Commune']['id_commune']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Commune Name'); ?></dt>
 		<dd>
 			<?php echo h($commune['Commune']['commune_name']); ?>
@@ -21,6 +16,7 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Commune'), array('action' => 'edit', $commune['Commune']['id_commune'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Commune'), array('action' => 'delete', $commune['Commune']['id_commune']), null, __('Are you sure you want to delete # %s?', $commune['Commune']['id_commune'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Communes'), array('action' => 'index')); ?> </li>
@@ -29,8 +25,10 @@
 		<li><?php echo $this->Html->link(__('New Zone'), array('controller' => 'zones', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Neighborhoods'), array('controller' => 'neighborhoods', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'neighborhoods', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>
+<?php /*
 <div class="related">
 	<h3><?php echo __('Related Neighborhoods'); ?></h3>
 	<?php if (!empty($commune['Neighborhood'])): ?>
@@ -61,4 +59,4 @@
 			<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'neighborhoods', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
-</div>
+</div> */?>

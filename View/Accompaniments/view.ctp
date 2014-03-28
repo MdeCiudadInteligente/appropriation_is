@@ -1,11 +1,6 @@
 <div class="accompaniments view">
 <h2><?php echo __('Accompaniment'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id Accompaniment'); ?></dt>
-		<dd>
-			<?php echo h($accompaniment['Accompaniment']['id_accompaniment']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Accompaniment Type'); ?></dt>
 		<dd>
 			<?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>
@@ -38,7 +33,7 @@
 		</dd>
 		<dt><?php echo __('Site'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($accompaniment['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?>
+			<?php echo $this->Html->link($accompaniment['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -46,6 +41,7 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Accompaniment'), array('action' => 'edit', $accompaniment['Accompaniment']['id_accompaniment'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Accompaniment'), array('action' => 'delete', $accompaniment['Accompaniment']['id_accompaniment']), null, __('Are you sure you want to delete # %s?', $accompaniment['Accompaniment']['id_accompaniment'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Accompaniments'), array('action' => 'index')); ?> </li>
@@ -55,6 +51,7 @@
 		if ($usuario_level === '1'){?>
 		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 		<?php }?>
 	</ul>
 </div>

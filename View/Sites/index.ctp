@@ -2,7 +2,6 @@
 	<h2><?php echo __('Sites'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_site'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_phone'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_address'); ?></th>
@@ -13,16 +12,15 @@
 	</tr>
 	<?php foreach ($sites as $site): ?>
 	<tr>
-		<td><?php echo h($site['Site']['id_site']); ?>&nbsp;</td>
 		<td><?php echo h($site['Site']['site_name']); ?>&nbsp;</td>
 		<td><?php echo h($site['Site']['site_phone']); ?>&nbsp;</td>
 		<td><?php echo h($site['Site']['site_address']); ?>&nbsp;</td>
 		<td><?php echo h($site['Site']['site_mail']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($site['Neighborhood']['id_neighborhood'], array('controller' => 'neighborhoods', 'action' => 'view', $site['Neighborhood']['id_neighborhood'])); ?>
+			<?php echo $this->Html->link($site['Neighborhood']['neighborhood_name'], array('controller' => 'neighborhoods', 'action' => 'view', $site['Neighborhood']['id_neighborhood'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($site['SiteType']['id_site_type'], array('controller' => 'site_types', 'action' => 'view', $site['SiteType']['id_site_type'])); ?>
+			<?php echo $this->Html->link($site['SiteType']['site_type'], array('controller' => 'site_types', 'action' => 'view', $site['SiteType']['id_site_type'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $site['Site']['id_site'])); ?>
@@ -49,16 +47,12 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Site'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Neighborhoods'), array('controller' => 'neighborhoods', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'neighborhoods', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Site Types'), array('controller' => 'site_types', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Site Type'), array('controller' => 'site_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Accompaniments'), array('controller' => 'accompaniments', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Accompaniment'), array('controller' => 'accompaniments', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Meetings'), array('controller' => 'meetings', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Meeting'), array('controller' => 'meetings', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Owners'), array('controller' => 'owners', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Site Type'), array('controller' => 'site_types', 'action' => 'add')); ?> </li>		
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

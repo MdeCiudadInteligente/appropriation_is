@@ -19,7 +19,7 @@ class SiteType extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id_site_type';
+	public $displayField = 'site_type';
 
 /**
  * Validation rules
