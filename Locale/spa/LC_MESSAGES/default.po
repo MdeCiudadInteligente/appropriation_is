@@ -130,7 +130,7 @@ msgid "New Agent"
 msgstr "Nuevo Agente"
 
 msgid "List People"
-msgstr "Listar Personas"
+msgstr "Lista Personas"
 
 msgid "New Person"
 msgstr "Nueva Persona"
@@ -138,11 +138,29 @@ msgstr "Nueva Persona"
 msgid "List Zone"
 msgstr "Lsta Zona"
 
+msgid "Edit Agent"
+msgstr "Editar Agente"
+
+msgid "Delete Agent"
+msgstr "Eliminar Agente"
+
+msgid "Edit Person"
+msgstr "Editar Persona"
+
+msgid "Delete Person"
+msgstr "Eliminar Persona"
+
+msgid "Edit Zone"
+msgstr "Editar Zona"
+
+msgid "Delete Zone"
+msgstr "Eliminar Zona"
+
 msgid "New Zone"
 msgstr "Nueva Zona"
 
 msgid "List Users"
-msgstr "Lsita Usuarios"
+msgstr "Lista Usuarios"
 
 msgid "New User"
 msgstr "Nuevo Usuario"
@@ -342,36 +360,41 @@ msgstr "Menú Principal"
 msgid "Close Section"
 msgstr "Cerrar Sesión"
 
-msgid ""
-msgstr ""
+msgid "Edit Neighborhood"
+msgstr "Editar Barrio"
 
-msgid ""
-msgstr ""
+msgid "Delete Neighborhood"
+msgstr "Eliminar Barrio"
 
-msgid ""
-msgstr ""
+msgid "Edit Site"
+msgstr "Editar Sitio"
 
-msgid ""
-msgstr ""
+msgid "Delete Site"
+msgstr "Eliminar Sitio"
 
-msgid ""
-msgstr ""
+msgid "Edit Site Type"
+msgstr "Editar Tipo Sitio"
 
-msgid ""
-msgstr ""
+msgid "Delete Site Type"
+msgstr "Eliminar Tipo Sitio"
 
-msgid ""
-msgstr ""
+msgid "Edit Meetings"
+msgstr "Editar Reunión"
 
-msgid ""
-msgstr ""
+msgid "Delete Meetings"
+msgstr "Eliminar Reunión"
 
-msgid ""
-msgstr ""
+msgid "Edit Accompaniment"
+msgstr "Editar Acompañamiento"
 
-msgid ""
-msgstr ""
+msgid "Delete Accompaniment"
+msgstr "Eliminar Acompañamiento"
 
+msgid "Edit Divulgation"
+msgstr "Editar Divulgación"
+
+msgid "Delete Divulgation"
+msgstr "Eliminar Divulgación"
 
 msgid "New Accompaniment"
 msgstr "Nuevo Acompañamiento"

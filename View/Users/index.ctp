@@ -46,12 +46,16 @@
 	$usuario_level= $this->Session->read('Auth.User.permission_level');
 	//$usuario_level= $this->Auth->user('permission_level');
 	//echo $usersper;
+	
 	if ($usuario_level === '2'){?>
+	
 		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
 	<?php }?>
-	<?php if ($usuario_level === '1'){?>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+	<?php if ($usuario_level === '1'){?>		
 		<li><?php echo $this->Html->link(__('List Agents'), array('controller' => 'agents', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Agent'), array('controller' => 'agents', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Agent'), array('controller' => 'agents', 'action' => 'add')); ?> </li>		
 		<?php }?>
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

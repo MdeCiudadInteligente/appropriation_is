@@ -10,7 +10,7 @@
 			<th><?php echo $this->Paginator->sort('divulgation_adjunct'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_adjunct1'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_adjunct2'); ?></th>
-			<th><?php echo $this->Paginator->sort('site_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($divulgations as $divulgation): ?>
@@ -25,7 +25,7 @@
 		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct1'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct1/'.$divulgation['Divulgation']['divulgation_adjunct1'])); ?>&nbsp;</td> 
 		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2'])); ?>&nbsp;</td> 
 		<td>
-			<?php echo $this->Html->link($divulgation['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
+			<?php echo $this->Html->link($divulgation['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
@@ -52,6 +52,7 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Divulgation'), array('action' => 'add')); ?></li>
 		<?php 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
@@ -59,5 +60,6 @@
 		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
 		<?php }?>
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>
