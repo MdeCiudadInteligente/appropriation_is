@@ -13,7 +13,12 @@ class DivulgationsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+		public $components = array('Paginator');
+	
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
+	);
 
 /**
  * index method
@@ -35,8 +40,12 @@ class DivulgationsController extends AppController {
 	}
 	
 	public function index() {
-		$this->Divulgation->recursive = 0;
-		$this->set('divulgations', $this->Paginator->paginate());
+		//variable designada para Agents...
+		$accompaniment=$this->Divulgation->find('all');
+		$this->set('divulgations', $accompaniment);
+		//$this->Accompaniment->recursive = 0;
+	   	$this->Paginator->settings = $this->paginate;
+		$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
 	}
 
 /**

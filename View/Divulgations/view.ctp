@@ -1,6 +1,16 @@
 <div class="divulgations view">
 <h2><?php echo __('Divulgation'); ?></h2>
 	<dl>
+		<dt><?php echo __('Site'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($divulgation['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Divulgation Date'); ?></dt>
+		<dd>
+			<?php echo h($divulgation['Divulgation']['divulgation_date']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Divulgation Name'); ?></dt>
 		<dd>
 			<?php echo h($divulgation['Divulgation']['divulgation_name']); ?>
@@ -39,11 +49,6 @@
 		<dt><?php echo __('Divulgation Adjunct2'); ?></dt>
 		<dd>
 			<?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Site'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($divulgation['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

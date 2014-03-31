@@ -26,6 +26,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	
+	<?php echo $this->Html->script('jquery');?>
+	
 </head>
 <body>
 	<div id="container">

@@ -3,11 +3,15 @@
 	class ActivitiesController extends AppController {
 	
 	var $uses = array('Meeting','Accompaniment','Divulgation');	
+	
 	public $components = array('Paginator');
 	
 	public $paginate = array(
-			'limit' => 2
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
 	);
+	
+	public $helpers = array('Js');
 	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
@@ -24,7 +28,11 @@
 	}
    
    	public function index(){
-   	
+   		
+   		//$this->Meeting->recursive = -1;
+   		//$this->Accompaniments->recursive = -1;
+   		//$this->Divulgations->recursive = -1;
+   		
    	//variable designada para meetings...	
    	$meeting=$this->Meeting->find('all');
    	
@@ -46,16 +54,22 @@
    	//Se define la configuración del paginador con la variable paginate previamente definida
    	$this->Paginator->settings = $this->paginate;
    	
+   	$this->Paginator->options=array(
+   			'update' => '#paginador1',
+   			'evalScripts' => false
+   	);
+   	
    	//Paginación Meeting...
-   	//$this->Meeting->recursive = 0;
+   	
    	$this->set('meetings', $this->Paginator->paginate('Meeting'));
+     	
    	
    	//Paginación Agent...
-   	//$this->Accompaniments->recursive = 0;
+   	
    	$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
    	
    	//Paginación Site...
-   	//$this->Site->recursive = 0;
+   	
    	$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
    	 
    	

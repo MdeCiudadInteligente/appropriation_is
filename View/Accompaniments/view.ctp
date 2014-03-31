@@ -1,6 +1,16 @@
 <div class="accompaniments view">
 <h2><?php echo __('Accompaniment'); ?></h2>
 	<dl>
+		<dt><?php echo __('Site'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($accompaniment['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Accompaniment Date'); ?></dt>
+		<dd>
+			<?php echo h($accompaniment['Accompaniment']['accompaniment_date']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Accompaniment Type'); ?></dt>
 		<dd>
 			<?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>
@@ -29,11 +39,6 @@
 		<dt><?php echo __('Accompaniment Adjunct2'); ?></dt>
 		<dd>
 			<?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Site'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($accompaniment['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

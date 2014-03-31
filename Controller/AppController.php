@@ -27,6 +27,7 @@ class AppController extends Controller {
     //...
 
     public $components = array(
+    	'RequestHandler',
         'DebugKit.Toolbar',
 		'Session',
         'Auth' => array(

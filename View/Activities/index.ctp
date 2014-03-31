@@ -1,5 +1,6 @@
 <div class="Activities index">
 	<h2><?php echo __('Meetings'); ?></h2>
+	<div id="paginador1">
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 		<th><?php echo $this->Paginator->sort('meeting_type'); ?></th>
@@ -43,11 +44,13 @@
 	?>	</p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+		/*echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));*/
 	?>
 	</div>
+	</div>
+	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Meetings', 'action' => 'index')); ?>
 </div>
 
 <div class="actions">
@@ -118,11 +121,12 @@
 	?>	</p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+	/*	echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));*/
 	?>
 	</div>
+	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Accompaniments', 'action' => 'index')); ?>
 </div>
 
 <div class="divulgations index">
@@ -172,12 +176,13 @@
 	?>	</p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+	/*	echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));*/
 	?>
 	</div>
+	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Divulgations', 'action' => 'index')); ?>
 </div>
-
+<?php echo $this->Js->writeBuffer(); ?>
 
 
