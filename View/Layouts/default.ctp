@@ -25,7 +25,13 @@ $cakeDescription = __d('cake_dev', '');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+<<<<<<< HEAD
 
+=======
+	
+	<?php echo $this->Html->script('jquery');?>
+	
+>>>>>>> 41151df3955cb0987548c895070de3a2c9b087cb
 </head>
 <body>
 	<div id="container">

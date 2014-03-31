@@ -14,6 +14,13 @@ class MeetingsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 5,
+	);
+	
+	
 
 /**
  * index method
@@ -34,8 +41,12 @@ class MeetingsController extends AppController {
 			
 	}
 	public function index() {
-		$this->Meeting->recursive = 0;
-		$this->set('meetings', $this->Paginator->paginate());
+		$meeting=$this->Meeting->find('all');
+		$this->set('meetings', $meeting);
+		//$this->Meeting->recursive = 0;
+		$this->Paginator->settings = $this->paginate;
+		$this->set('meetings', $this->Paginator->paginate('Meeting'));
+	
 	}
 
 /**

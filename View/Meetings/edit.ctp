@@ -5,6 +5,8 @@
 	<?php
 		echo $this->Form->input('site_id');
 		echo $this->Form->input('id_meeting');
+		echo $this->Form->input('site_id');
+		echo $this->Form->input('meeting_date');
 		echo $this->Form->input('meeting_type');
 		echo $this->Form->input('meeting_title');
 		echo $this->Form->input('meeting_description');
@@ -15,7 +17,12 @@
 		echo $this->Form->input('meeting_adjunct1',array('type'=>'file'));
 		echo $this->Form->input('meeting_adjunct2',array('disabled'=>'disabled'));
 		echo $this->Form->input('meeting_adjunct2',array('type'=>'file'));
+<<<<<<< HEAD
 		echo $this->Form->input('dir',array('type'=>'hidden'));		
+=======
+		echo $this->Form->input('dir',array('type'=>'hidden'));
+		
+>>>>>>> 41151df3955cb0987548c895070de3a2c9b087cb
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

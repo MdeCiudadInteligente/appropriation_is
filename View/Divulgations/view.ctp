@@ -6,6 +6,14 @@
 			<?php echo $this->Html->link($divulgation['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
 			&nbsp;
 		</dd>
+<<<<<<< HEAD
+=======
+		<dt><?php echo __('Divulgation Date'); ?></dt>
+		<dd>
+			<?php echo h($divulgation['Divulgation']['divulgation_date']); ?>
+			&nbsp;
+		</dd>
+>>>>>>> 41151df3955cb0987548c895070de3a2c9b087cb
 		<dt><?php echo __('Divulgation Name'); ?></dt>
 		<dd>
 			<?php echo h($divulgation['Divulgation']['divulgation_name']); ?>
@@ -45,7 +53,11 @@
 		<dd>
 			<?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2'])); ?>
 			&nbsp;
+<<<<<<< HEAD
 		</dd>		
+=======
+		</dd>
+>>>>>>> 41151df3955cb0987548c895070de3a2c9b087cb
 	</dl>
 </div>
 <div class="actions">

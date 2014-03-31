@@ -2,6 +2,8 @@
 	<h2><?php echo __('Divulgations'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
+			<th><?php echo $this->Paginator->sort('divulgation_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_type'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_description'); ?></th>
@@ -10,11 +12,14 @@
 			<th><?php echo $this->Paginator->sort('divulgation_adjunct'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_adjunct1'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_adjunct2'); ?></th>
-			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($divulgations as $divulgation): ?>
 	<tr>
+		<td>
+			<?php echo $this->Html->link($divulgation['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
+		</td>
+		<td><?php echo h($divulgation['Divulgation']['divulgation_date']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['divulgation_name']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['divulgation_type']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['divulgation_description']); ?>&nbsp;</td>
@@ -24,9 +29,6 @@
 		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct/'.$divulgation['Divulgation']['divulgation_adjunct'])); ?>&nbsp;</td> 
 		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct1'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct1/'.$divulgation['Divulgation']['divulgation_adjunct1'])); ?>&nbsp;</td> 
 		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2'])); ?>&nbsp;</td> 
-		<td>
-			<?php echo $this->Html->link($divulgation['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?>
-		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $divulgation['Divulgation']['id_divulgation'])); ?>

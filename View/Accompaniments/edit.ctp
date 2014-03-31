@@ -5,6 +5,8 @@
 	<?php
 		echo $this->Form->input('site_id');
 		echo $this->Form->input('id_accompaniment');
+		echo $this->Form->input('site_id');
+		echo $this->Form->input('accompaniment_date');
 		echo $this->Form->input('accompaniment_type');
 		echo $this->Form->input('accompaniment_description');
 		echo $this->Form->input('participant_number');
