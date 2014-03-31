@@ -3,6 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Edit Divulgation'); ?></legend>
 	<?php
+		echo $this->Form->input('site_id');
 		echo $this->Form->input('id_divulgation');
 		echo $this->Form->input('divulgation_name');
 		echo $this->Form->input('divulgation_type');
@@ -15,8 +16,7 @@
 		echo $this->Form->input('divulgation_adjunct1',array('type'=>'file'));
 		echo $this->Form->input('divulgation_adjunct2',array('disabled'=>'disabled'));
 		echo $this->Form->input('divulgation_adjunct2',array('type'=>'file'));
-		echo $this->Form->input('dir',array('type'=>'hidden'));
-		echo $this->Form->input('site_id');
+		echo $this->Form->input('dir',array('type'=>'hidden'));	
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

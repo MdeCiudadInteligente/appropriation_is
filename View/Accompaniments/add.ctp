@@ -3,6 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Agregar acompañamiento'); ?></legend>
 	<?php
+		echo $this->Form->input('site_id');
 		echo $this->Form->input('accompaniment_type',array ('options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Estudiantes de PP, jóvenes por la convivencia o alfabetizadores' ,
 				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC')));
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));		
@@ -11,8 +12,7 @@
 		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file'));
 		echo $this->Form->input('accompaniment_adjunct1',array('type'=>'file'));
 		echo $this->Form->input('accompaniment_adjunct2',array('type'=>'file'));
-		echo $this->Form->input('dir',array('type'=>'hidden'));
-		echo $this->Form->input('site_id');
+		echo $this->Form->input('dir',array('type'=>'hidden'));	
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

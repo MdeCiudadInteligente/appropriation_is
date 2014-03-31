@@ -3,6 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Divulgation'); ?></legend>
 	<?php
+		echo $this->Form->input('site_id');
 		echo $this->Form->input('divulgation_type',array ('options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Toma de sitios de gobierno'=>'Toma de sitios de gobierno' ,'Eventos'=>'Eventos')));	
 		echo $this->Form->input('divulgation_name');
 		echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea'));		
@@ -11,8 +12,7 @@
 		echo $this->Form->input('divulgation_adjunct',array('type'=>'file'));
 		echo $this->Form->input('divulgation_adjunct1',array('type'=>'file'));
 		echo $this->Form->input('divulgation_adjunct2',array('type'=>'file'));
-		echo $this->Form->input('dir',array('type'=>'hidden'));
-		echo $this->Form->input('site_id');
+		echo $this->Form->input('dir',array('type'=>'hidden'));	
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

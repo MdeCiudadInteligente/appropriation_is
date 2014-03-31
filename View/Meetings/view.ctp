@@ -1,6 +1,11 @@
 <div class="meetings view">
 <h2><?php echo __('Meeting'); ?></h2>
 	<dl>
+		<dt><?php echo __('Site'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($meeting['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Meeting Title'); ?></dt>
 		<dd>
 			<?php echo h($meeting['Meeting']['meeting_title']); ?>
@@ -30,12 +35,7 @@
 		<dd>
 			<?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct2'],array('controller' => 'webroot','action' => '/uploads/meeting/meeting_adjunct2/'.$meeting['Meeting']['meeting_adjunct2'])); ?> 
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Site'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($meeting['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?>
-			&nbsp;
-		</dd>
+		</dd>	
 	</dl>
 </div>
 <div class="actions">

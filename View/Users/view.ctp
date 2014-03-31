@@ -1,7 +1,11 @@
 <div class="users view">
 <h2><?php echo __('User'); ?></h2>
 	<dl>
-		
+		<dt><?php echo __('Agent'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($user['Agent']['id_agent'], array('controller' => 'agents', 'action' => 'view', $user['Agent']['id_agent'])); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Username'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['username']); ?>
@@ -16,12 +20,7 @@
 		<dd>
 			<?php echo h($user['User']['permission_level']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Agent'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($user['Agent']['id_agent'], array('controller' => 'agents', 'action' => 'view', $user['Agent']['id_agent'])); ?>
-			&nbsp;
-		</dd>
+		</dd>		
 	</dl>
 </div>
 <div class="actions">

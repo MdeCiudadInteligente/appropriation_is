@@ -3,10 +3,10 @@
 	<fieldset>
 		<legend><?php echo __('Add User'); ?></legend>
 	<?php
+		echo $this->Form->input('agent_id');
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
-		echo $this->Form->input('permission_level');
-		echo $this->Form->input('agent_id');
+		echo $this->Form->input('permission_level');		
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

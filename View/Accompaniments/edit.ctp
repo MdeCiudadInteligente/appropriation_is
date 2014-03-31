@@ -3,6 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Edit Accompaniment'); ?></legend>
 	<?php
+		echo $this->Form->input('site_id');
 		echo $this->Form->input('id_accompaniment');
 		echo $this->Form->input('accompaniment_type');
 		echo $this->Form->input('accompaniment_description');
@@ -14,7 +15,6 @@
 		echo $this->Form->input('accompaniment_adjunct2',array('disabled'=>'disabled'));
 		echo $this->Form->input('accompaniment_adjunct2',array('type'=>'file'));
 		echo $this->Form->input('dir',array('type'=>'hidden'));
-		echo $this->Form->input('site_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -3,12 +3,13 @@
 	<fieldset>
 		<legend><?php echo __('Add Site'); ?></legend>
 	<?php
+		echo $this->Form->input('site_type_id');
+		echo $this->Form->input('neighborhood_name',array ('options' => array ('La Torre'=>'La Torre','Las Campanas'=>'Las Campanas' ,'La Isla'=>'La Isla','El Playón de los  Comuneros'=>'El Playón de los  Comuneros')));
 		echo $this->Form->input('site_name');
 		echo $this->Form->input('site_phone');
 		echo $this->Form->input('site_address');
-		echo $this->Form->input('site_mail');	
-		echo $this->Form->input('neighborhood_name',array ('options' => array ('La Torre'=>'La Torre','Las Campanas'=>'Las Campanas' ,'La Isla'=>'La Isla','El Playón de los  Comuneros'=>'El Playón de los  Comuneros')));
-		echo $this->Form->input('site_type_id');
+		echo $this->Form->input('site_mail');
+		
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
