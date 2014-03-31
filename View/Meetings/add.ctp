@@ -34,16 +34,11 @@
 <?php echo $this->Form->create('Meeting',array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Add Meeting'); ?></legend>
-<<<<<<< HEAD
+
 	<?php		
-		echo $this->Form->input('site_id');
-		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
-=======
-	<?php	
-		echo $this->Form->input('site_id');
+		echo $this->Form->input('site_id');		
 		echo $this->Form->input('meeting_date',array ('id' => 'datepicker'));
 		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme','Otros'=>'Otros')));
->>>>>>> 41151df3955cb0987548c895070de3a2c9b087cb
 		echo $this->Form->input('meeting_title');
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));	
@@ -51,11 +46,7 @@
 		echo $this->Form->input('meeting_adjunct1',array('type'=>'file'));
 		echo $this->Form->input('meeting_adjunct2',array('type'=>'file'));
 		echo $this->Form->input('dir',array('type'=>'hidden'));
-<<<<<<< HEAD
-	
-=======
-		
->>>>>>> 41151df3955cb0987548c895070de3a2c9b087cb
+
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

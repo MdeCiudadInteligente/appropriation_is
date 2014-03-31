@@ -36,12 +36,10 @@
 		<legend><?php echo __('Add Divulgation'); ?></legend>
 	<?php
 		echo $this->Form->input('site_id');
-<<<<<<< HEAD
+
 		echo $this->Form->input('divulgation_type',array ('options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Toma de sitios de gobierno'=>'Toma de sitios de gobierno' ,'Eventos'=>'Eventos')));	
-=======
 		echo $this->Form->input('divulgation_date',array ('id' => 'datepicker'));
 		echo $this->Form->input('divulgation_type',array ('options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros')));	
->>>>>>> 41151df3955cb0987548c895070de3a2c9b087cb
 		echo $this->Form->input('divulgation_name');
 		echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('participant_number');
@@ -49,12 +47,9 @@
 		echo $this->Form->input('divulgation_adjunct',array('type'=>'file'));
 		echo $this->Form->input('divulgation_adjunct1',array('type'=>'file'));
 		echo $this->Form->input('divulgation_adjunct2',array('type'=>'file'));
-<<<<<<< HEAD
-		echo $this->Form->input('dir',array('type'=>'hidden'));	
-=======
+
 		echo $this->Form->input('dir',array('type'=>'hidden'));
-		
->>>>>>> 41151df3955cb0987548c895070de3a2c9b087cb
+
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

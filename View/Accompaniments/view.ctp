@@ -6,14 +6,13 @@
 			<?php echo $this->Html->link($accompaniment['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?>
 			&nbsp;
 		</dd>
-<<<<<<< HEAD
-=======
+
 		<dt><?php echo __('Accompaniment Date'); ?></dt>
 		<dd>
 			<?php echo h($accompaniment['Accompaniment']['accompaniment_date']); ?>
 			&nbsp;
 		</dd>
->>>>>>> 41151df3955cb0987548c895070de3a2c9b087cb
+
 		<dt><?php echo __('Accompaniment Type'); ?></dt>
 		<dd>
 			<?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>
@@ -42,12 +41,9 @@
 		<dt><?php echo __('Accompaniment Adjunct2'); ?></dt>
 		<dd>
 			<?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>
-			&nbsp;
-<<<<<<< HEAD
+
 		</dd>		
-=======
-		</dd>
->>>>>>> 41151df3955cb0987548c895070de3a2c9b087cb
+
 	</dl>
 </div>
 <div class="actions">
