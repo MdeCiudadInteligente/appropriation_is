@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-04-2014 a las 00:19:22
+-- Tiempo de generación: 21-03-2014 a las 22:53:07
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -28,48 +28,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `accompaniments` (
   `id_accompaniment` int(11) NOT NULL AUTO_INCREMENT,
-  `accompaniment_date` varchar(45) NOT NULL,
   `accompaniment_type` varchar(45) NOT NULL,
   `accompaniment_description` varchar(45) NOT NULL,
   `participant_number` int(11) NOT NULL,
-  `accompaniment_adjunct` varchar(45) NOT NULL,
-  `accompaniment_adjunct1` varchar(45) NOT NULL,
-  `accompaniment_adjunct2` varchar(45) NOT NULL,
-  `dir` varchar(45) NOT NULL,
+  `adjunct` varchar(45) NOT NULL,
   `site_id` varchar(45) NOT NULL,
   PRIMARY KEY (`id_accompaniment`),
   KEY `site_id` (`site_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `accompaniments`
 --
 
-INSERT INTO `accompaniments` (`id_accompaniment`, `accompaniment_date`, `accompaniment_type`, `accompaniment_description`, `participant_number`, `accompaniment_adjunct`, `accompaniment_adjunct1`, `accompaniment_adjunct2`, `dir`, `site_id`) VALUES
-(1, '0000-00-00', 'practicantes', 'jkhjkhj', 9, '', '', '', '', '123'),
-(2, '0000-00-00', 'practicantes', 'kkk', 8, '', '', '', '', '123'),
-(3, '0000-00-00', 'practicantes', 'hhi', 1, '', '', '', '', '123'),
-(4, '0000-00-00', 'practicantes', 'hjhhjh', 3, '', '', '', '', '123'),
-(5, '0000-00-00', 'practicantes', 'zxzx', 2, '', '', '', '', '123'),
-(6, '0000-00-00', 'practicantes', 'dzfsdfsdfsd', 2, '', '', '', '', '123'),
-(7, '0000-00-00', 'practicantes', 'sdfsdfsdf', 6, '', '', '', '', '123'),
-(8, '0000-00-00', 'practicantes', 'wewerwer', 2, '', '', '', '', '123'),
-(9, '0000-00-00', 'practicantes', 'sdsd', 2, '', '', '', '', '123'),
-(10, '2014-03-31', 'practicantes', 'dadada', 3, '', '', '', '', '123'),
-(11, '0000-00-00', 'practicantes', 'safsd', 1, '', '', '', '', '123'),
-(12, '2014-03-31', 'practicantes', 'sad', 2, '', '', '', '', '123'),
-(13, '0000-00-00', 'practicantes', 'eafrwr', 1, '', '', '', '', '123'),
-(14, '0000-00-00', 'practicantes', 'ewrwr', 4, '', '', '', '', '123'),
-(15, '0000-00-00', 'practicantes', 'jajajaj', 3, '', '', '', '', '123'),
-(16, '0000-00-00', 'practicantes', 'adsadasd', 2, '', '', '', '', '123'),
-(17, '0000-00-00', 'practicantes', 'sdfsdfsdf', 2, '', '', '', '', '123'),
-(18, '0000-00-00', 'practicantes', 'sadasdasd', -1, '', '', '', '', '123'),
-(19, '0000-00-00', 'practicantes', 'qweqwe', 5, '', '', '', '', '123'),
-(20, '0000-00-00', 'practicantes', 'adsdas', 4, '', '', '', '', '123'),
-(21, '0000-00-00', 'practicantes', 'werwr', 2, '', '', '', '', '123'),
-(22, '0000-00-00', 'practicantes', 'dsfsd', -3, '', '', '', '', '123'),
-(23, '0000-00-00', 'practicantes', 'sdfsdf', -2, '', '', '', '', '123'),
-(24, '0000-00-00', 'practicantes', 'asdasd', -2, '', '', '', '', '123');
+INSERT INTO `accompaniments` (`id_accompaniment`, `accompaniment_type`, `accompaniment_description`, `participant_number`, `adjunct`, `site_id`) VALUES
+(1, 'Aula Abierta', 'qweqweqweweweqwe', 3, 'asdasdsdasd', '456'),
+(3, 'Curso, taller o charla', 'adfwerwerrewer', 5, 'sdfsdfdfsdf', '456'),
+(4, 'Grados', 'adfwerwerrewersfdfsdfds', 52, 'sdfsdfdfsdf', '789');
 
 -- --------------------------------------------------------
 
@@ -106,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `communes` (
   `zone_id` int(11) NOT NULL,
   PRIMARY KEY (`id_commune`),
   KEY `zone_id` (`zone_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Volcado de datos para la tabla `communes`
@@ -133,29 +108,25 @@ INSERT INTO `communes` (`id_commune`, `commune_name`, `zone_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `divulgations` (
   `id_divulgation` int(11) NOT NULL AUTO_INCREMENT,
-  `divulgation_date` varchar(45) NOT NULL,
   `divulgation_name` varchar(45) NOT NULL,
   `divulgation_type` varchar(45) NOT NULL,
   `divulgation_description` text NOT NULL,
   `participant_number` int(11) NOT NULL,
   `activity_place` varchar(45) NOT NULL,
-  `divulgation_adjunct` varchar(45) NOT NULL,
-  `divulgation_adjunct1` varchar(45) NOT NULL,
-  `divulgation_adjunct2` varchar(45) NOT NULL,
-  `dir` varchar(45) NOT NULL,
+  `adjunct` varchar(45) NOT NULL,
   `site_id` varchar(45) NOT NULL,
   PRIMARY KEY (`id_divulgation`),
   KEY `site_id` (`site_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `divulgations`
 --
 
-INSERT INTO `divulgations` (`id_divulgation`, `divulgation_date`, `divulgation_name`, `divulgation_type`, `divulgation_description`, `participant_number`, `activity_place`, `divulgation_adjunct`, `divulgation_adjunct1`, `divulgation_adjunct2`, `dir`, `site_id`) VALUES
-(9, '0000-00-00 00:00:00', 'hello', 'Activaciones pedag?gicas', 'hello', 2, 'hello', '1_LegalmenteRubia_OK.jpg', '1_LegalmenteRubia_OK.jpg', '1_LegalmenteRubia_OK.jpg', 'uploads\\divulgation\\divulgation_adjunct2', '123'),
-(10, '0000-00-00 00:00:00', 'dasdas', 'Activaciones pedag?gicas', 'asdasd', 3, 'fdsfsfsdf', '', '', '', '', '123'),
-(11, '27/02/2007', 'sdfsdf', 'Activaciones pedag?gicas', 'sdfsdff', -5, 'sdfsdfsdf', '', '', '', '', '123');
+INSERT INTO `divulgations` (`id_divulgation`, `divulgation_name`, `divulgation_type`, `divulgation_description`, `participant_number`, `activity_place`, `adjunct`, `site_id`) VALUES
+(1, 'dasdasda', 'Toma de sitios de gobierno', 'adasdasdasd', 3, 'asdsdad', 'adsdasd', '456'),
+(2, 'asdsadsada', 'Eventos', 'sdasdasdasd', 6, 'getetr', 'etrertrt', '123'),
+(3, 'xczzxczczxc', 'Eventos', 'zxczxczxc', 6, 'zxczxczc', 'zxczxcx', '456');
 
 -- --------------------------------------------------------
 
@@ -165,37 +136,24 @@ INSERT INTO `divulgations` (`id_divulgation`, `divulgation_date`, `divulgation_n
 
 CREATE TABLE IF NOT EXISTS `meetings` (
   `id_meeting` int(11) NOT NULL AUTO_INCREMENT,
-  `meeting_date` varchar(45) NOT NULL,
   `meeting_type` varchar(45) NOT NULL,
   `meeting_title` varchar(30) NOT NULL,
   `meeting_description` text NOT NULL,
   `meeting_commitments` text NOT NULL,
-  `meeting_adjunct` varchar(45) DEFAULT NULL,
-  `meeting_adjunct1` varchar(45) DEFAULT NULL,
-  `meeting_adjunct2` varchar(45) DEFAULT NULL,
-  `dir` varchar(45) NOT NULL,
+  `adjunct` varchar(45) NOT NULL,
   `site_id` varchar(45) NOT NULL,
   PRIMARY KEY (`id_meeting`),
   KEY `site_id` (`site_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Volcado de datos para la tabla `meetings`
 --
 
-INSERT INTO `meetings` (`id_meeting`, `meeting_date`, `meeting_type`, `meeting_title`, `meeting_description`, `meeting_commitments`, `meeting_adjunct`, `meeting_adjunct1`, `meeting_adjunct2`, `dir`, `site_id`) VALUES
-(14, '2034-02-01', 'Seguimiento', 'machae', 'machae', 'machae', 'header3.jpg', '7_CapitalPlaneta_OK.jpg', '11_ActorRevelacion_OK.jpg', 'uploads\\meeting\\meeting_adjunct2', '123'),
-(15, '0000-00-00', 'Seguimiento', 'asdasd', 'asdasd', 'asdasdasd', NULL, NULL, NULL, '', '123'),
-(16, '0000-00-00', 'Seguimiento', 'asdasd', 'asdasd', 'asdasdsa', NULL, NULL, NULL, '', '123'),
-(17, '0000-00-00', 'Seguimiento', 'sdafsdf', 'sdfsdfsdf', 'sdfsdf', '100_Col_Post_6.jpg', NULL, NULL, 'uploads\\meeting\\meeting_adjunct', '123'),
-(18, '0000-00-00', 'Seguimiento', 'sdvsdv', 'sdvsv', 'sdvsvsv', NULL, NULL, NULL, '', '123'),
-(19, '0000-00-00', 'Seguimiento', 'sdvsdvv', 'sdvsdvsv', 'sdvsdvsdv', NULL, NULL, NULL, '', '123'),
-(20, '0000-00-00', 'Seguimiento', 'dsvsdvsv', 'sdvsdvdsv', 'sdvsdvsdvsdv', NULL, NULL, NULL, '', '123'),
-(21, '0000-00-00', 'Seguimiento', 'dvsvvsv', 'sdvsdvsvs', 'dvsdvsdvsv', NULL, NULL, NULL, '', '123'),
-(22, '0000-00-00', 'Seguimiento', 'sdvsdvsv', 'sdvsdvsdv', 'sdvsdvsdvsdv', NULL, NULL, NULL, '', '123'),
-(23, '0000-00-00', 'Seguimiento', 'asfasfasf', 'lalala', 'lalala', NULL, NULL, NULL, '', '123'),
-(24, '0000-00-00', 'Seguimiento', 'asdasd', 'lalalala', 'lalalalalallala', NULL, NULL, NULL, '', '123'),
-(25, '2014-03-31', 'Seguimiento', 'asdasd', 'asdasd', 'asdadasd', NULL, NULL, NULL, '', '123');
+INSERT INTO `meetings` (`id_meeting`, `meeting_type`, `meeting_title`, `meeting_description`, `meeting_commitments`, `adjunct`, `site_id`) VALUES
+(14, 'eqweqwe', 'qweqweq', 'weqweqwe', 'qweqwe', 'qweqwe', '456'),
+(15, 'Gesti?n con aliados', 'asassas', 'asasasa', 'asasas', 'asasas', '789'),
+(16, 'Empalme', 'zxcxczxczxcz', 'czasdsdasd', 'asdasdasdasd', 'zxcxczxczxcadsdasd', '456');
 
 -- --------------------------------------------------------
 
@@ -342,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `agent_id` varchar(45) NOT NULL,
   PRIMARY KEY (`id_user`),
   KEY `id_agent` (`agent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `users`
@@ -350,10 +308,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `permission_level`, `agent_id`) VALUES
 (1, 'johana', '5f1fd5e8cd67a034fcd575b28fcbfa8409a92503', 1, '1'),
-(2, 'yodi', '8515a9643960bf400f7c2870f344252e7e7230a4', 2, '1'),
-(3, 'rrr', '0f887deeadb125352683ba018ac7458fcbb0d7aa', 1, '1'),
-(4, 'otro', 'b954e284dda887cbf30267c32277068fc643d6d2', 2, '1'),
-(5, 'again', '5c1029ba78ca6d82f11dc7272efa682c865ee5e4', 1, '1');
+(2, 'yodi', '8515a9643960bf400f7c2870f344252e7e7230a4', 1, '1'),
+(3, 'rrr', '0f887deeadb125352683ba018ac7458fcbb0d7aa', 1, '1');
 
 -- --------------------------------------------------------
 
@@ -411,7 +367,7 @@ ALTER TABLE `meetings`
 --
 ALTER TABLE `meeting_people`
   ADD CONSTRAINT `meeting_people_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `people` (`id_person`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `meeting_people_ibfk_3` FOREIGN KEY (`meeting_id`) REFERENCES `meetings` (`id_meeting`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `meeting_people_ibfk_1` FOREIGN KEY (`meeting_id`) REFERENCES `meetings` (`id_meeting`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `neighborhoods`
@@ -423,8 +379,8 @@ ALTER TABLE `neighborhoods`
 -- Filtros para la tabla `owners`
 --
 ALTER TABLE `owners`
-  ADD CONSTRAINT `owners_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `owners_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `people` (`id_person`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `owners_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `people` (`id_person`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `owners_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `sites`
