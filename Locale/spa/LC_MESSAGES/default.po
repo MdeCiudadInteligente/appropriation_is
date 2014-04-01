@@ -130,7 +130,7 @@ msgid "New Agent"
 msgstr "Nuevo Agente"
 
 msgid "List People"
-msgstr "Listar Personas"
+msgstr "Lista Personas"
 
 msgid "New Person"
 msgstr "Nueva Persona"
@@ -138,11 +138,29 @@ msgstr "Nueva Persona"
 msgid "List Zone"
 msgstr "Lsta Zona"
 
+msgid "Edit Agent"
+msgstr "Editar Agente"
+
+msgid "Delete Agent"
+msgstr "Eliminar Agente"
+
+msgid "Edit Person"
+msgstr "Editar Persona"
+
+msgid "Delete Person"
+msgstr "Eliminar Persona"
+
+msgid "Edit Zone"
+msgstr "Editar Zona"
+
+msgid "Delete Zone"
+msgstr "Eliminar Zona"
+
 msgid "New Zone"
 msgstr "Nueva Zona"
 
 msgid "List Users"
-msgstr "Lsita Usuarios"
+msgstr "Lista Usuarios"
 
 msgid "New User"
 msgstr "Nuevo Usuario"
@@ -196,13 +214,13 @@ msgid "Commune"
 msgstr "Comuna"
 
 msgid "Owners"
-msgstr "Propietarios"
+msgstr "Encargados"
 
 msgid "Owner"
-msgstr "Propietario"
+msgstr "Encargado"
 
 msgid "New Owner"
-msgstr "Nuevo Propietario"
+msgstr "Nuevo Encargado"
 
 msgid "Roll"
 msgstr "Rol"
@@ -229,7 +247,7 @@ msgid "List Agents"
 msgstr "Lista Agentes"
 
 msgid "List Owners"
-msgstr "Lista Propietario"
+msgstr "Lista Encargado"
 
 msgid "Site Name"
 msgstr "Nombre Sitio"
@@ -276,102 +294,107 @@ msgstr "Id Agente"
 msgid "Id Site"
 msgstr "Id Sitio"
 
-msgid ""
-msgstr ""
+msgid "Meeting Title"
+msgstr "Título Reunión"
 
-msgid ""
-msgstr ""
+msgid "Meeting Description"
+msgstr "Descripción Reunión"
 
-msgid ""
-msgstr ""
+msgid "Meeting Commitments"
+msgstr "Compromisos Reunión"
 
-msgid ""
-msgstr ""
+msgid "Accompaniments"
+msgstr "Acompañamientos"
 
-msgid ""
-msgstr ""
+msgid "Id Accompaniment"
+msgstr "Id Acompañamiento"
 
-msgid ""
-msgstr ""
+msgid "Divulgation Name"
+msgstr "Nombre Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Id Divulgation"
+msgstr "Id Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Divulgations"
+msgstr "Divulgaciones"
 
-msgid ""
-msgstr ""
+msgid "Divulgation Type"
+msgstr "Tipo Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Divulgation Description"
+msgstr "Descripción Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Activity Place"
+msgstr "Lugar Actividad"
 
-msgid ""
-msgstr ""
+msgid "New Divulgation"
+msgstr "Nueva Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Add Divulgation"
+msgstr "Añadir Divulgación"
 
-msgid ""
-msgstr ""
+msgid "The meeting could not be saved. Please, try again."
+msgstr "La reunión no se pudo guardar. Por favor, inténtalo de nuevo."
 
-msgid ""
-msgstr ""
+msgid "The meeting has been saved."
+msgstr "La reunión se ha guardado"
 
-msgid ""
-msgstr ""
+msgid "Add Meeting"
+msgstr "Agregar reunión"
 
-msgid ""
-msgstr ""
+msgid "The accompaniment has been saved."
+msgstr "El acompañamiento se ha guardado."
 
-msgid ""
-msgstr ""
+msgid "Site Estado"
+msgstr "Estado Sitio"
 
-msgid ""
-msgstr ""
+msgid "List Divulgations"
+msgstr "Lista Divulgación"
 
-msgid ""
-msgstr ""
+msgid "Add Person"
+msgstr "Añadir Persona"
 
-msgid ""
-msgstr ""
+msgid "Main Menu"
+msgstr "Menú Principal"
 
-msgid ""
-msgstr ""
+msgid "Close Section"
+msgstr "Cerrar Sesión"
 
-msgid ""
-msgstr ""
+msgid "Edit Neighborhood"
+msgstr "Editar Barrio"
 
-msgid ""
-msgstr ""
+msgid "Delete Neighborhood"
+msgstr "Eliminar Barrio"
 
-msgid ""
-msgstr ""
+msgid "Edit Site"
+msgstr "Editar Sitio"
 
-msgid ""
-msgstr ""
+msgid "Delete Site"
+msgstr "Eliminar Sitio"
 
-msgid ""
-msgstr ""
+msgid "Edit Site Type"
+msgstr "Editar Tipo Sitio"
 
-msgid ""
-msgstr ""
+msgid "Delete Site Type"
+msgstr "Eliminar Tipo Sitio"
 
-msgid ""
-msgstr ""
+msgid "Edit Meetings"
+msgstr "Editar Reunión"
 
-msgid ""
-msgstr ""
+msgid "Delete Meetings"
+msgstr "Eliminar Reunión"
 
-msgid ""
-msgstr ""
+msgid "Edit Accompaniment"
+msgstr "Editar Acompañamiento"
 
-msgid ""
-msgstr ""
+msgid "Delete Accompaniment"
+msgstr "Eliminar Acompañamiento"
 
+msgid "Edit Divulgation"
+msgstr "Editar Divulgación"
+
+msgid "Delete Divulgation"
+msgstr "Eliminar Divulgación"
 
 msgid "New Accompaniment"
 msgstr "Nuevo Acompañamiento"

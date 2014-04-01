@@ -20,7 +20,7 @@ class Neighborhood extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id_neighborhood';
+	public $displayField = 'neighborhood_name';
 
 /**
  * Validation rules

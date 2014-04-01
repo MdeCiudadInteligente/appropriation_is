@@ -15,13 +15,10 @@ class Meeting extends AppModel {
  */
 	public $primaryKey = 'id_meeting';
 
-/**
- * Display field
- *
- * @var string
- */
-	public $displayField = 'id_meeting';
-
+	/*public $displayField = 'id_meeting';*/
+	var $actsAs = array(
+			'MeioUpload.MeioUpload' => array('meeting_adjunct2','meeting_adjunct1','meeting_adjunct')
+	);
 /**
  * Validation rules
  *
@@ -29,8 +26,8 @@ class Meeting extends AppModel {
  */
 	public $validate = array(
 		'id_meeting' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -38,7 +35,47 @@ class Meeting extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'meeting_date' => array(
+					'notEmpty' => array(
+							'rule' => array('notEmpty'),
+							//'message' => 'Your custom message here',
+							//'allowEmpty' => false,
+							//'required' => false,
+							//'last' => false, // Stop validation after this rule
+							//'on' => 'create', // Limit validation to 'create' or 'update' operations
+					),
+		),
 		'meeting_type' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'meeting_title' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'meeting_description' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'meeting_commitments' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',

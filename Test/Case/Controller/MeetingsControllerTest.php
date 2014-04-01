@@ -22,10 +22,6 @@ class MeetingsControllerTest extends ControllerTestCase {
 		'app.person',
 		'app.owner',
 		'app.user',
-		'app.empleado',
-		'app.diariocampo',
-		'app.acompanamiento',
-		'app.reunion',
 		'app.site_type',
 		'app.accompaniment',
 		'app.meeting_person'

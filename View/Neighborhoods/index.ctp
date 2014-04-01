@@ -2,17 +2,15 @@
 	<h2><?php echo __('Neighborhoods'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_neighborhood'); ?></th>
 			<th><?php echo $this->Paginator->sort('neighborhood_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('commune_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($neighborhoods as $neighborhood): ?>
 	<tr>
-		<td><?php echo h($neighborhood['Neighborhood']['id_neighborhood']); ?>&nbsp;</td>
 		<td><?php echo h($neighborhood['Neighborhood']['neighborhood_name']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($neighborhood['Commune']['id_commune'], array('controller' => 'communes', 'action' => 'view', $neighborhood['Commune']['id_commune'])); ?>
+			<?php echo $this->Html->link($neighborhood['Commune']['commune_name'], array('controller' => 'communes', 'action' => 'view', $neighborhood['Commune']['id_commune'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $neighborhood['Neighborhood']['id_neighborhood'])); ?>
@@ -39,10 +37,12 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Neighborhood'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Communes'), array('controller' => 'communes', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Commune'), array('controller' => 'communes', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>		
 	</ul>
 </div>

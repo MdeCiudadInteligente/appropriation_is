@@ -20,13 +20,39 @@ class UsersController extends AppController {
  *
  * @return void
  */
+	/*
+	
 	 public function beforeFilter() {
-		parent::beforeFilter();
+		//parent::beforeFilter();
 		// Allow users to register and logout.
 		$this->Auth->allow('add', 'logout');
 		//$this->Auth->autoRedirect=false;
 		
-	}
+ //si es super usuario permito todo 
+   /*   $user = $this->Auth->user();
+      if ($user['permission_level']=== '2'){
+         $this->Auth->allow('*');
+      }
+      else  {//solo permito la vista del usuario comun por ahora
+         $this->Auth->allow('view');
+      }
+       parent::beforeFilter();*/
+	/*
+	}*/
+	public function isAuthorized($user) {
+		// Any registered user can access public functions
+		
+
+		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+			return true;
+		}
+		 
+		
+		// Default deny
+		//return false;
+		 
+}
+	
 	
 	public function login() {
 		if ($this->request->is('post')) {
@@ -35,11 +61,11 @@ class UsersController extends AppController {
 			}
 			$this->Session->setFlash(__('Invalid username or password, try again'));
 		}
-		else {
+		/*else {
 			if($this->Auth->user('id_user')){
 			$this->redirect($this->Auth->redirect());	
 			}
-		}
+		}*/
 	}
 	
 	public function logout() {

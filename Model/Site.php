@@ -23,7 +23,7 @@ class Site extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id_site';
+	public $displayField = 'site_name';
 
 /**
  * Validation rules
@@ -79,7 +79,7 @@ class Site extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'neighborhood_id' => array(
+		'neighborhood_name' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',

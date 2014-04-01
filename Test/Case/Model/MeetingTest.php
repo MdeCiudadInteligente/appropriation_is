@@ -15,8 +15,16 @@ class MeetingTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.meeting',
 		'app.site',
-		'app.meeting_person',
-		'app.person'
+		'app.neighborhood',
+		'app.commune',
+		'app.zone',
+		'app.agent',
+		'app.person',
+		'app.owner',
+		'app.user',
+		'app.site_type',
+		'app.accompaniment',
+		'app.meeting_person'
 	);
 
 /**

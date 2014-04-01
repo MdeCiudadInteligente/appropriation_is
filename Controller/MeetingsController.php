@@ -14,15 +14,39 @@ class MeetingsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 5,
+	);
+	
+	
 
 /**
  * index method
  *
  * @return void
  */
+	public function isAuthorized($user) {
+		// Any registered user can access public functions
+	
+	
+		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+			return true;
+		}
+			
+	
+		// Default deny
+		//return false;
+			
+	}
 	public function index() {
-		$this->Meeting->recursive = 0;
-		$this->set('meetings', $this->Paginator->paginate());
+		$meeting=$this->Meeting->find('all');
+		$this->set('meetings', $meeting);
+		//$this->Meeting->recursive = 0;
+		$this->Paginator->settings = $this->paginate;
+		$this->set('meetings', $this->Paginator->paginate('Meeting'));
+	
 	}
 
 /**
@@ -47,9 +71,10 @@ class MeetingsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			/*$valor=$this->request;*/
 			$this->Meeting->create();
 			if ($this->Meeting->save($this->request->data)) {
-				$this->Session->setFlash(__('The meeting has been saved.'));
+				$this->Session->setFlash(/*print_r($valor).*/__(' The meeting has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The meeting could not be saved. Please, try again.'));

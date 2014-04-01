@@ -13,16 +13,41 @@ class AccompanimentsController extends AppController {
  *
  * @var array
  */
+	
 	public $components = array('Paginator');
+	
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
+	);
 
 /**
  * index method
  *
  * @return void
  */
+	public function isAuthorized($user) {
+		// Any registered user can access public functions
+	
+	
+		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+			return true;
+		}
+			
+	
+		// Default deny
+		//return false;
+			
+	}
+	
 	public function index() {
-		$this->Accompaniment->recursive = 0;
-		$this->set('accompaniments', $this->Paginator->paginate());
+		//variable designada para Agents...
+		$accompaniment=$this->Accompaniment->find('all');
+		$this->set('accompaniments', $accompaniment);
+		//$this->Accompaniment->recursive = 0;
+	   	$this->Paginator->settings = $this->paginate;
+		 	$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
+
 	}
 
 /**
