@@ -17,8 +17,11 @@ $cakeDescription = __d('cake_dev', '');
 		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
-	<?php
+	<?php		
+		echo $this->Html->css('cake.generic');
+		
 		echo $this->Html->meta('webroot/favicon.ico',array('type' => 'icon'));
+
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>

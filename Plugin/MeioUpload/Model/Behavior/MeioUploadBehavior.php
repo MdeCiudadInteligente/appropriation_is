@@ -42,7 +42,7 @@ class MeioUploadBehavior extends ModelBehavior {
 		'removeOriginal' => false,
 		'maxSize' => 2097152, // 2MB
 		'allowedMime' => array('image/jpeg', 'image/pjpeg', 'image/png', 'image/gif', 'image/bmp', 'image/x-icon', 'image/vnd.microsoft.icon','application/msword',
-				'application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/pdf','application/vnd.oasis.opendocument.text',
+				'application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/pdf','application/x-pdf', 'application/acrobat','applications/vnd.pdf','text/pdf','text/x-pdf','application/vnd.oasis.opendocument.text',
 				'application/vnd.ms-xpsdocument','text/rtf','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.ms-excel.sheet.macroEnabled.12',
 				'application/vnd.openxmlformats-officedocument.spreadsheetml.template','application/vnd.ms-excel.template.macroEnabled.12','application/vnd.ms-excel.sheet.binary.macroEnabled.12',
 				'application/vnd.ms-excel.addin.macroEnabled.12','application/vnd.openxmlformats-officedocument.presentationml.presentation','application/vnd.ms-excel','application/x-rar-compressed','application/octet-stream','application/zip','application/octet-stream'),
@@ -98,7 +98,7 @@ class MeioUploadBehavior extends ModelBehavior {
 		'UploadError' => array(
 			'rule' => array('uploadCheckUploadError'),
 			'check' => true,
-			'last' => true
+			'last' => false
 		),
 		'MaxSize' => array(
 			'rule' => array('uploadCheckMaxSize'),
