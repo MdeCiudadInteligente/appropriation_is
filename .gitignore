@@ -11,8 +11,6 @@
 /build
 /dist
 /tags
-/webroot/uploads/
-/webroot/img/
 /webroot/index.php
 /webroot/test.php
 
