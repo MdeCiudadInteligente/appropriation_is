@@ -8,7 +8,10 @@
 /build
 /dist
 /tags
-/webroot/
+/webroot/uploads/
+/webroot/img/
+/webroot/index.php
+/webroot/test.php
 
 # OS generated files #
 ######################
