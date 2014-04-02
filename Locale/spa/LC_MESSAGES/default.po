@@ -405,6 +405,40 @@ msgstr "Nuevo Sitio"
 msgid "List Sites"
 msgstr "Lista de Sitios"
 
+msgid "Meeting Adjunct"
+msgstr "Adjunto Reunión 1"
+
+msgid "Meeting Adjunct1"
+msgstr "Adjunto Reunión 2"
+
+msgid "Meeting Adjunct2"
+msgstr "Adjunto Reunión 3"
+
+msgid "Accompaniment Adjunct"
+msgstr "Adjunto Acompañamiento 1"
+
+msgid "Accompaniment Adjunct1"
+msgstr "Adjunto Acompañamiento 2"
+
+msgid "Accompaniment Adjunct2"
+msgstr "Adjunto Acompañamiento 3"
+
+msgid "Divulgation Adjunct"
+msgstr "Adjunto Divulgación 1"
+
+msgid "Divulgation Adjunct1"
+msgstr "Adjunto Divulgación 2"
+
+msgid "Divulgation Adjunct2"
+msgstr "Adjunto Divulgación 3"
+
+msgid "Divulgation Date"
+msgstr "Fecha de divulgación"
+
+msgid "Page"
+msgstr "Pagina"
+
+
 #: \console\error.php:96
 msgid "Missing Controller '%s'"
 msgstr "Falta el Controlador '%s'"

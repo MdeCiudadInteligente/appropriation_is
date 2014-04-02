@@ -8,6 +8,6 @@ class DATABASE_CONFIG {
 		'login' => 'root',
 		'password' => '',
 		'database' => 'appropriation_is',
-		'encoding' => 'utf8'
+		//'encoding' => 'utf8'
 	);
 }

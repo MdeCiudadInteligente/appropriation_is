@@ -17,7 +17,7 @@ class MeetingsController extends AppController {
 	
 	public $paginate = array(
 			//'fields' => array('Meeting.meeting_type'),
-			'limit' => 5,
+			'limit' => 10,
 	);
 	
 	

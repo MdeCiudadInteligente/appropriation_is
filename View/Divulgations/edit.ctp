@@ -1,3 +1,35 @@
+<!-- Scripts para el calendario -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+ <script>
+ $(function() {
+    $( "#datepicker" ).datepicker({
+	changeMonth: true,
+	changeYear: true
+});
+	$.datepicker.regional['es'] =
+  {
+  closeText: 'Fermer',
+  prevText: 'Previo',
+  nextText: 'Pr√≥ximo',
+  yearRange: "2007:2020",
+  monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+  monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+  monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre ann√©e',
+  dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
+  dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','S√°b'],
+  dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+  dateFormat: 'dd/mm/yy', firstDay: 0,
+  initStatus: 'Selecciona la fecha', isRTL: false};
+   $.datepicker.setDefaults($.datepicker.regional['es']);
+ //miDate: fecha de comienzo D=d√≠as | M=mes | Y=a√±o
+ //maxDate: fecha tope D=d√≠as | M=mes | Y=a√±o
+    $('#datepicker').datepicker('option', {dateFormat: 'dd/mm/yy'});
+
+});
+</script>
+ <!--Fin Scripts para el calendario -->
 <div class="divulgations form">
 <?php echo $this->Form->create('Divulgation',array('type'=>'file')); ?>
 	<fieldset>
@@ -5,10 +37,9 @@
 	<?php
 		echo $this->Form->input('site_id');
 		echo $this->Form->input('id_divulgation');
-		echo $this->Form->input('site_id');
-		echo $this->Form->input('divulgation_date');
+		echo $this->Form->input('divulgation_date',array ('id' => 'datepicker'));
 		echo $this->Form->input('divulgation_name');
-		echo $this->Form->input('divulgation_type');
+		echo $this->Form->input('divulgation_type',array ('options' => array ('Activaciones pedagÛgicas'=>'Activaciones pedagÛgicas','IntervenciÛn de sitios de gobierno'=>'IntervenciÛn de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros')));
 		echo $this->Form->input('divulgation_description');
 		echo $this->Form->input('participant_number');
 		echo $this->Form->input('activity_place');

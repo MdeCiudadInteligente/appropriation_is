@@ -39,7 +39,7 @@ class Accompaniment extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'accompaniment' => array(
+		'accompaniment_date' => array(
 					'notEmpty' => array(
 							'rule' => array('notEmpty'),
 							//'message' => 'Your custom message here',

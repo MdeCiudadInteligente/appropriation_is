@@ -39,7 +39,7 @@ class Divulgation extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'divulgation' => array(
+		'divulgation_date' => array(
 					'notEmpty' => array(
 							'rule' => array('notEmpty'),
 							//'message' => 'Your custom message here',
