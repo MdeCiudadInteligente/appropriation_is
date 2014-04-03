@@ -435,9 +435,65 @@ msgstr "Adjunto Divulgación 3"
 msgid "Divulgation Date"
 msgstr "Fecha de divulgación"
 
-msgid "Page"
-msgstr "Pagina"
+msgid "Permission Level"
+msgstr "Nivel de permiso"
 
+msgid "Users"
+msgstr "Usuarios"
+
+msgid "The user has been deleted."
+msgstr "El usuario ha sido eliminado."
+
+msgid "The user has been saved."
+msgstr "El usuario ha sido guardado."
+
+msgid "The agent has been deleted."
+msgstr "El agente ha sido eliminado."
+
+msgid "The agent has been saved."
+msgstr "El agente ha sido guardado."
+
+msgid "The person has been deleted."
+msgstr "La persona ha sido eliminada."
+
+msgid "The person has been saved."
+msgstr "La persona ha sido guardada."
+
+msgid "The owner has been saved."
+msgstr "El encargado ha sido guardado."
+
+msgid "The owner has been deleted."
+msgstr "El encargado ha sido eliminado."
+
+msgid "The site has been saved."
+msgstr "El sitio ha sido guardado."
+
+msgid "The site has been deleted."
+msgstr "El sitio ha sido eliminado."
+
+msgid "The neighborhood has been saved."
+msgstr "El barrio ha sido guardado."
+
+msgid "The neighborhood has been deleted."
+msgstr "El barrio ha sido eliminado."
+
+msgid "Neighborhoods"
+msgstr "Barrios"
+
+msgid "The commune has been saved."
+msgstr "La comuna ha sido guardada."
+
+msgid "The commune has been deleted."
+msgstr "La comuna ha sido eliminada."
+
+msgid "Add Commune"
+msgstr "Agregar Comuna"
+
+msgid "Add Neighborhood"
+msgstr "Agregar Barrio"
+
+msgid "Add Site Type"
+msgstr "Agregar Tipo de Sitio"
 
 #: \console\error.php:96
 msgid "Missing Controller '%s'"
