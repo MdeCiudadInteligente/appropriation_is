@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Neighborhood'); ?></legend>
 	<?php	
-		echo $this->Form->input('neighborhood_name',array ('options' => array ('La Torre'=>'La Torre','Las Campanas'=>'Las Campanas' ,'La Isla'=>'La Isla','El Playón de los  Comuneros'=>'El Playón de los  Comuneros')));
+		echo $this->Form->input('neighborhood_name');
 		echo $this->Form->input('commune_id');
 	?>
 	</fieldset>
