@@ -74,7 +74,11 @@
 		<li><?php echo $this->Html->link(__('New Site Type'), array('controller' => 'SiteTypes', 'action' => 'add')); ?> </li>			
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'Sites', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'neighborhoods', 'action' => 'add')); ?> </li>	
+<<<<<<< HEAD
 			
+=======
+		<li><?php echo $this->Html->link(__('New Commune'), array('controller' => 'communes', 'action' => 'add')); ?> </li>		
+>>>>>>> e9522240eaafd01ee86f0c4b930bb5f31da62239
 	<?php }?>	
 	<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>

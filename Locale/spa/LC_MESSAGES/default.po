@@ -385,10 +385,17 @@ msgid "Invalid user"
 msgstr "usuario no válido"
 
 msgid "Meeting Date"
+<<<<<<< HEAD
 msgstr "Fecha Reunión"
 
 msgid "Accompaniment Date"
 msgstr "Fecha Acompañamiento"
+=======
+msgstr "Fecha de Reunión"
+
+msgid "Accompaniment Date"
+msgstr "Fecha de Acompañamiento"
+>>>>>>> e9522240eaafd01ee86f0c4b930bb5f31da62239
 
 msgid "Add User"
 msgstr "Añadir usuario"
