@@ -40,7 +40,7 @@
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+	<ul>	
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Person'), array('action' => 'edit', $person['Person']['id_person'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Person'), array('action' => 'delete', $person['Person']['id_person']), null, __('Are you sure you want to delete # %s?', $person['Person']['id_person'])); ?> </li>
@@ -52,57 +52,3 @@
 		<li><?php echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
-</div>
-<?php /*	<div class="related">
-		<h3><?php echo __('Related Agents'); ?></h3>
-	<?php if (!empty($person['Agent'])): ?>
-		<dl>
-			<dt><?php echo __('Id Agent'); ?></dt>
-		<dd>
-	<?php echo $person['Agent']['id_agent']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Person Id'); ?></dt>
-		<dd>
-	<?php echo $person['Agent']['person_id']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Zone Id'); ?></dt>
-		<dd>
-	<?php echo $person['Agent']['zone_id']; ?>
-&nbsp;</dd>
-		</dl>
-	<?php endif; ?>
-		<div class="actions">
-			<ul>
-				<li><?php echo $this->Html->link(__('Edit Agent'), array('controller' => 'agents', 'action' => 'edit', $person['Agent']['id_agent'])); ?></li>
-			</ul>
-		</div>
-	</div>
-		<div class="related">
-		<h3><?php echo __('Related Owners'); ?></h3>
-	<?php if (!empty($person['Owner'])): ?>
-		<dl>
-			<dt><?php echo __('Id Owner'); ?></dt>
-		<dd>
-	<?php echo $person['Owner']['id_owner']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Roll'); ?></dt>
-		<dd>
-	<?php echo $person['Owner']['roll']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Site Id'); ?></dt>
-		<dd>
-	<?php echo $person['Owner']['site_id']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Person Id'); ?></dt>
-		<dd>
-	<?php echo $person['Owner']['person_id']; ?>
-&nbsp;</dd>
-		</dl>
-	<?php endif; ?>
-		<div class="actions">
-			<ul>
-				<li><?php echo $this->Html->link(__('Edit Owner'), array('controller' => 'owners', 'action' => 'edit', $person['Owner']['id_owner'])); ?></li>
-			</ul>
-		</div>
-	</div>  */?>
-	

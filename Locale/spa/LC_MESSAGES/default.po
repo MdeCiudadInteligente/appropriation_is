@@ -126,6 +126,9 @@ msgstr "Por favor, ingrese su nombre de usuario y contraseña"
 msgid "Meeting Type"
 msgstr "Tipo Reunión"
 
+msgid "The site type has been saved."
+msgstr "El tipo de sitio se ha guardado."
+
 msgid "New Agent"
 msgstr "Nuevo Agente"
 
@@ -219,11 +222,17 @@ msgstr "Encargados"
 msgid "Owner"
 msgstr "Encargado"
 
+msgid "Add Owner"
+msgstr "Añadir Encargado"
+
 msgid "New Owner"
 msgstr "Nuevo Encargado"
 
 msgid "Roll"
 msgstr "Rol"
+
+msgid "The divulgation has been saved."
+msgstr "La divulgación se ha guardado."
 
 msgid "Name"
 msgstr "Nombre"
@@ -292,7 +301,7 @@ msgid "Id Agent"
 msgstr "Id Agente"
 
 msgid "Id Site"
-msgstr "Id Sitio"
+msgstr "Nit Sitio"
 
 msgid "Meeting Title"
 msgstr "Título Reunión"
@@ -337,7 +346,7 @@ msgid "The meeting could not be saved. Please, try again."
 msgstr "La reunión no se pudo guardar. Por favor, inténtalo de nuevo."
 
 msgid "The meeting has been saved."
-msgstr "La reunión se ha guardado"
+msgstr "La reunión se ha guardado."
 
 msgid "Add Meeting"
 msgstr "Agregar reunión"
@@ -363,6 +372,42 @@ msgstr "Cerrar Sesión"
 msgid "Edit Neighborhood"
 msgstr "Editar Barrio"
 
+msgid "You are not authorized to access that location"
+msgstr "No tiene permisos para acceder a dicha ubicación."
+
+msgid "Invalid username or password, try again"
+msgstr "Nombre de usuario o contraseña no válidos, vuelva a intentarlo"
+
+msgid "The user could not be saved. Please, try again."
+msgstr "El usuario no se pudo guardar. Por favor, inténtelo de nuevo."
+
+msgid "Invalid user"
+msgstr "usuario no válido"
+
+msgid "Meeting Date"
+msgstr "Fecha Reunión"
+
+msgid "Accompaniment Date"
+msgstr "Fecha Acompañamiento"
+
+msgid "Add User"
+msgstr "Añadir usuario"
+
+msgid "Id Person"
+msgstr "Documento Persona"
+
+msgid "Add Agent"
+msgstr "Agregar agente"
+
+msgid "Add Site"
+msgstr "Añadir sitio"
+
+msgid "Site Types"
+msgstr "Tipos del Sitio"
+
+msgid "You are not authorized to access that location."
+msgstr "Eliminar Barrio"
+
 msgid "Delete Neighborhood"
 msgstr "Eliminar Barrio"
 
@@ -378,10 +423,10 @@ msgstr "Editar Tipo Sitio"
 msgid "Delete Site Type"
 msgstr "Eliminar Tipo Sitio"
 
-msgid "Edit Meetings"
+msgid "Edit Meeting"
 msgstr "Editar Reunión"
 
-msgid "Delete Meetings"
+msgid "Delete Meeting"
 msgstr "Eliminar Reunión"
 
 msgid "Edit Accompaniment"
@@ -433,7 +478,7 @@ msgid "Divulgation Adjunct2"
 msgstr "Adjunto Divulgación 3"
 
 msgid "Divulgation Date"
-msgstr "Fecha de divulgación"
+msgstr "Fecha de Divulgación"
 
 msgid "Permission Level"
 msgstr "Nivel de permiso"

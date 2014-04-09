@@ -20,7 +20,6 @@
 		<li><?php echo $this->Html->link(__('Edit Commune'), array('action' => 'edit', $commune['Commune']['id_commune'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Commune'), array('action' => 'delete', $commune['Commune']['id_commune']), null, __('Are you sure you want to delete # %s?', $commune['Commune']['id_commune'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Communes'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Commune'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Zones'), array('controller' => 'zones', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Zone'), array('controller' => 'zones', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Neighborhoods'), array('controller' => 'neighborhoods', 'action' => 'index')); ?> </li>

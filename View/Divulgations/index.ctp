@@ -9,9 +9,6 @@
 			<th><?php echo $this->Paginator->sort('divulgation_description'); ?></th>
 			<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
 			<th><?php echo $this->Paginator->sort('activity_place'); ?></th>
-			<th><?php echo $this->Paginator->sort('divulgation_adjunct'); ?></th>
-			<th><?php echo $this->Paginator->sort('divulgation_adjunct1'); ?></th>
-			<th><?php echo $this->Paginator->sort('divulgation_adjunct2'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($divulgations as $divulgation): ?>
@@ -26,9 +23,6 @@
 		<td><?php echo h($divulgation['Divulgation']['participant_number']); ?>&nbsp;</td>
 		<td><?php echo h($divulgation['Divulgation']['activity_place']); ?>&nbsp;</td>
 		<!--  <td><?php //echo h($divulgation['Divulgation']['adjunct']); ?>&nbsp;</td>-->
-		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct/'.$divulgation['Divulgation']['divulgation_adjunct'])); ?>&nbsp;</td> 
-		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct1'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct1/'.$divulgation['Divulgation']['divulgation_adjunct1'])); ?>&nbsp;</td> 
-		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2'])); ?>&nbsp;</td> 
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $divulgation['Divulgation']['id_divulgation'])); ?>

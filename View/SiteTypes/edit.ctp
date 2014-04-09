@@ -2,10 +2,9 @@
 <?php echo $this->Form->create('SiteType'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Site Type'); ?></legend>
-	<?php
-		echo $this->Form->input('id_site_type');
+	<?php		
 		echo $this->Form->input('site_type');
-		echo $this->Form->input('site_estado');
+		echo $this->Form->input('site_estado',array ('options' => array ('Activo'=>'Activo','Inactivo'=>'Inactivo')));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

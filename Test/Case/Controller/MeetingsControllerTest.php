@@ -24,7 +24,7 @@ class MeetingsControllerTest extends ControllerTestCase {
 		'app.user',
 		'app.site_type',
 		'app.accompaniment',
-		'app.meeting_person'
+		'app.meetings_person'
 	);
 
 /**

@@ -40,7 +40,27 @@ class Site extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),			
+		'id_site' => array(
+					'notEmpty' => array(
+							'rule' => array('notEmpty'),
+							//'message' => 'Your custom message here',
+							//'allowEmpty' => false,
+							//'required' => false,
+							//'last' => false, // Stop validation after this rule
+							//'on' => 'create', // Limit validation to 'create' or 'update' operations
+					),
+			),
+		'neighborhood_name' => array(
+					'notEmpty' => array(
+							'rule' => array('notEmpty'),
+							//'message' => 'Your custom message here',
+							//'allowEmpty' => false,
+							//'required' => false,
+							//'last' => false, // Stop validation after this rule
+							//'on' => 'create', // Limit validation to 'create' or 'update' operations
+					),
+			),
 		'site_phone' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -79,16 +99,7 @@ class Site extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'neighborhood_name' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+		
 		'site_type_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),

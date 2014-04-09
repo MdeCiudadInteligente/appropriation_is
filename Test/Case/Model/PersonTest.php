@@ -16,13 +16,15 @@ class PersonTest extends CakeTestCase {
 		'app.person',
 		'app.agent',
 		'app.zone',
-		'app.user',
-		'app.empleado',
-		'app.diariocampo',
-		'app.acompanamiento',
-		'app.reunion',
+		'app.commune',
+		'app.neighborhood',
+		'app.site',
+		'app.site_type',
+		'app.accompaniment',
+		'app.meeting',
+		'app.meetings_person',
 		'app.owner',
-		'app.site'
+		'app.user'
 	);
 
 /**

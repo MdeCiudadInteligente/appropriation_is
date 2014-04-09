@@ -10,7 +10,7 @@
 		<dt><?php echo __('Accompaniment Date'); ?></dt>
 		<dd>
 			<?php echo h($accompaniment['Accompaniment']['accompaniment_date']); ?>
-			&nbsp;
+			&nbsp;	
 		</dd>
 
 		<dt><?php echo __('Accompaniment Type'); ?></dt>
@@ -28,22 +28,6 @@
 			<?php echo h($accompaniment['Accompaniment']['participant_number']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Accompaniment Adjunct'); ?></dt>
-		<dd>
-			<?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Accompaniment Adjunct1'); ?></dt>
-		<dd>
-			<?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct1/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Accompaniment Adjunct2'); ?></dt>
-		<dd>
-			<?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>
-
-		</dd>		
-
 	</dl>
 </div>
 <div class="actions">

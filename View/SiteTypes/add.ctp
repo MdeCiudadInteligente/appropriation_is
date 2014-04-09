@@ -3,8 +3,8 @@
 	<fieldset>
 		<legend><?php echo __('Add Site Type'); ?></legend>
 	<?php		
-		echo $this->Form->input('site_type',array ('options' => array ('Biblioteca'=>'Biblioteca','Institución Educativa'=>'Institución Educativa' ,'Cedezos'=>'Cedezos','Sitios de Gobierno'=>'Sitios de Gobierno','Otros'=>'Otros')));
-		echo $this->Form->input('site_estado');
+		echo $this->Form->input('site_type');		
+		echo $this->Form->input('site_estado',array ('options' => array ('Activo'=>'Activo','Inactivo'=>'Inactivo')));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

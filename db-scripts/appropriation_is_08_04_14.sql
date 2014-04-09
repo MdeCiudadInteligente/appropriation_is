@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-04-2014 a las 00:19:22
+-- Tiempo de generación: 08-04-2014 a las 21:33:15
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -78,21 +78,23 @@ INSERT INTO `accompaniments` (`id_accompaniment`, `accompaniment_date`, `accompa
 --
 
 CREATE TABLE IF NOT EXISTS `agents` (
-  `id_agent` varchar(45) NOT NULL,
+  `id_agent` int(11) NOT NULL AUTO_INCREMENT,
   `person_id` varchar(45) NOT NULL,
   `zone_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_agent`),
   KEY `person_id` (`person_id`),
-  KEY `zone_id` (`zone_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `zone_id` (`zone_id`),
+  KEY `id_agent` (`id_agent`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `agents`
 --
 
 INSERT INTO `agents` (`id_agent`, `person_id`, `zone_id`) VALUES
-('1', '1022096458', 1),
-('3', '1111', 1);
+(1, '12345', 1),
+(1, '1022096458', 1),
+(3, '1111', 1),
+(4, '1022096458', 1);
 
 -- --------------------------------------------------------
 
@@ -193,7 +195,6 @@ INSERT INTO `meetings` (`id_meeting`, `meeting_date`, `meeting_type`, `meeting_t
 (20, '0000-00-00', 'Seguimiento', 'dsvsdvsv', 'sdvsdvdsv', 'sdvsdvsdvsdv', NULL, NULL, NULL, '', '123'),
 (21, '0000-00-00', 'Seguimiento', 'dvsvvsv', 'sdvsdvsvs', 'dvsdvsdvsv', NULL, NULL, NULL, '', '123'),
 (22, '0000-00-00', 'Seguimiento', 'sdvsdvsv', 'sdvsdvsdv', 'sdvsdvsdvsdv', NULL, NULL, NULL, '', '123'),
-(23, '0000-00-00', 'Seguimiento', 'asfasfasf', 'lalala', 'lalala', NULL, NULL, NULL, '', '123'),
 (24, '0000-00-00', 'Seguimiento', 'asdasd', 'lalalala', 'lalalalalallala', NULL, NULL, NULL, '', '123'),
 (25, '2014-03-31', 'Seguimiento', 'asdasd', 'asdasd', 'asdadasd', NULL, NULL, NULL, '', '123');
 
@@ -223,7 +224,8 @@ CREATE TABLE IF NOT EXISTS `neighborhoods` (
   `neighborhood_name` varchar(45) NOT NULL,
   `commune_id` int(11) NOT NULL,
   PRIMARY KEY (`id_neighborhood`),
-  KEY `commune_id` (`commune_id`)
+  KEY `commune_id` (`commune_id`),
+  KEY `commune_id_2` (`commune_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
@@ -276,6 +278,7 @@ CREATE TABLE IF NOT EXISTS `people` (
 INSERT INTO `people` (`id_person`, `name`, `lastname`, `charge`, `phone`, `cell`, `entity`) VALUES
 ('1022096458', 'yodi', 'pino', 'asistente', '4444963', '3136742206', 'MDEInteligente'),
 ('1111', 'mmmmm', 'mmmm', 'mmmm', '444', '444', 'rtrr'),
+('12345', 'sadfasf', 'asfasfa', 'asfasfasf', '124124124', '34534535', 'werwrwerwerwer'),
 ('123456', 'Mariana', 'Arenas', 'BEBE', '8383', '8383437850', '4141414');
 
 -- --------------------------------------------------------
@@ -339,21 +342,22 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `permission_level` int(11) NOT NULL,
-  `agent_id` varchar(45) NOT NULL,
+  `agent_id` int(11) NOT NULL,
   PRIMARY KEY (`id_user`),
   KEY `id_agent` (`agent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `permission_level`, `agent_id`) VALUES
-(1, 'johana', '5f1fd5e8cd67a034fcd575b28fcbfa8409a92503', 1, '1'),
-(2, 'yodi', '8515a9643960bf400f7c2870f344252e7e7230a4', 2, '1'),
-(3, 'rrr', '0f887deeadb125352683ba018ac7458fcbb0d7aa', 1, '1'),
-(4, 'otro', 'b954e284dda887cbf30267c32277068fc643d6d2', 2, '1'),
-(5, 'again', '5c1029ba78ca6d82f11dc7272efa682c865ee5e4', 1, '1');
+(1, 'johana', '5f1fd5e8cd67a034fcd575b28fcbfa8409a92503', 1, 1),
+(2, 'yodi', '8515a9643960bf400f7c2870f344252e7e7230a4', 2, 1),
+(3, 'rrr', '0f887deeadb125352683ba018ac7458fcbb0d7aa', 1, 1),
+(4, 'otro', 'b954e284dda887cbf30267c32277068fc643d6d2', 2, 1),
+(5, 'again', '5c1029ba78ca6d82f11dc7272efa682c865ee5e4', 1, 1),
+(6, 'wefrwef', 'a80ce9ef0cc57ed8e344c7dc94bd6844dccf13fd', 1, 1);
 
 -- --------------------------------------------------------
 

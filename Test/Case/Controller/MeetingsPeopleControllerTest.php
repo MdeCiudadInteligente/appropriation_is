@@ -1,11 +1,11 @@
 <?php
-App::uses('PeopleController', 'Controller');
+App::uses('MeetingsPeopleController', 'Controller');
 
 /**
- * PeopleController Test Case
+ * MeetingsPeopleController Test Case
  *
  */
-class PeopleControllerTest extends ControllerTestCase {
+class MeetingsPeopleControllerTest extends ControllerTestCase {
 
 /**
  * Fixtures
@@ -13,18 +13,18 @@ class PeopleControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.person',
-		'app.agent',
-		'app.zone',
-		'app.commune',
-		'app.neighborhood',
-		'app.site',
-		'app.site_type',
-		'app.accompaniment',
-		'app.meeting',
 		'app.meetings_person',
+		'app.meeting',
+		'app.site',
+		'app.neighborhood',
+		'app.commune',
+		'app.zone',
+		'app.agent',
+		'app.person',
 		'app.owner',
-		'app.user'
+		'app.user',
+		'app.site_type',
+		'app.accompaniment'
 	);
 
 /**
