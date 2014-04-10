@@ -3,13 +3,9 @@
 	<fieldset>
 		<legend><?php echo __('Add Site Type'); ?></legend>
 	<?php		
-<<<<<<< HEAD
+
 		echo $this->Form->input('site_type');		
 		echo $this->Form->input('site_estado',array ('options' => array ('Activo'=>'Activo','Inactivo'=>'Inactivo')));
-=======
-		echo $this->Form->input('site_type');
-		echo $this->Form->input('site_estado');
->>>>>>> e9522240eaafd01ee86f0c4b930bb5f31da62239
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

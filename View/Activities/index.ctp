@@ -1,7 +1,7 @@
 <div class="Activities index">
 	<h2><?php echo __('Meetings'); ?></h2>
 	<div id="paginador1">
-	<table cellpadding="0" cellspacing="0">
+	<table>
 	<tr>
 		<th><?php echo $this->Paginator->sort('meeting_type'); ?></th>
 		<th><?php echo $this->Paginator->sort('meeting_title'); ?></th>
@@ -74,11 +74,9 @@
 		<li><?php echo $this->Html->link(__('New Site Type'), array('controller' => 'SiteTypes', 'action' => 'add')); ?> </li>			
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'Sites', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'neighborhoods', 'action' => 'add')); ?> </li>	
-<<<<<<< HEAD
-			
-=======
+
 		<li><?php echo $this->Html->link(__('New Commune'), array('controller' => 'communes', 'action' => 'add')); ?> </li>		
->>>>>>> e9522240eaafd01ee86f0c4b930bb5f31da62239
+
 	<?php }?>	
 	<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
@@ -87,7 +85,7 @@
 
 <div class="accompaniments index">
 	<h2><?php echo __('Accompaniments'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table>
 	<tr>
 		<th><?php echo $this->Paginator->sort('accompaniment_type'); ?></th> 
 	<?php /*	<th><?php echo $this->Paginator->sort('accompaniment_description'); ?></th>  */?>
@@ -139,7 +137,7 @@
 
 <div class="divulgations index">
 	<h2><?php echo __('Divulgations'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table>
 	<tr>
 		<th><?php echo $this->Paginator->sort('divulgation_name'); ?></th>
 		<th><?php echo $this->Paginator->sort('divulgation_type'); ?></th>

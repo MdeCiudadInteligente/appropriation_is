@@ -1,6 +1,6 @@
 <div class="meetingsPeople index">
 	<h2><?php echo __('Meetings People'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id_meeting_people'); ?></th>
 			<th><?php echo $this->Paginator->sort('meeting_id'); ?></th>

@@ -132,6 +132,18 @@ msgstr "El tipo de sitio se ha guardado."
 msgid "New Agent"
 msgstr "Nuevo Agente"
 
+msgid "Edit Commune"
+msgstr "Editar Comuna"
+
+msgid "Delete Commune"
+msgstr "Eliminar Comuna"
+
+msgid "Edit User"
+msgstr "Editar Usuario"
+
+msgid "Delete User"
+msgstr "Eliminar Usuario"
+
 msgid "List People"
 msgstr "Lista Personas"
 
