@@ -14,10 +14,14 @@ class MeetingsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
 	public $paginate = array(
 			//'fields' => array('Meeting.meeting_type'),
 			'limit' => 10,
 	);
+	
+	
+
 /**
  * index method
  *
@@ -36,10 +40,13 @@ class MeetingsController extends AppController {
 		//return false;
 			
 	}
-	
 	public function index() {
-		$this->Meeting->recursive = 0;
-		$this->set('meetings', $this->Paginator->paginate());
+		$meeting=$this->Meeting->find('all');
+		$this->set('meetings', $meeting);
+		//$this->Meeting->recursive = 0;
+		$this->Paginator->settings = $this->paginate;
+		$this->set('meetings', $this->Paginator->paginate('Meeting'));
+	
 	}
 
 /**
@@ -63,7 +70,7 @@ class MeetingsController extends AppController {
  * @return void
  */
 	public function add() {
-	if ($this->request->is('post')) {
+		if ($this->request->is('post')) {
 			/*$valor=$this->request;*/
 			$this->Meeting->create();
 			if ($this->Meeting->save($this->request->data)) {
@@ -73,6 +80,8 @@ class MeetingsController extends AppController {
 				$this->Session->setFlash(__('The meeting could not be saved. Please, try again.'));
 			}
 		}
+		/*$sites = $this->Meeting->Site->find('list');
+		$this->set(compact('sites'));*/
 		$sites = $this->Meeting->Site->find('list');
 		$people = $this->Meeting->Person->find('list');
 		$this->set(compact('sites', 'people'));
@@ -101,8 +110,7 @@ class MeetingsController extends AppController {
 			$this->request->data = $this->Meeting->find('first', $options);
 		}
 		$sites = $this->Meeting->Site->find('list');
-		$people = $this->Meeting->Person->find('list');
-		$this->set(compact('sites', 'people'));
+		$this->set(compact('sites'));
 	}
 
 /**
