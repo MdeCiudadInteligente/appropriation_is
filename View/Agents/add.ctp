@@ -1,4 +1,4 @@
-<div class="agents form">
+﻿<div class="agents form">
 <?php echo $this->Form->create('Agent'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Agent'); ?></legend>

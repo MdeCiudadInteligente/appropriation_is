@@ -1,4 +1,4 @@
-<div class="sites form">
+﻿<div class="sites form">
 <?php echo $this->Form->create('Site'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Site'); ?></legend>

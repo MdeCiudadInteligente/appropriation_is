@@ -1,4 +1,4 @@
-<div class="meetings index">
+﻿<div class="meetings index">
 	<h2><?php echo __('Meetings'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

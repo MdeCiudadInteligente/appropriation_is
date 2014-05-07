@@ -1,4 +1,4 @@
-<div class="Activities index">
+ï»¿<div class="Activities index">
 	<h2><?php echo __('Meetings'); ?></h2>
 	<div id="paginador1">
 	<table>
@@ -31,7 +31,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Meetings','action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Meetings','action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Está seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Meetings','action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('EstÃ¡ seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -40,7 +40,7 @@
 	<?php
 	echo $this->Paginator->counter(array(
 	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
+	'format' => __('PÃ¡gina {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
 	));
 	?>	</p>
 	<div class="paging">
@@ -51,7 +51,7 @@
 	?>
 	</div>
 	</div>
-	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Meetings', 'action' => 'index')); ?>
+	<?php echo $this->Html->link(__('Ver mÃ¡s'), array('controller' => 'Meetings', 'action' => 'index')); ?>
 </div>
 
 <div class="actions">
@@ -122,7 +122,7 @@
 	<?php
 	echo $this->Paginator->counter(array(
 	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
+	'format' => __('PÃ¡gina {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
 	));
 	?>	</p>
 	<div class="paging">
@@ -132,7 +132,7 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));*/
 	?>
 	</div>
-	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Accompaniments', 'action' => 'index')); ?>
+	<?php echo $this->Html->link(__('Ver mÃ¡s'), array('controller' => 'Accompaniments', 'action' => 'index')); ?>
 </div>
 
 <div class="divulgations index">
@@ -178,7 +178,7 @@
 	<?php
 	echo $this->Paginator->counter(array(
 	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
+	'format' => __('PÃ¡gina {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
 	));
 	?>	</p>
 	<div class="paging">
@@ -188,7 +188,7 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));*/
 	?>
 	</div>
-	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Divulgations', 'action' => 'index')); ?>
+	<?php echo $this->Html->link(__('Ver mÃ¡s'), array('controller' => 'Divulgations', 'action' => 'index')); ?>
 </div>
 <?php echo $this->Js->writeBuffer(); ?>
 

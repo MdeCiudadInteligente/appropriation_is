@@ -1,4 +1,4 @@
-# LANGUAGE translation of CakePHP Application
+ï»¿# LANGUAGE translation of CakePHP Application
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
 #  Revision: 8004 \console\error.php
@@ -91,10 +91,10 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 msgid "The requested address %s was not found on this server."
-msgstr "La dirección solitiada %s no existe en el servidor"
+msgstr "La direcciÃ³n solitiada %s no existe en el servidor"
 
 msgid "Add Task"
-msgstr "Añadir Tarea"
+msgstr "AÃ±adir Tarea"
 
 msgid "Actions"
 msgstr "Acciones"
@@ -103,28 +103,28 @@ msgid "Adjunct"
 msgstr "Adjunto"
 
 msgid "Participant Number"
-msgstr "Número participantes"
+msgstr "NÃºmero participantes"
 
 msgid "Accompaniment Description"
-msgstr "Descripción Acompañamiento "
+msgstr "DescripciÃ³n AcompaÃ±amiento "
 
 msgid "Accompaniment Type"
-msgstr "Tipo Acompañamiento"
+msgstr "Tipo AcompaÃ±amiento"
 
 msgid "Site"
 msgstr "Sitio"
 
 msgid "Password"
-msgstr "Contraseña"
+msgstr "ContraseÃ±a"
 
 msgid "Username"
 msgstr "Usuario"
 
 msgid "Please enter your username and password"
-msgstr "Por favor, ingrese su nombre de usuario y contraseña"
+msgstr "Por favor, ingrese su nombre de usuario y contraseÃ±a"
 
 msgid "Meeting Type"
-msgstr "Tipo Reunión"
+msgstr "Tipo ReuniÃ³n"
 
 msgid "The site type has been saved."
 msgstr "El tipo de sitio se ha guardado."
@@ -211,13 +211,13 @@ msgid "Commune Name"
 msgstr "Nombre Comuna"
 
 msgid "Meeting"
-msgstr "Reunión"
+msgstr "ReuniÃ³n"
 
 msgid "List Meetings"
 msgstr "Lista Reuniones "
 
 msgid "New Meeting"
-msgstr "Nueva Reunión"
+msgstr "Nueva ReuniÃ³n"
 
 msgid "List Communes"
 msgstr "Lista Comuna"
@@ -235,7 +235,7 @@ msgid "Owner"
 msgstr "Encargado"
 
 msgid "Add Owner"
-msgstr "Añadir Encargado"
+msgstr "AÃ±adir Encargado"
 
 msgid "New Owner"
 msgstr "Nuevo Encargado"
@@ -244,7 +244,7 @@ msgid "Roll"
 msgstr "Rol"
 
 msgid "The divulgation has been saved."
-msgstr "La divulgación se ha guardado."
+msgstr "La divulgaciÃ³n se ha guardado."
 
 msgid "Name"
 msgstr "Nombre"
@@ -256,7 +256,7 @@ msgid "Charge"
 msgstr "Cargo"
 
 msgid "Phone"
-msgstr "Teléfono"
+msgstr "TelÃ©fono"
 
 msgid "Cell"
 msgstr "Celular"
@@ -274,10 +274,10 @@ msgid "Site Name"
 msgstr "Nombre Sitio"
 
 msgid "Site Phone"
-msgstr "Teléfono Sitio"
+msgstr "TelÃ©fono Sitio"
 
 msgid "Site Address"
-msgstr "Dirección Sitio"
+msgstr "DirecciÃ³n Sitio"
 
 msgid "Site Mail"
 msgstr "Correo Sitio"
@@ -295,7 +295,7 @@ msgid "New Site Type"
 msgstr "Nuevo Tipo Sitio"
 
 msgid "List Accompaniments"
-msgstr "Lista Acompañamiento"
+msgstr "Lista AcompaÃ±amiento"
 
 msgid "Zone Name"
 msgstr "Nombre Zona"
@@ -307,7 +307,7 @@ msgid "Sites"
 msgstr "Sitios"
 
 msgid "Id Meeting"
-msgstr "Id Reunión"
+msgstr "Id ReuniÃ³n"
 
 msgid "Id Agent"
 msgstr "Id Agente"
@@ -316,101 +316,101 @@ msgid "Id Site"
 msgstr "Nit Sitio"
 
 msgid "Meeting Title"
-msgstr "Título Reunión"
+msgstr "TÃ­tulo ReuniÃ³n"
 
 msgid "Meeting Description"
-msgstr "Descripción Reunión"
+msgstr "DescripciÃ³n ReuniÃ³n"
 
 msgid "Meeting Commitments"
-msgstr "Compromisos Reunión"
+msgstr "Compromisos ReuniÃ³n"
 
 msgid "Accompaniments"
-msgstr "Acompañamientos"
+msgstr "AcompaÃ±amientos"
 
 msgid "Id Accompaniment"
-msgstr "Id Acompañamiento"
+msgstr "Id AcompaÃ±amiento"
 
 msgid "Divulgation Name"
-msgstr "Nombre Divulgación"
+msgstr "Nombre DivulgaciÃ³n"
 
 msgid "Id Divulgation"
-msgstr "Id Divulgación"
+msgstr "Id DivulgaciÃ³n"
 
 msgid "Divulgations"
 msgstr "Divulgaciones"
 
 msgid "Divulgation Type"
-msgstr "Tipo Divulgación"
+msgstr "Tipo DivulgaciÃ³n"
 
 msgid "Divulgation Description"
-msgstr "Descripción Divulgación"
+msgstr "DescripciÃ³n DivulgaciÃ³n"
 
 msgid "Activity Place"
 msgstr "Lugar Actividad"
 
 msgid "New Divulgation"
-msgstr "Nueva Divulgación"
+msgstr "Nueva DivulgaciÃ³n"
 
 msgid "Add Divulgation"
-msgstr "Añadir Divulgación"
+msgstr "AÃ±adir DivulgaciÃ³n"
 
 msgid "The meeting could not be saved. Please, try again."
-msgstr "La reunión no se pudo guardar. Por favor, inténtalo de nuevo."
+msgstr "La reuniÃ³n no se pudo guardar. Por favor, intÃ©ntalo de nuevo."
 
 msgid "The meeting has been saved."
-msgstr "La reunión se ha guardado."
+msgstr "La reuniÃ³n se ha guardado."
 
 msgid "Add Meeting"
-msgstr "Agregar reunión"
+msgstr "Agregar reuniÃ³n"
 
 msgid "The accompaniment has been saved."
-msgstr "El acompañamiento se ha guardado."
+msgstr "El acompaÃ±amiento se ha guardado."
 
 msgid "Site Estado"
 msgstr "Estado Sitio"
 
 msgid "List Divulgations"
-msgstr "Lista Divulgación"
+msgstr "Lista DivulgaciÃ³n"
 
 msgid "Add Person"
-msgstr "Añadir Persona"
+msgstr "AÃ±adir Persona"
 
 msgid "Main Menu"
-msgstr "Menú Principal"
+msgstr "MenÃº Principal"
 
 msgid "Close Section"
-msgstr "Cerrar Sesión"
+msgstr "Cerrar SesiÃ³n"
 
 msgid "Edit Neighborhood"
 msgstr "Editar Barrio"
 
 msgid "You are not authorized to access that location"
-msgstr "No tiene permisos para acceder a dicha ubicación."
+msgstr "No tiene permisos para acceder a dicha ubicaciÃ³n."
 
 msgid "Invalid username or password, try again"
-msgstr "Nombre de usuario o contraseña no válidos, vuelva a intentarlo"
+msgstr "Nombre de usuario o contraseÃ±a no vÃ¡lidos, vuelva a intentarlo"
 
 msgid "The user could not be saved. Please, try again."
-msgstr "El usuario no se pudo guardar. Por favor, inténtelo de nuevo."
+msgstr "El usuario no se pudo guardar. Por favor, intÃ©ntelo de nuevo."
 
 msgid "Invalid user"
-msgstr "usuario no válido"
+msgstr "usuario no vÃ¡lido"
 
 msgid "Meeting Date"
 <<<<<<< HEAD
-msgstr "Fecha Reunión"
+msgstr "Fecha ReuniÃ³n"
 
 msgid "Accompaniment Date"
-msgstr "Fecha Acompañamiento"
+msgstr "Fecha AcompaÃ±amiento"
 =======
-msgstr "Fecha de Reunión"
+msgstr "Fecha de ReuniÃ³n"
 
 msgid "Accompaniment Date"
-msgstr "Fecha de Acompañamiento"
+msgstr "Fecha de AcompaÃ±amiento"
 >>>>>>> e9522240eaafd01ee86f0c4b930bb5f31da62239
 
 msgid "Add User"
-msgstr "Añadir usuario"
+msgstr "AÃ±adir usuario"
 
 msgid "Id Person"
 msgstr "Documento Persona"
@@ -419,7 +419,7 @@ msgid "Add Agent"
 msgstr "Agregar agente"
 
 msgid "Add Site"
-msgstr "Añadir sitio"
+msgstr "AÃ±adir sitio"
 
 msgid "Site Types"
 msgstr "Tipos del Sitio"
@@ -443,25 +443,25 @@ msgid "Delete Site Type"
 msgstr "Eliminar Tipo Sitio"
 
 msgid "Edit Meeting"
-msgstr "Editar Reunión"
+msgstr "Editar ReuniÃ³n"
 
 msgid "Delete Meeting"
-msgstr "Eliminar Reunión"
+msgstr "Eliminar ReuniÃ³n"
 
 msgid "Edit Accompaniment"
-msgstr "Editar Acompañamiento"
+msgstr "Editar AcompaÃ±amiento"
 
 msgid "Delete Accompaniment"
-msgstr "Eliminar Acompañamiento"
+msgstr "Eliminar AcompaÃ±amiento"
 
 msgid "Edit Divulgation"
-msgstr "Editar Divulgación"
+msgstr "Editar DivulgaciÃ³n"
 
 msgid "Delete Divulgation"
-msgstr "Eliminar Divulgación"
+msgstr "Eliminar DivulgaciÃ³n"
 
 msgid "New Accompaniment"
-msgstr "Nuevo Acompañamiento"
+msgstr "Nuevo AcompaÃ±amiento"
 
 msgid "New Site"
 msgstr "Nuevo Sitio"
@@ -470,34 +470,34 @@ msgid "List Sites"
 msgstr "Lista de Sitios"
 
 msgid "Meeting Adjunct"
-msgstr "Adjunto Reunión 1"
+msgstr "Adjunto ReuniÃ³n 1"
 
 msgid "Meeting Adjunct1"
-msgstr "Adjunto Reunión 2"
+msgstr "Adjunto ReuniÃ³n 2"
 
 msgid "Meeting Adjunct2"
-msgstr "Adjunto Reunión 3"
+msgstr "Adjunto ReuniÃ³n 3"
 
 msgid "Accompaniment Adjunct"
-msgstr "Adjunto Acompañamiento 1"
+msgstr "Adjunto AcompaÃ±amiento 1"
 
 msgid "Accompaniment Adjunct1"
-msgstr "Adjunto Acompañamiento 2"
+msgstr "Adjunto AcompaÃ±amiento 2"
 
 msgid "Accompaniment Adjunct2"
-msgstr "Adjunto Acompañamiento 3"
+msgstr "Adjunto AcompaÃ±amiento 3"
 
 msgid "Divulgation Adjunct"
-msgstr "Adjunto Divulgación 1"
+msgstr "Adjunto DivulgaciÃ³n 1"
 
 msgid "Divulgation Adjunct1"
-msgstr "Adjunto Divulgación 2"
+msgstr "Adjunto DivulgaciÃ³n 2"
 
 msgid "Divulgation Adjunct2"
-msgstr "Adjunto Divulgación 3"
+msgstr "Adjunto DivulgaciÃ³n 3"
 
 msgid "Divulgation Date"
-msgstr "Fecha de Divulgación"
+msgstr "Fecha de DivulgaciÃ³n"
 
 msgid "Permission Level"
 msgstr "Nivel de permiso"
@@ -585,11 +585,11 @@ msgstr "No existe la Vista '%s' para '%s' en '%s'"
 
 #: \console\error.php:161
 msgid "Missing Layout '%s'"
-msgstr "Falta el diseÃ±o '%s'"
+msgstr "Falta el diseÃƒÂ±o '%s'"
 
 #: \console\error.php:172
 msgid "Missing Database Connection. Try 'cake bake'"
-msgstr "Falta la conexiÃ³n a la Base de Datos. Pruebe con 'cake bake'"
+msgstr "Falta la conexiÃƒÂ³n a la Base de Datos. Pruebe con 'cake bake'"
 
 #: \console\error.php:183
 msgid "Missing Helper file '%s' for '%s'"
@@ -613,15 +613,15 @@ msgstr "Falta el Modelo"
 
 #: \console\libs\acl.php:78
 msgid "Error: Your current Cake configuration is set to"
-msgstr "Error: Tu configuración actual de Cake está ajustada a"
+msgstr "Error: Tu configuraciÃ³n actual de Cake estÃ¡ ajustada a"
 
 #: \console\libs\acl.php:79
 msgid "an ACL implementation other than DB. Please change"
-msgstr "una implementación de ACL distinta que por Base de Datos. Por favor, cambia"
+msgstr "una implementaciÃ³n de ACL distinta que por Base de Datos. Por favor, cambia"
 
 #: \console\libs\acl.php:80
 msgid "your core config to reflect your decision to use"
-msgstr "la configuración de tu core para reflejar tu decisión de usar"
+msgstr "la configuraciÃ³n de tu core para reflejar tu decisiÃ³n de usar"
 
 #: \console\libs\acl.php:81
 msgid "DbAcl before attempting to use this script"
@@ -635,7 +635,7 @@ msgstr "Nombre de la clase ACL actual: %s"
 #: \console\libs\bake.php:74
 #: \console\libs\i18n.php:61
 msgid "Your database configuration was not found. Take a moment to create one."
-msgstr "No se ha encontrado la configuración de tu base de datos. Dedica un momento a crear una."
+msgstr "No se ha encontrado la configuraciÃ³n de tu base de datos. Dedica un momento a crear una."
 
 #: \console\libs\acl.php:110
 msgid "Available ACL commands:"
@@ -643,7 +643,7 @@ msgstr "Comandos ACL disponibles:"
 
 #: \console\libs\acl.php:122
 msgid "For help, run the 'help' command.  For help on a specific command, run 'help <command>'"
-msgstr "Para obtener ayuda, ejecuta el comando \"help\". Para ayuda sobre un comando específico, ejecuta 'help <comando>'"
+msgstr "Para obtener ayuda, ejecuta el comando \"help\". Para ayuda sobre un comando especÃ­fico, ejecuta 'help <comando>'"
 
 #: \console\libs\acl.php:151
 msgid "Could not find parent node using reference \"%s\""
@@ -655,7 +655,7 @@ msgstr "/ no se puede usar como alias"
 
 #: \console\libs\acl.php:169
 msgid "\\t/ is the root, please supply a sub alias"
-msgstr "\\t/ es la raíz, por favor, proporciona un sub alias"
+msgstr "\\t/ es la raÃ­z, por favor, proporciona un sub alias"
 
 #: \console\libs\acl.php:177
 msgid "New %s '%s' created.\n"
@@ -679,7 +679,7 @@ msgstr "%s eliminado"
 
 #: \console\libs\acl.php:214
 msgid "Error in setting new parent. Please make sure the parent node exists, and is not a descendant of the node specified."
-msgstr "Error fijando un nuevo padre. Por favor, asegúrate de que existe el nodo padre, y que no es descendiente del nodo especificado."
+msgstr "Error fijando un nuevo padre. Por favor, asegÃºrate de que existe el nodo padre, y que no es descendiente del nodo especificado."
 
 #: \console\libs\acl.php:216
 msgid "Node parent set to %s"
@@ -691,15 +691,15 @@ msgstr "El Nodo proporcionado '%s' no se encuentra"
 
 #: \console\libs\acl.php:231;315;317;459
 msgid "No tree returned."
-msgstr "No se ha devuelto árbol."
+msgstr "No se ha devuelto Ã¡rbol."
 
 #: \console\libs\acl.php:247
 msgid "%s is allowed."
-msgstr "%s está permitido."
+msgstr "%s estÃ¡ permitido."
 
 #: \console\libs\acl.php:249
 msgid "%s is not allowed."
-msgstr "%s no está permitido."
+msgstr "%s no estÃ¡ permitido."
 
 #: \console\libs\acl.php:262
 msgid "Permission granted."
@@ -749,11 +749,11 @@ msgstr "Las referencias <padre> y <nodo> puedes estar en uno de los siguientes f
 
 #: \console\libs\acl.php:366
 msgid "<model>.<id> - The node will be bound to a specific record of the given model"
-msgstr "<modelo>.<id> - El nodo será asociado a un registro específico del modelo dado"
+msgstr "<modelo>.<id> - El nodo serÃ¡ asociado a un registro especÃ­fico del modelo dado"
 
 #: \console\libs\acl.php:367
 msgid "<alias> - The node will be given a string alias (or path, in the case of <parent>),"
-msgstr "<alias> - Al nodo se le asignará un alias (o ruta, en el caso de <padre>),"
+msgstr "<alias> - Al nodo se le asignarÃ¡ un alias (o ruta, en el caso de <padre>),"
 
 #: \console\libs\acl.php:368
 msgid "i.e. 'John'.  When used with <parent>, this takes the form of an alias path,"
@@ -765,11 +765,11 @@ msgstr "i.e. <grupo>/<subgrupo>/<padre>"
 
 #: \console\libs\acl.php:370
 msgid "To add a node at the root level, enter 'root' or '/' as the <parent> parameter."
-msgstr "Para añadir un nodo a nivel de la raíz, introduce 'root' o '/' como parámetro <padre>"
+msgstr "Para aÃ±adir un nodo a nivel de la raÃ­z, introduce 'root' o '/' como parÃ¡metro <padre>"
 
 #: \console\libs\acl.php:373
 msgid "Deletes the ACL object with the given <node> reference (see 'create' for info on node references)."
-msgstr "Borra el objeto ACL con la referencia <nodo> (ver 'create' para información sobre referencias de nodo)."
+msgstr "Borra el objeto ACL con la referencia <nodo> (ver 'create' para informaciÃ³n sobre referencias de nodo)."
 
 #: \console\libs\acl.php:376
 msgid "Moves the ACL object specified by <node> beneath the parent ACL object specified by <parent>."
@@ -785,15 +785,15 @@ msgstr "Devuelve la ruta al objeto ACL especificado por <node>. Este comando"
 
 #: \console\libs\acl.php:381
 msgid "is useful in determining the inhertiance of permissions for a certain"
-msgstr "es útil para determinad la herencia de permisos para un cierto"
+msgstr "es Ãºtil para determinad la herencia de permisos para un cierto"
 
 #: \console\libs\acl.php:382
 msgid "object in the tree."
-msgstr "objeto en el árbol."
+msgstr "objeto en el Ã¡rbol."
 
 #: \console\libs\acl.php:383;387;393;399;404;409
 msgid "For more detailed parameter usage info, see help for the 'create' command."
-msgstr "Para obtener información detallada de uso del parámetro, ver la ayuda para el comando 'create'"
+msgstr "Para obtener informaciÃ³n detallada de uso del parÃ¡metro, ver la ayuda para el comando 'create'"
 
 #: \console\libs\acl.php:385;389;395;401
 msgid "or"
@@ -809,11 +809,11 @@ msgstr "Usa este comando para conceder permisos ACL. Una vex ejecutado, el ARO"
 
 #: \console\libs\acl.php:391
 msgid "specified (and its children, if any) will have ALLOW access to the"
-msgstr "especificaso (y sus hijos, si tiene) tendrá acceso PERMITIDO a la"
+msgstr "especificaso (y sus hijos, si tiene) tendrÃ¡ acceso PERMITIDO a la"
 
 #: \console\libs\acl.php:392;398
 msgid "specified ACO action (and the ACO's children, if any)."
-msgstr "acción ACO especificada (y a los ACO hijos, si tiene)."
+msgstr "acciÃ³n ACO especificada (y a los ACO hijos, si tiene)."
 
 #: \console\libs\acl.php:396
 msgid "Use this command to deny ACL permissions. Once executed, the ARO"
@@ -821,7 +821,7 @@ msgstr "Usa este comando para denegar permisos ACL. Una vez ejecutado, el ARO"
 
 #: \console\libs\acl.php:397
 msgid "specified (and its children, if any) will have DENY access to the"
-msgstr "especificado (y sus hijos, si tiene) tendrán acceso DENEGADO a la"
+msgstr "especificado (y sus hijos, si tiene) tendrÃ¡n acceso DENEGADO a la"
 
 #: \console\libs\acl.php:402
 msgid "Use this command to force a child ARO object to inherit its"
@@ -833,11 +833,11 @@ msgstr "ajustes de permisos de su padre."
 
 #: \console\libs\acl.php:407
 msgid "The view command will return the ARO or ACO tree. The optional"
-msgstr "El comando view devolverá el árbol de ARO o ACO. El parámetro opcional"
+msgstr "El comando view devolverÃ¡ el Ã¡rbol de ARO o ACO. El parÃ¡metro opcional"
 
 #: \console\libs\acl.php:408
 msgid "id/alias parameter allows you to return only a portion of the requested tree."
-msgstr "id/alias te permite devolver sólo una parte del árbol solicitado."
+msgstr "id/alias te permite devolver sÃ³lo una parte del Ã¡rbol solicitado."
 
 #: \console\libs\acl.php:412
 msgid "Uses this command : cake schema run create DbAcl"
@@ -845,7 +845,7 @@ msgstr "Usa este comando : cake schema run create DbAcl"
 
 #: \console\libs\acl.php:415
 msgid "Displays this help message, or a message on a specific command."
-msgstr "Muestra este mensaje de ayuda, o un mensaje sobre un comando específico."
+msgstr "Muestra este mensaje de ayuda, o un mensaje sobre un comando especÃ­fico."
 
 #: \console\libs\acl.php:426
 msgid "Command '%s' not found"
@@ -857,7 +857,7 @@ msgstr "Tipo de nodo perdido/desconocido: '%s'"
 
 #: \console\libs\acl.php:439
 msgid "Please specify which ACL object type you wish to create."
-msgstr "Por favor, especifca qué tipo de objeto ACL deseas crear"
+msgstr "Por favor, especifca quÃ© tipo de objeto ACL deseas crear"
 
 #: \console\libs\api.php:103
 msgid "%s::%s() could not be found"
@@ -865,7 +865,7 @@ msgstr "%s::%s() no pudo ser encontrado"
 
 #: \console\libs\api.php:120
 msgid "Select a number to see the more information about a specific method. q to quit. l to list."
-msgstr "Selecciona un número para ver más información acerca de un método específico. q para salir. l para lista."
+msgstr "Selecciona un nÃºmero para ver mÃ¡s informaciÃ³n acerca de un mÃ©todo especÃ­fico. q para salir. l para lista."
 
 #: \console\libs\api.php:122
 msgid "Done"
@@ -882,15 +882,15 @@ msgid ""
 "Be sure you have created %s"
 msgstr ""
 "El directorio %s no se pudo encontrar.\n"
-"Asegúrate de haber creado %s"
+"AsegÃºrate de haber creado %s"
 
 #: \console\libs\bake.php:87
 msgid "What would you like to Bake?"
-msgstr "¿Qué te gustaría cocinar?"
+msgstr "Â¿QuÃ© te gustarÃ­a cocinar?"
 
 #: \console\libs\bake.php:108
 msgid "You have made an invalid selection. Please choose a type of class to Bake by entering D, M, V, or C."
-msgstr "Has hecho una selección no válida. Por favor, escoge el tipo de clase para Cocinar pulsando D, M, V o C."
+msgstr "Has hecho una selecciÃ³n no vÃ¡lida. Por favor, escoge el tipo de clase para Cocinar pulsando D, M, V o C."
 
 #: \console\libs\bake.php:150
 msgid "%s Model was baked."
@@ -906,7 +906,7 @@ msgstr "Cocinar Todo completo."
 
 #: \console\libs\bake.php:172
 msgid "Bake All could not continue without a valid model"
-msgstr "Cocinar Todo no puede continuar sin un Modelo válido."
+msgstr "Cocinar Todo no puede continuar sin un Modelo vÃ¡lido."
 
 #: \console\libs\i18n.php:72
 msgid "I18n Shell"
@@ -930,11 +930,11 @@ msgstr "[Q]Salir"
 
 #: \console\libs\i18n.php:79
 msgid "What would you like to do?"
-msgstr "¿Qué te gustaría hacer?"
+msgstr "Â¿QuÃ© te gustarÃ­a hacer?"
 
 #: \console\libs\i18n.php:94
 msgid "You have made an invalid selection. Please choose a command to execute by entering E, I, H, or Q."
-msgstr "Has hecho una selecciónno válida. Por favor selecciona un comando para ejecutar pulsando E, I, H o Q."
+msgstr "Has hecho una selecciÃ³nno vÃ¡lida. Por favor selecciona un comando para ejecutar pulsando E, I, H o Q."
 
 #: \console\libs\i18n.php:115
 msgid "I18n Shell:"
@@ -942,7 +942,7 @@ msgstr "I18n Shell:"
 
 #: \console\libs\i18n.php:117
 msgid "I18n Shell initializes i18n database table for your application"
-msgstr "La shell I18n inicializa la tabla de base de datos i18n para tu aplicación"
+msgstr "La shell I18n inicializa la tabla de base de datos i18n para tu aplicaciÃ³n"
 
 #: \console\libs\i18n.php:118
 msgid "and generates .pot file(s) with translations."
@@ -986,35 +986,35 @@ msgstr "comando no encontrado"
 
 #: \console\libs\schema.php:299;345
 msgid "Schema is up to date."
-msgstr "El esquema está actualizado"
+msgstr "El esquema estÃ¡ actualizado"
 
 #: \console\libs\schema.php:303
 msgid "The following table(s) will be dropped."
-msgstr "Se eliminarán la(s) siguiente(s) tablas."
+msgstr "Se eliminarÃ¡n la(s) siguiente(s) tablas."
 
 #: \console\libs\schema.php:306
 msgid "Are you sure you want to drop the table(s)?"
-msgstr "¿Seguo que quieres eliminar la(s) tabla(s)?"
+msgstr "Â¿Seguo que quieres eliminar la(s) tabla(s)?"
 
 #: \console\libs\schema.php:311
 msgid "The following table(s) will be created."
-msgstr "Se creará(n) la(s) siguente(s) tabla(s)."
+msgstr "Se crearÃ¡(n) la(s) siguente(s) tabla(s)."
 
 #: \console\libs\schema.php:314
 msgid "Are you sure you want to create the table(s)?"
-msgstr "¿Seguro que quieres crear la(s) tabla(s)?"
+msgstr "Â¿Seguro que quieres crear la(s) tabla(s)?"
 
 #: \console\libs\schema.php:319
 msgid "End create."
-msgstr "Fin de la creación."
+msgstr "Fin de la creaciÃ³n."
 
 #: \console\libs\schema.php:349
 msgid "The following statements will run."
-msgstr "Se ejecutarán las siguientes órdenes."
+msgstr "Se ejecutarÃ¡n las siguientes Ã³rdenes."
 
 #: \console\libs\schema.php:351
 msgid "Are you sure you want to alter the tables?"
-msgstr "¿Seguo que quires modificar las tablas?"
+msgstr "Â¿Seguo que quires modificar las tablas?"
 
 #: \console\libs\schema.php:353
 msgid "Updating Database..."
@@ -1022,7 +1022,7 @@ msgstr "Actualizando la base de datos..."
 
 #: \console\libs\schema.php:357
 msgid "End update."
-msgstr "Fin de la actualización."
+msgstr "Fin de la actualizaciÃ³n."
 
 #: \console\libs\schema.php:366
 msgid "Sql could not be run"
@@ -1030,11 +1030,11 @@ msgstr "No se puedo ejecutar la SQL."
 
 #: \console\libs\schema.php:376
 msgid "%s is up to date."
-msgstr "%s está actualizado ahora."
+msgstr "%s estÃ¡ actualizado ahora."
 
 #: \console\libs\schema.php:379
 msgid "Dry run for %s :"
-msgstr "Ejecución simulada para %s"
+msgstr "EjecuciÃ³n simulada para %s"
 
 #: \console\libs\schema.php:394
 msgid "%s updated."
@@ -1046,7 +1046,7 @@ msgstr "Creando archivo %s"
 
 #: \console\libs\shell.php:429
 msgid "File exists, overwrite?"
-msgstr "El archivo existe, ¿lo sobreescribo?"
+msgstr "El archivo existe, Â¿lo sobreescribo?"
 
 #: \console\libs\shell.php:431
 msgid "Quitting."
@@ -1062,31 +1062,31 @@ msgstr "Escrito"
 
 #: \console\libs\shell.php:448
 msgid "Error! Could not write to"
-msgstr "¡Error! No se puedo escribir en"
+msgstr "Â¡Error! No se puedo escribir en"
 
 #: \console\libs\tasks\controller.php:125
 msgid "Would you like to build your controller interactively?"
-msgstr "¿Te gustaría construir tu control de forma interactiva?"
+msgstr "Â¿Te gustarÃ­a construir tu control de forma interactiva?"
 
 #: \console\libs\tasks\controller.php:127
 msgid "Warning: Choosing no will overwrite the %sController."
-msgstr "Precaución: Elegir no sobreescribirá el %sController."
+msgstr "PrecauciÃ³n: Elegir no sobreescribirÃ¡ el %sController."
 
 #: \console\libs\tasks\controller.php:134
 msgid "Would you like to use scaffolding?"
-msgstr "¿Te gustaría utilizar scaffolding?"
+msgstr "Â¿Te gustarÃ­a utilizar scaffolding?"
 
 #: \console\libs\tasks\controller.php:138;164
 msgid "Would you like to include some basic class methods (index(), add(), view(), edit())?"
-msgstr "¿Quieres incluir algumos métodos básicos de la clase (index(), add(), view(), edit())?"
+msgstr "Â¿Quieres incluir algumos mÃ©todos bÃ¡sicos de la clase (index(), add(), view(), edit())?"
 
 #: \console\libs\tasks\controller.php:141;167
 msgid "Would you like to create the methods for admin routing?"
-msgstr "¿Quieres crear los métodos para el enrutamiento admin?"
+msgstr "Â¿Quieres crear los mÃ©todos para el enrutamiento admin?"
 
 #: \console\libs\tasks\controller.php:144
 msgid "Would you like this controller to use other helpers besides HtmlHelper and FormHelper?"
-msgstr "¿Quieres que este controlador utilice otros helpers además del HtmlHelper y FormHelper?"
+msgstr "Â¿Quieres que este controlador utilice otros helpers ademÃ¡s del HtmlHelper y FormHelper?"
 
 #: \console\libs\tasks\controller.php:147
 msgid ""
@@ -1098,7 +1098,7 @@ msgstr ""
 
 #: \console\libs\tasks\controller.php:151
 msgid "Would you like this controller to use any components?"
-msgstr "¿Quieres que este controlador utilice algún componente?"
+msgstr "Â¿Quieres que este controlador utilice algÃºn componente?"
 
 #: \console\libs\tasks\controller.php:154
 msgid ""
@@ -1110,16 +1110,16 @@ msgstr ""
 
 #: \console\libs\tasks\controller.php:159
 msgid "Would you like to use Sessions?"
-msgstr "¿Quieres utilizar Sesiones?"
+msgstr "Â¿Quieres utilizar Sesiones?"
 
 #: \console\libs\tasks\controller.php:219
 #: \console\libs\tasks\model.php:202
 msgid "Look okay?"
-msgstr "¿Parece correcto?"
+msgstr "Â¿Parece correcto?"
 
 #: \console\libs\tasks\controller.php:248
 msgid "You must have a model for this class to build scaffold methods. Please try again."
-msgstr "Debes ener un modelo para esta clase para construir los métodos. Por favor, inténtalo de nuevo."
+msgstr "Debes ener un modelo para esta clase para construir los mÃ©todos. Por favor, intÃ©ntalo de nuevo."
 
 #: \console\libs\tasks\controller.php:509
 #: \console\libs\tasks\model.php:761
@@ -1128,7 +1128,7 @@ msgstr "Tu base de datos no tiene tablas."
 
 #: \console\libs\tasks\controller.php:536
 msgid "Enter a number from the list above, type in the name of another controller, or 'q' to exit"
-msgstr "Introduce un número de la lista de arriba, escribe el nombre de otro controlador, o 'q' para salir"
+msgstr "Introduce un nÃºmero de la lista de arriba, escribe el nombre de otro controlador, o 'q' para salir"
 
 #: \console\libs\tasks\controller.php:539
 #: \console\libs\tasks\model.php:792
@@ -1144,40 +1144,40 @@ msgid ""
 "The Controller name you supplied was empty, or the number \n"
 "you selected was not an option. Please try again."
 msgstr ""
-"El nombre de Controlador que me has dado estaba vacío, o el número \n"
-"seleccionado no era una opción. Por favor, inténtalo de nuevo"
+"El nombre de Controlador que me has dado estaba vacÃ­o, o el nÃºmero \n"
+"seleccionado no era una opciÃ³n. Por favor, intÃ©ntalo de nuevo"
 
 #: \console\libs\tasks\model.php:100
 msgid "Use Database Config"
-msgstr "Usa la configruación de Base de Datos"
+msgstr "Usa la configruaciÃ³n de Base de Datos"
 
 #: \console\libs\tasks\model.php:111
 msgid "Given your model named '%s', Cake would expect a database table named %s"
-msgstr "Dado el nombre de tu modelo '%s', Cake esperaría una tabla de base de datos llamada %s"
+msgstr "Dado el nombre de tu modelo '%s', Cake esperarÃ­a una tabla de base de datos llamada %s"
 
 #: \console\libs\tasks\model.php:112
 msgid "Do you want to use this table?"
-msgstr "¿Quieres usar esta tabla?"
+msgstr "Â¿Quieres usar esta tabla?"
 
 #: \console\libs\tasks\model.php:116;123
 msgid "What is the name of the table (enter \"null\" to use NO table)?"
-msgstr "¿Cuál es el nombre de la tabla (introduce \"null\" para no usar tabla)?"
+msgstr "Â¿CuÃ¡l es el nombre de la tabla (introduce \"null\" para no usar tabla)?"
 
 #: \console\libs\tasks\model.php:130
 msgid "Would you like to supply validation criteria for the fields in your model?"
-msgstr "¿Quieres indicar criterios de validación para los campos de tu modelo?"
+msgstr "Â¿Quieres indicar criterios de validaciÃ³n para los campos de tu modelo?"
 
 #: \console\libs\tasks\model.php:143
 msgid "What is the primaryKey?"
-msgstr "¿Cuál es la clave primaria?"
+msgstr "Â¿CuÃ¡l es la clave primaria?"
 
 #: \console\libs\tasks\model.php:151
 msgid "Would you like to define model associations (hasMany, hasOne, belongsTo, etc.)?"
-msgstr "¿Quieres definir asociaciones de modelos (hasMany, hasOne, belongsTo, etc)?"
+msgstr "Â¿Quieres definir asociaciones de modelos (hasMany, hasOne, belongsTo, etc)?"
 
 #: \console\libs\tasks\model.php:158
 msgid "The following Model will be created:"
-msgstr "Se creará el siguiente modelo:"
+msgstr "Se crearÃ¡ el siguiente modelo:"
 
 #: \console\libs\tasks\model.php:309
 msgid "One moment while the associations are detected."
@@ -1201,71 +1201,71 @@ msgstr "Especifica un alias alternativo."
 
 #: \console\libs\tasks\model.php:430
 msgid "Would you like to define some additional model associations?"
-msgstr "¿Quieres definir asociaciones de modelos adicionales?"
+msgstr "Â¿Quieres definir asociaciones de modelos adicionales?"
 
 #: \console\libs\tasks\model.php:436
 msgid "What is the association type?"
-msgstr "¿Cuál es el tipo de asociación?"
+msgstr "Â¿CuÃ¡l es el tipo de asociaciÃ³n?"
 
 #: \console\libs\tasks\model.php:441;476
 msgid "Enter a number"
-msgstr "Introduce un número"
+msgstr "Introduce un nÃºmero"
 
 #: \console\libs\tasks\model.php:444
 msgid "The selection you entered was invalid. Please enter a number between 1 and 4."
-msgstr "La selección que has introducido no es válida. Por favor, introduce un número entre 1 y 4."
+msgstr "La selecciÃ³n que has introducido no es vÃ¡lida. Por favor, introduce un nÃºmero entre 1 y 4."
 
 #: \console\libs\tasks\model.php:449
 msgid "For the following options be very careful to match your setup exactly. Any spelling mistakes will cause errors."
-msgstr "En las siguientes opciones sé muy cuidadoso para indicar exactamente tus ajustes. Cualquier fallo de deletreo causará errores."
+msgstr "En las siguientes opciones sÃ© muy cuidadoso para indicar exactamente tus ajustes. Cualquier fallo de deletreo causarÃ¡ errores."
 
 #: \console\libs\tasks\model.php:451
 msgid "What is the alias for this association?"
-msgstr "¿Cuál es el alias para esta asociación?"
+msgstr "Â¿CuÃ¡l es el alias para esta asociaciÃ³n?"
 
 #: \console\libs\tasks\model.php:452
 msgid "What className will %s use?"
-msgstr "¿Qué nombre de clase usará %s?"
+msgstr "Â¿QuÃ© nombre de clase usarÃ¡ %s?"
 
 #: \console\libs\tasks\model.php:466
 msgid "What is the table for this model?"
-msgstr "¿Cuál es la tabla para este modelo?"
+msgstr "Â¿CuÃ¡l es la tabla para este modelo?"
 
 #: \console\libs\tasks\model.php:472
 msgid "A helpful List of possible keys"
-msgstr "Una lista útil de posibles claves"
+msgstr "Una lista Ãºtil de posibles claves"
 
 #: \console\libs\tasks\model.php:476
 msgid "What is the foreignKey?"
-msgstr "¿Cuál es la clave foránea?"
+msgstr "Â¿CuÃ¡l es la clave forÃ¡nea?"
 
 #: \console\libs\tasks\model.php:482
 msgid "What is the foreignKey? Specify your own."
-msgstr "¿Cuál es la clave foránea? Especifica la tuya propia."
+msgstr "Â¿CuÃ¡l es la clave forÃ¡nea? Especifica la tuya propia."
 
 #: \console\libs\tasks\model.php:485
 msgid "What is the associationForeignKey?"
-msgstr "¿Cuál es la clave foránea de la asocaciación?"
+msgstr "Â¿CuÃ¡l es la clave forÃ¡nea de la asocaciaciÃ³n?"
 
 #: \console\libs\tasks\model.php:486
 msgid "What is the joinTable?"
-msgstr "¿Cuál es la tabla de unión (JoinTable)?"
+msgstr "Â¿CuÃ¡l es la tabla de uniÃ³n (JoinTable)?"
 
 #: \console\libs\tasks\model.php:498
 msgid "Define another association?"
-msgstr "¿Definir otra asociación?"
+msgstr "Â¿Definir otra asociaciÃ³n?"
 
 #: \console\libs\tasks\model.php:768
 msgid "Possible Models based on your current database:"
-msgstr "Posibles Modelos badándonas en tu base de datos actual:"
+msgstr "Posibles Modelos badÃ¡ndonas en tu base de datos actual:"
 
 #: \console\libs\tasks\model.php:789
 msgid "Enter a number from the list above, type in the name of another model, or 'q' to exit"
-msgstr "Introduce un número de la lista anterior, teclea el nombre de otro modelo, o 'q' para salir"
+msgstr "Introduce un nÃºmero de la lista anterior, teclea el nombre de otro modelo, o 'q' para salir"
 
 #: \console\libs\tasks\model.php:797
 msgid "The model name you supplied was empty, or the number you selected was not an option. Please try again."
-msgstr "El nombre de Modelo proporcionado estaba vacío, o bien el número seleccionado no era una opción. Por favor, inténtalo otra vez."
+msgstr "El nombre de Modelo proporcionado estaba vacÃ­o, o bien el nÃºmero seleccionado no era una opciÃ³n. Por favor, intÃ©ntalo otra vez."
 
 #: \console\libs\tasks\plugin.php:112
 msgid "Enter the name of the plugin in CamelCase format"
@@ -1273,12 +1273,12 @@ msgstr "Introduce el nombre del plugin en formato CamelCase"
 
 #: \console\libs\tasks\plugin.php:116
 msgid "An error occured trying to bake: %s in %s"
-msgstr "Ocurrió un error intentando crear (bake): %s en %s"
+msgstr "OcurriÃ³ un error intentando crear (bake): %s en %s"
 
 #: \console\libs\tasks\plugin.php:140
 #: \console\libs\tasks\project.php:148
 msgid "Do you want verbose output?"
-msgstr "¿Quieres una salida detallada?"
+msgstr "Â¿Quieres una salida detallada?"
 
 #: \console\libs\tasks\plugin.php:177
 #: \console\libs\tasks\project.php:153
@@ -1287,11 +1287,11 @@ msgstr "Creado: %s en %s"
 
 #: \console\libs\tasks\project.php:81
 msgid "Welcome page created"
-msgstr "Creada página de bienvenida"
+msgstr "Creada pÃ¡gina de bienvenida"
 
 #: \console\libs\tasks\project.php:83
 msgid "The Welcome page was NOT created"
-msgstr "La página de Bienvenida NO fue creada"
+msgstr "La pÃ¡gina de Bienvenida NO fue creada"
 
 #: \console\libs\tasks\project.php:87
 msgid "Random hash key created for 'Security.salt'"
@@ -1299,7 +1299,7 @@ msgstr "Creada hash para 'Security.salt'"
 
 #: \console\libs\tasks\project.php:89
 msgid "Unable to generate random hash for 'Security.salt', you should change it in %s"
-msgstr "Incapaz de generar clave hash aleatoria para 'Security.salt', deberías cambiarla en %s"
+msgstr "Incapaz de generar clave hash aleatoria para 'Security.salt', deberÃ­as cambiarla en %s"
 
 #: \console\libs\tasks\project.php:94
 msgid "CAKE_CORE_INCLUDE_PATH set to %s in webroot/index.php"
@@ -1311,11 +1311,11 @@ msgstr "CAKE_CORE_INCLUDE_PATH ajustado a %s en webroot/test.php"
 
 #: \console\libs\tasks\project.php:96
 msgid "Remember to check these value after moving to production server"
-msgstr "Recuerda comprobar este valor después de mover al servidor de producción"
+msgstr "Recuerda comprobar este valor despuÃ©s de mover al servidor de producciÃ³n"
 
 #: \console\libs\tasks\project.php:98
 msgid "Unable to set CAKE_CORE_INCLUDE_PATH, you should change it in %s"
-msgstr "Incapaz de ajustar CAKE_CORE_INCLUDE_PATH, deberías cambiarlo en %s"
+msgstr "Incapaz de ajustar CAKE_CORE_INCLUDE_PATH, deberÃ­as cambiarlo en %s"
 
 #: \console\libs\tasks\project.php:102
 msgid "Could not set permissions on %s"
@@ -1330,12 +1330,12 @@ msgid ""
 "What is the path to the directory layout you wish to copy?\n"
 "Example: %s"
 msgstr ""
-"¿Cuál es la ruta a la plantilla de directorios que quieres copiar?\n"
+"Â¿CuÃ¡l es la ruta a la plantilla de directorios que quieres copiar?\n"
 "Ejemplo: %s"
 
 #: \console\libs\tasks\project.php:130
 msgid "The directory path you supplied was empty. Please try again."
-msgstr "La ruta de directorio proporcionada estaba vacía. Por favor, inténtalo otra vez."
+msgstr "La ruta de directorio proporcionada estaba vacÃ­a. Por favor, intÃ©ntalo otra vez."
 
 #: \console\libs\tasks\project.php:133
 msgid "Directory path does not exist please choose another:"
@@ -1359,7 +1359,7 @@ msgstr "Test creado\n"
 
 #: \console\libs\tasks\test.php:178
 msgid "Is this correct?"
-msgstr "¿Es correcto?"
+msgstr "Â¿Es correcto?"
 
 #: \console\libs\tasks\view.php:236
 msgid "Controller not found"
@@ -1375,19 +1375,19 @@ msgstr ""
 
 #: \console\libs\tasks\view.php:347
 msgid "Template for %s could not be found"
-msgstr "La plantilla para %s no se encontró"
+msgstr "La plantilla para %s no se encontrÃ³"
 
 #: \console\libs\templates\skel\views\layouts\default.ctp:30
 #: \libs\view\layouts\default.ctp:32
 #: \tests\test_app\views\layouts\default.ctp:32
 msgid "CakePHP: the rapid development php framework:"
-msgstr "CakePHP: el framework de desarrollo rápido para php:"
+msgstr "CakePHP: el framework de desarrollo rÃ¡pido para php:"
 
 #: \console\libs\templates\skel\views\layouts\default.ctp:44;55
 #: \libs\view\layouts\default.ctp:46;57
 #: \tests\test_app\views\layouts\default.ctp:44;55
 msgid "CakePHP: the rapid development php framework"
-msgstr "CakePHP: el framework de desarrollo rápido para php"
+msgstr "CakePHP: el framework de desarrollo rÃ¡pido para php"
 
 #: \console\libs\templates\skel\webroot\test.php:99
 msgid "Debug setting does not allow access to this url."
@@ -1395,11 +1395,11 @@ msgstr "El ajuste de Debug no permite el acceso a esta url."
 
 #: \libs\cache.php:471
 msgid "Method write() not implemented in %s"
-msgstr "El método write() no está implementado en %s"
+msgstr "El mÃ©todo write() no estÃ¡ implementado en %s"
 
 #: \libs\cache.php:481
 msgid "Method read() not implemented in %s"
-msgstr "El método read() no está implementado en %s"
+msgstr "El mÃ©todo read() no estÃ¡ implementado en %s"
 
 #: \libs\class_registry.php:150
 msgid "(ClassRegistry::init() could not create instance of %1$s class %2$s "
@@ -1407,7 +1407,7 @@ msgstr "(ClassRegistry::init() no pudo crear una instancia de la clase %1$s %2$s
 
 #: \libs\class_registry.php:160
 msgid "(ClassRegistry::init() Attempted to create instance of a class with a numeric name"
-msgstr "(ClassRegistry::init() Intento de crear una instancia de una clase con un nombre numérico"
+msgstr "(ClassRegistry::init() Intento de crear una instancia de una clase con un nombre numÃ©rico"
 
 #: \libs\configure.php:394
 msgid "Configure::load() - no variable $config found in %s.php"
@@ -1415,15 +1415,15 @@ msgstr "Configure::load() - no se encuentra la variable $config en %s.php"
 
 #: \libs\configure.php:617
 msgid "Can't find application core file. Please create %score.php, and make sure it is readable by PHP."
-msgstr "No puedo encontrar el archivo principal de la aplicación. Por favor, crea %score.php, y asegúrate de que es legible por PHP."
+msgstr "No puedo encontrar el archivo principal de la aplicaciÃ³n. Por favor, crea %score.php, y asegÃºrate de que es legible por PHP."
 
 #: \libs\configure.php:621
 msgid "Can't find application bootstrap file. Please create %sbootstrap.php, and make sure it is readable by PHP."
-msgstr "No puedo encontrar el archivo bootstrap de la aplicación. Por favor, crea %sbootstrap.php y asegúrate de que es legible por PHP."
+msgstr "No puedo encontrar el archivo bootstrap de la aplicaciÃ³n. Por favor, crea %sbootstrap.php y asegÃºrate de que es legible por PHP."
 
 #: \libs\debugger.php:541
 msgid "Please change the value of 'Security.salt' in app/config/core.php to a salt value specific to your application"
-msgstr "Por favor, cambia el valor de 'Security.salt' in app/config/core.php a un valor de sal específico para tu aplicación"
+msgstr "Por favor, cambia el valor de 'Security.salt' in app/config/core.php a un valor de sal especÃ­fico para tu aplicaciÃ³n"
 
 #: \libs\error.php:155
 msgid "Not Found"
@@ -1440,7 +1440,7 @@ msgstr "Falta Metodo en el Controlador"
 
 #: \libs\error.php:208
 msgid "Trying to access private method in class"
-msgstr "Intentando acceder a un método privado en la clase"
+msgstr "Intentando acceder a un mÃ©todo privado en la clase"
 
 #: \libs\error.php:224
 #: \libs\view\errors\missing_table.ctp:27
@@ -1459,13 +1459,13 @@ msgstr "Falta Vista (View)"
 #: \libs\error.php:271
 #: \libs\view\errors\missing_layout.ctp:27
 msgid "Missing Layout"
-msgstr "Falta Diseño (Layout)"
+msgstr "Falta DiseÃ±o (Layout)"
 
 #: \libs\error.php:286
 #: \libs\view\errors\missing_connection.ctp:27
 #: \libs\view\errors\missing_scaffolddb.ctp:27
 msgid "Missing Database Connection"
-msgstr "Falta la conexión a la Base de datos"
+msgstr "Falta la conexiÃ³n a la Base de datos"
 
 #: \libs\error.php:302
 #: \libs\view\errors\missing_helper_file.ctp:27
@@ -1538,7 +1538,7 @@ msgstr "%s no creado"
 
 #: \libs\http_socket.php:449
 msgid "HttpSocket::decodeBody - Unknown encoding: %s. Activate quirks mode to surpress error."
-msgstr "HttpSocket::decodeBody - Codificación desconocisa: %s. Activar quirks mode para suprimir el error."
+msgstr "HttpSocket::decodeBody - CodificaciÃ³n desconocisa: %s. Activar quirks mode para suprimir el error."
 
 #: \libs\http_socket.php:474
 msgid "HttpSocket::decodeChunkedBody - Could not parse malformed chunk. Activate quirks mode to do this."
@@ -1546,7 +1546,7 @@ msgstr "HttpSocket::decodeChunkedBody - No se puede procesar el fragmento mal fo
 
 #: \libs\http_socket.php:731
 msgid "HttpSocket::buildRequestLine - Passed an invalid request line string. Activate quirks mode to do this."
-msgstr "HttpSocket::buildRequestLine - Se ha pasado una cadena de petición no válida. Activa quirks mode para hacer esto."
+msgstr "HttpSocket::buildRequestLine - Se ha pasado una cadena de peticiÃ³n no vÃ¡lida. Activa quirks mode para hacer esto."
 
 #: \libs\http_socket.php:746
 msgid "HttpSocket::buildRequestLine - The \"*\" asterisk character is only allowed for the following methods: %s. Activate quirks mode to work outside of HTTP/1.1 specs."
@@ -1555,11 +1555,11 @@ msgstr "HttpSocket::buildRequestLine - The \"*\" asterisk character is only allo
 #: \libs\overloadable_php4.php:82;134
 #: \libs\overloadable_php5.php:57;82
 msgid "Magic method handler call__ not defined in %s"
-msgstr "Manejador de método mágico call__ no definido en %s"
+msgstr "Manejador de mÃ©todo mÃ¡gico call__ no definido en %s"
 
 #: \libs\security.php:177
 msgid "You cannot use an empty key for Security::cipher()"
-msgstr "No puedes usar una clave vacía para Security::cipher()"
+msgstr "No puedes usar una clave vacÃ­a para Security::cipher()"
 
 #: \libs\session.php:469
 msgid "You must set the all Configure::write('Session.*') in core.php to use database storage"
@@ -1567,11 +1567,11 @@ msgstr "Debes definir todas las Configure::write('Session.*') en core.php para u
 
 #: \libs\validation.php:355
 msgid "You must define the $operator parameter for Validation::comparison()"
-msgstr "Debes definir el parámetro $operator para Validation::comparison()"
+msgstr "Debes definir el parÃ¡metro $operator para Validation::comparison()"
 
 #: \libs\validation.php:379
 msgid "You must define a regular expression for Validation::custom()"
-msgstr "Debes definir una expresión regular para "
+msgstr "Debes definir una expresiÃ³n regular para "
 
 #: \libs\cache\file.php:262
 msgid "%s is not writable"
@@ -1584,7 +1584,7 @@ msgstr "Controller::__construct() : No puedo obtener o procesar mi propio nombre
 #: \libs\controller\controller.php:648
 #: \libs\controller\components\auth.php:476
 msgid "%s::isAuthorized() is not defined."
-msgstr "%s::isAuthorized() no está definido."
+msgstr "%s::isAuthorized() no estÃ¡ definido."
 
 #: \libs\controller\controller.php:912
 msgid "Controller::paginate() - can't find model %1$s in controller %2$sController"
@@ -1608,7 +1608,7 @@ msgstr "Guardado"
 
 #: \libs\controller\scaffold.php:285;288
 msgid "Invalid id for %s::edit()"
-msgstr "Id no válido para %s::edit()"
+msgstr "Id no vÃ¡lido para %s::edit()"
 
 #: \libs\controller\scaffold.php:301;304
 msgid "The %1$s has been %2$s"
@@ -1616,7 +1616,7 @@ msgstr "%1$s ha sido %2$s"
 
 #: \libs\controller\scaffold.php:311
 msgid "Please correct errors below."
-msgstr "Por favor corrija los errores a continuación."
+msgstr "Por favor corrija los errores a continuaciÃ³n."
 
 #: \libs\controller\scaffold.php:350;353
 msgid "No id set for %s::delete()"
@@ -1636,7 +1636,7 @@ msgstr "No puedo encontrar %s."
 
 #: \libs\controller\components\acl.php:211
 msgid "[acl_base] The AclBase class constructor has been called, or the class was instantiated. This class must remain abstract. Please refer to the Cake docs for ACL configuration."
-msgstr "[acl_base] Se ha llamado al constructor de la clase AclBase, o se ha instanciado la clase. Esta clase debe permanecer abstracta. Por favor, consulta la documentación de Cake sobre la configuración de ACL."
+msgstr "[acl_base] Se ha llamado al constructor de la clase AclBase, o se ha instanciado la clase. Esta clase debe permanecer abstracta. Por favor, consulta la documentaciÃ³n de Cake sobre la configuraciÃ³n de ACL."
 
 #: \libs\controller\components\acl.php:296
 msgid "ACO permissions key %s does not exist in DbAcl::check()"
@@ -1644,7 +1644,7 @@ msgstr "La clave de permisos ACO  %s no existe en DbAcl::check()"
 
 #: \libs\controller\components\acl.php:369
 msgid "DbAcl::allow() - Invalid node"
-msgstr "DbAcl::allow() - Nodo no válido"
+msgstr "DbAcl::allow() - Nodo no vÃ¡lido"
 
 #: \libs\controller\components\auth.php:357
 msgid "Could not find AclComponent. Please include Acl in Controller::$components."
@@ -1656,31 +1656,31 @@ msgstr "No se ha podido encontrar $userModel. Por favor, ajusta AuthComponent::$
 
 #: \libs\controller\components\auth.php:400
 msgid "Login failed. Invalid username or password."
-msgstr "Error al iniciar sesión. Nombre de usuario o contraseña inválida."
+msgstr "Error al iniciar sesiÃ³n. Nombre de usuario o contraseÃ±a invÃ¡lida."
 
 #: \libs\controller\components\auth.php:401
 msgid "You are not authorized to access that location."
-msgstr "No estás autorizado a acceder a ese lugar."
+msgstr "No estÃ¡s autorizado a acceder a ese lugar."
 
 #: \libs\controller\components\auth.php:451
 msgid "Auth::startup() - Attempted access of un-mapped action \"%1$s\" in controller \"%2$s\""
-msgstr "Auth::startup() - Intento de acceder a una acción no mapeada \"%1$s\" en el controlador \"%2$s\""
+msgstr "Auth::startup() - Intento de acceder a una acciÃ³n no mapeada \"%1$s\" en el controlador \"%2$s\""
 
 #: \libs\controller\components\auth.php:470
 msgid "Could not find %s. Set AuthComponent::$object in beforeFilter() or pass a valid object"
-msgstr "No he podido encontrar %s. Ajusta AuthComponent::$object en beforeFilter() o pasa un objeto válido"
+msgstr "No he podido encontrar %s. Ajusta AuthComponent::$object en beforeFilter() o pasa un objeto vÃ¡lido"
 
 #: \libs\controller\components\auth.php:484
 msgid "Auth::isAuthorized() - $authorize is set to an incorrect value.  Allowed settings are: \"actions\", \"crud\", \"model\" or null."
-msgstr "Auth::isAuthorized() - $authorize está ajustado a un valor incorrecto.  Los ajustes permitidos son: \"actions\", \"crud\", \"model\" o null."
+msgstr "Auth::isAuthorized() - $authorize estÃ¡ ajustado a un valor incorrecto.  Los ajustes permitidos son: \"actions\", \"crud\", \"model\" o null."
 
 #: \libs\controller\components\auth.php:716
 msgid "Auth::getModel() - Model is not set or could not be found"
-msgstr "Auth::getModel() - Model no está ajustado o no se pudo encontrar"
+msgstr "Auth::getModel() - Model no estÃ¡ ajustado o no se pudo encontrar"
 
 #: \libs\controller\components\security.php:303
 msgid "SecurityComponent::loginCredentials() - Server does not support digest authentication"
-msgstr "SecurityComponent::loginCredentials() - El servidor no soporta autentificación digest"
+msgstr "SecurityComponent::loginCredentials() - El servidor no soporta autentificaciÃ³n digest"
 
 #: \libs\model\connection_manager.php:114
 msgid "ConnectionManager::getDataSource - Non-existent data source %s"
@@ -1692,7 +1692,7 @@ msgstr "Incapaz de cargar el archivo de DataSource %s.php"
 
 #: \libs\model\model.php:855
 msgid "(Model::getColumnTypes) Unable to build model field data. If you are using a model without a database table, try implementing schema()"
-msgstr "(Model::getColumnTypes) Incapaz de contruir el campo de datos del modelo. Si estás usando un modelo sin una tabla de base de datos, prueba a implementar schema()"
+msgstr "(Model::getColumnTypes) Incapaz de contruir el campo de datos del modelo. Si estÃ¡s usando un modelo sin una tabla de base de datos, prueba a implementar schema()"
 
 #: \libs\model\model.php:2236
 msgid "This field cannot be left blank"
@@ -1700,11 +1700,11 @@ msgstr "Este campo no puede dejarse vacio"
 
 #: \libs\model\model.php:2595
 msgid "Invalid join model settings in %s"
-msgstr "Ajuste de join model en %s no válidos."
+msgstr "Ajuste de join model en %s no vÃ¡lidos."
 
 #: \libs\model\behaviors\containable.php:342
 msgid "Model \"%s\" is not associated with model \"%s\""
-msgstr "El modelo \"%s\" no está asociado con el modelo \"%s\""
+msgstr "El modelo \"%s\" no estÃ¡ asociado con el modelo \"%s\""
 
 #: \libs\model\datasources\dbo_source.php:731
 #: \libs\model\datasources\dbo\dbo_oracle.php:948
@@ -1714,7 +1714,7 @@ msgstr "Error SQL en el modelo %s:"
 #: \libs\model\datasources\dbo_source.php:2211;2268
 #: \libs\model\datasources\dbo\dbo_mysql.php:589
 msgid "Invalid schema object"
-msgstr "Objeto de esquema no válido"
+msgstr "Objeto de esquema no vÃ¡lido"
 
 #: \libs\model\datasources\dbo\dbo_oracle.php:560
 msgid "Must specify table to operate on constraints"
@@ -1760,11 +1760,11 @@ msgstr "Error"
 
 #: \libs\view\errors\missing_action.ctp:27
 msgid "Missing Method in %s"
-msgstr "Falta método en %s"
+msgstr "Falta mÃ©todo en %s"
 
 #: \libs\view\errors\missing_action.ctp:30
 msgid "The action %1$s is not defined in controller %2$s"
-msgstr "La acción %1$s no está definida en el controlador %2$s"
+msgstr "La acciÃ³n %1$s no estÃ¡ definida en el controlador %2$s"
 
 #: \libs\view\errors\missing_action.ctp:34
 msgid "Create %1$s%2$s in file: %3$s."
@@ -1823,7 +1823,7 @@ msgstr "No se ha encontrado el archivo del componente"
 
 #: \libs\view\errors\missing_connection.ctp:30
 msgid "%s requires a database connection"
-msgstr "%s necesita una conexión a la base de datos"
+msgstr "%s necesita una conexiÃ³n a la base de datos"
 
 #: \libs\view\errors\missing_connection.ctp:34
 msgid "Confirm you have created the file : %s."
@@ -1878,7 +1878,7 @@ msgstr "No se encontro la vista para  %1$s%2$s."
 
 #: \libs\view\errors\private_action.ctp:27
 msgid "Private Method in %s"
-msgstr "Método privado en %s"
+msgstr "MÃ©todo privado en %s"
 
 #: \libs\view\errors\private_action.ctp:30
 msgid "%s%s cannot be accessed directly."
@@ -1890,7 +1890,7 @@ msgstr "Error de Scaffold"
 
 #: \libs\view\errors\scaffold_error.ctp:30
 msgid "Method _scaffoldError in was not found in the controller"
-msgstr "No se ha encontrado el método _scaffoldError en el controlador"
+msgstr "No se ha encontrado el mÃ©todo _scaffoldError en el controlador"
 
 #: \libs\view\helpers\form.php:277;1057
 #: \libs\view\scaffolds\edit.ctp:31
@@ -1961,11 +1961,11 @@ msgstr "Diciembre"
 
 #: \libs\view\helpers\session.php:178
 msgid "You can not write to a Session from the view"
-msgstr "No puedes escribir a una Sesión desde la vista"
+msgstr "No puedes escribir a una SesiÃ³n desde la vista"
 
 #: \libs\view\helpers\text.php:335
 msgid "(TextHelper::flay) Deprecated: the Flay library is no longer supported and will be removed in a future version."
-msgstr "(TextHelper::flay) Deprecated: la biblioteca Flay ya no está soportada y será suprimida en una versión futura."
+msgstr "(TextHelper::flay) Deprecated: la biblioteca Flay ya no estÃ¡ soportada y serÃ¡ suprimida en una versiÃ³n futura."
 
 #: \libs\view\helpers\time.php:112
 msgid "Today, %s"
@@ -1990,8 +1990,8 @@ msgstr "dias"
 #: \libs\view\helpers\time.php:428
 msgid "year"
 msgid_plural "years"
-msgstr[0] "año"
-msgstr[1] "años"
+msgstr[0] "aÃ±o"
+msgstr[1] "aÃ±os"
 
 #: \libs\view\helpers\time.php:429;434
 msgid "month"
@@ -2008,8 +2008,8 @@ msgstr[1] "semanas"
 #: \libs\view\helpers\time.php:431;436;440;443
 msgid "day"
 msgid_plural "days"
-msgstr[0] "día"
-msgstr[1] "días"
+msgstr[0] "dÃ­a"
+msgstr[1] "dÃ­as"
 
 #: \libs\view\helpers\time.php:444;447
 msgid "hour"
@@ -2032,12 +2032,12 @@ msgstr[1] "segundos"
 #: \libs\view\pages\home.ctp:27
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:104
 msgid "Release Notes for CakePHP %s."
-msgstr "Notas de la versión para CakePHP %s."
+msgstr "Notas de la versiÃ³n para CakePHP %s."
 
 #: \libs\view\pages\home.ctp:28
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:105
 msgid "Read the release notes and get the latest version"
-msgstr "Lee las notas de la versión y consigue la última versión"
+msgstr "Lee las notas de la versiÃ³n y consigue la Ãºltima versiÃ³n"
 
 #: \libs\view\pages\home.ctp:38
 #: \tests\test_app\views\pages\home.ctp:12
@@ -2052,22 +2052,22 @@ msgstr "No se puede escribir en el directorio tmp."
 #: \libs\view\pages\home.ctp:52
 #: \tests\test_app\views\pages\home.ctp:26
 msgid "The %s is being used for caching. To change the config edit APP/config/core.php "
-msgstr "El %s esta siendo usado por la cache. Para cambiar la configuración edite APP/config/core.php"
+msgstr "El %s esta siendo usado por la cache. Para cambiar la configuraciÃ³n edite APP/config/core.php"
 
 #: \libs\view\pages\home.ctp:56
 #: \tests\test_app\views\pages\home.ctp:30
 msgid "Your cache is NOT working. Please check the settings in APP/config/core.php"
-msgstr "La cache NO esta funcionando. Revise la configuración en APP/config/core.php"
+msgstr "La cache NO esta funcionando. Revise la configuraciÃ³n en APP/config/core.php"
 
 #: \libs\view\pages\home.ctp:66
 #: \tests\test_app\views\pages\home.ctp:40
 msgid "Your database configuration file is present."
-msgstr "El archivo de configuración de bases de datos existe."
+msgstr "El archivo de configuraciÃ³n de bases de datos existe."
 
 #: \libs\view\pages\home.ctp:71
 #: \tests\test_app\views\pages\home.ctp:45
 msgid "Your database configuration file is NOT present."
-msgstr "El archivo de configuración de base de datos NO existe."
+msgstr "El archivo de configuraciÃ³n de base de datos NO existe."
 
 #: \libs\view\pages\home.ctp:73
 #: \tests\test_app\views\pages\home.ctp:47
@@ -2078,7 +2078,7 @@ msgstr "Renombre config/database.php.default a config/database.php"
 #: \libs\view\pages\home.ctp:88
 #: \tests\test_app\views\pages\home.ctp:62
 msgid "Cake is able to connect to the database."
-msgstr "Cake logró conectarse con la base de datos."
+msgstr "Cake logrÃ³ conectarse con la base de datos."
 
 #: \libs\view\pages\home.ctp:92
 #: \tests\test_app\views\pages\home.ctp:66
@@ -2097,9 +2097,9 @@ msgid ""
 "To change its layout, edit: APP/views/layouts/default.ctp.<br />\n"
 "You can also add some CSS styles for your pages at: APP/webroot/css."
 msgstr ""
-"Para cambiar el contenido de esta página, edita: APP/views/pages/home.ctp.<br />\n"
+"Para cambiar el contenido de esta pÃ¡gina, edita: APP/views/pages/home.ctp.<br />\n"
 "Para cambiar su maqueta, edita: APP/views/layouts/default.ctp.<br />\n"
-"También puedes añadir algunos estilos CSS para tus páginas en: APP/webroot/css."
+"TambiÃ©n puedes aÃ±adir algunos estilos CSS para tus pÃ¡ginas en: APP/webroot/css."
 
 #: \libs\view\pages\home.ctp:106
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:113
@@ -2119,12 +2119,12 @@ msgstr "Mas acerca de CakePHP"
 #: \libs\view\pages\home.ctp:113
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:121
 msgid "CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC."
-msgstr "CakePHP es un framework de desarrollo rápido para PHP que utiliza patrones de diseño bien conocidos como Active Record, Association Data Mapping, Front Controller y MVC."
+msgstr "CakePHP es un framework de desarrollo rÃ¡pido para PHP que utiliza patrones de diseÃ±o bien conocidos como Active Record, Association Data Mapping, Front Controller y MVC."
 
 #: \libs\view\pages\home.ctp:116
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:124
 msgid "Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility."
-msgstr "Nuestro objetivo principal es proporcionar un framework estructurado que posibilite a los usuarios de PHP de todos los niveles, desarrollar rápidamente aplicaciones web robustas, sin perder flexibilidad."
+msgstr "Nuestro objetivo principal es proporcionar un framework estructurado que posibilite a los usuarios de PHP de todos los niveles, desarrollar rÃ¡pidamente aplicaciones web robustas, sin perder flexibilidad."
 
 #: \libs\view\pages\home.ctp:120
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:127
@@ -2142,7 +2142,7 @@ msgstr "The Show"
 
 #: \libs\view\pages\home.ctp:123
 msgid "The Show is a weekly live internet radio broadcast where we discuss CakePHP-related topics and answer questions live via IRC, Skype, and telephone."
-msgstr "The Show es una emisión semanal de radio por Internet en la que tratamos temas relacionados con CakePHP-related topics y respondemos a preguntas en directo, vía IRC, Skype y teléfono."
+msgstr "The Show es una emisiÃ³n semanal de radio por Internet en la que tratamos temas relacionados con CakePHP-related topics y respondemos a preguntas en directo, vÃ­a IRC, Skype y telÃ©fono."
 
 #: \libs\view\pages\home.ctp:124
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:129
@@ -2157,12 +2157,12 @@ msgstr "Todo sobre CakePHP"
 #: \libs\view\pages\home.ctp:126
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:131
 msgid "Book Store"
-msgstr "Librería"
+msgstr "LibrerÃ­a"
 
 #: \libs\view\pages\home.ctp:127
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:132
 msgid "Recommended Software Books"
-msgstr "Libros sobre programación recomendados"
+msgstr "Libros sobre programaciÃ³n recomendados"
 
 #: \libs\view\pages\home.ctp:128
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:133
@@ -2182,7 +2182,7 @@ msgstr "CakePHP"
 #: \libs\view\pages\home.ctp:131
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:136
 msgid "The Rapid Development Framework"
-msgstr "El framework de desarrollo rápido"
+msgstr "El framework de desarrollo rÃ¡pido"
 
 #: \libs\view\pages\home.ctp:132
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:137
@@ -2192,7 +2192,7 @@ msgstr "Manual CakePHP"
 #: \libs\view\pages\home.ctp:133
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:138
 msgid "Your Rapid Development Cookbook"
-msgstr "Tu recetario de desarrollo rápido"
+msgstr "Tu recetario de desarrollo rÃ¡pido"
 
 #: \libs\view\pages\home.ctp:134
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:139
@@ -2202,7 +2202,7 @@ msgstr "API de CakePHP"
 #: \libs\view\pages\home.ctp:135
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:140
 msgid "Docblock Your Best Friend"
-msgstr "Documentación de tu mejor amigo"
+msgstr "DocumentaciÃ³n de tu mejor amigo"
 
 #: \libs\view\pages\home.ctp:136
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:141
@@ -2306,7 +2306,7 @@ msgstr "[FileTest] Saltando %s porque \"%s\" no se puede escribir!"
 
 #: \tests\cases\libs\i18n.test.php:1876
 msgid "No Translation needed"
-msgstr "No requiere traducción"
+msgstr "No requiere traducciÃ³n"
 
 #: \tests\cases\libs\i18n.test.php:1887
 msgid "this is a \"quoted string\""
@@ -2333,7 +2333,7 @@ msgstr[0] "%d = 1 (del core)"
 msgstr[1] "%d = 0 o > 1 (del core)"
 
 #: \tests\cases\libs\view\helpers\form.test.php:1550
-msgid "Le login doit contenir au moins 2 caractÃ¨res"
+msgid "Le login doit contenir au moins 2 caractÃƒÂ¨res"
 msgstr "El login debe tener al menos 2 caracteres"
 
 #: \tests\test_app\views\pages\home.ctp:75
@@ -2342,9 +2342,9 @@ msgid ""
 "\t\tTo change its layout, edit: %s\n"
 "\t\tYou can also add some CSS styles for your pages at: %s"
 msgstr ""
-"Para cambiar el contenido de esta página, edita: %s\n"
+"Para cambiar el contenido de esta pÃ¡gina, edita: %s\n"
 "\t\tPara cambiar su maqueta, edita: %s\n"
-"\t\tPuedes añadir también algunos estilos CSS para tus páginas en: %s"
+"\t\tPuedes aÃ±adir tambiÃ©n algunos estilos CSS para tus pÃ¡ginas en: %s"
 
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:31
 msgid "Your tmp directory is "
@@ -2368,7 +2368,7 @@ msgstr "ajustada e iniciada adecuadamente."
 
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:49
 msgid " is being used to cache, to change this edit config/core.php "
-msgstr "está siendo usado para cache, para cambiar esto edita config/core.php"
+msgstr "estÃ¡ siendo usado para cache, para cambiar esto edita config/core.php"
 
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:59
 msgid "NOT working."
@@ -2380,7 +2380,7 @@ msgstr "Editar: config/core.php para asegurar que tienes la version actualizada 
 
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:71
 msgid "Your database configuration file is "
-msgstr "El archivo de configuración de  su base de datos es"
+msgstr "El archivo de configuraciÃ³n de  su base de datos es"
 
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:74
 msgid "present."
@@ -2416,11 +2416,11 @@ msgstr "Para cambiar este layout, crear: /app/views/layouts/default.ctp."
 
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:110
 msgid "See the views section of the manual for more info."
-msgstr "Revisa la sección de vistas en el manual para mas información"
+msgstr "Revisa la secciÃ³n de vistas en el manual para mas informaciÃ³n"
 
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:111
 msgid "You can also add some CSS styles for your pages at: app/webroot/css/."
-msgstr "Puedes añadir estilos css para tus paginas en : app/webroot/css/."
+msgstr "Puedes aÃ±adir estilos css para tus paginas en : app/webroot/css/."
 
 #: \tests\test_app\views\posts\test_nocache_tags.ctp:116
 msgid "Cook up Web sites fast with CakePHP"

@@ -1,4 +1,4 @@
-<div class="meetings view">
+﻿<div class="meetings view">
 <h2><?php echo __('Meeting'); ?></h2>
 	<dl>
 		<dt><?php echo __('Site'); ?></dt>
