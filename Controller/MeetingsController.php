@@ -109,8 +109,12 @@ class MeetingsController extends AppController {
 			$options = array('conditions' => array('Meeting.' . $this->Meeting->primaryKey => $id));
 			$this->request->data = $this->Meeting->find('first', $options);
 		}
+		/*$sites = $this->Meeting->Site->find('list');
+		$this->set(compact('sites'));*/
+		
 		$sites = $this->Meeting->Site->find('list');
-		$this->set(compact('sites'));
+		$people = $this->Meeting->Person->find('list');
+		$this->set(compact('sites', 'people'));
 	}
 
 /**
