@@ -28,6 +28,21 @@
 			<?php echo h($accompaniment['Accompaniment']['participant_number']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Meeting Adjunct'); ?></dt>
+		<dd>
+			<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>&nbsp;</td>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Meeting Adjunct1'); ?></dt>
+		<dd>
+			<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct1/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1'])); ?>&nbsp;</td>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Meeting Adjunct2'); ?></dt>
+		<dd>
+			<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>&nbsp;</td>
+			&nbsp;
+		</dd>	
 	</dl>
 </div>
 <div class="actions">
