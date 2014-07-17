@@ -26,19 +26,20 @@ class AccompanimentsController extends AppController {
  *
  * @return void
  */
+
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
 			return true;
 		}
+	}
 			
 	
 		// Default deny
 		//return false;
-			
-	}
+
 	
 	public function index() {
 		//variable designada para Agents...
@@ -46,6 +47,7 @@ class AccompanimentsController extends AppController {
 		$this->set('accompaniments', $accompaniment);
 		//$this->Accompaniment->recursive = 0;
 	   	$this->Paginator->settings = $this->paginate;
+	   //	$this->Paginator->settings=array('order' => array( 'Accompaniment.Accompaniment_date' => 'desc'));
 		 	$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
 
 	}
@@ -80,7 +82,7 @@ class AccompanimentsController extends AppController {
 				$this->Session->setFlash(__('The accompaniment could not be saved. Please, try again.'));
 			}
 		}
-		$sites = $this->Accompaniment->Site->find('list');
+		$sites = $this->Accompaniment->Site->find('list', array('order'=>array('Site.site_name ASC')));
 		$this->set(compact('sites'));
 	}
 

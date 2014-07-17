@@ -6,12 +6,12 @@
 			<?php echo h($person['Person']['id_person']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Nombre'); ?></dt>
 		<dd>
 			<?php echo h($person['Person']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Lastname'); ?></dt>
+		<dt><?php echo __('Apellido'); ?></dt>
 		<dd>
 			<?php echo h($person['Person']['lastname']); ?>
 			&nbsp;
@@ -19,6 +19,11 @@
 		<dt><?php echo __('Charge'); ?></dt>
 		<dd>
 			<?php echo h($person['Person']['charge']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Correo'); ?></dt>
+		<dd>
+			<?php echo h($person['Person']['email']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Phone'); ?></dt>
@@ -46,9 +51,12 @@
 		<li><?php echo $this->Form->postLink(__('Delete Person'), array('action' => 'delete', $person['Person']['id_person']), null, __('Are you sure you want to delete # %s?', $person['Person']['id_person'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List People'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Person'), array('action' => 'add')); ?> </li>
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+		if ($usuario_level === '1'){?>		
 		<li><?php echo $this->Html->link(__('List Agents'), array('controller' => 'agents', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Agent'), array('controller' => 'agents', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Owners'), array('controller' => 'owners', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
+		<?php }?>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>

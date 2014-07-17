@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Site'); ?></legend>
 	<?php
-		echo $this->Form->input('id_site',array('type'=>'text'));
+		//echo $this->Form->input('id_site',array('type'=>'text'));
 		echo $this->Form->input('site_type_id');
 		echo $this->Form->input('neighborhood_id');
 		echo $this->Form->input('site_name');

@@ -25,6 +25,8 @@ $cakeDescription = __d('cake_dev', '');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+	
 
 	
 	<?php echo $this->Html->script('jquery');?>

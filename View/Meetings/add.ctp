@@ -1,4 +1,4 @@
-<!-- Scripts para el calendario -->
+﻿<!-- Scripts para el calendario -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
@@ -12,19 +12,19 @@
   {
   closeText: 'Fermer',
   prevText: 'Previo',
-  nextText: 'Próximo',
+  nextText: 'PrÃ³ximo',
   yearRange: "2007:2020",
   monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
   monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-  monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre année',
+  monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃ©e',
   dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
-  dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb'],
+  dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃ¡b'],
   dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
   dateFormat: 'dd/mm/yy', firstDay: 0,
   initStatus: 'Selecciona la fecha', isRTL: false};
    $.datepicker.setDefaults($.datepicker.regional['es']);
- //miDate: fecha de comienzo D=días | M=mes | Y=año
- //maxDate: fecha tope D=días | M=mes | Y=año
+ //miDate: fecha de comienzo D=dÃ­as | M=mes | Y=aÃ±o
+ //maxDate: fecha tope D=dÃ­as | M=mes | Y=aÃ±o
     $('#datepicker').datepicker('option', {dateFormat: 'dd/mm/yy'});
 
 });
@@ -38,7 +38,7 @@
 	<?php		
 		echo $this->Form->input('site_id');		
 		echo $this->Form->input('meeting_date',array ('id' => 'datepicker'));
-		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gesti�n con aliados'=>'Gesti�n con aliados' ,'Empalme'=>'Empalme')));
+		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
 		echo $this->Form->input('meeting_title');
 		echo $this->Form->input('Person');/*La persona la acbe de agregar*/
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
