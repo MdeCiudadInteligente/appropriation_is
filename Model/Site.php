@@ -16,7 +16,7 @@ class Site extends AppModel {
  *
  * @var string
  */
-	public $primaryKey = 'id_site';
+  	public $primaryKey = 'id_site';
 
 /**
  * Display field
@@ -81,7 +81,7 @@ class Site extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'site_mail' => array(
+		/*'site_mail' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -99,7 +99,7 @@ class Site extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		
+		*/
 		'site_type_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),

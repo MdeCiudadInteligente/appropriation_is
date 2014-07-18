@@ -1,9 +1,9 @@
-<div class="users index">
+﻿<div class="users index">
 	<h2><?php echo __('Users'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('username'); ?></th>
-			<th><?php echo $this->Paginator->sort('password'); ?></th>
+			<th><?php //echo $this->Paginator->sort('password'); ?></th>
 			<th><?php echo $this->Paginator->sort('permission_level'); ?></th>
 			<th><?php echo $this->Paginator->sort('agent_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -11,7 +11,7 @@
 	<?php foreach ($users as $user): ?>
 	<tr>
 		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
+		<td><?php //echo h($user['User']['password']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['permission_level']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($user['Agent']['id_agent'], array('controller' => 'agents', 'action' => 'view', $user['Agent']['id_agent'])); ?>

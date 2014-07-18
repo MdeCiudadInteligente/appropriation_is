@@ -39,20 +39,20 @@ class UsersController extends AppController {
        parent::beforeFilter();*/
 	/*
 	}*/
+	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
-		
-
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+	
+	
+		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')||(isset($user['permission_level']) && $user['permission_level'] === '4')) {
 			return true;
 		}
-		 
-		
+			
+	
 		// Default deny
 		//return false;
-		 
-}
-	
+			
+	}
 	
 	public function login() {
 		if ($this->request->is('post')) {
@@ -107,7 +107,7 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
-		$agents = $this->User->Agent->find('list');
+		$agents = $this->User->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
 		$this->set(compact('agents'));
 	}
 

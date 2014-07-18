@@ -1,7 +1,10 @@
+ï»¿<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>		
 <div class="Activities index">
 	<h2><?php echo __('Meetings'); ?></h2>
 	<div id="paginador1">
 	<table>
+
 	<tr>
 		<th><?php echo $this->Paginator->sort('meeting_type'); ?></th>
 		<th><?php echo $this->Paginator->sort('meeting_title'); ?></th>
@@ -31,7 +34,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Meetings','action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Meetings','action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Está seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Meetings','action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('EstÃ¡ seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -40,7 +43,7 @@
 	<?php
 	echo $this->Paginator->counter(array(
 	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
+	'format' => __('PÃ¡gina {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
 	));
 	?>	</p>
 	<div class="paging">
@@ -51,39 +54,38 @@
 	?>
 	</div>
 	</div>
-	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Meetings', 'action' => 'index')); ?>
+	<?php echo $this->Html->link(__('Ver mÃ¡s'), array('controller' => 'Meetings', 'action' => 'index')); ?>
 </div>
-
+<?php }?>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-	<?php
+	<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+	<?php	
 	$usuario_level= $this->Session->read('Auth.User.permission_level');
 	
-	if ($usuario_level === '2'||$usuario_level === '1'){?>
-		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+	if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>		
 		<li><?php echo $this->Html->link(__('New Meeting'), array('controller' => 'Meetings', 'action' => 'add')); ?> </li>	
 		<li><?php echo $this->Html->link(__('New Accompaniment'), array('controller' => 'Accompaniments', 'action' => 'add')); ?> </li>	
-		<li><?php echo $this->Html->link(__('New Divulgation'), array('controller' => 'Divulgations', 'action' => 'add')); ?> </li>	
 	<?php }?>
+	<li><?php echo $this->Html->link(__('New Divulgation'), array('controller' => 'Divulgations', 'action' => 'add')); ?> </li>	
 
 	<?php if ($usuario_level === '1'){?>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'Users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Person'), array('controller' => 'People', 'action' => 'add')); ?> </li>	
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'Users', 'action' => 'add')); ?> </li>		
 		<li><?php echo $this->Html->link(__('New Agent'), array('controller' => 'Agents', 'action' => 'add')); ?> </li>	
 		<li><?php echo $this->Html->link(__('New Site Type'), array('controller' => 'SiteTypes', 'action' => 'add')); ?> </li>			
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'Sites', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'neighborhoods', 'action' => 'add')); ?> </li>	
-
-		<li><?php echo $this->Html->link(__('New Commune'), array('controller' => 'communes', 'action' => 'add')); ?> </li>		
-
+		<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'Neighborhoods', 'action' => 'add')); ?> </li>	
+		<li><?php echo $this->Html->link(__('New Commune'), array('controller' => 'Communes', 'action' => 'add')); ?> </li>		
 	<?php }?>	
+	<li><?php echo $this->Html->link(__('New Person'), array('controller' => 'People', 'action' => 'add')); ?> </li>	
 	<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>
 
 
 <div class="accompaniments index">
+<?php if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>		
 	<h2><?php echo __('Accompaniments'); ?></h2>
 	<table>
 	<tr>
@@ -117,12 +119,14 @@
 		</td>
 	</tr>
 <?php endforeach; ?>
+	<?php }?>
 	</table>
+
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
 	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
+	'format' => __('PÃ¡gina {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
 	));
 	?>	</p>
 	<div class="paging">
@@ -132,7 +136,7 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));*/
 	?>
 	</div>
-	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Accompaniments', 'action' => 'index')); ?>
+	<?php echo $this->Html->link(__('Ver mÃ¡s'), array('controller' => 'Accompaniments', 'action' => 'index')); ?>
 </div>
 
 <div class="divulgations index">
@@ -178,7 +182,7 @@
 	<?php
 	echo $this->Paginator->counter(array(
 	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
+	'format' => __('PÃ¡gina {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
 	));
 	?>	</p>
 	<div class="paging">
@@ -188,7 +192,7 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));*/
 	?>
 	</div>
-	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Divulgations', 'action' => 'index')); ?>
+	<?php echo $this->Html->link(__('Ver mÃ¡s'), array('controller' => 'Divulgations', 'action' => 'index')); ?>
 </div>
 <?php echo $this->Js->writeBuffer(); ?>
 

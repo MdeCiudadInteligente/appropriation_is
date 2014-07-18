@@ -1,4 +1,4 @@
-<div class="sites view">
+﻿<div class="sites view">
 <h2><?php echo __('Site'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id Site'); ?></dt>

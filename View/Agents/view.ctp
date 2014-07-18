@@ -1,4 +1,4 @@
-<div class="agents view">
+﻿<div class="agents view">
 <h2><?php echo __('Agent'); ?></h2>
 	<dl>		
 		<dt><?php echo __('Person'); ?></dt>
