@@ -37,9 +37,9 @@
 
 	<?php		
 		echo $this->Form->input('site_id');		
-		echo $this->Form->input('meeting_date',array ('id' => 'datepicker'));
-		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
-		echo $this->Form->input('meeting_title');
+		echo $this->Form->input('meeting_date',array ('id' => 'datepicker'));		
+		echo $this->Form->input('meeting_type',array ('type'=>'select','options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme'),'empty'=>'Seleccione el tipo de reunión'));
+		echo $this->Form->input('meeting_title',array('maxlenght'=>'256'));
 		echo $this->Form->input('Person');/*La persona la acbe de agregar*/
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));	
