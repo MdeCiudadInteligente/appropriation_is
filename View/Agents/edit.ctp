@@ -4,7 +4,7 @@
 		<legend><?php echo __('Edit Agent'); ?></legend>
 	<?php
 		echo $this->Form->input('id_agent');
-		echo $this->Form->input('person_id',array('empty'=>'Seleccionar la persona'));
+		echo $this->Form->input('person_id');
 		echo $this->Form->input('zone_id',array('empty'=>'Seleccionar la zona'));
 	?>
 	</fieldset>

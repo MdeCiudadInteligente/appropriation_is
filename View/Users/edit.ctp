@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Edit User'); ?></legend>
 	<?php
-		echo $this->Form->input('agent_id',array('empty'=>'Seleccionar el agente'));
+		echo $this->Form->input('agent_id');
 		echo $this->Form->input('id_user');
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
