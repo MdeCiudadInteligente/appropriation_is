@@ -54,58 +54,6 @@
 		<li><?php echo $this->Html->link(__('New Agent'), array('controller' => 'agents', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Owners'), array('controller' => 'owners', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>
-	<div class="related">
-		<h3><?php echo __('Related Agents'); ?></h3>
-	<?php if (!empty($person['Agent'])): ?>
-		<dl>
-			<dt><?php echo __('Id Agent'); ?></dt>
-		<dd>
-	<?php echo $person['Agent']['id_agent']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Person Id'); ?></dt>
-		<dd>
-	<?php echo $person['Agent']['person_id']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Zone Id'); ?></dt>
-		<dd>
-	<?php echo $person['Agent']['zone_id']; ?>
-&nbsp;</dd>
-		</dl>
-	<?php endif; ?>
-		<div class="actions">
-			<ul>
-				<li><?php echo $this->Html->link(__('Edit Agent'), array('controller' => 'agents', 'action' => 'edit', $person['Agent']['id_agent'])); ?></li>
-			</ul>
-		</div>
-	</div>
-		<div class="related">
-		<h3><?php echo __('Related Owners'); ?></h3>
-	<?php if (!empty($person['Owner'])): ?>
-		<dl>
-			<dt><?php echo __('Id Owner'); ?></dt>
-		<dd>
-	<?php echo $person['Owner']['id_owner']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Roll'); ?></dt>
-		<dd>
-	<?php echo $person['Owner']['roll']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Site Id'); ?></dt>
-		<dd>
-	<?php echo $person['Owner']['site_id']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Person Id'); ?></dt>
-		<dd>
-	<?php echo $person['Owner']['person_id']; ?>
-&nbsp;</dd>
-		</dl>
-	<?php endif; ?>
-		<div class="actions">
-			<ul>
-				<li><?php echo $this->Html->link(__('Edit Owner'), array('controller' => 'owners', 'action' => 'edit', $person['Owner']['id_owner'])); ?></li>
-			</ul>
-		</div>
-	</div>
-	
