@@ -1,10 +1,10 @@
-<div class="neighborhoods form">
+﻿<div class="neighborhoods form">
 <?php echo $this->Form->create('Neighborhood'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Neighborhood'); ?></legend>
 	<?php	
-		echo $this->Form->input('neighborhood_name');
-		echo $this->Form->input('commune_id');
+		echo $this->Form->input('neighborhood_name',array('maxlength'=>'256'));
+		echo $this->Form->input('commune_id',array('empty'=>'Seleccione comuna'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -3,11 +3,8 @@
 	<fieldset>
 		<legend><?php echo __('Add User'); ?></legend>
 	<?php
-<<<<<<< HEAD
-		echo $this->Form->input('agent_id',array('empty'=>'Seleccione el tipo de divulgación'));
-=======
+
 		echo $this->Form->input('agent_id',array('empty'=>'Seleccionar el agente'));
->>>>>>> c30d7c813a2d0e696b91e06e0171f9df8979e235
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
 		echo $this->Form->input('permission_level',array ('options' => array ('1'=>'Administrador','2'=>'Agente','3'=>'Profesional','4'=>'Practicante'),'empty'=>'Seleccionar el nivel del permiso'));		

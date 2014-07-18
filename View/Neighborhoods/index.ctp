@@ -1,4 +1,4 @@
-<div class="neighborhoods index">
+﻿<div class="neighborhoods index">
 	<h2><?php echo __('Neighborhoods'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
