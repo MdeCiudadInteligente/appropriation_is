@@ -5,8 +5,11 @@ App::uses('AppController', 'Controller');
  *
  * @property Meeting $Meeting
  * @property PaginatorComponent $Paginator
+ * 
  */
+
 class MeetingsController extends AppController {
+	var $uses = array('Person','Meeting');
 
 /**
  * Components
@@ -20,31 +23,31 @@ class MeetingsController extends AppController {
 			'limit' => 10,
 	);
 	
+	
 
 /**
  * index method
  *
  * @return void
  */
-	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
 			return true;
 		}
-	}
 			
 	
 		// Default deny
 		//return false;
-
+			
+	}
 	public function index() {
 		$meeting=$this->Meeting->find('all');
 		$this->set('meetings', $meeting);
 		//$this->Meeting->recursive = 0;
-		$this->Paginator->settings=array('order' => array( 'Meeting.meeting_tittle' => 'asc'));
+		$this->Paginator->settings = $this->paginate;
 		$this->set('meetings', $this->Paginator->paginate('Meeting'));
 	
 	}
@@ -82,8 +85,8 @@ class MeetingsController extends AppController {
 		}
 		/*$sites = $this->Meeting->Site->find('list');
 		$this->set(compact('sites'));*/
-		$sites = $this->Meeting->Site->find('list', array('order'=>array('Site.site_name ASC')));
-		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
+		$sites = $this->Meeting->Site->find('list');
+		$people = $this->Person->find('list', array('fields'=>array('Person.id_person','Person.lastname')));
 		$this->set(compact('sites', 'people'));
 	}
 
@@ -113,7 +116,7 @@ class MeetingsController extends AppController {
 		$this->set(compact('sites'));*/
 		
 		$sites = $this->Meeting->Site->find('list');
-		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
+		$people = $this->Person->find('list', array('fields'=>array('Person.id_person','Person.lastname')));
 		$this->set(compact('sites', 'people'));
 	}
 
