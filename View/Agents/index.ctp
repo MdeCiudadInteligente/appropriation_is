@@ -1,4 +1,4 @@
-<div class="agents index">
+﻿<div class="agents index">
 	<h2><?php echo __('Agents'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

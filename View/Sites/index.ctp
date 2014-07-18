@@ -1,4 +1,4 @@
-<div class="sites index">
+﻿<div class="sites index">
 	<h2><?php echo __('Sites'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

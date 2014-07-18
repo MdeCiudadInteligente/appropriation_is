@@ -1,4 +1,4 @@
-<div class="people index">
+﻿<div class="people index">
 	<h2><?php echo __('People'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
