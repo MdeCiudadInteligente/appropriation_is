@@ -8,7 +8,7 @@
 			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_phone'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_address'); ?></th>
-			<th><?php //echo $this->Paginator->sort('site_mail'); ?></th>
+			<th><?php echo $this->Paginator->sort('site_mail'); ?></th>
 			
 			
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -21,7 +21,7 @@
 		<td><?php echo h($site['Site']['site_name']); ?>&nbsp;</td>
 		<td><?php echo h($site['Site']['site_phone']); ?>&nbsp;</td>
 		<td><?php echo h($site['Site']['site_address']); ?>&nbsp;</td>
-		<td><?php //echo h($site['Site']['site_mail']); ?>&nbsp;</td>
+		<td><?php echo h($site['Site']['site_mail']); ?>&nbsp;</td>
 		
 		
 		<td class="actions">

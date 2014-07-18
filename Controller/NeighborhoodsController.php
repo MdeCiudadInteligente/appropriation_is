@@ -14,14 +14,6 @@ class NeighborhoodsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-	public function isAuthorized($user) {
-		// Any registered user can access public functions
-	
-	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
-			return true;
-		}
-	}
 
 /**
  * index method

@@ -1,4 +1,4 @@
-﻿<div class="communes view">
+<div class="communes view">
 <h2><?php echo __('Commune'); ?></h2>
 	<dl>
 		<dt><?php echo __('Commune Name'); ?></dt>

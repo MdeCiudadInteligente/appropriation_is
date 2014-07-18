@@ -3,6 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Person'); ?></legend>
 	<?php
+		echo $this->Form->input('id_person',array('type'=>'text'));
 		echo $this->Form->input('name');
 		echo $this->Form->input('lastname');
 		echo $this->Form->input('charge');

@@ -1,4 +1,4 @@
-﻿<div class="siteTypes view">
+<div class="siteTypes view">
 <h2><?php echo __('Site Type'); ?></h2>
 	<dl>
 		<dt><?php echo __('Site Type'); ?></dt>

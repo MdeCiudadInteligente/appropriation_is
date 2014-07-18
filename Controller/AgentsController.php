@@ -14,15 +14,6 @@ class AgentsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-	
-	public function isAuthorized($user) {
-		// Any registered user can access public functions
-	
-	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
-			return true;
-		}
-	}
 
 /**
  * index method
@@ -45,10 +36,8 @@ class AgentsController extends AppController {
 		if (!$this->Agent->exists($id)) {
 			throw new NotFoundException(__('Invalid agent'));
 		}
-		
 		$options = array('conditions' => array('Agent.' . $this->Agent->primaryKey => $id));
 		$this->set('agent', $this->Agent->find('first', $options));
-		//$people = $this->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
 	}
 
 /**
@@ -66,7 +55,7 @@ class AgentsController extends AppController {
 				$this->Session->setFlash(__('The agent could not be saved. Please, try again.'));
 			}
 		}
-		$people = $this->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
+		$people = $this->Agent->Person->find('list');
 		$zones = $this->Agent->Zone->find('list');
 		$this->set(compact('people', 'zones'));
 	}

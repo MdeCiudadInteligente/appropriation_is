@@ -1,4 +1,4 @@
-﻿<div class="neighborhoods view">
+<div class="neighborhoods view">
 <h2><?php echo __('Neighborhood'); ?></h2>
 	<dl>
 		<dt><?php echo __('Neighborhood Name'); ?></dt>

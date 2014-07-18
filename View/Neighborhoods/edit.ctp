@@ -1,4 +1,4 @@
-﻿<div class="neighborhoods form">
+<div class="neighborhoods form">
 <?php echo $this->Form->create('Neighborhood'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Neighborhood'); ?></legend>

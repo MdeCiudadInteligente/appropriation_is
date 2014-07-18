@@ -86,7 +86,7 @@ class MeetingsController extends AppController {
 		/*$sites = $this->Meeting->Site->find('list');
 		$this->set(compact('sites'));*/
 		$sites = $this->Meeting->Site->find('list');
-		$people = $this->Person->find('list', array('fields'=>array('Person.id_person','Person.lastname')));
+		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
 		$this->set(compact('sites', 'people'));
 	}
 
@@ -116,7 +116,7 @@ class MeetingsController extends AppController {
 		$this->set(compact('sites'));*/
 		
 		$sites = $this->Meeting->Site->find('list');
-		$people = $this->Person->find('list', array('fields'=>array('Person.id_person','Person.lastname')));
+		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
 		$this->set(compact('sites', 'people'));
 	}
 

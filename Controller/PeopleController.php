@@ -14,21 +14,7 @@ class PeopleController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-	
-	public function isAuthorized($user) {
-		// Any registered user can access public functions
-	
-	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')||(isset($user['permission_level']) && $user['permission_level'] === '4')) {
-			return true;
-		}
-			
-	
-		// Default deny
-		//return false;
-			
-	}
-	 
+
 /**
  * index method
  *
@@ -83,10 +69,7 @@ class PeopleController extends AppController {
 			throw new NotFoundException(__('Invalid person'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			
 			if ($this->Person->save($this->request->data)) {
-				//debug($a);
-				
 				$this->Session->setFlash(__('The person has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
@@ -95,7 +78,6 @@ class PeopleController extends AppController {
 		} else {
 			$options = array('conditions' => array('Person.' . $this->Person->primaryKey => $id));
 			$this->request->data = $this->Person->find('first', $options);
-		
 		}
 	}
 

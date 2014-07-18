@@ -1,4 +1,4 @@
-﻿<div class="meetingsPeople view">
+<div class="meetingsPeople view">
 <h2><?php echo __('Meetings Person'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id Meeting People'); ?></dt>

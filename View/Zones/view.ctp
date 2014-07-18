@@ -1,4 +1,4 @@
-﻿<div class="zones view">
+<div class="zones view">
 <h2><?php echo __('Zone'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id Zone'); ?></dt>

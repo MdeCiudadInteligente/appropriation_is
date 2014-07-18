@@ -15,15 +15,6 @@ class SitesController extends AppController {
  */
 	public $components = array('Paginator');
 
-
-	public function isAuthorized($user) {
-		// Any registered user can access public functions
-	
-	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
-			return true;
-		}
-	}
 /**
  * index method
  *
@@ -31,9 +22,7 @@ class SitesController extends AppController {
  */
 	public function index() {
 		$this->Site->recursive = 0;
-		$this->Paginator->settings=array('order' => array( 'Site.site_name' => 'asc'));
 		$this->set('sites', $this->Paginator->paginate());
-		//array('order'=>array('Site.site_name'=>'asc'))
 	}
 
 /**

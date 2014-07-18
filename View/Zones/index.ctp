@@ -1,4 +1,4 @@
-﻿<div class="zones index">
+<div class="zones index">
 	<h2><?php echo __('Zones'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

@@ -1,4 +1,4 @@
-﻿<div class="divulgations view">
+<div class="divulgations view">
 <h2><?php echo __('Divulgation'); ?></h2>
 	<dl>
 		<dt><?php echo __('Site'); ?></dt>

@@ -1,4 +1,4 @@
-﻿<div class="owners form">
+<div class="owners form">
 <?php echo $this->Form->create('Owner'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Owner'); ?></legend>

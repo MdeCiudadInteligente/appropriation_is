@@ -1,4 +1,4 @@
-﻿<div class="siteTypes index">
+<div class="siteTypes index">
 	<h2><?php echo __('Site Types'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

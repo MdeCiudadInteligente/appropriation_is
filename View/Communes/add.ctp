@@ -1,4 +1,4 @@
-﻿<div class="communes form">
+<div class="communes form">
 <?php echo $this->Form->create('Commune'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Commune'); ?></legend>
