@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 /**
  * Requests collector.
@@ -39,3 +40,6 @@ if (!defined('CAKE_CORE_INCLUDE_PATH')) {
 }
 
 require APP_DIR . DS . WEBROOT_DIR . DS . 'index.php';
+=======
+<?php
+>>>>>>> f88ab0ba3c166edb61bf2c895782b9c1e57fb9e9
