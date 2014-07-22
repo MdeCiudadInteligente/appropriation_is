@@ -1,4 +1,21 @@
-﻿<!-- Scripts para el calendario -->
+﻿<script type="text/javascript">
+function goBack()
+  {
+  window.history.back()
+  }
+</script>
+
+ <script type="text/javascript">
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+ 
+         return true;
+      }
+</script>
+<!-- Scripts para el calendario -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
@@ -37,13 +54,12 @@
 	<?php
 		echo $this->Form->input('site_id');
 
-		echo $this->Form->input('divulgation_type',array ('options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Toma de sitios de gobierno'=>'Toma de sitios de gobierno' ,'Eventos'=>'Eventos')));	
-		echo $this->Form->input('divulgation_date',array ('id' => 'datepicker'));
-		echo $this->Form->input('divulgation_type',array ('options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros')));	
+		echo $this->Form->input('divulgation_type',array ('type'=>'select','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de divulgación'));
+		echo $this->Form->input('divulgation_date',array ('id' => 'datepicker'));		
 		echo $this->Form->input('divulgation_name');
 		echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea'));		
-		echo $this->Form->input('participant_number');
-		echo $this->Form->input('activity_place');
+		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)'));
+		echo $this->Form->input('activity_place',array('maxLength'=>'256'));
 		echo $this->Form->input('divulgation_adjunct',array('type'=>'file'));
 		echo $this->Form->input('divulgation_adjunct1',array('type'=>'file'));
 		echo $this->Form->input('divulgation_adjunct2',array('type'=>'file'));

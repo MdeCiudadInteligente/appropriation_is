@@ -1,4 +1,4 @@
-﻿<div class="owners view">
+<div class="owners view">
 <h2><?php echo __('Owner'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id Owner'); ?></dt>

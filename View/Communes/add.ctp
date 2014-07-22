@@ -3,8 +3,8 @@
 	<fieldset>
 		<legend><?php echo __('Add Commune'); ?></legend>
 	<?php		
-		echo $this->Form->input('commune_name');
-		echo $this->Form->input('zone_id');
+		echo $this->Form->input('commune_name',array('maxlength'=>'256'));
+		echo $this->Form->input('zone_id',array('empty'=>'Seleccione zona'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

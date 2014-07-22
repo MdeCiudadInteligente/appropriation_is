@@ -15,6 +15,15 @@ class SitesController extends AppController {
  */
 	public $components = array('Paginator');
 
+
+	public function isAuthorized($user) {
+		// Any registered user can access public functions
+	
+	
+		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
+			return true;
+		}
+	}
 /**
  * index method
  *
@@ -22,7 +31,9 @@ class SitesController extends AppController {
  */
 	public function index() {
 		$this->Site->recursive = 0;
+		$this->Paginator->settings=array('order' => array( 'Site.site_name' => 'asc'));
 		$this->set('sites', $this->Paginator->paginate());
+		//array('order'=>array('Site.site_name'=>'asc'))
 	}
 
 /**
@@ -55,8 +66,8 @@ class SitesController extends AppController {
 				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
 			}
 		}
-		$neighborhoods = $this->Site->Neighborhood->find('list');
-		$siteTypes = $this->Site->SiteType->find('list');
+		$neighborhoods = $this->Site->Neighborhood->find('list',array('order' => array('Neighborhood.neighborhood_name' => 'ASC')));
+		$siteTypes = $this->Site->SiteType->find('list',array('order' => array('SiteType.site_type' => 'ASC')));
 		$this->set(compact('neighborhoods', 'siteTypes'));
 	}
 

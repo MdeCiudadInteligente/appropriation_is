@@ -247,10 +247,13 @@ msgid "The divulgation has been saved."
 msgstr "La divulgación se ha guardado."
 
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nombres"
 
 msgid "Lastname"
-msgstr "Apellido"
+msgstr "Apellidos"
+
+msgid "Email"
+msgstr "Correo"
 
 msgid "Charge"
 msgstr "Cargo"
@@ -397,17 +400,10 @@ msgid "Invalid user"
 msgstr "usuario no válido"
 
 msgid "Meeting Date"
-<<<<<<< HEAD
 msgstr "Fecha Reunión"
 
 msgid "Accompaniment Date"
 msgstr "Fecha Acompañamiento"
-=======
-msgstr "Fecha de Reunión"
-
-msgid "Accompaniment Date"
-msgstr "Fecha de Acompañamiento"
->>>>>>> e9522240eaafd01ee86f0c4b930bb5f31da62239
 
 msgid "Add User"
 msgstr "Añadir usuario"
@@ -426,6 +422,9 @@ msgstr "Tipos del Sitio"
 
 msgid "You are not authorized to access that location."
 msgstr "Eliminar Barrio"
+
+msgid "The divulgation has been deleted."
+msgstr "La divulgación hacido eliminada"
 
 msgid "Delete Neighborhood"
 msgstr "Eliminar Barrio"

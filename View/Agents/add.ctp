@@ -3,8 +3,8 @@
 	<fieldset>
 		<legend><?php echo __('Add Agent'); ?></legend>
 	<?php
-		echo $this->Form->input('person_id');
-		echo $this->Form->input('zone_id');
+		echo $this->Form->input('person_id',array('empty'=>'Seleccionar la persona'));
+		echo $this->Form->input('zone_id',array('empty'=>'Seleccionar la zona'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

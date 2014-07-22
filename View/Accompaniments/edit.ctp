@@ -1,4 +1,49 @@
-﻿<!-- Scripts para el calendario -->
+﻿<script type="text/javascript">
+function goBack()
+  {
+  window.history.back()
+  }
+</script>
+<!-- Scripts para el calendario -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+ <script>
+ <script type="text/javascript">
+ function validarEmail(valor) {
+	 var filter=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(valor)){
+  } else {
+   alert("La dirección de correo es incorrecta.");
+   document.getElementById("InscriptionRepresentativeMail").focus();
+   return false;
+  }
+  return true;
+}
+ </script> 
+ <script type="text/javascript">
+ function validarCorreo(valor) {
+	 var filter=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(valor)){
+  } else {
+   alert("La dirección de correo es incorrecta.");
+   document.getElementById("InscriptionContanctMail").focus();
+   return false;
+  }
+  return true;
+}
+ </script> 
+ <script type="text/javascript">
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+ 
+         return true;
+      }
+</script>
+<!-- Scripts para el calendario -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
@@ -41,7 +86,7 @@
 		echo $this->Form->input('accompaniment_type',array ('options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Estudiantes de PP, jóvenes por la convivencia o alfabetizadores' ,
 				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC','Otros'=>'Otros')));
 		echo $this->Form->input('accompaniment_description');
-		echo $this->Form->input('participant_number');
+		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('accompaniment_adjunct',array('disabled'=>'disabled'));
 		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file'));
 		echo $this->Form->input('accompaniment_adjunct1',array('disabled'=>'disabled'));
@@ -57,14 +102,17 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+		if ($usuario_level === '1'){?>
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Accompaniment.id_accompaniment')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Accompaniment.id_accompaniment'))); ?></li>
+		<?php }?>
 		<li><?php echo $this->Html->link(__('List Accompaniments'), array('action' => 'index')); ?></li>		
 		<?php 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level === '1'){?>
 		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>		
 		<?php }?>
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

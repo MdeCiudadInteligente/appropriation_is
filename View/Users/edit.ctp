@@ -7,7 +7,7 @@
 		echo $this->Form->input('id_user');
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
-		echo $this->Form->input('permission_level',array ('options' => array ('1'=>'Administrador','2'=>'Agente')));
+		echo $this->Form->input('permission_level',array ('options' => array ('1'=>'Administrador','2'=>'Agente','3'=>'Profesional','4'=>'Practicante')));	
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

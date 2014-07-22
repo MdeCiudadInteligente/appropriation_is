@@ -115,24 +115,40 @@ class Meeting extends AppModel {
 	);
 
 /**
- * hasAndBelongsToMany associations
+ * hasMany associations
  *
  * @var array
- */
-	public $hasAndBelongsToMany = array(
-		'Person' => array(
-			'className' => 'Person',
-			'joinTable' => 'meetings_people',
+ *//*
+	public $hasMany = array(
+		'MeetingPerson' => array(
+			'className' => 'MeetingPerson',
 			'foreignKey' => 'meeting_id',
-			'associationForeignKey' => 'person_id',
-			'unique' => 'keepExisting',
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
 			'limit' => '',
 			'offset' => '',
+			'exclusive' => '',
 			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
-
+*/
+	
+	public $hasAndBelongsToMany = array(
+			'Person' => array(
+					'className' => 'Person',
+					'joinTable' => 'meetings_people',
+					'foreignKey' => 'meeting_id',
+					'associationForeignKey' => 'person_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
+	);
 }

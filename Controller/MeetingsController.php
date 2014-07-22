@@ -5,8 +5,11 @@ App::uses('AppController', 'Controller');
  *
  * @property Meeting $Meeting
  * @property PaginatorComponent $Paginator
+ * 
  */
+
 class MeetingsController extends AppController {
+	var $uses = array('Person','Meeting');
 
 /**
  * Components
@@ -19,6 +22,8 @@ class MeetingsController extends AppController {
 			//'fields' => array('Meeting.meeting_type'),
 			'limit' => 10,
 	);
+	
+	
 
 /**
  * index method
@@ -29,7 +34,7 @@ class MeetingsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] === '3')||(isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
 			return true;
 		}
 			
@@ -38,12 +43,13 @@ class MeetingsController extends AppController {
 		//return false;
 			
 	}
-	
-	
-	
 	public function index() {
-		$this->Meeting->recursive = 0;
-		$this->set('meetings', $this->Paginator->paginate());
+		$meeting=$this->Meeting->find('all');
+		$this->set('meetings', $meeting);
+		//$this->Meeting->recursive = 0;
+		$this->Paginator->settings = $this->paginate;
+		$this->set('meetings', $this->Paginator->paginate('Meeting'));
+	
 	}
 
 /**
@@ -67,7 +73,7 @@ class MeetingsController extends AppController {
  * @return void
  */
 	public function add() {
-	if ($this->request->is('post')) {
+		if ($this->request->is('post')) {
 			/*$valor=$this->request;*/
 			$this->Meeting->create();
 			if ($this->Meeting->save($this->request->data)) {
@@ -77,9 +83,12 @@ class MeetingsController extends AppController {
 				$this->Session->setFlash(__('The meeting could not be saved. Please, try again.'));
 			}
 		}
-		$sites = $this->Meeting->Site->find('list');
-		$people = $this->Meeting->Person->find('list');
+		/*$sites = $this->Meeting->Site->find('list');
+		$this->set(compact('sites'));*/
+		$sites = $this->Meeting->Site->find('list',array('order' => array('Site.site_name' => 'ASC')));
+		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$this->set(compact('sites', 'people'));
+		
 	}
 
 /**
@@ -104,8 +113,11 @@ class MeetingsController extends AppController {
 			$options = array('conditions' => array('Meeting.' . $this->Meeting->primaryKey => $id));
 			$this->request->data = $this->Meeting->find('first', $options);
 		}
+		/*$sites = $this->Meeting->Site->find('list');
+		$this->set(compact('sites'));*/
+		
 		$sites = $this->Meeting->Site->find('list');
-		$people = $this->Meeting->Person->find('list');
+		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$this->set(compact('sites', 'people'));
 	}
 

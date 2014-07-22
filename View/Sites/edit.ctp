@@ -1,4 +1,14 @@
-﻿<div class="sites form">
+﻿<script type="text/javascript">
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+ 
+         return true;
+      }
+</script>
+<div class="sites form">
 <?php echo $this->Form->create('Site'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Site'); ?></legend>
@@ -7,7 +17,7 @@
 		echo $this->Form->input('site_type_id');
 		echo $this->Form->input('neighborhood_id');
 		echo $this->Form->input('site_name');
-		echo $this->Form->input('site_phone');
+		echo $this->Form->input('site_phone',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('site_address');
 		echo $this->Form->input('site_mail');		
 	?>

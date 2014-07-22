@@ -5,7 +5,7 @@
 	<?php
 		echo $this->Form->input('id_agent');
 		echo $this->Form->input('person_id');
-		echo $this->Form->input('zone_id');
+		echo $this->Form->input('zone_id',array('empty'=>'Seleccionar la zona'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
