@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # User specific & automatically generated files #
 #################################################
 /Config/database.php
@@ -31,37 +30,3 @@ Thumbs.db
 .buildpath
 .project
 .settings/
-=======
-# User specific & automatically generated files #
-#################################################
-/Config/database.php
-/tmp/*
-/tmp/cache/*
-/tmp/cache/models/*
-/tmp
-/lib/Cake/Console/Templates/skel/tmp/
-/plugins
-/vendors
-/build
-/dist
-/tags
-/webroot/index.php
-/webroot/test.php
-
-# OS generated files #
-######################
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-Icon?
-ehthumbs.db
-Thumbs.db
-
-# Eclipse generated files #
-######################
-.buildpath
-.project
-.settings/
->>>>>>> f88ab0ba3c166edb61bf2c895782b9c1e57fb9e9

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 App::uses('Neighborhood', 'Model');
 
@@ -42,48 +41,3 @@ class NeighborhoodTest extends CakeTestCase {
 	}
 
 }
-=======
-<?php
-App::uses('Neighborhood', 'Model');
-
-/**
- * Neighborhood Test Case
- *
- */
-class NeighborhoodTest extends CakeTestCase {
-
-/**
- * Fixtures
- *
- * @var array
- */
-	public $fixtures = array(
-		'app.neighborhood',
-		'app.commune',
-		'app.zone',
-		'app.site'
-	);
-
-/**
- * setUp method
- *
- * @return void
- */
-	public function setUp() {
-		parent::setUp();
-		$this->Neighborhood = ClassRegistry::init('Neighborhood');
-	}
-
-/**
- * tearDown method
- *
- * @return void
- */
-	public function tearDown() {
-		unset($this->Neighborhood);
-
-		parent::tearDown();
-	}
-
-}
->>>>>>> f88ab0ba3c166edb61bf2c895782b9c1e57fb9e9
