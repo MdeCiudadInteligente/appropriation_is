@@ -247,6 +247,7 @@ msgid "The divulgation has been saved."
 msgstr "La divulgación se ha guardado."
 
 msgid "Name"
+<<<<<<< HEAD
 msgstr "Nombres"
 
 msgid "Lastname"
@@ -254,6 +255,9 @@ msgstr "Apellidos"
 
 msgid "Email"
 msgstr "Correo"
+=======
+msgstr "Nombre y Apellido"
+>>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
 
 msgid "Charge"
 msgstr "Cargo"

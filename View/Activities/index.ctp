@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+=======
+﻿<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+>>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
 if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>		
 <div class="Activities index">
 	<h2><?php echo __('Meetings'); ?></h2>
@@ -63,11 +67,16 @@ if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+<<<<<<< HEAD
 	<li><?php //echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+=======
+	<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+>>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
 	<?php	
 	$usuario_level= $this->Session->read('Auth.User.permission_level');
 	
 	if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>		
+<<<<<<< HEAD
 		<li><?php echo $this->Html->link(__('Reuniones'), array('controller' => 'Meetings', 'action' => 'index')); ?> </li>	
 		<li><?php echo $this->Html->link(__('Acompañamientos'), array('controller' => 'Accompaniments', 'action' => 'index')); ?> </li>	
 	<?php }?>
@@ -83,6 +92,22 @@ if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>
 		<li><?php //echo $this->Html->link(__('New Commune'), array('controller' => 'Communes', 'action' => 'add')); ?> </li>		
 	<?php }?>	
 	<li><?php //echo $this->Html->link(__('New Person'), array('controller' => 'People', 'action' => 'add')); ?> </li>	
+=======
+		<li><?php echo $this->Html->link(__('New Meeting'), array('controller' => 'Meetings', 'action' => 'add')); ?> </li>	
+		<li><?php echo $this->Html->link(__('New Accompaniment'), array('controller' => 'Accompaniments', 'action' => 'add')); ?> </li>	
+	<?php }?>
+	<li><?php echo $this->Html->link(__('New Divulgation'), array('controller' => 'Divulgations', 'action' => 'add')); ?> </li>	
+
+	<?php if ($usuario_level === '1'){?>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'Users', 'action' => 'add')); ?> </li>		
+		<li><?php echo $this->Html->link(__('New Agent'), array('controller' => 'Agents', 'action' => 'add')); ?> </li>	
+		<li><?php echo $this->Html->link(__('New Site Type'), array('controller' => 'SiteTypes', 'action' => 'add')); ?> </li>			
+		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'Sites', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Neighborhood'), array('controller' => 'Neighborhoods', 'action' => 'add')); ?> </li>	
+		<li><?php echo $this->Html->link(__('New Commune'), array('controller' => 'Communes', 'action' => 'add')); ?> </li>		
+	<?php }?>	
+	<li><?php echo $this->Html->link(__('New Person'), array('controller' => 'People', 'action' => 'add')); ?> </li>	
+>>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
 	<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

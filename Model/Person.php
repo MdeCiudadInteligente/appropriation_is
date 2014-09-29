@@ -36,12 +36,16 @@ class Person extends AppModel {
 		'id_person' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'usuariounico' => array (
+					'rule'    => 'isUnique',
+					'message' => 'El usuario ya existe'
+			)
 		),
 		'name' => array(
 			'notEmpty' => array(
