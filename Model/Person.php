@@ -22,6 +22,10 @@ class Person extends AppModel {
  * @var string
  */
 	public $displayField = 'name';
+	
+	public $virtualFields = array(
+			'completename' => 'CONCAT(Person.name, " ", Person.lastname)'
+	);
 
 /**
  * Validation rules
@@ -68,6 +72,16 @@ class Person extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+		),
+		'email' => array(
+				'notEmpty' => array(
+						'rule' => array('notEmpty'),
+						//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				),
 		),
 		'phone' => array(
 			'notEmpty' => array(

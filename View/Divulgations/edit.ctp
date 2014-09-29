@@ -1,4 +1,21 @@
-﻿<!-- Scripts para el calendario -->
+﻿<script type="text/javascript">
+function goBack()
+  {
+  window.history.back()
+  }
+</script>
+
+ <script type="text/javascript">
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+ 
+         return true;
+      }
+</script>
+<!-- Scripts para el calendario -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
@@ -41,8 +58,8 @@
 		echo $this->Form->input('divulgation_name');
 		echo $this->Form->input('divulgation_type',array ('options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros')));
 		echo $this->Form->input('divulgation_description');
-		echo $this->Form->input('participant_number');
-		echo $this->Form->input('activity_place');
+		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)'));
+		echo $this->Form->input('activity_place',array('maxLength'=>'256'));
 		echo $this->Form->input('divulgation_adjunct',array('disabled'=>'disabled'));
 		echo $this->Form->input('divulgation_adjunct',array('type'=>'file'));
 		echo $this->Form->input('divulgation_adjunct1',array('disabled'=>'disabled'));
@@ -60,14 +77,17 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+		if ($usuario_level === '1'){?>
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Divulgation.id_divulgation')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Divulgation.id_divulgation'))); ?></li>
+		<?php }?>
 		<li><?php echo $this->Html->link(__('List Divulgations'), array('action' => 'index')); ?></li>
 		<?php 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level === '1'){?>
-		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>		
-		<?php }?>
+		//if ($usuario_level === '1'){?>
+		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>		
+		<?php //}?>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

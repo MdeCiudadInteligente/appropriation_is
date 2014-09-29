@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * This is core configuration file.
  *
@@ -22,7 +22,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 0);
+	Configure::write('debug', 2);
 
 /**
  * Configure the Error handler used to handle errors for your application. By default
@@ -75,7 +75,8 @@
 /**
  * Application wide charset encoding
  */
-	//Para idioma en español
+	//Para idioma en espa�ol
+	//Configure::write('App.encoding', 'iso-8859-1');
 	Configure::write('App.encoding', 'UTF-8');
 
 /**

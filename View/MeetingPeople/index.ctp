@@ -1,4 +1,4 @@
-﻿<div class="meetingPeople index">
+<div class="meetingPeople index">
 	<h2><?php echo __('Meeting People'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

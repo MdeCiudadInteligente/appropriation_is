@@ -1,4 +1,4 @@
-﻿<div class="owners index">
+<div class="owners index">
 	<h2><?php echo __('Owners'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
