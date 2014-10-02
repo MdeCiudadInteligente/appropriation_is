@@ -62,8 +62,18 @@ class PeopleController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Person->create();
+			$id_persona = $this->request->data['Person']['id_person'];
+			$persona_id = $this->Person->find('first', array('conditions'=>array('Person.id_person' => $id_persona)));
+			//debug($persona_id);
+			//debug($id_persona);
+			if($persona_id != array())
+			{
+				$this->Session->setFlash(__('El documento ya existe.'));
+			}
+			else 
 			if ($this->Person->save($this->request->data)) {
 				$this->Session->setFlash(__('The person has been saved.'));
+				
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The person could not be saved. Please, try again.'));

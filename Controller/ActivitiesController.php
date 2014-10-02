@@ -74,6 +74,55 @@
    	 
    	
    }
+      //funcion para vistas de configuration...
+	public function configuration()
+	{
+    	//$this->Meeting->recursive = -1;
+   		//$this->Accompaniments->recursive = -1;
+   		//$this->Divulgations->recursive = -1;
+   		
+   	//variable designada para meetings...	
+   	$meeting=$this->Meeting->find('all');
+   	
+   	//variable designada para Agents...
+   	$accompaniment=$this->Accompaniment->find('all');
+   	
+   	//variable designada para Divulgaciones...
+   	$divulgation=$this->Divulgation->find('all');
+   	
+   	//obteniedo los datos que trae la variable $meeting...
+   	$this->set('meetings', $meeting);
+   	
+   	//obteniedo los datos que trae la variable $accompaniment...
+   	$this->set('accompaniments', $accompaniment);
+   	
+   	//obteniedo los datos que trae la variable $divulgation...
+   	$this->set('divulgations', $divulgation);
+   	
+   	//Se define la configuración del paginador con la variable paginate previamente definida
+   	$this->Paginator->settings = $this->paginate;
+   	
+   	$this->Paginator->options=array(
+   			'update' => '#paginador1',
+   			'evalScripts' => false
+   	);
+   	
+   	//Paginación Meeting...
+   	
+   	$this->set('meetings', $this->Paginator->paginate('Meeting'));
+     	
+   	
+   	//Paginación Agent...
+   	
+   	$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
+   	
+   	//Paginación Site...
+   	
+   	$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
+   	 
+   	
+   }
+  
    //funcion para vistas de meeting...
  /*public function view($id = null)
     {

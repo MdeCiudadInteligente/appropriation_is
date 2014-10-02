@@ -1,4 +1,21 @@
-﻿<!-- Scripts para el calendario -->
+﻿<script type="text/javascript">
+function goBack()
+  {
+  window.history.back()
+  }
+</script>
+
+ <script type="text/javascript">
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+ 
+         return true;
+      }
+</script>
+ <!-- Scripts para el calendario -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
@@ -37,13 +54,11 @@
 	
 	<?php
 		echo $this->Form->input('site_id');
-
-		echo $this->Form->input('accompaniment_date',array ('id' => 'datepicker'));
-
-		echo $this->Form->input('accompaniment_type',array ('options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Estudiantes de PP, jóvenes por la convivencia o alfabetizadores' ,
-				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC','Sensibilización'=>'Sensibilización','Intervención sitio'=>'Intervención sitio','Otros'=>'Otros')));
+		echo $this->Form->input('accompaniment_date',array ('id' => 'datepicker'));			
+		echo $this->Form->input('accompaniment_type',array ('type'=>'select','options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Estudiantes de PP, jóvenes por la convivencia o alfabetizadores' ,
+				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC','Sensibilización'=>'Sensibilización','Intervención sitio'=>'Intervención sitio','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de acompañamiento'));
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));		
-		echo $this->Form->input('participant_number');
+		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)'));
 		//echo $this->Form->input('adjunct');	
 		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file'));
 		echo $this->Form->input('accompaniment_adjunct1',array('type'=>'file'));
@@ -63,8 +78,8 @@
 		<?php 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level === '1'){?>
-		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
 		<?php }?>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>

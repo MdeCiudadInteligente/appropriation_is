@@ -66,8 +66,8 @@ class SitesController extends AppController {
 				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
 			}
 		}
-		$neighborhoods = $this->Site->Neighborhood->find('list');
-		$siteTypes = $this->Site->SiteType->find('list');
+		$neighborhoods = $this->Site->Neighborhood->find('list',array('order' => array('Neighborhood.neighborhood_name' => 'ASC')));
+		$siteTypes = $this->Site->SiteType->find('list',array('order' => array('SiteType.site_type' => 'ASC')));
 		$this->set(compact('neighborhoods', 'siteTypes'));
 	}
 

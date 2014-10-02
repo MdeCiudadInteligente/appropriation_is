@@ -1,4 +1,4 @@
-<div class="people view">
+﻿<div class="people view">
 <h2><?php echo __('Person'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id Person'); ?></dt>
@@ -46,14 +46,28 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities')); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Person'), array('action' => 'edit', $person['Person']['id_person'])); ?> </li>
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+		if ($usuario_level === '1'){?>
 		<li><?php echo $this->Form->postLink(__('Delete Person'), array('action' => 'delete', $person['Person']['id_person']), null, __('Are you sure you want to delete # %s?', $person['Person']['id_person'])); ?> </li>
+		<?php }?>
 		<li><?php echo $this->Html->link(__('List People'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Person'), array('action' => 'add')); ?> </li>
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+		if ($usuario_level === '1'){?>
+<<<<<<< HEAD
+		<li><?php //echo $this->Html->link(__('List Agents'), array('controller' => 'agents', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Agent'), array('controller' => 'agents', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('List Owners'), array('controller' => 'owners', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
+=======
 		<li><?php echo $this->Html->link(__('List Agents'), array('controller' => 'agents', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Agent'), array('controller' => 'agents', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Owners'), array('controller' => 'owners', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
+>>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
+		<?php }?>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

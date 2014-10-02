@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * MeioUpload Behavior
  *
@@ -198,37 +198,37 @@ class MeioUploadBehavior extends ModelBehavior {
 				'message' => __d('meio_upload', 'This field has not been defined between the parameters of MeioUploadBehavior.')
 			),
 			'Dir' => array(
-				'message' => __d('meio_upload', 'The directory where the file would be placed there or is protected against writing.')
+				'message' => __d('meio_upload', 'El directorio donde el archivo se colocaría allí o está protegido contra escritura.')
 			),
 			'Empty' => array(
-				'message' => __d('meio_upload', 'The file can not be empty.')
+				'message' => __d('meio_upload', 'El archivo no puede estar vacío.')
 			),
 			'UploadError' => array(
-				'message' => __d('meio_upload', 'There were problems in uploading the file.')
+				'message' => __d('meio_upload', 'Hubo problemas en subir el archivo.')
 			),
 			'MaxSize' => array(
-				'message' => __d('meio_upload', 'The maximum file size is exceeded.')
+				'message' => __d('meio_upload', 'El tamaño máximo de archivo es excedido.')
 			),
 			'InvalidMime' => array(
-				'message' => __d('meio_upload', 'Invalid file type.')
+				'message' => __d('meio_upload', 'Tipo de archivo no válido.')
 			),
 			'InvalidExt' => array(
-				'message' => __d('meio_upload', 'Invalid file extension.')
+				'message' => __d('meio_upload', 'Extensión de archivo no válido.')
 			),
 			'MinWidth' => array(
-				'message' => __d('meio_upload', 'Image width is smaller than minimum allowed.')
+				'message' => __d('meio_upload', 'Ancho de la imagen es menor que el mínimo permitido.')
 			),
 			'MinHeight' => array(
-				'message' => __d('meio_upload', 'Image height is smaller than minimum allowed.')
+				'message' => __d('meio_upload', 'Altura de la imagen es menor que el mínimo permitido.')
 			),
 			'MaxWidth' => array(
-				'message' => __d('meio_upload', 'Image width is larger than maximum allowed.')
+				'message' => __d('meio_upload', 'Ancho de la imagen es mayor que el máximo permitido.')
 			),
 			'MaxHeight' => array(
-				'message' => __d('meio_upload', 'Image height is larger than maximum allowed.')
+				'message' => __d('meio_upload', 'Altura de la imagen es mayor que el máximo permitido.')
 			),
 			'HttpPost' => array(
-				'message' => __d('meio_upload', 'The uploaded file did not use http POST. Suspected security issue.')
+				'message' => __d('meio_upload', 'El archivo subido no hizo uso de HTTP POST. Problema de seguridad sospechado.')
 			)
 		);
 		$this->defaultValidations = $this->_arrayMerge($this->defaultValidations, $messages);

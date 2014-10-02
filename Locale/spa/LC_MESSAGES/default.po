@@ -247,7 +247,17 @@ msgid "The divulgation has been saved."
 msgstr "La divulgación se ha guardado."
 
 msgid "Name"
+<<<<<<< HEAD
+msgstr "Nombres"
+
+msgid "Lastname"
+msgstr "Apellidos"
+
+msgid "Email"
+msgstr "Correo"
+=======
 msgstr "Nombre y Apellido"
+>>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
 
 msgid "Charge"
 msgstr "Cargo"
@@ -416,6 +426,9 @@ msgstr "Tipos del Sitio"
 
 msgid "You are not authorized to access that location."
 msgstr "Eliminar Barrio"
+
+msgid "The divulgation has been deleted."
+msgstr "La divulgación hacido eliminada"
 
 msgid "Delete Neighborhood"
 msgstr "Eliminar Barrio"
@@ -1885,7 +1898,7 @@ msgstr "No se ha encontrado el método _scaffoldError en el controlador"
 #: \libs\view\helpers\form.php:277;1057
 #: \libs\view\scaffolds\edit.ctp:31
 msgid "Submit"
-msgstr "Enviar"
+msgstr "Guardar"
 
 #: \libs\view\helpers\form.php:405
 msgid "Error in field %s"

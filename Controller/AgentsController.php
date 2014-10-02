@@ -66,7 +66,7 @@ class AgentsController extends AppController {
 				$this->Session->setFlash(__('The agent could not be saved. Please, try again.'));
 			}
 		}
-		$people = $this->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
+		$people = $this->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$zones = $this->Agent->Zone->find('list');
 		$this->set(compact('people', 'zones'));
 	}
@@ -93,7 +93,7 @@ class AgentsController extends AppController {
 			$options = array('conditions' => array('Agent.' . $this->Agent->primaryKey => $id));
 			$this->request->data = $this->Agent->find('first', $options);
 		}
-		$people = $this->Agent->Person->find('list');
+		$people = $this->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$zones = $this->Agent->Zone->find('list');
 		$this->set(compact('people', 'zones'));
 	}

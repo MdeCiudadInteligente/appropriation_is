@@ -37,9 +37,9 @@
 
 	<?php		
 		echo $this->Form->input('site_id');		
-		echo $this->Form->input('meeting_date',array ('id' => 'datepicker'));
-		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
-		echo $this->Form->input('meeting_title');
+		echo $this->Form->input('meeting_date',array ('id' => 'datepicker'));		
+		echo $this->Form->input('meeting_type',array ('type'=>'select','options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme'),'empty'=>'Seleccione el tipo de reunión'));
+		echo $this->Form->input('meeting_title',array('maxlenght'=>'256'));
 		echo $this->Form->input('Person');/*La persona la acbe de agregar*/
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));	
@@ -62,8 +62,13 @@
 		<?php 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level === '1'){?>
+<<<<<<< HEAD
+		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
+=======
 		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
+>>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
 		
 		<?php }?>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>

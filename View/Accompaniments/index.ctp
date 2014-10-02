@@ -29,7 +29,10 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
+			<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+		if ($usuario_level === '1'){?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $accompaniment['Accompaniment']['id_accompaniment']), null, __('Are you sure you want to delete # %s?', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
+		<?php }?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -57,8 +60,8 @@
 		<?php 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level === '1'){?>
-		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('Sitios'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
 		<?php }?>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
