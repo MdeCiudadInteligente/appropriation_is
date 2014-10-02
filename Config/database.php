@@ -6,7 +6,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'M3dd1g103',
+		'password' => '',
 		'database' => 'appropriation_is',
 		//'encoding' => 'utf8'
 	);
