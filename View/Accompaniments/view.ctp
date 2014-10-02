@@ -60,13 +60,10 @@
 				<?php 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level === '1'){?>
-<<<<<<< HEAD
-		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>		
-=======
+
 		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>		
->>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
+
 		<?php }?>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>

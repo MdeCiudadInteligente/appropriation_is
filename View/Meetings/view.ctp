@@ -59,11 +59,9 @@
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level === '1'){?>
 		<li><?php echo $this->Form->postLink(__('Delete Meeting'), array('action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Are you sure you want to delete # %s?', $meeting['Meeting']['id_meeting'])); ?> </li>
-<<<<<<< HEAD
-		<?php  }?>
-=======
+
 		<?php }?>
->>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
+
 		<li><?php echo $this->Html->link(__('List Meetings'), array('action' => 'index')); ?> </li>
 		
 		<?php 
