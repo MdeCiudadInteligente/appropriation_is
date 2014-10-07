@@ -3,7 +3,7 @@
  $line= array_merge($line, array('site_name'=>"",'site_phone'=>"",'site_address'=>"",'site_mail'=>"",'neighborhood_name'=>"",'commune_name'=>"",'site_type'=>"",'name'=>"",'lastname'=>""));
  
  $this->Csv->addRow(array_keys($line));
- 
+	 
  foreach ($meetings as $meeting)
  {
       $line = $meeting['Meeting'];
@@ -12,7 +12,7 @@
       //$id_meeting=$meeting['Meeting']['id_meeting'];
       $meeting_date=$meeting['Meeting']['meeting_date'];
       $meeting_type=$meeting['Meeting']['meeting_type'];
-      $meeting_tittle=$meeting['Meeting']['meeting_title'];
+      $meeting_title=$meeting['Meeting']['meeting_title'];
       $meeting_description=$meeting['Meeting']['meeting_description'];
       $meeting_commitments=$meeting['Meeting']['meeting_commitments'];
       $dir=$meeting['Meeting']['dir'];
@@ -21,11 +21,11 @@
       //$line['id_meeting']=$id_meeting;
       $line['meeting_date']=$meeting_date;
       $line['meeting_type']=$meeting_type;
-      $line['meeting_tittle']=$meeting_tittle;
+      $line['meeting_title']=$meeting_title;
       $line['meeting_description']=$meeting_description;
       $line['meeting_commitments']=$meeting_commitments;
       $line['dir']=$dir;
-    
+  
       foreach ($sites as $site)
       {
       	if ($site['Site']['id_site']==$meeting['Meeting']['site_id'])
@@ -42,7 +42,7 @@
 	      	$line['site_mail']=$site_mail;
       	}
       }
-      
+ 
       foreach ($meetings_people as $meeting_person)
       {
       	if ($meeting_person['MeetingsPerson']['meeting_id']==$meeting['Meeting']['id_meeting'])
@@ -65,6 +65,9 @@
       	}
       }
       
+      //Inicializacion de array neighborhood ...
+      $line['neighborhood_name']="";
+          
       foreach($neighborhoods as $neighborhood)
       {
       	if ($neighborhood['Neighborhood']['id_neighborhood']==$site['Site']['neighborhood_id'])
@@ -74,7 +77,7 @@
 	      	$line['neighborhood_name']=$neighborhood_name;
       	}
       }
-      
+ 
       foreach($site_types as $site_type)
       {
       	if ($site_type['SiteType']['id_site_type']==$site['Site']['site_type_id'])
