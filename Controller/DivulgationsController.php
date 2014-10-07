@@ -40,6 +40,10 @@ class DivulgationsController extends AppController {
 	
 	
 	public function index() {
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		
+		//debug($id_usuario);
 		//variable designada para Agents...
 		$accompaniment=$this->Divulgation->find('all');
 		$this->set('divulgations', $accompaniment);
