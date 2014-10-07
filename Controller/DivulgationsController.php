@@ -37,7 +37,14 @@ class DivulgationsController extends AppController {
 	
 		// Default deny
 		//return false;
+	public function download()
+	{
 	
+		$this->set('divulgations', $this->Divulgation->find('all'));
+		$this->layout = null;
+		//$this->autoLayout = false;
+		//Configure::write('debug', '0');
+	}
 	
 	public function index() {
 		//variable designada para Agents...
@@ -46,6 +53,9 @@ class DivulgationsController extends AppController {
 		//$this->Accompaniment->recursive = 0;
 	   	$this->Paginator->settings = $this->paginate;
 		$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
+		if ($this->request->is('post')) {
+			return $this->redirect(array('action' => 'download'));
+		}
 	}
 
 /**
