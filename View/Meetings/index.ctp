@@ -1,4 +1,4 @@
-﻿<div class="meetings index">
+<div class="meetings index">
 	<h2><?php echo __('Meetings'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
@@ -19,14 +19,18 @@
 		<td><?php echo h($meeting['Meeting']['meeting_type']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['meeting_title']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['meeting_description']); ?>&nbsp;</td>
-		<td><?php echo h($meeting['Meeting']['meeting_commitments']); ?>&nbsp;</td>		
+		<td><?php echo h($meeting['Meeting']['meeting_commitments']); ?>&nbsp;</td>	
+		
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
-			<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level === '1'){?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Are you sure you want to delete # %s?', $meeting['Meeting']['id_meeting'])); ?>
+		<?php $usuario_id=$meeting['Meeting']['user_id'];?>
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
+		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>
+					<?php echo $this->Html->link(__('View'), array('action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
+					<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
+					<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Are you sure you want to delete # %s?', $meeting['Meeting']['id_meeting'])); ?>
 		<?php }?>
+			
+	
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -43,6 +47,9 @@
 		echo $this->Paginator->numbers(array('separator' => ''));
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
+	
+	<?php echo $this->Form->create('Exportar'); ?>
+	<?php echo $this->Form->end(__('Exportar a excel')); ?>
 	</div>
 </div>
 <div class="actions">

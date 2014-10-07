@@ -24,12 +24,13 @@
 		<td><?php echo h($divulgation['Divulgation']['activity_place']); ?>&nbsp;</td>
 		<!--  <td><?php //echo h($divulgation['Divulgation']['adjunct']); ?>&nbsp;</td>-->
 		<td class="actions">
+		<?php $usuario_id=$divulgation['Divulgation']['user_id'];?>
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
+		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $divulgation['Divulgation']['id_divulgation'])); ?>
-			<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level === '1'){?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $divulgation['Divulgation']['id_divulgation']), null, __('Are you sure you want to delete # %s?', $divulgation['Divulgation']['id_divulgation'])); ?>
-		<?php }?>
+		<?php }?>			
 		</td>
 	</tr>
 <?php endforeach; ?>

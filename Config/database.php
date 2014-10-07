@@ -7,7 +7,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'appropriation_is',
+		'database' => 'apropiacion_is',
 		//'encoding' => 'utf8'
 	);
 }

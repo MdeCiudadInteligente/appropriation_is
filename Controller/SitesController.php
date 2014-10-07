@@ -8,6 +8,7 @@ App::uses('AppController', 'Controller');
  */
 class SitesController extends AppController {
 
+	var $helpers = array('Html','Form','Csv','Js');
 /**
  * Components
  *
@@ -33,8 +34,27 @@ class SitesController extends AppController {
 		$this->Site->recursive = 0;
 		$this->Paginator->settings=array('order' => array( 'Site.site_name' => 'asc'));
 		$this->set('sites', $this->Paginator->paginate());
+		
+		$this->Site->recursive = 0;
+		$this->set('sites', $this->Paginator->paginate('Site'));
+		if ($this->request->is('post')) {
+			return $this->redirect(array('action' => 'download'));
+		}
 		//array('order'=>array('Site.site_name'=>'asc'))
 	}
+	
+	//reporte de sitios...
+	public function download()
+	{
+		$this->Site->recursive = 2;
+	
+		$this->set('sites', $this->Site->find('all'));
+		///$this->set('workshopSessions',$this->WorkshopSession->find('all'));
+		$this->layout = null;
+		//$this->autoLayout = false;
+		//Configure::write('debug', '0');
+	}
+	//fin de reportes...
 
 /**
  * view method
