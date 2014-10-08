@@ -49,12 +49,12 @@
       	{  
       		foreach ($people as $person)
       		{
-      			if ($person['People']['id_person']==$meeting_person['MeetingsPerson']['person_id'])
+      			if ($person['Person']['id_person']==$meeting_person['MeetingsPerson']['person_id'])
       			{
-			      	$id_person=$person['People']['id_person'];
-			      	$name=$person['People']['name'];
-			      	$lastname=$person['People']['lastname'];
-			      	$email=$person['People']['email'];
+			      	$id_person=$person['Person']['id_person'];
+			      	$name=$person['Person']['name'];
+			      	$lastname=$person['Person']['lastname'];
+			      	$email=$person['Person']['email'];
 			      	
 			        $line['id_person']=$id_person;
 			      	$line['name']=$name;

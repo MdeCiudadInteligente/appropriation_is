@@ -7,7 +7,8 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class AccompanimentsController extends AppController {
-
+	var $uses = array('Person','Meeting','Site','Accompaniment','Neighborhood','SiteType','User','Agent');
+	var $helpers = array('Html','Form','Csv','Js');
 /**
  * Components
  *
@@ -45,16 +46,41 @@ class AccompanimentsController extends AppController {
 		
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
+		debug($id_usuario);
 		
-		//debug($id_usuario);
+		/*$usuario_level= $this->Session->read('Auth.User.permission_level');
+		 $this->set('usuario_level',$usuario_level);*/
+		
 		//variable designada para Agents...
 		$accompaniment=$this->Accompaniment->find('all');
-		$this->set('accompaniments', $accompaniment);
-		//$this->Accompaniment->recursive = 0;
-	   	$this->Paginator->settings = $this->paginate;
-	   //	$this->Paginator->settings=array('order' => array( 'Accompaniment.Accompaniment_date' => 'desc'));
-		 	$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
+		$this->set('accompaniments', $accompaniment);		//$this->Meeting->recursive = 0;
+		
+		$this->Accompaniment->recursive = 0;
+		$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
+		if ($this->request->is('post')) {
+			return $this->redirect(array('action' => 'download'));
+		}
+		
+		$this->Paginator->settings = $this->paginate;
+		$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));	
+	
 
+	}
+	
+	public function download()
+	{
+		$this->Accompaniment->recursive = 0;
+		$this->set('accompaniments', $this->Accompaniment->find('all'));
+		$this->set('sites',$this->Site->find('all'));
+		$this->set('agents',$this->Agent->find('all'));
+		$this->set('users',$this->User->find('all'));
+		$this->set('neighborhoods',$this->Neighborhood->find('all'));
+		$this->set('site_types',$this->SiteType->find('all'));
+		$this->set('people',$this->Person->find('all'));
+	
+		$this->layout = null;
+		//$this->autoLayout = false;
+		//Configure::write('debug', '0');
 	}
 
 /**
