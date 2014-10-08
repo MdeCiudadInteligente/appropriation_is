@@ -1,5 +1,6 @@
 <?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>		
+<?php //echo "Bienvenido:". $name_usuario;?>
 <div class="Activities index">
 	<h2><?php echo __('Meetings'); ?></h2>
 	<div id="paginador1">
@@ -88,7 +89,7 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 	<?php //}?>	
 	<li><?php //echo $this->Html->link(__('New Person'), array('controller' => 'People', 'action' => 'add')); ?> </li>	
 
-	<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
+	<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>
 

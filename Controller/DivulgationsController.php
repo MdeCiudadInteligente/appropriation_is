@@ -8,6 +8,8 @@ App::uses('AppController', 'Controller');
  */
 class DivulgationsController extends AppController {
 
+	var $uses = array('Person','Divulgation','Site','User','Agent','Neighborhood','SiteType');
+	var $helpers = array('Html','Form','Csv','Js');
 /**
  * Components
  *
@@ -47,9 +49,31 @@ class DivulgationsController extends AppController {
 		//variable designada para Agents...
 		$accompaniment=$this->Divulgation->find('all');
 		$this->set('divulgations', $accompaniment);
+		
+		$this->Divulgation->recursive = 0;
+		$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
+		if ($this->request->is('post')) {
+			return $this->redirect(array('action' => 'download'));
+		}
 		//$this->Accompaniment->recursive = 0;
 	   	$this->Paginator->settings = $this->paginate;
 		$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
+	}
+	
+	public function download()
+	{
+		$this->Divulgation->recursive = 0;
+		$this->set('divulgations', $this->Divulgation->find('all'));
+		$this->set('sites',$this->Site->find('all'));
+		$this->set('agents',$this->Agent->find('all'));
+		$this->set('users',$this->User->find('all'));
+		$this->set('people',$this->Person->find('all'));
+		$this->set('neighborhoods',$this->Neighborhood->find('all'));
+		$this->set('site_types',$this->SiteType->find('all'));
+	
+		$this->layout = null;
+		//$this->autoLayout = false;
+		//Configure::write('debug', '0');
 	}
 
 /**

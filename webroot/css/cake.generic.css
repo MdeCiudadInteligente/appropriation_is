@@ -106,16 +106,23 @@ p {
 	color: #333;
 	padding: 10px 20px 40px 20px;
 	float: left;
-<<<<<<< HEAD
 	width: 100%!important;
 	min-height: 1000px;
 	min-width: 1500px;
 }
-=======
-	width: 100%;
+
+#session{
+	/* background: #fff;
+	clear: both;
+	color: #333;
+	padding: 10px 20px 40px 20px;*/	
+	text-align: right;
+	/*width: 100%!important;*/
+	/*min-height: 10px;
+	min-width: 1500px;*/
+}
 	/*aqui se maneja el scrollbar*/
 	/*overflow: auto;*/
->>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
 }
 #footer {
 	clear: both;

@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class AccompanimentsController extends AppController {
-	var $uses = array('Person','Meeting','Site','Accompaniment','Neighborhood','SiteType','User','Agent');
+	var $uses = array('Person','Site','Accompaniment','Neighborhood','SiteType','User','Agent');
 	var $helpers = array('Html','Form','Csv','Js');
 /**
  * Components

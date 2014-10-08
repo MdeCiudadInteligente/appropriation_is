@@ -1,34 +1,17 @@
 ﻿<?php
- 	$line= $meetings[0]['Meeting'];
- 	$line= array_merge($line, array('site_name'=>"",'site_phone'=>"",'site_address'=>"",'site_mail'=>"",'neighborhood_name'=>"",'commune_name'=>"",'site_type'=>"",'id_person'=>"",'name'=>"",'lastname'=>"",'email'=>"",'charge'=>""));
+ $line= $divulgations[0]['Divulgation'];
+ $line= array_merge($line, array('site_name'=>"",'site_phone'=>"",'site_address'=>"",'site_mail'=>"",'neighborhood_name'=>"",'commune_name'=>"",'site_type'=>"",'id_person'=>"",'name'=>"",'lastname'=>"",'email'=>"",'charge'=>""));
  
- 	$this->Csv->addRow(array_keys($line));
+ $this->Csv->addRow(array_keys($line));
 	 
- 	foreach ($meetings as $meeting)
- 	{
-      $line = $meeting['Meeting'];
+ foreach ($divulgations as $divulgation)
+ {
+      $line = $divulgation['Divulgation'];
       $line= array_merge($line, array('site_name'=>"",'site_phone'=>"",'site_address'=>"",'site_mail'=>"",'neighborhood_name'=>"",'commune_name'=>"",'site_type'=>"",'id_person'=>"",'name'=>"",'lastname'=>"",'email'=>"",'charge'=>""));
-      
-      /*//$id_meeting=$meeting['Meeting']['id_meeting'];
-      $meeting_date=$meeting['Meeting']['meeting_date'];
-      $meeting_type=$meeting['Meeting']['meeting_type'];
-      $meeting_title=$meeting['Meeting']['meeting_title'];
-      $meeting_description=$meeting['Meeting']['meeting_description'];
-      $meeting_commitments=$meeting['Meeting']['meeting_commitments'];
-      $dir=$meeting['Meeting']['dir'];
-      
-   
-      //$line['id_meeting']=$id_meeting;
-      $line['meeting_date']=$meeting_date;
-      $line['meeting_type']=$meeting_type;
-      $line['meeting_title']=$meeting_title;
-      $line['meeting_description']=$meeting_description;
-      $line['meeting_commitments']=$meeting_commitments;
-      $line['dir']=$dir;*/
-  
+        
       foreach ($sites as $site)
       {
-      	if ($site['Site']['id_site']==$meeting['Meeting']['site_id'])
+      	if ($site['Site']['id_site']==$divulgation['Divulgation']['site_id'])
       	{ 
 	      	$site_name=$site['Site']['site_name'];
 	      	$site_phone=$site['Site']['site_phone'];
@@ -43,9 +26,9 @@
       	}
       }
  
-  foreach ($users as $user)
+      foreach ($users as $user)
       {
-      	if ($user['User']['id_user']==$meeting['Meeting']['user_id'])
+      	if ($user['User']['id_user']==$divulgation['Divulgation']['user_id'])
       	{  
       		foreach ($agents as $agent)
       		{
@@ -74,7 +57,7 @@
       }
       
       //Inicializacion de array neighborhood ...
-      $line['neighborhood_name']="";
+     // $line['neighborhood_name']="";
           
       foreach($neighborhoods as $neighborhood)
       {
@@ -103,6 +86,6 @@
        //debug($inscription);
  }
  
- $filename='meetings';
- echo $this->Csv->render($filename);
+ $filename='Divulgations';
+ echo  $this->Csv->render($filename);
 ?>
