@@ -42,7 +42,7 @@ $cakeDescription = __d('cake_dev', '');
 		<div id="session"> 
 			<?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout'));?> 
 		</div>
-		<div> 		
+		<div id="bienvenida"> 		
 				<?php $name_usuario = $this->Session->read('Auth.User.username');
 		   		$this->set('name_usuario',$name_usuario);?>
 				<?php echo "Bienvenido:". $name_usuario;?>		
