@@ -31,6 +31,9 @@
    		$id_usuario = $this->Session->read('Auth.User.id_user');
    		$this->set('id_usuario',$id_usuario);
    		
+   		$name_usuario = $this->Session->read('Auth.User.username');
+   		$this->set('name_usuario',$name_usuario);
+   		
    		//debug($id_usuario);
    		//$this->Meeting->recursive = -1;
    		//$this->Accompaniments->recursive = -1;

@@ -53,13 +53,13 @@ h1 {
 h2 {
 	background:#fff;
 	color: #00a996;
-	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
+	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size: 190%;
 }
 h3 {
 	color: #2c6877;
-	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
-	font-size: 165%;
+	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
+	font-size: 135%;
 }
 h4 {
 	color: #993;
@@ -106,16 +106,32 @@ p {
 	color: #333;
 	padding: 10px 20px 40px 20px;
 	float: left;
-<<<<<<< HEAD
 	width: 100%!important;
 	min-height: 1000px;
 	min-width: 1500px;
 }
-=======
-	width: 100%;
+
+#session{
+	/* background: #fff;
+	clear: both;
+	color: #333;
+	padding: 10px 20px 40px 20px;*/	
+	text-align: right;
+	/*width: 100%!important;*/
+	/*min-height: 10px;
+	min-width: 1500px;*/
+}
+
+#bienvenida{
+	padding-left: 25px;
+	/* font-weight: bold; */
+	color: #696969;
+	font-family: 'lucida grande',verdana,helvetica,arial,sans-serif;
+	font-size: 115%;
+		
+}
 	/*aqui se maneja el scrollbar*/
 	/*overflow: auto;*/
->>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
 }
 #footer {
 	clear: both;
@@ -138,11 +154,12 @@ div.view {
 div.actions {
 	float:left;
 	width:16%;
-	padding:10px 1.5%;
+	padding:5px 1.5%;
 }
 div.actions h3 {
-	padding-top:0;
-	color:#777;
+	padding-top: 15px;
+	border-top: 1px solid #D6D3D3;
+	color: #777;	
 }
 
 
