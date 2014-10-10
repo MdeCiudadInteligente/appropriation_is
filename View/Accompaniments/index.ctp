@@ -27,10 +27,11 @@
 		
 		<!--  <td><?php //echo h($accompaniment['Accompaniment']['adjunct']); ?>&nbsp;</td>-->		
 		<td class="actions">
+		<?php echo $this->Html->link(__('View'), array('action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 		<?php $usuario_id=$accompaniment['Accompaniment']['user_id'];?>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
 		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
+			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $accompaniment['Accompaniment']['id_accompaniment']), null, __('Are you sure you want to delete # %s?', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 		<?php }?>		

@@ -31,12 +31,16 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 	<?php /*	<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct'],array('controller' => 'webroot','action' =>'/uploads/meeting/meeting_adjunct/'.$meeting['Meeting']['meeting_adjunct'])); ?>&nbsp;</td> 
 		<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct1'],array('controller' => 'webroot','action' =>'/uploads/meeting/meeting_adjunct1/'.$meeting['Meeting']['meeting_adjunct1'])); ?>&nbsp;</td>		
 	<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/meeting/meeting_adjunct2/'.$meeting['Meeting']['meeting_adjunct2'])); ?>&nbsp;</td>  */?>
-		
+		<td class="ver">  		
+			<?php //echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
+		</td>
 		<td class="actions">
+		<?php echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
 		<?php $usuario_id=$meeting['Meeting']['user_id'];?>
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
-		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>
-			<?php echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');?>	
+		<?php //echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
+		<?php if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>
+			<?php //echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Meetings','action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Meetings','action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Está seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
 			<?php }?>
@@ -121,12 +125,15 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 	<?php /*	<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>&nbsp;</td>
 		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct1/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1'])); ?>&nbsp;</td>
 		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>&nbsp;</td> */?>
-		
+		<td class="ver">  		
+			<?php //echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
+		</td>
 		<td class="actions">	
+		<?php echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 		<?php $usuario_id=$accompaniment['Accompaniment']['user_id'];?>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
 		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>	
-			<?php echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
+			<?php //echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Accompaniments','action' => 'edit', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Accompaniments','action' => 'delete', $accompaniment['Accompaniment']['id_accompaniment']), null, __('Are you sure you want to delete # %s?', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 		<?php }?>
@@ -185,10 +192,11 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2'])); ?>&nbsp;</td> */?>
 			
 		<td class="actions">
+		<?php echo $this->Html->link(__('View'), array('controller' => 'Divulgations','action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
 		<?php $usuario_id=$divulgation['Divulgation']['user_id'];?>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
 		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>	
-			<?php echo $this->Html->link(__('View'), array('controller' => 'Divulgations','action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
+			<?php //echo $this->Html->link(__('View'), array('controller' => 'Divulgations','action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Divulgations','action' => 'edit', $divulgation['Divulgation']['id_divulgation'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Divulgations','action' => 'delete', $divulgation['Divulgation']['id_divulgation']), null, __('Are you sure you want to delete # %s?', $divulgation['Divulgation']['id_divulgation'])); ?>
 			<?php }?>

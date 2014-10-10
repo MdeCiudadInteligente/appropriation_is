@@ -47,7 +47,7 @@ class MeetingsController extends AppController {
 	{
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);	
-		debug($id_usuario);	
+		//debug($id_usuario);	
 		
 		/*$usuario_level= $this->Session->read('Auth.User.permission_level');
 		$this->set('usuario_level',$usuario_level);*/
