@@ -39,5 +39,6 @@
 
 		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
+    <?php echo $persona_id; ?>
 </div>
 
