@@ -83,6 +83,8 @@
       //funcion para vistas de configuration...
 	public function configuration()
 	{
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
     	//$this->Meeting->recursive = -1;
    		//$this->Accompaniments->recursive = -1;
    		//$this->Divulgations->recursive = -1;

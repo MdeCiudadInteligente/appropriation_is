@@ -26,9 +26,9 @@
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $person['Person']['id_person'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $person['Person']['id_person'])); ?>
 			<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-			if ($usuario_level === '1'){?>
+			//if ($usuario_level === '1'){?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $person['Person']['id_person']), null, __('Are you sure you want to delete # %s?', $person['Person']['id_person'])); ?>
-			<?php }?>
+			<?php //}?>
 		</td>
 	</tr>
 <?php endforeach; ?>
