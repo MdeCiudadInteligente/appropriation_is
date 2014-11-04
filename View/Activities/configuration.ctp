@@ -122,7 +122,7 @@ if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>
 		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct1/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1'])); ?>&nbsp;</td>
 		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>&nbsp;</td> */?>
 		
-			<td class="actions">	
+		<td class="actions">	
 		<?php echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 		<?php $usuario_id=$accompaniment['Accompaniment']['user_id'];?>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
@@ -185,7 +185,7 @@ if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>
 		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct1'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct1/'.$divulgation['Divulgation']['divulgation_adjunct1'])); ?>&nbsp;</td> 
 		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2'])); ?>&nbsp;</td> */?>
 			
-			<td class="actions">
+		<td class="actions">
 		<?php echo $this->Html->link(__('View'), array('controller' => 'Divulgations','action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
 		<?php $usuario_id=$divulgation['Divulgation']['user_id'];?>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		

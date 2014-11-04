@@ -19,7 +19,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id_user'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id_user'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id_user']), null, __('Are you sure you want to delete # %s?', $user['User']['id_user'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id_user']), null, __('¿Seguro que quieres eliminar # %s?', $user['User']['id_user'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -54,6 +54,7 @@
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 	<?php if ($usuario_level == '1'){?>	
     	<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>	
+    	<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
 		<li><?php //echo $this->Html->link(__('List Agents'), array('controller' => 'agents', 'action' => 'index')); ?> </li>
 		<li><?php //echo $this->Html->link(__('New Agent'), array('controller' => 'agents', 'action' => 'add')); ?> </li>		
 		<?php }?>

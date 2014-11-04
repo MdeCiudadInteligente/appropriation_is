@@ -16,10 +16,10 @@
 		echo $this->Form->input('id_site',array('type'=>'text'));
 		echo $this->Form->input('site_type_id');
 		echo $this->Form->input('neighborhood_id');
-		echo $this->Form->input('site_name');
+		echo $this->Form->input('site_name',array('maxLength'=>60));
 		echo $this->Form->input('site_phone',array('onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('site_address');
-		echo $this->Form->input('site_mail');		
+		echo $this->Form->input('site_address',array('maxLength'=>80));
+		echo $this->Form->input('site_mail',array('maxLength'=>80));	
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

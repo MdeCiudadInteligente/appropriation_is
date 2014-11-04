@@ -36,9 +36,10 @@ $cakeDescription = __d('cake_dev', '');
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://localhost/appropriation_is/'); ?></h1>
 		</div>
 		<div id="content">
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-   		$this->set('usuario_level',$usuario_level);?>		
-		<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		//echo $usuario_level;
+   		$this->set('usuario_level',$usuario_level);?>		 
+		<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1')
+		{?>	
 		<div id="session"> 
 			<?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout'));?> 
 		</div>

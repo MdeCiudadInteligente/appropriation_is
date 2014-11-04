@@ -10,18 +10,19 @@
       }
 </script>
 <div class="people form">
+
 <?php echo $this->Form->create('Person'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Person'); ?></legend>
 	<?php
 		echo $this->Form->input('id_person',array('type'=>'text'));
-		echo $this->Form->input('name',array('maxlenght'=>'254'));
-		echo $this->Form->input('lastname',array('maxlenght'=>'254'));
-		echo $this->Form->input('charge');
-		echo $this->Form->input('email');
+		echo $this->Form->input('name',array('maxLength'=>50));
+		echo $this->Form->input('lastname',array('maxLength'=>50));
+		echo $this->Form->input('charge',array('maxLength'=>80));
+		echo $this->Form->input('email',array('maxLength'=>256));
 		echo $this->Form->input('phone',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('cell',array('onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('entity');
+		echo $this->Form->input('entity',array('maxLength'=>80));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

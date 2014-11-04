@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Edit Site Type'); ?></legend>
 	<?php		
-		echo $this->Form->input('site_type');
+		echo $this->Form->input('site_type',array('maxlength'=>'45'));	
 		echo $this->Form->input('site_estado',array ('options' => array ('Activo'=>'Activo','Inactivo'=>'Inactivo')));
 	?>
 	</fieldset>

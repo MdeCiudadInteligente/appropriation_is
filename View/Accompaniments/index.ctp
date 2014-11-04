@@ -7,9 +7,9 @@
 			<th><?php echo $this->Paginator->sort('accompaniment_type'); ?></th>
 			<th><?php echo $this->Paginator->sort('Descripción'); ?></th>
 			<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
-			<th><?php echo $this->Paginator->sort('adjunto1'); ?></th>
-			<th><?php echo $this->Paginator->sort('adjunto2'); ?></th>
-			<th><?php echo $this->Paginator->sort('adjunto3'); ?></th>
+			<th><?php //echo $this->Paginator->sort('adjunto1'); ?></th>
+			<th><?php //echo $this->Paginator->sort('adjunto2'); ?></th>
+			<th><?php //echo $this->Paginator->sort('adjunto3'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($accompaniments as $accompaniment): ?>
@@ -21,9 +21,9 @@
 		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>&nbsp;</td>
 		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_description']); ?>&nbsp;</td>
 		<td><?php echo h($accompaniment['Accompaniment']['participant_number']); ?>&nbsp;</td>
-		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>&nbsp;</td>
-		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct1/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1'])); ?>&nbsp;</td>
-		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>&nbsp;</td>
+		<td><?php //echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>&nbsp;</td>
+		<td><?php //echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct1/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1'])); ?>&nbsp;</td>
+		<td><?php //echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>&nbsp;</td>
 		
 		<!--  <td><?php //echo h($accompaniment['Accompaniment']['adjunct']); ?>&nbsp;</td>-->		
 		<td class="actions">
@@ -31,9 +31,9 @@
 		<?php $usuario_id=$accompaniment['Accompaniment']['user_id'];?>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
 		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>
-			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $accompaniment['Accompaniment']['id_accompaniment']), null, __('Are you sure you want to delete # %s?', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
+		<?php //echo $this->Html->link(__('View'), array('action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
+		<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
+		<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $accompaniment['Accompaniment']['id_accompaniment']), null, __('Are you sure you want to delete # %s?', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 		<?php }?>		
 		</td>
 	</tr>
