@@ -1,9 +1,9 @@
 ﻿<div class="agents view">
 <h2><?php echo __('Agent'); ?></h2>
 	<dl>		
-		<dt><?php echo __('Person'); ?></dt>
+		<dt><?php echo __('Agente'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($agent['Person']['name'], array('controller' => 'people', 'action' => 'view', $agent['Person']['id_person'])); ?>
+			<?php echo $this->Html->link($agent['Person']['name'].' '.$agent['Person']['lastname'], array('controller' => 'people', 'action' => 'view', $agent['Person']['id_person'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Zone'); ?></dt>
@@ -17,10 +17,11 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Agent'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Agent'), array('action' => 'edit', $agent['Agent']['id_agent'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $agent['Agent']['id_agent']), null, __('Are you sure you want to delete # %s?', $agent['Agent']['id_agent'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Agents'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Agent'), array('action' => 'add')); ?> </li>
+		
 		<li><?php //echo $this->Html->link(__('List People'), array('controller' => 'people', 'action' => 'index')); ?> </li>
 		<li><?php //echo $this->Html->link(__('New Person'), array('controller' => 'people', 'action' => 'add')); ?> </li>
 		<li><?php //echo $this->Html->link(__('List Zones'), array('controller' => 'zones', 'action' => 'index')); ?> </li>

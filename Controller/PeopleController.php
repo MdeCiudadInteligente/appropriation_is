@@ -69,14 +69,14 @@ class PeopleController extends AppController {
 			if($persona_id != array())
 			{
 				$this->Session->setFlash(__('El documento ya existe.'));
+				return $this->redirect(array('controller' => 'people', 'action' => 'add'));
 			}
 			else 
 			if ($this->Person->save($this->request->data)) {
-				$this->Session->setFlash(__('The person has been saved.'));
-				
+				$this->Session->setFlash(__('The person has been saved.'));				
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The person could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The person could not be saved. Please, try again.'));			
 			}
 		}
 	}
@@ -91,7 +91,6 @@ class PeopleController extends AppController {
 	public function edit($id = null) {
 		$persona_id = $this->Person->MeetingsPerson->find('first', array('conditions'=>array('MeetingsPerson.person_id' => $id)));
 		$this->set('persona_id', $persona_id);
-		//debug($persona_id);
 		if (!$this->Person->exists($id)) {
 			throw new NotFoundException(__('Invalid person'));
 		}

@@ -114,6 +114,9 @@ msgstr "Tipo Acompañamiento"
 msgid "Site"
 msgstr "Sitio"
 
+msgid "Are you sure you want to delete"
+msgstr "�Seguro que quieres eliminar"
+
 msgid "Password"
 msgstr "Contraseña"
 

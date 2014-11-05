@@ -52,14 +52,15 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Person'), array('action' => 'add')); ?></li>
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level === '1'){?>
-		<li><?php echo $this->Html->link(__('List Agents'), array('controller' => 'agents', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Agent'), array('controller' => 'agents', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Owners'), array('controller' => 'owners', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
+		<?php //$usuario_level= $this->Session->read('Auth.User.permission_level');
+		//if ($usuario_level === '1'){?>
+		<li><?php //echo $this->Html->link(__('List Agents'), array('controller' => 'agents', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Agent'), array('controller' => 'agents', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('List Owners'), array('controller' => 'owners', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Owner'), array('controller' => 'owners', 'action' => 'add')); ?> </li>
 
-		<?php }?>
+		<?php // }?>
 		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

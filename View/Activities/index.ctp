@@ -18,7 +18,7 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 		<th><?php echo $this->Paginator->sort('meeting_adjunct2'); ?></th> */?>
 		
 
-			<th class="actions"><?php echo __('Actions'); ?></th>
+	<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($meetings as $meeting): ?>
 	<tr>
@@ -36,14 +36,16 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 		</td>
 		<td class="actions">
 		<?php echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
-		<?php $usuario_id=$meeting['Meeting']['user_id'];?>
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');?>	
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');?>			
+		<?php //echo "Nivel". $usuario_level;?>
+		<?php $usuario_id=$meeting['Meeting']['user_id'];?>		
+		<?php //echo "usuario". $usuario_id;?>
 		<?php //echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
 		<?php if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>
-			<?php //echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Meetings','action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Meetings','action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Está seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
-			<?php }?>
+		<?php //echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
+		<?php echo $this->Html->link(__('Edit'), array('controller' => 'Meetings','action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
+		<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Meetings','action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Está seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
+		<?php }?>
 		</td>
 	</tr>
 <?php endforeach; ?>

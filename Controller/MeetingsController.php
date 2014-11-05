@@ -46,26 +46,21 @@ class MeetingsController extends AppController {
 	public function index() 
 	{
 		$id_usuario = $this->Session->read('Auth.User.id_user');
-		$this->set('id_usuario',$id_usuario);	
-		//debug($id_usuario);	
+		$this->set('id_usuario',$id_usuario);
 		
-		/*$usuario_level= $this->Session->read('Auth.User.permission_level');
-		$this->set('usuario_level',$usuario_level);*/
+		//debug($id_usuario);
 		
 		$meeting=$this->Meeting->find('all');
-		$this->set('meetings', $meeting);		//$this->Meeting->recursive = 0;
-		
-		$this->Meeting->recursive = 0;
-		$this->set('meetings', $this->Paginator->paginate('Meeting'));
+		$this->set('meetings', $meeting);
+		//$this->Meeting->recursive = 0;
 		if ($this->request->is('post')) {
 			return $this->redirect(array('action' => 'download'));
 		}
-		
 		$this->Paginator->settings = $this->paginate;
 		$this->set('meetings', $this->Paginator->paginate('Meeting'));
 	
 	}
-	
+
 	public function download()
 	{
 		$this->Meeting->recursive = 0;
@@ -76,12 +71,12 @@ class MeetingsController extends AppController {
 		$this->set('people',$this->Person->find('all'));
 		$this->set('neighborhoods',$this->Neighborhood->find('all'));
 		$this->set('site_types',$this->SiteType->find('all'));
-		
+	
 		$this->layout = null;
 		//$this->autoLayout = false;
 		//Configure::write('debug', '0');
 	}
-
+	
 /**
  * view method
  *
@@ -104,13 +99,21 @@ class MeetingsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
 			/*$valor=$this->request;*/
 			$this->Meeting->create();
 			if ($this->Meeting->save($this->request->data)) {
-				$this->Session->setFlash(/*print_r($valor).*/__(' The meeting has been saved.'));
+				
+				$this->Meeting->set(array(
+						'user_id' => $usuario
+				));
+				$this->Meeting->save();
+				
+				$this->Session->setFlash(/*print_r($valor).*/__('La reunión se ha guardado.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The meeting could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('La reunión no se pudo guardar . Por favor , inténtelo de nuevo.'));
 			}
 		}
 		/*$sites = $this->Meeting->Site->find('list');
@@ -134,10 +137,10 @@ class MeetingsController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Meeting->save($this->request->data)) {
-				$this->Session->setFlash(__('The meeting has been saved.'));
+				$this->Session->setFlash(__('La reunión se ha guardado.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The meeting could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('La reunión no se pudo guardar . Por favor , inténtelo de nuevo.'));
 			}
 		} else {
 			$options = array('conditions' => array('Meeting.' . $this->Meeting->primaryKey => $id));
@@ -165,9 +168,9 @@ class MeetingsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Meeting->delete()) {
-			$this->Session->setFlash(__('The meeting has been deleted.'));
+			$this->Session->setFlash(__('La reunión ha sido eliminado.'));
 		} else {
-			$this->Session->setFlash(__('The meeting could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('La reunión no se pudo eliminar . Por favor , inténtelo de nuevo.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

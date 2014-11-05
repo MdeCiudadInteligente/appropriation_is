@@ -50,8 +50,8 @@ class DivulgationsController extends AppController {
 		$accompaniment=$this->Divulgation->find('all');
 		$this->set('divulgations', $accompaniment);
 		
-		$this->Divulgation->recursive = 0;
-		$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
+		//$this->Divulgation->recursive = 0;
+		//$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
 		if ($this->request->is('post')) {
 			return $this->redirect(array('action' => 'download'));
 		}
@@ -97,9 +97,19 @@ class DivulgationsController extends AppController {
  * @return void
  */
 	public function add() {
+		
 		if ($this->request->is('post')) {
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
 			$this->Divulgation->create();
 			if ($this->Divulgation->save($this->request->data)) {
+				
+				$this->Divulgation->set(array(
+						'user_id' => $usuario
+				));
+				$this->Divulgation->save();
+				
 				$this->Session->setFlash(__('The divulgation has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {

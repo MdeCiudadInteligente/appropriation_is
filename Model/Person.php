@@ -49,12 +49,15 @@ class Person extends AppModel {
 		),
 		'name' => array(
 			'notEmpty' => array(
+					//'rule' => array('maxLength', '15'),
+					//'message' => 'Los nombres de usuario no pueden tener un largo mayor a 15 caracteres.',
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				//'on' => 'update' // Limit validation to 'create' or 'update' operations
+			
 			),
 		),
 		'lastname' => array(

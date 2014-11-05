@@ -22,16 +22,14 @@
 		<td><?php echo h($meeting['Meeting']['meeting_commitments']); ?>&nbsp;</td>	
 		
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
+		<?php echo $this->Html->link(__('View'), array('action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
 		<?php $usuario_id=$meeting['Meeting']['user_id'];?>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
 		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>
-					<?php //echo $this->Html->link(__('View'), array('action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
-					<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
-					<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Are you sure you want to delete # %s?', $meeting['Meeting']['id_meeting'])); ?>
+		<?php //echo $this->Html->link(__('View'), array('action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
+		<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
+		<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Are you sure you want to delete # %s?', $meeting['Meeting']['id_meeting'])); ?>
 		<?php }?>
-			
-	
 		</td>
 	</tr>
 <?php endforeach; ?>

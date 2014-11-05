@@ -55,8 +55,8 @@ class AccompanimentsController extends AppController {
 		$accompaniment=$this->Accompaniment->find('all');
 		$this->set('accompaniments', $accompaniment);		//$this->Meeting->recursive = 0;
 		
-		$this->Accompaniment->recursive = 0;
-		$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
+		//$this->Accompaniment->recursive = 0;
+		//$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
 		if ($this->request->is('post')) {
 			return $this->redirect(array('action' => 'download'));
 		}
@@ -104,9 +104,19 @@ class AccompanimentsController extends AppController {
  * @return void
  */
 	public function add() {
+		
 		if ($this->request->is('post')) {
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
 			$this->Accompaniment->create();
 			if ($this->Accompaniment->save($this->request->data)) {
+				
+				$this->Accompaniment->set(array(
+						'user_id' => $usuario
+				));
+				$this->Accompaniment->save();
+				
 				$this->Session->setFlash(__('The accompaniment has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {

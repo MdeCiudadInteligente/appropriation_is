@@ -98,7 +98,13 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add() {
-		if ($this->request->is('post')) {
+		if ($this->request->is('post')) {			
+		
+			$username= $this->request->data['User']['username'];
+			$verificar_usuario=$this->User->query("select distinct username from users where username = '$username'");
+			$this->set('verificar_usuario',$verificar_usuario);
+			if($verificar_usuario==Array( )){	
+						
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved.'));
@@ -107,9 +113,16 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
-		$agents = $this->User->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
+		else {
+			$this->Session->setFlash(__('El nombre de usuario no está disponible, por favor ingrese uno nuevo.'));
+		}		
+		}
+		$agent = $this->User->Agent->find('list', array('fields'=>array('person_id')));
+		//$agents = $this->User->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
+		$agents=$this->User->Agent->Person->find('list', array('conditions'=>array('id_person'=>$agent),'fields'=>array('Person.id_person','Person.completename')));
 		$this->set(compact('agents'));
 	}
+	
 
 /**
  * edit method

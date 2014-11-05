@@ -108,12 +108,12 @@ function goBack()
 		<?php }?>
 		<li><?php echo $this->Html->link(__('List Accompaniments'), array('action' => 'index')); ?></li>		
 		<?php 
-		$usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level === '1'){?>
-		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>		
+		//$usuario_level= $this->Session->read('Auth.User.permission_level');
+		//if ($usuario_level === '1'){?>
+		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>		
 
-		<?php }?>
+		<?php //}?>
 		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

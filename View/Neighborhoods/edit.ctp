@@ -4,7 +4,7 @@
 		<legend><?php echo __('Edit Neighborhood'); ?></legend>
 	<?php
 		echo $this->Form->input('id_neighborhood');
-		echo $this->Form->input('neighborhood_name');
+		echo $this->Form->input('neighborhood_name',array('maxlength'=>'80'));
 		echo $this->Form->input('commune_id');
 	?>
 	</fieldset>

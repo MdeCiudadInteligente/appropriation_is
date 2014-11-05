@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Neighborhood'); ?></legend>
 	<?php	
-		echo $this->Form->input('neighborhood_name',array('maxlength'=>'256'));
+		echo $this->Form->input('neighborhood_name',array('maxlength'=>'80'));
 		echo $this->Form->input('commune_id',array('empty'=>'Seleccione comuna'));
 	?>
 	</fieldset>
