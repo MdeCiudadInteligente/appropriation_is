@@ -30,3 +30,8 @@ Thumbs.db
 .buildpath
 .project
 .settings/
+Config/database.php.default
+Config/email.php.default
+webroot/uploads/meeting/meeting_adjunct/Capturabotones.JPG
+webroot/uploads/meeting/meeting_adjunct1/Capturabotones.JPG
+webroot/uploads/meeting/meeting_adjunct2/Capturabotones.JPG
