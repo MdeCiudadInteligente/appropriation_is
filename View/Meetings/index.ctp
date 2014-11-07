@@ -46,9 +46,10 @@
 		echo $this->Paginator->numbers(array('separator' => ''));
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
-	
+	<?php if($usuario_level== '1'){?>
 	<?php echo $this->Form->create('Exportar'); ?>
 	<?php echo $this->Form->end(__('Exportar a excel')); ?>
+	<?php }?>
 	</div>
 </div>
 <div class="actions">

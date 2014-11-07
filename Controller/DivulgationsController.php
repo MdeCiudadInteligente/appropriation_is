@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
  */
 class DivulgationsController extends AppController {
 
-	var $uses = array('Person','Divulgation','Site','User','Agent','Neighborhood','SiteType');
+	var $uses = array('Person','Divulgation','Site','User','Agent','Neighborhood','SiteType','Commune');
 	var $helpers = array('Html','Form','Csv','Js');
 /**
  * Components
@@ -70,6 +70,7 @@ class DivulgationsController extends AppController {
 		$this->set('people',$this->Person->find('all'));
 		$this->set('neighborhoods',$this->Neighborhood->find('all'));
 		$this->set('site_types',$this->SiteType->find('all'));
+		$this->set('communes',$this->Commune->find('all'));
 	
 		$this->layout = null;
 		//$this->autoLayout = false;

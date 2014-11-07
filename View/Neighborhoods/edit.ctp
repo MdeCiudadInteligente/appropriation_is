@@ -16,7 +16,7 @@
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Neighborhood.id_neighborhood')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Neighborhood.id_neighborhood'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Neighborhoods'), array('action' => 'index')); ?></li>
-        <li><?php echo $this->Html->link(__('New Neighborhoods'), array('action' => 'add')); ?></li>
+        <li><?php echo $this->Html->link(__('New Neighborhood'), array('action' => 'add')); ?></li>
 		<li><?php //echo $this->Html->link(__('List Communes'), array('controller' => 'communes', 'action' => 'index')); ?> </li>
 		<li><?php //echo $this->Html->link(__('New Commune'), array('controller' => 'communes', 'action' => 'add')); ?> </li>
 		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
