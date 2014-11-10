@@ -475,6 +475,12 @@ msgstr "Nuevo Sitio"
 msgid "List Sites"
 msgstr "Lista de Sitios"
 
+msgid "Accompaniment Title"
+msgstr "Título Acompañamiento"
+
+msgid "Divulgation Title"
+msgstr "Título Divulgación"
+
 msgid "Meeting Adjunct"
 msgstr "Adjunto Reunión 1"
 
