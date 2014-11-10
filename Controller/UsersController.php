@@ -8,6 +8,9 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
+var $uses = array('Person','Agent','Users');
+
+
 /**
  * Components
  *
