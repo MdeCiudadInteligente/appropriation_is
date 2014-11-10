@@ -17,7 +17,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $agent['Agent']['id_agent'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $agent['Agent']['id_agent'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $agent['Agent']['id_agent']), null, __('Are you sure you want to delete # %s?', $agent['Agent']['id_agent'])); ?>
+			<?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $agent['Agent']['id_agent']), null, __('Are you sure you want to delete # %s?', $agent['Agent']['id_agent'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

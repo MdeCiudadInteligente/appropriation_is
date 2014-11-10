@@ -19,7 +19,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id_user'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id_user'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id_user']), null, __('¿Seguro que quieres eliminar # %s?', $user['User']['id_user'])); ?>
+			<?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id_user']), null, __('¿Seguro que quieres eliminar # %s?', $user['User']['id_user'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
