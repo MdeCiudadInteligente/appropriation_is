@@ -138,4 +138,21 @@ class PeopleController extends AppController {
 			}
 			return $this->redirect(array('action' => 'index'));	
 	}
+
+
+/**
+ * delete method
+ *
+ * @throws NotFoundException
+ * @param string $query
+ * @return $array
+ */
+	public function getPerson($query) {
+	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+
+	    $this->set(compact('data')); // Pass $data to the view
+	    $this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+
+
 }

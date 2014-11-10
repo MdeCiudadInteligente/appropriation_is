@@ -64,7 +64,6 @@ class AccompanimentsController extends AppController {
 		$this->Paginator->settings = $this->paginate;
 		$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));	
 	
-
 	}
 	
 	public function download()

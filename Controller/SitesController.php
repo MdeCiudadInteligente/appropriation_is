@@ -130,6 +130,43 @@ class SitesController extends AppController {
 		if (!$this->Site->exists()) {
 			throw new NotFoundException(__('Invalid site'));
 		}
+
+	    if ($this->request->is('get')) {
+	        throw new MethodNotAllowedException();
+	    }
+
+		$sitio_id = $this->Site->find('first', array('joins' => array(
+				array(
+						'table' => 'accompaniments',
+						'alias' => 't1',
+						'type' => 'inner',
+						'foreignKey' => false,
+						'conditions'=> array('t1.site_id = Site.id_site')
+				),
+				array(
+						'table' => 'meetings',
+						'alias' => 't2',
+						'type' => 'inner',
+						'foreignKey' => false,
+						'conditions'=> array('t2.site_id = Site.id_site')
+				),				
+				array(
+						'table' => 'divulgations',
+						'alias' => 't3',
+						'type' => 'inner',
+						'foreignKey' => false,
+						'conditions'=> array('t3.site_id = Site.id_site')
+				)
+				
+		)));
+
+		
+		if($sitio_id!=array()){
+			$this->Session->setFlash(__('El sitio no se puede eliminar porque se encuentra asociado a una actividad.'));
+			return $this->redirect(array('action' => 'index'));
+				
+		}
+
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Site->delete()) {
 			$this->Session->setFlash(__('The site has been deleted.'));
