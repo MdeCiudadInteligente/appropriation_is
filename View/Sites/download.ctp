@@ -1,6 +1,6 @@
 ﻿<?php
- $line= $sites[0]['Site'];
- //$line= array_merge($line, array('id_site'=>"",'site_name'=>"",'site_phone'=>"",'site_address'=>"",'site_mail'=>"",'neighborhood_id'=>"",'site_type_id'=>""));
+ //$line= $sites[0]['Site'];
+ $line= array_merge($line, array('id_site'=>"",'site_name'=>"",'site_phone'=>"",'site_address'=>"",'site_mail'=>"",'neighborhood_id'=>"",'site_type_id'=>""));
 
  $this->Csv->addRow(array_keys($line));
  

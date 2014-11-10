@@ -2,6 +2,11 @@
 	<h2><?php echo __('Accompaniments'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+	 	<td>
+	 	<?php echo 'Número de reuniones:'.$totala; ?>
+	 	</td>
+	 </tr>
+	<tr>
 	        <th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('accompaniment_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('accompaniment_type'); ?></th>

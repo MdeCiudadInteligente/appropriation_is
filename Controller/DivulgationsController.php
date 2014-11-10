@@ -47,8 +47,8 @@ class DivulgationsController extends AppController {
 		
 		//debug($id_usuario);
 		//variable designada para Agents...
-		$accompaniment=$this->Divulgation->find('all');
-		$this->set('divulgations', $accompaniment);
+		$divulgation=$this->Divulgation->find('all');
+		$this->set('divulgations', $divulgation);
 		
 		//$this->Divulgation->recursive = 0;
 		//$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
@@ -58,6 +58,7 @@ class DivulgationsController extends AppController {
 		//$this->Accompaniment->recursive = 0;
 	   	$this->Paginator->settings = $this->paginate;
 		$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
+		$this->set('totald',$this->Divulgation->find('count'));
 	}
 	
 	public function download()
