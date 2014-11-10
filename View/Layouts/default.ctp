@@ -18,6 +18,12 @@ $cakeDescription = __d('cake_dev', '');
 		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
+
+	<script type="text/javascript">
+		<?php echo "var absPath='".Router::url( '/', true )."';"; ?>
+		<?php echo "var personService='". $this->Html->url(array('controller'=>'People','action' => 'getPerson', 'ext' => 'json'))."';"; ?>
+	</script>
+
 	<?php		
 		echo $this->Html->css('main');
 		echo $this->Html->css('cake.generic');

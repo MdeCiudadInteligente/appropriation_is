@@ -1,5 +1,4 @@
 var app=null;
-var absPath='<?php echo Router::url( $this->here, true ); ?>';
 
 $(document).ready(function(){
 	app=new App;
@@ -13,19 +12,16 @@ var App = function(){
 
 
 App.prototype.bind=function(){
-
-
+    app.bindAutocompletePersona('.person-autocomplete');
 }
 
 
+App.prototype.bindAutocompletePersona=function(selector){
 
-$('.nd_grupo').each(function(){
+    var serivce_route=absPath+"People/getPerson.json";
 
-    var element=$(this);
-    var server_ruta='modulos/programar_aulas/mods/mod_autocomplete_grupos.php';
-
-    $(element).autoSuggest(server_ruta,
-        {	minChars: 2,
+    $(selector).autoSuggest(serivce_route,
+        {   minChars: 2,
             formatList: function(data, elem){
             var nombre= data.descripcion;
             var asis_min=data.asis_min;
@@ -69,5 +65,6 @@ $('.nd_grupo').each(function(){
             },
             selectionAdded: function(elem){
             }
-        });
-});
+        });    
+
+};

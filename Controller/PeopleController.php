@@ -13,7 +13,7 @@ class PeopleController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','RequestHandler');
 	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
@@ -147,11 +147,18 @@ class PeopleController extends AppController {
  * @param string $query
  * @return $array
  */
-	public function getPerson($query) {
+	public function getPerson() {
 	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$person=$this->Person->find()->all();
+		$data = array(
+				'data'=>$person,
+		        'content' => '',
+		        'error' => ''
+		);
 
-	    $this->set(compact('data')); // Pass $data to the view
-	    $this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+
 	}
 
 
