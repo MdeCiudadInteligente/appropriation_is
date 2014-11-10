@@ -117,11 +117,22 @@ class UsersController extends AppController {
 			$this->Session->setFlash(__('El nombre de usuario no está disponible, por favor ingrese uno nuevo.'));
 		}		
 		}
-		$agent = $this->User->Agent->find('list', array('fields'=>array('person_id')));
+		//$agent = $this->User->Agent->find('list', array('fields'=>array('person_id')));
 		//$agents = $this->User->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
-		$agents=$this->User->Agent->Person->find('list', array('conditions'=>array('id_person'=>$agent),'fields'=>array('Person.id_person','Person.completename')));
+		//$agents=$this->User->Agent->Person->find('list', array('conditions'=>array('id_person'=>$agent),'fields'=>array('Person.completename','Agent.id_agent')));
+		
+		$agents = $this->Agent->find('list', array('joins' => array(
+				array(
+						'table' => 'people',
+						'alias' => 't1',
+						'type' => 'inner',
+						'foreignKey' => true,
+						'conditions'=> array('t1.id_person = Agent.person_id')
+				)
+		),'fields'=>array('t1.name')));
 		$this->set(compact('agents'));
 	}
+	
 	
 
 /**
