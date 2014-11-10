@@ -2,6 +2,11 @@
 	<h2><?php echo __('Sites'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+	 	<td>
+	 	<?php echo 'Número de sitios:'.$totals; ?>
+	 	</td>
+	 </tr>
+	<tr>
 			<th><?php echo $this->Paginator->sort('id_site'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_type_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('neighborhood_id'); ?></th>

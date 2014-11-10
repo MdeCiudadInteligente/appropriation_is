@@ -87,6 +87,7 @@ if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>
 	<?php }?>	
 	<?php if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>		
 	<li><?php echo $this->Html->link(__('Personas'), array('controller' => 'People', 'action' => 'index')); ?> </li>
+	<li><?php echo $this->Html->link(__('Encargados'), array('controller' => 'Owners','action' => 'index')); ?></li>
     <?php }?>
     
 	<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>

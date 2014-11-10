@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class AccompanimentsController extends AppController {
-	var $uses = array('Person','Site','Accompaniment','Neighborhood','SiteType','User','Agent');
+	var $uses = array('Person','Site','Accompaniment','Neighborhood','SiteType','User','Agent','Commune');
 	var $helpers = array('Html','Form','Csv','Js');
 /**
  * Components
@@ -63,7 +63,7 @@ class AccompanimentsController extends AppController {
 		
 		$this->Paginator->settings = $this->paginate;
 		$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));	
-	
+		$this->set('totala',$this->Accompaniment->find('count'));
 
 	}
 	
@@ -77,6 +77,7 @@ class AccompanimentsController extends AppController {
 		$this->set('neighborhoods',$this->Neighborhood->find('all'));
 		$this->set('site_types',$this->SiteType->find('all'));
 		$this->set('people',$this->Person->find('all'));
+		$this->set('communes',$this->Commune->find('all'));
 	
 		$this->layout = null;
 		//$this->autoLayout = false;

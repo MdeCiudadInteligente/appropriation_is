@@ -2,6 +2,11 @@
 	<h2><?php echo __('Accompaniments'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+	 	<td>
+	 	<?php echo 'Número de reuniones:'.$totala; ?>
+	 	</td>
+	 </tr>
+	<tr>
 	        <th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('accompaniment_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('accompaniment_type'); ?></th>
@@ -52,9 +57,10 @@
 		echo $this->Paginator->numbers(array('separator' => ''));
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
-	
+	<?php if($usuario_level== '1'){?>
 	<?php echo $this->Form->create('Exportar'); ?>
 	<?php echo $this->Form->end(__('Exportar a excel')); ?>
+	<?php }?>
 	</div>
 </div>
 <div class="actions">

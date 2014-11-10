@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
  */
 class DivulgationsController extends AppController {
 
-	var $uses = array('Person','Divulgation','Site','User','Agent','Neighborhood','SiteType');
+	var $uses = array('Person','Divulgation','Site','User','Agent','Neighborhood','SiteType','Commune');
 	var $helpers = array('Html','Form','Csv','Js');
 /**
  * Components
@@ -47,8 +47,8 @@ class DivulgationsController extends AppController {
 		
 		//debug($id_usuario);
 		//variable designada para Agents...
-		$accompaniment=$this->Divulgation->find('all');
-		$this->set('divulgations', $accompaniment);
+		$divulgation=$this->Divulgation->find('all');
+		$this->set('divulgations', $divulgation);
 		
 		//$this->Divulgation->recursive = 0;
 		//$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
@@ -58,6 +58,7 @@ class DivulgationsController extends AppController {
 		//$this->Accompaniment->recursive = 0;
 	   	$this->Paginator->settings = $this->paginate;
 		$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
+		$this->set('totald',$this->Divulgation->find('count'));
 	}
 	
 	public function download()
@@ -70,6 +71,7 @@ class DivulgationsController extends AppController {
 		$this->set('people',$this->Person->find('all'));
 		$this->set('neighborhoods',$this->Neighborhood->find('all'));
 		$this->set('site_types',$this->SiteType->find('all'));
+		$this->set('communes',$this->Commune->find('all'));
 	
 		$this->layout = null;
 		//$this->autoLayout = false;

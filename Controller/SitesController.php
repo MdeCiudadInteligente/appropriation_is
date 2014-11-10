@@ -40,6 +40,7 @@ class SitesController extends AppController {
 		if ($this->request->is('post')) {
 			return $this->redirect(array('action' => 'download'));
 		}
+		$this->set('totals',$this->Site->find('count'));
 		//array('order'=>array('Site.site_name'=>'asc'))
 	}
 	
@@ -130,7 +131,44 @@ class SitesController extends AppController {
 		if (!$this->Site->exists()) {
 			throw new NotFoundException(__('Invalid site'));
 		}
+		
 		$this->request->onlyAllow('post', 'delete');
+		//si el sitio pertenece a alguna de las actividades este no podrá ser eliminado//validacion.
+		$sitio_id = $this->Site->find('first', array('joins' => array(
+				array(
+						'table' => 'sites',
+						//'alias' => 'MarkersTag',
+						'type' => 'inner',
+						'foreignKey' => false,
+						'conditions'=> array('sites.id_site = accompaniments.site_id')
+				),
+				array(
+						'table' => 'meetings',
+						//'alias' => 'Tag',
+						'type' => 'inner',
+						'foreignKey' => false,
+						'conditions'=> array('meetings.site_id = sites.id_site')
+				),				
+				array(
+						'table' => 'divulgations',
+						//'alias' => 'Tag',
+						'type' => 'inner',
+						'foreignKey' => false,
+						'conditions'=> array('divulgations.site_id = sites.id_site')
+				)
+				
+		)));
+		
+		if($sitio_id!=array()){
+			$this->Session->setFlash(__('La persona no se puede eliminar porque se encuentra asociada a una actividad.'));
+			return $this->redirect(array('action' => 'index'));
+				
+		}
+		
+		//fin validación.
+		
+		
+		
 		if ($this->Site->delete()) {
 			$this->Session->setFlash(__('The site has been deleted.'));
 		} else {
