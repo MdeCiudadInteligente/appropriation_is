@@ -8,6 +8,8 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
+
+
 /**
  * Components
  *
@@ -121,7 +123,7 @@ class UsersController extends AppController {
 		//$agents = $this->User->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
 		//$agents=$this->User->Agent->Person->find('list', array('conditions'=>array('id_person'=>$agent),'fields'=>array('Person.completename','Agent.id_agent')));
 		
-		$agents = $this->Agent->find('list', array('joins' => array(
+		$agents = $this->User->Agent->find('list', array('joins' => array(
 				array(
 						'table' => 'people',
 						'alias' => 't1',
@@ -137,7 +139,7 @@ class UsersController extends AppController {
 
 /**
  * edit method
- *
+ *1
  * @throws NotFoundException
  * @param string $id
  * @return void
