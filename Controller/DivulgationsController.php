@@ -105,12 +105,12 @@ class DivulgationsController extends AppController {
 			$this->set('usuario',$usuario);
 			
 			$this->Divulgation->create();
-			if ($this->Divulgation->save($this->request->data)) {
+			
 				
 				$this->Divulgation->set(array(
 						'user_id' => $usuario
 				));
-				$this->Divulgation->save();
+			if ($this->Divulgation->save($this->request->data)) {
 				
 				$this->Session->setFlash(__('The divulgation has been saved.'));
 				return $this->redirect(array('action' => 'index'));
