@@ -101,7 +101,7 @@ class MeetingsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+public function add() {
 		if ($this->request->is('post')) {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);

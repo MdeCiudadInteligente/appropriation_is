@@ -37,12 +37,12 @@ function goBack()
   dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
   dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃ¡b'],
   dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
-  dateFormat: 'dd/mm/yy', firstDay: 0,
+  dateFormat: 'yy-mm-dd', firstDay: 0,
   initStatus: 'Selecciona la fecha', isRTL: false};
    $.datepicker.setDefaults($.datepicker.regional['es']);
  //miDate: fecha de comienzo D=dÃ­as | M=mes | Y=aÃ±o
  //maxDate: fecha tope D=dÃ­as | M=mes | Y=aÃ±o
-    $('#datepicker').datepicker('option', {dateFormat: 'dd/mm/yy'});
+    $('#datepicker').datepicker('option', {dateFormat: 'yy-mm-dd'});
 
 });
 </script>
@@ -54,7 +54,7 @@ function goBack()
 	
 	<?php
 		echo $this->Form->input('site_id');
-		echo $this->Form->input('accompaniment_date',array ('id' => 'datepicker'));			
+		echo $this->Form->input('accompaniment_date',array ('id' => 'datepicker','type'=>'text'));			
 		echo $this->Form->input('accompaniment_type',array ('type'=>'select','options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Estudiantes de PP, jóvenes por la convivencia o alfabetizadores' ,
 				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC','Sensibilización'=>'Sensibilización','Intervención sitio'=>'Intervención sitio','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de acompañamiento'));
 		echo $this->Form->input('accompaniment_title',array('maxlenght'=>'90'));
