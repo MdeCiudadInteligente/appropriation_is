@@ -98,18 +98,18 @@ class MeetingsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+public function add() {
 		if ($this->request->is('post')) {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			/*$valor=$this->request;*/
 			$this->Meeting->create();
-			if ($this->Meeting->save($this->request->data)) {
-				
+			//if ($this->Meeting->save($this->request->data)) {				
 				$this->Meeting->set(array(
 						'user_id' => $usuario
 				));
-				$this->Meeting->save();
+				//$this->Meeting->save();
+			if ($this->Meeting->save($this->request->data)){
 				
 				$this->Session->setFlash(/*print_r($valor).*/__('La reunión se ha guardado.'));
 				return $this->redirect(array('action' => 'index'));
