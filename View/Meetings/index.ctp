@@ -2,6 +2,11 @@
 	<h2><?php echo __('Meetings'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+	 	<td>
+	 	<?php echo 'Número de reuniones:'.$totalm; ?>
+	 	</td>
+	 </tr>	
+	<tr>
 			<th><?php echo $this->Paginator->sort('site_id'); ?></th>		
 			<th><?php echo $this->Paginator->sort('meeting_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('meeting_type'); ?></th>
@@ -33,9 +38,11 @@
 		</td>
 	</tr>
 <?php endforeach; ?>
+
 	</table>
 	<p>
 	<?php
+
 	echo $this->Paginator->counter(array(
 	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
 	));
@@ -50,6 +57,7 @@
 	<?php echo $this->Form->create('Exportar'); ?>
 	<?php echo $this->Form->end(__('Exportar a excel')); ?>
 	<?php }?>
+
 	</div>
 </div>
 <div class="actions">

@@ -47,8 +47,8 @@ class DivulgationsController extends AppController {
 		
 		//debug($id_usuario);
 		//variable designada para Agents...
-		$accompaniment=$this->Divulgation->find('all');
-		$this->set('divulgations', $accompaniment);
+		$divulgation=$this->Divulgation->find('all');
+		$this->set('divulgations', $divulgation);
 		
 		//$this->Divulgation->recursive = 0;
 		//$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
@@ -58,6 +58,7 @@ class DivulgationsController extends AppController {
 		//$this->Accompaniment->recursive = 0;
 	   	$this->Paginator->settings = $this->paginate;
 		$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
+		$this->set('totald',$this->Divulgation->find('count'));
 	}
 	
 	public function download()
@@ -104,12 +105,12 @@ class DivulgationsController extends AppController {
 			$this->set('usuario',$usuario);
 			
 			$this->Divulgation->create();
-			if ($this->Divulgation->save($this->request->data)) {
+			
 				
 				$this->Divulgation->set(array(
 						'user_id' => $usuario
 				));
-				$this->Divulgation->save();
+			if ($this->Divulgation->save($this->request->data)) {
 				
 				$this->Session->setFlash(__('The divulgation has been saved.'));
 				return $this->redirect(array('action' => 'index'));

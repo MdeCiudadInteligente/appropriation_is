@@ -63,7 +63,7 @@ class AccompanimentsController extends AppController {
 		
 		$this->Paginator->settings = $this->paginate;
 		$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));	
-	
+		$this->set('totala',$this->Accompaniment->find('count'));
 	}
 	
 	public function download()
@@ -110,12 +110,12 @@ class AccompanimentsController extends AppController {
 			$this->set('usuario',$usuario);
 			
 			$this->Accompaniment->create();
-			if ($this->Accompaniment->save($this->request->data)) {
+			
 				
 				$this->Accompaniment->set(array(
 						'user_id' => $usuario
 				));
-				$this->Accompaniment->save();
+				if ($this->Accompaniment->save($this->request->data)) {
 				
 				$this->Session->setFlash(__('The accompaniment has been saved.'));
 				return $this->redirect(array('action' => 'index'));

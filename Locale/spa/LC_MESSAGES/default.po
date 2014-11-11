@@ -250,7 +250,6 @@ msgid "The divulgation has been saved."
 msgstr "La divulgación se ha guardado."
 
 msgid "Name"
-<<<<<<< HEAD
 msgstr "Nombres"
 
 msgid "Lastname"
@@ -258,9 +257,6 @@ msgstr "Apellidos"
 
 msgid "Email"
 msgstr "Correo"
-=======
-msgstr "Nombre y Apellido"
->>>>>>> e5d3ba12237209b6f5b03fba51b06f34339f23a2
 
 msgid "Charge"
 msgstr "Cargo"
@@ -474,6 +470,12 @@ msgstr "Nuevo Sitio"
 
 msgid "List Sites"
 msgstr "Lista de Sitios"
+
+msgid "Accompaniment Title"
+msgstr "Título Acompañamiento"
+
+msgid "Divulgation Title"
+msgstr "Título Divulgación"
 
 msgid "Meeting Adjunct"
 msgstr "Adjunto Reunión 1"

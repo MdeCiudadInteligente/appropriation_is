@@ -18,12 +18,12 @@
   dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
   dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃ¡b'],
   dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
-  dateFormat: 'dd/mm/yy', firstDay: 0,
+  dateFormat: 'yy-mm-dd', firstDay: 0,
   initStatus: 'Selecciona la fecha', isRTL: false};
    $.datepicker.setDefaults($.datepicker.regional['es']);
  //miDate: fecha de comienzo D=dÃ­as | M=mes | Y=aÃ±o
  //maxDate: fecha tope D=dÃ­as | M=mes | Y=aÃ±o
-    $('#datepicker').datepicker('option', {dateFormat: 'dd/mm/yy'});
+    $('#datepicker').datepicker('option', {dateFormat: 'yy-mm-dd'});
 
 });
 </script>
@@ -36,7 +36,7 @@
 	<?php		
 
 		echo $this->Form->input('site_id');		
-		echo $this->Form->input('meeting_date',array ('id' => 'datepicker'));		
+		echo $this->Form->input('meeting_date',array ('id' => 'datepicker','type'=>'text'));		
 		echo $this->Form->input('meeting_type',array ('type'=>'select','options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme'),'empty'=>'Seleccione el tipo de reunión'));
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));
 		//echo $this->Form->input('Person');/*La persona la acbe de agregar*/
@@ -72,6 +72,7 @@
 		<li><?php echo $this->Html->link(__('List Meetings'), array('action' => 'index')); ?></li>
 		
 		<?php 
+
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level === '1'){?>
 		<!--<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>-->

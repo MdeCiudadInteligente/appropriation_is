@@ -2,6 +2,11 @@
 	<h2><?php echo __('Divulgations'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+	 	<td>
+	 	<?php echo 'Número de reuniones:'.$totald; ?>
+	 	</td>
+	 </tr>
+	<tr>
 			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_name'); ?></th>
@@ -38,6 +43,7 @@
 	</table>
 	<p>
 	<?php
+	echo 'Número de reuniones:';
 	echo $this->Paginator->counter(array(
 	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
 	'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
