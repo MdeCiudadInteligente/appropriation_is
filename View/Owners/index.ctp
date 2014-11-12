@@ -2,7 +2,7 @@
 	<h2><?php echo __('Owners'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_owner'); ?></th>
+			<th><?php //echo $this->Paginator->sort('id_owner'); ?></th>
 			<th><?php echo $this->Paginator->sort('roll'); ?></th>
 			<th><?php echo $this->Paginator->sort('site_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('person_id'); ?></th>
@@ -10,7 +10,7 @@
 	</tr>
 	<?php foreach ($owners as $owner): ?>
 	<tr>
-		<td><?php echo h($owner['Owner']['id_owner']); ?>&nbsp;</td>
+		<td><?php //echo h($owner['Owner']['id_owner']); ?>&nbsp;</td>
 		<td><?php echo h($owner['Owner']['roll']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($owner['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $owner['Site']['id_site'])); ?>

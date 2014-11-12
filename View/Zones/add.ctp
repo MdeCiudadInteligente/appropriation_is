@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Zone'); ?></legend>
 	<?php		
-		echo $this->Form->input('zone_name',array ('options' => array ('1'=>'1','2'=>'2' ,'3'=>'3','4'=>'4')));
+		echo $this->Form->input('zone_name');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

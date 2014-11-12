@@ -111,6 +111,9 @@ msgstr "Descripción Acompañamiento "
 msgid "Accompaniment Type"
 msgstr "Tipo Acompañamiento"
 
+msgid "The accompaniment has been deleted."
+msgstr "El acompa�amiento ha sido eliminado."
+
 msgid "Site"
 msgstr "Sitio"
 
@@ -277,7 +280,7 @@ msgid "List Owners"
 msgstr "Lista Encargado"
 
 msgid "Site Name"
-msgstr "Nombre Sitio"
+msgstr "Sitio"
 
 msgid "Site Phone"
 msgstr "Teléfono Sitio"
@@ -427,7 +430,7 @@ msgid "You are not authorized to access that location."
 msgstr "Eliminar Barrio"
 
 msgid "The divulgation has been deleted."
-msgstr "La divulgación hacido eliminada"
+msgstr "La divulgación ha sido eliminada."
 
 msgid "Delete Neighborhood"
 msgstr "Eliminar Barrio"

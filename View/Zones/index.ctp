@@ -11,7 +11,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $zone['Zone']['id_zone'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $zone['Zone']['id_zone'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $zone['Zone']['id_zone']), null, __('Are you sure you want to delete # %s?', $zone['Zone']['id_zone'])); ?>
+			<?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $zone['Zone']['id_zone']), null, __('Are you sure you want to delete # %s?', $zone['Zone']['id_zone'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
