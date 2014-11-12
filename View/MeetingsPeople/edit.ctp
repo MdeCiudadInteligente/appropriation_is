@@ -1,4 +1,4 @@
-<div class="meetingsPeople form">
+<div class="meetingsPeople form mde-form">
 <?php echo $this->Form->create('MeetingsPerson'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Meetings Person'); ?></legend>

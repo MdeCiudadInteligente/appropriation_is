@@ -47,7 +47,7 @@ function goBack()
 });
 </script>
  <!--Fin Scripts para el calendario -->
-<div class="divulgations form">
+<div class="divulgations form mde-form">
 <?php echo $this->Form->create('Divulgation',array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Divulgation'); ?></legend>

@@ -13,7 +13,7 @@ class PeopleController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','RequestHandler');
 	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
@@ -91,7 +91,6 @@ class PeopleController extends AppController {
 	public function edit($id = null) {
 		$persona_id = $this->Person->MeetingsPerson->find('first', array('conditions'=>array('MeetingsPerson.person_id' => $id)));
 		$this->set('persona_id', $persona_id);
-		///debug($persona_id);
 		if (!$this->Person->exists($id)) {
 			throw new NotFoundException(__('Invalid person'));
 		}
@@ -139,4 +138,36 @@ class PeopleController extends AppController {
 			}
 			return $this->redirect(array('action' => 'index'));	
 	}
+
+
+/**
+ * delete method
+ *
+ * @throws NotFoundException
+ * @param string $query
+ * @return $array
+ */
+	public function getPerson() {
+	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$queryString=$_GET['q'];
+		$condition=array('OR' => array(
+				    array('Person.id_person LIKE' => '%'.$queryString.'%'),
+				    array('Person.completename LIKE' => '%'.$queryString.'%')
+		));
+
+		$person=$this->Person->find('list',array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC'),'conditions' => $condition));
+		
+		foreach ($person as $doc => $completename) {
+				$json_data = array();
+				$json_data['documento']=$doc;
+				$json_data['completename']=$completename;
+				$data[]=$json_data;
+		}	
+
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+
+	}
+
+
 }

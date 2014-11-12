@@ -13,25 +13,34 @@ $cakeDescription = __d('cake_dev', '');
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400' rel='stylesheet' type='text/css'>
 	<title>
 		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
-	<?php		
-		echo $this->Html->css('cake.generic');
-		
-		echo $this->Html->meta('webroot/favicon.ico',array('type' => 'icon'));
 
-		echo $this->fetch('css');
+	<script type="text/javascript">
+		<?php echo "var absPath='".Router::url( '/', true )."';"; ?>
+		<?php echo "var personService='". $this->Html->url(array('controller'=>'People','action' => 'getPerson', 'ext' => 'json'))."';"; ?>
+	</script>
+
+	<?php		
+		echo $this->Html->css('main');
+		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('autoSuggest');
+		echo $this->Html->meta('webroot/favicon.ico',array('type' => 'icon'));
 		echo $this->fetch('script');
 	?>
 
 
-	<?php echo $this->Html->script('jquery');?>
+	<?php echo $this->Html->script('jquery-1.11.1.min');?>
+	<?php echo $this->Html->script('jquery-ui.min');?>
+	<?php echo $this->Html->script('jquery.autoSuggest');?>
+	<?php echo $this->Html->script('main');?>
 	
 </head>
 <body>
-	<div id="container">	
+	<div id="container" class="app-container">	
 		<div id="header">	
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://localhost/appropriation_is/'); ?></h1>
 		</div>
