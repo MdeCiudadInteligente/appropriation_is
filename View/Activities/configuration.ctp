@@ -77,7 +77,7 @@ if ($usuario_level === '3'||$usuario_level === '2'||$usuario_level === '1'){?>
 	<li><?php //echo $this->Html->link(__('Divulgaciones'), array('controller' => 'Divulgations', 'action' => 'index')); ?> </li>	
 
 	<?php if ($usuario_level === '1'){?>
-		<li><?php echo $this->Html->link(__('Usuarios'), array('controller' => 'Users', 'action' => 'index')); ?> </li>		
+		<li><?php //echo $this->Html->link(__('Usuarios'), array('controller' => 'Users', 'action' => 'index')); ?> </li>		
 		<li><?php echo $this->Html->link(__('Agentes'), array('controller' => 'Agents', 'action' => 'index')); ?> </li>	
 		<li><?php echo $this->Html->link(__('Tipos de Sitios'), array('controller' => 'SiteTypes', 'action' => 'index')); ?> </li>			
 		<li><?php echo $this->Html->link(__('Sitios'), array('controller' => 'Sites', 'action' => 'index')); ?> </li>
