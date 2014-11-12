@@ -338,6 +338,7 @@
 							input.focus();
 							return false;
 						});
+					item.data('prop-data',data);
 					org_li.before(item.html(data[opts.selectedItemProp]).prepend(close));
 					opts.selectionAdded.call(this, org_li.prev());	
 				}

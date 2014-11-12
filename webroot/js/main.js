@@ -37,12 +37,18 @@ App.prototype.bindAutocompletePersona=function(selector){
             resultClick: function(data){
                 //Variables de datos
                 var id=data.attributes.documento;
-                console.log(id);
-
+                var data_name=$('.results-input').data('input-name');
+                var elementID='val-input-'+id;
+                $('.results-input').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
             },selectionRemoved: function(elem){
+                var prop_data=elem.data('prop-data');
+                var doc=prop_data['documento'];
+                var elementID='val-input-'+doc;
+                $('#'+elementID).remove();
                 elem.remove();
- 
-            },
+            },selectionAdded:function(elem){
+                console.log('addElement',elem.data());
+            }
     });    
 
 };

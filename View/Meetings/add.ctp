@@ -45,12 +45,11 @@
 		<div class="seccion-person">	
 			<div class="input">
 				<label>Personas</label>
-				<input type="text" required="required" data-service="<?php echo $this->Html->url(array('controller'=>'People','action' => 'favorites', 'ext' => 'json')); ?>" class="person-autocomplete">
+				<input type="text" data-service="<?php echo $this->Html->url(array('controller'=>'People','action' => 'favorites', 'ext' => 'json')); ?>" class="person-autocomplete">
+				<div class="results-input" data-input-name="data[Person][Person][]">
+					
+				</div>
 			</div>
-			<section>
-
-
-			</section>
 		</div>	
 
 		<?php
