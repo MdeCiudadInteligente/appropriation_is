@@ -8,7 +8,8 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
-var $uses = array('Person','Agent','Users');
+
+
 /**
  * Components
  *
@@ -123,7 +124,7 @@ var $uses = array('Person','Agent','Users');
 		//$agents=$this->User->Agent->Person->find('list', array('conditions'=>array('id_person'=>$agent),'fields'=>array('Person.completename','Agent.id_agent')));
 		
 		$agents = $this->User->Agent->find('list', array('joins' => array(
-		array(
+				array(
 						'table' => 'people',
 						'alias' => 't1',
 						'type' => 'inner',
