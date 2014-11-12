@@ -1,34 +1,4 @@
-﻿<!-- Scripts para el calendario -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
- <script>
- $(function() {
-    $( "#datepicker" ).datepicker({
-	changeMonth: true,
-	changeYear: true
- });
-	$.datepicker.regional['es'] =
-  {
-  closeText: 'Fermer',
-  prevText: 'Previo',
-  nextText: 'PrÃ³ximo',
-  yearRange: "2007:2020",
-  monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-  monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-  monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃ©e',
-  dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
-  dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃ¡b'],
-  dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
-  dateFormat: 'yy-mm-dd', firstDay: 0,
-  initStatus: 'Selecciona la fecha', isRTL: false};
-   $.datepicker.setDefaults($.datepicker.regional['es']);
- //miDate: fecha de comienzo D=dÃ­as | M=mes | Y=aÃ±o
- //maxDate: fecha tope D=dÃ­as | M=mes | Y=aÃ±o
-    $('#datepicker').datepicker('option', {dateFormat: 'yy-mm-dd'});
-
-});
-</script>
- <!--Fin Scripts para el calendario -->
-<div class="meetings form mde-form">
+﻿<div class="meetings form mde-form">
 <?php echo $this->Form->create('Meeting',array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Add Meeting'); ?></legend>
