@@ -9,7 +9,7 @@
          return true;
       }
 </script>
-<div class="people form">
+<div class="people form mde-form">
 
 <?php echo $this->Form->create('Person'); ?>
 	<fieldset>

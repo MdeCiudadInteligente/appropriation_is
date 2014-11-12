@@ -47,7 +47,7 @@ function goBack()
 });
 </script>
  <!--Fin Scripts para el calendario -->
-<div class="accompaniments form">
+<div class="accompaniments form mde-form">
 <?php echo $this->Form->create('Accompaniment',array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Agregar acompañamiento'); ?></legend>

@@ -30,7 +30,7 @@
 });
 </script>
  <!--Fin Scripts para el calendario -->
-<div class="meetings form">
+<div class="meetings form mde-form">
 <?php echo $this->Form->create('Meeting',array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Meeting'); ?></legend>
