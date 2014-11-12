@@ -122,12 +122,8 @@ var $uses = array('Person','Agent','Users');
 		//$agents = $this->User->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
 		//$agents=$this->User->Agent->Person->find('list', array('conditions'=>array('id_person'=>$agent),'fields'=>array('Person.completename','Agent.id_agent')));
 		
-<<<<<<< HEAD
-		$agents = $this->Agent->find('list', array('joins' => array(
-=======
 		$agents = $this->User->Agent->find('list', array('joins' => array(
->>>>>>> dev
-				array(
+		array(
 						'table' => 'people',
 						'alias' => 't1',
 						'type' => 'inner',
