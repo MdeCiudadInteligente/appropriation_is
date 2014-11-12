@@ -27,6 +27,7 @@ $cakeDescription = __d('cake_dev', '');
 	<?php		
 		echo $this->Html->css('main');
 		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('autoSuggest');
 		echo $this->Html->meta('webroot/favicon.ico',array('type' => 'icon'));
 		echo $this->fetch('script');
 	?>
@@ -34,7 +35,7 @@ $cakeDescription = __d('cake_dev', '');
 
 	<?php echo $this->Html->script('jquery-1.11.1.min');?>
 	<?php echo $this->Html->script('jquery-ui.min');?>
-	<?php echo $this->Html->script('jquery.autoSuggest.minified');?>
+	<?php echo $this->Html->script('jquery.autoSuggest');?>
 	<?php echo $this->Html->script('main');?>
 	
 </head>
