@@ -107,8 +107,7 @@ p {
 	padding: 10px 20px 40px 20px;
 	float: left;
 	width: 100%!important;
-	min-height: 1000px;
-	min-width: 1500px;
+	min-height: 600px;
 }
 
 #session{
