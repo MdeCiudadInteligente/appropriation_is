@@ -55,7 +55,7 @@ function goBack()
 		echo $this->Form->input('site_id');
 		echo $this->Form->input('id_divulgation');
 		echo $this->Form->input('divulgation_date',array ('id' => 'datepicker'));
-		echo $this->Form->input('divulgation_name',array('maxLength'=>'50'));
+		echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Divulgación'));
 		echo $this->Form->input('divulgation_type',array ('options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros')));
 		echo $this->Form->input('divulgation_description',array ('type'=>'textarea'));	
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)'));

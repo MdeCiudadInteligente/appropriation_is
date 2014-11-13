@@ -55,9 +55,8 @@ function goBack()
 		echo $this->Form->input('site_id');
 
 		echo $this->Form->input('divulgation_type',array ('type'=>'select','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de divulgación'));
-			echo $this->Form->input('divulgation_title',array('maxlenght'=>'90'));
 			echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text'));		
-			echo $this->Form->input('divulgation_name',array('maxLength'=>'50'));
+			echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Divulgación'));
 			echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea'));		
 			echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)'));
 			echo $this->Form->input('activity_place',array('maxLength'=>'80'));

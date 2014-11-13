@@ -9,7 +9,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('site_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_date'); ?></th>
-			<th><?php echo $this->Paginator->sort('divulgation_name'); ?></th>
+			<th><?php echo $this->Paginator->sort('divulgation_title'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_type'); ?></th>
 			<th><?php echo $this->Paginator->sort('divulgation_description'); ?></th>
 			<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
