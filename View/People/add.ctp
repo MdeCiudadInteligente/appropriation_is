@@ -15,7 +15,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Person'); ?></legend>
 	<?php
-		echo $this->Form->input('id_person',array('type'=>'text'));
+		echo $this->Form->input('id_person',array('type'=>'text','onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('name',array('maxLength'=>50));
 		echo $this->Form->input('lastname',array('maxLength'=>50));
 		echo $this->Form->input('charge',array('maxLength'=>80));
