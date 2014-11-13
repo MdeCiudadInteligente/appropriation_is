@@ -19,7 +19,7 @@
 		echo $this->Form->input('name',array('maxLength'=>50));
 		echo $this->Form->input('lastname',array('maxLength'=>50));
 		echo $this->Form->input('charge',array('maxLength'=>80));
-		echo $this->Form->input('email',array('maxLength'=>256));
+		echo $this->Form->input('email',array('maxLength'=>256,'type'=>'email'));
 		echo $this->Form->input('phone',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('cell',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('entity',array('maxLength'=>80));

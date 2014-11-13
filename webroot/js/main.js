@@ -2,6 +2,9 @@ var app=null;
 
 $(document).ready(function(){
 	app=new App;
+
+
+
 });
 
 
@@ -12,6 +15,28 @@ var App = function(){
 
 
 App.prototype.bind=function(){
+
+    if($('#datepicker').length){
+        console.log('datePicker');
+        $( "#datepicker" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          closeText: 'Fermer',
+          prevText: 'Previo',
+          nextText: 'Proximo',
+          yearRange: "2007:2020",
+          monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃ©e',
+          dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
+          dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃ¡b'],
+          dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+          dateFormat: 'yy-mm-dd', firstDay: 0,
+          initStatus: 'Selecciona la fecha', 
+          isRTL: false        
+        });
+    }
+
     app.bindAutocompletePersona('.person-autocomplete');
 }
 
