@@ -135,6 +135,9 @@ msgstr "Tipo Reunión"
 msgid "The site type has been saved."
 msgstr "El tipo de sitio se ha guardado."
 
+msgid "The site type has been deleted."
+msgstr "El tipo de sitio se ha Eliminado."
+
 msgid "New Agent"
 msgstr "Nuevo Agente"
 

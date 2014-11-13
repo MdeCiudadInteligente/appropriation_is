@@ -8,7 +8,7 @@
 		echo $this->Form->input('name',array('maxlenght'=>'254'));
 		echo $this->Form->input('lastname',array('maxlenght'=>'254'));
 		echo $this->Form->input('charge');
-		echo $this->Form->input('email');
+		echo $this->Form->input('email',array('maxLength'=>256,'type'=>'email'));
 		echo $this->Form->input('phone',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('cell',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('entity');

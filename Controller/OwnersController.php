@@ -65,7 +65,8 @@ class OwnersController extends AppController {
 			}
 		}
 		$sites = $this->Owner->Site->find('list');
-		$people = $this->Owner->Person->find('list');
+		$people = $this->Owner->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
+		//$people = $this->Owner->Person->find('list');
 		$this->set(compact('sites', 'people'));
 	}
 
