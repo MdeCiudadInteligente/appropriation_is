@@ -41,6 +41,7 @@ $cakeDescription = __d('cake_dev', '');
 	
 </head>
 <body>
+	<?php echo $this->Session->flash(); ?>
 	<div id="container" class="app-container">	
 		<div id="header">
 			<div class="top-head">
@@ -72,7 +73,6 @@ $cakeDescription = __d('cake_dev', '');
 				<?php echo "Bienvenido:". $name_usuario;?>		
 		</div>
 		<?php }?>
-			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>		
 			<div class="spacer" style="clear: both;"></div>	
 		</div>	
