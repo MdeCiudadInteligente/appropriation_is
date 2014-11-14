@@ -44,13 +44,16 @@ $cakeDescription = __d('cake_dev', '');
 		<div id="header">
 			<div class="top-head">
 				<section>
-					<span><img class="mde" src="<?php echo WEBROOT_DIR;?>/img/mde-10.png"></span>
-					<span><img class="mde" src="<?php echo WEBROOT_DIR;?>/img/alcaldia-09.png"></span>
+					<span>
+						<?php $this->Html->image('mde-10.png', array('alt' => $cakeDescription, 'class' => 'mde')) ?>
+						<img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/mde-10.png">
+					</span>
+					<span><img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/alcaldia-09.png"></span>
 				</section>
 			</div>	
 			<div class="bottom-head">
 				<section>
-					<span><img class="mde" src="<?php echo WEBROOT_DIR;?>/img/intranet.png"></span>
+					<span><img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png"></span>
 					<span class="cerrar-icon session">
 						<?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout'));?> 
 					</span>
