@@ -69,7 +69,8 @@ $cakeDescription = __d('cake_dev', '');
 		</div>
 		<?php }?>
 			<?php echo $this->Session->flash(); ?>
-			<?php echo $this->fetch('content'); ?>			
+			<?php echo $this->fetch('content'); ?>		
+			<div class="spacer" style="clear: both;"></div>	
 		</div>	
 		<div id="footer">
 				<div class="foot-info"><div><span>Dirección: Carrera 43b #11-10 Piso 2, Medellin - Antioquia.</span><span>Télefono: (4) 4444963</span><span>Email: comunicaciones@medellindigital.gov.co</span></div></div>
