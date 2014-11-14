@@ -10,14 +10,6 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 		<th><?php echo $this->Paginator->sort('site_id'); ?></th>
 		<th><?php echo $this->Paginator->sort('meeting_type'); ?></th>
 		<th><?php echo $this->Paginator->sort('meeting_title'); ?></th>
-	<?php /*	<th><?php echo $this->Paginator->sort('meeting_description'); ?></th>
-		<th><?php echo $this->Paginator->sort('meeting_commitments'); ?></th>
-	
-		<th><?php echo $this->Paginator->sort('meeting_adjunct'); ?></th>
-		<th><?php echo $this->Paginator->sort('meeting_adjunct1'); ?></th>
-		<th><?php echo $this->Paginator->sort('meeting_adjunct2'); ?></th> */?>
-		
-
 	<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($meetings as $meeting): ?>
@@ -25,16 +17,10 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 		<td><?php echo $this->Html->link($meeting['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?></td>
 		<td><?php echo h($meeting['Meeting']['meeting_type']); ?>&nbsp;</td>
 		<td><?php echo h($meeting['Meeting']['meeting_title']); ?>&nbsp;</td>
-		<?php /*	<td><?php echo h($meeting['Meeting']['meeting_description']); ?>&nbsp;</td>  */?>
-		<?php /*<td><?php echo h($meeting['Meeting']['meeting_commitments']); ?>&nbsp;</td>  */?>
-		<!-- <td><?php //echo h($meeting['Meeting']['meeting_adjunct']); ?>&nbsp;</td>-->
-	<?php /*	<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct'],array('controller' => 'webroot','action' =>'/uploads/meeting/meeting_adjunct/'.$meeting['Meeting']['meeting_adjunct'])); ?>&nbsp;</td> 
-		<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct1'],array('controller' => 'webroot','action' =>'/uploads/meeting/meeting_adjunct1/'.$meeting['Meeting']['meeting_adjunct1'])); ?>&nbsp;</td>		
-	<td><?php echo  $this->Html->link($meeting['Meeting']['meeting_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/meeting/meeting_adjunct2/'.$meeting['Meeting']['meeting_adjunct2'])); ?>&nbsp;</td>  */?>
-		<td class="ver">  		
+<!-- 		<td class="ver">  		
 			<?php //echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
 		</td>
-		<td class="actions">
+ -->		<td class="actions">
 		<?php echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');?>			
 		<?php //echo "Nivel". $usuario_level;?>
@@ -127,10 +113,10 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 	<?php /*	<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>&nbsp;</td>
 		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct1/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1'])); ?>&nbsp;</td>
 		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>&nbsp;</td> */?>
-		<td class="ver">  		
+<!-- 		<td class="ver">  		
 			<?php //echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 		</td>
-		<td class="actions">	
+ -->		<td class="actions">	
 		<?php echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
 		<?php $usuario_id=$accompaniment['Accompaniment']['user_id'];?>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
