@@ -20,6 +20,11 @@
 		<dd>
 			<?php echo h($user['User']['permission_level']); ?>
 			&nbsp;
+		</dd>
+		<dt><?php echo __('User Estado'); ?></dt>
+		<dd>
+			<?php echo h($user['User']['user_estado']); ?>
+			&nbsp;
 		</dd>		
 	</dl>
 </div>

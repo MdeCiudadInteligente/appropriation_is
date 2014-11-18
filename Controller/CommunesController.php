@@ -55,7 +55,27 @@ class CommunesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			
+			$usuario = $this->Session->read('Auth.User.id_user');
+				
+			$this->set('usuario',$usuario);
+			$horas_diferencia= -6;
+			$tiempo=time() + ($horas_diferencia * 60 *60);
+			list($Mili, $bot) = explode(" ", microtime());
+			$DM=substr(strval($Mili),2,4);
+			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
+			$this->set('fecha',$fecha);
+				
 			$this->Commune->create();
+			
+			$this->Commune->set(array(
+					'creation_date' => $fecha
+			));
+			
+			$this->Commune->set(array(
+					'user_id' => $usuario
+			));
+			
 			if ($this->Commune->save($this->request->data)) {
 				$this->Session->setFlash(__('The commune has been saved.'));
 				return $this->redirect(array('action' => 'index'));

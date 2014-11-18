@@ -6,7 +6,7 @@
 	<?php
 		echo $this->Form->input('site_id');
 		echo $this->Form->input('id_meeting');
-		echo $this->Form->input('meeting_date',array ('id' => 'datepicker'));
+		echo $this->Form->input('meeting_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));
 		//echo $this->Form->input('Person');

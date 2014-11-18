@@ -91,7 +91,7 @@ class Divulgation extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		/*'participant_number' => array(
+		'participant_number' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -100,7 +100,7 @@ class Divulgation extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),*/
+		),
 		'activity_place' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),

@@ -37,6 +37,11 @@
 			<?php echo h($site['Site']['site_mail']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Site Estado'); ?></dt>
+		<dd>
+			<?php echo h($site['Site']['syte_estado']); ?>
+			&nbsp;
+		</dd>
 		
 		
 	</dl>

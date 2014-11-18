@@ -6,6 +6,7 @@
 			<th><?php //echo $this->Paginator->sort('password'); ?></th>
 			<th><?php echo $this->Paginator->sort('permission_level'); ?></th>
 			<th><?php echo $this->Paginator->sort('agent_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('user_estado'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($users as $user): ?>
@@ -15,6 +16,9 @@
 		<td><?php echo h($user['User']['permission_level']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($user['Agent']['id_agent'], array('controller' => 'agents', 'action' => 'view', $user['Agent']['id_agent'])); ?>
+		</td>
+		<td>
+				<?php echo h($user['User']['user_estado']); ?>&nbsp;
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id_user'])); ?>

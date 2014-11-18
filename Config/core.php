@@ -261,8 +261,6 @@
  */
 	//date_default_timezone_set('UTC');
 	Configure::write('Config.language', 'spa');
-	
-	
 /**
  *
  * Cache Engine Configuration

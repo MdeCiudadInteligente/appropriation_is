@@ -11,6 +11,11 @@
 			<?php echo $this->Html->link($agent['Zone']['id_zone'], array('controller' => 'zones', 'action' => 'view', $agent['Zone']['id_zone'])); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Agent Estado'); ?></dt>
+		<dd>
+			<?php echo h($agent['Agent']['agent_estado']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

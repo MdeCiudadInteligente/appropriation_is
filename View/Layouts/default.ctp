@@ -41,34 +41,43 @@ $cakeDescription = __d('cake_dev', '');
 	
 </head>
 <body>
+	<?php echo $this->Session->flash(); ?>
 	<div id="container" class="app-container">	
-		<div id="header">	
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://localhost/appropriation_is/'); ?></h1>
+		<div id="header">
+			<div class="top-head">
+				<section>
+					<span>
+						<?php $this->Html->image('mde-10.png', array('alt' => $cakeDescription, 'class' => 'mde')) ?>
+						<img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/mde-10.png">
+					</span>
+					<span><img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/alcaldia-09.png"></span>
+				</section>
+			</div>	
+			<div class="bottom-head">
+				<section>
+					<span><img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png"></span>
+					<span class="cerrar-icon session">
+						<?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout'));?> 
+					</span>
+				</section>
+			</div>
 		</div>
 		<div id="content">
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		//echo $usuario_level;
    		$this->set('usuario_level',$usuario_level);?>		 
 		<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1')
 		{?>	
-		<div id="session"> 
-			<?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout'));?> 
-		</div>
 		<div id="bienvenida"> 		
 				<?php $name_usuario = $this->Session->read('Auth.User.username');
 		   		$this->set('name_usuario',$name_usuario);?>
 				<?php echo "Bienvenido:". $name_usuario;?>		
 		</div>
 		<?php }?>
-			<?php echo $this->Session->flash(); ?>
-			<?php echo $this->fetch('content'); ?>			
+			<?php echo $this->fetch('content'); ?>		
+			<div class="spacer" style="clear: both;"></div>	
 		</div>	
 		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('LogoMDEpata.png', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://localhost/appropriation_is/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
+				<div class="foot-info"><div><span>Dirección: Carrera 43b #11-10 Piso 2, Medellin - Antioquia.</span><span>Télefono: (4) 4444963</span><span>Email: comunicaciones@medellindigital.gov.co</span></div></div>
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
