@@ -63,11 +63,11 @@ class UsersController extends AppController {
 			}
 			$this->Session->setFlash(__('Invalid username or password, try again'));
 		}
-		/*else {
+		else {
 			if($this->Auth->user('id_user')){
 			$this->redirect($this->Auth->redirect());	
 			}
-		}*/
+		}
 	}
 	
 	public function logout() {
