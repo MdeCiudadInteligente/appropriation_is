@@ -3,8 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Edit Person'); ?></legend>
 	<?php
-		echo $this->Form->input('id_person');
-
+		echo $this->Form->input('id_person',array('type'=>'hidden'));
 		echo $this->Form->input('name',array('maxlenght'=>'254'));
 		echo $this->Form->input('lastname',array('maxlenght'=>'254'));
 		echo $this->Form->input('charge');

@@ -6,6 +6,7 @@
 		echo $this->Form->input('id_agent');
 		echo $this->Form->input('person_id',array('disabled'=>'disabled','label'=>'Agente'));
 		echo $this->Form->input('zone_id',array('empty'=>'Seleccionar la zona'));
+		echo $this->Form->input('agent_estado',array ('options' => array ('Activo'=>'Activo','Inactivo'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

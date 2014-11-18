@@ -4,6 +4,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('person_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('zone_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('agent_estado'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($agents as $agent): ?>
@@ -14,6 +15,10 @@
 		<td>
 			<?php echo $this->Html->link($agent['Zone']['id_zone'], array('controller' => 'zones', 'action' => 'view', $agent['Zone']['id_zone'])); ?>
 		</td>
+		<td>
+				<?php echo h($agent['Agent']['agent_estado']); ?>&nbsp;
+		</td>
+		
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $agent['Agent']['id_agent'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $agent['Agent']['id_agent'])); ?>

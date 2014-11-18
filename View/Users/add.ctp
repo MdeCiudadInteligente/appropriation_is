@@ -7,7 +7,8 @@
 		echo $this->Form->input('agent_id',array('empty'=>'Seleccionar el agente'));
 		echo $this->Form->input('username',array('maxLength'=>'45'));
 		echo $this->Form->input('password',array('maxLength'=>'45'));
-		echo $this->Form->input('permission_level',array ('options' => array ('1'=>'Administrador','2'=>'Agente','3'=>'Profesional','4'=>'Practicante'),'empty'=>'Seleccionar el nivel del permiso'));		
+		echo $this->Form->input('permission_level',array ('options' => array ('1'=>'Administrador','2'=>'Agente','3'=>'Profesional','4'=>'Practicante'),'empty'=>'Seleccionar el nivel del permiso'));	
+		echo $this->Form->input('user_estado',array ('options' => array ('Activo'=>'Activo','Inactivo'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

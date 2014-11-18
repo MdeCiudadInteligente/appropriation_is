@@ -8,6 +8,7 @@
 		echo $this->Form->input('username',array('disabled'=>'true'));
 		echo $this->Form->input('password');
 		echo $this->Form->input('permission_level',array ('options' => array ('1'=>'Administrador','2'=>'Agente','3'=>'Profesional','4'=>'Practicante')));	
+		echo $this->Form->input('user_estado',array ('options' => array ('Activo'=>'Activo','Inactivo'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

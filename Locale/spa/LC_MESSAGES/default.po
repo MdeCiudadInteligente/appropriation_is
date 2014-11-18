@@ -117,6 +117,15 @@ msgstr "El acompañamiento ha sido eliminado."
 msgid "Site"
 msgstr "Sitio"
 
+msgid "User Estado"
+msgstr "Estado Usuario"
+
+msgid "Agent Estado"
+msgstr "Estado Agente"
+
+msgid "Syte Estado"
+msgstr "Estado Sitio"
+
 msgid "Are you sure you want to delete"
 msgstr "¿Seguro que quieres eliminar"
 

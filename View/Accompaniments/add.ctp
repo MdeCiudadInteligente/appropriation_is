@@ -27,7 +27,7 @@ function goBack()
 				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC','Sensibilización'=>'Sensibilización','Intervención sitio'=>'Intervención sitio','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de acompañamiento'));
 		echo $this->Form->input('accompaniment_title',array('maxlenght'=>'90'));
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));		
-		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)'));
+		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 		//echo $this->Form->input('adjunct');	
 		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file'));
 		echo $this->Form->input('accompaniment_adjunct1',array('type'=>'file'));

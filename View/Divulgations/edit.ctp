@@ -26,7 +26,7 @@ function goBack()
 		echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Divulgación'));
 		echo $this->Form->input('divulgation_type',array ('options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros')));
 		echo $this->Form->input('divulgation_description',array ('type'=>'textarea'));	
-		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)'));
+		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 		echo $this->Form->input('activity_place',array('maxLength'=>'80'));
 		echo $this->Form->input('divulgation_adjunct',array('disabled'=>'disabled'));
 		echo $this->Form->input('divulgation_adjunct',array('type'=>'file'));

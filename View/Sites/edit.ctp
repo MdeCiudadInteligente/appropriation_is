@@ -13,13 +13,14 @@
 	<fieldset>
 		<legend><?php echo __('Edit Site'); ?></legend>
 	<?php
-		//echo $this->Form->input('id_site',array('type'=>'text'));
+		echo $this->Form->input('id_site',array('type'=>'hidden'));
 		echo $this->Form->input('site_type_id');
 		echo $this->Form->input('neighborhood_id');
 		echo $this->Form->input('site_name',array('maxLength'=>60));
 		echo $this->Form->input('site_phone',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('site_address',array('maxLength'=>80));
-		echo $this->Form->input('site_mail',array('maxLength'=>80,'type'=>'email'));	
+		echo $this->Form->input('site_mail',array('maxLength'=>80,'type'=>'email'));
+		echo $this->Form->input('syte_estado',array ('options' => array ('Activo'=>'Activo','Inactivo'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
