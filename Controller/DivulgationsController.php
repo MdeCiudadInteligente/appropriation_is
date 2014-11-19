@@ -101,9 +101,9 @@ class DivulgationsController extends AppController {
 	public function add() {
 		
 		if ($this->request->is('post')) {
-			$usuario = $this->Session->read('Auth.User.id_user');
-				
+			$usuario = $this->Session->read('Auth.User.id_user');	
 			$this->set('usuario',$usuario);
+			
 			$horas_diferencia= -6;
 			$tiempo=time() + ($horas_diferencia * 60 *60);
 			list($Mili, $bot) = explode(" ", microtime());

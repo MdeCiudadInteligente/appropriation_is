@@ -9,7 +9,7 @@
 		echo $this->Form->input('meeting_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));
-		//echo $this->Form->input('Person');
+		echo $this->Form->input('Person');
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));
 		echo $this->Form->input('meeting_adjunct',array('disabled'=>'disabled'));
