@@ -20,8 +20,18 @@ function goBack()
 	<fieldset>
 		<legend><?php echo __('Agregar acompañamiento'); ?></legend>
 	
+
+	<div class="seccion-person">	
+		<div class="input">
+			<label>Sitio</label>
+			<input type="text"  class="Site-autocomplete">
+			<div class="results-input-site" data-input-name="data[Accompaniment][site_id]">			
+			</div>
+		</div>
+	</div>	
+
+
 	<?php
-		echo $this->Form->input('site_id');
 		echo $this->Form->input('accompaniment_date',array ('id' => 'datepicker','type'=>'text'));			
 		echo $this->Form->input('accompaniment_type',array ('type'=>'select','options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Estudiantes de PP, jóvenes por la convivencia o alfabetizadores' ,
 				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC','Sensibilización'=>'Sensibilización','Intervención sitio'=>'Intervención sitio','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de acompañamiento'));
