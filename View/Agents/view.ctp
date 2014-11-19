@@ -1,6 +1,11 @@
 ﻿<div class="agents view">
 <h2><?php echo __('Agent'); ?></h2>
-	<dl>		
+	<dl>	
+		<dt><?php echo __('Documento Agente'); ?></dt>
+		<dd>
+			<?php echo h($agent['Person']['id_person']); ?>
+			&nbsp;
+		</dd>	
 		<dt><?php echo __('Agente'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($agent['Person']['name'].' '.$agent['Person']['lastname'], array('controller' => 'people', 'action' => 'view', $agent['Person']['id_person'])); ?>
@@ -14,6 +19,31 @@
 		<dt><?php echo __('Agent Estado'); ?></dt>
 		<dd>
 			<?php echo h($agent['Agent']['agent_estado']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Charge'); ?></dt>
+		<dd>
+			<?php echo h($agent['Person']['charge']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Correo'); ?></dt>
+		<dd>
+		<?php echo h($agent['Person']['email']); ?>
+		&nbsp;
+		</dd>
+		<dt><?php echo __('Phone'); ?></dt>
+		<dd>
+			<?php echo h($agent['Person']['phone']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Cell'); ?></dt>
+		<dd>
+			<?php echo h($agent['Person']['cell']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Entity'); ?></dt>
+		<dd>
+			<?php echo h($agent['Person']['entity']); ?>
 			&nbsp;
 		</dd>
 	</dl>
