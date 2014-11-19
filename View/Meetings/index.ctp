@@ -3,9 +3,9 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 	 	<td>
-	 	<?php echo 'Número de reuniones:'.$totalm; ?>
+	 			<?php echo 'Número de reuniones:'.$totalm; ?>
 	 	</td>
-	 </tr>	
+	 </tr>
 	<tr>
 			<th><?php echo $this->Paginator->sort('site_id'); ?></th>		
 			<th><?php echo $this->Paginator->sort('meeting_date'); ?></th>
