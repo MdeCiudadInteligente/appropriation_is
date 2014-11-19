@@ -160,9 +160,8 @@ class PeopleController extends AppController {
 
 
 /**
- * delete method
+ * Json get Person method
  *
- * @throws NotFoundException
  * @param string $query
  * @return $array
  */

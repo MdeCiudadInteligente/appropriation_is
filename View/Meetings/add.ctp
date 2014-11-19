@@ -3,9 +3,17 @@
 	<fieldset>
 		<legend><?php echo __('Add Meeting'); ?></legend>
 
-	<?php		
+		<div class="seccion-person">	
+			<div class="input">
+				<label>Sitio</label>
+				<input type="text"  class="Site-autocomplete">
+				<div class="results-input-site" data-input-name="data[Meeting][site_id]">			
+				</div>
+			</div>
+		</div>	
 
-		echo $this->Form->input('site_id');		
+
+		<?php
 		echo $this->Form->input('meeting_date',array ('id' => 'datepicker','type'=>'text'));		
 		echo $this->Form->input('meeting_type',array ('type'=>'select','options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme'),'empty'=>'Seleccione el tipo de reunión'));
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));
@@ -15,7 +23,7 @@
 		<div class="seccion-person">	
 			<div class="input">
 				<label>Personas</label>
-				<input type="text" data-service="<?php echo $this->Html->url(array('controller'=>'People','action' => 'favorites', 'ext' => 'json')); ?>" class="person-autocomplete">
+				<input type="text"  class="person-autocomplete">
 				<div class="results-input" data-input-name="data[Person][Person][]">
 					
 				</div>

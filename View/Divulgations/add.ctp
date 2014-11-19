@@ -19,8 +19,18 @@ function goBack()
 <?php echo $this->Form->create('Divulgation',array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Add Divulgation'); ?></legend>
+
+		<div class="seccion-person">	
+			<div class="input">
+				<label>Sitio</label>
+				<input type="text"  class="Site-autocomplete">
+				<div class="results-input-site" data-input-name="data[Divulgation][site_id]">			
+				</div>
+			</div>
+		</div>	
+
+
 	<?php
-		echo $this->Form->input('site_id');
 
 		echo $this->Form->input('divulgation_type',array ('type'=>'select','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de divulgación'));
 			echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text'));		
