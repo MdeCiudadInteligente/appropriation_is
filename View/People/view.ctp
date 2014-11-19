@@ -3,7 +3,7 @@
 	<dl>
 		<dt><?php echo __('Id Person'); ?></dt>
 		<dd>
-			<?php echo h($person['Person']['id_person']); ?>
+			<?php echo h($person['Person']['cedula']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>

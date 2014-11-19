@@ -3,7 +3,7 @@
 	<dl>	
 		<dt><?php echo __('Documento Agente'); ?></dt>
 		<dd>
-			<?php echo h($agent['Person']['id_person']); ?>
+			<?php echo h($agent['Person']['cedula']); ?>
 			&nbsp;
 		</dd>	
 		<dt><?php echo __('Agente'); ?></dt>

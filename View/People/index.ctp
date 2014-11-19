@@ -2,7 +2,7 @@
 	<h2><?php echo __('People'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php //echo $this->Paginator->sort('id_person'); ?></th>
+			<th><?php echo $this->Paginator->sort('Cédula'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('lastname'); ?></th>
 			<th><?php echo $this->Paginator->sort('charge'); ?></th>
@@ -14,7 +14,7 @@
 	</tr>
 	<?php foreach ($people as $person): ?>
 	<tr>
-		<td><?php //echo h($person['Person']['id_person']); ?>&nbsp;</td>
+		<td><?php echo h($person['Person']['cedula']); ?>&nbsp;</td>
 		<td><?php echo h($person['Person']['name']); ?>&nbsp;</td>
 		<td><?php echo h($person['Person']['lastname']); ?>&nbsp;</td>
 		<td><?php echo h($person['Person']['charge']); ?>&nbsp;</td>
