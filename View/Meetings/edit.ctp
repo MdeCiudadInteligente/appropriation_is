@@ -4,13 +4,23 @@
 	echo $this->Form->create('Meeting',array('type'=>'file'));
 	//debug($this->viewVars);
 	$currentPersons=$this->request->data['Person'];
-//	var_dump($currentPersons);
+	$site=$this->request->data['Site'];
 ?>
 	<fieldset>
 		<legend><?php echo __('Edit Meeting'); ?></legend>
-	<?php
-		echo $this->Form->input('site_id');
-		echo $this->Form->input('id_meeting');
+	<?php echo $this->Form->input('id_meeting');?>
+
+	<div class="seccion-person">	
+		<div class="input">
+			<label>Sitio</label>
+			<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
+			<div class="results-input-site" data-input-name="data[Meeting][site_id]">
+				<input type="hidden" name="data[Meeting][site_id]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name']?>" id="val-input-site-<?php echo $site['id_site']?>">
+			</div>
+		</div>
+	</div>	
+
+	<?php	
 		echo $this->Form->input('meeting_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));?>

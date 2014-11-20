@@ -179,4 +179,25 @@ App.prototype.bindAutocompleteSites=function(selector){
 
     }
 
+   if($(selector).data('load')){
+        var inputContainer=$($(selector).data('valcontainer'));
+        var loadPersons=inputContainer.find('input');
+        var autoList=$(selector).closest('ul');
+        $.each(loadPersons,function(){
+            var id=$(this).attr('id');
+            var completename=$(this).data('display');
+            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+completename+'</li>');
+        });
+
+        $('.close-load').on('click',function(){
+            var parentLi=$(this).closest('li');
+            var relInput='#'+parentLi.data('relvalue');
+            console.log($(relInput));
+            parentLi.remove();
+            $(relInput).remove();
+
+        });
+    }
+    
+
 };
