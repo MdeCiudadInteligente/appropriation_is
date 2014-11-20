@@ -14,7 +14,7 @@
 	<?php echo $this->Form->create('User',array('autocomplete' => 'off')); ?>
 	    <fieldset>
 	        <header>
-	            <?php echo __('¡Que bueno que llegaste!'); ?>
+	            <?php echo __('¡Qué bueno que llegaste!'); ?>
 	            <span><?php echo __('ingresa tu nombre de usuario y contraseña para poder ingresar'); ?></span>
 	        </header>
 	        <?php echo $this->Form->input('username');
