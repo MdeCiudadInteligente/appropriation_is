@@ -103,38 +103,56 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {			
 		
 			$username= $this->request->data['User']['username'];
+			$agent_id= $this->request->data['User']['agent_id'];
+			
 			$verificar_usuario=$this->User->query("select distinct username from users where username = '$username'");
 			$this->set('verificar_usuario',$verificar_usuario);
-			if($verificar_usuario==Array( )){
-					
-				$usuario = $this->Session->read('Auth.User.id_user');
-				$this->set('usuario',$usuario);
-				$horas_diferencia= -6;
-				$tiempo=time() + ($horas_diferencia * 60 *60);
-				list($Mili, $bot) = explode(" ", microtime());
-				$DM=substr(strval($Mili),2,4);
-				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-				$this->set('fecha',$fecha);
+			
+			$verificar_agent=$this->User->query("select distinct agent_id from users where agent_id = '$agent_id'");
+			$this->set('verificar_agent',$verificar_agent);
+			
+			if($verificar_agent==Array( ))
+			{
+				if($verificar_usuario==Array( )){
+						
+					$usuario = $this->Session->read('Auth.User.id_user');
+					$this->set('usuario',$usuario);
+					$horas_diferencia= -6;
+					$tiempo=time() + ($horas_diferencia * 60 *60);
+					list($Mili, $bot) = explode(" ", microtime());
+					$DM=substr(strval($Mili),2,4);
+					$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
+					$this->set('fecha',$fecha);
 				
-				$this->User->create();
-				
-				$this->User->set(array(
-						'creation_date' => $fecha
-				));
+					$this->User->create();
 					
-				$this->User->set(array(
-						'user_id' => $usuario
-				));
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+					$this->User->set(array(
+							'creation_date' => $fecha
+					));
+						
+					$this->User->set(array(
+							'user_id' => $usuario
+					));
+					if ($this->User->save($this->request->data)) 
+					{
+						$this->Session->setFlash(__('The user has been saved.'));
+						return $this->redirect(array('action' => 'index'));
+					} 
+					else 
+					{
+						$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+					}
+				}
+				else
+				{
+						$this->Session->setFlash(__('El nombre de usuario no está disponible, por favor ingrese uno nuevo.'));
+				}
 			}
-		}
-		else {
-			$this->Session->setFlash(__('El nombre de usuario no está disponible, por favor ingrese uno nuevo.'));
-		}		
+			else 
+			{
+				$this->Session->setFlash(__('El agente ya tiene usuario, por favor verificar.'));
+			}		
+			
 		}
 		//$agent = $this->User->Agent->find('list', array('fields'=>array('person_id')));
 		//$agents = $this->User->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
