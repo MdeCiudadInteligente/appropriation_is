@@ -19,9 +19,13 @@
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));
 		//echo $this->Form->input('Person');/*La persona la acbe de agregar*/
 		?>
+			<div class="input"  style="text-align:right">
+					<a href="/apropiacion_is/People/add" target="_blank">+ Nueva persona</a>
+				
+			</div>
 
 		<div class="seccion-person">	
-			<div class="input">
+			<div class="input" >
 				<label>Personas</label>
 				<input type="text"  class="person-autocomplete">
 				<div class="results-input" data-input-name="data[Person][Person][]">
