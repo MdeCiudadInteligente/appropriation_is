@@ -23,7 +23,7 @@
 		<div class="seccion-person">	
 			<div class="input">
 				<label>Personas</label>
-				<input type="text"  class="person-autocomplete">
+				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona">
 				<div class="results-input" data-input-name="data[Person][Person][]">
 					
 				</div>
