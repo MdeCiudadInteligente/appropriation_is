@@ -169,7 +169,7 @@ class PeopleController extends AppController {
 	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$queryString=$_GET['q'];
 		$condition=array('OR' => array(
-				    array('Person.id_person LIKE' => '%'.$queryString.'%'),
+				    array('Person.cedula LIKE' => '%'.$queryString.'%'),
 				    array('Person.completename LIKE' => '%'.$queryString.'%')
 		));
 
