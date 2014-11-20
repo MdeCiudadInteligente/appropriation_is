@@ -173,12 +173,14 @@ class PeopleController extends AppController {
 				    array('Person.completename LIKE' => '%'.$queryString.'%')
 		));
 
-		$person=$this->Person->find('list',array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC'),'conditions' => $condition));
+		$person=$this->Person->find('list',array('fields'=>array('Person.id_person','Person.completename','Person.cedula'),'order' => array('Person.completename' => 'ASC'),'conditions' => $condition));
 		
-		foreach ($person as $doc => $completename) {
+		foreach ($person as $doc => $dataPerson) {
 				$json_data = array();
 				$json_data['documento']=$doc;
-				$json_data['completename']=$completename;
+				$array_keys=array_keys($dataPerson);
+				$json_data['id_person']=$array_keys[0];
+				$json_data['completename']=$dataPerson[$array_keys[0]];
 				$data[]=$json_data;
 		}	
 
