@@ -17,9 +17,12 @@ class DivulgationsController extends AppController {
  */
 		public $components = array('Paginator');
 	
-	public $paginate = array(
+		public $paginate = array(
 			//'fields' => array('Meeting.meeting_type'),
 			'limit' => 10,
+			'order'=> array(
+            'Divulgation.id_divulgation' => 'desc'
+       )
 	);
 
 /**

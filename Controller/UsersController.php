@@ -16,6 +16,14 @@ class UsersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
+			'order'=> array(
+					'Users.id_user' => 'desc'
+			)
+	);
 
 /**
  * index method
