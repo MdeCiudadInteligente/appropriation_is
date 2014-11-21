@@ -15,6 +15,14 @@ class PeopleController extends AppController {
  */
 	public $components = array('Paginator','RequestHandler');
 	
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
+			'order'=> array(
+					'People.cedula' => 'desc'
+			)
+	);
+	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	

@@ -20,6 +20,9 @@ class AccompanimentsController extends AppController {
 	public $paginate = array(
 			//'fields' => array('Meeting.meeting_type'),
 			'limit' => 10,
+			'order'=> array(
+            'Accompaniment.id_accompaniment' => 'desc'
+       )
 	);
 
 /**

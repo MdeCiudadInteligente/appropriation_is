@@ -14,6 +14,14 @@ class NeighborhoodsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
+			'order'=> array(
+					'Meeting.id_meeting' => 'desc'
+			)
+	);
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
