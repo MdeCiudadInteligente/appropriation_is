@@ -19,7 +19,7 @@ class PeopleController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')||(isset($user['permission_level']) && $user['permission_level'] === '4')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] === '4')) {
 			return true;
 		}
 			
@@ -64,38 +64,51 @@ class PeopleController extends AppController {
 			
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
+			
+			$document= $this->request->data['Person']['cedula'];
+			$verificar_document=$this->Person->query("select distinct cedula from people where cedula = '$document'");
+			$this->set('verificar_document',$verificar_document);
+			
+			if($verificar_document==Array( )){
+					
+				$horas_diferencia= -6;
+				$tiempo=time() + ($horas_diferencia * 60 *60);
+				list($Mili, $bot) = explode(" ", microtime());
+				$DM=substr(strval($Mili),2,4);
+				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
+				$this->set('fecha',$fecha);
 				
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
+				$this->Person->create();
+				
+				$this->Person->set(array(
+						'creation_date' => $fecha
+				));
+				$this->Person->set(array(
+						'user_id' => $usuario
+				));
 			
-			$this->Person->create();
-			
-			$this->Person->set(array(
-					'creation_date' => $fecha
-			));
-			$this->Person->set(array(
-					'user_id' => $usuario
-			));
-			
-			$id_persona = $this->request->data['Person']['id_person'];
-			$persona_id = $this->Person->find('first', array('conditions'=>array('Person.id_person' => $id_persona)));
-			//debug($persona_id);
-			//debug($id_persona);
-			if($persona_id != array())
-			{
-				$this->Session->setFlash(__('El documento ya existe.'));
-				return $this->redirect(array('controller' => 'people', 'action' => 'add'));
+				//$id_persona = $this->request->data['Person']['id_person'];
+				//$persona_id = $this->Person->find('first', array('conditions'=>array('Person.id_person' => $id_persona)));
+				//debug($persona_id);
+				//debug($id_persona);
+				/*if($persona_id != array())
+				{
+					$this->Session->setFlash(__('El documento ya existe.'));
+					return $this->redirect(array('controller' => 'people', 'action' => 'add'));
+				}*/		
+				
+				if ($this->Person->save($this->request->data)) {
+					$this->Session->setFlash(__('The person has been saved.'));				
+					return $this->redirect(array('action' => 'index'));
+				} 
+				else 
+				{
+					$this->Session->setFlash(__('The person could not be saved. Please, try again.'));			
+				}
 			}
-			else 
-			if ($this->Person->save($this->request->data)) {
-				$this->Session->setFlash(__('The person has been saved.'));				
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The person could not be saved. Please, try again.'));			
+			else
+			{
+				$this->Session->setFlash(__('El documento ya existe, por favor verifique.'));
 			}
 		}
 	}
@@ -113,20 +126,33 @@ class PeopleController extends AppController {
 		if (!$this->Person->exists($id)) {
 			throw new NotFoundException(__('Invalid person'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
+		if ($this->request->is(array('post', 'put')))
+		{
 			
-			if ($this->Person->save($this->request->data)) {
-				//debug($a);
+			$document= $this->request->data['Person']['cedula'];
+			$verificar_document=$this->Person->query("select distinct cedula from people where cedula = '$document'");
+			$this->set('verificar_document',$verificar_document);
 				
-				$this->Session->setFlash(__('The person has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The person could not be saved. Please, try again.'));
+			if($verificar_document==Array( )){
+				if ($this->Person->save($this->request->data)) 
+				{
+					$this->Session->setFlash(__('The person has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} 
+				else 
+				{
+					$this->Session->setFlash(__('The person could not be saved. Please, try again.'));
+				}
 			}
-		} else {
+			else
+			{
+				$this->Session->setFlash(__('El documento ya existe, por favor verifique.'));
+			}
+		}
+		else
+		{
 			$options = array('conditions' => array('Person.' . $this->Person->primaryKey => $id));
-			$this->request->data = $this->Person->find('first', $options);
-		
+			$this->request->data = $this->Person->find('first', $options);		
 		}
 	}
 

@@ -100,7 +100,9 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add() {
-		if ($this->request->is('post')) {			
+		if ($this->request->is('post')) {		
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
 		
 			$username= $this->request->data['User']['username'];
 			$agent_id= $this->request->data['User']['agent_id'];
@@ -113,10 +115,8 @@ class UsersController extends AppController {
 			
 			if($verificar_agent==Array( ))
 			{
-				if($verificar_usuario==Array( )){
-						
-					$usuario = $this->Session->read('Auth.User.id_user');
-					$this->set('usuario',$usuario);
+				if($verificar_usuario==Array( )){						
+					
 					$horas_diferencia= -6;
 					$tiempo=time() + ($horas_diferencia * 60 *60);
 					list($Mili, $bot) = explode(" ", microtime());

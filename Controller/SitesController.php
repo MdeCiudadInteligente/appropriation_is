@@ -83,27 +83,41 @@ class SitesController extends AppController {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
+			$name_site= $this->request->data['Site']['site_name'];
+			$verificar_site=$this->Site->query("select distinct site_name from sites where site_name = '$name_site'");
+			$this->set('verificar_site',$verificar_site);
+				
+			if($verificar_site==Array( )){
 			
-			$this->Site->create();
-			
-			$this->Site->set(array(
-					'creation_date' => $fecha
-			));
-			$this->Site->set(array(
-					'user_id' => $usuario
-			));
-			
-			if ($this->Site->save($this->request->data)) {
-				$this->Session->setFlash(__('The site has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
+				$horas_diferencia= -6;
+				$tiempo=time() + ($horas_diferencia * 60 *60);
+				list($Mili, $bot) = explode(" ", microtime());
+				$DM=substr(strval($Mili),2,4);
+				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
+				$this->set('fecha',$fecha);
+				
+				$this->Site->create();
+				
+				$this->Site->set(array(
+						'creation_date' => $fecha
+				));
+				$this->Site->set(array(
+						'user_id' => $usuario
+				));
+				
+				if ($this->Site->save($this->request->data)) 
+				{
+					$this->Session->setFlash(__('The site has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} 
+				else 
+				{
+					$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
+				}
+			}
+			else
+			{
+				$this->Session->setFlash(__('El sitio ya existe, por favor verifique.'));
 			}
 		}
 		$neighborhoods = $this->Site->Neighborhood->find('list',array('order' => array('Neighborhood.neighborhood_name' => 'ASC')));
@@ -123,11 +137,23 @@ class SitesController extends AppController {
 			throw new NotFoundException(__('Invalid site'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			
+			$name_site= $this->request->data['Site']['site_name'];
+			$verificar_site=$this->Site->query("select distinct site_name from sites where site_name = '$name_site'");
+			$this->set('verificar_site',$verificar_site);
+			
+			if($verificar_site==Array( )){
 			if ($this->Site->save($this->request->data)) {
 				$this->Session->setFlash(__('The site has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
+			}
+			
+			}
+			else
+			{
+				$this->Session->setFlash(__('El sitio ya existe, por favor verifique.'));
 			}
 		} else {
 			$options = array('conditions' => array('Site.' . $this->Site->primaryKey => $id));

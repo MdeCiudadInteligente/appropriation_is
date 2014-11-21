@@ -59,31 +59,45 @@ class AgentsController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			
-			$usuario = $this->Session->read('Auth.User.id_user');
-				
+			$usuario = $this->Session->read('Auth.User.id_user');				
 			$this->set('usuario',$usuario);
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
 			
-			$this->Agent->create();
+			$name_agents= $this->request->data['Agent']['person_id'];
+			$verificar_agent=$this->Agent->query("select distinct person_id from agents where person_id = '$name_agents'");
+			$this->set('verificar_agent',$verificar_agent);
 			
-			$this->Agent->set(array(
-					'creation_date' => $fecha
-			));
+			if($verificar_agent==Array( )){				
 			
-			$this->Agent->set(array(
-					'user_id' => $usuario
-			));
-			
-			if ($this->Agent->save($this->request->data)) {
-				$this->Session->setFlash(__('The agent has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The agent could not be saved. Please, try again.'));
+				$horas_diferencia= -6;
+				$tiempo=time() + ($horas_diferencia * 60 *60);
+				list($Mili, $bot) = explode(" ", microtime());
+				$DM=substr(strval($Mili),2,4);
+				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
+				$this->set('fecha',$fecha);
+				
+				$this->Agent->create();
+				
+				$this->Agent->set(array(
+						'creation_date' => $fecha
+				));
+				
+				$this->Agent->set(array(
+						'user_id' => $usuario
+				));
+				
+				if ($this->Agent->save($this->request->data)) 
+				{
+					$this->Session->setFlash(__('The agent has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} 
+				else 
+				{
+					$this->Session->setFlash(__('The agent could not be saved. Please, try again.'));
+				}
+			}
+			else
+			{
+				$this->Session->setFlash(__('La persona ya es agente, por favor verifique.'));
 			}
 		}
 		$people = $this->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));

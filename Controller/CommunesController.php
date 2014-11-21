@@ -56,31 +56,45 @@ class CommunesController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			
-			$usuario = $this->Session->read('Auth.User.id_user');
-				
+			$usuario = $this->Session->read('Auth.User.id_user');				
 			$this->set('usuario',$usuario);
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
+			
+			$name_comuna= $this->request->data['Commune']['commune_name'];
+			$verificar_comuna=$this->Commune->query("select distinct commune_name from communes where commune_name = '$name_comuna'");
+			$this->set('verificar_comuna',$verificar_comuna);
+			
+			if($verificar_comuna==Array( )){
+		
+				$horas_diferencia= -6;
+				$tiempo=time() + ($horas_diferencia * 60 *60);
+				list($Mili, $bot) = explode(" ", microtime());
+				$DM=substr(strval($Mili),2,4);
+				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
+				$this->set('fecha',$fecha);
+					
+				$this->Commune->create();
 				
-			$this->Commune->create();
-			
-			$this->Commune->set(array(
-					'creation_date' => $fecha
-			));
-			
-			$this->Commune->set(array(
-					'user_id' => $usuario
-			));
-			
-			if ($this->Commune->save($this->request->data)) {
-				$this->Session->setFlash(__('The commune has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The commune could not be saved. Please, try again.'));
+				$this->Commune->set(array(
+						'creation_date' => $fecha
+				));
+				
+				$this->Commune->set(array(
+						'user_id' => $usuario
+				));
+				
+				if ($this->Commune->save($this->request->data)) 
+				{
+					$this->Session->setFlash(__('The commune has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				}
+				else 
+				{
+					$this->Session->setFlash(__('The commune could not be saved. Please, try again.'));
+				}
+			}
+			else
+			{
+				$this->Session->setFlash(__('La comuna ya existe, por favor verifique.'));
 			}
 		}
 		$zones = $this->Commune->Zone->find('list');
@@ -95,17 +109,33 @@ class CommunesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->Commune->exists($id)) {
+		
+		if (!$this->Commune->exists($id)) 
+		{
 			throw new NotFoundException(__('Invalid commune'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Commune->save($this->request->data)) {
-				$this->Session->setFlash(__('The commune has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The commune could not be saved. Please, try again.'));
+			
+			$name_comuna= $this->request->data['Commune']['commune_name'];
+			$verificar_comuna=$this->Commune->query("select distinct commune_name from communes where commune_name = '$name_comuna'");
+			$this->set('verificar_comuna',$verificar_comuna);
+			
+			if($verificar_comuna==Array( )){
+			
+				if ($this->Commune->save($this->request->data)) {
+					$this->Session->setFlash(__('The commune has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The commune could not be saved. Please, try again.'));
+				}
 			}
-		} else {
+			else
+			{
+				$this->Session->setFlash(__('La comuna ya existe, por favor verifique.'));
+			}
+		}
+		else 
+		{
 			$options = array('conditions' => array('Commune.' . $this->Commune->primaryKey => $id));
 			$this->request->data = $this->Commune->find('first', $options);
 		}

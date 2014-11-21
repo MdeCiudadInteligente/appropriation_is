@@ -59,28 +59,42 @@ class SiteTypesController extends AppController {
 			
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
+			
+			$name_sitetype= $this->request->data['SiteType']['site_type'];
+			$verificar_sitetype=$this->SiteType->query("select distinct site_type from site_types where site_type = '$name_sitetype'");
+			$this->set('verificar_sitetype',$verificar_sitetype);
 				
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
-			
-			$this->SiteType->create();
-			
-			$this->SiteType->set(array(
-					'creation_date' => $fecha
-			));
-			$this->SiteType->set(array(
-					'user_id' => $usuario
-			));
-			
-			if ($this->SiteType->save($this->request->data)) {
-				$this->Session->setFlash(__('The site type has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The site type could not be saved. Please, try again.'));
+			if($verificar_sitetype==Array( )){			
+	
+				$horas_diferencia= -6;
+				$tiempo=time() + ($horas_diferencia * 60 *60);
+				list($Mili, $bot) = explode(" ", microtime());
+				$DM=substr(strval($Mili),2,4);
+				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
+				$this->set('fecha',$fecha);
+				
+				$this->SiteType->create();
+				
+				$this->SiteType->set(array(
+						'creation_date' => $fecha
+				));
+				$this->SiteType->set(array(
+						'user_id' => $usuario
+				));
+				
+				if ($this->SiteType->save($this->request->data)) 
+				{
+					$this->Session->setFlash(__('The site type has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} 
+				else 
+				{
+					$this->Session->setFlash(__('The site type could not be saved. Please, try again.'));
+				}
+			}
+			else
+			{
+				$this->Session->setFlash(__('El tipo de sitio ya existe, por favor verifique.'));
 			}
 		}
 	}
@@ -97,13 +111,30 @@ class SiteTypesController extends AppController {
 			throw new NotFoundException(__('Invalid site type'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->SiteType->save($this->request->data)) {
-				$this->Session->setFlash(__('The site type has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The site type could not be saved. Please, try again.'));
+			
+			$name_sitetype= $this->request->data['SiteType']['site_type'];
+			$verificar_sitetype=$this->SiteType->query("select distinct site_type from site_types where site_type = '$name_sitetype'");
+			$this->set('verificar_sitetype',$verificar_sitetype);
+			
+			if($verificar_sitetype==Array( )){
+				if ($this->SiteType->save($this->request->data)) 
+				{
+					$this->Session->setFlash(__('The site type has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} 
+				else 
+				{
+					$this->Session->setFlash(__('The site type could not be saved. Please, try again.'));
+				}
+				
 			}
-		} else {
+			else
+			{
+				$this->Session->setFlash(__('El tipo de sitio ya existe, por favor verifique.'));
+			}
+		}
+		else 
+		{
 			$options = array('conditions' => array('SiteType.' . $this->SiteType->primaryKey => $id));
 			$this->request->data = $this->SiteType->find('first', $options);
 		}
