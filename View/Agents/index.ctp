@@ -13,7 +13,7 @@
 			<?php echo $this->Html->link($agent['Person']['name'].' '.$agent['Person']['lastname'], array('controller' => 'people', 'action' => 'view', $agent['Person']['id_person'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($agent['Zone']['id_zone'], array('controller' => 'zones', 'action' => 'view', $agent['Zone']['id_zone'])); ?>
+			<?php echo $this->Html->link($agent['Zone']['zone_name'], array('controller' => 'zones', 'action' => 'view', $agent['Zone']['id_zone'])); ?>
 		</td>
 		<td>
 				<?php echo h($agent['Agent']['agent_estado']); ?>&nbsp;

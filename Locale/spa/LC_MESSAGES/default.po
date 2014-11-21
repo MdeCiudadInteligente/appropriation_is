@@ -114,6 +114,9 @@ msgstr "Tipo AcompaÃ±amiento"
 msgid "The accompaniment has been deleted."
 msgstr "El acompañamiento ha sido eliminado."
 
+msgid "The zone has been saved."
+msgstr "La zona se ha guardado."
+
 msgid "Site"
 msgstr "Sitio"
 

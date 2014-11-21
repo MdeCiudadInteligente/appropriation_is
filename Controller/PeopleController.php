@@ -177,16 +177,18 @@ class PeopleController extends AppController {
 	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$queryString=$_GET['q'];
 		$condition=array('OR' => array(
-				    array('Person.id_person LIKE' => '%'.$queryString.'%'),
+				    array('Person.cedula LIKE' => '%'.$queryString.'%'),
 				    array('Person.completename LIKE' => '%'.$queryString.'%')
 		));
 
-		$person=$this->Person->find('list',array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC'),'conditions' => $condition));
+		$person=$this->Person->find('list',array('fields'=>array('Person.id_person','Person.completename','Person.cedula'),'order' => array('Person.completename' => 'ASC'),'conditions' => $condition));
 		
-		foreach ($person as $doc => $completename) {
+		foreach ($person as $doc => $dataPerson) {
 				$json_data = array();
 				$json_data['documento']=$doc;
-				$json_data['completename']=$completename;
+				$array_keys=array_keys($dataPerson);
+				$json_data['id_person']=$array_keys[0];
+				$json_data['completename']=$dataPerson[$array_keys[0]];
 				$data[]=$json_data;
 		}	
 

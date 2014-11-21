@@ -6,7 +6,7 @@
 		<div class="seccion-person">	
 			<div class="input">
 				<label>Sitio</label>
-				<input type="text"  class="Site-autocomplete">
+				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
 				<div class="results-input-site" data-input-name="data[Meeting][site_id]">			
 				</div>
 			</div>
@@ -19,11 +19,15 @@
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));
 		//echo $this->Form->input('Person');/*La persona la acbe de agregar*/
 		?>
+			<div class="input"  style="text-align:right">
+					<a href="/apropiacion_is/People/add" target="_blank">+ Nueva persona</a>
+				
+			</div>
 
 		<div class="seccion-person">	
-			<div class="input">
+			<div class="input" >
 				<label>Personas</label>
-				<input type="text"  class="person-autocomplete">
+				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona">
 				<div class="results-input" data-input-name="data[Person][Person][]">
 					
 				</div>

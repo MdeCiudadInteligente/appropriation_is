@@ -38,17 +38,17 @@
 		</dd>
 		<dt><?php echo __('Meeting Adjunct'); ?></dt>
 		<dd>
-					<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct/'.$divulgation['Divulgation']['divulgation_adjunct'])); ?>&nbsp;</td> 
+					<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct/'.$divulgation['Divulgation']['divulgation_adjunct']),array('target'=>'_blank')); ?>&nbsp;</td> 
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Meeting Adjunct1'); ?></dt>
 		<dd>
-					<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct1'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct1/'.$divulgation['Divulgation']['divulgation_adjunct1'])); ?>&nbsp;</td> 
+					<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct1'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct1/'.$divulgation['Divulgation']['divulgation_adjunct1']),array('target'=>'_blank')); ?>&nbsp;</td> 
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Meeting Adjunct2'); ?></dt>
 		<dd>
-			<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2'])); ?>&nbsp;</td>
+			<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2']),array('target'=>'_blank')); ?>&nbsp;</td>
 			&nbsp;
 		</dd>	
 

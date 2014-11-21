@@ -69,26 +69,37 @@ class ZonesController extends AppController {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
+			$name_zone= $this->request->data['Zone']['zone_name'];
+			$verificar_zone=$this->Zone->query("select distinct zone_name from zones where zone_name = '$name_zone'");
+			$this->set('verificar_zone',$verificar_zone);
 			
-			$this->Zone->create();
+			if($verificar_zone==Array( )){
 			
-			$this->Zone->set(array(
-					'creation_date' => $fecha
-			));
-			$this->Zone->set(array(
-					'user_id' => $usuario
-			));
-			if ($this->Zone->save($this->request->data)) {
-				$this->Session->setFlash(__('The zone has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The zone could not be saved. Please, try again.'));
+				$horas_diferencia= -6;
+				$tiempo=time() + ($horas_diferencia * 60 *60);
+				list($Mili, $bot) = explode(" ", microtime());
+				$DM=substr(strval($Mili),2,4);
+				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
+				$this->set('fecha',$fecha);
+				
+				$this->Zone->create();
+				
+				$this->Zone->set(array(
+						'creation_date' => $fecha
+				));
+				$this->Zone->set(array(
+						'user_id' => $usuario
+				));
+				if ($this->Zone->save($this->request->data)) {
+					$this->Session->setFlash(__('The zone has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The zone could not be saved. Please, try again.'));
+
+				}
+			}
+			else{
+				$this->Session->setFlash(__('La Zona ya existe, por favor verificar.'));
 			}
 		}
 	}
@@ -104,14 +115,31 @@ class ZonesController extends AppController {
 		if (!$this->Zone->exists($id)) {
 			throw new NotFoundException(__('Invalid zone'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Zone->save($this->request->data)) {
-				$this->Session->setFlash(__('The zone has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The zone could not be saved. Please, try again.'));
+		
+		if ($this->request->is(array('post', 'put')))
+		{			
+			$name_zone= $this->request->data['Zone']['zone_name'];
+			$verificar_zone=$this->Zone->query("select distinct zone_name from zones where zone_name = '$name_zone'");
+			$this->set('verificar_zone',$verificar_zone);
+			if($verificar_zone==Array( )){
+					
+				if ($this->Zone->save($this->request->data)) 
+				{
+					$this->Session->setFlash(__('The zone has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} 
+				else 
+				{
+					$this->Session->setFlash(__('The zone could not be saved. Please, try again.'));
+				}
 			}
-		} else {
+			else
+			{
+					$this->Session->setFlash(__('La Zona ya existe, por favor verificar.'));
+			}
+		}
+		else 
+		{
 			$options = array('conditions' => array('Zone.' . $this->Zone->primaryKey => $id));
 			$this->request->data = $this->Zone->find('first', $options);
 		}
