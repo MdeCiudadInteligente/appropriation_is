@@ -20,8 +20,7 @@
 		//echo $this->Form->input('Person');/*La persona la acbe de agregar*/
 		?>
 			<div class="input"  style="text-align:right">
-					<a href="/apropiacion_is/People/add" target="_blank">+ Nueva persona</a>
-				
+					<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
 			</div>
 
 		<div class="seccion-person">	
