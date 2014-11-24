@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 App::uses('AppController', 'Controller');
 /**
  * Users Controller
@@ -153,7 +153,7 @@ class UsersController extends AppController {
 				}
 				else
 				{
-						$this->Session->setFlash(__('El nombre de usuario no está disponible, por favor ingrese uno nuevo.'));
+						$this->Session->setFlash(__('El nombre de usuario no est� disponible, por favor ingrese uno nuevo.'));
 				}
 			}
 			else 

@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 	App::uses('AppController', 'Controller');
 	class ActivitiesController extends AppController {
 	
@@ -58,7 +58,7 @@
    	//obteniedo los datos que trae la variable $divulgation...
    	$this->set('divulgations', $divulgation);
    	
-   	//Se define la configuraciÃ³n del paginador con la variable paginate previamente definida
+   	//Se define la configuración del paginador con la variable paginate previamente definida
    	$this->Paginator->settings = $this->paginate;
    	
    	$this->Paginator->options=array(
@@ -66,16 +66,16 @@
    			'evalScripts' => false
    	);
    	
-   	//PaginaciÃ³n Meeting...
+   	//Paginación Meeting...
    	
    	$this->set('meetings', $this->Paginator->paginate('Meeting'));
      	
    	
-   	//PaginaciÃ³n Agent...
+   	//Paginación Agent...
    	
    	$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
    	
-   	//PaginaciÃ³n Site...
+   	//Paginación Site...
    	
    	$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
    	 
@@ -108,7 +108,7 @@
    	//obteniedo los datos que trae la variable $divulgation...
    	$this->set('divulgations', $divulgation);
    	
-   	//Se define la configuraciÃ³n del paginador con la variable paginate previamente definida
+   	//Se define la configuración del paginador con la variable paginate previamente definida
    	$this->Paginator->settings = $this->paginate;
    	
    	$this->Paginator->options=array(
@@ -116,16 +116,16 @@
    			'evalScripts' => false
    	);
    	
-   	//PaginaciÃ³n Meeting...
+   	//Paginación Meeting...
    	
    	$this->set('meetings', $this->Paginator->paginate('Meeting'));
      	
    	
-   	//PaginaciÃ³n Agent...
+   	//Paginación Agent...
    	
    	$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
    	
-   	//PaginaciÃ³n Site...
+   	//Paginación Site...
    	
    	$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
    	 
@@ -306,7 +306,7 @@
 		}
 		return $this->redirect(array('action' => 'index'));
    		   		
-   		//Eliminar AcompaÃ±amietno...
+   		//Eliminar Acompañamietno...
    		$this->Accompaniment->id = $id;
 		if (!$this->Accompaniment->exists()) {
 			throw new NotFoundException(__('Invalid accompaniment'));

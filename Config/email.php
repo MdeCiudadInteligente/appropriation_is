@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * This is email configuration file.
  *
