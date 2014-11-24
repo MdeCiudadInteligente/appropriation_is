@@ -13,7 +13,6 @@
 	<fieldset>
 		<legend><?php echo __('Add Site'); ?></legend>
 	<?php
-		echo $this->Form->input('id_site',array('type'=>'hidden'));
 		echo $this->Form->input('site_type_id',array('empty'=>'Seleccionar el tipo de sitio'));
 		echo $this->Form->input('neighborhood_id',array('empty'=>'Seleccionar el barrio'));
 		echo $this->Form->input('site_name',array('maxLength'=>60));
