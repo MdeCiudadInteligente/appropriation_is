@@ -24,9 +24,10 @@
 		echo $this->Form->input('meeting_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));?>
-
-<!-- 	<?php	echo $this->Form->input('Person'); ?> -->
 	
+			<div class="input"  style="text-align:right">
+					<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
+			</div>
 		<div class="seccion-person">	
 			<div class="input">
 				<label>Personas</label>
