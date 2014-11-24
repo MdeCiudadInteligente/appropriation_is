@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * This is core configuration file.
  *
@@ -75,7 +75,7 @@
 /**
  * Application wide charset encoding
  */
-	//Para idioma en espa�ol
+	//Para idioma en español
 	//Configure::write('App.encoding', 'iso-8859-1');
 	Configure::write('App.encoding', 'UTF-8');
 
