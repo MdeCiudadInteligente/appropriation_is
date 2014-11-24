@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 App::uses('AppController', 'Controller');
 /**
  * Meetings Controller
@@ -129,10 +129,10 @@ public function add() {
 				//$this->Meeting->save();
 			if ($this->Meeting->save($this->request->data)){
 				
-				$this->Session->setFlash(/*print_r($valor).*/__('La reuniÃ³n se ha guardado.'));
+				$this->Session->setFlash(/*print_r($valor).*/__('La reunión se ha guardado.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('La reuniÃ³n no se pudo guardar . Por favor , intÃ©ntelo de nuevo.'));
+				$this->Session->setFlash(__('La reunión no se pudo guardar . Por favor , inténtelo de nuevo.'));
 			}
 		}
 		/*$sites = $this->Meeting->Site->find('list');
@@ -156,10 +156,10 @@ public function add() {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Meeting->save($this->request->data)) {
-				$this->Session->setFlash(__('La reuniÃ³n se ha guardado.'));
+				$this->Session->setFlash(__('La reunión se ha guardado.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('La reuniÃ³n no se pudo guardar . Por favor , intÃ©ntelo de nuevo.'));
+				$this->Session->setFlash(__('La reunión no se pudo guardar . Por favor , inténtelo de nuevo.'));
 			}
 		} else {
 			$options = array('conditions' => array('Meeting.' . $this->Meeting->primaryKey => $id));
@@ -187,9 +187,9 @@ public function add() {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Meeting->delete()) {
-			$this->Session->setFlash(__('La reuniÃ³n ha sido eliminado.'));
+			$this->Session->setFlash(__('La reunión ha sido eliminado.'));
 		} else {
-			$this->Session->setFlash(__('La reuniÃ³n no se pudo eliminar . Por favor , intÃ©ntelo de nuevo.'));
+			$this->Session->setFlash(__('La reunión no se pudo eliminar . Por favor , inténtelo de nuevo.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}
