@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 App::uses('AppController', 'Controller');
 /**
  * People Controller
@@ -180,7 +180,7 @@ class PeopleController extends AppController {
 		
 		$persona_id = $this->Person->MeetingsPerson->find('first', array('conditions'=>array('MeetingsPerson.person_id' => $id)));
 		if($persona_id!=array()){
-			$this->Session->setFlash(__('La persona no se puede eliminar porque se encuentra asociada a una reuni�n.'));
+			$this->Session->setFlash(__('La persona no se puede eliminar porque se encuentra asociada a una reunión.'));
 			return $this->redirect(array('action' => 'index'));
 			
 		}
