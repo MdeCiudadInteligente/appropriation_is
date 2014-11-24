@@ -1,3 +1,180 @@
+
+
+<?php
+
+
+$fieldsserialize2 = array(
+			    array("field"=>"id"),
+                array("field"=>"sitio","title"=>"Proyecto"),
+                array("field"=>"f_reunion","title"=>"Nombre"),
+                array("field"=>"tipo","title"=>"Descripcion"),
+                array("field"=>"titulo","title"=>"Elegida"),
+                array("field"=>"descripcion","title"=>"Elegida"),
+                array("field"=>"compromisos","title"=>"Elegida"),
+                array("field"=>"creation_date","title"=>"Elegida"),
+                array("field"=>"modification_date","title"=>"Elegida"),
+			    array("field"=>"id","align"=>"center","width"=>80,"title"=>"funciones","render"=>"funciones")
+);
+		
+$data=serialize($fieldsserialize2 );
+
+
+	function set_grid_fields($array){
+
+	    $string="[";
+
+	    foreach ($array as $key => $value){
+	        $add="{name:'".$value['field']."'},";
+	        $string.=$add;
+	    }
+
+	    $string=substr($string,0,-1);
+
+	    $string.="]";
+
+	    return $string;
+	}
+
+
+
+
+?>
+
+
+
+<div class="meetings-cont">
+
+<script type='text/javascript'>
+
+Ext.BLANK_IMAGE_URL = 'webroot/js/ext/resources/images/default/s.gif';
+Ext.namespace('grid2');
+grid2.render = '';
+grid2.editor = '';
+grid2.store = new Ext.data.GroupingStore({
+	id: 'id',
+	proxy: new Ext.data.HttpProxy({
+		method: 'POST',
+		api: {
+				read : absPath+"Meetings/index_service.json"
+		}
+	}),
+	reader: new Ext.data.JsonReader({
+		totalProperty: 'total',
+		successProperty: 'success',
+		idProperty: 'id',
+		root: 'rows',
+	},
+	<?php echo set_grid_fields($fieldsserialize2); ?>),
+		writer: new Ext.data.JsonWriter({
+		encode: true,
+		writeAllFields: false
+	}),
+	autoSave: true,
+	baseParams:{table: 'aul_aulas', dbid:'id',query:'',start:0,limit:100 }
+});
+
+
+var expander = new Ext.ux.grid.RowExpander({
+        tpl : new Ext.Template(
+			'<p><b>Observaciones:</b> {observaciones}</p>'
+		)
+});
+
+
+grid2.funciones = {
+	refresh: function(){grid2.store.reload();},
+	eliminar: function(){
+		var rec = grid2.grid.getSelectionModel().getSelectedCell();
+		if (!rec) {return false;}
+		var rec = grid2.grid.store.getAt(rec[0]);
+		grid2.grid.store.remove(rec);
+	},
+	nuevo: function(){
+		var u = new grid2.grid.store.recordType();
+		grid2.grid.stopEditing();
+		grid2.grid.store.insert(0, u);
+		grid2.grid.startEditing(0, 1);
+	}
+}
+
+grid2.columns = [
+	expander,
+    {dataIndex:'periodo', header:'Periodo', sortable:true,align:'center',width:90},
+    {dataIndex:'descripcion', header:'Descripci&oacute;n',sortable:true,align:'center',width:120},
+//    {dataIndex:'asis_min', header:'Min-Asist', sortable:true,align:'center',width:90},
+//    {dataIndex:'num_docentes', header:'No-Docentes', sortable:true,align:'center',width:90},
+    {dataIndex:'programa', header:'Programa', sortable:true,align:'center',width:250},
+    {dataIndex:'pensum', header:'Pensum', sortable:true,align:'center',width:80},
+    {dataIndex:'nivel', header:'Nivel', sortable:true,align:'center',width:80},
+    {dataIndex:'dependencia', header:'Dependencia', sortable:true,align:'center',width:250},
+    {dataIndex:'materia_codigo', header:'Cod-Materia', sortable:true,align:'center',width:120},
+    {dataIndex:'materia', header:'Materia', sortable:true,align:'center',width:250},
+//    {dataIndex:'estado', header:'Estado',  sortable:true,align:'center',width:120, renderer: grid2.render_estado},
+    //{dataIndex:'observaciones', header:'Observaciones',  sortable:true,align:'center',width:60},
+    {dataIndex:'id', align:'center', header:'Funciones',width:120, renderer: grid2.render_funciones}
+];
+
+grid2.store.load({params:{start:0,limit:100}});
+
+
+grid2.grid = new Ext.grid.GridPanel({
+	view: new Ext.grid.GroupingView({
+				forceFit:true,
+				groupTextTpl: '{text}'
+	}),
+    id:'grid2_name',
+	store: grid2.store,
+	columns : grid2.columns,
+	iconCls: 'grid-icon',
+	title: 'Grupos',
+	loadMask:{msg:'Procesando datos...'},
+	height: 600,
+	plugins: expander,
+	width: 930,
+	style: '',
+	bbar:new Ext.PagingToolbar({ 
+		pageSize: 100,
+		store: grid2.store,
+		beforePageText:'Página',
+		afterPageText : 'de {0}',
+		displayInfo: true,
+		displayMsg: 'Mostrando Registros {0} - {1} de {2}',
+		emptyMsg: 'No hay registros en la base de datos'
+	})
+});
+
+grid2.render = function(){grid2.grid.render('grid2');};
+
+grid2.grid.on('cellmousedown',function(grid, rowIndex, cellIndex, e ){
+			var record = grid.getStore().getAt(rowIndex);  // Get the Record 
+			var field  = grid.getColumnModel().getDataIndex(cellIndex);
+			var data   = record.get(field);
+			if((field=='materia' || field=='nombre'|| field=='programa'|| field=='descripcion' || field=='dependencia') && data!=''){
+				$(e.getTarget()).tooltip('<b><center><font color="#1F82C3">'+field.toUpperCase()+'</font></center></b><p>'+data+'</p>',{click : true, mouse : false, sticky: 1});
+			}
+			else if (field=='formula_numerador' && data!=''){
+				var denominador=record.get('formula_denominador'); 
+				var head='FORMULA DEL INDICADOR';
+				$(e.getTarget()).tooltip('<center style=\"padding-bottom: 8px; color: rgb(31, 130, 195);\"><b>FORMULA DEL INDICADOR </b>  </center><table style=\"width:99%\";><tbody><tr><td style=\"padding-top: 8px; border-bottom: 2px solid rgb(229, 168, 27); text-align: center; font-style: normal; font-family: Trebuchet MS; font-size: 13px; padding-bottom: 11px;\">'+data+' </td></tr><tr><td style=\"padding-top: 8px; text-align: center; font-style: normal; font-family: Trebuchet MS; font-size: 13px; padding-bottom: 11px;\"> '+denominador+'</td></tr></tbody></table>'  ,{click : true, mouse : false, sticky: 1});				
+			}
+});
+
+
+jQuery(document).ready(grid2.render, grid2); 
+
+</script>
+
+<div style='clear: both;width: 98%;'  class='grid_recargar'>
+    <div id='grid2' style='width: 100%;'></div>
+</div>
+
+
+
+
+</div>	
+
+
+
 <div class="meetings index">
 	<h2><?php echo __('Meetings'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
