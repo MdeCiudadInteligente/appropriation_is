@@ -130,7 +130,7 @@ grid2.grid = new Ext.grid.GridPanel({
 	loadMask:{msg:'Procesando datos...'},
 	height: 600,
 	plugins: expander,
-	width: 930,
+	width: '100%',
 	style: '',
 	bbar:new Ext.PagingToolbar({ 
 		pageSize: 100,
@@ -159,19 +159,13 @@ grid2.grid.on('cellmousedown',function(grid, rowIndex, cellIndex, e ){
 			}
 });
 
-
 jQuery(document).ready(grid2.render, grid2); 
 
 </script>
 
-<div style='clear: both;width: 98%;'  class='grid_recargar'>
-    <div id='grid2' style='width: 100%;'></div>
+<div  class='grid_cont'>
+    <div id='grid2'></div>
 </div>
-
-
-
-
-</div>	
 
 
 
@@ -253,3 +247,6 @@ jQuery(document).ready(grid2.render, grid2);
 		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>
+
+
+</div>	
