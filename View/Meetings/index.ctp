@@ -76,7 +76,8 @@ grid2.store = new Ext.data.GroupingStore({
 
 var expander = new Ext.ux.grid.RowExpander({
         tpl : new Ext.Template(
-			'<p><b>Observaciones:</b> {observaciones}</p>'
+			'<p><b>Descripcion:</b> {descripcion}</p>',
+			'<p><b>Compromisos:</b> {compromisos}</p>'
 		)
 });
 
@@ -99,18 +100,10 @@ grid2.funciones = {
 
 grid2.columns = [
 	expander,
-    {dataIndex:'periodo', header:'Periodo', sortable:true,align:'center',width:90},
-    {dataIndex:'descripcion', header:'Descripci&oacute;n',sortable:true,align:'center',width:120},
-//    {dataIndex:'asis_min', header:'Min-Asist', sortable:true,align:'center',width:90},
-//    {dataIndex:'num_docentes', header:'No-Docentes', sortable:true,align:'center',width:90},
-    {dataIndex:'programa', header:'Programa', sortable:true,align:'center',width:250},
-    {dataIndex:'pensum', header:'Pensum', sortable:true,align:'center',width:80},
-    {dataIndex:'nivel', header:'Nivel', sortable:true,align:'center',width:80},
-    {dataIndex:'dependencia', header:'Dependencia', sortable:true,align:'center',width:250},
-    {dataIndex:'materia_codigo', header:'Cod-Materia', sortable:true,align:'center',width:120},
-    {dataIndex:'materia', header:'Materia', sortable:true,align:'center',width:250},
-//    {dataIndex:'estado', header:'Estado',  sortable:true,align:'center',width:120, renderer: grid2.render_estado},
-    //{dataIndex:'observaciones', header:'Observaciones',  sortable:true,align:'center',width:60},
+    {dataIndex:'sitio', header:'Sitio', sortable:true,align:'left'},
+    {dataIndex:'f_reunion', header:'Fecha',sortable:true,align:'center'},
+    {dataIndex:'titulo', header:'Titulo', sortable:true,align:'left'},
+    {dataIndex:'descripcion', header:'Descripcion', sortable:true,align:'left'},
     {dataIndex:'id', align:'center', header:'Funciones',width:120, renderer: grid2.render_funciones}
 ];
 
@@ -135,7 +128,7 @@ grid2.grid = new Ext.grid.GridPanel({
 	bbar:new Ext.PagingToolbar({ 
 		pageSize: 100,
 		store: grid2.store,
-		beforePageText:'Página',
+		beforePageText:'Pagina',
 		afterPageText : 'de {0}',
 		displayInfo: true,
 		displayMsg: 'Mostrando Registros {0} - {1} de {2}',
@@ -145,19 +138,6 @@ grid2.grid = new Ext.grid.GridPanel({
 
 grid2.render = function(){grid2.grid.render('grid2');};
 
-grid2.grid.on('cellmousedown',function(grid, rowIndex, cellIndex, e ){
-			var record = grid.getStore().getAt(rowIndex);  // Get the Record 
-			var field  = grid.getColumnModel().getDataIndex(cellIndex);
-			var data   = record.get(field);
-			if((field=='materia' || field=='nombre'|| field=='programa'|| field=='descripcion' || field=='dependencia') && data!=''){
-				$(e.getTarget()).tooltip('<b><center><font color="#1F82C3">'+field.toUpperCase()+'</font></center></b><p>'+data+'</p>',{click : true, mouse : false, sticky: 1});
-			}
-			else if (field=='formula_numerador' && data!=''){
-				var denominador=record.get('formula_denominador'); 
-				var head='FORMULA DEL INDICADOR';
-				$(e.getTarget()).tooltip('<center style=\"padding-bottom: 8px; color: rgb(31, 130, 195);\"><b>FORMULA DEL INDICADOR </b>  </center><table style=\"width:99%\";><tbody><tr><td style=\"padding-top: 8px; border-bottom: 2px solid rgb(229, 168, 27); text-align: center; font-style: normal; font-family: Trebuchet MS; font-size: 13px; padding-bottom: 11px;\">'+data+' </td></tr><tr><td style=\"padding-top: 8px; text-align: center; font-style: normal; font-family: Trebuchet MS; font-size: 13px; padding-bottom: 11px;\"> '+denominador+'</td></tr></tbody></table>'  ,{click : true, mouse : false, sticky: 1});				
-			}
-});
 
 jQuery(document).ready(grid2.render, grid2); 
 
