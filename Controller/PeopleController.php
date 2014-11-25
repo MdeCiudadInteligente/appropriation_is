@@ -82,7 +82,7 @@ class PeopleController extends AppController {
 				$tiempo=time() + ($horas_diferencia * 60 *60);
 				list($Mili, $bot) = explode(" ", microtime());
 				$DM=substr(strval($Mili),2,4);
-				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
+				$fecha = date('Y-m-d H:i:s:');
 				$this->set('fecha',$fecha);
 				
 				$this->Person->create();
