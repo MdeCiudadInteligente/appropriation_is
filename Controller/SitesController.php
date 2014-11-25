@@ -118,6 +118,7 @@ class SitesController extends AppController {
 				} 
 				else 
 				{
+					debug($this->validationErrors); die();
 					$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
 				}
 			}

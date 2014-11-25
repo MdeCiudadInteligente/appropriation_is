@@ -144,6 +144,12 @@ msgstr "Por favor, ingrese su nombre de usuario y contraseña"
 msgid "Meeting Type"
 msgstr "Tipo Reunión"
 
+msgid "Edit Owner"
+msgstr "Editar encargado"
+
+msgid "Delete Owner"
+msgstr "Eliminar encargado"
+
 msgid "The site type has been saved."
 msgstr "El tipo de sitio se ha guardado."
 
