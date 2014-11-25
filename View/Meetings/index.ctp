@@ -83,20 +83,17 @@ var expander = new Ext.ux.grid.RowExpander({
 
 
 grid2.funciones = {
-	refresh: function(){grid2.store.reload();},
-	eliminar: function(){
-		var rec = grid2.grid.getSelectionModel().getSelectedCell();
-		if (!rec) {return false;}
-		var rec = grid2.grid.store.getAt(rec[0]);
-		grid2.grid.store.remove(rec);
-	},
-	nuevo: function(){
-		var u = new grid2.grid.store.recordType();
-		grid2.grid.stopEditing();
-		grid2.grid.store.insert(0, u);
-		grid2.grid.startEditing(0, 1);
-	}
+	refresh: function(){grid2.store.reload();}
 }
+
+grid2.render = function(){grid2.grid.render('grid2');};
+
+grid2.render_crud = function(val,meta,record){
+	var ver="<a href='<?php  ?>'><i class='icon-desktop-1 view'></i></a>";
+	var editar="<a href=''><i class='icon-export edit'></i></a>";
+	var eliminar="<a href=''><i class='icon-cancel-1 cancel'></i></a>";
+	return "<div class='function-cont'>"+ver+editar+eliminar+"</div>";
+}; 
 
 grid2.columns = [
 	expander,
@@ -104,7 +101,7 @@ grid2.columns = [
     {dataIndex:'f_reunion', header:'Fecha',sortable:true,align:'center'},
     {dataIndex:'titulo', header:'Titulo', sortable:true,align:'left'},
     {dataIndex:'descripcion', header:'Descripcion', sortable:true,align:'left'},
-    {dataIndex:'id', align:'center', header:'Funciones',width:120, renderer: grid2.render_funciones}
+    {dataIndex:'id', align:'center', header:'Funciones',width:120, renderer: grid2.render_crud}
 ];
 
 grid2.store.load({params:{start:0,limit:100}});
@@ -135,9 +132,6 @@ grid2.grid = new Ext.grid.GridPanel({
 		emptyMsg: 'No hay registros en la base de datos'
 	})
 });
-
-grid2.render = function(){grid2.grid.render('grid2');};
-
 
 jQuery(document).ready(grid2.render, grid2); 
 
@@ -178,7 +172,7 @@ jQuery(document).ready(grid2.render, grid2);
 		<td><?php echo h($meeting['Meeting']['meeting_commitments']); ?>&nbsp;</td>	
 		
 		<td class="actions">
-		<?php echo $this->Html->link(__('View'), array('action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
+		<?php echo $this->Html->link(__('View'), array('action' => 'view')); ?>
 		<?php $usuario_id=$meeting['Meeting']['user_id'];?>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
 		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>
