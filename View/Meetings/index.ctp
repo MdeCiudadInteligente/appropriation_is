@@ -35,9 +35,6 @@ $data=serialize($fieldsserialize2 );
 	    return $string;
 	}
 
-
-
-
 ?>
 
 
@@ -45,7 +42,9 @@ $data=serialize($fieldsserialize2 );
 <div class="meetings-cont">
 
 <script type='text/javascript'>
-
+var actionViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'View')); ?>"
+var editViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'edit')); ?>"
+var delViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'delete')); ?>"
 Ext.BLANK_IMAGE_URL = 'webroot/js/ext/resources/images/default/s.gif';
 Ext.namespace('grid2');
 grid2.render = '';
@@ -89,9 +88,9 @@ grid2.funciones = {
 grid2.render = function(){grid2.grid.render('grid2');};
 
 grid2.render_crud = function(val,meta,record){
-	var ver="<a href='<?php  ?>'><i class='icon-desktop-1 view'></i></a>";
-	var editar="<a href=''><i class='icon-export edit'></i></a>";
-	var eliminar="<a href=''><i class='icon-cancel-1 cancel'></i></a>";
+	var ver="<a href='"+actionViewUrl+"/"+val+"' target='_blank'><i class='icon-desktop-1 view'></i></a>";
+	var editar="<a href='"+editViewUrl+"/"+val+"'><i class='icon-export edit'></i></a>";
+	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Are you sure you want to delete # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i class='icon-cancel-1 cancel'></i></a>";
 	return "<div class='function-cont'>"+ver+editar+eliminar+"</div>";
 }; 
 
