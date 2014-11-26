@@ -117,6 +117,9 @@ msgstr "El acompa�amiento ha sido eliminado."
 msgid "The zone has been saved."
 msgstr "La zona se ha guardado."
 
+msgid "connectivity sites accompanied"
+msgstr "Sitios con conectividad acompañados"
+
 msgid "Site"
 msgstr "Sitio"
 
@@ -434,6 +437,9 @@ msgstr "Fecha Acompañamiento"
 
 msgid "Add User"
 msgstr "Añadir usuario"
+
+msgid "dynamic agents"
+msgstr "Agentes Dinamizadores"
 
 msgid "Id Person"
 msgstr "Documento Persona"

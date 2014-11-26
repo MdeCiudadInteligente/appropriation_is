@@ -1,12 +1,12 @@
 ﻿<div class="agents view">
-<h2><?php echo __('Agent'); ?></h2>
+<h2><?php echo __('Agente Dinamizador'); ?></h2>
 	<dl>	
 		<dt><?php echo __('Documento Agente'); ?></dt>
 		<dd>
 			<?php echo h($agent['Person']['cedula']); ?>
 			&nbsp;
 		</dd>	
-		<dt><?php echo __('Agente'); ?></dt>
+		<dt><?php echo __('Agente dinamizador'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($agent['Person']['name'].' '.$agent['Person']['lastname'], array('controller' => 'people', 'action' => 'view', $agent['Person']['id_person'])); ?>
 			&nbsp;
