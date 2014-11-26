@@ -115,7 +115,7 @@ public function add() {
 			$data['Meeting']['user_id']=$usuario;
 						
 			if ($this->Meeting->save($data)) {
-					$this->Session->setFlash(__('La comuna se ha guardado.'));
+					$this->Session->setFlash(__('La reunión se ha guardado.'));
 					return $this->redirect(array('action' => 'index'));
 			}
 			else
