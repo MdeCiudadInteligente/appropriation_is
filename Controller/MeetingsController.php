@@ -84,6 +84,7 @@ class MeetingsController extends AppController {
 					'compromisos'=>$meeting['Meeting']['meeting_commitments'],
 					'creation_date'=>$meeting['Meeting']['creation_date'],
 					'modification_date'=>$meeting['Meeting']['modification_date'],
+					'user_id'=>$meeting['Meeting']['user_id'],
 			);
 			$count++;
 		}

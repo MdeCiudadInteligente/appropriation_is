@@ -12,6 +12,8 @@
 	    $string.="]";
 	    return $string;
 	}
+	$usuario_level= $this->Session->read('Auth.User.permission_level');		
+	///$id_usuario--> variable of actual id user (already included)
 ?>
 
 
@@ -78,7 +80,14 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 	var ver="<a href='"+actionViewUrl+"/"+val+"' target='_blank'><i title='Ver' class='icon-desktop-1 view'></i></a>";
 	var editar="<a href='"+editViewUrl+"/"+val+"'><i title='Editar' class='icon-export edit'></i></a>";
 	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Are you sure you want to delete # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
-	return "<div class='function-cont'>"+ver+editar+eliminar+"</div>";
+	var user_id=record.get('user_id');
+
+	if(user_id==<?php echo $id_usuario ?> || user_id==0 || <?php  echo $usuario_level ?>==1 ){
+		return "<div class='function-cont'>"+ver+editar+eliminar+"</div>";
+	}else{
+		return "<div class='grid-msj'>No tienes permisos</div>";
+	}
+
 }; 
 
 
