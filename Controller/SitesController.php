@@ -27,7 +27,7 @@ class SitesController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
 			return true;
 		}
 	}
@@ -95,31 +95,18 @@ class SitesController extends AppController {
 				
 			if($verificar_site==Array( )){
 			
-				$horas_diferencia= -6;
-				$tiempo=time() + ($horas_diferencia * 60 *60);
-				list($Mili, $bot) = explode(" ", microtime());
-				$DM=substr(strval($Mili),2,4);
-				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-				$this->set('fecha',$fecha);
-				
 				$this->Site->create();
-				
-				$this->Site->set(array(
-						'creation_date' => $fecha
-				));
-				$this->Site->set(array(
-						'user_id' => $usuario
-				));
-				
-				if ($this->Site->save($this->request->data)) 
+				$data=$this->request->data;
+				$data['Site']['creation_date']=date('Y-m-d H:i:s');
+				$data['Site']['user_id']=$usuario;
+								
+				if ($this->Site->save($data)) {
+						$this->Session->setFlash(__('El sitio se ha guardado.'));
+						return $this->redirect(array('action' => 'index'));
+				}
+				else
 				{
-					$this->Session->setFlash(__('The site has been saved.'));
-					return $this->redirect(array('action' => 'index'));
-				} 
-				else 
-				{
-					debug($this->validationErrors); die();
-					$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
+					$this->Session->setFlash(__('El sitio no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
 				}
 			}
 			else

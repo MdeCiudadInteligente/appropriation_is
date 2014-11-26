@@ -73,28 +73,19 @@ class NeighborhoodsController extends AppController {
 
 			if($verificar_barrio==Array( )){				
 			
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
-			
-			$this->Neighborhood->create();
-			
-			$this->Neighborhood->set(array(
-			'creation_date' => $fecha
-			));
-			$this->Neighborhood->set(array(
-			'user_id' => $usuario
-			));
-			if ($this->Neighborhood->save($this->request->data)) {
-				$this->Session->setFlash(__('The neighborhood has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The neighborhood could not be saved. Please, try again.'));
-			}
-			
+				$this->Neighborhood->create();
+				$data=$this->request->data;
+				$data['Neighborhood']['creation_date']=date('Y-m-d H:i:s');
+				$data['Neighborhood']['user_id']=$usuario;
+							
+				if ($this->Neighborhood->save($data)) {
+						$this->Session->setFlash(__('El barrio se ha guardado.'));
+						return $this->redirect(array('action' => 'index'));
+				}
+				else
+				{
+					$this->Session->setFlash(__('El barrio no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+				}
 			}
 			else
 			{

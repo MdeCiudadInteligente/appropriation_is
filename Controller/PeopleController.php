@@ -78,46 +78,25 @@ class PeopleController extends AppController {
 			
 			if($verificar_document==Array( )){
 					
-				$horas_diferencia= -6;
-				$tiempo=time() + ($horas_diferencia * 60 *60);
-				list($Mili, $bot) = explode(" ", microtime());
-				$DM=substr(strval($Mili),2,4);
-				$fecha = date('Y-m-d H:i:s:');
-				$this->set('fecha',$fecha);
-				
-				$this->Person->create();
-				
-				$this->Person->set(array(
-						'creation_date' => $fecha
-				));
-				$this->Person->set(array(
-						'user_id' => $usuario
-				));
-			
-				//$id_persona = $this->request->data['Person']['id_person'];
-				//$persona_id = $this->Person->find('first', array('conditions'=>array('Person.id_person' => $id_persona)));
-				//debug($persona_id);
-				//debug($id_persona);
-				/*if($persona_id != array())
-				{
-					$this->Session->setFlash(__('El documento ya existe.'));
-					return $this->redirect(array('controller' => 'people', 'action' => 'add'));
-				}*/		
-				
-				if ($this->Person->save($this->request->data)) {
-					$this->Session->setFlash(__('The person has been saved.'));				
-					return $this->redirect(array('action' => 'index'));
-				} 
-				else 
-				{
-					$this->Session->setFlash(__('The person could not be saved. Please, try again.'));			
-				}
+					$this->Person->create();
+						$data=$this->request->data;
+						$data['Person']['creation_date']=date('Y-m-d H:i:s');
+						$data['Person']['user_id']=$usuario;
+						
+						if ($this->Person->save($data)) {
+							$this->Session->setFlash(__('The person has been saved.'));
+							return $this->redirect(array('action' => 'index'));
+						}
+						else
+						{
+							$this->Session->setFlash(__('The person could not be saved. Please, try again.'));
+						}
+					}
+					else
+					{
+						$this->Session->setFlash(__('El documento ya existe, por favor verifique.'));
+					}
 			}
-			else
-			{
-				$this->Session->setFlash(__('El documento ya existe, por favor verifique.'));
-			}
-		}
 	}
 
 /**

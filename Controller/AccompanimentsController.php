@@ -109,32 +109,22 @@ class AccompanimentsController extends AppController {
 	public function add() {
 		
 		if ($this->request->is('post')) {
-			$usuario = $this->Session->read('Auth.User.id_user');
-			
+			$usuario = $this->Session->read('Auth.User.id_user');			
 			$this->set('usuario',$usuario);
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
 			
 			$this->Accompaniment->create();
-			
-				$this->Accompaniment->set(array(
-						'creation_date' => $fecha
-				));
-				
-				$this->Accompaniment->set(array(
-						'user_id' => $usuario
-				));
-				if ($this->Accompaniment->save($this->request->data)) {
-				
-				$this->Session->setFlash(__('The accompaniment has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The accompaniment could not be saved. Please, try again.'));
+			$data=$this->request->data;
+			$data['Accompaniment']['creation_date']=date('Y-m-d H:i:s');
+			$data['Accompaniment']['user_id']=$usuario;
+						
+			if ($this->Accompaniment->save($data)) {
+					$this->Session->setFlash(__('El acompañamiento se ha guardado.'));
+					return $this->redirect(array('action' => 'index'));
 			}
+			else
+				{
+					$this->Session->setFlash(__('El acompañamiento no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+				}
 		}
 		$sites = $this->Accompaniment->Site->find('list', array('order'=>array('Site.site_name ASC')));
 		$this->set(compact('sites'));
