@@ -3,53 +3,22 @@
 
 <div class="meetings-cont">
 
+
 <?php
-$fieldsserialize2 = array(
-			    array("field"=>"id"),
-                array("field"=>"sitio"),
-                array("field"=>"f_reunion"),
-                array("field"=>"tipo"),
-                array("field"=>"titulo"),
-                array("field"=>"descripcion"),
-                array("field"=>"compromisos"),
-                array("field"=>"creation_date"),
-                array("field"=>"modification_date"),
-			    array("field"=>"id")
-);
-		
-$data=serialize($fieldsserialize2 );
-
-
-	function set_grid_fields($array){
-
-	    $string="[";
-
-	    foreach ($array as $key => $value){
-	        $add="{name:'".$value['field']."'},";
-	        $string.=$add;
-	    }
-
-	    $string=substr($string,0,-1);
-
-	    $string.="]";
-
-	    return $string;
-	}
-
-
 	$gridOptions=array(
 			'gridId'=>'gridMeetings',
-			'gridTitle'=>'Reuniones',
+			'gridTitle'=>'Reuniones xxx',
+			'height'=>800,
 			'serviceUrl'=>'Meetings/index_service.json',
 			'fields'=>array(
-			    array("dataIndex"=>"id"),
-                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
+			    array("dataIndex"=>"id","column"=>false),
+                array("dataIndex"=>"sitio",'header'=>'Sitio xxx','sortable'=>true,'align'=>"left","column"=>true),
                 array("dataIndex"=>"f_reunion",'header'=>'Fecha','sortable'=>true,'align'=>"left","column"=>true),
                 array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
                 array("dataIndex"=>"titulo",'header'=>'Titulo','sortable'=>true,'align'=>"left","column"=>true),
                 array("dataIndex"=>"descripcion",'header'=>'Descripcion','sortable'=>true,'align'=>"left","column"=>true),
                 array("dataIndex"=>"compromisos",'header'=>'compromisos','sortable'=>true,'align'=>"left","column"=>true),
-                array("dataIndex"=>"creation_date",'header'=>'Descripcion','sortable'=>true,'align'=>"left","column"=>false),
+                array("dataIndex"=>"creation_date",'header'=>'fecha Creacion','sortable'=>true,'align'=>"left","column"=>false),
                 array("dataIndex"=>"modification_date",'header'=>'Descripcion','sortable'=>true,'align'=>"left","column"=>false)
 			),
 			'expander'=>array(
@@ -61,113 +30,9 @@ $data=serialize($fieldsserialize2 );
 			'printCrud'=>true,
 			'baseParams'=>array('start'=>0,'limit'=>100)
 	);
-
-
 ?>
 
-
 <?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
-
-
-
-<script type='text/javascript'>
-var actionViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'View')); ?>"
-var editViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'edit')); ?>"
-var delViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'delete')); ?>"
-Ext.BLANK_IMAGE_URL = 'webroot/js/ext/resources/images/default/s.gif';
-Ext.namespace('<?php echo $gridOptions['gridId']?>');
-<?php echo $gridOptions['gridId']?>.store = new Ext.data.GroupingStore({
-	id: 'id',
-	proxy: new Ext.data.HttpProxy({
-		method: 'POST',
-		api: {
-				read : absPath+"Meetings/index_service.json"
-		}
-	}),
-	reader: new Ext.data.JsonReader({
-		totalProperty: 'total',
-		successProperty: 'success',
-		idProperty: 'id',
-		root: 'rows',
-	},
-	<?php echo set_grid_fields($fieldsserialize2); ?>),
-		writer: new Ext.data.JsonWriter({
-		encode: true,
-		writeAllFields: false
-	}),
-	autoSave: true,
-	baseParams:{table: '', dbid:'',query:'',start:0,limit:100 }
-});
-
-
-var expander = new Ext.ux.grid.RowExpander({
-        tpl : new Ext.Template(
-			'<p><b>Descripcion:</b> {descripcion}</p>',
-			'<p><b>Compromisos:</b> {compromisos}</p>'
-		)
-});
-
-
-<?php echo $gridOptions['gridId']?>.funciones = {
-	refresh: function(){<?php echo $gridOptions['gridId']?>.store.reload();}
-}
-
-<?php echo $gridOptions['gridId']?>.render = function(){<?php echo $gridOptions['gridId']?>.grid.render('<?php echo $gridOptions['gridId']?>');};
-
-<?php echo $gridOptions['gridId']?>.render_crud = function(val,meta,record){
-	var ver="<a href='"+actionViewUrl+"/"+val+"' target='_blank'><i title='Ver' class='icon-desktop-1 view'></i></a>";
-	var editar="<a href='"+editViewUrl+"/"+val+"'><i title='Editar' class='icon-export edit'></i></a>";
-	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Are you sure you want to delete # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
-	return "<div class='function-cont'>"+ver+editar+eliminar+"</div>";
-}; 
-
-<?php echo $gridOptions['gridId']?>.columns = [
-	expander,
-    {dataIndex:'sitio', header:'Sitio', sortable:true,align:'left'},
-    {dataIndex:'f_reunion', header:'Fecha',sortable:true,align:'center'},
-    {dataIndex:'titulo', header:'Titulo', sortable:true,align:'left'},
-    {dataIndex:'descripcion', header:'Descripcion', sortable:true,align:'left'},
-    {dataIndex:'id', align:'center', header:'Funciones',width:120, renderer: <?php echo $gridOptions['gridId']?>.render_crud}
-];
-
-<?php echo $gridOptions['gridId']?>.store.load({params:{start:0,limit:100}});
-
-
-<?php echo $gridOptions['gridId']?>.grid = new Ext.grid.GridPanel({
-	view: new Ext.grid.GroupingView({
-				forceFit:true,
-				groupTextTpl: '{text}'
-	}),
-    id:'<?php echo $gridOptions['gridId']?>',
-	store: <?php echo $gridOptions['gridId']?>.store,
-	columns : <?php echo $gridOptions['gridId']?>.columns,
-	iconCls: 'grid-icon',
-	title: 'Grupos',
-	loadMask:{msg:'Procesando datos...'},
-	height: 600,
-	plugins: expander,
-	width: '100%',
-	style: '',
-	bbar:new Ext.PagingToolbar({ 
-		pageSize: 100,
-		store: <?php echo $gridOptions['gridId']?>.store,
-		beforePageText:'Pagina',
-		afterPageText : 'de {0}',
-		displayInfo: true,
-		displayMsg: 'Mostrando Registros {0} - {1} de {2}',
-		emptyMsg: 'No hay registros en la base de datos'
-	})
-});
-
-jQuery(document).ready(<?php echo $gridOptions['gridId']?>.render, '<?php echo $gridOptions['gridId']?>'); 
-
-</script>
-
-<div  class='grid_cont'>
-    <div id='<?php echo $gridOptions['gridId']?>'></div>
-</div>
-
-
 
 
 
