@@ -1,8 +1,9 @@
 
 
+
+<div class="meetings-cont">
+
 <?php
-
-
 $fieldsserialize2 = array(
 			    array("field"=>"id"),
                 array("field"=>"sitio"),
@@ -24,7 +25,7 @@ $data=serialize($fieldsserialize2 );
 	    $string="[";
 
 	    foreach ($array as $key => $value){
-	        $add="{name:'".$value['dataIndex']."'},";
+	        $add="{name:'".$value['field']."'},";
 	        $string.=$add;
 	    }
 
@@ -65,20 +66,17 @@ $data=serialize($fieldsserialize2 );
 ?>
 
 
+<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
 
 
-
-<div class="meetings-cont">
 
 <script type='text/javascript'>
 var actionViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'View')); ?>"
 var editViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'edit')); ?>"
 var delViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'delete')); ?>"
 Ext.BLANK_IMAGE_URL = 'webroot/js/ext/resources/images/default/s.gif';
-Ext.namespace('grid2');
-grid2.render = '';
-grid2.editor = '';
-grid2.store = new Ext.data.GroupingStore({
+Ext.namespace('<?php echo $gridOptions['gridId']?>');
+<?php echo $gridOptions['gridId']?>.store = new Ext.data.GroupingStore({
 	id: 'id',
 	proxy: new Ext.data.HttpProxy({
 		method: 'POST',
@@ -110,39 +108,39 @@ var expander = new Ext.ux.grid.RowExpander({
 });
 
 
-grid2.funciones = {
-	refresh: function(){grid2.store.reload();}
+<?php echo $gridOptions['gridId']?>.funciones = {
+	refresh: function(){<?php echo $gridOptions['gridId']?>.store.reload();}
 }
 
-grid2.render = function(){grid2.grid.render('grid2');};
+<?php echo $gridOptions['gridId']?>.render = function(){<?php echo $gridOptions['gridId']?>.grid.render('<?php echo $gridOptions['gridId']?>');};
 
-grid2.render_crud = function(val,meta,record){
+<?php echo $gridOptions['gridId']?>.render_crud = function(val,meta,record){
 	var ver="<a href='"+actionViewUrl+"/"+val+"' target='_blank'><i title='Ver' class='icon-desktop-1 view'></i></a>";
 	var editar="<a href='"+editViewUrl+"/"+val+"'><i title='Editar' class='icon-export edit'></i></a>";
 	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Are you sure you want to delete # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
 	return "<div class='function-cont'>"+ver+editar+eliminar+"</div>";
 }; 
 
-grid2.columns = [
+<?php echo $gridOptions['gridId']?>.columns = [
 	expander,
     {dataIndex:'sitio', header:'Sitio', sortable:true,align:'left'},
     {dataIndex:'f_reunion', header:'Fecha',sortable:true,align:'center'},
     {dataIndex:'titulo', header:'Titulo', sortable:true,align:'left'},
     {dataIndex:'descripcion', header:'Descripcion', sortable:true,align:'left'},
-    {dataIndex:'id', align:'center', header:'Funciones',width:120, renderer: grid2.render_crud}
+    {dataIndex:'id', align:'center', header:'Funciones',width:120, renderer: <?php echo $gridOptions['gridId']?>.render_crud}
 ];
 
-grid2.store.load({params:{start:0,limit:100}});
+<?php echo $gridOptions['gridId']?>.store.load({params:{start:0,limit:100}});
 
 
-grid2.grid = new Ext.grid.GridPanel({
+<?php echo $gridOptions['gridId']?>.grid = new Ext.grid.GridPanel({
 	view: new Ext.grid.GroupingView({
 				forceFit:true,
 				groupTextTpl: '{text}'
 	}),
-    id:'grid2_name',
-	store: grid2.store,
-	columns : grid2.columns,
+    id:'<?php echo $gridOptions['gridId']?>',
+	store: <?php echo $gridOptions['gridId']?>.store,
+	columns : <?php echo $gridOptions['gridId']?>.columns,
 	iconCls: 'grid-icon',
 	title: 'Grupos',
 	loadMask:{msg:'Procesando datos...'},
@@ -152,7 +150,7 @@ grid2.grid = new Ext.grid.GridPanel({
 	style: '',
 	bbar:new Ext.PagingToolbar({ 
 		pageSize: 100,
-		store: grid2.store,
+		store: <?php echo $gridOptions['gridId']?>.store,
 		beforePageText:'Pagina',
 		afterPageText : 'de {0}',
 		displayInfo: true,
@@ -161,13 +159,17 @@ grid2.grid = new Ext.grid.GridPanel({
 	})
 });
 
-jQuery(document).ready(grid2.render, grid2); 
+jQuery(document).ready(<?php echo $gridOptions['gridId']?>.render, '<?php echo $gridOptions['gridId']?>'); 
 
 </script>
 
 <div  class='grid_cont'>
-    <div id='grid2'></div>
+    <div id='<?php echo $gridOptions['gridId']?>'></div>
 </div>
+
+
+
+
 
 
 <div class="meetings index">
