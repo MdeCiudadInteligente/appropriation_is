@@ -1,5 +1,5 @@
 ﻿<div class="agents index">
-	<h2><?php echo __('Agents'); ?></h2>
+	<h2><?php echo __('dynamic agents'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('person_id'); ?></th>

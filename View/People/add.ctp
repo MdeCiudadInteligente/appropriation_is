@@ -1,4 +1,4 @@
-<script type="text/javascript">
+﻿<script type="text/javascript">
 
       function isNumberKey(evt)
       {
@@ -22,7 +22,7 @@
 		echo $this->Form->input('email',array('maxLength'=>256,'type'=>'email'));
 		echo $this->Form->input('phone',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('cell',array('onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('entity',array('maxLength'=>80));
+		echo $this->Form->input('entity',array('maxLength'=>80,'label'=>'Entidad/Organización/Grupo'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

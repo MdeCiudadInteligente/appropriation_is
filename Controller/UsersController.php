@@ -54,7 +54,7 @@ class UsersController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')||(isset($user['permission_level']) && $user['permission_level'] === '4')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] === '4')) {
 			return true;
 		}
 			
@@ -125,30 +125,18 @@ class UsersController extends AppController {
 			{
 				if($verificar_usuario==Array( )){						
 					
-					$horas_diferencia= -6;
-					$tiempo=time() + ($horas_diferencia * 60 *60);
-					list($Mili, $bot) = explode(" ", microtime());
-					$DM=substr(strval($Mili),2,4);
-					$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-					$this->set('fecha',$fecha);
-				
-					$this->User->create();
+				$this->User->create();
+					$data=$this->request->data;
+					$data['User']['creation_date']=date('Y-m-d H:i:s');
+					$data['User']['user_id']=$usuario;
 					
-					$this->User->set(array(
-							'creation_date' => $fecha
-					));
-						
-					$this->User->set(array(
-							'user_id' => $usuario
-					));
-					if ($this->User->save($this->request->data)) 
-					{
-						$this->Session->setFlash(__('The user has been saved.'));
+					if ($this->User->save($data)) {
+						$this->Session->setFlash(__('El usuario se ha guardado.'));
 						return $this->redirect(array('action' => 'index'));
-					} 
-					else 
+					}
+					else
 					{
-						$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+						$this->Session->setFlash(__('El usuario no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
 					}
 				}
 				else

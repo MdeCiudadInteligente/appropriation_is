@@ -27,7 +27,7 @@ class AgentsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
 			return true;
 		}
 	}
@@ -76,37 +76,24 @@ class AgentsController extends AppController {
 			
 			if($verificar_agent==Array( )){				
 			
-				$horas_diferencia= -6;
-				$tiempo=time() + ($horas_diferencia * 60 *60);
-				list($Mili, $bot) = explode(" ", microtime());
-				$DM=substr(strval($Mili),2,4);
-				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-				$this->set('fecha',$fecha);
-				
 				$this->Agent->create();
-				
-				$this->Agent->set(array(
-						'creation_date' => $fecha
-				));
-				
-				$this->Agent->set(array(
-						'user_id' => $usuario
-				));
-				
-				if ($this->Agent->save($this->request->data)) 
-				{
-					$this->Session->setFlash(__('The agent has been saved.'));
-					return $this->redirect(array('action' => 'index'));
-				} 
-				else 
-				{
-					$this->Session->setFlash(__('The agent could not be saved. Please, try again.'));
+				$data=$this->request->data;
+				$data['Agent']['creation_date']=date('Y-m-d H:i:s');
+				$data['Agent']['user_id']=$usuario;
+							
+				if ($this->Agent->save($data)) {
+						$this->Session->setFlash(__('El agente se ha guardado.'));
+						return $this->redirect(array('action' => 'index'));
 				}
-			}
-			else
-			{
-				$this->Session->setFlash(__('La persona ya es agente, por favor verifique.'));
-			}
+				else
+					{
+						$this->Session->setFlash(__('El agente no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+					}
+				}
+				else
+				{
+					$this->Session->setFlash(__('La persona ya es agente, por favor verifique.'));
+				}
 		}
 		$people = $this->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$zones = $this->Agent->Zone->find('list');

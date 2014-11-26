@@ -37,7 +37,7 @@ class MeetingsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '3')||(isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 			
@@ -109,34 +109,20 @@ public function add() {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
-			
-			/*$valor=$this->request;*/
 			$this->Meeting->create();
-			//if ($this->Meeting->save($this->request->data)) {
-			
-			$this->Meeting->set(array(
-					'creation_date' => $fecha
-			));
-				$this->Meeting->set(array(
-						'user_id' => $usuario
-				));
-				//$this->Meeting->save();
-			if ($this->Meeting->save($this->request->data)){
-				
-				$this->Session->setFlash(/*print_r($valor).*/__('La reunión se ha guardado.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('La reunión no se pudo guardar . Por favor , inténtelo de nuevo.'));
+			$data=$this->request->data;
+			$data['Meeting']['creation_date']=date('Y-m-d H:i:s');
+			$data['Meeting']['user_id']=$usuario;
+						
+			if ($this->Meeting->save($data)) {
+					$this->Session->setFlash(__('La comuna se ha guardado.'));
+					return $this->redirect(array('action' => 'index'));
+			}
+			else
+			{
+				$this->Session->setFlash(__('La comuna no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
 			}
 		}
-		/*$sites = $this->Meeting->Site->find('list');
-		$this->set(compact('sites'));*/
 		$sites = $this->Meeting->Site->find('list',array('order' => array('Site.site_name' => 'ASC')));
 		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$this->set(compact('sites', 'people'));

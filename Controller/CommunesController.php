@@ -26,7 +26,7 @@ class CommunesController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
 			return true;
 		}
 	}
@@ -72,39 +72,26 @@ class CommunesController extends AppController {
 			$this->set('verificar_comuna',$verificar_comuna);
 			
 			if($verificar_comuna==Array( )){
-		
-				$horas_diferencia= -6;
-				$tiempo=time() + ($horas_diferencia * 60 *60);
-				list($Mili, $bot) = explode(" ", microtime());
-				$DM=substr(strval($Mili),2,4);
-				$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-				$this->set('fecha',$fecha);
-					
+			
 				$this->Commune->create();
-				
-				$this->Commune->set(array(
-						'creation_date' => $fecha
-				));
-				
-				$this->Commune->set(array(
-						'user_id' => $usuario
-				));
-				
-				if ($this->Commune->save($this->request->data)) 
-				{
-					$this->Session->setFlash(__('The commune has been saved.'));
-					return $this->redirect(array('action' => 'index'));
+						$data=$this->request->data;
+						$data['Commune']['creation_date']=date('Y-m-d H:i:s');
+						$data['Commune']['user_id']=$usuario;
+						
+						if ($this->Commune->save($data)) {
+							$this->Session->setFlash(__('La comuna se ha guardado.'));
+							return $this->redirect(array('action' => 'index'));
+						}
+						else
+						{
+							$this->Session->setFlash(__('La comuna no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+						}
 				}
-				else 
+				else
 				{
-					$this->Session->setFlash(__('The commune could not be saved. Please, try again.'));
+					$this->Session->setFlash(__('La comuna ya existe, por favor verifique.'));
 				}
 			}
-			else
-			{
-				$this->Session->setFlash(__('La comuna ya existe, por favor verifique.'));
-			}
-		}
 		$zones = $this->Commune->Zone->find('list');
 		$this->set(compact('zones'));
 	}
