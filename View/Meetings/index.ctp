@@ -5,15 +5,15 @@
 
 $fieldsserialize2 = array(
 			    array("field"=>"id"),
-                array("field"=>"sitio","title"=>"Proyecto"),
-                array("field"=>"f_reunion","title"=>"Nombre"),
-                array("field"=>"tipo","title"=>"Descripcion"),
-                array("field"=>"titulo","title"=>"Elegida"),
-                array("field"=>"descripcion","title"=>"Elegida"),
-                array("field"=>"compromisos","title"=>"Elegida"),
-                array("field"=>"creation_date","title"=>"Elegida"),
-                array("field"=>"modification_date","title"=>"Elegida"),
-			    array("field"=>"id","align"=>"center","width"=>80,"title"=>"funciones","render"=>"funciones")
+                array("field"=>"sitio"),
+                array("field"=>"f_reunion"),
+                array("field"=>"tipo"),
+                array("field"=>"titulo"),
+                array("field"=>"descripcion"),
+                array("field"=>"compromisos"),
+                array("field"=>"creation_date"),
+                array("field"=>"modification_date"),
+			    array("field"=>"id")
 );
 		
 $data=serialize($fieldsserialize2 );
@@ -24,7 +24,7 @@ $data=serialize($fieldsserialize2 );
 	    $string="[";
 
 	    foreach ($array as $key => $value){
-	        $add="{name:'".$value['field']."'},";
+	        $add="{name:'".$value['dataIndex']."'},";
 	        $string.=$add;
 	    }
 
@@ -35,7 +35,36 @@ $data=serialize($fieldsserialize2 );
 	    return $string;
 	}
 
+
+	$gridOptions=array(
+			'gridId'=>'gridMeetings',
+			'gridTitle'=>'Reuniones',
+			'serviceUrl'=>'Meetings/index_service.json',
+			'fields'=>array(
+			    array("dataIndex"=>"id"),
+                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
+                array("dataIndex"=>"f_reunion",'header'=>'Fecha','sortable'=>true,'align'=>"left","column"=>true),
+                array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
+                array("dataIndex"=>"titulo",'header'=>'Titulo','sortable'=>true,'align'=>"left","column"=>true),
+                array("dataIndex"=>"descripcion",'header'=>'Descripcion','sortable'=>true,'align'=>"left","column"=>true),
+                array("dataIndex"=>"compromisos",'header'=>'compromisos','sortable'=>true,'align'=>"left","column"=>true),
+                array("dataIndex"=>"creation_date",'header'=>'Descripcion','sortable'=>true,'align'=>"left","column"=>false),
+                array("dataIndex"=>"modification_date",'header'=>'Descripcion','sortable'=>true,'align'=>"left","column"=>false)
+			),
+			'expander'=>array(
+				'fields'=>array(
+					array('title'=>'Descripcion','field'=>'descripcion'),
+					array('title'=>'Compromisos','field'=>'compromisos')
+				)
+			),
+			'printCrud'=>true,
+			'baseParams'=>array('start'=>0,'limit'=>100)
+	);
+
+
 ?>
+
+
 
 
 
@@ -69,7 +98,7 @@ grid2.store = new Ext.data.GroupingStore({
 		writeAllFields: false
 	}),
 	autoSave: true,
-	baseParams:{table: 'aul_aulas', dbid:'id',query:'',start:0,limit:100 }
+	baseParams:{table: '', dbid:'',query:'',start:0,limit:100 }
 });
 
 
@@ -88,9 +117,9 @@ grid2.funciones = {
 grid2.render = function(){grid2.grid.render('grid2');};
 
 grid2.render_crud = function(val,meta,record){
-	var ver="<a href='"+actionViewUrl+"/"+val+"' target='_blank'><i class='icon-desktop-1 view'></i></a>";
-	var editar="<a href='"+editViewUrl+"/"+val+"'><i class='icon-export edit'></i></a>";
-	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Are you sure you want to delete # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i class='icon-cancel-1 cancel'></i></a>";
+	var ver="<a href='"+actionViewUrl+"/"+val+"' target='_blank'><i title='Ver' class='icon-desktop-1 view'></i></a>";
+	var editar="<a href='"+editViewUrl+"/"+val+"'><i title='Editar' class='icon-export edit'></i></a>";
+	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Are you sure you want to delete # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
 	return "<div class='function-cont'>"+ver+editar+eliminar+"</div>";
 }; 
 
@@ -139,7 +168,6 @@ jQuery(document).ready(grid2.render, grid2);
 <div  class='grid_cont'>
     <div id='grid2'></div>
 </div>
-
 
 
 <div class="meetings index">
