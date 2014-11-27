@@ -71,6 +71,7 @@ class MeetingsController extends AppController {
 	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
+		
 		$meeting=$this->Meeting->find('all');
 		$count=0;
 		foreach ($meeting as $key => $meeting) {

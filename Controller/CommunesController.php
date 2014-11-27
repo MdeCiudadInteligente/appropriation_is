@@ -40,6 +40,29 @@ class CommunesController extends AppController {
 		$this->Commune->recursive = 0;
 		$this->set('communes', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		
+		$commune=$this->Commune->find('all');
+		$count=0;
+		foreach ($commune as $key => $commune) {
+			$data['rows'][$count]=array(
+					'id'=>$commune['Commune']['id_commune'],
+					'nombre_comuna'=>$commune['Commune']['commune_name'],
+					'zone_id'=>$commune['Commune']['zone_id'],					
+					'creation_date'=>$commune['Commune']['creation_date'],
+					'modification_date'=>$commune['Commune']['modification_date'],
+					'user_id'=>$commune['Commune']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method

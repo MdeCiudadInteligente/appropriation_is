@@ -5,9 +5,7 @@
 			<ul>
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 				<li><?php echo $this->Html->link(__('New Meeting'), array('action' => 'add')); ?></li>
-				<?php 
-						$usuario_level= $this->Session->read('Auth.User.permission_level');
-				?>				
+				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');?>				
 			</ul>
 		</div>
 	</div>	
