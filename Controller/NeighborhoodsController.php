@@ -136,26 +136,17 @@ class NeighborhoodsController extends AppController {
 			throw new NotFoundException(__('Invalid neighborhood'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			
-			$name_barrio= $this->request->data['Neighborhood']['neighborhood_name'];
-			$verificar_barrio=$this->Neighborhood->query("select distinct neighborhood_name from neighborhoods where neighborhood_name = '$name_barrio'");
-			$this->set('verificar_barrio',$verificar_barrio);
-			
-			if($verificar_barrio==Array( )){
-			
 			if ($this->Neighborhood->save($this->request->data)) {
 				$this->Session->setFlash(__('The neighborhood has been saved.'));
 				return $this->redirect(array('action' => 'index'));
-			} else {
+			} 
+			else 
+			{
 				$this->Session->setFlash(__('The neighborhood could not be saved. Please, try again.'));
 			}
 			
-			}
-			else
-			{
-				$this->Session->setFlash(__('El barrio ya existe, por favor verifique.'));
-			}
-		} else {
+		}
+		else {
 			$options = array('conditions' => array('Neighborhood.' . $this->Neighborhood->primaryKey => $id));
 			$this->request->data = $this->Neighborhood->find('first', $options);
 		}

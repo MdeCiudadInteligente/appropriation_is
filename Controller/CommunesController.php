@@ -132,13 +132,7 @@ class CommunesController extends AppController {
 		{
 			throw new NotFoundException(__('Invalid commune'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			
-			$name_comuna= $this->request->data['Commune']['commune_name'];
-			$verificar_comuna=$this->Commune->query("select distinct commune_name from communes where commune_name = '$name_comuna'");
-			$this->set('verificar_comuna',$verificar_comuna);
-			
-			if($verificar_comuna==Array( )){
+		if ($this->request->is(array('post', 'put'))) {			
 			
 				if ($this->Commune->save($this->request->data)) {
 					$this->Session->setFlash(__('The commune has been saved.'));
@@ -146,12 +140,7 @@ class CommunesController extends AppController {
 				} else {
 					$this->Session->setFlash(__('The commune could not be saved. Please, try again.'));
 				}
-			}
-			else
-			{
-				$this->Session->setFlash(__('La comuna ya existe, por favor verifique.'));
-			}
-		}
+		}					
 		else 
 		{
 			$options = array('conditions' => array('Commune.' . $this->Commune->primaryKey => $id));

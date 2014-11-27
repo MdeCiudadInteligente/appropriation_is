@@ -130,11 +130,6 @@ class SiteTypesController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			
-			$name_sitetype= $this->request->data['SiteType']['site_type'];
-			$verificar_sitetype=$this->SiteType->query("select distinct site_type from site_types where site_type = '$name_sitetype'");
-			$this->set('verificar_sitetype',$verificar_sitetype);
-			
-			if($verificar_sitetype==Array( )){
 				if ($this->SiteType->save($this->request->data)) 
 				{
 					$this->Session->setFlash(__('The site type has been saved.'));
@@ -146,12 +141,7 @@ class SiteTypesController extends AppController {
 				}
 				
 			}
-			else
-			{
-				$this->Session->setFlash(__('El tipo de sitio ya existe, por favor verifique.'));
-			}
-		}
-		else 
+			else 
 		{
 			$options = array('conditions' => array('SiteType.' . $this->SiteType->primaryKey => $id));
 			$this->request->data = $this->SiteType->find('first', $options);

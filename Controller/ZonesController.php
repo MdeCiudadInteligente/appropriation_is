@@ -132,11 +132,7 @@ class ZonesController extends AppController {
 		
 		if ($this->request->is(array('post', 'put')))
 		{			
-			$name_zone= $this->request->data['Zone']['zone_name'];
-			$verificar_zone=$this->Zone->query("select distinct zone_name from zones where zone_name = '$name_zone'");
-			$this->set('verificar_zone',$verificar_zone);
-			if($verificar_zone==Array( )){
-					
+			
 				if ($this->Zone->save($this->request->data)) 
 				{
 					$this->Session->setFlash(__('The zone has been saved.'));
@@ -146,12 +142,7 @@ class ZonesController extends AppController {
 				{
 					$this->Session->setFlash(__('The zone could not be saved. Please, try again.'));
 				}
-			}
-			else
-			{
-					$this->Session->setFlash(__('La Zona ya existe, por favor verificar.'));
-			}
-		}
+			}			
 		else 
 		{
 			$options = array('conditions' => array('Zone.' . $this->Zone->primaryKey => $id));
