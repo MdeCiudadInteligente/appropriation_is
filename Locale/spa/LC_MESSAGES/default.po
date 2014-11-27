@@ -99,6 +99,9 @@ msgstr "Añadir Tarea"
 msgid "Actions"
 msgstr "Acciones"
 
+msgid "People"
+msgstr "Personas"
+
 msgid "Adjunct"
 msgstr "Adjunto"
 

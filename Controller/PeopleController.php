@@ -144,11 +144,7 @@ class PeopleController extends AppController {
 		if ($this->request->is(array('post', 'put')))
 		{
 			
-			/*$document= $this->request->data['Person']['cedula'];
-			$verificar_document=$this->Person->query("select distinct cedula from people where cedula = '$document'");
-			$this->set('verificar_document',$verificar_document);*/
-				
-			//if($verificar_document==Array( )){
+			
 				if ($this->Person->save($this->request->data)) 
 				{
 					$this->Session->setFlash(__('The person has been saved.'));
@@ -158,12 +154,7 @@ class PeopleController extends AppController {
 				{
 					$this->Session->setFlash(__('The person could not be saved. Please, try again.'));
 				}
-			}
-			/*else
-			{
-				$this->Session->setFlash(__('El documento ya existe, por favor verifique.'));
-			}
-		}*/
+			}			
 		else
 		{
 			$options = array('conditions' => array('Person.' . $this->Person->primaryKey => $id));

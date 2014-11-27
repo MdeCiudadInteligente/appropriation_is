@@ -158,13 +158,8 @@ class SitesController extends AppController {
 		if (!$this->Site->exists($id)) {
 			throw new NotFoundException(__('Invalid site'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
+		if ($this->request->is(array('post', 'put'))) {			
 			
-			$name_site= $this->request->data['Site']['site_name'];
-			$verificar_site=$this->Site->query("select distinct site_name from sites where site_name = '$name_site'");
-			$this->set('verificar_site',$verificar_site);
-			
-			if($verificar_site==Array( )){
 			if ($this->Site->save($this->request->data)) {
 				$this->Session->setFlash(__('The site has been saved.'));
 				return $this->redirect(array('action' => 'index'));
@@ -172,12 +167,7 @@ class SitesController extends AppController {
 				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
 			}
 			
-			}
-			else
-			{
-				$this->Session->setFlash(__('El sitio ya existe, por favor verifique.'));
-			}
-		} else {
+			}else {
 			$options = array('conditions' => array('Site.' . $this->Site->primaryKey => $id));
 			$this->request->data = $this->Site->find('first', $options);
 		}
