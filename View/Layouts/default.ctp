@@ -13,8 +13,8 @@ $cakeDescription = __d('cake_dev', '');
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
-	<link href='http://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/js/ext/resources/css/ext-all.css" />
 	<title>
 		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
@@ -38,7 +38,12 @@ $cakeDescription = __d('cake_dev', '');
 	<?php echo $this->Html->script('jquery-ui.min');?>
 	<?php echo $this->Html->script('jquery.autoSuggest');?>
 	<?php echo $this->Html->script('main');?>
+	<?php echo $this->Html->script('ext/adapter/jquery/ext-jquery-adapter.js');?>
+	<?php echo $this->Html->script('ext/ext-all-debug-w-comments.js');?>
+	<?php echo $this->Html->script('ext/RowExpander.js');?>
+	<?php echo $this->Html->script('ext/src/locale/ext-lang-es.js');?>
 	
+
 	
 </head>
 <body>
