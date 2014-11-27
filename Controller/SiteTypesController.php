@@ -41,6 +41,28 @@ class SiteTypesController extends AppController {
 		$this->SiteType->recursive = 0;
 		$this->set('siteTypes', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$sitetype=$this->SiteType->find('all');
+		$count=0;
+		foreach ($sitetype as $key => $sitetype) {
+			$data['rows'][$count]=array(
+					'id'=>$sitetype['SiteType']['id_site_type'],
+					't_sitio'=>$sitetype['SiteType']['site_type'],
+					'estado_ts'=>$sitetype['SiteType']['site_estado'],
+					'creation_date'=>$sitetype['SiteType']['creation_date'],
+					'modification_date'=>$sitetype['SiteType']['modification_date'],
+					'user_id'=>$sitetype['SiteType']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method

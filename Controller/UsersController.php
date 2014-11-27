@@ -86,6 +86,30 @@ class UsersController extends AppController {
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$user=$this->User->find('all');
+		$count=0;
+		foreach ($user as $key => $user) {
+			$data['rows'][$count]=array(
+					'id'=>$user['User']['id_user'],
+					'agente'=>$user['Agent']['id_agent'],
+					'nusuario'=>$user['User']['username'],
+					'nivel_permiso'=>$user['User']['permission_level'],
+					'estado'=>$user['User']['user_estado'],
+					'creation_date'=>$user['User']['creation_date'],
+					'modification_date'=>$user['User']['modification_date'],
+					'user_id'=>$user['User']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method
