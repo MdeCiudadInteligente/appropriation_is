@@ -69,6 +69,32 @@ class AccompanimentsController extends AppController {
 		$this->set('totala',$this->Accompaniment->find('count'));
 	}
 	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$accompaniment=$this->Accompaniment->find('all');
+		$count=0;
+		foreach ($accompaniment as $key => $accompaniment) {
+			$data['rows'][$count]=array(
+					'id'=>$accompaniment['Accompaniment']['id_accompaniment'],
+					'sitio'=>$accompaniment['Site']['site_name'],
+					'f_reunion'=>$accompaniment['Accompaniment']['accompaniment_date'],
+					'tipo'=>$accompaniment['Accompaniment']['accompaniment_type'],
+					'titulo'=>$accompaniment['Accompaniment']['accompaniment_title'],
+					'descripcion'=>$accompaniment['Accompaniment']['accompaniment_description'],
+					'num_participantes'=>$accompaniment['Accompaniment']['participant_number'],										
+					'creation_date'=>$accompaniment['Accompaniment']['creation_date'],
+					'modification_date'=>$accompaniment['Accompaniment']['modification_date'],
+					'user_id'=>$accompaniment['Accompaniment']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+	
 	public function download()
 	{
 		$this->Accompaniment->recursive = 0;
