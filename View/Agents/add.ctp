@@ -2,8 +2,19 @@
 <?php echo $this->Form->create('Agent'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Agent'); ?></legend>
+	
+		<div class="input"  style="text-align:right">
+				<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
+		</div>
+		<div class="seccion-person">	
+			<div class="input" >
+				<label>Personas</label>
+				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona">
+				<div class="results-input" data-input-name="data[Person][Person][]">					
+				</div>
+			</div>
+		</div>	
 	<?php
-		echo $this->Form->input('person_id',array('empty'=>'Seleccionar la persona'));
 		echo $this->Form->input('zone_id',array('empty'=>'Seleccionar la zona'));
 		echo $this->Form->input('agent_estado',array ('options' => array ('Activo'=>'Activo','Inactivo'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
