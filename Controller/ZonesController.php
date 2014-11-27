@@ -42,6 +42,29 @@ class ZonesController extends AppController {
 		$this->Zone->recursive = 0;
 		$this->set('zones', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+	
+		$zone=$this->Zone->find('all');
+		$count=0;
+		foreach ($zone as $key => $zone) {
+			$data['rows'][$count]=array(
+					'id'=>$zone['Zone']['id_zone'],
+					'nombre_zona'=>$zone['Zone']['zone_name'],					
+					'creation_date'=>$zone['Zone']['creation_date'],
+					'modification_date'=>$zone['Zone']['modification_date'],
+					'user_id'=>$zone['Zone']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+	
 
 /**
  * view method

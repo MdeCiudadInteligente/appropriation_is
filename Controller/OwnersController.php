@@ -39,6 +39,31 @@ class OwnersController extends AppController {
 		$this->Owner->recursive = 0;
 		$this->set('owners', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+	
+		$owner=$this->Owner->find('all');
+		$count=0;
+		foreach ($owner as $key => $owner) {
+			$data['rows'][$count]=array(
+					'id'=>$owner['Owner']['id_owner'],
+					'rol'=>$owner['Owner']['roll'],
+					'site_id'=>$owner['Owner']['site_id'],
+					'person_id'=>$owner['Owner']['person_id'],					
+					'creation_date'=>$owner['Owner']['creation_date'],
+					'modification_date'=>$owner['Owner']['modification_date'],
+					'user_id'=>$owner['Owner']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+	
 
 /**
  * view method

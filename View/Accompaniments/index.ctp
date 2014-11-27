@@ -36,7 +36,7 @@
 							'expander'=>array(
 								'fields'=>array(
 									array('title'=>'Descripcion','field'=>'descripcion'),
-									array('title'=>'Compromisos','field'=>'compromisos')
+									//array('title'=>'Compromisos','field'=>'compromisos')
 								)
 							),
 							'printCrud'=>true,
