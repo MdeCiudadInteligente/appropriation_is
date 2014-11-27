@@ -126,7 +126,7 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 
 	
 <?php if($gridOptions['printCrud']){ ?>
-		{dataIndex:'id', align:'center', header:'Funciones',width:120, renderer: <?php echo $gridOptions['gridId']?>.render_crud}
+		{dataIndex:'id', align:'center', header:'Acciones',width:120, renderer: <?php echo $gridOptions['gridId']?>.render_crud}
 <?php
 	  }
 ?>

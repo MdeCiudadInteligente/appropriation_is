@@ -25,12 +25,12 @@
 			<?php
 				$gridOptions=array(
 						'gridId'=>'gridMeetings',
-						'gridTitle'=>'Reuniones xxx',
-						'height'=>800,
+						'gridTitle'=>'Reuniones',
+						'height'=>500,
 						'serviceUrl'=>'Meetings/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"sitio",'header'=>'Sitio xxx','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"f_reunion",'header'=>'Fecha','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"titulo",'header'=>'Titulo','sortable'=>true,'align'=>"left","column"=>true),
