@@ -148,7 +148,7 @@ public function add() {
 			}
 			else
 			{
-				$this->Session->setFlash(__('The meeting could not be salvado.Please try again.'));
+				$this->Session->setFlash(__('The meeting could not be saved. Please, try again.'));
 			}
 		}
 		$sites = $this->Meeting->Site->find('list',array('order' => array('Site.site_name' => 'ASC')));
