@@ -143,12 +143,12 @@ public function add() {
 			$data['Meeting']['user_id']=$usuario;
 						
 			if ($this->Meeting->save($data)) {
-					$this->Session->setFlash(__('La reunión se ha guardado.'));
+					$this->Session->setFlash(__('The meeting has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 			}
 			else
 			{
-				$this->Session->setFlash(__('La comuna no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+				$this->Session->setFlash(__('The meeting could not be salvado.Please try again.'));
 			}
 		}
 		$sites = $this->Meeting->Site->find('list',array('order' => array('Site.site_name' => 'ASC')));
