@@ -29,20 +29,16 @@
 						'serviceUrl'=>'Users/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"agente",'header'=>'Agente','sortable'=>true,'align'=>"left","column"=>true),
+			                //array("dataIndex"=>"agente",'header'=>'Agente','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"nusuario",'header'=>'Usuario','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"nivel_permiso",'header'=>'Nivel Permiso','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"estado",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"nivel_permiso",'header'=>'Nivel Permiso','sortable'=>true,'align'=>"center","column"=>true),
+			                array("dataIndex"=>"estado",'header'=>'Estado','sortable'=>true,'align'=>"center","column"=>true),
 			                array("dataIndex"=>"creation_date",'header'=>'fecha Creacion','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"modification_date",'header'=>'Descripcion','sortable'=>true,'align'=>"left","column"=>false),
 			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
 						),
-						'expander'=>array(
-							'fields'=>array(
-								array('title'=>'nusuario','field'=>'nusuario'),
-								array('title'=>'estado','field'=>'estado')
-							)
-						),
+						'expander'=>false,
+						'AllowAll'=>true,
 						'printCrud'=>true,
 						'baseParams'=>array('start'=>0,'limit'=>100)
 				);

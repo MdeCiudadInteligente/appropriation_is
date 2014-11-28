@@ -66,7 +66,7 @@ class SitesController extends AppController {
 					'cor_sitio'=>$site['Site']['site_mail'],
 					'bar_sitio'=>$site['Neighborhood']['neighborhood_name'],
 					'tsitio'=>$site['SiteType']['site_type'],
-					'estado_sitio'=>$site['Site']['creation_date'],
+					'estado_sitio'=>$site['Site']['syte_estado'],
 					'creation_date'=>$site['Site']['creation_date'],
 					'modification_date'=>$site['Site']['modification_date'],
 					'user_id'=>$site['Site']['user_id'],

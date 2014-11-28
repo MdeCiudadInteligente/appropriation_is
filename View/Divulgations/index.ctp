@@ -19,8 +19,8 @@
 
 	<div class="right-block">
 
-		<div class="meetings">
-			<h2><?php echo __('Meetings'); ?></h2>
+		<div class="divulgations">
+			<h2><?php echo __('Divulgations'); ?></h2>
 			<?php
 				$gridOptions=array(
 						'gridId'=>'gridDivulgatios',
@@ -29,21 +29,20 @@
 						'serviceUrl'=>'Divulgations/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"f_divulgacion",'header'=>'Fecha','sortable'=>true,'align'=>"left","column"=>true),
+			                //array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"f_divulgacion",'header'=>'Fecha','sortable'=>true,'align'=>"center","column"=>true),
 			                array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"titulo",'header'=>'Titulo','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"descripcion",'header'=>'Descripcion','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"nparticipantes",'header'=>'Compromisos','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"titulo",'header'=>'Título','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"descripcion",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"nparticipantes",'header'=>'Número de participantes','sortable'=>true,'align'=>"center","column"=>true),
 							array("dataIndex"=>"lactividad",'header'=>'Lugar de la actividad','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creacion','sortable'=>true,'align'=>"left","column"=>false),
-			                array("dataIndex"=>"modification_date",'header'=>'Descripcion','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>false),
 			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
 						),
 						'expander'=>array(
 							'fields'=>array(
-								array('title'=>'Descripcion','field'=>'descripcion'),
-								array('title'=>'Lugar de la actividad','field'=>'lactividad')
+								array('title'=>'Descripción','field'=>'descripcion')
 							)
 						),
 						'printCrud'=>true,

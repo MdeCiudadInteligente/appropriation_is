@@ -35,12 +35,8 @@
 			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
 			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
 						),
-						'expander'=>array(
-							'fields'=>array(
-								array('title'=>'Descripcion','field'=>'descripcion'),
-								array('title'=>'Compromisos','field'=>'compromisos')
-							)
-						),
+						'expander'=>false,
+						'AllowAll'=>true,
 						'printCrud'=>true,
 						'baseParams'=>array('start'=>0,'limit'=>100)
 				);

@@ -24,18 +24,18 @@
 							'fields'=>array(
 							    array("dataIndex"=>"id","column"=>false),
 				                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
-				                array("dataIndex"=>"f_reunion",'header'=>'Fecha','sortable'=>true,'align'=>"left","column"=>true),
+				                array("dataIndex"=>"f_reunion",'header'=>'Fecha','sortable'=>true,'align'=>"center","column"=>true),
 				                array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
 				                array("dataIndex"=>"titulo",'header'=>'Título','sortable'=>true,'align'=>"left","column"=>true),
 				                array("dataIndex"=>"descripcion",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>true),
-				                array("dataIndex"=>"num_participantes",'header'=>'Número de participantes','sortable'=>true,'align'=>"left","column"=>true),
+				                array("dataIndex"=>"num_participantes",'header'=>'Número de participantes','sortable'=>true,'align'=>"center","column"=>true),
 				                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
 				                array("dataIndex"=>"modification_date",'header'=>'Fecha de Modificación','sortable'=>true,'align'=>"left","column"=>false),
 				               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
 							),
 							'expander'=>array(
 								'fields'=>array(
-									array('title'=>'Descripcion','field'=>'descripcion'),
+									array('title'=>'Descripción','field'=>'descripcion'),
 									//array('title'=>'Compromisos','field'=>'compromisos')
 								)
 							),
