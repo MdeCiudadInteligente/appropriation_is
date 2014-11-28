@@ -8,6 +8,7 @@
 			<ul>
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 				<li><?php echo $this->Html->link(__('New Agent'), array('action' => 'add')); ?></li>
+				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
 				<?php 
 				$usuario_level= $this->Session->read('Auth.User.permission_level');
 				?>
