@@ -21,7 +21,7 @@
 	<div class="right-block">
 
 		<div class="agent">
-			<h2><?php echo __('Agents'); ?></h2>
+			<h2><?php echo __('Agentes Dinamizadores'); ?></h2>
 			<?php
 				$gridOptions=array(
 						'gridId'=>'gridAgents',
