@@ -46,6 +46,35 @@ class PeopleController extends AppController {
 		$this->set('people', $this->Paginator->paginate());
 	}
 
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+	
+		$people=$this->Person->find('all');
+		$count=0;
+		foreach ($people as $key => $people) {
+			$data['rows'][$count]=array(
+					'id'=>$people['Person']['id_person'],
+					'cedula'=>$people['Person']['cedula'],
+					'nombre'=>$people['Person']['name'],
+					'apellido'=>$people['Person']['lastname'],
+					'cargo'=>$people['Person']['charge'],
+					'correo'=>$people['Person']['email'],
+					'telefono'=>$people['Person']['phone'],
+					'celular'=>$people['Person']['cell'],
+					'entidad'=>$people['Person']['entity'],
+					'creation_date'=>$people['Person']['creation_date'],
+					'modification_date'=>$people['Person']['modification_date'],
+					'user_id'=>$people['Person']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+	
 /**
  * view method
  *
@@ -115,11 +144,7 @@ class PeopleController extends AppController {
 		if ($this->request->is(array('post', 'put')))
 		{
 			
-			/*$document= $this->request->data['Person']['cedula'];
-			$verificar_document=$this->Person->query("select distinct cedula from people where cedula = '$document'");
-			$this->set('verificar_document',$verificar_document);*/
-				
-			//if($verificar_document==Array( )){
+			
 				if ($this->Person->save($this->request->data)) 
 				{
 					$this->Session->setFlash(__('The person has been saved.'));
@@ -129,12 +154,7 @@ class PeopleController extends AppController {
 				{
 					$this->Session->setFlash(__('The person could not be saved. Please, try again.'));
 				}
-			}
-			/*else
-			{
-				$this->Session->setFlash(__('El documento ya existe, por favor verifique.'));
-			}
-		}*/
+			}			
 		else
 		{
 			$options = array('conditions' => array('Person.' . $this->Person->primaryKey => $id));

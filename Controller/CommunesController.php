@@ -40,6 +40,29 @@ class CommunesController extends AppController {
 		$this->Commune->recursive = 0;
 		$this->set('communes', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		
+		$commune=$this->Commune->find('all');
+		$count=0;
+		foreach ($commune as $key => $commune) {
+			$data['rows'][$count]=array(
+					'id'=>$commune['Commune']['id_commune'],
+					'nombre_comuna'=>$commune['Commune']['commune_name'],
+					'zone_id'=>$commune['Commune']['zone_id'],					
+					'creation_date'=>$commune['Commune']['creation_date'],
+					'modification_date'=>$commune['Commune']['modification_date'],
+					'user_id'=>$commune['Commune']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method
@@ -109,13 +132,7 @@ class CommunesController extends AppController {
 		{
 			throw new NotFoundException(__('Invalid commune'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			
-			$name_comuna= $this->request->data['Commune']['commune_name'];
-			$verificar_comuna=$this->Commune->query("select distinct commune_name from communes where commune_name = '$name_comuna'");
-			$this->set('verificar_comuna',$verificar_comuna);
-			
-			if($verificar_comuna==Array( )){
+		if ($this->request->is(array('post', 'put'))) {			
 			
 				if ($this->Commune->save($this->request->data)) {
 					$this->Session->setFlash(__('The commune has been saved.'));
@@ -123,12 +140,7 @@ class CommunesController extends AppController {
 				} else {
 					$this->Session->setFlash(__('The commune could not be saved. Please, try again.'));
 				}
-			}
-			else
-			{
-				$this->Session->setFlash(__('La comuna ya existe, por favor verifique.'));
-			}
-		}
+		}					
 		else 
 		{
 			$options = array('conditions' => array('Commune.' . $this->Commune->primaryKey => $id));

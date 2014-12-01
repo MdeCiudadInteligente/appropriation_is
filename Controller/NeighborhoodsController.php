@@ -40,6 +40,34 @@ class NeighborhoodsController extends AppController {
 		$this->Neighborhood->recursive = 0;
 		$this->set('neighborhoods', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		
+		$neighborhood=$this->Neighborhood->find('all');
+		$count=0;
+		foreach ($neighborhood as $key => $neighborhood) {
+			$data['rows'][$count]=array(
+					'id'=>$neighborhood['Neighborhood']['id_neighborhood'],
+					'nombre_barrio'=>$neighborhood['Neighborhood']['neighborhood_name'],
+					'id_comuna'=>$neighborhood['Neighborhood']['commune_id'],
+					'name_comuna'=>$neighborhood['Commune']['commune_name'],
+					//'tipo'=>$neighborhood['Meeting']['meeting_type'],
+					//'titulo'=>$neighborhood['Meeting']['meeting_title'],
+					//'descripcion'=>$neighborhood['Meeting']['meeting_description'],
+					//'compromisos'=>$neighborhood['Meeting']['meeting_commitments'],
+					'creation_date'=>$neighborhood['Neighborhood']['creation_date'],
+					'modification_date'=>$neighborhood['Neighborhood']['modification_date'],
+					'user_id'=>$neighborhood['Neighborhood']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method
@@ -108,26 +136,17 @@ class NeighborhoodsController extends AppController {
 			throw new NotFoundException(__('Invalid neighborhood'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			
-			$name_barrio= $this->request->data['Neighborhood']['neighborhood_name'];
-			$verificar_barrio=$this->Neighborhood->query("select distinct neighborhood_name from neighborhoods where neighborhood_name = '$name_barrio'");
-			$this->set('verificar_barrio',$verificar_barrio);
-			
-			if($verificar_barrio==Array( )){
-			
 			if ($this->Neighborhood->save($this->request->data)) {
 				$this->Session->setFlash(__('The neighborhood has been saved.'));
 				return $this->redirect(array('action' => 'index'));
-			} else {
+			} 
+			else 
+			{
 				$this->Session->setFlash(__('The neighborhood could not be saved. Please, try again.'));
 			}
 			
-			}
-			else
-			{
-				$this->Session->setFlash(__('El barrio ya existe, por favor verifique.'));
-			}
-		} else {
+		}
+		else {
 			$options = array('conditions' => array('Neighborhood.' . $this->Neighborhood->primaryKey => $id));
 			$this->request->data = $this->Neighborhood->find('first', $options);
 		}

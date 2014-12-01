@@ -64,6 +64,34 @@ class DivulgationsController extends AppController {
 		$this->set('totald',$this->Divulgation->find('count'));
 	}
 	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$divulgation=$this->Divulgation->find('all');
+		$count=0;
+		foreach ($divulgation as $key => $divulgation) {
+			$data['rows'][$count]=array(
+					'id'=>$divulgation['Divulgation']['id_divulgation'],
+					'sitio'=>$divulgation['Site']['site_name'],
+					'f_divulgacion'=>$divulgation['Divulgation']['divulgation_date'],
+					'tipo'=>$divulgation['Divulgation']['divulgation_type'],
+					'titulo'=>$divulgation['Divulgation']['divulgation_name'],
+					'descripcion'=>$divulgation['Divulgation']['divulgation_description'],
+					'nparticipantes'=>$divulgation['Divulgation']['participant_number'],
+					'lactividad'=>$divulgation['Divulgation']['activity_place'],
+					'creation_date'=>$divulgation['Divulgation']['creation_date'],
+					'modification_date'=>$divulgation['Divulgation']['modification_date'],
+					'user_id'=>$divulgation['Divulgation']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+	
+	
 	public function download()
 	{
 		$this->Divulgation->recursive = 0;

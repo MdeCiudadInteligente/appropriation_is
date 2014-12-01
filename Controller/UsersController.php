@@ -30,25 +30,6 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	/*
-	
-	 public function beforeFilter() {
-		//parent::beforeFilter();
-		// Allow users to register and logout.
-		$this->Auth->allow('add', 'logout');
-		//$this->Auth->autoRedirect=false;
-		
- //si es super usuario permito todo 
-   /*   $user = $this->Auth->user();
-      if ($user['permission_level']=== '2'){
-         $this->Auth->allow('*');
-      }
-      else  {//solo permito la vista del usuario comun por ahora
-         $this->Auth->allow('view');
-      }
-       parent::beforeFilter();*/
-	/*
-	}*/
 	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
@@ -85,6 +66,30 @@ class UsersController extends AppController {
 	public function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
+	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$user=$this->User->find('all');
+		$count=0;
+		foreach ($user as $key => $user) {
+			$data['rows'][$count]=array(
+					'id'=>$user['User']['id_user'],
+					'agente'=>$user['Agent']['id_agent'],
+					'nusuario'=>$user['User']['username'],
+					'nivel_permiso'=>$user['User']['permission_level'],
+					'estado'=>$user['User']['user_estado'],
+					'creation_date'=>$user['User']['creation_date'],
+					'modification_date'=>$user['User']['modification_date'],
+					'user_id'=>$user['User']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
 
 /**
@@ -150,10 +155,6 @@ class UsersController extends AppController {
 			}		
 			
 		}
-		//$agent = $this->User->Agent->find('list', array('fields'=>array('person_id')));
-		//$agents = $this->User->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename')));
-		//$agents=$this->User->Agent->Person->find('list', array('conditions'=>array('id_person'=>$agent),'fields'=>array('Person.completename','Agent.id_agent')));
-		
 		$agents = $this->User->Agent->find('list', array('joins' => array(
 				array(
 						'table' => 'people',

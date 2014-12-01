@@ -41,6 +41,26 @@ class AgentsController extends AppController {
 		$this->Agent->recursive = 0;
 		$this->set('agents', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$agent=$this->Agent->find('all');
+		$count=0;
+		foreach ($agent as $key => $agent) {
+			$data['rows'][$count]=array(
+					'id'=>$agent['Agent']['id_agent'],
+					'npersona'=>$agent['Person']['name'],
+					'nzona'=>$agent['Zone']['zone_name'],
+					'estado_agente'=>$agent['Agent']['agent_estado'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method

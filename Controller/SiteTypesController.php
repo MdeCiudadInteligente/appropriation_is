@@ -41,6 +41,28 @@ class SiteTypesController extends AppController {
 		$this->SiteType->recursive = 0;
 		$this->set('siteTypes', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$sitetype=$this->SiteType->find('all');
+		$count=0;
+		foreach ($sitetype as $key => $sitetype) {
+			$data['rows'][$count]=array(
+					'id'=>$sitetype['SiteType']['id_site_type'],
+					't_sitio'=>$sitetype['SiteType']['site_type'],
+					'estado_ts'=>$sitetype['SiteType']['site_estado'],
+					'creation_date'=>$sitetype['SiteType']['creation_date'],
+					'modification_date'=>$sitetype['SiteType']['modification_date'],
+					'user_id'=>$sitetype['SiteType']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method
@@ -108,11 +130,6 @@ class SiteTypesController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			
-			$name_sitetype= $this->request->data['SiteType']['site_type'];
-			$verificar_sitetype=$this->SiteType->query("select distinct site_type from site_types where site_type = '$name_sitetype'");
-			$this->set('verificar_sitetype',$verificar_sitetype);
-			
-			if($verificar_sitetype==Array( )){
 				if ($this->SiteType->save($this->request->data)) 
 				{
 					$this->Session->setFlash(__('The site type has been saved.'));
@@ -124,12 +141,7 @@ class SiteTypesController extends AppController {
 				}
 				
 			}
-			else
-			{
-				$this->Session->setFlash(__('El tipo de sitio ya existe, por favor verifique.'));
-			}
-		}
-		else 
+			else 
 		{
 			$options = array('conditions' => array('SiteType.' . $this->SiteType->primaryKey => $id));
 			$this->request->data = $this->SiteType->find('first', $options);

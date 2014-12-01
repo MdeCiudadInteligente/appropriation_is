@@ -46,6 +46,7 @@ class MeetingsController extends AppController {
 		//return false;
 			
 	}
+	
 	public function index() 
 	{
 		$id_usuario = $this->Session->read('Auth.User.id_user');
@@ -63,6 +64,33 @@ class MeetingsController extends AppController {
 		$this->set('meetings', $this->Paginator->paginate('Meeting'));
 		$this->set('totalm',$this->Meeting->find('count'));
 	
+	}
+
+	public function index_service() 
+	{
+	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		
+		$meeting=$this->Meeting->find('all');
+		$count=0;
+		foreach ($meeting as $key => $meeting) {
+			$data['rows'][$count]=array(
+					'id'=>$meeting['Meeting']['id_meeting'],
+					'sitio'=>$meeting['Site']['site_name'],
+					'f_reunion'=>$meeting['Meeting']['meeting_date'],
+					'tipo'=>$meeting['Meeting']['meeting_type'],
+					'titulo'=>$meeting['Meeting']['meeting_title'],
+					'descripcion'=>$meeting['Meeting']['meeting_description'],
+					'compromisos'=>$meeting['Meeting']['meeting_commitments'],
+					'creation_date'=>$meeting['Meeting']['creation_date'],
+					'modification_date'=>$meeting['Meeting']['modification_date'],
+					'user_id'=>$meeting['Meeting']['user_id'],
+			);
+			$count++;
+		}
+     	$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
 
 	public function download()
@@ -115,12 +143,12 @@ public function add() {
 			$data['Meeting']['user_id']=$usuario;
 						
 			if ($this->Meeting->save($data)) {
-					$this->Session->setFlash(__('La reunión se ha guardado.'));
+					$this->Session->setFlash(__('The meeting has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 			}
 			else
 			{
-				$this->Session->setFlash(__('La comuna no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+				$this->Session->setFlash(__('The meeting could not be saved. Please, try again.'));
 			}
 		}
 		$sites = $this->Meeting->Site->find('list',array('order' => array('Site.site_name' => 'ASC')));

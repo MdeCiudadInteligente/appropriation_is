@@ -1,49 +1,44 @@
-﻿<div class="neighborhoods index">
-	<h2><?php echo __('Neighborhoods'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('neighborhood_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('commune_id'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($neighborhoods as $neighborhood): ?>
-	<tr>
-		<td><?php echo h($neighborhood['Neighborhood']['neighborhood_name']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($neighborhood['Commune']['commune_name'], array('controller' => 'communes', 'action' => 'view', $neighborhood['Commune']['id_commune'])); ?>
-		</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $neighborhood['Neighborhood']['id_neighborhood'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $neighborhood['Neighborhood']['id_neighborhood'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $neighborhood['Neighborhood']['id_neighborhood']), null, __('Are you sure you want to delete # %s?', $neighborhood['Neighborhood']['id_neighborhood'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Neighborhood'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
-		<li><?php //echo $this->Html->link(__('List Communes'), array('controller' => 'communes', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Commune'), array('controller' => 'communes', 'action' => 'add')); ?> </li>
-		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php ////echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
-		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>		
-	</ul>
-</div>
+﻿<div class="neighborhoods-cont app-grid-container">
+	<div class="left-block">
+		<div class="actions">
+			<h3><?php echo __('Actions'); ?></h3>
+				<ul>
+					<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+					<li><?php echo $this->Html->link(__('New Neighborhood'), array('action' => 'add')); ?></li>
+					<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
+				</ul>
+		</div>
+	</div>	
+<!-- 	End left block -->		
+	<div class="right-block">
+		<div class="neighborhoods">
+			<h2><?php echo __('Neighborhoods'); ?></h2>
+			<?php
+				$gridOptions=array(
+						'gridId'=>'gridNeighborhoods',
+						'gridTitle'=>'Barrios',
+						'height'=>800,
+						'serviceUrl'=>'Neighborhoods/index_service.json',
+						'fields'=>array(
+						    array("dataIndex"=>"id","column"=>false),
+			                array("dataIndex"=>"nombre_barrio",'header'=>'Nombre Barrio','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"id_comuna",'header'=>'Comuna','sortable'=>true,'align'=>"left","column"=>false),
+							array("dataIndex"=>"name_comuna",'header'=>'Nombre Comuna','sortable'=>true,'align'=>"left","column"=>true),			               
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
+			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
+						),
+						'expander'=>false,
+						'AllowAll'=>true,
+						'printCrud'=>true,
+						'baseParams'=>array('start'=>0,'limit'=>100)
+				);
+			?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
+		</div>
+	<!-- End right block -->		
+	</div>	
+
+<!-- End meetings container -->
+</div>	
+	
