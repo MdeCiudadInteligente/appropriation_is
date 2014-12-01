@@ -9,8 +9,8 @@
 		<div class="seccion-person">	
 			<div class="input" >
 				<label>Personas</label>
-				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona">
-				<div class="results-input" data-input-name="data[Person][Person][]">					
+				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-limit="1" data-emptymsg="Por favor ingresa minimo una persona">
+				<div class="results-input" data-input-name="data[Agent][person_id]">					
 				</div>
 			</div>
 		</div>	

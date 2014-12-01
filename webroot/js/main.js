@@ -45,6 +45,8 @@ App.prototype.bind=function(){
 App.prototype.bindAutocompletePersona=function(selector){
 
     if($(selector).length){
+        var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
+        console.log($(selector).data('limit'));
         var serivce_route=absPath+"People/getPerson.json";
         $(selector).autoSuggest(serivce_route,
             {   minChars: 2,
@@ -57,7 +59,7 @@ App.prototype.bindAutocompletePersona=function(selector){
                 selectedItemProp: 'completename',
                 selectedValuesProp:'documento',
                 searchObjProps: 'documento,completename',
-                selectionLimit:100,
+                selectionLimit:limit,
                 starText: 'Seleccione la persona',
 
                 resultClick: function(data){
