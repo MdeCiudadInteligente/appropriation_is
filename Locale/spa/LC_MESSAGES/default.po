@@ -102,6 +102,9 @@ msgstr "Acciones"
 msgid "People"
 msgstr "Personas"
 
+msgid "Configuration"
+msgstr "Configuración"
+
 msgid "Adjunct"
 msgstr "Adjunto"
 

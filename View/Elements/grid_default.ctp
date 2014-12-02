@@ -2,16 +2,21 @@
 <!-- Grid view  -->
 
 <?php 
-	function set_grid_fields($array,$colKey){
-	    $string="[";
-	    foreach ($array as $key => $value){
-	        $add="{name:'".$value[$colKey]."'},";
-	        $string.=$add;
-	    }
-	    $string=substr($string,0,-1);
-	    $string.="]";
-	    return $string;
-	}
+
+	if (!function_exists ('set_grid_fields')){
+		
+		function set_grid_fields($array,$colKey){
+			$string="[";
+			foreach ($array as $key => $value){
+				$add="{name:'".$value[$colKey]."'},";
+				$string.=$add;
+			}
+			$string=substr($string,0,-1);
+			$string.="]";
+			return $string;
+		}
+		
+	}	
 	$usuario_level= $this->Session->read('Auth.User.permission_level');		
 	$id_usuario=$this->Session->read('Auth.User.permission_level');		
 ?>
