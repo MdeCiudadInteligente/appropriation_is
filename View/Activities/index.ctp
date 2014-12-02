@@ -10,8 +10,12 @@
 			<li><?php echo $this->Html->link(__('Meetings'), array('controller' => 'Meetings', 'action' => 'index')); ?> </li>	
 			<li><?php echo $this->Html->link(__('Accompaniments'), array('controller' => 'Accompaniments', 'action' => 'index')); ?> </li>	
 			<?php }?>
+			<?php if ($usuario_level == '4'||$usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 			<li><?php echo $this->Html->link(__('Divulgations'), array('controller' => 'Divulgations', 'action' => 'index')); ?> </li>	
+			<?php }?>	
+			<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
 			<li><?php echo $this->Html->link(__('Configuration'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
+			<?php }?>
 		</ul>
 	</div>		
 	</div>		
@@ -19,9 +23,9 @@
 <!-- 	End left block -->	
 	
 <!-- meetings  -->
+<div class="right-block">
 <?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
-<div class="right-block">
 	<div class="meetings">
 	<h2><?php echo __('Meetings'); ?></h2>	
 	<?php
@@ -57,8 +61,6 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 	</div>
 <?php }?>
 <!-- end meetings  -->
-
-<!-- End meetings container -->
 <P></P>
 <!-- accompaniments  -->
 <?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
@@ -98,6 +100,10 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 <!-- end accompaniments  -->
 <P></P>
 <!-- divulgations  -->
+
+
+
+<?php if ($usuario_level == '4'||$usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 	<div class="divulgations">
 			<h2><?php echo __('Divulgations'); ?></h2>
 			<?php
@@ -130,6 +136,7 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 			?>
 			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
 		</div>
+		<?php }?>	
 	<!-- End right block -->		
 	</div>	
 <!-- End meetings container -->
