@@ -118,7 +118,7 @@ msgid "Accompaniment Type"
 msgstr "Tipo Acompañamiento"
 
 msgid "The accompaniment has been deleted."
-msgstr "El acompa�amiento ha sido eliminado."
+msgstr "El acompañamiento ha sido eliminado."
 
 msgid "The zone has been saved."
 msgstr "La zona se ha guardado."
@@ -398,6 +398,12 @@ msgstr "La reunión no se pudo guardar. Por favor, inténtalo de nuevo."
 
 msgid "The meeting has been saved."
 msgstr "La reunión se ha guardado."
+
+msgid "The meeting could not be removed. Please try again."
+msgstr "The meeting could not be removed. Please try again."
+
+msgid "The meeting has been deleted."
+msgstr "La reuni�n ha sido eliminado."
 
 msgid "Add Meeting"
 msgstr "Agregar reunión"
