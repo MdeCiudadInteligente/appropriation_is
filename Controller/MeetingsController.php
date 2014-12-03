@@ -203,7 +203,7 @@ public function add() {
 		if ($this->Meeting->delete()) {
 			$this->Session->setFlash(__('La reunión ha sido eliminado.'));
 		} else {
-			$this->Session->setFlash(__('La reunión no se pudo eliminar . Por favor , inténtelo de nuevo.'));
+			$this->Session->setFlash(__('The meeting could not be removed. Please try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

@@ -118,7 +118,7 @@ msgid "Accompaniment Type"
 msgstr "Tipo Acompa帽amiento"
 
 msgid "The accompaniment has been deleted."
-msgstr "El acompa馻miento ha sido eliminado."
+msgstr "El acompa帽amiento ha sido eliminado."
 
 msgid "The zone has been saved."
 msgstr "La zona se ha guardado."
@@ -399,6 +399,12 @@ msgstr "La reuni贸n no se pudo guardar. Por favor, int茅ntalo de nuevo."
 msgid "The meeting has been saved."
 msgstr "La reuni贸n se ha guardado."
 
+msgid "The meeting could not be removed. Please try again."
+msgstr "The meeting could not be removed. Please try again."
+
+msgid "The meeting has been deleted."
+msgstr "La reuni髇 ha sido eliminado."
+
 msgid "Add Meeting"
 msgstr "Agregar reuni贸n"
 
@@ -419,6 +425,9 @@ msgstr "Men煤 Principal"
 
 msgid "Close Section"
 msgstr "Cerrar Sesi贸n"
+
+msgid "The zone has been deleted."
+msgstr "La zona ha sido eliminado."
 
 msgid "Edit Neighborhood"
 msgstr "Editar Barrio"
