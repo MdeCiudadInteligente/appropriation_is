@@ -52,8 +52,9 @@ class OwnersController extends AppController {
 			$data['rows'][$count]=array(
 					'id'=>$owner['Owner']['id_owner'],
 					'rol'=>$owner['Owner']['roll'],
-					'site_id'=>$owner['Owner']['site_id'],
-					'person_id'=>$owner['Owner']['person_id'],					
+					'site_name'=>$owner['Site']['site_name'],
+					'person_name'=>$owner['Person']['name'],	
+					'person_lastname'=>$owner['Person']['lastname'],
 					'creation_date'=>$owner['Owner']['creation_date'],
 					'modification_date'=>$owner['Owner']['modification_date'],
 					'user_id'=>$owner['Owner']['user_id'],
