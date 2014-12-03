@@ -15,13 +15,19 @@ class SitesController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
+			'order'=> array(
+					'Owners.id_owner' => 'desc'
+			)
+	);
 
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
 			return true;
 		}
 	}
@@ -43,6 +49,34 @@ class SitesController extends AppController {
 		$this->set('totals',$this->Site->find('count'));
 		//array('order'=>array('Site.site_name'=>'asc'))
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$site=$this->Site->find('all');
+		$count=0;
+		foreach ($site as $key => $site) {
+			$data['rows'][$count]=array(
+					'id'=>$site['Site']['id_site'],
+					'nsitio'=>$site['Site']['site_name'],
+					'telsitio'=>$site['Site']['site_phone'],
+					'dir_sitio'=>$site['Site']['site_address'],
+					'cor_sitio'=>$site['Site']['site_mail'],
+					'bar_sitio'=>$site['Neighborhood']['neighborhood_name'],
+					'tsitio'=>$site['SiteType']['site_type'],
+					'estado_sitio'=>$site['Site']['syte_estado'],
+					'creation_date'=>$site['Site']['creation_date'],
+					'modification_date'=>$site['Site']['modification_date'],
+					'user_id'=>$site['Site']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+	
 	
 	//reporte de sitios...
 	public function download()
@@ -83,27 +117,29 @@ class SitesController extends AppController {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
+			$name_site= $this->request->data['Site']['site_name'];
+			$verificar_site=$this->Site->query("select distinct site_name from sites where site_name = '$name_site'");
+			$this->set('verificar_site',$verificar_site);
+				
+			if($verificar_site==Array( )){
 			
-			$this->Site->create();
-			
-			$this->Site->set(array(
-					'creation_date' => $fecha
-			));
-			$this->Site->set(array(
-					'user_id' => $usuario
-			));
-			
-			if ($this->Site->save($this->request->data)) {
-				$this->Session->setFlash(__('The site has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
+				$this->Site->create();
+				$data=$this->request->data;
+				$data['Site']['creation_date']=date('Y-m-d H:i:s');
+				$data['Site']['user_id']=$usuario;
+								
+				if ($this->Site->save($data)) {
+						$this->Session->setFlash(__('El sitio se ha guardado.'));
+						return $this->redirect(array('action' => 'index'));
+				}
+				else
+				{
+					$this->Session->setFlash(__('El sitio no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+				}
+			}
+			else
+			{
+				$this->Session->setFlash(__('El sitio ya existe, por favor verifique.'));
 			}
 		}
 		$neighborhoods = $this->Site->Neighborhood->find('list',array('order' => array('Neighborhood.neighborhood_name' => 'ASC')));
@@ -122,14 +158,16 @@ class SitesController extends AppController {
 		if (!$this->Site->exists($id)) {
 			throw new NotFoundException(__('Invalid site'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
+		if ($this->request->is(array('post', 'put'))) {			
+			
 			if ($this->Site->save($this->request->data)) {
 				$this->Session->setFlash(__('The site has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
 			}
-		} else {
+			
+			}else {
 			$options = array('conditions' => array('Site.' . $this->Site->primaryKey => $id));
 			$this->request->data = $this->Site->find('first', $options);
 		}

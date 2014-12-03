@@ -14,12 +14,18 @@ class OwnersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
+			'order'=> array(
+					'Owners.id_owner' => 'desc'
+			)
+	);
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
 			return true;
 		}
 	}
@@ -33,6 +39,32 @@ class OwnersController extends AppController {
 		$this->Owner->recursive = 0;
 		$this->set('owners', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+	
+		$owner=$this->Owner->find('all');
+		$count=0;
+		foreach ($owner as $key => $owner) {
+			$data['rows'][$count]=array(
+					'id'=>$owner['Owner']['id_owner'],
+					'rol'=>$owner['Owner']['roll'],
+					'site_name'=>$owner['Site']['site_name'],
+					'person_name'=>$owner['Person']['name'],	
+					'person_lastname'=>$owner['Person']['lastname'],
+					'creation_date'=>$owner['Owner']['creation_date'],
+					'modification_date'=>$owner['Owner']['modification_date'],
+					'user_id'=>$owner['Owner']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+	
 
 /**
  * view method
@@ -60,26 +92,18 @@ class OwnersController extends AppController {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
-			
 			$this->Owner->create();
-			
-			$this->Owner->set(array(
-					'creation_date' => $fecha
-			));
-			$this->Owner->set(array(
-					'user_id' => $usuario
-			));
-			if ($this->Owner->save($this->request->data)) {
-				$this->Session->setFlash(__('The owner has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The owner could not be saved. Please, try again.'));
+			$data=$this->request->data;
+			$data['Owner']['creation_date']=date('Y-m-d H:i:s');
+			$data['Owner']['user_id']=$usuario;
+							
+			if ($this->Owner->save($data)) {
+					$this->Session->setFlash(__('El encargado se ha guardado.'));
+					return $this->redirect(array('action' => 'index'));
+			}
+			else
+			{
+				$this->Session->setFlash(__('El encargado no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
 			}
 		}
 		$sites = $this->Owner->Site->find('list');
@@ -111,7 +135,7 @@ class OwnersController extends AppController {
 			$this->request->data = $this->Owner->find('first', $options);
 		}
 		$sites = $this->Owner->Site->find('list');
-		$people = $this->Owner->Person->find('list');
+		$people = $this->Owner->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$this->set(compact('sites', 'people'));
 	}
 

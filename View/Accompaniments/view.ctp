@@ -30,17 +30,17 @@
 		</dd>
 		<dt><?php echo __('Accompaniment Adjunct'); ?></dt>
 		<dd>
-			<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>&nbsp;</td>
+			<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct']),array('target'=>'_blank')); ?>&nbsp;</td>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Accompaniment Adjunct1'); ?></dt>
 		<dd>
-			<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct1/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1'])); ?>&nbsp;</td>
+			<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct1/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1']),array('target'=>'_blank')); ?>&nbsp;</td>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Accompaniment Adjunct2'); ?></dt>
 		<dd>
-			<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>&nbsp;</td>
+			<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2']),array('target'=>'_blank')); ?>&nbsp;</td>
 			&nbsp;
 		</dd>	
 	</dl>
@@ -52,7 +52,7 @@
 		<li><?php echo $this->Html->link(__('New Accompaniment'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Accompaniment'), array('action' => 'edit', $accompaniment['Accompaniment']['id_accompaniment'])); ?> </li>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level === '1'){?>
+		if ($usuario_level == '1'){?>
 		<li><?php echo $this->Form->postLink(__('Delete Accompaniment'), array('action' => 'delete', $accompaniment['Accompaniment']['id_accompaniment']), null, __('Are you sure you want to delete # %s?', $accompaniment['Accompaniment']['id_accompaniment'])); ?> </li>
 			<?php }?>
 		<li><?php echo $this->Html->link(__('List Accompaniments'), array('action' => 'index')); ?> </li>

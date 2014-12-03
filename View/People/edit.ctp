@@ -1,4 +1,4 @@
-<div class="people form mde-form">
+﻿<div class="people form mde-form">
 <?php echo $this->Form->create('Person'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Person'); ?></legend>
@@ -11,7 +11,7 @@
 		echo $this->Form->input('email',array('maxLength'=>256,'type'=>'email'));
 		echo $this->Form->input('phone',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('cell',array('onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('entity');
+		echo $this->Form->input('entity',array('maxLength'=>80,'label'=>'Entidad/Organización/Grupo'));
 
 	?>
 	</fieldset>

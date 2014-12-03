@@ -1,58 +1,53 @@
-﻿<div class="agents index">
-	<h2><?php echo __('Agents'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('person_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('zone_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('agent_estado'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($agents as $agent): ?>
-	<tr>
-		<td>
-			<?php echo $this->Html->link($agent['Person']['name'].' '.$agent['Person']['lastname'], array('controller' => 'people', 'action' => 'view', $agent['Person']['id_person'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($agent['Zone']['zone_name'], array('controller' => 'zones', 'action' => 'view', $agent['Zone']['id_zone'])); ?>
-		</td>
-		<td>
-				<?php echo h($agent['Agent']['agent_estado']); ?>&nbsp;
-		</td>
-		
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $agent['Agent']['id_agent'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $agent['Agent']['id_agent'])); ?>
-			<?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $agent['Agent']['id_agent']), null, __('Are you sure you want to delete # %s?', $agent['Agent']['id_agent'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Agent'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>
-		<li><?php //echo $this->Html->link(__('List People'), array('controller' => 'people', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Person'), array('controller' => 'people', 'action' => 'add')); ?> </li>
-		<li><?php //echo $this->Html->link(__('List Zones'), array('controller' => 'zones', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Zone'), array('controller' => 'zones', 'action' => 'add')); ?> </li>
-		<li><?php //echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
-	</ul>
-</div>
+﻿
+
+<div class="agents-cont app-grid-container">
+
+	<div class="left-block">
+		<div class="actions">
+			<h3><?php echo __('Actions'); ?></h3>
+			<ul>
+				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+				<li><?php echo $this->Html->link(__('New Agent'), array('action' => 'add')); ?></li>
+				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
+				<?php 
+				$usuario_level= $this->Session->read('Auth.User.permission_level');
+				?>
+				</li>
+			</ul>
+		</div>
+	</div>	
+<!-- 	End left block -->	
+
+	<div class="right-block">
+
+		<div class="agent">
+			<h2><?php echo __('Agentes Dinamizadores'); ?></h2>
+			<?php
+				$gridOptions=array(
+						'gridId'=>'gridAgents',
+						'gridTitle'=>'Agentes',
+						'height'=>500,
+						'serviceUrl'=>'Agents/index_service.json',
+						'fields'=>array(
+						    array("dataIndex"=>"id","column"=>false),
+			                array("dataIndex"=>"npersona",'header'=>'Persona','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"nzona",'header'=>'Zona','sortable'=>true,'align'=>"center","column"=>true),
+			                array("dataIndex"=>"estado_agente",'header'=>'Estado Agente','sortable'=>true,'align'=>"center","column"=>true),
+							array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
+							array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
+							array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
+
+						),
+						'expander'=>false,
+						'AllowAll'=>true,
+						'printCrud'=>true,
+						'baseParams'=>array('start'=>0,'limit'=>100)
+				);
+			?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
+		</div>
+	<!-- End right block -->		
+	</div>	
+
+<!-- End meetings container -->
+</div>	

@@ -19,11 +19,13 @@
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));
 		//echo $this->Form->input('Person');/*La persona la acbe de agregar*/
 		?>
-
+		<div class="input"  style="text-align:right">
+				<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
+		</div>
 		<div class="seccion-person">	
-			<div class="input">
+			<div class="input" >
 				<label>Personas</label>
-				<input type="text"  class="person-autocomplete">
+				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona">
 				<div class="results-input" data-input-name="data[Person][Person][]">
 					
 				</div>
@@ -51,7 +53,7 @@
 		<?php 
 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level === '1'){?>
+		if ($usuario_level == '1'){?>
 		<!--<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>-->
 		<!--<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>-->
 

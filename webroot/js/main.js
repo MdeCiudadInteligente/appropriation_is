@@ -45,6 +45,8 @@ App.prototype.bind=function(){
 App.prototype.bindAutocompletePersona=function(selector){
 
     if($(selector).length){
+        var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
+        console.log($(selector).data('limit'));
         var serivce_route=absPath+"People/getPerson.json";
         $(selector).autoSuggest(serivce_route,
             {   minChars: 2,
@@ -57,7 +59,7 @@ App.prototype.bindAutocompletePersona=function(selector){
                 selectedItemProp: 'completename',
                 selectedValuesProp:'documento',
                 searchObjProps: 'documento,completename',
-                selectionLimit:100,
+                selectionLimit:limit,
                 starText: 'Seleccione la persona',
 
                 resultClick: function(data){
@@ -77,7 +79,49 @@ App.prototype.bindAutocompletePersona=function(selector){
                 }
         });    
     
+    
+        if($(selector).data('required')){
+            var parentForm=$(selector).closest('form');
+            var inputContainer=$($(selector).data('valcontainer'));
+            var emptyMsg=$(selector).data('emptymsg');
+            parentForm.on('submit',function(e){
+                if(inputContainer.find('input').length==0){
+                    e.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: $(selector).offset().top-100
+                    }, 500);
+                    setTimeout(function(){
+                        alert(emptyMsg);
+                    },500);
+                    return false;
+                }
+            });
+        }
+
+        if($(selector).data('load')){
+            var inputContainer=$($(selector).data('valcontainer'));
+            var loadPersons=inputContainer.find('input');
+            var autoList=$(selector).closest('ul');
+            $.each(loadPersons,function(){
+                var id=$(this).attr('id');
+                var completename=$(this).data('display');
+                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+completename+'</li>');
+            });
+
+            $('.close-load').on('click',function(){
+                var parentLi=$(this).closest('li');
+                var relInput='#'+parentLi.data('relvalue');
+                console.log($(relInput));
+                parentLi.remove();
+                $(relInput).remove();
+
+            });
+        }
+
+
     }
+
+
 
 };
 
@@ -136,5 +180,26 @@ App.prototype.bindAutocompleteSites=function(selector){
 
 
     }
+
+   if($(selector).data('load')){
+        var inputContainer=$($(selector).data('valcontainer'));
+        var loadPersons=inputContainer.find('input');
+        var autoList=$(selector).closest('ul');
+        $.each(loadPersons,function(){
+            var id=$(this).attr('id');
+            var completename=$(this).data('display');
+            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+completename+'</li>');
+        });
+
+        $('.close-load').on('click',function(){
+            var parentLi=$(this).closest('li');
+            var relInput='#'+parentLi.data('relvalue');
+            console.log($(relInput));
+            parentLi.remove();
+            $(relInput).remove();
+
+        });
+    }
+    
 
 };

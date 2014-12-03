@@ -15,11 +15,19 @@ class SiteTypesController extends AppController {
  */
 	public $components = array('Paginator');
 	
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
+			'order'=> array(
+					'SiteTypes.id_site_type' => 'desc'
+			)
+	);
+	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
 			return true;
 		}
 	}
@@ -32,6 +40,28 @@ class SiteTypesController extends AppController {
 	public function index() {
 		$this->SiteType->recursive = 0;
 		$this->set('siteTypes', $this->Paginator->paginate());
+	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$sitetype=$this->SiteType->find('all');
+		$count=0;
+		foreach ($sitetype as $key => $sitetype) {
+			$data['rows'][$count]=array(
+					'id'=>$sitetype['SiteType']['id_site_type'],
+					't_sitio'=>$sitetype['SiteType']['site_type'],
+					'estado_ts'=>$sitetype['SiteType']['site_estado'],
+					'creation_date'=>$sitetype['SiteType']['creation_date'],
+					'modification_date'=>$sitetype['SiteType']['modification_date'],
+					'user_id'=>$sitetype['SiteType']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
 
 /**
@@ -59,28 +89,30 @@ class SiteTypesController extends AppController {
 			
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
+			
+			$name_sitetype= $this->request->data['SiteType']['site_type'];
+			$verificar_sitetype=$this->SiteType->query("select distinct site_type from site_types where site_type = '$name_sitetype'");
+			$this->set('verificar_sitetype',$verificar_sitetype);
 				
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
-			
-			$this->SiteType->create();
-			
-			$this->SiteType->set(array(
-					'creation_date' => $fecha
-			));
-			$this->SiteType->set(array(
-					'user_id' => $usuario
-			));
-			
-			if ($this->SiteType->save($this->request->data)) {
-				$this->Session->setFlash(__('The site type has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The site type could not be saved. Please, try again.'));
+			if($verificar_sitetype==Array( )){			
+	
+				$this->SiteType->create();
+				$data=$this->request->data;
+				$data['SiteType']['creation_date']=date('Y-m-d H:i:s');
+				$data['SiteType']['user_id']=$usuario;
+								
+				if ($this->SiteType->save($data)) {
+						$this->Session->setFlash(__('El tipo de sitio se ha guardado.'));
+						return $this->redirect(array('action' => 'index'));
+				}
+				else
+				{
+					$this->Session->setFlash(__('El tipo de sitio no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+				}
+			}
+			else
+			{
+				$this->Session->setFlash(__('El tipo de sitio ya existe, por favor verifique.'));
 			}
 		}
 	}
@@ -97,13 +129,20 @@ class SiteTypesController extends AppController {
 			throw new NotFoundException(__('Invalid site type'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->SiteType->save($this->request->data)) {
-				$this->Session->setFlash(__('The site type has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The site type could not be saved. Please, try again.'));
+			
+				if ($this->SiteType->save($this->request->data)) 
+				{
+					$this->Session->setFlash(__('The site type has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} 
+				else 
+				{
+					$this->Session->setFlash(__('The site type could not be saved. Please, try again.'));
+				}
+				
 			}
-		} else {
+			else 
+		{
 			$options = array('conditions' => array('SiteType.' . $this->SiteType->primaryKey => $id));
 			$this->request->data = $this->SiteType->find('first', $options);
 		}

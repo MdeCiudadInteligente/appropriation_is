@@ -13,13 +13,22 @@ class ZonesController extends AppController {
  *
  * @var array
  */
+	
 	public $components = array('Paginator');
+	
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
+			'order'=> array(
+					'Zones.id_zone' => 'desc'
+			)
+	);
 	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
 			return true;
 		}
 	}
@@ -33,6 +42,29 @@ class ZonesController extends AppController {
 		$this->Zone->recursive = 0;
 		$this->set('zones', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+	
+		$zone=$this->Zone->find('all');
+		$count=0;
+		foreach ($zone as $key => $zone) {
+			$data['rows'][$count]=array(
+					'id'=>$zone['Zone']['id_zone'],
+					'nombre_zona'=>$zone['Zone']['zone_name'],					
+					'creation_date'=>$zone['Zone']['creation_date'],
+					'modification_date'=>$zone['Zone']['modification_date'],
+					'user_id'=>$zone['Zone']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+	
 
 /**
  * view method
@@ -60,26 +92,28 @@ class ZonesController extends AppController {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
+			$name_zone= $this->request->data['Zone']['zone_name'];
+			$verificar_zone=$this->Zone->query("select distinct zone_name from zones where zone_name = '$name_zone'");
+			$this->set('verificar_zone',$verificar_zone);
 			
-			$this->Zone->create();
+			if($verificar_zone==Array( )){
 			
-			$this->Zone->set(array(
-					'creation_date' => $fecha
-			));
-			$this->Zone->set(array(
-					'user_id' => $usuario
-			));
-			if ($this->Zone->save($this->request->data)) {
-				$this->Session->setFlash(__('The zone has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The zone could not be saved. Please, try again.'));
+				$this->Zone->create();
+				$data=$this->request->data;
+				$data['Zone']['creation_date']=date('Y-m-d H:i:s');
+				$data['Zone']['user_id']=$usuario;
+								
+				if ($this->Zone->save($data)) {
+						$this->Session->setFlash(__('La zona se ha guardado.'));
+						return $this->redirect(array('action' => 'index'));
+				}
+				else
+				{
+					$this->Session->setFlash(__('La zona no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+				}
+			}
+			else{
+				$this->Session->setFlash(__('La Zona ya existe, por favor verificar.'));
 			}
 		}
 	}
@@ -95,14 +129,22 @@ class ZonesController extends AppController {
 		if (!$this->Zone->exists($id)) {
 			throw new NotFoundException(__('Invalid zone'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Zone->save($this->request->data)) {
-				$this->Session->setFlash(__('The zone has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The zone could not be saved. Please, try again.'));
-			}
-		} else {
+		
+		if ($this->request->is(array('post', 'put')))
+		{			
+			
+				if ($this->Zone->save($this->request->data)) 
+				{
+					$this->Session->setFlash(__('The zone has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} 
+				else 
+				{
+					$this->Session->setFlash(__('The zone could not be saved. Please, try again.'));
+				}
+			}			
+		else 
+		{
 			$options = array('conditions' => array('Zone.' . $this->Zone->primaryKey => $id));
 			$this->request->data = $this->Zone->find('first', $options);
 		}

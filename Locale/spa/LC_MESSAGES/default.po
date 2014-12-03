@@ -99,6 +99,12 @@ msgstr "Añadir Tarea"
 msgid "Actions"
 msgstr "Acciones"
 
+msgid "People"
+msgstr "Personas"
+
+msgid "Configuration"
+msgstr "Configuración"
+
 msgid "Adjunct"
 msgstr "Adjunto"
 
@@ -112,7 +118,13 @@ msgid "Accompaniment Type"
 msgstr "Tipo Acompañamiento"
 
 msgid "The accompaniment has been deleted."
-msgstr "El acompa�amiento ha sido eliminado."
+msgstr "El acompañamiento ha sido eliminado."
+
+msgid "The zone has been saved."
+msgstr "La zona se ha guardado."
+
+msgid "connectivity sites accompanied"
+msgstr "Sitios con conectividad acompañados"
 
 msgid "Site"
 msgstr "Sitio"
@@ -140,6 +152,12 @@ msgstr "Por favor, ingrese su nombre de usuario y contraseña"
 
 msgid "Meeting Type"
 msgstr "Tipo Reunión"
+
+msgid "Edit Owner"
+msgstr "Editar encargado"
+
+msgid "Delete Owner"
+msgstr "Eliminar encargado"
 
 msgid "The site type has been saved."
 msgstr "El tipo de sitio se ha guardado."
@@ -381,6 +399,12 @@ msgstr "La reunión no se pudo guardar. Por favor, inténtalo de nuevo."
 msgid "The meeting has been saved."
 msgstr "La reunión se ha guardado."
 
+msgid "The meeting could not be removed. Please try again."
+msgstr "The meeting could not be removed. Please try again."
+
+msgid "The meeting has been deleted."
+msgstr "La reuni�n ha sido eliminado."
+
 msgid "Add Meeting"
 msgstr "Agregar reunión"
 
@@ -401,6 +425,9 @@ msgstr "Menú Principal"
 
 msgid "Close Section"
 msgstr "Cerrar Sesión"
+
+msgid "The zone has been deleted."
+msgstr "La zona ha sido eliminado."
 
 msgid "Edit Neighborhood"
 msgstr "Editar Barrio"
@@ -425,6 +452,9 @@ msgstr "Fecha Acompañamiento"
 
 msgid "Add User"
 msgstr "Añadir usuario"
+
+msgid "dynamic agents"
+msgstr "Agentes Dinamizadores"
 
 msgid "Id Person"
 msgstr "Documento Persona"
@@ -557,6 +587,9 @@ msgstr "El sitio ha sido guardado."
 
 msgid "The site has been deleted."
 msgstr "El sitio ha sido eliminado."
+
+msgid "The site could not be saved.Please,try again."
+msgstr "El sitio no pudo ser salvado.Por favor,vuelva a intentarlo."
 
 msgid "The neighborhood has been saved."
 msgstr "El barrio ha sido guardado."

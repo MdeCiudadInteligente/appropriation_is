@@ -15,11 +15,19 @@ class AgentsController extends AppController {
  */
 	public $components = array('Paginator');
 	
+	public $paginate = array(
+			//'fields' => array('Meeting.meeting_type'),
+			'limit' => 10,
+			'order'=> array(
+					'Agents.id_agent' => 'desc'
+			)
+	);
+	
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')||(isset($user['permission_level']) && $user['permission_level'] === '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
 			return true;
 		}
 	}
@@ -32,6 +40,26 @@ class AgentsController extends AppController {
 	public function index() {
 		$this->Agent->recursive = 0;
 		$this->set('agents', $this->Paginator->paginate());
+	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$agent=$this->Agent->find('all');
+		$count=0;
+		foreach ($agent as $key => $agent) {
+			$data['rows'][$count]=array(
+					'id'=>$agent['Agent']['id_agent'],
+					'npersona'=>$agent['Person']['name'],
+					'nzona'=>$agent['Zone']['zone_name'],
+					'estado_agente'=>$agent['Agent']['agent_estado'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
 
 /**
@@ -59,32 +87,33 @@ class AgentsController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			
-			$usuario = $this->Session->read('Auth.User.id_user');
-				
+			$usuario = $this->Session->read('Auth.User.id_user');				
 			$this->set('usuario',$usuario);
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
 			
-			$this->Agent->create();
+			$name_agents= $this->request->data['Agent']['person_id'];
+			$verificar_agent=$this->Agent->query("select distinct person_id from agents where person_id = '$name_agents'");
+			$this->set('verificar_agent',$verificar_agent);
 			
-			$this->Agent->set(array(
-					'creation_date' => $fecha
-			));
+			if($verificar_agent==Array( )){				
 			
-			$this->Agent->set(array(
-					'user_id' => $usuario
-			));
-			
-			if ($this->Agent->save($this->request->data)) {
-				$this->Session->setFlash(__('The agent has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The agent could not be saved. Please, try again.'));
-			}
+				$this->Agent->create();
+				$data=$this->request->data;
+				$data['Agent']['creation_date']=date('Y-m-d H:i:s');
+				$data['Agent']['user_id']=$usuario;
+							
+				if ($this->Agent->save($data)) {
+						$this->Session->setFlash(__('El agente se ha guardado.'));
+						return $this->redirect(array('action' => 'index'));
+				}
+				else
+					{
+						$this->Session->setFlash(__('El agente no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+					}
+				}
+				else
+				{
+					$this->Session->setFlash(__('La persona ya es agente, por favor verifique.'));
+				}
 		}
 		$people = $this->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$zones = $this->Agent->Zone->find('list');

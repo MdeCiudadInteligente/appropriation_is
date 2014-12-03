@@ -21,6 +21,9 @@ class MeetingsController extends AppController {
 	public $paginate = array(
 			//'fields' => array('Meeting.meeting_type'),
 			'limit' => 10,
+			'order'=> array(
+            'Meeting.id_meeting' => 'desc'
+       )
 	);
 	
 	
@@ -34,7 +37,7 @@ class MeetingsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '3')||(isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 			
@@ -43,6 +46,7 @@ class MeetingsController extends AppController {
 		//return false;
 			
 	}
+	
 	public function index() 
 	{
 		$id_usuario = $this->Session->read('Auth.User.id_user');
@@ -60,6 +64,33 @@ class MeetingsController extends AppController {
 		$this->set('meetings', $this->Paginator->paginate('Meeting'));
 		$this->set('totalm',$this->Meeting->find('count'));
 	
+	}
+
+	public function index_service() 
+	{
+	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		
+		$meeting=$this->Meeting->find('all');
+		$count=0;
+		foreach ($meeting as $key => $meeting) {
+			$data['rows'][$count]=array(
+					'id'=>$meeting['Meeting']['id_meeting'],
+					'sitio'=>$meeting['Site']['site_name'],
+					'f_reunion'=>$meeting['Meeting']['meeting_date'],
+					'tipo'=>$meeting['Meeting']['meeting_type'],
+					'titulo'=>$meeting['Meeting']['meeting_title'],
+					'descripcion'=>$meeting['Meeting']['meeting_description'],
+					'compromisos'=>$meeting['Meeting']['meeting_commitments'],
+					'creation_date'=>$meeting['Meeting']['creation_date'],
+					'modification_date'=>$meeting['Meeting']['modification_date'],
+					'user_id'=>$meeting['Meeting']['user_id'],
+			);
+			$count++;
+		}
+     	$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
 
 	public function download()
@@ -106,34 +137,20 @@ public function add() {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
-			
-			/*$valor=$this->request;*/
 			$this->Meeting->create();
-			//if ($this->Meeting->save($this->request->data)) {
-			
-			$this->Meeting->set(array(
-					'creation_date' => $fecha
-			));
-				$this->Meeting->set(array(
-						'user_id' => $usuario
-				));
-				//$this->Meeting->save();
-			if ($this->Meeting->save($this->request->data)){
-				
-				$this->Session->setFlash(/*print_r($valor).*/__('La reunión se ha guardado.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('La reunión no se pudo guardar . Por favor , inténtelo de nuevo.'));
+			$data=$this->request->data;
+			$data['Meeting']['creation_date']=date('Y-m-d H:i:s');
+			$data['Meeting']['user_id']=$usuario;
+						
+			if ($this->Meeting->save($data)) {
+					$this->Session->setFlash(__('The meeting has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+			}
+			else
+			{
+				$this->Session->setFlash(__('The meeting could not be saved. Please, try again.'));
 			}
 		}
-		/*$sites = $this->Meeting->Site->find('list');
-		$this->set(compact('sites'));*/
 		$sites = $this->Meeting->Site->find('list',array('order' => array('Site.site_name' => 'ASC')));
 		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$this->set(compact('sites', 'people'));
@@ -186,7 +203,7 @@ public function add() {
 		if ($this->Meeting->delete()) {
 			$this->Session->setFlash(__('La reunión ha sido eliminado.'));
 		} else {
-			$this->Session->setFlash(__('La reunión no se pudo eliminar . Por favor , inténtelo de nuevo.'));
+			$this->Session->setFlash(__('The meeting could not be removed. Please try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

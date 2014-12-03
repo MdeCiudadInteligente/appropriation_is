@@ -20,6 +20,9 @@ class AccompanimentsController extends AppController {
 	public $paginate = array(
 			//'fields' => array('Meeting.meeting_type'),
 			'limit' => 10,
+			'order'=> array(
+            'Accompaniment.id_accompaniment' => 'desc'
+       )
 	);
 
 /**
@@ -66,6 +69,32 @@ class AccompanimentsController extends AppController {
 		$this->set('totala',$this->Accompaniment->find('count'));
 	}
 	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$accompaniment=$this->Accompaniment->find('all');
+		$count=0;
+		foreach ($accompaniment as $key => $accompaniment) {
+			$data['rows'][$count]=array(
+					'id'=>$accompaniment['Accompaniment']['id_accompaniment'],
+					'sitio'=>$accompaniment['Site']['site_name'],
+					'f_reunion'=>$accompaniment['Accompaniment']['accompaniment_date'],
+					'tipo'=>$accompaniment['Accompaniment']['accompaniment_type'],
+					'titulo'=>$accompaniment['Accompaniment']['accompaniment_title'],
+					'descripcion'=>$accompaniment['Accompaniment']['accompaniment_description'],
+					'num_participantes'=>$accompaniment['Accompaniment']['participant_number'],										
+					'creation_date'=>$accompaniment['Accompaniment']['creation_date'],
+					'modification_date'=>$accompaniment['Accompaniment']['modification_date'],
+					'user_id'=>$accompaniment['Accompaniment']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+	
 	public function download()
 	{
 		$this->Accompaniment->recursive = 0;
@@ -106,32 +135,22 @@ class AccompanimentsController extends AppController {
 	public function add() {
 		
 		if ($this->request->is('post')) {
-			$usuario = $this->Session->read('Auth.User.id_user');
-			
+			$usuario = $this->Session->read('Auth.User.id_user');			
 			$this->set('usuario',$usuario);
-			$horas_diferencia= -6;
-			$tiempo=time() + ($horas_diferencia * 60 *60);
-			list($Mili, $bot) = explode(" ", microtime());
-			$DM=substr(strval($Mili),2,4);
-			$fecha = date('Y-m-d H:i:s:'. $DM,$tiempo);
-			$this->set('fecha',$fecha);
 			
 			$this->Accompaniment->create();
-			
-				$this->Accompaniment->set(array(
-						'creation_date' => $fecha
-				));
-				
-				$this->Accompaniment->set(array(
-						'user_id' => $usuario
-				));
-				if ($this->Accompaniment->save($this->request->data)) {
-				
-				$this->Session->setFlash(__('The accompaniment has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The accompaniment could not be saved. Please, try again.'));
+			$data=$this->request->data;
+			$data['Accompaniment']['creation_date']=date('Y-m-d H:i:s');
+			$data['Accompaniment']['user_id']=$usuario;
+						
+			if ($this->Accompaniment->save($data)) {
+					$this->Session->setFlash(__('The accompaniment has been saved.'));
+					return $this->redirect(array('action' => 'index'));
 			}
+			else
+				{
+					$this->Session->setFlash(__('The accompaniment could not be saved. Please, try again.'));
+				}
 		}
 		$sites = $this->Accompaniment->Site->find('list', array('order'=>array('Site.site_name ASC')));
 		$this->set(compact('sites'));
