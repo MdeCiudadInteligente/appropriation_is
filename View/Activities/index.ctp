@@ -29,7 +29,7 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 	<div class="meetings">
 	<h2><?php echo __('Meetings'); ?></h2>	
 	<?php
-				$gridOptions=array(
+				$gridOptions1=array(
 						'gridId'=>'gridMeetings',
 						'gridTitle'=>'Reuniones',
 						'height'=>800,
@@ -53,10 +53,11 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 							)
 						),
 						'printCrud'=>true,
-						'baseParams'=>array('start'=>0,'limit'=>100)
+						'baseParams'=>array('start'=>0,'limit'=>100),
+						'controller'=>'Meetings'
 				);
 			?>
-			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions1)); ?>
 
 	</div>
 <?php }?>
@@ -66,7 +67,7 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 <?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
 	<h2><?php echo __('Accompaniments'); ?></h2>
 	<?php
-					$gridOptions=array(
+					$gridOptions2=array(
 							'gridId'=>'gridAccompaniments',
 							'gridTitle'=>'Acompañamientos',
 							'height'=>800,
@@ -90,10 +91,11 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 								)
 							),
 							'printCrud'=>true,
-							'baseParams'=>array('start'=>0,'limit'=>100)
+							'baseParams'=>array('start'=>0,'limit'=>100),
+							'controller'=>'Accompaniments'
 					);
 				?>
-				<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
+				<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions2)); ?>
 		
 		<!-- End right block -->	
 	<?php }?>	
@@ -107,7 +109,7 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 	<div class="divulgations">
 			<h2><?php echo __('Divulgations'); ?></h2>
 			<?php
-				$gridOptions=array(
+				$gridOptions3=array(
 						'gridId'=>'gridDivulgatios',
 						'gridTitle'=>'Divulgaciones',
 						'height'=>500,
@@ -131,10 +133,11 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 							)
 						),
 						'printCrud'=>true,
-						'baseParams'=>array('start'=>0,'limit'=>100)
+						'baseParams'=>array('start'=>0,'limit'=>100),
+						'controller'=>'Divulgations'
 				);
 			?>
-			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions3)); ?>
 		</div>
 		<?php }?>	
 	<!-- End right block -->		
