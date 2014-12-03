@@ -426,6 +426,9 @@ msgstr "Menú Principal"
 msgid "Close Section"
 msgstr "Cerrar Sesión"
 
+msgid "The zone has been deleted."
+msgstr "La zona ha sido eliminado."
+
 msgid "Edit Neighborhood"
 msgstr "Editar Barrio"
 
