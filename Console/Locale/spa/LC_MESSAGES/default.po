@@ -366,6 +366,9 @@ msgstr "Agregar reunión"
 msgid "The accompaniment has been saved."
 msgstr "El acompañamiento se ha guardado."
 
+msgid "The accompaniment could not be saved. Please, try again."
+msgstr "El acompañamiento no se pudo guardar. Por favor, inténtalo de nuevo."
+
 msgid "Site Estado"
 msgstr "Estado Sitio"
 

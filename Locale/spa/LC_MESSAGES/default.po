@@ -102,6 +102,9 @@ msgstr "Acciones"
 msgid "People"
 msgstr "Personas"
 
+msgid "Configuration"
+msgstr "Configuración"
+
 msgid "Adjunct"
 msgstr "Adjunto"
 
@@ -575,6 +578,9 @@ msgstr "El sitio ha sido guardado."
 
 msgid "The site has been deleted."
 msgstr "El sitio ha sido eliminado."
+
+msgid "The site could not be saved.Please,try again."
+msgstr "El sitio no pudo ser salvado.Por favor,vuelva a intentarlo."
 
 msgid "The neighborhood has been saved."
 msgstr "El barrio ha sido guardado."
