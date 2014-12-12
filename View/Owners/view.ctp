@@ -1,11 +1,6 @@
 <div class="owners view">
 <h2><?php echo __('Owner'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id Owner'); ?></dt>
-		<dd>
-			<?php echo h($owner['Owner']['id_owner']); ?>
-			&nbsp;
-		</dd>
+	<dl>		
 		<dt><?php echo __('Roll'); ?></dt>
 		<dd>
 			<?php echo h($owner['Owner']['roll']); ?>
@@ -13,12 +8,17 @@
 		</dd>
 		<dt><?php echo __('Site'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($owner['Site']['id_site'], array('controller' => 'sites', 'action' => 'view', $owner['Site']['id_site'])); ?>
+			<?php echo $this->Html->link($owner['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $owner['Site']['id_site'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Person'); ?></dt>
+		<dt><?php echo __('Nombres'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($owner['Person']['name'], array('controller' => 'people', 'action' => 'view', $owner['Person']['id_person'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Apellidos'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($owner['Person']['lastname'], array('controller' => 'people', 'action' => 'view', $owner['Person']['id_person'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

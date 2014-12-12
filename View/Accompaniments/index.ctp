@@ -1,4 +1,4 @@
-﻿<div class="meetings-cont app-grid-container">
+﻿<div class="accompaniments-cont app-grid-container">
 	<div class="left-block">
 		<div class="actions">
 			<h3><?php echo __('Actions'); ?></h3>
@@ -13,7 +13,7 @@
 	</div>
 <!-- 	End left block -->	
 	<div class="right-block">
-		<div class="meetings">
+		<div class="accompaniments">
 			<h2><?php echo __('Accompaniments'); ?></h2>
 				<?php
 					$gridOptions=array(
@@ -47,7 +47,7 @@
 		</div>
 	<!-- End right block -->		
 	</div>	
-<!-- End meetings container -->
+<!-- End accompaniments container -->
 </div>	
 				
 

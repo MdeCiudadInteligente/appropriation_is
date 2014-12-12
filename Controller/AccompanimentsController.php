@@ -144,12 +144,12 @@ class AccompanimentsController extends AppController {
 			$data['Accompaniment']['user_id']=$usuario;
 						
 			if ($this->Accompaniment->save($data)) {
-					$this->Session->setFlash(__('El acompañamiento se ha guardado.'));
+					$this->Session->setFlash(__('The accompaniment has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 			}
 			else
 				{
-					$this->Session->setFlash(__('El acompañamiento no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+					$this->Session->setFlash(__('The accompaniment could not be saved. Please, try again.'));
 				}
 		}
 		$sites = $this->Accompaniment->Site->find('list', array('order'=>array('Site.site_name ASC')));

@@ -1,213 +1,148 @@
-<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>		
-<?php //echo "Bienvenido:". $name_usuario;?>
-<div class="Activities index">
-	<h2><?php echo __('Meetings'); ?></h2>
-	<div id="paginador1">
-	<table>
-
-	<tr>
-		<th><?php echo $this->Paginator->sort('site_id'); ?></th>
-		<th><?php echo $this->Paginator->sort('meeting_type'); ?></th>
-		<th><?php echo $this->Paginator->sort('meeting_title'); ?></th>
-	<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($meetings as $meeting): ?>
-	<tr>
-		<td><?php echo $this->Html->link($meeting['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $meeting['Site']['id_site'])); ?></td>
-		<td><?php echo h($meeting['Meeting']['meeting_type']); ?>&nbsp;</td>
-		<td><?php echo h($meeting['Meeting']['meeting_title']); ?>&nbsp;</td>
-<!-- 		<td class="ver">  		
-			<?php //echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
-		</td>
- -->		<td class="actions">
-		<?php echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');?>			
-		<?php //echo "Nivel". $usuario_level;?>
-		<?php $usuario_id=$meeting['Meeting']['user_id'];?>		
-		<?php //echo "usuario". $usuario_id;?>
-		<?php //echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
-		<?php if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>
-		<?php //echo $this->Html->link(__('View'), array('controller' => 'Meetings','action' => 'view', $meeting['Meeting']['id_meeting'])); ?>
-		<?php echo $this->Html->link(__('Edit'), array('controller' => 'Meetings','action' => 'edit', $meeting['Meeting']['id_meeting'])); ?>
-		<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Meetings','action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Está seguro de que desea eliminar # %s?', $meeting['Meeting']['id_meeting'])); ?>
-		<?php }?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		/*echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));*/
-	?>
-	</div>
-	</div>
-	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Meetings', 'action' => 'index')); ?>
-</div>
-<?php }?>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-	<li><?php //echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
-
-	<?php	
-	$usuario_level= $this->Session->read('Auth.User.permission_level');
-	
-	if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>		
-
-		<li><?php echo $this->Html->link(__('Reuniones'), array('controller' => 'Meetings', 'action' => 'index')); ?> </li>	
-		<li><?php echo $this->Html->link(__('Acompañamientos'), array('controller' => 'Accompaniments', 'action' => 'index')); ?> </li>	
-	<?php }?>
-	<li><?php echo $this->Html->link(__('Divulgaciones'), array('controller' => 'Divulgations', 'action' => 'index')); ?> </li>	
-
-	<?php //if ($usuario_level == '1'){?>
-    	<li><?php echo $this->Html->link(__('Configuración'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
-		<li><?php //echo $this->Html->link(__('New User'), array('controller' => 'Users', 'action' => 'add')); ?> </li>		
-		<li><?php //echo $this->Html->link(__('New Agent'), array('controller' => 'Agents', 'action' => 'add')); ?> </li>	
-		<li><?php //echo $this->Html->link(__('New Site Type'), array('controller' => 'SiteTypes', 'action' => 'add')); ?> </li>			
-		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'Sites', 'action' => 'add')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Neighborhood'), array('controller' => 'Neighborhoods', 'action' => 'add')); ?> </li>	
-		<li><?php //echo $this->Html->link(__('New Commune'), array('controller' => 'Communes', 'action' => 'add')); ?> </li>		
-	<?php //}?>	
-	<li><?php //echo $this->Html->link(__('New Person'), array('controller' => 'People', 'action' => 'add')); ?> </li>	
-
-	<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
-	</ul>
-</div>
-
-
-<div class="accompaniments index">
-<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>		
-	<h2><?php echo __('Accompaniments'); ?></h2>
-	<table>
-	<tr>
-		<th><?php echo $this->Paginator->sort('site_id'); ?></th>
-		<th><?php echo $this->Paginator->sort('accompaniment_type'); ?></th> 
-	<?php /*	<th><?php echo $this->Paginator->sort('accompaniment_description'); ?></th>  */?>
-		<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
-
-		<?php /*	<th><?php echo $this->Paginator->sort('accompaniment_adjunct'); ?></th>
-		<th><?php echo $this->Paginator->sort('accompaniment_adjunct1'); ?></th>
-		<th><?php echo $this->Paginator->sort('accompaniment_adjunct2'); ?></th> */?>
-	
-
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($accompaniments as $accompaniment): ?>
-	<tr>
-	<td><?php echo $this->Html->link($accompaniment['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $accompaniment['Site']['id_site'])); ?></td>
-		<td><?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>&nbsp;</td>
-	<?php /*	<td><?php echo h($accompaniment['Accompaniment']['accompaniment_description']); ?>&nbsp;</td> */?>
-		<td><?php echo h($accompaniment['Accompaniment']['participant_number']); ?>&nbsp;</td>
-		<!--  <td><?php //echo h($accompaniment['Accompaniment']['accompaniment_adjunct']); ?>&nbsp;</td>-->
-	<?php /*	<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct'])); ?>&nbsp;</td>
-		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct1'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct1/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct1'])); ?>&nbsp;</td>
-		<td><?php echo  $this->Html->link($accompaniment['Accompaniment']['accompaniment_adjunct2'],array('controller' => 'webroot','action' => '/uploads/accompaniment/accompaniment_adjunct2/'.'/'.$accompaniment['Accompaniment']['accompaniment_adjunct2'])); ?>&nbsp;</td> */?>
-<!-- 		<td class="ver">  		
-			<?php //echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
-		</td>
- -->		<td class="actions">	
-		<?php echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
-		<?php $usuario_id=$accompaniment['Accompaniment']['user_id'];?>
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
-		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>	
-			<?php //echo $this->Html->link(__('View'), array('controller' => 'Accompaniments','action' => 'view', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Accompaniments','action' => 'edit', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Accompaniments','action' => 'delete', $accompaniment['Accompaniment']['id_accompaniment']), null, __('Are you sure you want to delete # %s?', $accompaniment['Accompaniment']['id_accompaniment'])); ?>
-		<?php }?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	<?php }?>
-	</table>
-
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-	/*	echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));*/
-	?>
-	</div>
-	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Accompaniments', 'action' => 'index')); ?>
-</div>
-
-<div class="divulgations index">
-	<h2><?php echo __('Divulgations'); ?></h2>
-	<table>
-	<tr>
-		<th><?php echo $this->Paginator->sort('site_id'); ?></th>
-		<th><?php echo $this->Paginator->sort('divulgation_name'); ?></th>
-		<th><?php echo $this->Paginator->sort('divulgation_type'); ?></th>
-		<?php /*	<th><?php echo $this->Paginator->sort('divulgation_description'); ?></th>
-		<th><?php echo $this->Paginator->sort('participant_number'); ?></th>
-		<th><?php echo $this->Paginator->sort('activity_place'); ?></th>  
-
-		<th><?php echo $this->Paginator->sort('divulgation_adjunct'); ?></th>
-		<th><?php echo $this->Paginator->sort('divulgation_adjunct1'); ?></th>
-		<th><?php echo $this->Paginator->sort('divulgation_adjunct2'); ?></th> 	*/?>
-		
-
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($divulgations as $divulgation): ?>
-	<tr>
-		<td><?php echo $this->Html->link($divulgation['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $divulgation['Site']['id_site'])); ?></td>
-		<td><?php echo h($divulgation['Divulgation']['divulgation_name']); ?>&nbsp;</td>
-		<td><?php echo h($divulgation['Divulgation']['divulgation_type']); ?>&nbsp;</td>
-		<?php /*	<td><?php echo h($divulgation['Divulgation']['divulgation_description']); ?>&nbsp;</td>
-		<td><?php echo h($divulgation['Divulgation']['participant_number']); ?>&nbsp;</td>
-		<td><?php echo h($divulgation['Divulgation']['activity_place']); ?>&nbsp;</td>
-	<!--  	<td><?php //echo h($divulgation['Divulgation']['divulgation_adjunct']); ?>&nbsp;</td>-->
-	    <td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct/'.$divulgation['Divulgation']['divulgation_adjunct'])); ?>&nbsp;</td> 
-		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct1'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct1/'.$divulgation['Divulgation']['divulgation_adjunct1'])); ?>&nbsp;</td> 
-		<td><?php echo  $this->Html->link($divulgation['Divulgation']['divulgation_adjunct2'],array('controller' => 'webroot','action' =>'/uploads/divulgation/divulgation_adjunct2/'.$divulgation['Divulgation']['divulgation_adjunct2'])); ?>&nbsp;</td> */?>
-			
-		<td class="actions">
-		<?php echo $this->Html->link(__('View'), array('controller' => 'Divulgations','action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
-		<?php $usuario_id=$divulgation['Divulgation']['user_id'];?>
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		
-		if(($id_usuario==$usuario_id) || ($usuario_level== '1')){?>	
-			<?php //echo $this->Html->link(__('View'), array('controller' => 'Divulgations','action' => 'view', $divulgation['Divulgation']['id_divulgation'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('controller' => 'Divulgations','action' => 'edit', $divulgation['Divulgation']['id_divulgation'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'Divulgations','action' => 'delete', $divulgation['Divulgation']['id_divulgation']), null, __('Are you sure you want to delete # %s?', $divulgation['Divulgation']['id_divulgation'])); ?>
+﻿<div class="activities-cont app-grid-container">
+<!-- actions  -->
+	<div class="left-block">
+	<div class="actions">
+	  <h3><?php echo __('Actions'); ?></h3>
+		<ul>
+			<?php	
+			$usuario_level= $this->Session->read('Auth.User.permission_level');	
+			if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
+			<li><?php echo $this->Html->link(__('Meetings'), array('controller' => 'Meetings', 'action' => 'index')); ?> </li>	
+			<li><?php echo $this->Html->link(__('Accompaniments'), array('controller' => 'Accompaniments', 'action' => 'index')); ?> </li>	
 			<?php }?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
+			<?php if ($usuario_level == '4'||$usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
+			<li><?php echo $this->Html->link(__('Divulgations'), array('controller' => 'Divulgations', 'action' => 'index')); ?> </li>	
+			<?php }?>	
+			<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
+			<li><?php echo $this->Html->link(__('Configuration'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
+			<?php }?>
+		</ul>
+	</div>		
+	</div>		
+<!-- end actions  -->
+<!-- 	End left block -->	
+	
+<!-- meetings  -->
+<div class="right-block">
+<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
+	<div class="meetings">
+	<h2><?php echo __('Meetings'); ?></h2>	
 	<?php
-	echo $this->Paginator->counter(array(
-	//'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de {:count} total, empezando en el registro {:start}, que concluye el {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-	/*	echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));*/
-	?>
+				$gridOptions1=array(
+						'gridId'=>'gridMeetings',
+						'gridTitle'=>'Reuniones',
+						'height'=>800,
+						'serviceUrl'=>'Meetings/index_service.json',
+						'fields'=>array(
+						    array("dataIndex"=>"id","column"=>false),
+			                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"f_reunion",'header'=>'Fecha','sortable'=>true,'align'=>"center","column"=>true),
+			                array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"titulo",'header'=>'Título','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"descripcion",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"compromisos",'header'=>'Compromisos','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
+			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
+						),
+						'expander'=>array(
+							'fields'=>array(
+								array('title'=>'Descripción','field'=>'descripcion'),
+								array('title'=>'Compromisos','field'=>'compromisos')
+							)
+						),
+						'printCrud'=>true,
+						'baseParams'=>array('start'=>0,'limit'=>100),
+						'controller'=>'Meetings'
+				);
+			?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions1)); ?>
+
 	</div>
-	<?php echo $this->Html->link(__('Ver más'), array('controller' => 'Divulgations', 'action' => 'index')); ?>
-</div>
-<?php echo $this->Js->writeBuffer(); ?>
+<?php }?>
+<!-- end meetings  -->
+<P></P>
+<!-- accompaniments  -->
+<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
+	<h2><?php echo __('Accompaniments'); ?></h2>
+	<?php
+					$gridOptions2=array(
+							'gridId'=>'gridAccompaniments',
+							'gridTitle'=>'Acompañamientos',
+							'height'=>800,
+							'serviceUrl'=>'Accompaniments/index_service.json',
+							'fields'=>array(
+							    array("dataIndex"=>"id","column"=>false),
+				                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
+				                array("dataIndex"=>"f_reunion",'header'=>'Fecha','sortable'=>true,'align'=>"center","column"=>true),
+				                array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
+				                array("dataIndex"=>"titulo",'header'=>'Título','sortable'=>true,'align'=>"left","column"=>true),
+				                array("dataIndex"=>"descripcion",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>true),
+				                array("dataIndex"=>"num_participantes",'header'=>'Número de participantes','sortable'=>true,'align'=>"center","column"=>true),
+				                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
+				                array("dataIndex"=>"modification_date",'header'=>'Fecha de Modificación','sortable'=>true,'align'=>"left","column"=>false),
+				               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
+							),
+							'expander'=>array(
+								'fields'=>array(
+									array('title'=>'Descripción','field'=>'descripcion'),
+									//array('title'=>'Compromisos','field'=>'compromisos')
+								)
+							),
+							'printCrud'=>true,
+							'baseParams'=>array('start'=>0,'limit'=>100),
+							'controller'=>'Accompaniments'
+					);
+				?>
+				<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions2)); ?>
+		
+		<!-- End right block -->	
+	<?php }?>	
+<!-- end accompaniments  -->
+<P></P>
+<!-- divulgations  -->
 
 
+
+<?php if ($usuario_level == '4'||$usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
+	<div class="divulgations">
+			<h2><?php echo __('Divulgations'); ?></h2>
+			<?php
+				$gridOptions3=array(
+						'gridId'=>'gridDivulgatios',
+						'gridTitle'=>'Divulgaciones',
+						'height'=>500,
+						'serviceUrl'=>'Divulgations/index_service.json',
+						'fields'=>array(
+						    array("dataIndex"=>"id","column"=>false),
+			                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"f_divulgacion",'header'=>'Fecha','sortable'=>true,'align'=>"center","column"=>true),
+			                array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"titulo",'header'=>'Título','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"descripcion",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"nparticipantes",'header'=>'Número de participantes','sortable'=>true,'align'=>"center","column"=>true),
+							array("dataIndex"=>"lactividad",'header'=>'Lugar de la actividad','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>false),
+			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
+						),
+						'expander'=>array(
+							'fields'=>array(
+								array('title'=>'Descripción','field'=>'descripcion')
+							)
+						),
+						'printCrud'=>true,
+						'baseParams'=>array('start'=>0,'limit'=>100),
+						'controller'=>'Divulgations'
+				);
+			?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions3)); ?>
+		</div>
+		<?php }?>	
+	<!-- End right block -->		
+	</div>	
+<!-- End meetings container -->
+</div>	
+	
+	

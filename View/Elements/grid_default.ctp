@@ -2,25 +2,31 @@
 <!-- Grid view  -->
 
 <?php 
-	function set_grid_fields($array,$colKey){
-	    $string="[";
-	    foreach ($array as $key => $value){
-	        $add="{name:'".$value[$colKey]."'},";
-	        $string.=$add;
-	    }
-	    $string=substr($string,0,-1);
-	    $string.="]";
-	    return $string;
-	}
+
+	if (!function_exists ('set_grid_fields')){
+		
+		function set_grid_fields($array,$colKey){
+			$string="[";
+			foreach ($array as $key => $value){
+				$add="{name:'".$value[$colKey]."'},";
+				$string.=$add;
+			}
+			$string=substr($string,0,-1);
+			$string.="]";
+			return $string;
+		}
+		
+	}	
 	$usuario_level= $this->Session->read('Auth.User.permission_level');		
 	$id_usuario=$this->Session->read('Auth.User.permission_level');		
 ?>
 
 
 <script type='text/javascript'>
-var actionViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'View')); ?>"
-var editViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'edit')); ?>"
-var delViewUrl="<?php echo  Router::url(array('controller' => $this->name, 'action' => 'delete')); ?>"
+<?php  $controller=(isset($gridOptions['controller']))?$gridOptions['controller']:$this->name;?>
+var <?php echo $gridOptions['gridId']?>_actionViewUrl="<?php echo  Router::url(array('controller' => $controller, 'action' => 'View')); ?>"
+var <?php echo $gridOptions['gridId']?>_editViewUrl="<?php echo  Router::url(array('controller' => $controller, 'action' => 'edit')); ?>"
+var <?php echo $gridOptions['gridId']?>_delViewUrl="<?php echo  Router::url(array('controller' => $controller, 'action' => 'delete')); ?>"
 Ext.BLANK_IMAGE_URL = 'webroot/js/ext/resources/images/default/s.gif';
 Ext.namespace('<?php echo $gridOptions['gridId']?>');
 <?php echo $gridOptions['gridId']?>.store = new Ext.data.GroupingStore({
@@ -77,9 +83,9 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 
 
 <?php echo $gridOptions['gridId']?>.render_crud = function(val,meta,record){
-	var ver="<a href='"+actionViewUrl+"/"+val+"' target='_blank'><i title='Ver' class='icon-desktop-1 view'></i></a>";
-	var editar="<a href='"+editViewUrl+"/"+val+"'><i title='Editar' class='icon-export edit'></i></a>";
-	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Are you sure you want to delete # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
+	var ver="<a href='"+<?php echo $gridOptions['gridId']?>_actionViewUrl+"/"+val+"' target='_blank'><i title='Ver' class='icon-desktop-1 view'></i></a>";
+	var editar="<a href='"+<?php echo $gridOptions['gridId']?>_editViewUrl+"/"+val+"'><i title='Editar' class='icon-export edit'></i></a>";
+	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+<?php echo $gridOptions['gridId']?>_delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Are you sure you want to delete # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
 	var user_id=record.get('user_id');
 
 	<?php  $grantAcces=(isset($gridOptions['AllowAll']))?"|| 1==1":""; ?>
