@@ -18,7 +18,7 @@
 		
 	}	
 	$usuario_level= $this->Session->read('Auth.User.permission_level');		
-	$id_usuario=$this->Session->read('Auth.User.permission_level');		
+	$id_usuario=$this->Session->read('Auth.User.id_user');		
 ?>
 
 
