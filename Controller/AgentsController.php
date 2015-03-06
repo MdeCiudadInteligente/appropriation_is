@@ -48,7 +48,7 @@ class AgentsController extends AppController {
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
-		$agent=$this->Agent->find('all');
+		$agent=$this->Agent->find('all',array('conditions'=>array('Agent.agent_estado' => '0')));
 		$count=0;
 		foreach ($agent as $key => $agent) {
 			$data['rows'][$count]=array(

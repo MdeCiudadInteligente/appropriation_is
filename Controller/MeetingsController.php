@@ -186,7 +186,48 @@ public function add() {
 		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$this->set(compact('sites', 'people'));
 	}
-
+	
+	/**
+	 * delete files one by one
+	 *
+	 * @return void
+	 */
+	public function delete_attachment($idattach=null,$druta = null) {
+		$this->set('druta',$druta);
+	
+		$deletefile="update meetings SET meeting_adjunct='' Where id_meeting ='$idattach'";
+		$deletefilefinal=$this->Meeting->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+	
+		unlink('../webroot/uploads/meeting/meeting_adjunct/'.$druta);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
+	
+	public function delete_attachment1($idattach=null,$druta1 = null) {
+		$this->set('druta1',$druta1);
+	
+		$deletefile="update meetings SET meeting_adjunct1='' Where id_meeting ='$idattach'";
+		$deletefilefinal=$this->Meeting->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/meeting/meeting_adjunct1/'.$druta1);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
+	
+	public function delete_attachment2($idattach=null,$druta2 = null) {
+		$this->set('druta2',$druta2);
+	
+		$deletefile="update meetings SET meeting_adjunct2='' Where id_meeting ='$idattach'";
+		$deletefilefinal=$this->Meeting->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/meeting/meeting_adjunct2/'.$druta2);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
 /**
  * delete method
  *

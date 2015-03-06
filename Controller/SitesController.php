@@ -54,7 +54,8 @@ class SitesController extends AppController {
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
-		$site=$this->Site->find('all');
+		$site=$this->Site->find('all',array('conditions'=>array('Site.syte_estado' => '0')));
+		//$site=$this->Site->find('all');
 		$count=0;
 		foreach ($site as $key => $site) {
 			$data['rows'][$count]=array(

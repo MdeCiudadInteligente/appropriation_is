@@ -39,9 +39,9 @@ function goBack()
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 		//echo $this->Form->input('adjunct');	
-		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file'));
-		echo $this->Form->input('accompaniment_adjunct1',array('type'=>'file'));
-		echo $this->Form->input('accompaniment_adjunct2',array('type'=>'file'));
+		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file','allowEmpty' => true));
+		echo $this->Form->input('accompaniment_adjunct1',array('type'=>'file','allowEmpty' => true));
+		echo $this->Form->input('accompaniment_adjunct2',array('type'=>'file','allowEmpty' => true));
 
 		echo $this->Form->input('dir',array('type'=>'hidden'));			
 	?>	
