@@ -31,12 +31,25 @@ function goBack()
 
 
 	<?php
-
 		echo $this->Form->input('divulgation_type',array ('type'=>'select','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de divulgación'));
 			echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text'));		
 			echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Divulgación'));
 			echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea'));		
 			echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
+	?>
+	<div class="input"  style="text-align:right">
+		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
+	</div>
+	<div class="seccion-person">	
+			<div class="input" >
+				<label>Formadores</label>
+				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa mínimo un formador">
+				<div class="results-input" data-input-name="data[Person][Person][]">
+					
+				</div>
+			</div>
+		</div>	
+	<?php 		
 			echo $this->Form->input('activity_place',array('maxLength'=>'80'));
 			echo $this->Form->input('divulgation_adjunct',array('type'=>'file'));
 			echo $this->Form->input('divulgation_adjunct1',array('type'=>'file'));

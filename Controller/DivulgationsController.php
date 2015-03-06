@@ -179,6 +179,50 @@ class DivulgationsController extends AppController {
 		$this->set(compact('sites'));
 	}
 
+	/**
+	 * delete files one by one
+	 *
+	 * @return void
+	 */
+	public function delete_attachment($idattach=null,$druta = null) {
+		$this->set('druta',$druta);
+		
+		$deletefile="update divulgations SET divulgation_adjunct='' Where id_divulgation ='$idattach'";
+		$deletefilefinal=$this->Divulgation->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		
+		unlink('../webroot/uploads/divulgation/divulgation_adjunct/'.$druta);
+		
+		return $this->redirect(array('action' => 'view',$idattach));
+		 
+	}
+	
+	public function delete_attachment1($idattach=null,$druta1 = null) {
+		$this->set('druta1',$druta1);
+
+		$deletefile="update divulgations SET divulgation_adjunct1='' Where id_divulgation ='$idattach'";
+		$deletefilefinal=$this->Divulgation->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/divulgation/divulgation_adjunct1/'.$druta1);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
+	
+	public function delete_attachment2($idattach=null,$druta2 = null) {
+		$this->set('druta2',$druta2);
+		
+		$deletefile="update divulgations SET divulgation_adjunct2='' Where id_divulgation ='$idattach'";
+		$deletefilefinal=$this->Divulgation->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/divulgation/divulgation_adjunct2/'.$druta2);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
+	
+	
+	
 /**
  * delete method
  *

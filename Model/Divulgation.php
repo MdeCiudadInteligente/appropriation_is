@@ -156,4 +156,44 @@ class Divulgation extends AppModel {
 					'order' => ''
 		)
 	);
+	
+	/**
+	 * hasMany associations
+	 *
+	 * @var array
+	 *//*
+	public $hasMany = array(
+			'MeetingPerson' => array(
+					'className' => 'MeetingPerson',
+					'foreignKey' => 'meeting_id',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+			)
+	);
+	*/
+	
+	public $hasAndBelongsToMany = array(
+			'Person' => array(
+					'className' => 'Person',
+					'joinTable' => 'divulgations_people',
+					'foreignKey' => 'divulgation_id',
+					'associationForeignKey' => 'person_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
+	);	
 }
+
+

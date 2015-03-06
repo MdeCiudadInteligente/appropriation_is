@@ -142,7 +142,7 @@ class AccompanimentsController extends AppController {
 			$data=$this->request->data;
 			$data['Accompaniment']['creation_date']=date('Y-m-d H:i:s');
 			$data['Accompaniment']['user_id']=$usuario;
-						
+					
 			if ($this->Accompaniment->save($data)) {
 					$this->Session->setFlash(__('The accompaniment has been saved.'));
 					return $this->redirect(array('action' => 'index'));
@@ -182,6 +182,47 @@ class AccompanimentsController extends AppController {
 		$this->set(compact('sites'));
 	}
 
+	/**
+	 * delete files one by one
+	 *
+	 * @return void
+	 */
+	public function delete_attachment($idattach=null,$druta = null) {
+		$this->set('druta',$druta);
+	
+		$deletefile="update accompaniments SET accompaniment_adjunct='' Where id_accompaniment ='$idattach'";
+		$deletefilefinal=$this->Accompaniment->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+	
+		unlink('../webroot/uploads/accompaniment/accompaniment_adjunct/'.$druta);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
+	
+	public function delete_attachment1($idattach=null,$druta1 = null) {
+		$this->set('druta1',$druta1);
+	
+		$deletefile="update accompaniments SET accompaniment_adjunct1='' Where id_accompaniment ='$idattach'";
+		$deletefilefinal=$this->Accompaniment->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/accompaniment/accompaniment_adjunct1/'.$druta1);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
+	
+	public function delete_attachment2($idattach=null,$druta2 = null) {
+		$this->set('druta2',$druta2);
+	
+		$deletefile="update accompaniments SET accompaniment_adjunct2='' Where id_accompaniment ='$idattach'";
+		$deletefilefinal=$this->Accompaniment->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/accompaniment/accompaniment_adjunct2/'.$druta2);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
 /**
  * delete method
  *
