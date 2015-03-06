@@ -26,7 +26,7 @@ class NeighborhoodsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
+	if ((isset($user['permission_level']) && $user['permission_level'] == '5')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 	}
@@ -54,11 +54,7 @@ class NeighborhoodsController extends AppController {
 					'id'=>$neighborhood['Neighborhood']['id_neighborhood'],
 					'nombre_barrio'=>$neighborhood['Neighborhood']['neighborhood_name'],
 					'id_comuna'=>$neighborhood['Neighborhood']['commune_id'],
-					'name_comuna'=>$neighborhood['Commune']['commune_name'],
-					//'tipo'=>$neighborhood['Meeting']['meeting_type'],
-					//'titulo'=>$neighborhood['Meeting']['meeting_title'],
-					//'descripcion'=>$neighborhood['Meeting']['meeting_description'],
-					//'compromisos'=>$neighborhood['Meeting']['meeting_commitments'],
+					'name_comuna'=>$neighborhood['Commune']['commune_name'],					
 					'creation_date'=>$neighborhood['Neighborhood']['creation_date'],
 					'modification_date'=>$neighborhood['Neighborhood']['modification_date'],
 					'user_id'=>$neighborhood['Neighborhood']['user_id'],
@@ -102,7 +98,8 @@ class NeighborhoodsController extends AppController {
 			if($verificar_barrio==Array( )){				
 			
 				$this->Neighborhood->create();
-				$data=$this->request->data;
+				$data=$this->request->data;				
+				$data['Neighborhood']['neighborhood_name'] = ucwords(strtolower($data['Neighborhood']['neighborhood_name']));
 				$data['Neighborhood']['creation_date']=date('Y-m-d H:i:s');
 				$data['Neighborhood']['user_id']=$usuario;
 							
@@ -112,12 +109,12 @@ class NeighborhoodsController extends AppController {
 				}
 				else
 				{
-					$this->Session->setFlash(__('El barrio no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+					$this->Session->setFlash(__('The neighborhood could not be saved. Please, try again.'));
 				}
 			}
 			else
 			{
-				$this->Session->setFlash(__('El barrio ya existe, por favor verifique.'));
+				$this->Session->setFlash(__('The neighborhood already exists , please check.'));
 			}
 		}
 		$communes = $this->Neighborhood->Commune->find('list');

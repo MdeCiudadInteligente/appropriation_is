@@ -58,11 +58,10 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');	
+		if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'){?>
 		<li><?php echo $this->Html->link(__('New Divulgation'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Divulgation'), array('action' => 'edit', $divulgation['Divulgation']['id_divulgation'])); ?> </li>
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level == '1'){?>
-		<li><?php echo $this->Form->postLink(__('Delete Divulgation'), array('action' => 'delete', $divulgation['Divulgation']['id_divulgation']), null, __('Are you sure you want to delete # %s?', $divulgation['Divulgation']['id_divulgation'])); ?> </li>
 		<?php }?>
 		<li><?php echo $this->Html->link(__('List Divulgations'), array('action' => 'index')); ?> </li>
 		

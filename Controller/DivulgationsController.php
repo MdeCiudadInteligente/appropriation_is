@@ -35,7 +35,7 @@ class DivulgationsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] === '4')) {
+	if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '5')) {
 			return true;
 		}
 	}
@@ -141,16 +141,20 @@ class DivulgationsController extends AppController {
 				$data['Divulgation']['user_id']=$usuario;
 						
 				if ($this->Divulgation->save($data)) {
-						$this->Session->setFlash(__('La divulgación se ha guardado.'));
+						$this->Session->setFlash(__('The divulgation has been saved.'));
 						return $this->redirect(array('action' => 'index'));
 				}
 				else
 				{
-					$this->Session->setFlash(__('La divulgación no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+					$this->Session->setFlash(__('The divulgation could not be saved. Please, try again.'));
 				}
 		}
-		$sites = $this->Divulgation->Site->find('list', array('order'=>array('Site.site_name ASC')));
-		$this->set(compact('sites'));
+				
+		$sites = $this->Divulgation->Site->find('list',array('order' => array('Site.site_name ASC')));
+		$populationTypes = $this->Divulgation->PopulationType->find('list',array('order' => array('PopulationType.name' => 'ASC')));
+		$this->set(compact('sites', 'populationTypes'));
+	
+		
 	}
 
 /**
