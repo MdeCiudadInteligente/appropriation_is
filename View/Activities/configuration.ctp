@@ -6,16 +6,17 @@
 		<ul>
 			<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 			<?php $usuario_level= $this->Session->read('Auth.User.permission_level');?>		
-			<?php if ($usuario_level == '1'){?>
+			<?php if ($usuario_level == '1'||$usuario_level == '4'||$usuario_level == '5'){?>	
 			<li><?php echo $this->Html->link(__('Usuarios'), array('controller' => 'Users', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Agentes dinamizadores'), array('controller' => 'Agents', 'action' => 'index')); ?> </li>	
 			<li><?php echo $this->Html->link(__('Tipos de Sitios'), array('controller' => 'SiteTypes', 'action' => 'index')); ?> </li>			
+			<li><?php echo $this->Html->link(__('Tipos de Población'), array('controller' => 'PopulationTypes', 'action' => 'index')); ?> </li>			
 			<li><?php echo $this->Html->link(__('Sitios'), array('controller' => 'Sites', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Barrios'), array('controller' => 'Neighborhoods', 'action' => 'index')); ?> </li>	
 			<li><?php echo $this->Html->link(__('Comunas'), array('controller' => 'Communes', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Zonas'), array('controller' => 'Zones', 'action' => 'index')); ?> </li>
 			<?php }?>	
-			<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>		
+			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '4'||$usuario_level == '5'){?>		
 			<li><?php echo $this->Html->link(__('Personas'), array('controller' => 'People', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Encargados'), array('controller' => 'Owners','action' => 'index')); ?></li>
 		    <?php }?>
@@ -24,15 +25,15 @@
 	</div>		
 <!-- end actions  -->
 <!-- 	End left block -->	
-
+	
 <!-- meetings  -->
-<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
 <div class="right-block">
+<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuario_level == '4'||$usuario_level == '5'){?>	
 	<div class="meetings">
 	<h2><?php echo __('Meetings'); ?></h2>	
 	<?php
-				$gridOptions=array(
+				$gridOptions1=array(
 						'gridId'=>'gridMeetings',
 						'gridTitle'=>'Reuniones',
 						'height'=>800,
@@ -56,20 +57,21 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 							)
 						),
 						'printCrud'=>true,
-						'baseParams'=>array('start'=>0,'limit'=>100)
+						'baseParams'=>array('start'=>0,'limit'=>100),
+						'controller'=>'Meetings'
 				);
 			?>
-			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions1)); ?>
 
 	</div>
 <?php }?>
 <!-- end meetings  -->
 <P></P>
 <!-- accompaniments  -->
-<?php //if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
+<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuario_level == '4'||$usuario_level == '5'){?>	
 	<h2><?php echo __('Accompaniments'); ?></h2>
 	<?php
-					$gridOptions=array(
+					$gridOptions2=array(
 							'gridId'=>'gridAccompaniments',
 							'gridTitle'=>'Acompañamientos',
 							'height'=>800,
@@ -93,20 +95,25 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 								)
 							),
 							'printCrud'=>true,
-							'baseParams'=>array('start'=>0,'limit'=>100)
+							'baseParams'=>array('start'=>0,'limit'=>100),
+							'controller'=>'Accompaniments'
 					);
 				?>
-				<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>		
+				<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions2)); ?>
 		
-	<?php //}?>	
+		<!-- End right block -->	
+	<?php }?>	
 <!-- end accompaniments  -->
 <P></P>
-
 <!-- divulgations  -->
+
+
+
+<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuario_level == '4'||$usuario_level == '5'){?>	
 	<div class="divulgations">
 			<h2><?php echo __('Divulgations'); ?></h2>
 			<?php
-				$gridOptions=array(
+				$gridOptions3=array(
 						'gridId'=>'gridDivulgatios',
 						'gridTitle'=>'Divulgaciones',
 						'height'=>500,
@@ -130,15 +137,16 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 							)
 						),
 						'printCrud'=>true,
-						'baseParams'=>array('start'=>0,'limit'=>100)
+						'baseParams'=>array('start'=>0,'limit'=>100),
+						'controller'=>'Divulgations'
 				);
 			?>
-			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions3)); ?>
 		</div>
+		<?php }?>	
 	<!-- End right block -->		
 	</div>	
 <!-- End meetings container -->
 </div>	
 	
-
 	

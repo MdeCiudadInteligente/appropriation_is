@@ -25,8 +25,7 @@ class CommunesController extends AppController {
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
-	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '5')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 	}
@@ -98,21 +97,22 @@ class CommunesController extends AppController {
 			
 				$this->Commune->create();
 						$data=$this->request->data;
+						$data['Commune']['commune_name'] = ucwords(strtolower($data['Commune']['commune_name']));
 						$data['Commune']['creation_date']=date('Y-m-d H:i:s');
 						$data['Commune']['user_id']=$usuario;
 						
 						if ($this->Commune->save($data)) {
-							$this->Session->setFlash(__('La comuna se ha guardado.'));
+							$this->Session->setFlash(__('The commune has been saved.'));
 							return $this->redirect(array('action' => 'index'));
 						}
 						else
 						{
-							$this->Session->setFlash(__('La comuna no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+							$this->Session->setFlash(__('The commune could not be deleted. Please, try again.'));
 						}
 				}
 				else
 				{
-					$this->Session->setFlash(__('La comuna ya existe, por favor verifique.'));
+					$this->Session->setFlash(__('The community already exists , please check.'));
 				}
 			}
 		$zones = $this->Commune->Zone->find('list');

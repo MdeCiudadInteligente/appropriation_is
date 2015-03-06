@@ -27,8 +27,7 @@ class ZonesController extends AppController {
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 	
-	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '5')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 	}
@@ -104,16 +103,16 @@ class ZonesController extends AppController {
 				$data['Zone']['user_id']=$usuario;
 								
 				if ($this->Zone->save($data)) {
-						$this->Session->setFlash(__('La zona se ha guardado.'));
+						$this->Session->setFlash(__('The zone has been saved.'));
 						return $this->redirect(array('action' => 'index'));
 				}
 				else
 				{
-					$this->Session->setFlash(__('La zona no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+					$this->Session->setFlash(__('The zone could not be saved . Please try again.'));
 				}
 			}
 			else{
-				$this->Session->setFlash(__('La Zona ya existe, por favor verificar.'));
+				$this->Session->setFlash(__('The zone already exists , please verify.'));
 			}
 		}
 	}
@@ -140,7 +139,7 @@ class ZonesController extends AppController {
 				} 
 				else 
 				{
-					$this->Session->setFlash(__('The zone could not be saved. Please, try again.'));
+					$this->Session->setFlash(__('The zone could not be saved . Please try again.'));
 				}
 			}			
 		else 

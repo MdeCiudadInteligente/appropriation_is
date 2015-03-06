@@ -4,11 +4,11 @@
 			<h3><?php echo __('Actions'); ?></h3>
 			<ul>
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+				if ($usuario_level == '1'){?>	
 				<li><?php echo $this->Html->link(__('New Site Type'), array('action' => 'add')); ?></li>
+				<?php }?>
 				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
-				<?php 
-						$usuario_level= $this->Session->read('Auth.User.permission_level');
-				?>				
 			</ul>
 		</div>
 	</div>	

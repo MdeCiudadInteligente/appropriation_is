@@ -25,9 +25,8 @@ class SitesController extends AppController {
 
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
-	
-	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
+		
+	if ((isset($user['permission_level']) && $user['permission_level'] == '5')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 	}
@@ -55,7 +54,8 @@ class SitesController extends AppController {
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
-		$site=$this->Site->find('all');
+		$site=$this->Site->find('all',array('conditions'=>array('Site.syte_estado' => '0')));
+		//$site=$this->Site->find('all');
 		$count=0;
 		foreach ($site as $key => $site) {
 			$data['rows'][$count]=array(
@@ -124,22 +124,23 @@ class SitesController extends AppController {
 			if($verificar_site==Array( )){
 			
 				$this->Site->create();
-				$data=$this->request->data;
+				$data=$this->request->data;						
+				$data['Site']['site_name'] = ucwords(strtolower($data['Site']['site_name']));
 				$data['Site']['creation_date']=date('Y-m-d H:i:s');
 				$data['Site']['user_id']=$usuario;
 								
 				if ($this->Site->save($data)) {
-						$this->Session->setFlash(__('El sitio se ha guardado.'));
+						$this->Session->setFlash(__('The site has been saved.'));
 						return $this->redirect(array('action' => 'index'));
 				}
 				else
 				{
-					$this->Session->setFlash(__('El sitio no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+					$this->Session->setFlash(__('The site could not be saved . Please try again.'));
 				}
 			}
 			else
 			{
-				$this->Session->setFlash(__('El sitio ya existe, por favor verifique.'));
+				$this->Session->setFlash(__('The site already exists, please check.'));
 			}
 		}
 		$neighborhoods = $this->Site->Neighborhood->find('list',array('order' => array('Neighborhood.neighborhood_name' => 'ASC')));
@@ -164,7 +165,7 @@ class SitesController extends AppController {
 				$this->Session->setFlash(__('The site has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The site could not be saved . Please try again.'));
 			}
 			
 			}else {
@@ -224,7 +225,7 @@ class SitesController extends AppController {
 		debug($this->Site->primaryKey);
 
 		if($sitio_id!=array()){
-			$this->Session->setFlash(__('El sitio no se puede eliminar porque se encuentra asociado a una actividad.'));
+			$this->Session->setFlash(__('The site can not be deleted because it is associated with an activity.'));
 			return $this->redirect(array('action' => 'index'));
 				
 		}

@@ -37,7 +37,7 @@ class MeetingsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '5')) {
 			return true;
 		}
 			
@@ -166,14 +166,14 @@ public function add() {
  */
 	public function edit($id = null) {
 		if (!$this->Meeting->exists($id)) {
-			throw new NotFoundException(__('Invalid meeting'));
+			throw new NotFoundException(__('reunión no válida'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Meeting->save($this->request->data)) {
-				$this->Session->setFlash(__('La reunión se ha guardado.'));
+				$this->Session->setFlash(__('The meeting has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('La reunión no se pudo guardar . Por favor , inténtelo de nuevo.'));
+				$this->Session->setFlash(__('The meeting could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Meeting.' . $this->Meeting->primaryKey => $id));
@@ -186,7 +186,48 @@ public function add() {
 		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$this->set(compact('sites', 'people'));
 	}
-
+	
+	/**
+	 * delete files one by one
+	 *
+	 * @return void
+	 */
+	public function delete_attachment($idattach=null,$druta = null) {
+		$this->set('druta',$druta);
+	
+		$deletefile="update meetings SET meeting_adjunct='' Where id_meeting ='$idattach'";
+		$deletefilefinal=$this->Meeting->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+	
+		unlink('../webroot/uploads/meeting/meeting_adjunct/'.$druta);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
+	
+	public function delete_attachment1($idattach=null,$druta1 = null) {
+		$this->set('druta1',$druta1);
+	
+		$deletefile="update meetings SET meeting_adjunct1='' Where id_meeting ='$idattach'";
+		$deletefilefinal=$this->Meeting->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/meeting/meeting_adjunct1/'.$druta1);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
+	
+	public function delete_attachment2($idattach=null,$druta2 = null) {
+		$this->set('druta2',$druta2);
+	
+		$deletefile="update meetings SET meeting_adjunct2='' Where id_meeting ='$idattach'";
+		$deletefilefinal=$this->Meeting->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/meeting/meeting_adjunct2/'.$druta2);
+	
+		return $this->redirect(array('action' => 'view',$idattach));
+			
+	}
 /**
  * delete method
  *
@@ -201,7 +242,7 @@ public function add() {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Meeting->delete()) {
-			$this->Session->setFlash(__('La reunión ha sido eliminado.'));
+			$this->Session->setFlash(__('The meeting has been deleted.'));
 		} else {
 			$this->Session->setFlash(__('The meeting could not be removed. Please try again.'));
 		}
