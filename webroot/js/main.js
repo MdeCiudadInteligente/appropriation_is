@@ -48,7 +48,7 @@ App.prototype.bind=function(){
 App.prototype.removeRequired=function(){
 	$('.mde-form').find('.input.file').find('input').removeAttr('required');
 	$('.mde-form').find('.input.file').removeClass('required');
-	$('.mde-form').find('.input.file').find('input')removeClass('required');
+
 }
 
 App.prototype.bindAutocompletePersona=function(selector){
