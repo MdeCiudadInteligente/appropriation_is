@@ -52,13 +52,12 @@ $cakeDescription = __d('cake_dev', '');
 	<nav class="mobile-ovelay-menu">
 		<header>
 		 <i class="icon-left close-menu"></i>	
-		 <img src="http://localhost/apropiacion/webroot/img/intranet.png" class="mde">
+		 <img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png">
 		</header>
-
 	</nav>
 	<div id="container" class="app-container">	
 		<div id="header">
-			<div class="top-head">
+			<div class="top-head" style="background-image:url('<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/header.png')">
 				<section>
 					<span>
 						<?php $this->Html->image('mde-10.png', array('alt' => $cakeDescription, 'class' => 'mde')) ?>
