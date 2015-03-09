@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
-
+	var $uses = array('User','Agent','Person');
 
 /**
  * Components
@@ -35,13 +35,9 @@ class UsersController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] === '4')) {
+	if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '5')) {
 			return true;
-		}
-			
-	
-		// Default deny
-		//return false;
+		}	
 			
 	}
 	
@@ -119,6 +115,7 @@ class UsersController extends AppController {
 		
 			$username= $this->request->data['User']['username'];
 			$agent_id= $this->request->data['User']['agent_id'];
+			//$horataller= $this->request->data['Agent']['horataller'];
 			
 			$verificar_usuario=$this->User->query("select distinct username from users where username = '$username'");
 			$this->set('verificar_usuario',$verificar_usuario);
@@ -136,35 +133,35 @@ class UsersController extends AppController {
 					$data['User']['user_id']=$usuario;
 					
 					if ($this->User->save($data)) {
-						$this->Session->setFlash(__('El usuario se ha guardado.'));
+						$this->Session->setFlash(__('The user has been saved.'));
 						return $this->redirect(array('action' => 'index'));
 					}
 					else
 					{
-						$this->Session->setFlash(__('El usuario no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+						$this->Session->setFlash(__('The user could not be salvado. Please try again.'));
 					}
 				}
 				else
 				{
-						$this->Session->setFlash(__('El nombre de usuario no está disponible, por favor ingrese uno nuevo.'));
+						$this->Session->setFlash(__('The user name is not available, please enter a new one.'));
 				}
 			}
 			else 
 			{
-				$this->Session->setFlash(__('El agente ya tiene usuario, por favor verificar.'));
+				$this->Session->setFlash(__('The agent you have already registered , please check.'));
 			}		
 			
 		}
-		$agents = $this->User->Agent->find('list', array('joins' => array(
-				array(
-						'table' => 'people',
-						'alias' => 't1',
-						'type' => 'inner',
-						'foreignKey' => true,
-						'conditions'=> array('t1.id_person = Agent.person_id')
-				)
-		),'fields'=>array('t1.name')));
-		$this->set(compact('agents'));
+		$persona_id = $this->User->query("SELECT CONCAT(people.name, '', people.lastname) as completename, agents.id_agent FROM people INNER JOIN agents ON (people.id_person = agents.person_id) WHERE people.id_person = agents.person_id");
+		$this->set('persona_id',$persona_id);
+	
+		$agents_name=array();
+		foreach ($persona_id as $key => $person)
+		{			
+			$agents_name[$person['agents']['id_agent']] = $person[0]['completename'];
+		}					
+		$this->set(compact('agents_name'));
+		
 	}
 	
 	

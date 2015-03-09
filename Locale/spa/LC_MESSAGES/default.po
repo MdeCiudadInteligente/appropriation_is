@@ -120,14 +120,62 @@ msgstr "Tipo Acompañamiento"
 msgid "The accompaniment has been deleted."
 msgstr "El acompañamiento ha sido eliminado."
 
+msgid "Invalid population type"
+msgstr "tipo de población no válido"
+
+msgid "Invalid site type"
+msgstr "tipo de sitio no válido"
+
+msgid "Invalid site"
+msgstr "sitio no válido"
+
+msgid "Invalid neighborhood"
+msgstr "Barrio no válido"
+
+msgid "The neighborhood could not be saved. Please, try again."
+msgstr "El barrio no se pudo guardar .Por favor , vuelva a intentarlo."
+
+msgid "The population type could not be saved. Please, try again."
+msgstr "El tipo de población no se pudo guardar .Por favor , vuelva a intentarlo."
+
+msgid "The population type has been deleted."
+msgstr "El tipo de población ha sido eliminado."
+
+msgid "The accompaniment could not be deleted. Please, try again."
+msgstr "El acompañamiento no se pudo eliminar .Por favor , vuelva a intentarlo."
+
+msgid "The population type could not be deleted. Please, try again."
+msgstr "El tipo de población no se pudo eliminar .Por favor , vuelva a intentarlo."
+
+msgid "The population type has been saved."
+msgstr "El tipo de población se ha guardado."
+
 msgid "The zone has been saved."
 msgstr "La zona se ha guardado."
+
+msgid "Invalid divulgation"
+msgstr "Divulgación no válida"
 
 msgid "connectivity sites accompanied"
 msgstr "Sitios con conectividad acompañados"
 
 msgid "Site"
 msgstr "Sitio"
+
+msgid "populationtypes"
+msgstr "Tipos de Población"
+
+msgid "New Population Type"
+msgstr "Nuevo Tipo Población"
+
+msgid "Edit Population Type"
+msgstr "Editar Tipo Población"
+
+msgid "Add Population Type"
+msgstr "Agregar Tipo Población"
+
+msgid "List Population Types"
+msgstr "Lista Tipo Población"
 
 msgid "User Estado"
 msgstr "Estado Usuario"
@@ -139,7 +187,7 @@ msgid "Syte Estado"
 msgstr "Estado Sitio"
 
 msgid "Are you sure you want to delete"
-msgstr "�Seguro que quieres eliminar"
+msgstr "�Seguro que quieres eliminar?"
 
 msgid "Password"
 msgstr "Contraseña"
@@ -391,19 +439,76 @@ msgid "New Divulgation"
 msgstr "Nueva Divulgación"
 
 msgid "Add Divulgation"
-msgstr "Añadir Divulgación"
+msgstr "Agregar divulgación"
+
+msgid "The type site already exists , please check."
+msgstr "El tipo de sitio ya existe, por favor verifique."
+
+msgid "The neighborhood already exists , please check."
+msgstr "El barrio ya existe, por favor verifique."
+
+msgid "The site type could not be saved. Please, try again."
+msgstr "El tipo de sitio no pudo guardar. Por favor, inténtalo de nuevo."
+
+msgid "The zone could not be saved . Please try again."
+msgstr "La zona no se pudo guardar. Por favor, inténtalo de nuevo."
+
+msgid "The zone could not be deleted. Please, try again."
+msgstr "La zona no se pudo eliminar . Por favor, inténtalo de nuevo."
+
+msgid "The zone already exists , please verify."
+msgstr "La zona ya existe, por favor verificar."
 
 msgid "The meeting could not be saved. Please, try again."
 msgstr "La reunión no se pudo guardar. Por favor, inténtalo de nuevo."
+
+msgid "The divulgation could not be saved. Please, try again."
+msgstr "La divulgación no se pudo guardar .Por favor , inténtalo de nuevo."
 
 msgid "The meeting has been saved."
 msgstr "La reunión se ha guardado."
 
 msgid "The meeting could not be removed. Please try again."
-msgstr "The meeting could not be removed. Please try again."
+msgstr "La reunión no pudo ser eliminada .Por favor, inténtalo de nuevo."
+
+msgid "The agent could not be deleted. Please, try again."
+msgstr "El agente no pudo ser eliminado .Por favor, inténtalo de nuevo."
+
+msgid "The accompaniment could not be saved. Please, try again."
+msgstr "El acompañamiento no se pudo guardar .Por favor , inténtalo de nuevo."
 
 msgid "The meeting has been deleted."
-msgstr "La reuni�n ha sido eliminado."
+msgstr "La reunión ha sido eliminado."
+
+msgid "The agent has been deleted."
+msgstr "El agente ha sido eliminado."
+
+msgid "The owner has been saved."
+msgstr "El encargado ha sido eliminado."
+
+msgid "The owner could not be deleted. Please, try again."
+msgstr "El encargado no se pudo eliminar .Por favor , inténtalo de nuevo."
+
+msgid "The owner could not be saved . Please try again."
+msgstr "El encargado no se pudo guardar .Por favor , inténtalo de nuevo."
+
+msgid "The divulgation could not be deleted. Please, try again."
+msgstr "La divulgación no se pudo eliminar .Por favor , inténtalo de nuevo."
+
+msgid "Invalid accompaniment"
+msgstr "Acompañamiento no válido"
+
+msgid "Invalid owner"
+msgstr "Encargado no válido"
+
+msgid "Invalid agent"
+msgstr "Agente no válido"
+
+msgid "Invalid person"
+msgstr "Persona no válida"
+
+msgid "Invalid zone"
+msgstr "Zona no válida"
 
 msgid "Add Meeting"
 msgstr "Agregar reunión"
@@ -436,7 +541,7 @@ msgid "You are not authorized to access that location"
 msgstr "No tiene permisos para acceder a dicha ubicación."
 
 msgid "Invalid username or password, try again"
-msgstr "Nombre de usuario o contraseña no válidos, vuelva a intentarlo"
+msgstr "Nombre de usuario o contraseña no válidos, inténtalo de nuevo."
 
 msgid "The user could not be saved. Please, try again."
 msgstr "El usuario no se pudo guardar. Por favor, inténtelo de nuevo."
@@ -570,6 +675,9 @@ msgstr "El agente ha sido eliminado."
 msgid "The agent has been saved."
 msgstr "El agente ha sido guardado."
 
+msgid "Population Type"
+msgstr "Tipo Población"
+
 msgid "The person has been deleted."
 msgstr "La persona ha sido eliminada."
 
@@ -588,8 +696,38 @@ msgstr "El sitio ha sido guardado."
 msgid "The site has been deleted."
 msgstr "El sitio ha sido eliminado."
 
-msgid "The site could not be saved.Please,try again."
-msgstr "El sitio no pudo ser salvado.Por favor,vuelva a intentarlo."
+msgid "The site is already agent, please check."
+msgstr "El sitio ya es existe, por favor verifique."
+
+msgid "The person is already agent, please check."
+msgstr "La persona ya es agente, por favor verifique."
+
+msgid "The person could not be saved. Please, try again."
+msgstr "La persona no pudo ser guardada .Por favor, inténtalo de nuevo."
+
+msgid "The person can not be deleted because it is associated to a meeting."
+msgstr "La persona no se puede eliminar porque se encuentra asociada a una reunión."
+
+msgid "The document already exists , please check."
+msgstr "El documento ya existe, por favor verifique."
+
+msgid "The site could not be saved . Please try again."
+msgstr "El sitio no pudo ser guardado .Por favor, inténtalo de nuevo."
+
+msgid "The agent could not be saved. Please, try again."
+msgstr "El agente no pudo ser guardado .Por favor, inténtalo de nuevo."
+
+msgid "The user could not be salvado. Please try again."
+msgstr "El usuario no pudo ser guardado .Por favor, inténtalo de nuevo."
+
+msgid "The user name is not available, please enter a new one."
+msgstr "El nombre de usuario no está disponible, por favor ingrese uno nuevo."
+
+msgid "The agent you have already registered , please check."
+msgstr "El agente ya tiene usuario, por favor verificar."
+
+msgid "The site can not be deleted because it is associated with an activity."
+msgstr "El sitio no se puede eliminar porque se encuentra asociado a una actividad."
 
 msgid "The neighborhood has been saved."
 msgstr "El barrio ha sido guardado."
@@ -597,14 +735,29 @@ msgstr "El barrio ha sido guardado."
 msgid "The neighborhood has been deleted."
 msgstr "El barrio ha sido eliminado."
 
-msgid "Neighborhoods"
-msgstr "Barrios"
+msgid "The neighborhood could not be deleted. Please, try again."
+msgstr "El barrio no pudo ser eliminado .Por favor , vuelva a intentarlo."
 
 msgid "The commune has been saved."
 msgstr "La comuna ha sido guardada."
 
 msgid "The commune has been deleted."
 msgstr "La comuna ha sido eliminada."
+
+msgid "The commune could not be deleted. Please, try again."
+msgstr "La comuna no pudo ser guardada .Por favor , inténtalo de nuevo."
+
+msgid "The commune could not be saved. Please, try again."
+msgstr "La comuna no se pudo guardar . Por favor , inténtalo de nuevo."
+
+msgid "The community already exists , please check."
+msgstr "La comuna ya existe, por favor verifique."
+
+msgid "The user could not be deleted. Please, try again."
+msgstr "El usuario no pudo ser eliminado .Por favor , inténtalo de nuevo."
+
+msgid "The site could not be deleted. Please, try again."
+msgstr "El sitio no pudo ser eliminado .Por favor , inténtalo de nuevo."
 
 msgid "Add Commune"
 msgstr "Agregar Comuna"

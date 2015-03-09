@@ -30,12 +30,14 @@ function goBack()
 		</div>	
 
 
-	<?php
-		echo $this->Form->input('divulgation_type',array ('type'=>'select','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de divulgación'));
+	<?php	
+			echo $this->Form->input('divulgation_type',array ('type'=>'select','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de divulgación'));
 			echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text'));		
 			echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Divulgación'));
 			echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea'));		
 			echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
+			echo $this->Form->input('population_type_id',array('empty'=>'Seleccione tipo de población'));
+
 	?>
 	<div class="input"  style="text-align:right">
 		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
@@ -66,9 +68,6 @@ function goBack()
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Divulgations'), array('action' => 'index')); ?></li>
-		<?php 
-		$usuario_level= $this->Session->read('Auth.User.permission_level');
-		//if ($usuario_level === '1'){?>
 		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
 		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
 		<?php //}?>

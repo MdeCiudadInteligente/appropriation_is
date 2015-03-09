@@ -27,7 +27,7 @@ class SiteTypesController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
+	if ((isset($user['permission_level']) && $user['permission_level'] == '5')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 	}
@@ -99,21 +99,22 @@ class SiteTypesController extends AppController {
 	
 				$this->SiteType->create();
 				$data=$this->request->data;
+				$data['SiteType']['site_type'] = ucwords(strtolower($data['SiteType']['site_type']));
 				$data['SiteType']['creation_date']=date('Y-m-d H:i:s');
 				$data['SiteType']['user_id']=$usuario;
 								
 				if ($this->SiteType->save($data)) {
-						$this->Session->setFlash(__('El tipo de sitio se ha guardado.'));
+						$this->Session->setFlash(__('The site type has been saved.'));
 						return $this->redirect(array('action' => 'index'));
 				}
 				else
 				{
-					$this->Session->setFlash(__('El tipo de sitio no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+					$this->Session->setFlash(__('The site type could not be saved. Please, try again.'));
 				}
 			}
 			else
 			{
-				$this->Session->setFlash(__('El tipo de sitio ya existe, por favor verifique.'));
+				$this->Session->setFlash(__('The type site already exists , please check.'));
 			}
 		}
 	}

@@ -6,14 +6,14 @@
 		<ul>
 			<?php	
 			$usuario_level= $this->Session->read('Auth.User.permission_level');	
-			if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
+			if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '4'||$usuario_level == '5'){?>	
 			<li><?php echo $this->Html->link(__('Meetings'), array('controller' => 'Meetings', 'action' => 'index')); ?> </li>	
 			<li><?php echo $this->Html->link(__('Accompaniments'), array('controller' => 'Accompaniments', 'action' => 'index')); ?> </li>	
 			<?php }?>
-			<?php if ($usuario_level == '4'||$usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
+			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuario_level == '4'||$usuario_level == '5'){?>
 			<li><?php echo $this->Html->link(__('Divulgations'), array('controller' => 'Divulgations', 'action' => 'index')); ?> </li>	
 			<?php }?>	
-			<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
+			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '4'||$usuario_level == '5'){?>	
 			<li><?php echo $this->Html->link(__('Configuration'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
 			<?php }?>
 		</ul>
@@ -25,7 +25,7 @@
 <!-- meetings  -->
 <div class="right-block">
 <?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
+if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuario_level == '4'||$usuario_level == '5'){?>	
 	<div class="meetings">
 	<h2><?php echo __('Meetings'); ?></h2>	
 	<?php
@@ -64,7 +64,7 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 <!-- end meetings  -->
 <P></P>
 <!-- accompaniments  -->
-<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>	
+<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuario_level == '4'||$usuario_level == '5'){?>	
 	<h2><?php echo __('Accompaniments'); ?></h2>
 	<?php
 					$gridOptions2=array(
@@ -105,7 +105,7 @@ if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
 
 
 
-<?php if ($usuario_level == '4'||$usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1'){?>
+<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuario_level == '4'||$usuario_level == '5'){?>	
 	<div class="divulgations">
 			<h2><?php echo __('Divulgations'); ?></h2>
 			<?php
