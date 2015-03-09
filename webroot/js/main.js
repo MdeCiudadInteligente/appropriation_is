@@ -36,10 +36,10 @@ App.prototype.bind=function(){
           isRTL: false        
         });
     }
-
     app.bindAutocompletePersona('.person-autocomplete');
     app.bindAutocompleteSites('.Site-autocomplete');
     app.removeRequired();
+    app.setMobileNav();
 }
 
 
@@ -60,7 +60,6 @@ App.prototype.bindAutocompletePersona=function(selector){
         $(selector).autoSuggest(serivce_route,
             {   minChars: 2,
                 formatList: function(data, elem){
-                
                 var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.documento+' </div><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.completename+' </div></div>');
                 return new_elem;
                 },
@@ -133,6 +132,17 @@ App.prototype.bindAutocompletePersona=function(selector){
 
 
 };
+
+App.prototype.setMobileNav=function(){
+    var desktopNav=$('.left-block .actions ul').clone();
+    $('.mobile-ovelay-menu').append(desktopNav);
+    $('.close-menu').on('click',function(){
+        $('.mobile-ovelay-menu').removeClass('active');
+    });
+    $('.open-menu').on('click',function(){
+        $('.mobile-ovelay-menu').addClass('active');
+    });
+}
 
 App.prototype.bindAutocompleteSites=function(selector){
 
@@ -212,3 +222,6 @@ App.prototype.bindAutocompleteSites=function(selector){
     
 
 };
+
+
+

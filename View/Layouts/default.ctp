@@ -48,6 +48,14 @@ $cakeDescription = __d('cake_dev', '');
 </head>
 <body>
 	<?php echo $this->Session->flash(); ?>
+	<i class="icon-align-justify open-menu"></i>
+	<nav class="mobile-ovelay-menu">
+		<header>
+		 <i class="icon-left close-menu"></i>	
+		 <img src="http://localhost/apropiacion/webroot/img/intranet.png" class="mde">
+		</header>
+
+	</nav>
 	<div id="container" class="app-container">	
 		<div id="header">
 			<div class="top-head">
