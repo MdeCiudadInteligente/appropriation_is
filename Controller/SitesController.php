@@ -26,9 +26,9 @@ class SitesController extends AppController {
 	public function isAuthorized($user) {
 		// Any registered user can access public functions
 		
-	if ((isset($user['permission_level']) && $user['permission_level'] == '5')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
+	if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '5')) {
 			return true;
-		}
+		}	
 	}
 /**
  * index method
@@ -54,7 +54,7 @@ class SitesController extends AppController {
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
-		$site=$this->Site->find('all',array('conditions'=>array('Site.syte_estado' => '0')));
+		$site=$this->Site->find('all',array('conditions'=>array('Site.syte_estado' => '1')));
 		//$site=$this->Site->find('all');
 		$count=0;
 		foreach ($site as $key => $site) {

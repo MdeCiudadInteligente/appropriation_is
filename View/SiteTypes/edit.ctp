@@ -5,7 +5,7 @@
 	<?php		
 		echo $this->Form->input('id_site_type',array('type'=>'hidden'));
 		echo $this->Form->input('site_type',array('maxlength'=>'45'));	
-		echo $this->Form->input('site_estado',array ('options' => array ('Activo'=>'Activo','Inactivo'=>'Inactivo')));
+		echo $this->Form->input('site_estado',array ('options' => array ('1'=>'Activo','0'=>'Inactivo')));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

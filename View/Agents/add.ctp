@@ -16,7 +16,7 @@
 		</div>	
 	<?php
 		echo $this->Form->input('zone_id',array('empty'=>'Seleccionar la zona'));
-		echo $this->Form->input('agent_estado',array ('options' => array ('0'=>'Activo','1'=>'Inactivo'),'empty'=>'Seleccione estado'));
+		echo $this->Form->input('agent_estado',array ('options' => array ('1'=>'Activo','0'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

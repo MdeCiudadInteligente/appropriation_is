@@ -20,7 +20,7 @@
 		echo $this->Form->input('site_phone',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('site_address',array('maxLength'=>80));
 		echo $this->Form->input('site_mail',array('maxLength'=>80,'type'=>'email'));
-		echo $this->Form->input('syte_estado',array ('options' => array ('0'=>'Activo','1'=>'Inactivo')));
+		echo $this->Form->input('syte_estado',array ('options' => array ('1'=>'Activo','0'=>'Inactivo')));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
