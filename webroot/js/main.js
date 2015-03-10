@@ -1,4 +1,5 @@
 var app=null;
+var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 
 $(document).ready(function(){
 	app=new App;
