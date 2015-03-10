@@ -16,7 +16,8 @@ $cakeDescription = __d('cake_dev', '');
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/js/ext/resources/css/ext-all.css" />
 	<title>
-		<?php echo $cakeDescription ?>:
+		<?php $title_for_layout='MDE Inteligente';?>
+		<?php echo $cakeDescription ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 

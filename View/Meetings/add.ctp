@@ -1,4 +1,7 @@
 ﻿<div class="meetings form mde-form">
+
+<?php //$this->set('title_for_layout','mi Título');?>
+
 <?php echo $this->Form->create('Meeting',array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Add Meeting'); ?></legend>

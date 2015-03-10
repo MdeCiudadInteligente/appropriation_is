@@ -1,5 +1,7 @@
 <?php
+
 App::uses('AppController', 'Controller');
+
 /**
  * Meetings Controller
  *
@@ -11,6 +13,8 @@ App::uses('AppController', 'Controller');
 class MeetingsController extends AppController {
 	var $uses = array('Person','Meeting','Site','User','Agent','Neighborhood','SiteType','Commune');
 	var $helpers = array('Html','Form','Csv','Js');
+	
+	
 /**
  * Components
  *
@@ -49,6 +53,7 @@ class MeetingsController extends AppController {
 	
 	public function index() 
 	{
+		
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
 		
