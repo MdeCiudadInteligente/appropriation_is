@@ -375,6 +375,9 @@ msgstr "Barrio"
 msgid "Site Type"
 msgstr "Tipo Sitio"
 
+msgid "sitetypes"
+msgstr "Tipos de Sitios"
+
 msgid "List Site Types"
 msgstr "Lista Tipo Sitio "
 
