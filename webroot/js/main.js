@@ -1,4 +1,5 @@
 var app=null;
+var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 
 $(document).ready(function(){
 	app=new App;
@@ -133,7 +134,7 @@ App.prototype.bindAutocompletePersona=function(selector){
 };
 
 App.prototype.setMobileNav=function(){
-    var desktopNav=$('.left-block .actions ul').clone();
+    var desktopNav=$('.actions ul').clone();
     $('.mobile-ovelay-menu').append(desktopNav);
     $('.close-menu').on('click',function(){
         $('.mobile-ovelay-menu').removeClass('active');
