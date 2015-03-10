@@ -58,13 +58,7 @@ $cakeDescription = __d('cake_dev', '');
 	<div id="container" class="app-container">	
 		<div id="header">
 			<div class="top-head" style="background-image:url('<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/header.png')">
-				<section>
-					<span>
-						<?php $this->Html->image('mde-10.png', array('alt' => $cakeDescription, 'class' => 'mde')) ?>
-						<img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/mde-10.png">
-					</span>
-					<span><img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/alcaldia-09.png"></span>
-				</section>
+					<img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/LogoMDEpata.png">
 			</div>	
 			<div class="bottom-head">
 				<section>
