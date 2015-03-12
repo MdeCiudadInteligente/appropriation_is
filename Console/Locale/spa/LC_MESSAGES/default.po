@@ -244,7 +244,7 @@ msgid "Roll"
 msgstr "Rol"
 
 msgid "The divulgation has been saved."
-msgstr "La divulgación se ha guardado."
+msgstr "La Sencibilización se ha guardado."
 
 msgid "name"
 msgstr "Nombres"
@@ -331,16 +331,16 @@ msgid "Id Accompaniment"
 msgstr "Id Acompañamiento"
 
 msgid "Divulgation Name"
-msgstr "Nombre Divulgación"
+msgstr "Nombre Sencibilización"
 
 msgid "Id Divulgation"
-msgstr "Id Divulgación"
+msgstr "Id Sencibilización"
 
 msgid "Divulgations"
-msgstr "Divulgaciones"
+msgstr "Sencibilizaciones"
 
 msgid "Divulgation Type"
-msgstr "Tipo Divulgación"
+msgstr "Tipo Sencibilización"
 
 msgid "Divulgation Description"
 msgstr "Descripción Divulgación"
@@ -349,10 +349,10 @@ msgid "Activity Place"
 msgstr "Lugar Actividad"
 
 msgid "New Divulgation"
-msgstr "Nueva Divulgación"
+msgstr "Nueva Sencibilización"
 
 msgid "Add Divulgation"
-msgstr "Añadir Divulgación"
+msgstr "Añadir Sencibilización"
 
 msgid "The meeting could not be saved. Please, try again."
 msgstr "La reunión no se pudo guardar. Por favor, inténtalo de nuevo."
@@ -373,7 +373,7 @@ msgid "Site Estado"
 msgstr "Estado Sitio"
 
 msgid "List Divulgations"
-msgstr "Lista Divulgación"
+msgstr "Lista Sencibilizaciones"
 
 msgid "Add Person"
 msgstr "Añadir Persona"
@@ -451,10 +451,10 @@ msgid "Delete Accompaniment"
 msgstr "Eliminar Acompañamiento"
 
 msgid "Edit Divulgation"
-msgstr "Editar Divulgación"
+msgstr "Editar Sencibilización"
 
 msgid "Delete Divulgation"
-msgstr "Eliminar Divulgación"
+msgstr "Eliminar Sencibilización"
 
 msgid "New Accompaniment"
 msgstr "Nuevo Acompañamiento"
@@ -484,16 +484,16 @@ msgid "Accompaniment Adjunct2"
 msgstr "Adjunto Acompañamiento 3"
 
 msgid "Divulgation Adjunct"
-msgstr "Adjunto Divulgación 1"
+msgstr "Adjunto Sencibilización 1"
 
 msgid "Divulgation Adjunct1"
-msgstr "Adjunto Divulgación 2"
+msgstr "Adjunto Sencibilización 2"
 
 msgid "Divulgation Adjunct2"
-msgstr "Adjunto Divulgación 3"
+msgstr "Adjunto Sencibilización 3"
 
 msgid "Divulgation Date"
-msgstr "Fecha de Divulgación"
+msgstr "Fecha de Sencibilización"
 
 msgid "Permission Level"
 msgstr "Nivel de permiso"

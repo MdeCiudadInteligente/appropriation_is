@@ -176,6 +176,12 @@ class Divulgation extends AppModel {
 					'fields' => '',
 					'order' => ''
 			),
+			'Divtype' => array(
+					'foreignKey' => 'divulgation_type_id',
+					'conditions' => '',
+					'fields' => '',
+					'order' => ''
+			)
 	);
 	
 	/**
