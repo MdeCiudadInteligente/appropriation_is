@@ -70,13 +70,32 @@ class DivtypesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->Divtype->create();
-			if ($this->Divtype->save($this->request->data)) {
-				$this->Session->setFlash(__('The divtype has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The divtype could not be saved. Please, try again.'));
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
+			$name_divulgationtype= $this->request->data['Divtype']['name'];
+			$verificar_divulgationtype=$this->Divtype->query("select distinct name from divtypes where name = '$name_divulgationtype'");
+			$this->set('verificar_divulgationtype',$verificar_divulgationtype);
+			
+			if($verificar_divulgationtype==Array( )){			
+					
+				$this->Divtype->create();
+				$data=$this->request->data;
+				$data['Divtype']['name'] = ucwords($data['Divtype']['name']);
+				$data['Divtype']['creation_date']=date('Y-m-d H:i:s');
+				$data['Divtype']['user_id']=$usuario;
+				
+				
+				if ($this->Divtype->save($data)) {
+					$this->Session->setFlash(__('The divtype has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The divtype could not be saved. Please, try again.'));
+				}
 			}
+			else{
+				$this->Session->setFlash(__('The divtype already exists , please check.'));
+			}	
 		}
 	}
 

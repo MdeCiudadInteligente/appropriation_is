@@ -90,11 +90,30 @@
 
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
+
+msgid "The divtype has been saved."
+msgstr "El tipo de divulgación fue guardado."
+
+msgid "The divtype could not be deleted. Please, try again."
+msgstr "El tipo de divulgación no pudo ser eliminado. Por favor, trate nuevamente."
+
 msgid "The requested address %s was not found on this server."
 msgstr "La direcciÃ³n solitiada %s no existe en el servidor"
 
+msgid "Invalid divtype"
+msgstr "Tipo de divulgación no válida"
+
+msgid "The divtype has been deleted."
+msgstr "El tipo de divulgación ha sido eliminado"
+
 msgid "Add Task"
 msgstr "AÃ±adir Tarea"
+
+msgid "The divtype could not be saved. Please, try again."
+msgstr "El tipo de divulgación no pudo ser guardado. Por favor trate nuevamente"
+
+msgid "The divtype already exists , please check."
+msgstr "El tipo de divulgación existe actualmente. Por favor trate nuevamente"
 
 msgid "Actions"
 msgstr "Acciones"
