@@ -76,9 +76,11 @@ class DivulgationsController extends AppController {
 					'id'=>$divulgation['Divulgation']['id_divulgation'],
 					'sitio'=>$divulgation['Site']['site_name'],
 					'f_divulgacion'=>$divulgation['Divulgation']['divulgation_date'],
-					'tipo'=>$divulgation['Divulgation']['divulgation_type'],
-					'titulo'=>$divulgation['Divulgation']['divulgation_name'],
+					//'tipo'=>$divulgation['Divulgation']['divulgation_type'],
+					//'titulo'=>$divulgation['Divulgation']['divulgation_name'],
+					'tipodiv'=>$divulgation['Divtype']['name'],
 					'descripcion'=>$divulgation['Divulgation']['divulgation_description'],
+					'tipopob'=>$divulgation['PopulationType']['name'],
 					'nparticipantes'=>$divulgation['Divulgation']['participant_number'],
 					'lactividad'=>$divulgation['Divulgation']['activity_place'],
 					'creation_date'=>$divulgation['Divulgation']['creation_date'],
@@ -181,8 +183,10 @@ class DivulgationsController extends AppController {
 			$options = array('conditions' => array('Divulgation.' . $this->Divulgation->primaryKey => $id));
 			$this->request->data = $this->Divulgation->find('first', $options);
 		}
-		$sites = $this->Divulgation->Site->find('list');
-		$this->set(compact('sites'));
+		$sites = $this->Divulgation->Site->find('list',array('order' => array('Site.site_name ASC')));
+		$populationTypes = $this->Divulgation->PopulationType->find('list',array('order' => array('PopulationType.name' => 'ASC')));
+		$DivTypes = $this->Divulgation->Divtype->find('list',array('order' => array('Divtype.name' => 'ASC')));
+		$this->set(compact('sites', 'populationTypes','DivTypes'));
 	}
 
 	/**

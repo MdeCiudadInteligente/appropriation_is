@@ -18,17 +18,30 @@ function goBack()
 <div class="divulgations form mde-form">
 <?php echo $this->Form->create('Divulgation',array('type'=>'file')); 
 	$currentTraining=$this->request->data['Person'];
+	$site=$this->request->data['Site'];
 ?>	
 	<fieldset>
 		<legend><?php echo __('Editar Sencibilización'); ?></legend>
+
+		<div class="seccion-person">
+		<div class="input">
+		<label>Sitio</label>
+		<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
+		<div class="results-input-site" data-input-name="data[Divulgation][site_id]">
+		<input type="hidden" name="data[Divulgation][site_id]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name']?>" id="val-input-site-<?php echo $site['id_site']?>">
+		</div>
+		</div>
+		</div>
+	
 	<?php
-		echo $this->Form->input('site_id');
 		echo $this->Form->input('id_divulgation');
 		echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Sencibilización'));
-		echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Sencibilización'));
+		echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Sencibilización','OnFocus'=>'this.blur('));
 		echo $this->Form->input('divulgation_type',array ('label'=>'Tipo Sencibilización','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros')));
 		echo $this->Form->input('divulgation_description',array ('type'=>'textarea','label'=>'Descripción Sencibilización'));	
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));	
+		echo $this->Form->input('population_type_id',array('empty'=>'Seleccione tipo de población'));
+		echo $this->Form->input('divulgation_type_id',array('empty'=>'Seleccione el tipo de sencibilización','options' => $DivTypes));
 	?>
 		<div class="input"  style="text-align:right">
 		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
