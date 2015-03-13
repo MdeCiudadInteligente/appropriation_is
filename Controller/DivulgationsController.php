@@ -152,7 +152,9 @@ class DivulgationsController extends AppController {
 				
 		$sites = $this->Divulgation->Site->find('list',array('order' => array('Site.site_name ASC')));
 		$populationTypes = $this->Divulgation->PopulationType->find('list',array('order' => array('PopulationType.name' => 'ASC')));
-		$this->set(compact('sites', 'populationTypes'));
+		$DivTypes = $this->Divulgation->Divtype->find('list',array('order' => array('Divtype.name' => 'ASC')));
+	
+		$this->set(compact('sites', 'populationTypes','DivTypes'));
 	
 		
 	}

@@ -6,6 +6,14 @@ App::uses('AppModel', 'Model');
  */
 class Divtype extends AppModel {
 
+	/**
+	 * Primary key field
+	 *
+	 * @var string
+	 */
+	public $primaryKey = 'id';
+	
+	/**
 /**
  * Display field
  *
@@ -44,7 +52,7 @@ class Divtype extends AppModel {
 	
 	public $hasMany = array(
 			'Divulgation' => array(
-					'className' => 'Divulgations',
+					'className' => 'Divulgation',
 					'foreignKey' => 'divulgation_type_id',
 					'dependent' => false,
 					'conditions' => '',

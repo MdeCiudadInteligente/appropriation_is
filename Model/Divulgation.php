@@ -23,6 +23,9 @@ class Divulgation extends AppModel {
  */
 	//public $displayField = 'divulgation_name';
 	public $displayField = 'population_type_id';
+
+
+	
 	
 /**
  * Validation rules
@@ -50,16 +53,6 @@ class Divulgation extends AppModel {
 							//'on' => 'create', // Limit validation to 'create' or 'update' operations
 					),
 			),
-		'divulgation_name' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'divulgation_type' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -142,6 +135,16 @@ class Divulgation extends AppModel {
 						//'on' => 'create', // Limit validation to 'create' or 'update' operations
 				),
 		),
+		'divulgation_type_id' => array(
+				'notEmpty' => array(
+						'rule' => array('notEmpty'),
+						//'message' => 'Your custom message here',
+						//'allowEmpty' => false,
+						//'required' => false,
+						//'last' => false, // Stop validation after this rule
+						//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				),
+		),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -177,6 +180,7 @@ class Divulgation extends AppModel {
 					'order' => ''
 			),
 			'Divtype' => array(
+					'className' => 'Divtype',
 					'foreignKey' => 'divulgation_type_id',
 					'conditions' => '',
 					'fields' => '',

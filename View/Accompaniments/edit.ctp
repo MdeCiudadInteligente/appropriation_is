@@ -52,6 +52,19 @@ function goBack()
 		echo $this->Form->input('accompaniment_title',array('maxlenght'=>'90'));
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
+		
+		$druta; $druta=$accompaniment['Accompaniment']['accompaniment_adjunct'];
+		$druta1; $druta1=$accompaniment['Accompaniment']['accompaniment_adjunct1'];
+		$druta2; $druta2=$accompaniment['Accompaniment']['accompaniment_adjunct2'];
+		$idattach; $idattach=$accompaniment['Accompaniment']['id_accompaniment'];
+			
+			
+		$user_id=$accompaniment['Accompaniment']['user_id'];
+		$id_user= $this->Session->read('Auth.User.id_user');
+		$usuario_level= $this->Session->read('Auth.User.permission_level');
+		
+		
+		
 		echo $this->Form->input('accompaniment_adjunct',array('disabled'=>'disabled'));
 		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file'));
 		echo $this->Form->input('accompaniment_adjunct1',array('disabled'=>'disabled'));
