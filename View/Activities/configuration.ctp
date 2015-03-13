@@ -13,6 +13,7 @@
 			<li><?php echo $this->Html->link(__('Tipos de Sitios'), array('controller' => 'SiteTypes', 'action' => 'index')); ?> </li>			
 			<li><?php echo $this->Html->link(__('Tipos de Población'), array('controller' => 'PopulationTypes', 'action' => 'index')); ?> </li>			
 			<li><?php echo $this->Html->link(__('Sitios'), array('controller' => 'Sites', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Temáticas'), array('controller' => 'Thematics', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Barrios'), array('controller' => 'Neighborhoods', 'action' => 'index')); ?> </li>	
 			<li><?php echo $this->Html->link(__('Comunas'), array('controller' => 'Communes', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Zonas'), array('controller' => 'Zones', 'action' => 'index')); ?> </li>

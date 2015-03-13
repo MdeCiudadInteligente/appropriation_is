@@ -125,7 +125,7 @@ class SitesController extends AppController {
 			
 				$this->Site->create();
 				$data=$this->request->data;						
-				$data['Site']['site_name'] = ucwords(strtolower($data['Site']['site_name']));
+				$data['Site']['site_name'] = ucwords($data['Site']['site_name']);
 				$data['Site']['creation_date']=date('Y-m-d H:i:s');
 				$data['Site']['user_id']=$usuario;
 								

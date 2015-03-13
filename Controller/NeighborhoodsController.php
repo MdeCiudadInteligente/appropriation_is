@@ -99,7 +99,7 @@ class NeighborhoodsController extends AppController {
 			
 				$this->Neighborhood->create();
 				$data=$this->request->data;				
-				$data['Neighborhood']['neighborhood_name'] = ucwords(strtolower($data['Neighborhood']['neighborhood_name']));
+				$data['Neighborhood']['neighborhood_name'] = ucwords($data['Neighborhood']['neighborhood_name']);
 				$data['Neighborhood']['creation_date']=date('Y-m-d H:i:s');
 				$data['Neighborhood']['user_id']=$usuario;
 							

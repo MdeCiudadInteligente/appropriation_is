@@ -104,7 +104,7 @@ class PopulationTypesController extends AppController {
 					
 				$this->PopulationType->create();
 				$data=$this->request->data;
-				$data['PopulationType']['name'] = ucfirst(strtolower($data['PopulationType']['name']));
+				$data['PopulationType']['name'] = ucwords($data['PopulationType']['name']);
 				$data['PopulationType']['creation_date']=date('Y-m-d H:i:s');
 				$data['PopulationType']['user_id']=$usuario;
 								

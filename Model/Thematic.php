@@ -79,5 +79,10 @@ class Thematic extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+<<<<<<< HEAD
+		
+		
+=======
+>>>>>>> ef655015812979218f14bc1bcf3428d726c6b920
 	);
 }

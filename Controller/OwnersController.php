@@ -94,7 +94,7 @@ class OwnersController extends AppController {
 			
 			$this->Owner->create();
 			$data=$this->request->data;
-			$data['Owner']['roll'] = ucfirst(strtolower($data['Owner']['roll']));
+			$data['Owner']['roll'] = ucwords($data['Owner']['roll']);
 			$data['Owner']['creation_date']=date('Y-m-d H:i:s');
 			$data['Owner']['user_id']=$usuario;
 							

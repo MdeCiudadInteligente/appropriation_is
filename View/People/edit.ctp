@@ -1,18 +1,24 @@
-﻿<div class="people form mde-form">
-<?php echo $this->Form->create('Person'); ?>
+﻿ <script type="text/javascript">
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+ 
+         return true;
+      }
+</script>
+<div class="thematic form mde-form">
+<?php echo $this->Form->create('Thematic'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Person'); ?></legend>
+		<legend><?php echo __('Edit Thematic'); ?></legend>
 	<?php
-		echo $this->Form->input('id_person',array('type'=>'hidden'));
-		echo $this->Form->input('cedula',array('type'=>'text','onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('name',array('maxlenght'=>'254'));
-		echo $this->Form->input('lastname',array('maxlenght'=>'254'));
-		echo $this->Form->input('charge');
-		echo $this->Form->input('email',array('maxLength'=>256,'type'=>'email'));
-		echo $this->Form->input('phone',array('onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('cell',array('onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('entity',array('maxLength'=>80,'label'=>'Entidad/Organización/Grupo'));
-
+		echo $this->Form->input('id',array('type'=>'hidden'));
+		echo $this->Form->input('name',array('maxlength'=>'45'));
+		echo $this->Form->input('number',array('type'=>'text','onkeypress'=>'return isNumberKey(event)'));
+	    echo $this->Form->input('description',array ('type'=>'textarea'));
+	    echo $this->Form->input('description',array ('type'=>'textarea'));
+	    echo $this->Form->input('state',array ('options' => array ('1'=>'Activo','0'=>'Inactivo')));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -21,11 +27,11 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities')); ?> </li>
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level == '1'){?>
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Person.id_person')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Person.id_person'))); ?></li>
-		<?php }?>
-		<li><?php echo $this->Html->link(__('List People'), array('action' => 'index')); ?></li>
+		<?php //$usuario_level= $this->Session->read('Auth.User.permission_level');
+		//if ($usuario_level == '1'){?>
+		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Thematic.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Thematic.id'))); ?></li>
+		<?php //}?>
+		<li><?php echo $this->Html->link(__('List Thematic'), array('action' => 'index')); ?></li>
 	</ul>
 
 </div>

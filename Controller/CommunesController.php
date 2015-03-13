@@ -97,7 +97,7 @@ class CommunesController extends AppController {
 			
 				$this->Commune->create();
 						$data=$this->request->data;
-						$data['Commune']['commune_name'] = ucwords(strtolower($data['Commune']['commune_name']));
+						$data['Commune']['commune_name'] = ucwords(($data['Commune']['commune_name']));
 						$data['Commune']['creation_date']=date('Y-m-d H:i:s');
 						$data['Commune']['user_id']=$usuario;
 						

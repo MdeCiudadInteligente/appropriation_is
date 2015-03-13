@@ -108,10 +108,10 @@ class PeopleController extends AppController {
 					
 					$this->Person->create();
 						$data=$this->request->data;
-						$data['Person']['name'] = ucwords(strtolower($data['Person']['name']));
-						$data['Person']['lastname'] = ucwords(strtolower($data['Person']['lastname']));
-						$data['Person']['charge'] = ucfirst(strtolower($data['Person']['charge']));
-						$data['Person']['entity'] = ucwords(strtolower($data['Person']['entity']));
+						$data['Person']['name'] = ucwords($data['Person']['name']);
+						$data['Person']['lastname'] = ucwords($data['Person']['lastname']);
+						$data['Person']['charge'] = ucwords($data['Person']['charge']);
+						$data['Person']['entity'] = ucwords($data['Person']['entity']);
 						$data['Person']['creation_date']=date('Y-m-d H:i:s');
 						$data['Person']['user_id']=$usuario;
 						

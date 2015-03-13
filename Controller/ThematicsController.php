@@ -24,6 +24,34 @@ class ThematicsController extends AppController {
 		$this->Thematic->recursive = 0;
 		$this->set('thematics', $this->Paginator->paginate());
 	}
+<<<<<<< HEAD
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+	
+		$thematics=$this->Thematic->find('all');
+		$count=0;
+		foreach ($thematics as $key => $thematics) {
+			$data['rows'][$count]=array(
+					'id'=>$thematics['Thematic']['id'],
+					'name'=>$thematics['Thematic']['name'],
+					'number'=>$thematics['Thematic']['number'],
+					'description'=>$thematics['Thematic']['description'],
+					'state'=>$thematics['Thematic']['state'],					
+					'creation_date'=>$thematics['Thematic']['creation_date'],
+					'modification_date'=>$thematics['Thematic']['modification_date'],
+					'user_id'=>$thematics['Thematic']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+=======
+>>>>>>> ef655015812979218f14bc1bcf3428d726c6b920
 
 /**
  * view method
@@ -47,13 +75,36 @@ class ThematicsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+<<<<<<< HEAD
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
+			$name_thematic= $this->request->data['Thematic']['name'];
+			$verificar_thematic=$this->Thematic->query("select distinct name from thematics where name = '$name_thematic'");
+			$this->set('verificar_thematic',$verificar_thematic);
+				
+			if($verificar_thematic==Array( )){
+				
+				$this->Thematic->create();
+					$data=$this->request->data;
+					$data['Thematic']['name'] = ucwords($data['Thematic']['name']);				
+					$data['Thematic']['creation_date']=date('Y-m-d H:i:s');
+					$data['Thematic']['user_id']=$usuario;
+			
+			if ($this->Thematic->save($data)) {
+=======
 			$this->Thematic->create();
 			if ($this->Thematic->save($this->request->data)) {
+>>>>>>> ef655015812979218f14bc1bcf3428d726c6b920
 				$this->Session->setFlash(__('The thematic has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The thematic could not be saved. Please, try again.'));
 			}
+<<<<<<< HEAD
+			}
+=======
+>>>>>>> ef655015812979218f14bc1bcf3428d726c6b920
 		}
 	}
 
