@@ -1,4 +1,4 @@
-﻿# LANGUAGE translation of CakePHP Application
+# LANGUAGE translation of CakePHP Application
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
 #  Revision: 8004 \console\error.php
@@ -104,6 +104,9 @@ msgstr "Personas"
 
 msgid "Configuration"
 msgstr "Configuración"
+
+msgid "Are you sure you want to delete # %s?"
+msgstr "Seguro que quieres eliminar # "
 
 msgid "Adjunct"
 msgstr "Adjunto"
