@@ -11,7 +11,7 @@
 			<li><?php echo $this->Html->link(__('Accompaniments'), array('controller' => 'Accompaniments', 'action' => 'index')); ?> </li>	
 			<?php }?>
 			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuario_level == '4'||$usuario_level == '5'){?>
-			<li><?php echo $this->Html->link(__('Divulgations'), array('controller' => 'Divulgations', 'action' => 'index')); ?> </li>	
+			<li><?php echo $this->Html->link(__('Sencibilizaciones'), array('controller' => 'Divulgations', 'action' => 'index')); ?> </li>	
 			<?php }?>	
 			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '4'||$usuario_level == '5'){?>	
 			<li><?php echo $this->Html->link(__('Configuration'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
@@ -111,7 +111,7 @@ if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuari
 			<?php
 				$gridOptions3=array(
 						'gridId'=>'gridDivulgatios',
-						'gridTitle'=>'Divulgaciones',
+						'gridTitle'=>'Sencibilizaciones',
 						'height'=>500,
 						'serviceUrl'=>'Divulgations/index_service.json',
 						'fields'=>array(

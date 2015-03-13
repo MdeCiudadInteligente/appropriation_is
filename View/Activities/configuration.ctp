@@ -8,7 +8,8 @@
 			<?php $usuario_level= $this->Session->read('Auth.User.permission_level');?>		
 			<?php if ($usuario_level == '1'||$usuario_level == '4'||$usuario_level == '5'){?>	
 			<li><?php echo $this->Html->link(__('Usuarios'), array('controller' => 'Users', 'action' => 'index')); ?> </li>		
-			<li><?php echo $this->Html->link(__('Agentes dinamizadores'), array('controller' => 'Agents', 'action' => 'index')); ?> </li>	
+			<li><?php echo $this->Html->link(__('Agentes dinamizadores'), array('controller' => 'Agents', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Tipos de Divulgaciones'), array('controller' => 'Divtypes', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Tipos de Sitios'), array('controller' => 'SiteTypes', 'action' => 'index')); ?> </li>			
 			<li><?php echo $this->Html->link(__('Tipos de Población'), array('controller' => 'PopulationTypes', 'action' => 'index')); ?> </li>			
 			<li><?php echo $this->Html->link(__('Sitios'), array('controller' => 'Sites', 'action' => 'index')); ?> </li>
@@ -116,7 +117,7 @@ if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuari
 			<?php
 				$gridOptions3=array(
 						'gridId'=>'gridDivulgatios',
-						'gridTitle'=>'Divulgaciones',
+						'gridTitle'=>'Sencibilizaciones',
 						'height'=>500,
 						'serviceUrl'=>'Divulgations/index_service.json',
 						'fields'=>array(
