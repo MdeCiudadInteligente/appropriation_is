@@ -41,8 +41,6 @@ class PopulationType extends AppModel {
  *
  * @var array
  */	
-
-	//Falta la relación de tipo de divulgación con formación...
 	public $hasMany = array(
 		'Divulgation' => array(
 			'className' => 'Divulgation',

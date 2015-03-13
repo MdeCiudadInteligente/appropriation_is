@@ -14,8 +14,8 @@
 	<fieldset>
 		<legend><?php echo __('Add Thematics'); ?></legend>
 	<?php		
-		echo $this->Form->input('name',array('maxlength'=>'45'));		
-		echo $this->Form->input('number',array('type'=>'text','onkeypress'=>'return isNumberKey(event)'));
+		echo $this->Form->input('name',array('maxlength'=>'45','label'=>'Nombre temática'));		
+		echo $this->Form->input('number',array('type'=>'text','onkeypress'=>'return isNumberKey(event)','label'=>'Número temática'));
 		echo $this->Form->input('description',array ('type'=>'textarea'));
 		echo $this->Form->input('state',array ('options' => array ('1'=>'Activo','0'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>

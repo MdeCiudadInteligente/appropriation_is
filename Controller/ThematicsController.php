@@ -24,7 +24,7 @@ class ThematicsController extends AppController {
 		$this->Thematic->recursive = 0;
 		$this->set('thematics', $this->Paginator->paginate());
 	}
-<<<<<<< HEAD
+
 	
 	public function index_service()
 	{
@@ -50,9 +50,6 @@ class ThematicsController extends AppController {
 		$this->set(compact('data'));
 		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
-=======
->>>>>>> ef655015812979218f14bc1bcf3428d726c6b920
-
 /**
  * view method
  *
@@ -75,7 +72,7 @@ class ThematicsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-<<<<<<< HEAD
+
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
@@ -92,19 +89,14 @@ class ThematicsController extends AppController {
 					$data['Thematic']['user_id']=$usuario;
 			
 			if ($this->Thematic->save($data)) {
-=======
-			$this->Thematic->create();
-			if ($this->Thematic->save($this->request->data)) {
->>>>>>> ef655015812979218f14bc1bcf3428d726c6b920
 				$this->Session->setFlash(__('The thematic has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The thematic could not be saved. Please, try again.'));
 			}
-<<<<<<< HEAD
+
 			}
-=======
->>>>>>> ef655015812979218f14bc1bcf3428d726c6b920
+
 		}
 	}
 

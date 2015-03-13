@@ -59,6 +59,16 @@ class Thematic extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'state' => array(
+				'notEmpty' => array(
+						'rule' => array('notEmpty'),
+						//'message' => 'Your custom message here',
+						//'allowEmpty' => false,
+						//'required' => false,
+						//'last' => false, // Stop validation after this rule
+						//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				),
+		),
 		'creation_date' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -69,20 +79,30 @@ class Thematic extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'user_id' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			'user_id' => array(
+				'notEmpty' => array(
+					'rule' => array('notEmpty'),
+					//'message' => 'Your custom message here',
+					//'allowEmpty' => false,
+					//'required' => false,
+					//'last' => false, // Stop validation after this rule
+					//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				),
 			),
-		),
-<<<<<<< HEAD
-		
-		
-=======
->>>>>>> ef655015812979218f14bc1bcf3428d726c6b920
+);
+	public $hasMany = array(
+				'Divulgation' => array(
+						'className' => 'Divulgation',
+						'foreignKey' => 'thematic_id',
+						'dependent' => false,
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'limit' => '',
+						'offset' => '',
+						'exclusive' => '',
+						'finderQuery' => '',
+						'counterQuery' => ''
+				)
 	);
 }

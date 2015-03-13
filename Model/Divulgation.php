@@ -145,6 +145,16 @@ class Divulgation extends AppModel {
 						//'on' => 'create', // Limit validation to 'create' or 'update' operations
 				),
 		),
+		'thematic_id' => array(
+				'notEmpty' => array(
+						'rule' => array('notEmpty'),
+						//'message' => 'Your custom message here',
+						//'allowEmpty' => false,
+						//'required' => false,
+						//'last' => false, // Stop validation after this rule
+						//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				),
+		),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -182,6 +192,13 @@ class Divulgation extends AppModel {
 			'Divtype' => array(
 					'className' => 'Divtype',
 					'foreignKey' => 'divulgation_type_id',
+					'conditions' => '',
+					'fields' => '',
+					'order' => ''
+			),
+			'Thematic' => array(
+					'className' => 'Thematic',
+					'foreignKey' => 'thematic_id',
 					'conditions' => '',
 					'fields' => '',
 					'order' => ''
