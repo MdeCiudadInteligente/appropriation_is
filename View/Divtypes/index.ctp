@@ -1,4 +1,4 @@
-﻿<div class="PopulationTypes-cont app-grid-container">
+﻿<div class="divtypes-cont app-grid-container">
 	<div class="left-block">
 		<div class="actions">
 			<h3><?php echo __('Actions'); ?></h3>
@@ -6,27 +6,27 @@
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 				if ($usuario_level == '1'){?>	
-				<li><?php echo $this->Html->link(__('New Population Type'), array('action' => 'add')); ?></li>
+				 <li><?php echo $this->Html->link(__('Nuevo Tipo Sensibilización'), array('action' => 'add')); ?></li>
 				<?php }?>
 				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
 			</ul>
 		</div>
 	</div>	
-<!-- 	End left block -->	
-
-	<div class="right-block">
-		<div class="populationtypes">
-			<h2><?php echo __('populationtypes'); ?></h2>
+<!-- 	End left block -->		
+<div class="right-block">
+		<div class="divtypes">
+			<h2><?php echo __('divtypes'); ?></h2>
 			<?php
 				$gridOptions=array(
-						'gridId'=>'gridPopulationtypes',
-						'gridTitle'=>'Tipo de población',
+						'gridId'=>'griddivtypes',
+						'gridTitle'=>'Tipo de Sensibilizaciones',
 						'height'=>800,
-						'serviceUrl'=>'PopulationTypes/index_service.json',
+						'serviceUrl'=>'DIVtypes/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"name",'header'=>'Tipo de población','sortable'=>true,'align'=>"left","column"=>true),			                
-			 				array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"t_divulgacion",'header'=>'Tipo de sensibilización','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"estado_td",'header'=>'Estado tipo de sitio','sortable'=>true,'align'=>"center","column"=>false),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
 						),
@@ -43,3 +43,4 @@
 
 <!-- End meetings container -->
 </div>	
+

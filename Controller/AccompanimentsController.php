@@ -179,6 +179,8 @@ class AccompanimentsController extends AppController {
 			$this->request->data = $this->Accompaniment->find('first', $options);
 		}
 		$sites = $this->Accompaniment->Site->find('list');
+		$options = array('conditions' => array('Accompaniment.' . $this->Accompaniment->primaryKey => $id));
+		$this->set('accompaniment', $this->Accompaniment->find('first', $options));
 		$this->set(compact('sites'));
 	}
 
@@ -196,7 +198,7 @@ class AccompanimentsController extends AppController {
 	
 		unlink('../webroot/uploads/accompaniment/accompaniment_adjunct/'.$druta);
 	
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 			
 	}
 	
@@ -208,7 +210,7 @@ class AccompanimentsController extends AppController {
 		$this->set('deletefilefinal',$deletefilefinal);
 		unlink('../webroot/uploads/accompaniment/accompaniment_adjunct1/'.$druta1);
 	
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 			
 	}
 	
@@ -220,7 +222,7 @@ class AccompanimentsController extends AppController {
 		$this->set('deletefilefinal',$deletefilefinal);
 		unlink('../webroot/uploads/accompaniment/accompaniment_adjunct2/'.$druta2);
 	
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 			
 	}
 /**

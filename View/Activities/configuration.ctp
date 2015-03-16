@@ -8,10 +8,12 @@
 			<?php $usuario_level= $this->Session->read('Auth.User.permission_level');?>		
 			<?php if ($usuario_level == '1'||$usuario_level == '4'||$usuario_level == '5'){?>	
 			<li><?php echo $this->Html->link(__('Usuarios'), array('controller' => 'Users', 'action' => 'index')); ?> </li>		
-			<li><?php echo $this->Html->link(__('Agentes dinamizadores'), array('controller' => 'Agents', 'action' => 'index')); ?> </li>	
+			<li><?php echo $this->Html->link(__('Agentes dinamizadores'), array('controller' => 'Agents', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Tipos de 	Sensibilizaciones'), array('controller' => 'Divtypes', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Tipos de Sitios'), array('controller' => 'SiteTypes', 'action' => 'index')); ?> </li>			
 			<li><?php echo $this->Html->link(__('Tipos de Población'), array('controller' => 'PopulationTypes', 'action' => 'index')); ?> </li>			
 			<li><?php echo $this->Html->link(__('Sitios'), array('controller' => 'Sites', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Temáticas'), array('controller' => 'Thematics', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Barrios'), array('controller' => 'Neighborhoods', 'action' => 'index')); ?> </li>	
 			<li><?php echo $this->Html->link(__('Comunas'), array('controller' => 'Communes', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Zonas'), array('controller' => 'Zones', 'action' => 'index')); ?> </li>
@@ -115,16 +117,18 @@ if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuari
 			<?php
 				$gridOptions3=array(
 						'gridId'=>'gridDivulgatios',
-						'gridTitle'=>'Divulgaciones',
+						'gridTitle'=>'Sensibilizaciones',
 						'height'=>500,
 						'serviceUrl'=>'Divulgations/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
 			                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"f_divulgacion",'header'=>'Fecha','sortable'=>true,'align'=>"center","column"=>true),
-			                array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"titulo",'header'=>'Título','sortable'=>true,'align'=>"left","column"=>true),
+			                //array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
+			                //array("dataIndex"=>"titulo",'header'=>'Título','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"tipodiv",'header'=>'Tipo Divulgación','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"descripcion",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"tipopob",'header'=>'Tipo Población','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"nparticipantes",'header'=>'Número de participantes','sortable'=>true,'align'=>"center","column"=>true),
 							array("dataIndex"=>"lactividad",'header'=>'Lugar de la actividad','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),

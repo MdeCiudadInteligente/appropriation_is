@@ -1,13 +1,10 @@
-﻿<div class="PopulationTypes-cont app-grid-container">
+﻿<div class="Thematics-cont app-grid-container">
 	<div class="left-block">
 		<div class="actions">
 			<h3><?php echo __('Actions'); ?></h3>
 			<ul>
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
-				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-				if ($usuario_level == '1'){?>	
-				<li><?php echo $this->Html->link(__('New Population Type'), array('action' => 'add')); ?></li>
-				<?php }?>
+				<li><?php echo $this->Html->link(__('New Thematic'), array('action' => 'add')); ?></li>
 				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
 			</ul>
 		</div>
@@ -15,18 +12,21 @@
 <!-- 	End left block -->	
 
 	<div class="right-block">
-		<div class="populationtypes">
-			<h2><?php echo __('populationtypes'); ?></h2>
+		<div class="thematics">
+			<h2><?php echo __('thematics'); ?></h2>
 			<?php
 				$gridOptions=array(
-						'gridId'=>'gridPopulationtypes',
-						'gridTitle'=>'Tipo de población',
+						'gridId'=>'gridThematics',
+						'gridTitle'=>'Temáticas',
 						'height'=>800,
-						'serviceUrl'=>'PopulationTypes/index_service.json',
+						'serviceUrl'=>'Thematics/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"name",'header'=>'Tipo de población','sortable'=>true,'align'=>"left","column"=>true),			                
-			 				array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"name",'header'=>'Nombre temática','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"number",'header'=>'Número temática','sortable'=>true,'align'=>"center","column"=>true),
+							array("dataIndex"=>"description",'header'=>'Descripción temática','sortable'=>true,'align'=>"center","column"=>true),
+							array("dataIndex"=>"state",'header'=>'Estado temática','sortable'=>true,'align'=>"center","column"=>true),
+							array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
 						),

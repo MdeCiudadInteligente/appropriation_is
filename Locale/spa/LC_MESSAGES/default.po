@@ -1,4 +1,4 @@
-﻿# LANGUAGE translation of CakePHP Application
+# LANGUAGE translation of CakePHP Application
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
 #  Revision: 8004 \console\error.php
@@ -105,8 +105,29 @@ msgstr "Personas"
 msgid "Configuration"
 msgstr "Configuración"
 
+msgid "Are you sure you want to delete # %s?"
+msgstr "Seguro que quieres eliminar # "
+
 msgid "Adjunct"
 msgstr "Adjunto"
+
+msgid "List Thematics"
+msgstr "Lista Temática"
+
+msgid "Delete"
+msgstr "Lista tem�tica"
+
+msgid "description"
+msgstr "Descripción"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "State"
+msgstr "Estado"
+
+msgid "Add Thematics"
+msgstr "Agregar Temática"
 
 msgid "Participant Number"
 msgstr "Número participantes"
@@ -129,8 +150,17 @@ msgstr "tipo de sitio no válido"
 msgid "Invalid site"
 msgstr "sitio no válido"
 
+msgid "Add Divtype"
+msgstr "Agregar Tipo Divulgación"
+
+msgid "New Divulgation Type"
+msgstr "Nuevo Tipo Divulgación"
+
 msgid "Invalid neighborhood"
 msgstr "Barrio no válido"
+
+msgid "Invalid thematic"
+msgstr "Tem�tica no válido"
 
 msgid "The neighborhood could not be saved. Please, try again."
 msgstr "El barrio no se pudo guardar .Por favor , vuelva a intentarlo."
@@ -141,14 +171,26 @@ msgstr "El tipo de población no se pudo guardar .Por favor , vuelva a intentarl
 msgid "The population type has been deleted."
 msgstr "El tipo de población ha sido eliminado."
 
+msgid "The thematic has been deleted."
+msgstr "La tem�tica ha sido eliminado."
+
 msgid "The accompaniment could not be deleted. Please, try again."
 msgstr "El acompañamiento no se pudo eliminar .Por favor , vuelva a intentarlo."
+
+msgid "The thematic could not be deleted. Please, try again."
+msgstr "La tem�tica no se pudo eliminar .Por favor , vuelva a intentarlo."
 
 msgid "The population type could not be deleted. Please, try again."
 msgstr "El tipo de población no se pudo eliminar .Por favor , vuelva a intentarlo."
 
+msgid "The thematic could not be saved. Please, try again."
+msgstr "La tem�tica no se pudo guardar .Por favor , vuelva a intentarlo."
+
 msgid "The population type has been saved."
 msgstr "El tipo de población se ha guardado."
+
+msgid "The thematic has been saved."
+msgstr "La tem�tica se ha guardado."
 
 msgid "The zone has been saved."
 msgstr "La zona se ha guardado."
@@ -161,6 +203,18 @@ msgstr "Sitios con conectividad acompañados"
 
 msgid "Site"
 msgstr "Sitio"
+
+msgid "Delete Thematic"
+msgstr "Eliminar temática"
+
+msgid "New Thematic"
+msgstr "Nueva Temática"
+
+msgid "Thematic"
+msgstr "Temática"
+
+msgid "Edit Thematic"
+msgstr "Editar Temática"
 
 msgid "populationtypes"
 msgstr "Tipos de Población"

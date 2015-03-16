@@ -40,11 +40,22 @@ function goBack()
 </script>
 
 <div class="accompaniments form mde-form">
-<?php echo $this->Form->create('Accompaniment',array('type'=>'file'));?>
+<?php echo $this->Form->create('Accompaniment',array('type'=>'file'));
+$site=$this->request->data['Site'];
+?>
 	<fieldset>
 		<legend><?php echo __('Edit Accompaniment'); ?></legend>
-	<?php
-		echo $this->Form->input('site_id');
+	
+		<div class="seccion-person">
+		<div class="input">
+		<label>Sitio</label>
+		<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
+		<div class="results-input-site" data-input-name="data[Divulgation][site_id]">
+		<input type="hidden" name="data[Accompaniment][site_id]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name']?>" id="val-input-site-<?php echo $site['id_site']?>">
+		</div>
+		</div>
+		</div>
+		<?php
 		echo $this->Form->input('id_accompaniment');
 		echo $this->Form->input('accompaniment_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('accompaniment_type',array ('options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Estudiantes de PP, jóvenes por la convivencia o alfabetizadores' ,
@@ -52,11 +63,51 @@ function goBack()
 		echo $this->Form->input('accompaniment_title',array('maxlenght'=>'90'));
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
+		
+		$druta; $druta=$accompaniment['Accompaniment']['accompaniment_adjunct'];
+		$druta1; $druta1=$accompaniment['Accompaniment']['accompaniment_adjunct1'];
+		$druta2; $druta2=$accompaniment['Accompaniment']['accompaniment_adjunct2'];
+		$idattach; $idattach=$accompaniment['Accompaniment']['id_accompaniment'];
+			
+			
+		$user_id=$accompaniment['Accompaniment']['user_id'];
+		$id_user= $this->Session->read('Auth.User.id_user');
+		$usuario_level= $this->Session->read('Auth.User.permission_level');
+		
+		
+		
 		echo $this->Form->input('accompaniment_adjunct',array('disabled'=>'disabled'));
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		<?php
+		 if(($druta!='') &&($user_id == $id_user || $usuario_level== '1')){
+			echo $this->Html->Link(__('->Eliminar archivo'), array('controller' => 'accompaniments', 'action' => 'delete_attachment',$idattach,$druta), null, __('Esta seguro que desea eliminar el archivo %s?',$druta));
+		}
+		?>
+		</div>
+		<?php
 		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file'));
 		echo $this->Form->input('accompaniment_adjunct1',array('disabled'=>'disabled'));
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		<?php
+		if(($druta1!='') &&($user_id == $id_user || $usuario_level== '1')){
+			echo $this->Html->Link(__('->Eliminar archivo'), array('controller' => 'accompaniments', 'action' => 'delete_attachment1',$idattach,$druta1), null, __('Esta seguro que desea eliminar el archivo %s?',$druta1));
+		}
+		?>
+		</div>
+		<?php
 		echo $this->Form->input('accompaniment_adjunct1',array('type'=>'file'));
 		echo $this->Form->input('accompaniment_adjunct2',array('disabled'=>'disabled'));
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		<?php
+		if(($druta2!='') &&($user_id == $id_user || $usuario_level== '1')){
+			echo $this->Html->Link(__('->Eliminar archivo'), array('controller' => 'accompaniments', 'action' => 'delete_attachment2',$idattach,$druta2), null, __('Esta seguro que desea eliminar el archivo %s?',$druta2));
+		}
+		?>
+		</div>
+		<?php
 		echo $this->Form->input('accompaniment_adjunct2',array('type'=>'file'));
 		echo $this->Form->input('dir',array('type'=>'hidden'));
 	?>

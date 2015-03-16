@@ -76,9 +76,11 @@ class DivulgationsController extends AppController {
 					'id'=>$divulgation['Divulgation']['id_divulgation'],
 					'sitio'=>$divulgation['Site']['site_name'],
 					'f_divulgacion'=>$divulgation['Divulgation']['divulgation_date'],
-					'tipo'=>$divulgation['Divulgation']['divulgation_type'],
-					'titulo'=>$divulgation['Divulgation']['divulgation_name'],
+					//'tipo'=>$divulgation['Divulgation']['divulgation_type'],
+					//'titulo'=>$divulgation['Divulgation']['divulgation_name'],
+					'tipodiv'=>$divulgation['Divtype']['name'],
 					'descripcion'=>$divulgation['Divulgation']['divulgation_description'],
+					'tipopob'=>$divulgation['PopulationType']['name'],
 					'nparticipantes'=>$divulgation['Divulgation']['participant_number'],
 					'lactividad'=>$divulgation['Divulgation']['activity_place'],
 					'creation_date'=>$divulgation['Divulgation']['creation_date'],
@@ -139,7 +141,11 @@ class DivulgationsController extends AppController {
 				$data=$this->request->data;
 				$data['Divulgation']['creation_date']=date('Y-m-d H:i:s');
 				$data['Divulgation']['user_id']=$usuario;
+				$data['Divulgation']['divulgation_name']='prueba_titulo';
 						
+				
+				
+				
 				if ($this->Divulgation->save($data)) {
 						$this->Session->setFlash(__('The divulgation has been saved.'));
 						return $this->redirect(array('action' => 'index'));
@@ -152,7 +158,10 @@ class DivulgationsController extends AppController {
 				
 		$sites = $this->Divulgation->Site->find('list',array('order' => array('Site.site_name ASC')));
 		$populationTypes = $this->Divulgation->PopulationType->find('list',array('order' => array('PopulationType.name' => 'ASC')));
-		$this->set(compact('sites', 'populationTypes'));
+		$DivTypes = $this->Divulgation->Divtype->find('list',array('order' => array('Divtype.name' => 'ASC')));
+		$thematicstypes = $this->Divulgation->Thematic->find('list',array('order' => array('Thematic.name' => 'ASC')));
+	
+		$this->set(compact('sites', 'populationTypes','DivTypes','thematicstypes'));
 	
 		
 	}
@@ -179,8 +188,12 @@ class DivulgationsController extends AppController {
 			$options = array('conditions' => array('Divulgation.' . $this->Divulgation->primaryKey => $id));
 			$this->request->data = $this->Divulgation->find('first', $options);
 		}
-		$sites = $this->Divulgation->Site->find('list');
-		$this->set(compact('sites'));
+		$sites = $this->Divulgation->Site->find('list',array('order' => array('Site.site_name ASC')));
+		$populationTypes = $this->Divulgation->PopulationType->find('list',array('order' => array('PopulationType.name' => 'ASC')));
+		$DivTypes = $this->Divulgation->Divtype->find('list',array('order' => array('Divtype.name' => 'ASC')));
+		$this->set(compact('sites', 'populationTypes','DivTypes'));
+		$options = array('conditions' => array('Divulgation.' . $this->Divulgation->primaryKey => $id));
+		$this->set('divulgation', $this->Divulgation->find('first', $options));
 	}
 
 	/**
@@ -197,7 +210,7 @@ class DivulgationsController extends AppController {
 		
 		unlink('../webroot/uploads/divulgation/divulgation_adjunct/'.$druta);
 		
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 		 
 	}
 	
@@ -209,7 +222,7 @@ class DivulgationsController extends AppController {
 		$this->set('deletefilefinal',$deletefilefinal);
 		unlink('../webroot/uploads/divulgation/divulgation_adjunct1/'.$druta1);
 	
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 			
 	}
 	
@@ -221,7 +234,7 @@ class DivulgationsController extends AppController {
 		$this->set('deletefilefinal',$deletefilefinal);
 		unlink('../webroot/uploads/divulgation/divulgation_adjunct2/'.$druta2);
 	
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 			
 	}
 	
