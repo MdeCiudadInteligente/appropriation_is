@@ -150,6 +150,12 @@ msgstr "tipo de sitio no válido"
 msgid "Invalid site"
 msgstr "sitio no válido"
 
+msgid "Add Divtype"
+msgstr "Agregar Tipo Divulgación"
+
+msgid "New Divulgation Type"
+msgstr "Nuevo Tipo Divulgación"
+
 msgid "Invalid neighborhood"
 msgstr "Barrio no válido"
 

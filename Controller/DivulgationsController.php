@@ -141,7 +141,11 @@ class DivulgationsController extends AppController {
 				$data=$this->request->data;
 				$data['Divulgation']['creation_date']=date('Y-m-d H:i:s');
 				$data['Divulgation']['user_id']=$usuario;
+				$data['Divulgation']['divulgation_name']='prueba_titulo';
 						
+				
+				
+				
 				if ($this->Divulgation->save($data)) {
 						$this->Session->setFlash(__('The divulgation has been saved.'));
 						return $this->redirect(array('action' => 'index'));

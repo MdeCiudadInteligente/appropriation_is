@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Divtype'); ?></legend>
 	<?php
-		echo $this->Form->input('name');
+		echo $this->Form->input('name',array('label'=>'Nombre'));
 		echo $this->Form->input('state',array ('label'=>'Estado','options' => array ('1'=>'Activo','0'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>
