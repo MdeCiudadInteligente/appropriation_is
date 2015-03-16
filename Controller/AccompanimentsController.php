@@ -140,9 +140,15 @@ class AccompanimentsController extends AppController {
 			
 			$this->Accompaniment->create();
 			$data=$this->request->data;
+			if($data!=''){
 			$data['Accompaniment']['creation_date']=date('Y-m-d H:i:s');
 			$data['Accompaniment']['user_id']=$usuario;
-					
+			}
+			else{
+			
+				$this->Session->setFlash(__('Los adjuntos no se han podido cargar correctamente'));
+			}
+			
 			if ($this->Accompaniment->save($data)) {
 					$this->Session->setFlash(__('The accompaniment has been saved.'));
 					return $this->redirect(array('action' => 'index'));

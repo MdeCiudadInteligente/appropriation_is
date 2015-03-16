@@ -144,9 +144,16 @@ public function add() {
 			
 			$this->Meeting->create();
 			$data=$this->request->data;
+			if($data!=''){
 			$data['Meeting']['creation_date']=date('Y-m-d H:i:s');
 			$data['Meeting']['user_id']=$usuario;
-						
+			}		
+			else{
+
+				$this->Session->setFlash(__('Los adjuntos no se han podido cargar correctamente'));
+			}
+				
+				
 			if ($this->Meeting->save($data)) {
 					$this->Session->setFlash(__('The meeting has been saved.'));
 					return $this->redirect(array('action' => 'index'));
