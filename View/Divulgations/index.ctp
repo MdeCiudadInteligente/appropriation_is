@@ -9,7 +9,7 @@
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 				<?php	$usuario_level= $this->Session->read('Auth.User.permission_level');	
 				if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'){?>
-				<li><?php echo $this->Html->link(__('Nueva Sencibilización'), array('action' => 'add')); ?></li>
+				<li><?php echo $this->Html->link(__('Nueva Sensibilización'), array('action' => 'add')); ?></li>
 				<?php }?>
 			</ul>
 		</div>
@@ -23,7 +23,7 @@
 			<?php
 				$gridOptions=array(
 						'gridId'=>'gridDivulgatios',
-						'gridTitle'=>'Sencibilizaciones',
+						'gridTitle'=>'Sensibilizaciones',
 						'height'=>500,
 						'serviceUrl'=>'Divulgations/index_service.json',
 						'fields'=>array(

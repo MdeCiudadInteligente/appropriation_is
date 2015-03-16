@@ -1,4 +1,4 @@
-<div class="divtypes form">
+﻿<div class="divtypes form">
 <?php echo $this->Form->create('Divtype'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Divtype'); ?></legend>
@@ -13,6 +13,6 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
        <li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Lista Tipos de Divulgaci�n'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Lista Tipos de Sensibilización'), array('action' => 'index')); ?></li>
 	</ul>
 </div>

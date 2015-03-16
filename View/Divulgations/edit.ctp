@@ -21,7 +21,7 @@ function goBack()
 	$site=$this->request->data['Site'];
 ?>	
 	<fieldset>
-		<legend><?php echo __('Editar Sencibilización'); ?></legend>
+		<legend><?php echo __('Editar Sensibilización'); ?></legend>
 
 		<div class="seccion-person">
 		<div class="input">
@@ -35,13 +35,13 @@ function goBack()
 	
 	<?php
 		echo $this->Form->input('id_divulgation');
-		echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Sencibilización'));
-		echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Sencibilización','OnFocus'=>'this.blur('));
-		echo $this->Form->input('divulgation_type',array ('label'=>'Tipo Sencibilización','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros')));
-		echo $this->Form->input('divulgation_description',array ('type'=>'textarea','label'=>'Descripción Sencibilización'));	
+		echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Sensibilización'));
+		echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Sensibilización','OnFocus'=>'this.blur()'));
+		echo $this->Form->input('divulgation_type',array ('label'=>'Tipo Sensibilización','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros')));
+		echo $this->Form->input('divulgation_description',array ('type'=>'textarea','label'=>'Descripción Sensibilización'));	
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));	
 		echo $this->Form->input('population_type_id',array('empty'=>'Seleccione tipo de población'));
-		echo $this->Form->input('divulgation_type_id',array('empty'=>'Seleccione el tipo de sencibilización','options' => $DivTypes));
+		echo $this->Form->input('divulgation_type_id',array('empty'=>'Seleccione el tipo de sensibilización','options' => $DivTypes));
 	?>
 		<div class="input"  style="text-align:right">
 		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
@@ -53,19 +53,59 @@ function goBack()
 				<div class="results-input" data-input-name="data[Person][Person][]">
 				<?php 
 					foreach ($currentTraining as $key => $Training) { ?>
-						<input type="hidden" name="data[Person][Person][]" value="<?php echo $Person['id_person'] ?>" data-display="<?php echo $Person['name']." ".$Person['lastname'] ?>" id="val-input-<?php echo $Person['id_person']?>">
+						<input type="hidden" name="data[Person][Person][]" value="<?php echo $Training['id_person'] ?>" data-display="<?php echo $Training['name']." ".$Training['lastname'] ?>" id="val-input-<?php echo $Training['id_person']?>">
 				<?php } ?>
 				</div>
 			</div>
 		</div>	
 	<?php
 		echo $this->Form->input('activity_place',array('maxLength'=>'80'));
-		echo $this->Form->input('divulgation_adjunct',array('disabled'=>'disabled','label'=>'Adjunto Sencibilización'));
-		echo $this->Form->input('divulgation_adjunct',array('type'=>'file','label'=>'Adjunto Sencibilización'));
-		echo $this->Form->input('divulgation_adjunct1',array('disabled'=>'disabled','label'=>'Adjunto Sencibilización 1'));
-		echo $this->Form->input('divulgation_adjunct1',array('type'=>'file','label'=>'Adjunto Sencibilización 1'));
-		echo $this->Form->input('divulgation_adjunct2',array('disabled'=>'disabled','label'=>'Adjunto Sencibilización 2'));
-		echo $this->Form->input('divulgation_adjunct2',array('type'=>'file','label'=>'Adjunto Sencibilización 2'));
+$druta; $druta=$divulgation['Divulgation']['divulgation_adjunct'];
+		$druta1; $druta1=$divulgation['Divulgation']['divulgation_adjunct1'];
+		$druta2; $druta2=$divulgation['Divulgation']['divulgation_adjunct2'];
+		$idattach; $idattach=$divulgation['Divulgation']['id_divulgation'];
+			
+			
+		$user_id=$divulgation['Divulgation']['user_id'];
+		$id_user= $this->Session->read('Auth.User.id_user');
+		$usuario_level= $this->Session->read('Auth.User.permission_level');
+		
+		
+		
+		echo $this->Form->input('divulgation_adjunct',array('disabled'=>'disabled'));
+		?>
+				<div class="input textarea required" style="text-align: right;padding-right:36px">
+				<?php
+				 if(($druta!='') &&($user_id == $id_user || $usuario_level== '1')){
+					echo $this->Html->Link(__('->Eliminar archivo'), array('controller' => 'divulgations', 'action' => 'delete_attachment',$idattach,$druta), null, __('Esta seguro que desea eliminar el archivo %s?',$druta));
+				}
+				?>
+				</div>
+				<?php
+				echo $this->Form->input('divulgation_adjunct',array('type'=>'file'));
+				echo $this->Form->input('divulgation_adjunct1',array('disabled'=>'disabled'));
+				?>
+				<div class="input textarea required" style="text-align: right;padding-right:36px">
+				<?php
+				if(($druta1!='') &&($user_id == $id_user || $usuario_level== '1')){
+					echo $this->Html->Link(__('->Eliminar archivo'), array('controller' => 'divulgations', 'action' => 'delete_attachment1',$idattach,$druta1), null, __('Esta seguro que desea eliminar el archivo %s?',$druta1));
+				}
+				?>
+				</div>
+				<?php
+				echo $this->Form->input('divulgation_adjunct1',array('type'=>'file'));
+				echo $this->Form->input('divulgation_adjunct2',array('disabled'=>'disabled'));
+				?>
+				<div class="input textarea required" style="text-align: right;padding-right:36px">
+				<?php
+				if(($druta2!='') &&($user_id == $id_user || $usuario_level== '1')){
+					echo $this->Html->Link(__('->Eliminar archivo'), array('controller' => 'divulgations', 'action' => 'delete_attachment2',$idattach,$druta2), null, __('Esta seguro que desea eliminar el archivo %s?',$druta2));
+				}
+				?>
+				</div>
+				<?php
+				echo $this->Form->input('divulgation_adjunct2',array('type'=>'file'));
+				echo $this->Form->input('dir',array('type'=>'hidden'));
 
 		echo $this->Form->input('dir',array('type'=>'hidden'));	
 
@@ -81,7 +121,7 @@ function goBack()
 		if ($usuario_level === '1'){?>
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Divulgation.id_divulgation')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Divulgation.id_divulgation'))); ?></li>
 		<?php }?>
-		<li><?php echo $this->Html->link(__('Lista Sencibilización'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Lista Sensibilización'), array('action' => 'index')); ?></li>
 		<?php 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		//if ($usuario_level === '1'){?>

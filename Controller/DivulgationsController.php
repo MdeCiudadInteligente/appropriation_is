@@ -188,6 +188,8 @@ class DivulgationsController extends AppController {
 		$populationTypes = $this->Divulgation->PopulationType->find('list',array('order' => array('PopulationType.name' => 'ASC')));
 		$DivTypes = $this->Divulgation->Divtype->find('list',array('order' => array('Divtype.name' => 'ASC')));
 		$this->set(compact('sites', 'populationTypes','DivTypes'));
+		$options = array('conditions' => array('Divulgation.' . $this->Divulgation->primaryKey => $id));
+		$this->set('divulgation', $this->Divulgation->find('first', $options));
 	}
 
 	/**
@@ -204,7 +206,7 @@ class DivulgationsController extends AppController {
 		
 		unlink('../webroot/uploads/divulgation/divulgation_adjunct/'.$druta);
 		
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 		 
 	}
 	
@@ -216,7 +218,7 @@ class DivulgationsController extends AppController {
 		$this->set('deletefilefinal',$deletefilefinal);
 		unlink('../webroot/uploads/divulgation/divulgation_adjunct1/'.$druta1);
 	
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 			
 	}
 	
@@ -228,7 +230,7 @@ class DivulgationsController extends AppController {
 		$this->set('deletefilefinal',$deletefilefinal);
 		unlink('../webroot/uploads/divulgation/divulgation_adjunct2/'.$druta2);
 	
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 			
 	}
 	

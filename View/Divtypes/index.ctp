@@ -1,4 +1,4 @@
-<div class="divtypes-cont app-grid-container">
+ï»¿<div class="divtypes-cont app-grid-container">
 	<div class="left-block">
 		<div class="actions">
 			<h3><?php echo __('Actions'); ?></h3>
@@ -6,7 +6,7 @@
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 				if ($usuario_level == '1'){?>	
-				 <li><?php echo $this->Html->link(__('Nuevo Tipo Divulgación'), array('action' => 'add')); ?></li>
+				 <li><?php echo $this->Html->link(__('Nuevo Tipo SensibilizaciÃ³n'), array('action' => 'add')); ?></li>
 				<?php }?>
 				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
 			</ul>
@@ -19,15 +19,15 @@
 			<?php
 				$gridOptions=array(
 						'gridId'=>'griddivtypes',
-						'gridTitle'=>'Tipo de divulgaciones',
+						'gridTitle'=>'Tipo de Sensibilizaciones',
 						'height'=>800,
 						'serviceUrl'=>'DIVtypes/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"t_divulgacion",'header'=>'Tipo de divulgación','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"t_divulgacion",'header'=>'Tipo de sensibilizaciÃ³n','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"estado_td",'header'=>'Estado tipo de sitio','sortable'=>true,'align'=>"center","column"=>false),
-			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
-			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha CreaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Fecha ModificaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
 						),
 						'expander'=>false,

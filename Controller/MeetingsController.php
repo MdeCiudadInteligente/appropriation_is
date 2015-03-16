@@ -190,6 +190,8 @@ public function add() {
 		$sites = $this->Meeting->Site->find('list');
 		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
 		$this->set(compact('sites', 'people'));
+		$options = array('conditions' => array('Meeting.' . $this->Meeting->primaryKey => $id));
+		$this->set('meeting', $this->Meeting->find('first', $options));
 	}
 	
 	/**
@@ -206,7 +208,7 @@ public function add() {
 	
 		unlink('../webroot/uploads/meeting/meeting_adjunct/'.$druta);
 	
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 			
 	}
 	
@@ -218,7 +220,7 @@ public function add() {
 		$this->set('deletefilefinal',$deletefilefinal);
 		unlink('../webroot/uploads/meeting/meeting_adjunct1/'.$druta1);
 	
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 			
 	}
 	
@@ -230,7 +232,7 @@ public function add() {
 		$this->set('deletefilefinal',$deletefilefinal);
 		unlink('../webroot/uploads/meeting/meeting_adjunct2/'.$druta2);
 	
-		return $this->redirect(array('action' => 'view',$idattach));
+		return $this->redirect(array('action' => 'edit',$idattach));
 			
 	}
 /**
