@@ -142,19 +142,19 @@ msgid "The accompaniment has been deleted."
 msgstr "El acompañamiento ha sido eliminado."
 
 msgid "Invalid population type"
-msgstr "tipo de población no válido"
+msgstr "Tipo de población no válido"
 
 msgid "Invalid site type"
-msgstr "tipo de sitio no válido"
+msgstr "Tipo de sitio no válido"
 
 msgid "Invalid site"
-msgstr "sitio no válido"
+msgstr "Sitio no válido"
 
 msgid "Add Divtype"
-msgstr "Agregar Tipo Divulgación"
+msgstr "Agregar Tipo Sensibilización"
 
 msgid "New Divulgation Type"
-msgstr "Nuevo Tipo Divulgación"
+msgstr "Nuevo Tipo Sensibilización"
 
 msgid "Invalid neighborhood"
 msgstr "Barrio no válido"

@@ -1,4 +1,4 @@
-﻿<div class="divtypes-cont app-grid-container">
+<div class="Divtypes-cont app-grid-container">
 	<div class="left-block">
 		<div class="actions">
 			<h3><?php echo __('Actions'); ?></h3>
@@ -6,7 +6,9 @@
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 				if ($usuario_level == '1'){?>	
+
 				 <li><?php echo $this->Html->link(__('Nuevo Tipo Sensibilización'), array('action' => 'add')); ?></li>
+
 				<?php }?>
 				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
 			</ul>
@@ -20,8 +22,8 @@
 				$gridOptions=array(
 						'gridId'=>'griddivtypes',
 						'gridTitle'=>'Tipo de Sensibilizaciones',
-						'height'=>800,
-						'serviceUrl'=>'DIVtypes/index_service.json',
+						'height'=>801,
+						'serviceUrl'=>'Divtypes/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
 			                array("dataIndex"=>"t_divulgacion",'header'=>'Tipo de sensibilización','sortable'=>true,'align'=>"left","column"=>true),
