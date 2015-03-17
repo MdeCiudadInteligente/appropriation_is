@@ -38,20 +38,8 @@ function goBack()
 			echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea','label'=>'Descripción Sensibilización'));		
 			echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 			echo $this->Form->input('population_type_id',array('empty'=>'Seleccione tipo de población'));
-			//echo $this->Form->input('thematic_id',array('empty'=>'Seleccione el tipo temática','options' => $thematicstypes));
+			echo $this->Form->input('thematic_id',array('empty'=>'Seleccione el tipo temática','options' => $thematicstypes));
 	?>
-	<div class="input"  style="text-align:right">
-		<?php echo $this->Html->link('+ Nueva Temática', array('controller' => 'Thematics', 'action' => 'add'),array('target'=>'_blank')); ?>
-	</div>
-	<div class="seccion-thematics">	
-			<div class="input" >
-				<label>Temáticas</label>
-				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa mínimo una temática">
-				<div class="results-input" data-input-name="data[Divulgation][thematic_id][]">
-					
-				</div>
-			</div>
-		</div>	
 	<div class="input"  style="text-align:right">
 		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
 	</div>
