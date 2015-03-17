@@ -78,7 +78,7 @@ class DivulgationsController extends AppController {
 					'sitio'=>$divulgation['Site']['site_name'],
 					'f_divulgacion'=>$divulgation['Divulgation']['divulgation_date'],
 					//'tipo'=>$divulgation['Divulgation']['divulgation_type'],
-					//'titulo'=>$divulgation['Divulgation']['divulgation_name'],
+					'titulo'=>$divulgation['Divulgation']['divulgation_name'],
 					'tipodiv'=>$divulgation['Divtype']['name'],
 					'descripcion'=>$divulgation['Divulgation']['divulgation_description'],
 					'tipopob'=>$divulgation['PopulationType']['name'],

@@ -31,7 +31,7 @@
 			                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"f_divulgacion",'header'=>'Fecha','sortable'=>true,'align'=>"center","column"=>true),
 			                //array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
-			                //array("dataIndex"=>"titulo",'header'=>'Título','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"titulo",'header'=>'Código','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"tipodiv",'header'=>'Tipo Sensibilización','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"descripcion",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"tipopob",'header'=>'Tipo Población','sortable'=>true,'align'=>"left","column"=>true),
