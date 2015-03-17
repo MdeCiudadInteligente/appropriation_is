@@ -32,9 +32,9 @@ function goBack()
 
 	<?php  
 			//echo $this->Form->input('divulgation_type',array ('type'=>'select','label'=>'Tipo Sensibilización','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de divulgación'));
-		    echo $this->Form->input('divulgation_type_id',array('empty'=>'Seleccione el tipo de sensibilización','options' => $DivTypes,'label'=>'Tipo Sensibilización'));
-	        echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Sensibilización'));		
-			//echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Divulgación','label'=>'Título Sensibilización'));
+			echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Sensibilización'));
+			echo $this->Form->input('divulgation_type_id',array('empty'=>'Seleccione el tipo de sensibilización','options' => $DivTypes,'label'=>'Tipo Sensibilización'));
+	        //echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Divulgación','label'=>'Título Sensibilización'));
 			echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea','label'=>'Descripción Sensibilización'));		
 			echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 			echo $this->Form->input('population_type_id',array('empty'=>'Seleccione tipo de población'));

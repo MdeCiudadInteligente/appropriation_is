@@ -195,7 +195,8 @@ class DivulgationsController extends AppController {
 		$sites = $this->Divulgation->Site->find('list',array('order' => array('Site.site_name ASC')));
 		$populationTypes = $this->Divulgation->PopulationType->find('list',array('order' => array('PopulationType.name' => 'ASC')));
 		$DivTypes = $this->Divulgation->Divtype->find('list',array('order' => array('Divtype.name' => 'ASC')));
-		$this->set(compact('sites', 'populationTypes','DivTypes'));
+		$thematicstypes = $this->Divulgation->Thematic->find('list',array('order' => array('Thematic.name' => 'ASC')));
+		$this->set(compact('sites', 'populationTypes','DivTypes','thematicstypes'));
 		$options = array('conditions' => array('Divulgation.' . $this->Divulgation->primaryKey => $id));
 		$this->set('divulgation', $this->Divulgation->find('first', $options));
 	}

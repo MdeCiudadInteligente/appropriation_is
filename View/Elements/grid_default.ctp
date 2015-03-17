@@ -85,7 +85,7 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 <?php echo $gridOptions['gridId']?>.render_crud = function(val,meta,record){
 	var ver="<a href='"+<?php echo $gridOptions['gridId']?>_actionViewUrl+"/"+val+"' target='_blank'><i title='Ver' class='icon-desktop-1 view'></i></a>";
 	var editar="<a href='"+<?php echo $gridOptions['gridId']?>_editViewUrl+"/"+val+"'><i title='Editar' class='icon-export edit'></i></a>";
-	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+<?php echo $gridOptions['gridId']?>_delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Are you sure you want to delete # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
+	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+<?php echo $gridOptions['gridId']?>_delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Seguro que quieres eliminar # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
 	var user_id=record.get('user_id');
 
 	<?php  $grantAcces=(isset($gridOptions['AllowAll']))?"|| 1==1":""; ?>
