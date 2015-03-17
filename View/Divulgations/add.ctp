@@ -1,9 +1,4 @@
-﻿<script type="text/javascript">
-function goBack()
-  {
-  window.history.back()
-  }
-</script>
+﻿
 
  <script type="text/javascript">
       function isNumberKey(evt)
