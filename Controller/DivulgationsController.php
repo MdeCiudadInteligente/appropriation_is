@@ -8,8 +8,9 @@ App::uses('AppController', 'Controller');
  */
 class DivulgationsController extends AppController {
 
-	var $uses = array('Person','Divulgation','Site','User','Agent','Neighborhood','SiteType','Commune');
+	var $uses = array('Person','Divulgation','Site','User','Agent','Neighborhood','SiteType','Commune','Thematic');
 	var $helpers = array('Html','Form','Csv','Js');
+	var $codeFirst='SE';
 /**
  * Components
  *
@@ -139,20 +140,36 @@ class DivulgationsController extends AppController {
 			
 				$this->Divulgation->create();
 				$data=$this->request->data;
+
+
+				$args=array(
+							'conditions' => array('Thematic.id' => $data['Divulgation']['thematic_id']),
+						    'recursive' => -1,
+						    'fields' => array('Thematic.prefix')
+					  );
+
+				$temas=$this->Thematic->find('list',$args);
+				$divulgation_count=$this->Divulgation->find('count');
+				$divulgation_count=$divulgation_count+1;
+				$theme_prefixes=implode($temas,'-');
+				$code=$this->codeFirst.$theme_prefixes.date('Y').'-'.$divulgation_count;
+
+
+
 				if($data!=''){
 				$data['Divulgation']['creation_date']=date('Y-m-d H:i:s');
 				$data['Divulgation']['user_id']=$usuario;
-				$data['Divulgation']['divulgation_name']='prueba_titulo';
+				$data['Divulgation']['divulgation_name']=$code;
 				}		
 				else{
-
 					$this->Session->setFlash(__('Los adjuntos no se han podido cargar correctamente'));
 				}
 				
-				
+
+
 				if ($this->Divulgation->save($data)) {
 						$this->Session->setFlash(__('The divulgation has been saved.'));
-						return $this->redirect(array('action' => 'index'));
+						//return $this->redirect(array('action' => 'index'));
 				}
 				else
 				{
@@ -166,7 +183,7 @@ class DivulgationsController extends AppController {
 		$thematicstypes = $this->Divulgation->Thematic->find('list',array('order' => array('Thematic.name' => 'ASC')));
 	
 		$this->set(compact('sites', 'populationTypes','DivTypes','thematicstypes'));
-	
+		
 		
 	}
 
