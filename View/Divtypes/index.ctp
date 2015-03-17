@@ -22,7 +22,7 @@
 				$gridOptions=array(
 						'gridId'=>'griddivtypes',
 						'gridTitle'=>'Tipo de Sensibilizaciones',
-						'height'=>800,
+						'height'=>801,
 						'serviceUrl'=>'Divtypes/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
