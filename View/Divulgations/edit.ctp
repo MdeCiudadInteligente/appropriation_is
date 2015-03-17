@@ -42,6 +42,7 @@ function goBack()
 		echo $this->Form->input('divulgation_description',array ('type'=>'textarea','label'=>'Descripción Sensibilización'));	
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));	
 		echo $this->Form->input('population_type_id',array('empty'=>'Seleccione tipo de población'));
+		echo $this->Form->input('thematic_id',array('empty'=>'Seleccione el tipo temática','options' => $thematicstypes));
 		
 	?>
 		<div class="input"  style="text-align:right">
