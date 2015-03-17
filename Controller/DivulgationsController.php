@@ -169,7 +169,7 @@ class DivulgationsController extends AppController {
 
 				if ($this->Divulgation->save($data)) {
 						$this->Session->setFlash(__('The divulgation has been saved.'));
-						//return $this->redirect(array('action' => 'index'));
+						return $this->redirect(array('action' => 'index'));
 				}
 				else
 				{
