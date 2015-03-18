@@ -22,6 +22,7 @@
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));
 		//echo $this->Form->input('Person');/*La persona la acbe de agregar*/
 		?>
+		
 		<div class="input"  style="text-align:right">
 				<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
 		</div>
@@ -38,6 +39,13 @@
 		<?php
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));	
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		<?php 
+		echo 'El peso máximo permitido para los archivos adjuntos es de 2 Megas';
+		?>
+		</div>	
+		<?php
 		echo $this->Form->input('meeting_adjunct',array('type'=>'file'/*,'multiple'*/));		
 		echo $this->Form->input('meeting_adjunct1',array('type'=>'file'));
 		echo $this->Form->input('meeting_adjunct2',array('type'=>'file'));
