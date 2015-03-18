@@ -38,7 +38,7 @@ class ThematicsController extends AppController {
 			$data['rows'][$count]=array(
 					'id'=>$thematics['Thematic']['id'],
 					'name'=>$thematics['Thematic']['name'],
-					'number'=>$thematics['Thematic']['number'],
+					'prefix'=>$thematics['Thematic']['prefix'],
 					'description'=>$thematics['Thematic']['description'],
 					'state'=>$thematics['Thematic']['state'],					
 					'creation_date'=>$thematics['Thematic']['creation_date'],

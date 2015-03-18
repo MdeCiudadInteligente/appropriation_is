@@ -6,9 +6,9 @@
 			<?php echo h($thematic['Thematic']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Numero temática'); ?></dt>
+		<dt><?php echo __('Prefijo temática'); ?></dt>
 		<dd>
-			<?php echo h($thematic['Thematic']['number']); ?>
+			<?php echo h($thematic['Thematic']['prefix']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Descripción'); ?></dt>

@@ -1,21 +1,10 @@
-﻿<script type="text/javascript">
-
-      function isNumberKey(evt)
-      {
-         var charCode = (evt.which) ? evt.which : event.keyCode
-         if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
- 
-         return true;
-      }
-</script>
-<div class="Thematics form mde-form">
+﻿<div class="Thematics form mde-form">
 <?php echo $this->Form->create('Thematic'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Thematics'); ?></legend>
 	<?php		
 		echo $this->Form->input('name',array('maxlength'=>'45','label'=>'Nombre temática'));		
-		echo $this->Form->input('number',array('type'=>'text','onkeypress'=>'return isNumberKey(event)','label'=>'Número temática'));
+		echo $this->Form->input('prefix',array('type'=>'text','label'=>'Prefijo'));
 		echo $this->Form->input('description',array ('type'=>'textarea'));
 		echo $this->Form->input('state',array ('options' => array ('1'=>'Activo','0'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
