@@ -75,7 +75,13 @@ $site=$this->request->data['Site'];
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		
 		
-		
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		<?php 
+		echo 'El peso máximo permitido para los archivos adjuntos es de 2 Megas';
+		?>
+		</div>	
+		<?php
 		echo $this->Form->input('accompaniment_adjunct',array('disabled'=>'disabled'));
 		?>
 		<div class="input textarea required" style="text-align: right;padding-right:36px">

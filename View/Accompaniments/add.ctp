@@ -39,6 +39,13 @@ function goBack()
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 		//echo $this->Form->input('adjunct');	
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		<?php 
+		echo 'El peso máximo permitido para los archivos adjuntos es de 2 Megas';
+		?>
+		</div>	
+		<?php
 		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file','allowEmpty' => true));
 		echo $this->Form->input('accompaniment_adjunct1',array('type'=>'file','allowEmpty' => true));
 		echo $this->Form->input('accompaniment_adjunct2',array('type'=>'file','allowEmpty' => true));

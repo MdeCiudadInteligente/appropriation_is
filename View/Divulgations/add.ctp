@@ -49,6 +49,13 @@
 	</div>	
 	<?php 		
 			echo $this->Form->input('activity_place',array('maxLength'=>'80'));
+			?>
+			<div class="input textarea required" style="text-align: right;padding-right:36px">
+			<?php 
+			echo 'El peso máximo permitido para los archivos adjuntos es de 2 Megas';
+			?>
+			</div>	
+			<?php
 			echo $this->Form->input('divulgation_adjunct',array('type'=>'file','label'=>'Adjunto Sensibilización'));
 			echo $this->Form->input('divulgation_adjunct1',array('type'=>'file','label'=>'Adjunto Sensibilización 1'));
 			echo $this->Form->input('divulgation_adjunct2',array('type'=>'file','label'=>'Adjunto Sensibilización 2'));

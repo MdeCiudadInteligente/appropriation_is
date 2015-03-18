@@ -53,8 +53,6 @@
 		<li><?php echo $this->Html->link(__('Edit Person'), array('action' => 'edit', $person['Person']['id_person'])); ?> </li>
 		<li><?php echo $this->Html->link(__('New Person'), array('action' => 'add')); ?> </li>
 		<?php }?>
-		<?php if ($usuario_level == '1'){?>
-		<li><?php echo $this->Form->postLink(__('Delete Person'), array('action' => 'delete', $person['Person']['id_person']), null, __('Are you sure you want to delete # %s?', $person['Person']['id_person'])); ?> </li>
-		<?php }?>
+		
 	</ul>
 </div>
