@@ -847,11 +847,20 @@ body{
 #container{
 		&.app-container{
 			&.isMobile{
-				.x-grid3-hd-inner{
-					height: 40px;
-					>a{
-						display: block;
-					}
+				.x-grid3-hd{
+				    height: 60px;
+				    font-size: 18px;
+				    text-align: center;
+				    .x-grid3-hd-inner{
+				    	height: 100%;
+				    	padding-top: 21px;
+				    	text-align: center;
+						>a{
+							display: block;
+							width: 28px;
+							background-size: 100%;
+						}
+				    }
 				}
 			}
 		}

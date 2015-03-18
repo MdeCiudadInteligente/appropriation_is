@@ -3,9 +3,6 @@ var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 
 $(document).ready(function(){
 	app=new App;
-
-
-
 });
 
 
@@ -41,7 +38,7 @@ App.prototype.bind=function(){
     app.bindAutocompleteSites('.Site-autocomplete');
     app.removeRequired();
     app.setMobileNav();
-    if(!isMobile){
+    if(isMobile){
         app.setMobileScreen();
     }
 }
