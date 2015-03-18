@@ -43,7 +43,7 @@ $cakeDescription = __d('cake_dev', '');
 	<?php echo $this->Html->script('ext/ext-all-debug-w-comments.js');?>
 	<?php echo $this->Html->script('ext/RowExpander.js');?>
 	<?php echo $this->Html->script('ext/src/locale/ext-lang-es.js');?>
-	
+	<?php $body_class=( Configure::read('debug')>0)?'debugging':'production';?>
 
 	
 </head>
@@ -56,7 +56,7 @@ $cakeDescription = __d('cake_dev', '');
 		 <img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png">
 		</header>
 	</nav>
-	<div id="container" class="app-container">	
+	<div id="container" class="app-container <?php echo $body_class ?>">	
 		<div id="header">
 			<div class="top-head" style="background-image:url('<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/header.png')">
 					<img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/LogoMDEpata.png">
