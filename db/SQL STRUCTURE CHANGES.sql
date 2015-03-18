@@ -24,3 +24,5 @@ CREATE TABLE `appropriation_test`.`divulgations_thematics` (
     ON UPDATE NO ACTION);
 
 
+ALTER TABLE `appropriation_test`.`thematics` 
+DROP COLUMN `number`;
