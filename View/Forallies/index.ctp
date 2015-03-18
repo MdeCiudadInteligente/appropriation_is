@@ -16,22 +16,17 @@
 
 	<div class="right-block">
 		<div class="sites">
-			<h2><?php echo __('Sites'); ?></h2>
+			<h2><?php echo __('Forallies'); ?></h2>
 			<?php
 				$gridOptions=array(
-						'gridId'=>'gridSites',
-						'gridTitle'=>'Sitios',
+						'gridId'=>'gridForallies',
+						'gridTitle'=>'Forallies',
 						'height'=>800,
-						'serviceUrl'=>'Sites/index_service.json',
+						'serviceUrl'=>'Forallies/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"nsitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"telsitio",'header'=>'Teléfono','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"dir_sitio",'header'=>'Dirección','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"cor_sitio",'header'=>'Correo','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"bar_sitio",'header'=>'Barrio','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"tsitio",'header'=>'Tipo de sitio','sortable'=>true,'align'=>"left","column"=>true),
-						    array("dataIndex"=>"estado_sitio",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"nally",'header'=>'Aliado','sortable'=>true,'align'=>"left","column"=>true),
+						    array("dataIndex"=>"state_ally",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
 			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)

@@ -30,7 +30,7 @@ class DivtypesController extends AppController {
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
-		$Divtype=$this->Divtype->find('all',array('conditions'=>array('Divtype.state' => '1')));
+		$Divtype=$this->Divtype->find('all');
 		//$sitetype=$this->SiteType->find('all');
 		$count=0;
 		foreach ($Divtype as $key => $Divtype) {
