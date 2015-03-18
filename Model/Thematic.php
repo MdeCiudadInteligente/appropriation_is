@@ -90,7 +90,7 @@ class Thematic extends AppModel {
 				),
 			),
 );
-	public $hasMany = array(
+/*	public $hasMany = array(
 				'Divulgation' => array(
 						'className' => 'Divulgation',
 						'foreignKey' => 'thematic_id',
@@ -103,6 +103,22 @@ class Thematic extends AppModel {
 						'exclusive' => '',
 						'finderQuery' => '',
 						'counterQuery' => ''
-				)
+				),
+			
+	);*/
+public $hasAndBelongsToMany = array(
+			'Divulgation' => array(
+					'className' => 'Divulgation',
+					'joinTable' => 'divulgations_thematics',
+					'foreignKey' => 'thematic_id',
+					'associationForeignKey' => 'divulgation_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
 	);
 }

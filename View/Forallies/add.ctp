@@ -4,6 +4,7 @@
 		<legend><?php echo __('Add Forally'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
+		echo $this->Form->input('state',array ('options' => array ('1'=>'Activo','0'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

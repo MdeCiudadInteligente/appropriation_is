@@ -240,6 +240,19 @@ class Divulgation extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
+			),
+			'Thematic' => array(
+					'className' => 'Thematic',
+					'joinTable' => 'divulgations_thematics',
+					'foreignKey' => 'divulgation_id',
+					'associationForeignKey' => 'thematic_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
 			)
 	);	
 }

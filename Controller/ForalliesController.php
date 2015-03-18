@@ -33,6 +33,7 @@ class ForalliesController extends AppController {
 		$forally=$this->Forally->find('all');
 
 		$count=0;
+		
 		foreach ($forally as $key => $forally) {
 			$data['rows'][$count]=array(
 					'id'=>$forally['Forally']['id'],
