@@ -141,11 +141,11 @@ class DivulgationsController extends AppController {
 				$this->Divulgation->create();
 				$data=$this->request->data;
 
-
 				$args=array(
-							'conditions' => array('Thematic.id' => $data['Divulgation']['thematic_id']),
+							'conditions' => array('Thematic.id' => $data['Thematic']['Thematic']),
 						    'recursive' => -1,
-						    'fields' => array('Thematic.prefix')
+						    'fields' => array('Thematic.prefix'),
+						    'limit'=>1
 					  );
 
 				$temas=$this->Thematic->find('list',$args);
@@ -153,8 +153,6 @@ class DivulgationsController extends AppController {
 				$divulgation_count=$divulgation_count+1;
 				$theme_prefixes=implode($temas,'-');
 				$code=$this->codeFirst.$theme_prefixes.date('Y').'-'.$divulgation_count;
-
-
 
 				if($data!=''){
 				$data['Divulgation']['creation_date']=date('Y-m-d H:i:s');

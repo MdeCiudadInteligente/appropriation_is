@@ -33,8 +33,16 @@
 			echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea','label'=>'Descripción Sensibilización'));		
 			echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 			echo $this->Form->input('population_type_id',array('empty'=>'Seleccione tipo de población'));
-			echo $this->Form->input('thematic_id',array('empty'=>'Seleccione el tipo temática','options' => $thematicstypes));
 	?>
+	<div class="seccion-divulgations">	
+			<div class="input" >
+				<label>Temáticas</label>
+				<input type="text"  class="Thematics-autocomplete" data-required="true" data-valcontainer=".results-input-thematics" data-emptymsg="Por favor ingresa mínimo una temática">
+				<div class="results-input-thematics" data-input-name="data[Thematic][Thematic][]">
+					
+				</div>
+			</div>
+	</div>	
 	<div class="input"  style="text-align:right">
 		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
 	</div>

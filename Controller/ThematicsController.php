@@ -143,4 +143,39 @@ class ThematicsController extends AppController {
 			$this->Session->setFlash(__('The thematic could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+/**
+ * Json get Site method
+ *
+ * @param string $query
+ * @return $array
+ */
+	public function getThematic() {
+	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$queryString=$_GET['q'];
+		$condition=array(
+					 'OR' => array(
+					    array('Thematic.name LIKE' => '%'.$queryString.'%'),
+					    array('Thematic.description LIKE' => '%'.$queryString.'%')
+		 			),'AND' => array(
+		 				array('Thematic.state' => 1 )
+		 			)
+		);
+		$fields=array('Thematic.name','Thematic.id','Thematic.description','Thematic.state','Thematic.prefix');
+		$thematics=$this->Thematic->find('all',array('fields'=>$fields,'recursive'=>0,'conditions'=>$condition));
+		foreach ($thematics as $key => $thematic) {
+				$json_data = array();
+				$json_data['id']=$thematic['Thematic']['id'];
+				$json_data['name']=$thematic['Thematic']['name'];
+				$json_data['prefijo']=$thematic['Thematic']['prefix'];
+				$json_data['description']=$thematic['Thematic']['description'];
+				$json_data['state']=$thematic['Thematic']['state'];
+				$data[]=$json_data;
+		}	
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+}
+
+
