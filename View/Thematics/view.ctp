@@ -16,11 +16,6 @@
 			<?php echo h($thematic['Thematic']['description']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Estado temática'); ?></dt>
-		<dd>
-			<?php echo h($thematic['Thematic']['state']); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">

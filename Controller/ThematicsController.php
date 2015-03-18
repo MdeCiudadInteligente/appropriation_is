@@ -32,7 +32,7 @@ class ThematicsController extends AppController {
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
 	
-		$thematics=$this->Thematic->find('all');
+		$thematics=$this->Thematic->find('all',array('conditions'=>array('Thematic.state' => '1')));
 		$count=0;
 		foreach ($thematics as $key => $thematics) {
 			$data['rows'][$count]=array(
