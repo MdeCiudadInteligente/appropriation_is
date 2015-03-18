@@ -1,13 +1,13 @@
 
 
 
-ALTER TABLE `appropriation_isp`.`thematics` 
+ALTER TABLE `thematics` 
 ADD COLUMN `prefix` VARCHAR(45) NULL AFTER `name`;
 
-ALTER TABLE `appropriation_isp`.`divulgations` 
+ALTER TABLE `divulgations` 
 ADD COLUMN `code` VARCHAR(45) NULL AFTER `id_divulgation`;
 
-CREATE TABLE `appropriation_test`.`divulgations_thematics` (
+CREATE TABLE `divulgations_thematics` (
   `divulgation_id` INT NOT NULL,
   `thematic_id` INT NOT NULL,
   INDEX `divulgations_thematics_ibfk_1_idx` (`divulgation_id` ASC),
@@ -24,5 +24,8 @@ CREATE TABLE `appropriation_test`.`divulgations_thematics` (
     ON UPDATE NO ACTION);
 
 
-ALTER TABLE `appropriation_test`.`thematics` 
+ALTER TABLE `thematics` 
 DROP COLUMN `number`;
+
+ALTER TABLE `thematics` 
+ADD COLUMN `state` INT(11) NULL AFTER `name`;
