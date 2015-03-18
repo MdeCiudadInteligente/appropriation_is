@@ -843,3 +843,16 @@ body{
 		line-height: 1.4;
 	}
 }
+
+#container{
+		&.app-container{
+			&.isMobile{
+				.x-grid3-hd-inner{
+					height: 40px;
+					>a{
+						display: block;
+					}
+				}
+			}
+		}
+}		

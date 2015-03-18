@@ -41,8 +41,9 @@ App.prototype.bind=function(){
     app.bindAutocompleteSites('.Site-autocomplete');
     app.removeRequired();
     app.setMobileNav();
-    if(isMobile)
+    if(!isMobile){
         app.setMobileScreen();
+    }
 }
 
 
@@ -148,8 +149,6 @@ App.prototype.setMobileNav=function(){
 
 App.prototype.setMobileScreen=function(){
     $('.app-container').addClass('isMobile');
-    $('.x-grid3-hd').addClass('x-grid-hd-hover');
-    console.log($('.x-grid-hd'));
 }
 
 App.prototype.bindAutocompleteSites=function(selector){
