@@ -30,7 +30,6 @@ DROP COLUMN `number`;
 ALTER TABLE `thematics` 
 ADD COLUMN `state` INT(11) NULL AFTER `name`;
 
+ALTER TABLE `appropriation_isp`.`divulgations` 
+DROP COLUMN `thematic_id`;
 
-ALTER TABLE  `forallies` ADD  `state` INT NOT NULL AFTER  `name`
-
-ALTER TABLE  `forallies` CHANGE  `modifiation_date`  `modification_date` TIMESTAMP NULL DEFAULT NULL
