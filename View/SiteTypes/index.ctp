@@ -26,7 +26,7 @@
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
 			                array("dataIndex"=>"t_sitio",'header'=>'Tipo de sitio','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"estado_ts",'header'=>'Estado tipo de sitio','sortable'=>true,'align'=>"center","column"=>true),
+			                array("dataIndex"=>"estado_ts",'header'=>'Estado tipo de sitio','sortable'=>true,'align'=>"center","column"=>false),
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)

@@ -6,11 +6,6 @@
 			<?php echo h($siteType['SiteType']['site_type']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Site Estado'); ?></dt>
-		<dd>
-			<?php echo h($siteType['SiteType']['site_estado']); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">
