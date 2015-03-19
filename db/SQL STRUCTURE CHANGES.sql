@@ -33,3 +33,28 @@ ADD COLUMN `state` INT(11) NULL AFTER `name`;
 ALTER TABLE `appropriation_isp`.`divulgations` 
 DROP COLUMN `thematic_id`;
 
+CREATE TABLE IF NOT EXISTS `per_type_tic_managers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(45) NOT NULL,
+  `profession` varchar(45) NOT NULL,
+  `age` int(11) NOT NULL,
+  `genre` varchar(45) NOT NULL,
+  `workplace` varchar(45) NOT NULL,
+  `fund_type` varchar(45) NOT NULL,
+  `adjunct` varchar(256) NOT NULL,
+  `adjunct1` varchar(256) NOT NULL,
+  `adjunct2` varchar(256) NOT NULL,
+  `adjunct3` varchar(256) NOT NULL,
+  `dir` varchar(80) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `schedule` varchar(45) NOT NULL,
+  `observations` text NOT NULL,
+  `type_person_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `type_person_id` (`type_person_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
