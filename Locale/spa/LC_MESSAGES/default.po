@@ -99,8 +99,14 @@ msgstr "Añadir Tarea"
 msgid "Actions"
 msgstr "Acciones"
 
+msgid "Edit Divtype"
+msgstr "Editar Tipo Sensibiliación"
+
 msgid "People"
 msgstr "Personas"
+
+msgid "Accompaniment"
+msgstr "Acompañamiento"
 
 msgid "Configuration"
 msgstr "Configuración"
@@ -125,6 +131,15 @@ msgstr "Descripción"
 
 msgid "State"
 msgstr "Estado"
+
+msgid "User"
+msgstr "Usuario"
+
+msgid "The divtype has been saved."
+msgstr "El Tipo de sensibilización se ha guardado."
+
+msgid "The divtype has been deleted."
+msgstr "El Tipo de sensibilización ha sido eliminado."
 
 msgid "Add Thematics"
 msgstr "Agregar Temática"

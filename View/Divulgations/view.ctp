@@ -92,10 +92,7 @@
 		if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'){?>
 		<li><?php echo $this->Html->link(__('Nueva Sensibilización'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Editar Sensibilización'), array('action' => 'edit', $divulgation['Divulgation']['id_divulgation'])); ?> </li>
-		<?php }?>
-		<?php if ($usuario_level == '1'){?>
-		<li><?php echo $this->Form->postLink(__('Eliminar Sensibilización'), array('action' => 'delete', $divulgation['Divulgation']['id_divulgation']), null, __('Are you sure you want to delete # %s?', $divulgation['Divulgation']['id_divulgation'])); ?> </li>
-		<?php }?>
+		<?php }?>	
 		<li><?php echo $this->Html->link(__('Lista Sensibilizaciones'), array('action' => 'index')); ?> </li>
 		
 	</ul>

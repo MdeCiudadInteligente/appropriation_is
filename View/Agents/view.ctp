@@ -56,7 +56,7 @@
 				if ($usuario_level == '1'){?>
 		<li><?php echo $this->Html->link(__('New Agent'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Agent'), array('action' => 'edit', $agent['Agent']['id_agent'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $agent['Agent']['id_agent']), null, __('Are you sure you want to delete # %s?', $agent['Agent']['id_agent'])); ?> </li>
+		<li><?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $agent['Agent']['id_agent']), null, __('Are you sure you want to delete # %s?', $agent['Agent']['id_agent'])); ?> </li>
 		<?php }  ?>
 		<li><?php echo $this->Html->link(__('List Agents'), array('action' => 'index')); ?> </li>
 		

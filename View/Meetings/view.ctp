@@ -82,9 +82,8 @@
 		if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'){?>	
 		<li><?php echo $this->Html->link(__('New Meeting'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Meeting'), array('action' => 'edit', $meeting['Meeting']['id_meeting'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Meeting'), array('action' => 'delete', $meeting['Meeting']['id_meeting']), null, __('Are you sure you want to delete # %s?', $meeting['Meeting']['id_meeting'])); ?> </li>
-		<?php }?>
 		<li><?php echo $this->Html->link(__('List Meetings'), array('action' => 'index')); ?> </li>
+		<?php }?>
 				
 	</ul>
 </div>
