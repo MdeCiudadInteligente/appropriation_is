@@ -21,7 +21,7 @@
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level == '1'){?>	
 		<li><?php echo $this->Html->link(__('Edit Zone'), array('action' => 'edit', $zone['Zone']['id_zone'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Zone'), array('action' => 'delete', $zone['Zone']['id_zone']), null, __('Are you sure you want to delete # %s?', $zone['Zone']['id_zone'])); ?> </li>
+		<li><?php //echo $this->Form->postLink(__('Delete Zone'), array('action' => 'delete', $zone['Zone']['id_zone']), null, __('Are you sure you want to delete # %s?', $zone['Zone']['id_zone'])); ?> </li>
 		<li><?php echo $this->Html->link(__('New Zone'), array('action' => 'add')); ?> </li>
 		<?php }?>
 	</ul>

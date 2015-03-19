@@ -21,7 +21,7 @@
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level == '1'){?>	
 		<li><?php echo $this->Html->link(__('Edit Neighborhood'), array('action' => 'edit', $neighborhood['Neighborhood']['id_neighborhood'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $neighborhood['Neighborhood']['id_neighborhood']), null, __('Are you sure you want to delete # %s?', $neighborhood['Neighborhood']['id_neighborhood'])); ?> </li>
+		<li><?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $neighborhood['Neighborhood']['id_neighborhood']), null, __('Are you sure you want to delete # %s?', $neighborhood['Neighborhood']['id_neighborhood'])); ?> </li>
 		<li><?php echo $this->Html->link(__('New Neighborhood'), array('action' => 'add')); ?> </li>
 		<?php }?>		
 	</ul>
