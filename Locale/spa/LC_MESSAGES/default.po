@@ -175,7 +175,7 @@ msgid "Invalid neighborhood"
 msgstr "Barrio no válido"
 
 msgid "Invalid thematic"
-msgstr "Tem�tica no válido"
+msgstr "Temática no válido"
 
 msgid "The neighborhood could not be saved. Please, try again."
 msgstr "El barrio no se pudo guardar .Por favor , vuelva a intentarlo."
@@ -187,25 +187,25 @@ msgid "The population type has been deleted."
 msgstr "El tipo de población ha sido eliminado."
 
 msgid "The thematic has been deleted."
-msgstr "La tem�tica ha sido eliminado."
+msgstr "La temática ha sido eliminado."
 
 msgid "The accompaniment could not be deleted. Please, try again."
 msgstr "El acompañamiento no se pudo eliminar .Por favor , vuelva a intentarlo."
 
 msgid "The thematic could not be deleted. Please, try again."
-msgstr "La tem�tica no se pudo eliminar .Por favor , vuelva a intentarlo."
+msgstr "La temática no se pudo eliminar .Por favor , vuelva a intentarlo."
 
 msgid "The population type could not be deleted. Please, try again."
 msgstr "El tipo de población no se pudo eliminar .Por favor , vuelva a intentarlo."
 
 msgid "The thematic could not be saved. Please, try again."
-msgstr "La tem�tica no se pudo guardar .Por favor , vuelva a intentarlo."
+msgstr "La temática no se pudo guardar .Por favor , vuelva a intentarlo."
 
 msgid "The population type has been saved."
 msgstr "El tipo de población se ha guardado."
 
 msgid "The thematic has been saved."
-msgstr "La tem�tica se ha guardado."
+msgstr "La temática se ha guardado."
 
 msgid "The zone has been saved."
 msgstr "La zona se ha guardado."
