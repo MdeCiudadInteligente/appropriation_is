@@ -24,7 +24,6 @@
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li> 
 		<li><?php echo $this->Html->link(__('Edit Thematic'), array('action' => 'edit', $thematic['Thematic']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('New Thematic'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $thematic['Thematic']['id']), null, __('Seguro que quieres eliminar # %s?', $thematic['Thematic']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Thematics'), array('action' => 'index')); ?> </li>
 	</ul>
 </div>

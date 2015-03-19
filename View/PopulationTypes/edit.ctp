@@ -16,8 +16,7 @@
 		<li><?php echo $this->Html->link(__('List Population Types'), array('action' => 'index')); ?></li>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level == '1'){?>	
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('PopulationType.id_population_type')), null, __('Are you sure you want to delete # %s?', $this->Form->value('PopulationType.id_population_type'))); ?></li>
-        <li><?php echo $this->Html->link(__('New Population Type'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Population Type'), array('action' => 'add')); ?></li>
 		<?php }?>
 		</ul>
 </div>

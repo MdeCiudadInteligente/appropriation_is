@@ -32,7 +32,6 @@
 		<li><?php echo $this->Html->link(__('List Sites'), array('action' => 'index')); ?></li>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level == '1'){?>	
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Site.id_site')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Site.id_site'))); ?></li>
 		<li><?php echo $this->Html->link(__('New Site'), array('action' => 'add')); ?> </li>
         <?php }?>
 	</ul>
