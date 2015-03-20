@@ -33,28 +33,70 @@ ADD COLUMN `state` INT(11) NULL AFTER `name`;
 ALTER TABLE `appropriation_isp`.`divulgations` 
 DROP COLUMN `thematic_id`;
 
-CREATE TABLE IF NOT EXISTS `per_type_tic_managers` (
+CREATE TABLE IF NOT EXISTS `forallies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(45) NOT NULL,
-  `profession` varchar(45) NOT NULL,
-  `age` int(11) NOT NULL,
-  `genre` varchar(45) NOT NULL,
-  `workplace` varchar(45) NOT NULL,
-  `fund_type` varchar(45) NOT NULL,
-  `adjunct` varchar(256) NOT NULL,
-  `adjunct1` varchar(256) NOT NULL,
-  `adjunct2` varchar(256) NOT NULL,
-  `adjunct3` varchar(256) NOT NULL,
-  `dir` varchar(80) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
-  `schedule` varchar(45) NOT NULL,
-  `observations` text NOT NULL,
-  `type_person_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `creation_date` datetime NOT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `type_person_id` (`type_person_id`)
+  `name` varchar(90) DEFAULT NULL,
+  `state` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `modification_date` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `forallies`
+--
+
+INSERT INTO `forallies` (`id`, `name`, `state`, `user_id`, `creation_date`, `modification_date`) VALUES
+(2, 'pruebillllalala', 1, 12, '2015-03-18 00:00:00', '2015-03-18 05:00:00'),
+(3, 'Pruebillllalalaluuu', 1, 12, '2015-03-18 17:25:23', '2015-03-18 05:00:00'),
+(4, 'Prueeeeeebaaaaababab', 0, 12, '2015-03-18 20:28:28', NULL),
+(5, 'Prub', 1, 12, '2015-03-18 20:41:06', NULL);
+
+
+CREATE TABLE IF NOT EXISTS `fortypes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(90) DEFAULT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `modification_date` timestamp NULL DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+CREATE TABLE `per_types` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
+  `creation_date` DATETIME NOT NULL,
+  `modification_date` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`id`));
+
+
+CREATE TABLE `per_professions` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(90) NOT NULL,
+  `state` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `creation_date` DATETIME NOT NULL,
+  `modification_date` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`id`));
+
+
+CREATE TABLE `per_trainer_schedule` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(90) NOT NULL,
+  `state` INT NOT NULL,
+  `per_trainer_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `creation_date` DATETIME NOT NULL,
+  `modification_date` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `per_trainer_types` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `state` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `creation_date` DATETIME NOT NULL,
+  `modification_date` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`id`));

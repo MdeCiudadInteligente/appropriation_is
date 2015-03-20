@@ -90,6 +90,42 @@
 
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
+
+
+
+msgid "New Fortype"
+msgstr "Nuevo tipo formaci�n"
+
+msgid "The fortype has been saved."
+msgstr "El Tipo de formación ha sido creado"
+
+msgid "The forally has been deleted."
+msgstr "El aliado ha sido eliminado"
+
+msgid "Add Forally"
+msgstr "Añadir aliado"
+
+msgid "The ally has been saved."
+msgstr "El aliado ha sido guardado"
+
+msgid "Edit Forally"
+msgstr "Editar aliado"
+
+msgid "Edit Forally"
+msgstr "Editar aliado"
+
+msgid "Forallies"
+msgstr "Aliados"
+
+msgid "New Forally"
+msgstr "Nuevo aliado"
+
+msgid "Forally"
+msgstr "Aliado"
+
+msgid "List Forallies"
+msgstr "Lista de aliados"
+
 msgid "The requested address %s was not found on this server."
 msgstr "La dirección solitiada %s no existe en el servidor"
 
