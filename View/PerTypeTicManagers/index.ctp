@@ -1,76 +1,56 @@
-<div class="perTypeTicManagers index">
-	<h2><?php echo __('Per Type Tic Managers'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('type'); ?></th>
-			<th><?php echo $this->Paginator->sort('profession'); ?></th>
-			<th><?php echo $this->Paginator->sort('age'); ?></th>
-			<th><?php echo $this->Paginator->sort('genre'); ?></th>
-			<th><?php echo $this->Paginator->sort('workplace'); ?></th>
-			<th><?php echo $this->Paginator->sort('fund_type'); ?></th>
-			<th><?php echo $this->Paginator->sort('adjunct'); ?></th>
-			<th><?php echo $this->Paginator->sort('adjunct1'); ?></th>
-			<th><?php echo $this->Paginator->sort('adjunct2'); ?></th>
-			<th><?php echo $this->Paginator->sort('adjunct3'); ?></th>
-			<th><?php echo $this->Paginator->sort('dir'); ?></th>
-			<th><?php echo $this->Paginator->sort('start_date'); ?></th>
-			<th><?php echo $this->Paginator->sort('end_date'); ?></th>
-			<th><?php echo $this->Paginator->sort('schedule'); ?></th>
-			<th><?php echo $this->Paginator->sort('observations'); ?></th>
-			<th><?php echo $this->Paginator->sort('type_person_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('creation_date'); ?></th>
-			<th><?php echo $this->Paginator->sort('modification_date'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($perTypeTicManagers as $perTypeTicManager): ?>
-	<tr>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['id']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['type']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['profession']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['age']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['genre']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['workplace']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['fund_type']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['adjunct']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['adjunct1']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['adjunct2']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['adjunct3']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['dir']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['start_date']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['end_date']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['schedule']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['observations']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['type_person_id']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['user_id']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['creation_date']); ?>&nbsp;</td>
-		<td><?php echo h($perTypeTicManager['PerTypeTicManager']['modification_date']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $perTypeTicManager['PerTypeTicManager']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $perTypeTicManager['PerTypeTicManager']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $perTypeTicManager['PerTypeTicManager']['id']), null, __('Are you sure you want to delete # %s?', $perTypeTicManager['PerTypeTicManager']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Per Type Tic Manager'), array('action' => 'add')); ?></li>
-	</ul>
-</div>
+<div class="perTypeTicManagers-cont app-grid-container">
+	<div class="left-block">
+			<div class="actions">
+			<h3><?php echo __('Actions'); ?></h3>
+			<ul>
+				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities')); ?> </li>
+				<li><?php echo $this->Html->link(__('New Per Type Tic Manager'), array('action' => 'add')); ?></li>
+				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
+			</ul>
+	</div>	
+<!-- 	End left block -->	
+
+	<div class="right-block">
+		<div class="people">
+			<h2><?php echo __('Gestor Tic'); ?></h2>
+			<?php
+				$gridOptions=array(
+						'gridId'=>'gridPerTypeTicManager',
+						'gridTitle'=>'Gestores Tic',
+						'height'=>800,
+						'serviceUrl'=>'PerTypeTicManager/index_service.json',
+						'fields'=>array(
+						    array("dataIndex"=>"id","column"=>false),
+			                array("dataIndex"=>"type",'header'=>'Tipo gestor tic','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"profession",'header'=>'Profesión','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"age",'header'=>'Edad','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"genre",'header'=>'Género','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"workplace",'header'=>'Lugar trabajo','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"fund_type",'header'=>'falta','sortable'=>true,'align'=>"center","column"=>true),
+							array("dataIndex"=>"adjunct",'header'=>'Adjunto','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"adjunct1",'header'=>'Adjunto 1','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"adjunct2",'header'=>'Adjunto 2','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"adjunct3",'header'=>'Adjunto 3','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"dir",'header'=>'Dirección','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"start_date",'header'=>'Fecha Inicio','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"end_date",'header'=>'Fecha Final','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"schedule",'header'=>'Horario','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"observations",'header'=>'Observaciones','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"type_person_id",'header'=>'Tipo de persona','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
+			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
+						),
+						'expander'=>false,
+						'AllowAll'=>true,
+						'printCrud'=>true,
+						'baseParams'=>array('start'=>0,'limit'=>100)
+				);
+			?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
+		</div>
+	<!-- End right block -->		
+	</div>	
+
+<!-- End gestor tic container -->
+</div>	

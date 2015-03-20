@@ -117,11 +117,41 @@ msgstr "Seguro que quieres eliminar # "
 msgid "Adjunct"
 msgstr "Adjunto"
 
+msgid "Add Per Type Tic Manager"
+msgstr "Agregar Gestor Tic"
+
+msgid "Age"
+msgstr "Edad"
+
+msgid "Start Date"
+msgstr "Fecha de Inicio"
+
+msgid "End Date"
+msgstr "Fecha de Final"
+
+msgid "Observations"
+msgstr "Observaciones"
+
+msgid "Schedule"
+msgstr "Horario"
+
+msgid "Type Person"
+msgstr "Tipo Persona"
+
+msgid "Genre"
+msgstr "G�nero"
+
+msgid "Workplace"
+msgstr "Lugar de Trabajo"
+
+msgid "Profession"
+msgstr "Profesión"
+
 msgid "List Thematics"
 msgstr "Lista Temática"
 
 msgid "Delete"
-msgstr "Lista tem�tica"
+msgstr "Lista temática"
 
 msgid "description"
 msgstr "Descripción"

@@ -1,4 +1,4 @@
-<div class="perTypeTicManagers form">
+<div class="perTypeTicManagers form mde-form"  >
 <?php echo $this->Form->create('PerTypeTicManager'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Per Type Tic Manager'); ?></legend>
@@ -9,19 +9,16 @@
 		echo $this->Form->input('genre');
 		echo $this->Form->input('workplace');
 		echo $this->Form->input('fund_type');
-		echo $this->Form->input('adjunct');
-		echo $this->Form->input('adjunct1');
-		echo $this->Form->input('adjunct2');
-		echo $this->Form->input('adjunct3');
-		echo $this->Form->input('dir');
-		echo $this->Form->input('start_date');
-		echo $this->Form->input('end_date');
+		echo $this->Form->input('adjunct',array('type'=>'file'));
+		echo $this->Form->input('adjunct1',array('type'=>'file'));
+		echo $this->Form->input('adjunct2',array('type'=>'file'));
+		echo $this->Form->input('adjunct3',array('type'=>'file'));
+		echo $this->Form->input('dir',array('type'=>'hidden'));
+		echo $this->Form->input('start_date',array ('class' => 'datepickerMDE','type'=>'text'));
+		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text'));
 		echo $this->Form->input('schedule');
 		echo $this->Form->input('observations');
 		echo $this->Form->input('type_person_id');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('creation_date');
-		echo $this->Form->input('modification_date');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

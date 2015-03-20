@@ -1,0 +1,11 @@
+CREATE TABLE `appropriation_isp`.`per_types` 
+(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `user_id` INT NULL,
+ 
+ `creation_date` DATETIME NULL,
+  `modification_date` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+ 
+ UNIQUE INDEX `id_UNIQUE` (`id` ASC));

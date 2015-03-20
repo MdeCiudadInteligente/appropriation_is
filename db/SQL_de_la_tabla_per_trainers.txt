@@ -1,0 +1,11 @@
+CREATE TABLE `appropriation_isp`.`per_trainers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `per_trainer_type_id` INT NULL,
+  `per_profession_id` INT NULL,
+  `per_people_type_id` INT NULL,
+  `per_trainer_fund_id` INT NULL,
+  `site_id` INT NULL,
+  `observations` TEXT NULL,
+  `state` INT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
