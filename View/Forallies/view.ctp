@@ -17,7 +17,6 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Forally'), array('action' => 'edit', $forally['Forally']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Forally'), array('action' => 'delete', $forally['Forally']['id']), null, __('Are you sure you want to delete # %s?', $forally['Forally']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Forallies'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Forally'), array('action' => 'add')); ?> </li>
 	</ul>

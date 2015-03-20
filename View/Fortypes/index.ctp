@@ -6,7 +6,7 @@
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 				if ($usuario_level == '1'){?>	
-				<li><?php echo $this->Html->link(__('New Forally'), array('action' => 'add')); ?></li>
+				<li><?php echo $this->Html->link(__('New Fortype'), array('action' => 'add')); ?></li>
 				<?php }?>
 				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
 			</ul>
@@ -19,14 +19,14 @@
 			<h2><?php echo __('Forallies'); ?></h2>
 			<?php
 				$gridOptions=array(
-						'gridId'=>'gridForallies',
-						'gridTitle'=>'Forallies',
+						'gridId'=>'gridFortypes',
+						'gridTitle'=>'Fortypes',
 						'height'=>800,
-						'serviceUrl'=>'Forallies/index_service.json',
+						'serviceUrl'=>'Fortypes/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"nally",'header'=>'Aliado','sortable'=>true,'align'=>"left","column"=>true),
-						    array("dataIndex"=>"state_ally",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"nfortype",'header'=>'Aliado','sortable'=>true,'align'=>"left","column"=>true),
+						    array("dataIndex"=>"state_fortype",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
 			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
@@ -44,3 +44,4 @@
 
 <!-- End meetings container -->
 </div>	
+
