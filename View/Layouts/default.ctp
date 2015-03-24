@@ -56,7 +56,7 @@ $cakeDescription = __d('cake_dev', '');
 		 <img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png">
 		</header>
 	</nav>
-	<div id="container" class="app-container <?php echo $body_class ?>">	
+	<div id="container" class="app-container debugging">	
 		<div id="header">
 			<div class="top-head" style="background-image:url('<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/header.png')">
 					<img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/LogoMDEpata.png">
