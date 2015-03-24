@@ -74,7 +74,6 @@ class ForalliesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->Forally->create();
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
@@ -91,17 +90,17 @@ class ForalliesController extends AppController {
 				$data['Forally']['user_id']=$usuario;
 								
 				if ($this->Forally->save($data)) {
-						$this->Session->setFlash(__('The ally has been saved.'));
+						$this->Session->setFlash(__('The forally has been saved.'));
 						return $this->redirect(array('action' => 'index'));
 				}
 				else
 				{
-					$this->Session->setFlash(__('The ally could not be saved . Please try again.'));
+					$this->Session->setFlash(__('The forally could not be saved. Please, try again.'));
 				}
 			}
 			else
 			{
-				$this->Session->setFlash(__('The ally already exists, please check.'));
+				$this->Session->setFlash(__('The forally already exists, please check.'));
 			}
 		}
 	}

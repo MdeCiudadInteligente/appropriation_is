@@ -17,6 +17,8 @@
 			<li><?php echo $this->Html->link(__('Barrios'), array('controller' => 'Neighborhoods', 'action' => 'index')); ?> </li>	
 			<li><?php echo $this->Html->link(__('Comunas'), array('controller' => 'Communes', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Zonas'), array('controller' => 'Zones', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Aliados'), array('controller' => 'Forallies', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Tipos de Formación'), array('controller' => 'Fortypes', 'action' => 'index')); ?> </li>
 			<?php }?>	
 			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '4'||$usuario_level == '5'){?>		
 			<li><?php echo $this->Html->link(__('Personas'), array('controller' => 'People', 'action' => 'index')); ?> </li>

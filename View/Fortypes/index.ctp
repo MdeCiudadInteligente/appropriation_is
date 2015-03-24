@@ -20,7 +20,7 @@
 			<?php
 				$gridOptions=array(
 						'gridId'=>'gridFortypes',
-						'gridTitle'=>'Fortypes',
+						'gridTitle'=>'Tipos de formación',
 						'height'=>800,
 						'serviceUrl'=>'Fortypes/index_service.json',
 						'fields'=>array(

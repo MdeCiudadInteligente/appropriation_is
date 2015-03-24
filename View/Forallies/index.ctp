@@ -20,7 +20,7 @@
 			<?php
 				$gridOptions=array(
 						'gridId'=>'gridForallies',
-						'gridTitle'=>'Forallies',
+						'gridTitle'=>'Aliados',
 						'height'=>800,
 						'serviceUrl'=>'Forallies/index_service.json',
 						'fields'=>array(

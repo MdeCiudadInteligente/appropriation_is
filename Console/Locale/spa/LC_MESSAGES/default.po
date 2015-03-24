@@ -91,31 +91,83 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid "The fortype could not be deleted. Please, try again."
+msgstr "El tipo de formaci贸n no pudo ser eliminado. Por favor trate nuevamente"
 
+msgid "The fortype has been deleted."
+msgstr "El tipo de formaci贸n ha sido eliminado"
+
+msgid "Invalid fortype"
+msgstr "Tipo de formaci贸n no v谩lido"
+
+msgid "The fortype could not be saved. Please, try again."
+msgstr "El tipo de formaci贸n no pudo ser guardado. Por favor, trate nuevamente"
+
+msgid "The fortype has been saved."
+msgstr "El tipo de formaci贸n ha sido guardado"
+
+msgid "Add Fortype"
+msgstr "A帽adir tipo de formaci贸n"
+
+msgid "Edit Fortype"
+msgstr "Editar tipo de formaci贸n"
+
+msgid "Fortype"
+msgstr "Tipo de formaci贸n"
+
+msgid "List Fortypes"
+msgstr "Lista tipo de formaci贸n"
+
+msgid "New Fortype"
+msgstr "Nuevo tipo de formaci贸n"
+
+msgid "Edit Fortype"
+msgstr "Editar tipo de formaci贸n"
+
+msgid "The forally has been deleted."
+msgstr "El aliado fue eliminado"
+
+msgid "The forally could not be deleted. Please, try again."
+msgstr "El aliado no pudo ser eliminado. Trate nuevamente"
+
+msgid "Invalid forally"
+msgstr "Aliafo no v谩lido"
+
+msgid "The forally already exists, please check."
+msgstr "El aliado existe actualmente, por favor verifique"
+
+msgid "Forallies"
+msgstr "Aliados"
+
+msgid "The forally has been saved."
+msgstr "El aliado fue guardado."
+
+msgid "The forally could not be saved. Please, try again."
+msgstr "El aliado no se pudo guardar. Por favor, intentalo de nuevo."
 
 msgid "The divtype has been saved."
-msgstr "El tipo de divulgaci髇 fue guardado."
+msgstr "El tipo de divulgaci贸n fue guardado."
 
 msgid "The divtype could not be deleted. Please, try again."
-msgstr "El tipo de divulgaci髇 no pudo ser eliminado. Por favor, trate nuevamente."
+msgstr "El tipo de divulgaci贸n no pudo ser eliminado. Por favor, trate nuevamente."
 
 msgid "The requested address %s was not found on this server."
 msgstr "La direcci贸n solitiada %s no existe en el servidor"
 
 msgid "Invalid divtype"
-msgstr "Tipo de divulgaci髇 no v醠ida"
+msgstr "Tipo de divulgaci贸n no v醠ida"
 
 msgid "The divtype has been deleted."
-msgstr "El tipo de divulgaci髇 ha sido eliminado"
+msgstr "El tipo de divulgaci贸n ha sido eliminado"
 
 msgid "Add Task"
 msgstr "A帽adir Tarea"
 
 msgid "The divtype could not be saved. Please, try again."
-msgstr "El tipo de divulgaci髇 no pudo ser guardado. Por favor trate nuevamente"
+msgstr "El tipo de divulgaci贸n no pudo ser guardado. Por favor trate nuevamente"
 
 msgid "The divtype already exists , please check."
-msgstr "El tipo de divulgaci髇 existe actualmente. Por favor trate nuevamente"
+msgstr "El tipo de divulgaci贸n existe actualmente. Por favor trate nuevamente"
 
 msgid "Actions"
 msgstr "Acciones"
@@ -127,7 +179,10 @@ msgid "Participant Number"
 msgstr "N煤mero participantes"
 
 msgid "Accompaniment Description"
-msgstr "Descripci贸n Acompa帽amiento "
+msgstr "Descripci贸n Acompa帽amiento"
+
+msgid "The forally already exists, please check."
+msgstr "Tipo Acompa帽amiento"
 
 msgid "Accompaniment Type"
 msgstr "Tipo Acompa帽amiento"

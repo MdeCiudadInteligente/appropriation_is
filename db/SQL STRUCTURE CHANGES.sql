@@ -100,3 +100,15 @@ CREATE TABLE `per_trainer_types` (
   `creation_date` DATETIME NOT NULL,
   `modification_date` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`));
+
+CREATE TABLE `appropriation_isp`.`per_trainer_funds`
+(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
+ 
+ `creation_date` DATETIME NULL,
+  `modification_date` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
