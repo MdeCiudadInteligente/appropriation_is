@@ -15,6 +15,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Person'); ?></legend>
 	<?php
+		echo $this->Form->input('id_person',array('type'=>'hidden'));
 		echo $this->Form->input('cedula',array('type'=>'text','onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('name',array('maxLength'=>50));
 		echo $this->Form->input('lastname',array('maxLength'=>50));

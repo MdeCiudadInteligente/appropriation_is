@@ -101,7 +101,7 @@ CREATE TABLE `per_trainer_types` (
   `modification_date` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`));
 
-CREATE TABLE `appropriation_isp`.`per_trainer_funds`
+CREATE TABLE `per_trainer_funds`
 (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
@@ -112,3 +112,36 @@ CREATE TABLE `appropriation_isp`.`per_trainer_funds`
   PRIMARY KEY (`id`),
   
   UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+CREATE TABLE `per_trainers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `per_trainer_type_id` INT NOT NULL,
+  `per_profession_id` INT NOT NULL,
+  `per_people_type_id` INT NOT NULL,
+  `per_trainer_fund_id` INT NOTNULL,
+  `site_id` INT NOT NULL,
+  `observations` TEXT NOT NULL,
+  `state` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+CREATE TABLE `appropriation_isp`.`per_types` 
+(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
+ 
+ `creation_date` DATETIME NULL,
+  `modification_date` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+ 
+ UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+CREATE TABLE IF NOT EXISTS `per_people_type` (
+  `id` int(11) NOT NULL,
+  `person_id` bigint(15) NOT NULL,
+  `per_type_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
