@@ -82,7 +82,7 @@ CREATE TABLE `per_professions` (
   PRIMARY KEY (`id`));
 
 
-CREATE TABLE `per_trainer_schedule` (
+CREATE TABLE `per_trainer_schedules` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(90) NOT NULL,
   `state` INT NOT NULL,
