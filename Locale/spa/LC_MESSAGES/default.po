@@ -104,6 +104,27 @@ msgstr "El aliado ha sido eliminado"
 msgid "Add Forally"
 msgstr "Añadir aliado"
 
+msgid "New Per Trainer"
+msgstr "Nuevo Formador"
+
+msgid "List Per Trainers"
+msgstr "Lista Formadores"
+
+msgid "Add Per Trainer"
+msgstr "Agregar Formador"
+
+msgid "Per Trainer Type"
+msgstr "Tipo Formador"
+
+msgid "Per Profession"
+msgstr "Profesión Formador"
+
+msgid "Per People Type"
+msgstr "Tipo Persona"
+
+msgid "Per Trainer Fund"
+msgstr "Fondo Formador"
+
 msgid "The forally already exists, please check."
 msgstr "El aliado ya existe, Por favor verifica."
 
