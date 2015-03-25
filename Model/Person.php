@@ -180,7 +180,20 @@ class Person extends AppModel {
 			'limit' => '',
 			'offset' => '',
 			'finderQuery' => '',
-		)
+		),
+	    'PerType' => array(
+					'className' => 'PerType',
+					'joinTable' => 'per_people_type',
+					'foreignKey' => 'person_id',
+					'associationForeignKey' => 'per_type_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
 	);
 
 }

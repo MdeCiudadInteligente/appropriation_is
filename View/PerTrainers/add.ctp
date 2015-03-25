@@ -15,7 +15,7 @@
 			</div>
 		</div>	
 	<?php 			
-		echo $this->Form->input('per_people_type_id',array('empty'=>'Seleccione el tipo de persona'));
+		//echo $this->Form->input('per_people_type_id',array('empty'=>'Seleccione el tipo de persona'));
 		echo $this->Form->input('per_trainer_fund_id',array('empty'=>'Seleccione el fondo'));
 		?>
 		
