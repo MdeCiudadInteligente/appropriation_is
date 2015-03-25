@@ -5,11 +5,36 @@
 	<?php
 		echo $this->Form->input('per_trainer_type_id');
 		echo $this->Form->input('per_profession_id');
+	?>
+<div class="seccion-person">	
+			<div class="input">
+				<label>Sitio</label>
+				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
+				<div class="results-input-site" data-input-name="data[PerTrainer][site_id]">			
+				</div>
+			</div>
+		</div>	
+	<?php 			
 		echo $this->Form->input('per_people_type_id');
 		echo $this->Form->input('per_trainer_fund_id');
-		echo $this->Form->input('site_id');
+		?>
+		
+		<div class="input"  style="text-align:right">
+				<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
+		</div>
+		<div class="seccion-person">	
+			<div class="input" >
+				<label>Personas</label>
+				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona">
+				<div class="results-input" data-input-name="data[Person][Person][]">
+					
+				</div>
+			</div>
+		</div>	
+
+		<?php
 		echo $this->Form->input('observations');
-		echo $this->Form->input('state');
+		echo $this->Form->input('state',array ('options' => array ('1'=>'Activo','0'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
