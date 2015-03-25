@@ -104,6 +104,9 @@ msgstr "El aliado ha sido eliminado"
 msgid "Add Forally"
 msgstr "Añadir aliado"
 
+msgid "The per trainer has been saved."
+msgstr "El formador ha sido guardado."
+
 msgid "New Per Trainer"
 msgstr "Nuevo Formador"
 

@@ -1,4 +1,4 @@
-<div class="divulgacion-cont app-grid-container">
+<div class="formador-cont app-grid-container">
 
 	<div class="left-block">
 		<div class="actions">
@@ -21,12 +21,12 @@
 			<?php
 				$gridOptions=array(
 						'gridId'=>'gridPerTrainer',
-						'gridTitle'=>'PerTrainer',
+						'gridTitle'=>'Formador',
 						'height'=>500,
 						'serviceUrl'=>'PerTrainers/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"site_name",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"observations",'header'=>'Observaciones','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"state",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),

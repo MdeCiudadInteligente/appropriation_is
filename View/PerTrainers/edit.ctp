@@ -6,14 +6,15 @@
 		echo $this->Form->input('per_trainer_type_id');
 		echo $this->Form->input('per_profession_id');
 	?>
-<div class="seccion-person">	
-			<div class="input">
-				<label>Sitio</label>
-				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
-				<div class="results-input-site" data-input-name="data[PerTrainer][site_id]">			
-				</div>
+	<div class="seccion-person">	
+		<div class="input">
+			<label>Sitio</label>
+			<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
+			<div class="results-input-site" data-input-name="data[PerTrainer][site_id]">
+				<input type="hidden" name="data[PerTrainer][site_id]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name']?>" id="val-input-site-<?php echo $site['id_site']?>">
 			</div>
-		</div>	
+		</div>
+	</div>	
 	<?php 			
 		echo $this->Form->input('per_people_type_id');
 		echo $this->Form->input('per_trainer_fund_id');
@@ -23,11 +24,14 @@
 				<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
 		</div>
 		<div class="seccion-person">	
-			<div class="input" >
+			<div class="input">
 				<label>Personas</label>
-				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona">
+				<input type="text" data-required="true" class="person-autocomplete" data-load="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona" >
 				<div class="results-input" data-input-name="data[Person][Person][]">
-					
+				<?php 
+					foreach ($currentPersons as $key => $Person) { ?>
+						<input type="hidden" name="data[Person][Person][]" value="<?php echo $Person['id_person'] ?>" data-display="<?php echo $Person['name']." ".$Person['lastname'] ?>" id="val-input-<?php echo $Person['id_person']?>">
+				<?php } ?>
 				</div>
 			</div>
 		</div>	
