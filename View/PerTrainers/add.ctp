@@ -3,8 +3,8 @@
 	<fieldset>
 		<legend><?php echo __('Add Per Trainer'); ?></legend>
 	<?php
-		echo $this->Form->input('per_trainer_type_id');
-		echo $this->Form->input('per_profession_id');
+		echo $this->Form->input('per_trainer_type_id',array('empty'=>'Seleccione el tipo de formador'));
+		echo $this->Form->input('per_profession_id',array('empty'=>'Seleccione la profesión'));
 	?>
 <div class="seccion-person">	
 			<div class="input">
@@ -15,8 +15,8 @@
 			</div>
 		</div>	
 	<?php 			
-		echo $this->Form->input('per_people_type_id');
-		echo $this->Form->input('per_trainer_fund_id');
+		echo $this->Form->input('per_people_type_id',array('empty'=>'Seleccione el tipo de persona'));
+		echo $this->Form->input('per_trainer_fund_id',array('empty'=>'Seleccione el fondo'));
 		?>
 		
 		<div class="input"  style="text-align:right">

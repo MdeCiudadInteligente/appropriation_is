@@ -35,13 +35,13 @@ class PerTrainersController extends AppController {
 		$count=0;
 		foreach ($PerTrainer as $key => $PerTrainer) {
 			$data['rows'][$count]=array(
-					'id'=>$divulgation['PerTrainer']['id'],
-					'sitio'=>$divulgation['Site']['site_name'],
-					'observations'=>$divulgation['PerTrainer']['observations'],
-					'state'=>$divulgation['PerTrainer']['state'],
-					'creation_date'=>$divulgation['PerTrainer']['creation_date'],
-					'modification_date'=>$divulgation['PerTrainer']['modification_date'],
-					'user_id'=>$divulgation['PerTrainer']['user_id'],
+					'id'=>$PerTrainer['PerTrainer']['id'],
+					'sitio'=>$PerTrainer['Site']['site_name'],
+					'observations'=>$PerTrainer['PerTrainer']['observations'],
+					'state'=>$PerTrainer['PerTrainer']['state'],
+					'creation_date'=>$PerTrainer['PerTrainer']['creation_date'],
+					'modification_date'=>$PerTrainer['PerTrainer']['modification_date'],
+					'user_id'=>$PerTrainer['PerTrainer']['user_id'],
 			);
 			$count++;
 		}
