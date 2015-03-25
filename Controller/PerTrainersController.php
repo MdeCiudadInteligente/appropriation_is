@@ -24,6 +24,30 @@ class PerTrainersController extends AppController {
 		$this->PerTrainer->recursive = 0;
 		$this->set('perTrainers', $this->Paginator->paginate());
 	}
+	
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$PerTrainer=$this->PerTrainer->find('all');
+		$count=0;
+		foreach ($PerTrainer as $key => $PerTrainer) {
+			$data['rows'][$count]=array(
+					'id'=>$divulgation['PerTrainer']['id'],
+					'sitio'=>$divulgation['Site']['site_name'],
+					'observations'=>$divulgation['PerTrainer']['observations'],
+					'state'=>$divulgation['PerTrainer']['state'],
+					'creation_date'=>$divulgation['PerTrainer']['creation_date'],
+					'modification_date'=>$divulgation['PerTrainer']['modification_date'],
+					'user_id'=>$divulgation['PerTrainer']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method
