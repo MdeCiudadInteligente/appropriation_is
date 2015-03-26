@@ -151,7 +151,7 @@ class PerTrainersController extends AppController {
 		$perTrainerFunds = $this->PerTrainer->PerTrainerFund->find('list');
 		$sites = $this->PerTrainer->Site->find('list');
 		$people = $this->PerTrainer->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
-		$this->request->data=compact('test','perTrainerTypes', 'perProfessions', 'perPeopleTypes', 'perTrainerFunds', 'sites', 'people');
+		$this->request->data=compact('people','perTrainerTypes', 'perProfessions', 'perPeopleTypes', 'perTrainerFunds', 'sites');
 	}
 
 /**

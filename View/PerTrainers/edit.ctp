@@ -1,7 +1,7 @@
 <div class="perTrainers form mde-form">
 <?php 	
-	$currentPersons=$this->request->data['Person'];
-	$site=$this->request->data['Site'];
+	$currentPersons=$this->request->data['people'];
+	$site=$this->request->data['sites'];
 	
 ?>
 <?php echo $this->Form->create('PerTrainer'); ?>
