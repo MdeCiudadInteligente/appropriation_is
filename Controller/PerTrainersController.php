@@ -98,7 +98,7 @@ class PerTrainersController extends AppController {
 					$data['PerTrainer']['creation_date']=date('Y-m-d H:i:s');
 					$data['PerTrainer']['user_id']=$usuario;
 					if ($this->PerTrainer->save($data)) {
-						$this->Session->setFlash(__('The per trainer has been saved.'));
+						$this->Session->setFlash(__('The trainer has been saved.'));
 						return $this->redirect(array('action' => 'index'));
 						
 					} else {
@@ -139,7 +139,7 @@ class PerTrainersController extends AppController {
 				$this->Session->setFlash(__('The per trainer has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The per trainer could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The trainer could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('PerTrainer.' . $this->PerTrainer->primaryKey => $id));
@@ -171,16 +171,22 @@ class PerTrainersController extends AppController {
 		$people_type_id=$PerTrainer['PerTrainer']['per_people_type_id'];
 		
 		
+		
 		if ($this->PerTrainer->delete()) {
 			
 			$PerPeopleTypesd = new PerPeopleTypesController;
 			
-			$per_people_response=$PerPeopleTypesd->delete($people_type_id);
+			$per_people_responsed=$PerPeopleTypesd->delete($people_type_id);
 			
-			
-			$this->Session->setFlash(__('The per trainer has been deleted.'));
+			if (!$per_people_responsed['success']){
+				$this->Session->setFlash(__($per_people_responsed['message']));
+			}
+			else{
+			    $this->Session->setFlash(__('The trainer has been deleted.'));
+			}
 		} else {
-			$this->Session->setFlash(__('The per trainer could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The trainer could not be deleted. Please, try again.'));
 		}
+		
 		return $this->redirect(array('action' => 'index'));
 	}}
