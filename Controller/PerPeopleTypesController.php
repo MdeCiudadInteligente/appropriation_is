@@ -45,12 +45,16 @@ class PerPeopleTypesController extends AppController {
  *
  * @return void
  */
-	public function add($people_id = null, $type_people=null) {
+	public function add($people_id = null, $type_people=null, $usuario=null) {
 		//if ($this->request->is('post')) {
-			
+				
+		
 		    	$this->PerPeopleType->create();
      			$data['PerPeopleType']['person_id']=$people_id;
 	    		$data['PerPeopleType']['per_type_id']=$type_people;
+	    		$data['PerPeopleType']['creation_date']=date('Y-m-d H:i:s');
+	    		$data['PerPeopleType']['user_id']=$usuario;
+	    			
 				$response['data']=$data;
 			if ($this->PerPeopleType->save($data)) {
 				$response['success']=true;
