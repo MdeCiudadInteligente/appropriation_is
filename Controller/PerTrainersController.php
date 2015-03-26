@@ -87,7 +87,7 @@ class PerTrainersController extends AppController {
 			
 			$PerPeopleTypes = new PerPeopleTypesController;
 
-			$per_people_response=$PerPeopleTypes->add($people_id,$type_people);
+			$per_people_response=$PerPeopleTypes->add($people_id,$type_people,$usuario);
 			
 			if ($per_people_response['success']){
 				
@@ -167,7 +167,18 @@ class PerTrainersController extends AppController {
 			throw new NotFoundException(__('Invalid per trainer'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+		
+		$PerTrainer=$this->PerTrainer->find('first',array('conditions'=>array('PerTrainer.id'=>$id)));
+		$people_type_id=$PerTrainer['PerTrainer']['per_people_type_id'];
+		
+		
 		if ($this->PerTrainer->delete()) {
+			
+			$PerPeopleTypesd = new PerPeopleTypesController;
+			
+			$per_people_response=$PerPeopleTypesd->delete($people_type_id);
+			
+			
 			$this->Session->setFlash(__('The per trainer has been deleted.'));
 		} else {
 			$this->Session->setFlash(__('The per trainer could not be deleted. Please, try again.'));
