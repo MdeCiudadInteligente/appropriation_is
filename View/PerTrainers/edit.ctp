@@ -1,4 +1,9 @@
 <div class="perTrainers form mde-form">
+<?php 	
+	$currentPersons=$this->request->data['Person'];
+	$site=$this->request->data['Site'];
+	
+?>
 <?php echo $this->Form->create('PerTrainer'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Per Trainer'); ?></legend>

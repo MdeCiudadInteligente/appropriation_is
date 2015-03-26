@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class PerTrainersController extends AppController {
-
+	var $uses = array('Person','PerTrainerType','PerProfession','PerPeopleType','PerTrainerFund','User','PerTrainer');
 /**
  * Components
  *
@@ -108,14 +108,15 @@ class PerTrainersController extends AppController {
 			}
 		} else {
 			$options = array('conditions' => array('PerTrainer.' . $this->PerTrainer->primaryKey => $id));
-			$this->request->data = $this->PerTrainer->find('first', $options);
+			$this->request->data = $this->PerTrainer->find('first', $options);			
 		}
 		$perTrainerTypes = $this->PerTrainer->PerTrainerType->find('list');
 		$perProfessions = $this->PerTrainer->PerProfession->find('list');
 		$perPeopleTypes = $this->PerTrainer->PerPeopleType->find('list');
 		$perTrainerFunds = $this->PerTrainer->PerTrainerFund->find('list');
 		$sites = $this->PerTrainer->Site->find('list');
-		$this->set(compact('perTrainerTypes', 'perProfessions', 'perPeopleTypes', 'perTrainerFunds', 'sites'));
+		$people = $this->PerTrainer->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
+		$this->request->data=compact('test','perTrainerTypes', 'perProfessions', 'perPeopleTypes', 'perTrainerFunds', 'sites', 'people');
 	}
 
 /**
