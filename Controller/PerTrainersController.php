@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::import('Controller', 'PerPeopleTypes');
 /**
  * PerTrainers Controller
  *
@@ -72,12 +73,46 @@ class PerTrainersController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->PerTrainer->create();
-			if ($this->PerTrainer->save($this->request->data)) {
-				$this->Session->setFlash(__('The per trainer has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The per trainer could not be saved. Please, try again.'));
+			
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
+			$people_id=$this->request->data['Person']['Person'][0];
+			$type_people='1';
+			
+			$this->set('people_id',$people_id);
+			
+			//$this->set(compact('people_id', 'type_people'));
+			
+			
+			$PerPeopleTypes = new PerPeopleTypesController;
+
+			$per_people_response=$PerPeopleTypes->add($people_id,$type_people);
+			
+			if ($per_people_response['success']){
+				
+				if($per_people_response['last_id']){
+					$per_people_id=$per_people_response['last_id'];
+					$data=$this->request->data;
+					$data['PerTrainer']['per_people_type_id']=$per_people_id;
+					$data['PerTrainer']['creation_date']=date('Y-m-d H:i:s');
+					$data['PerTrainer']['user_id']=$usuario;
+					if ($this->PerTrainer->save($data)) {
+						$this->Session->setFlash(__('The per trainer has been saved.'));
+						return $this->redirect(array('action' => 'index'));
+						
+					} else {
+						$this->Session->setFlash(__('The per trainer could not be saved. Please, try again.'));
+					}
+				}else{
+					$this->Session->setFlash(__('No hay id'));
+				}	
+								
+			}else{
+				$this->Session->setFlash(__($per_people_response['message']));
+				
 			}
+			
 		}
 
 		$perTrainerTypes = $this->PerTrainer->PerTrainerType->find('list',array('order' => array('PerTrainerType.name ASC')));

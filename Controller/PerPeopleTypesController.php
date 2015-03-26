@@ -45,16 +45,24 @@ class PerPeopleTypesController extends AppController {
  *
  * @return void
  */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->PerPeopleType->create();
-			if ($this->PerPeopleType->save($this->request->data)) {
-				$this->Session->setFlash(__('The per people type has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+	public function add($people_id = null, $type_people=null) {
+		//if ($this->request->is('post')) {
+			
+		    	$this->PerPeopleType->create();
+     			$data['PerPeopleType']['person_id']=$people_id;
+	    		$data['PerPeopleType']['per_type_id']=$type_people;
+				$response['data']=$data;
+			if ($this->PerPeopleType->save($data)) {
+				$response['success']=true;
+				$response['last_id']=$this->PerPeopleType->id;
+				$response['message']='The PerPeopleType was saved';
 			} else {
-				$this->Session->setFlash(__('The per people type could not be saved. Please, try again.'));
+				$response['success']=false;
+				$response['message']='The PerPeopleType was not saved';
+				$response['last_id']=false;
+			
 			}
-		}
+			return $response;
 	}
 
 /**
