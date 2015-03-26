@@ -121,10 +121,8 @@ class PerPeopleTypesController extends AppController {
 	public function delete($people_type_id = null) {	
 		//$this->request->onlyAllow('post', 'delete');	
 
-		if ($this->PerPeopleType->delete($people_type_id)) {
-			
+		if ($this->PerPeopleType->delete($people_type_id)) {		
 			$response['success']=true;
-		    $response['message']='The PerPeopleType was deleted';
 		    
 		} else {
 			$response['success']=false;
