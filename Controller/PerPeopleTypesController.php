@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class PerPeopleTypesController extends AppController {
-
+	var $uses = array('Person','PerPeopleType');
 /**
  * Components
  *
@@ -34,7 +34,7 @@ class PerPeopleTypesController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->PerPeopleType->exists($id)) {
-			throw new NotFoundException(__('Invalid per people type'));
+			throw new NotFoundException(__('Invalid people type'));
 		}
 		$options = array('conditions' => array('PerPeopleType.' . $this->PerPeopleType->primaryKey => $id));
 		$this->set('perPeopleType', $this->PerPeopleType->find('first', $options));
@@ -59,15 +59,42 @@ class PerPeopleTypesController extends AppController {
 			if ($this->PerPeopleType->save($data)) {
 				$response['success']=true;
 				$response['last_id']=$this->PerPeopleType->id;
-				$response['message']='The PerPeopleType was saved';
+				$response['message']='The PeopleType was saved';
 			} else {
 				$response['success']=false;
-				$response['message']='The PerPeopleType was not saved';
+				$response['message']='The PeopleType was not saved';
 				$response['last_id']=false;
 			
 			}
 			return $response;
 	}
+	
+		public function findperson($idper_people_type = null) {
+			
+			$idperson=$this->PerPeopleType->find('first',array('conditions'=>array('PerPeopleType.id'=>$idper_people_type)));
+			
+			if($idperson != null){
+				$idper_people_typef=$idperson['PerPeopleType']['person_id'];
+				
+					if($idper_people_typef != null){
+						
+						$idpersonfi=$this->Person->find('first',array('conditions'=>array('Person.id_person'=>$idper_people_typef),'fields'=>array('Person.id_person','Person.completename')));
+						$personfin['personname']=$idpersonfi['Person']['completename'];
+					}
+					else{
+						$personfin['success']=false;
+						$personfin['message']='The idperson was empty';
+					}
+					
+				$personfin['success']=true;
+			}
+			else{
+				$personfin['success']=false;
+				$personfin['message']='The idper_people_typef was empty';
+			}
+			
+			return $personfin;
+		}
 
 /**
  * edit method
@@ -78,14 +105,14 @@ class PerPeopleTypesController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->PerPeopleType->exists($id)) {
-			throw new NotFoundException(__('Invalid per people type'));
+			throw new NotFoundException(__('Invalid people type'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->PerPeopleType->save($this->request->data)) {
-				$this->Session->setFlash(__('The per people type has been saved.'));
+				$this->Session->setFlash(__('The people type has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The per people type could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The people type could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('PerPeopleType.' . $this->PerPeopleType->primaryKey => $id));
@@ -100,16 +127,36 @@ class PerPeopleTypesController extends AppController {
  * @param string $id
  * @return void
  */
+	
+	/*
 	public function delete($id = null) {
 		$this->PerPeopleType->id = $id;
 		if (!$this->PerPeopleType->exists()) {
 			throw new NotFoundException(__('Invalid per people type'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+		
 		if ($this->PerPeopleType->delete()) {
 			$this->Session->setFlash(__('The per people type has been deleted.'));
 		} else {
 			$this->Session->setFlash(__('The per people type could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	*/
+	
+	public function delete($people_type_id = null) {	
+		//$this->request->onlyAllow('post', 'delete');	
+
+		if ($this->PerPeopleType->delete($people_type_id)) {		
+			$response['success']=true;
+		    
+		} else {
+			$response['success']=false;
+			$response['message']='The PeopleType was not deleted';
+		}
+		
+		return $response;
+	}
+	
+	}

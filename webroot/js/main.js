@@ -77,7 +77,6 @@ App.prototype.bindAutocompletePersona=function(selector){
 
     if($(selector).length){
         var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
-        console.log($(selector).data('limit'));
         var serivce_route=absPath+"People/getPerson.json";
         $(selector).autoSuggest(serivce_route,
             {   minChars: 2,

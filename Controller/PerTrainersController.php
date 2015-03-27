@@ -8,7 +8,11 @@ App::import('Controller', 'PerPeopleTypes');
  * @property PaginatorComponent $Paginator
  */
 class PerTrainersController extends AppController {
+<<<<<<< HEAD
 	var $uses = array('Person','PerTrainerType','PerProfession','PerPeopleType','PerTrainerFund','User','PerTrainer');
+=======
+	var $uses = array('Person','PerTrainer');
+>>>>>>> e4c3ef89474a3ce52b073c5a39beb3e279db82b7
 /**
  * Components
  *
@@ -33,11 +37,26 @@ class PerTrainersController extends AppController {
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
 		$PerTrainer=$this->PerTrainer->find('all');
+		
+		
 		$count=0;
 		foreach ($PerTrainer as $key => $PerTrainer) {
+			
+			
+			$idper_people_type=$PerTrainer['PerTrainer']['per_people_type_id'];
+			$PerPeopleTypes = new PerPeopleTypesController;
+				
+			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
+			
+			debug($per_trainers_responsefp);
+			
 			$data['rows'][$count]=array(
 					'id'=>$PerTrainer['PerTrainer']['id'],
-					'sitio'=>$PerTrainer['Site']['site_name'],
+					'people'=>$per_trainers_responsefp['personname'],
+					'per_trainer_type'=>$PerTrainer['PerTrainerType']['name'],
+					'per_profession'=>$PerTrainer['PerProfession']['name'],
+					'per_trainer_fund'=>$PerTrainer['PerTrainerFund']['name'],
+					'site'=>$PerTrainer['Site']['site_name'],
 					'observations'=>$PerTrainer['PerTrainer']['observations'],
 					'state'=>$PerTrainer['PerTrainer']['state'],
 					'creation_date'=>$PerTrainer['PerTrainer']['creation_date'],
@@ -59,7 +78,7 @@ class PerTrainersController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->PerTrainer->exists($id)) {
-			throw new NotFoundException(__('Invalid per trainer'));
+			throw new NotFoundException(__('Invalid trainer'));
 		}
 		$options = array('conditions' => array('PerTrainer.' . $this->PerTrainer->primaryKey => $id));
 		$this->set('perTrainer', $this->PerTrainer->find('first', $options));
@@ -98,11 +117,11 @@ class PerTrainersController extends AppController {
 					$data['PerTrainer']['creation_date']=date('Y-m-d H:i:s');
 					$data['PerTrainer']['user_id']=$usuario;
 					if ($this->PerTrainer->save($data)) {
-						$this->Session->setFlash(__('The per trainer has been saved.'));
+						$this->Session->setFlash(__('The trainer has been saved.'));
 						return $this->redirect(array('action' => 'index'));
 						
 					} else {
-						$this->Session->setFlash(__('The per trainer could not be saved. Please, try again.'));
+						$this->Session->setFlash(__('The trainer could not be saved. Please, try again.'));
 					}
 				}else{
 					$this->Session->setFlash(__('No hay id'));
@@ -132,18 +151,41 @@ class PerTrainersController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->PerTrainer->exists($id)) {
-			throw new NotFoundException(__('Invalid per trainer'));
+			throw new NotFoundException(__('Invalid trainer'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->PerTrainer->save($this->request->data)) {
-				$this->Session->setFlash(__('The per trainer has been saved.'));
+				$this->Session->setFlash(__('The trainer has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The per trainer could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The trainer could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('PerTrainer.' . $this->PerTrainer->primaryKey => $id));
+<<<<<<< HEAD
 			$this->request->data = $this->PerTrainer->find('first', $options);			
+=======
+			$this->request->data = $this->PerTrainer->find('first', $options);
+			
+			$idper_people_type=$this->request->data['PerTrainer']['per_people_type_id'];
+			
+			$PerPeopleTypes = new PerPeopleTypesController;
+			
+			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
+			
+				if ($per_trainers_responsefp['success']){
+					
+					if(!$per_trainers_responsefp['personname']){
+						$this->Session->setFlash(__('Do not name the person was obtained'));
+					}
+				}
+				else{
+					$this->Session->setFlash(__($per_trainers_responsefp['message']));
+				}
+
+			$this->set('per_trainers_responsefp',$per_trainers_responsefp);
+			
+>>>>>>> e4c3ef89474a3ce52b073c5a39beb3e279db82b7
 		}
 		$perTrainerTypes = $this->PerTrainer->PerTrainerType->find('list');
 		$perProfessions = $this->PerTrainer->PerProfession->find('list');
@@ -164,7 +206,7 @@ class PerTrainersController extends AppController {
 	public function delete($id = null) {
 		$this->PerTrainer->id = $id;
 		if (!$this->PerTrainer->exists()) {
-			throw new NotFoundException(__('Invalid per trainer'));
+			throw new NotFoundException(__('Invalid trainer'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		
@@ -172,16 +214,22 @@ class PerTrainersController extends AppController {
 		$people_type_id=$PerTrainer['PerTrainer']['per_people_type_id'];
 		
 		
+		
 		if ($this->PerTrainer->delete()) {
 			
 			$PerPeopleTypesd = new PerPeopleTypesController;
 			
-			$per_people_response=$PerPeopleTypesd->delete($people_type_id);
+			$per_people_responsed=$PerPeopleTypesd->delete($people_type_id);
 			
-			
-			$this->Session->setFlash(__('The per trainer has been deleted.'));
+			if (!$per_people_responsed['success']){
+				$this->Session->setFlash(__($per_people_responsed['message']));
+			}
+			else{
+			    $this->Session->setFlash(__('The trainer has been deleted.'));
+			}
 		} else {
-			$this->Session->setFlash(__('The per trainer could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The trainer could not be deleted. Please, try again.'));
 		}
+		
 		return $this->redirect(array('action' => 'index'));
 	}}

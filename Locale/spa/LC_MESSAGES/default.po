@@ -91,9 +91,20 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid "The idperson was empty"
+msgstr "No se encontr贸 el idper_people_typef"
+
+msgid "The idper_people_typef was empty"
+msgstr "No se encontr贸 el idper_people_typef"
+
+msgid "Do not name the person was obtained"
+msgstr "No se obtuvo el nombre de la persona"
+
+msgid "Do not name the person was obtained"
+msgstr "No se obtuvo el nombre de la persona"
 
 msgid "New Fortype"
-msgstr "Nuevo tipo formaci髇"
+msgstr "Nuevo tipo formaci贸n"
 
 msgid "The fortype has been saved."
 msgstr "El Tipo de formaci贸n ha sido creado"

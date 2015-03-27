@@ -91,6 +91,42 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid "The people type has been saved."
+msgstr "El tipo de persona ha sido guardada"
+
+msgid "The trainer could not be deleted. Please, try again."
+msgstr "El entrenador no ha sido eliminado. Por favor trate nuevamente"
+
+msgid "The trainer has been deleted."
+msgstr "El entrenador ha sido eliminado"
+
+msgid "The trainer could not be saved. Please, try again."
+msgstr "El entrenador no ha sido guardado. Por favor trate nuevamente"
+
+msgid "The trainer has been saved."
+msgstr "El entrenador ha sido guardado"
+
+msgid "The trainer could not be saved. Please, try again."
+msgstr "El entrenador no ha sido guardado.Por favor trate nuevamente"
+
+msgid "Invalid trainer"
+msgstr "Entrenador no válido"
+
+msgid "The people type could not be saved. Please, try again."
+msgstr "El tipo de persona no ha sido guardado. Pruebe nuevamente"
+
+msgid "Invalid people type"
+msgstr "El tipo de persona es no válido"
+
+msgid "The PeopleType was not deleted"
+msgstr "El tipo de persona no ha sido eliminado"
+
+msgid "The PeopleType was saved"
+msgstr "El tipo de persona fue guardado exitosamente"
+
+msgid "The PeopleType was not saved"
+msgstr "El tipo de persona no fue guardado. Trate nuevamente"
+
 msgid "The fortype could not be deleted. Please, try again."
 msgstr "El tipo de formación no pudo ser eliminado. Por favor trate nuevamente"
 

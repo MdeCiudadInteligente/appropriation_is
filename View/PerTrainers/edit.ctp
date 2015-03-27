@@ -1,10 +1,16 @@
 <div class="perTrainers form mde-form">
+<<<<<<< HEAD
 <?php 	
 	$currentPersons=$this->request->data['people'];
 	$site=$this->request->data['sites'];
 	
 ?>
 <?php echo $this->Form->create('PerTrainer'); ?>
+=======
+<?php echo $this->Form->create('PerTrainer'); 
+	$site=$this->request->data['Site'];
+?>
+>>>>>>> e4c3ef89474a3ce52b073c5a39beb3e279db82b7
 	<fieldset>
 		<legend><?php echo __('Edit Per Trainer'); ?></legend>
 	<?php
@@ -30,14 +36,8 @@
 		</div>
 		<div class="seccion-person">	
 			<div class="input">
-				<label>Personas</label>
-				<input type="text" data-required="true" class="person-autocomplete" data-load="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona" >
-				<div class="results-input" data-input-name="data[Person][Person][]">
-				<?php 
-					foreach ($currentPersons as $key => $Person) { ?>
-						<input type="hidden" name="data[Person][Person][]" value="<?php echo $Person['id_person'] ?>" data-display="<?php echo $Person['name']." ".$Person['lastname'] ?>" id="val-input-<?php echo $Person['id_person']?>">
-				<?php } ?>
-				</div>
+				<label>Persona</label>
+				<div><?php echo $per_trainers_responsefp['personname']; ?></div>
 			</div>
 		</div>	
 
