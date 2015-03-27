@@ -26,7 +26,7 @@
 						'serviceUrl'=>'PerTrainers/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"site_name",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"site",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"observations",'header'=>'Observaciones','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"state",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),

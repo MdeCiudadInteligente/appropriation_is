@@ -37,7 +37,7 @@ class PerTrainersController extends AppController {
 		foreach ($PerTrainer as $key => $PerTrainer) {
 			$data['rows'][$count]=array(
 					'id'=>$PerTrainer['PerTrainer']['id'],
-					'sitio'=>$PerTrainer['Site']['site_name'],
+					'site'=>$PerTrainer['Site']['site_name'],
 					'observations'=>$PerTrainer['PerTrainer']['observations'],
 					'state'=>$PerTrainer['PerTrainer']['state'],
 					'creation_date'=>$PerTrainer['PerTrainer']['creation_date'],
@@ -59,7 +59,7 @@ class PerTrainersController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->PerTrainer->exists($id)) {
-			throw new NotFoundException(__('Invalid per trainer'));
+			throw new NotFoundException(__('Invalid trainer'));
 		}
 		$options = array('conditions' => array('PerTrainer.' . $this->PerTrainer->primaryKey => $id));
 		$this->set('perTrainer', $this->PerTrainer->find('first', $options));
@@ -102,7 +102,7 @@ class PerTrainersController extends AppController {
 						return $this->redirect(array('action' => 'index'));
 						
 					} else {
-						$this->Session->setFlash(__('The per trainer could not be saved. Please, try again.'));
+						$this->Session->setFlash(__('The trainer could not be saved. Please, try again.'));
 					}
 				}else{
 					$this->Session->setFlash(__('No hay id'));
@@ -132,11 +132,11 @@ class PerTrainersController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->PerTrainer->exists($id)) {
-			throw new NotFoundException(__('Invalid per trainer'));
+			throw new NotFoundException(__('Invalid trainer'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->PerTrainer->save($this->request->data)) {
-				$this->Session->setFlash(__('The per trainer has been saved.'));
+				$this->Session->setFlash(__('The trainer has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The trainer could not be saved. Please, try again.'));
@@ -163,7 +163,7 @@ class PerTrainersController extends AppController {
 	public function delete($id = null) {
 		$this->PerTrainer->id = $id;
 		if (!$this->PerTrainer->exists()) {
-			throw new NotFoundException(__('Invalid per trainer'));
+			throw new NotFoundException(__('Invalid trainer'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		
