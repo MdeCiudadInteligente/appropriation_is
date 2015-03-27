@@ -33,8 +33,6 @@ class PerTrainersController extends AppController {
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
 		$PerTrainer=$this->PerTrainer->find('all');
-		
-		
 		$count=0;
 		foreach ($PerTrainer as $key => $PerTrainer) {
 			
@@ -43,8 +41,7 @@ class PerTrainersController extends AppController {
 			$PerPeopleTypes = new PerPeopleTypesController;
 				
 			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
-			
-			debug($per_trainers_responsefp);
+		
 			
 			$data['rows'][$count]=array(
 					'id'=>$PerTrainer['PerTrainer']['id'],
