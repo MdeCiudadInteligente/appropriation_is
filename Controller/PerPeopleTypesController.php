@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class PerPeopleTypesController extends AppController {
-
+	var $uses = array('Person','PerPeopleType');
 /**
  * Components
  *
@@ -68,6 +68,33 @@ class PerPeopleTypesController extends AppController {
 			}
 			return $response;
 	}
+	
+		public function findperson($idper_people_type = null) {
+			
+			$idperson=$this->PerPeopleType->find('first',array('conditions'=>array('PerPeopleType.id'=>$idper_people_type)));
+			
+			if($idperson != null){
+				$idper_people_typef=$idperson['PerPeopleType']['person_id'];
+				
+					if($idper_people_typef != null){
+						
+						$idpersonfi=$this->Person->find('first',array('conditions'=>array('Person.id_person'=>$idper_people_typef),'fields'=>array('Person.id_person','Person.completename')));
+						$personfin['personname']=$idpersonfi['Person']['completename'];
+					}
+					else{
+						$personfin['success']=false;
+						$personfin['message']='The idperson was empty';
+					}
+					
+				$personfin['success']=true;
+			}
+			else{
+				$personfin['success']=false;
+				$personfin['message']='The idper_people_typef was empty';
+			}
+			
+			return $personfin;
+		}
 
 /**
  * edit method

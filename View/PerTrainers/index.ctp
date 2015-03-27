@@ -26,6 +26,10 @@
 						'serviceUrl'=>'PerTrainers/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
+							array("dataIndex"=>"people",'header'=>'Tipo de formador','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"per_trainer_type",'header'=>'Tipo de formador','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"per_profession",'header'=>'Tipo de profesión','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"per_trainer_fund",'header'=>'Tipo de fondo','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"site",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"observations",'header'=>'Observaciones','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"state",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>true),
