@@ -8,9 +8,7 @@ App::import('Controller', 'PerPeopleTypes');
  * @property PaginatorComponent $Paginator
  */
 class PerTrainersController extends AppController {
-
 	var $uses = array('Person','PerTrainer');
-
 /**
  * Components
  *
@@ -35,6 +33,8 @@ class PerTrainersController extends AppController {
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
 		$PerTrainer=$this->PerTrainer->find('all');
+		
+		
 		$count=0;
 		foreach ($PerTrainer as $key => $PerTrainer) {
 			
@@ -43,7 +43,8 @@ class PerTrainersController extends AppController {
 			$PerPeopleTypes = new PerPeopleTypesController;
 				
 			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
-		
+			
+			debug($per_trainers_responsefp);
 			
 			$data['rows'][$count]=array(
 					'id'=>$PerTrainer['PerTrainer']['id'],
@@ -158,8 +159,11 @@ class PerTrainersController extends AppController {
 		} else {
 			$options = array('conditions' => array('PerTrainer.' . $this->PerTrainer->primaryKey => $id));
 			$this->request->data = $this->PerTrainer->find('first', $options);
+			
 			$idper_people_type=$this->request->data['PerTrainer']['per_people_type_id'];
+			
 			$PerPeopleTypes = new PerPeopleTypesController;
+			
 			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
 			
 				if ($per_trainers_responsefp['success']){
@@ -174,15 +178,13 @@ class PerTrainersController extends AppController {
 
 			$this->set('per_trainers_responsefp',$per_trainers_responsefp);
 			
-
 		}
 		$perTrainerTypes = $this->PerTrainer->PerTrainerType->find('list');
 		$perProfessions = $this->PerTrainer->PerProfession->find('list');
 		$perPeopleTypes = $this->PerTrainer->PerPeopleType->find('list');
 		$perTrainerFunds = $this->PerTrainer->PerTrainerFund->find('list');
 		$sites = $this->PerTrainer->Site->find('list');
-		$people = $this->PerTrainer->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
-		$this->request->data=compact('people','perTrainerTypes', 'perProfessions', 'perPeopleTypes', 'perTrainerFunds', 'sites');
+		$this->set(compact('perTrainerTypes', 'perProfessions', 'perPeopleTypes', 'perTrainerFunds', 'sites'));
 	}
 
 /**
