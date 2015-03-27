@@ -8,11 +8,9 @@ App::import('Controller', 'PerPeopleTypes');
  * @property PaginatorComponent $Paginator
  */
 class PerTrainersController extends AppController {
-<<<<<<< HEAD
-	var $uses = array('Person','PerTrainerType','PerProfession','PerPeopleType','PerTrainerFund','User','PerTrainer');
-=======
+
 	var $uses = array('Person','PerTrainer');
->>>>>>> e4c3ef89474a3ce52b073c5a39beb3e279db82b7
+
 /**
  * Components
  *
@@ -162,15 +160,9 @@ class PerTrainersController extends AppController {
 			}
 		} else {
 			$options = array('conditions' => array('PerTrainer.' . $this->PerTrainer->primaryKey => $id));
-<<<<<<< HEAD
-			$this->request->data = $this->PerTrainer->find('first', $options);			
-=======
 			$this->request->data = $this->PerTrainer->find('first', $options);
-			
 			$idper_people_type=$this->request->data['PerTrainer']['per_people_type_id'];
-			
 			$PerPeopleTypes = new PerPeopleTypesController;
-			
 			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
 			
 				if ($per_trainers_responsefp['success']){
@@ -185,7 +177,7 @@ class PerTrainersController extends AppController {
 
 			$this->set('per_trainers_responsefp',$per_trainers_responsefp);
 			
->>>>>>> e4c3ef89474a3ce52b073c5a39beb3e279db82b7
+
 		}
 		$perTrainerTypes = $this->PerTrainer->PerTrainerType->find('list');
 		$perProfessions = $this->PerTrainer->PerProfession->find('list');
