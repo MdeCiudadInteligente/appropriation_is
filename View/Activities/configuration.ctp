@@ -9,6 +9,7 @@
 			<?php if ($usuario_level == '1'||$usuario_level == '4'||$usuario_level == '5'){?>	
 			<li><?php echo $this->Html->link(__('Usuarios'), array('controller' => 'Users', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Agentes dinamizadores'), array('controller' => 'Agents', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Tipos de formadores'), array('controller' => 'PerTrainerTypes', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Formadores'), array('controller' => 'PerTrainers', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Tipos de 	Sensibilizaciones'), array('controller' => 'Divtypes', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Tipos de Sitios'), array('controller' => 'SiteTypes', 'action' => 'index')); ?> </li>			
@@ -20,6 +21,7 @@
 			<li><?php echo $this->Html->link(__('Zonas'), array('controller' => 'Zones', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Aliados'), array('controller' => 'Forallies', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Tipos de Formación'), array('controller' => 'Fortypes', 'action' => 'index')); ?> </li>
+			
 			<?php }?>	
 			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '4'||$usuario_level == '5'){?>		
 			<li><?php echo $this->Html->link(__('Personas'), array('controller' => 'People', 'action' => 'index')); ?> </li>
