@@ -1,4 +1,4 @@
-<div class="formador-cont app-grid-container">
+ï»¿<div class="formador-cont app-grid-container">
 
 	<div class="left-block">
 		<div class="actions">
@@ -28,13 +28,13 @@
 						    array("dataIndex"=>"id","column"=>false),
 							array("dataIndex"=>"people",'header'=>'Tipo de formador','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"per_trainer_type",'header'=>'Tipo de formador','sortable'=>true,'align'=>"left","column"=>true),
-							array("dataIndex"=>"per_profession",'header'=>'Tipo de profesión','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"per_profession",'header'=>'Tipo de profesiÃ³n','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"per_trainer_fund",'header'=>'Tipo de fondo','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"site",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"observations",'header'=>'Observaciones','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"state",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
-			                array("dataIndex"=>"modification_date",'header'=>'Fecha de modificación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha CreaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Fecha de modificaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
 			               array("dataIndex"=>"user_id",'header'=>'Usuario','sortable'=>true,'align'=>"left","column"=>false)
 						),
 						'expander'=>array(

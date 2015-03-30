@@ -1,4 +1,4 @@
-<div class="perTrainerTypes form">
+<div class="perTrainerTypes form mde-form">
 <?php echo $this->Form->create('PerTrainerType'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Trainer Type'); ?></legend>

@@ -1,4 +1,4 @@
-<div class="forallies form">
+<div class="forallies form mde-form">
 <?php echo $this->Form->create('Forally'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Forally'); ?></legend>

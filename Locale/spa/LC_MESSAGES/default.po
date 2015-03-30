@@ -91,6 +91,8 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid "The trainer type already exists , please check."
+msgstr "El tipo de formador existe actualmente, por favor verifique"
 
 msgid "Edit Trainer Type"
 msgstr "Editar tipo de formador"

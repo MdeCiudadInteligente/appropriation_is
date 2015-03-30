@@ -1,4 +1,4 @@
-﻿<div class="divtypes form">
+﻿<div class="divtypes form mde-form">
 <?php echo $this->Form->create('Divtype'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Divtype'); ?></legend>

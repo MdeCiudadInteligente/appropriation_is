@@ -71,13 +71,34 @@ class PerTrainerTypesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->PerTrainerType->create();
-			if ($this->PerTrainerType->save($this->request->data)) {
-				$this->Session->setFlash(__('The trainer type has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The trainer type could not be saved. Please, try again.'));
+			
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
+			$name_trainertype= $this->request->data['PerTrainerType']['name'];
+			$verificar_trainertype=$this->PerTrainerType->query("select distinct name from divtypes where name = '$name_trainertype'");
+			$this->set('verificar_trainertype',$verificar_trainertype);
+			
+			if($verificar_trainertype==Array( )){
+
+				$this->PerTrainerType->create();
+				$data=$this->request->data;
+				$data['PerTrainerType']['name'] = ucwords($data['PerTrainerType']['name']);
+				$data['PerTrainerType']['creation_date']=date('Y-m-d H:i:s');
+				$data['PerTrainerType']['user_id']=$usuario;
+				
+				
+				if ($this->PerTrainerType->save($data)) {	
+					$this->Session->setFlash(__('The trainer type has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The trainer type could not be saved. Please, try again.'));
+				}
+			}	
+			else{
+				$this->Session->setFlash(__('The trainer type already exists , please check.'));
 			}
+			
 		}
 	}
 
