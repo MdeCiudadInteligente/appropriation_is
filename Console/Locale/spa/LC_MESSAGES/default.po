@@ -98,14 +98,8 @@ msgstr "El tipo de persona ha sido guardada"
 msgid "The trainer could not be deleted. Please, try again."
 msgstr "El entrenador no ha sido eliminado. Por favor trate nuevamente"
 
-msgid "The trainer has been deleted."
-msgstr "El entrenador ha sido eliminado"
-
 msgid "The trainer could not be saved. Please, try again."
 msgstr "El entrenador no ha sido guardado. Por favor trate nuevamente"
-
-msgid "The trainer has been saved."
-msgstr "El formador ha sido guardado."
 
 msgid "The trainer could not be saved. Please, try again."
 msgstr "El entrenador no ha sido guardado.Por favor trate nuevamente"

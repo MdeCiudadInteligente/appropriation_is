@@ -110,11 +110,11 @@ class PerTrainersController extends AppController {
 					$data['PerTrainer']['creation_date']=date('Y-m-d H:i:s');
 					$data['PerTrainer']['user_id']=$usuario;
 					if ($this->PerTrainer->save($data)) {
-						$this->Session->setFlash(__('The trainer has been saved.'));
+						$this->Session->setFlash(__('El formador ha sido guardado.'));
 						return $this->redirect(array('action' => 'index'));
 						
 					} else {
-						$this->Session->setFlash(__('The trainer could not be saved. Please, try again.'));
+						$this->Session->setFlash(__('El formador no se pudo guardar . Por favor , vuelva a intentarlo.'));
 					}
 				}else{
 					$this->Session->setFlash(__('No hay id'));
@@ -148,10 +148,10 @@ class PerTrainersController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->PerTrainer->save($this->request->data)) {
-				$this->Session->setFlash(__('The trainer has been saved.'));
+				$this->Session->setFlash(__('El formador ha sido guardado.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The trainer could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El formador no se pudo guardar . Por favor , vuelva a intentarlo.'));
 			}
 		} else {
 			$options = array('conditions' => array('PerTrainer.' . $this->PerTrainer->primaryKey => $id));
@@ -213,10 +213,10 @@ class PerTrainersController extends AppController {
 				$this->Session->setFlash(__($per_people_responsed['message']));
 			}
 			else{
-			    $this->Session->setFlash(__('The trainer has been deleted.'));
+			    $this->Session->setFlash(__('El formador ha sido eliminado.'));
 			}
 		} else {
-			$this->Session->setFlash(__('The trainer could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('El formador no se pudo eliminar . Por favor, vuelva a intentarlo.'));
 		}
 		
 		return $this->redirect(array('action' => 'index'));

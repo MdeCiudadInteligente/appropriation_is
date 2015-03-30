@@ -5,6 +5,7 @@
 	<fieldset>
 		<legend><?php echo __('Edit Per Trainer'); ?></legend>
 	<?php
+		//echo $this->Form->input('id',array('type'=>'hidden'));
 		echo $this->Form->input('per_trainer_type_id');
 		echo $this->Form->input('per_profession_id');
 	?>
