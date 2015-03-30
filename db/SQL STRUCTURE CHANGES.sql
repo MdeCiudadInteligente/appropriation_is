@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `per_professions` (
 
 
 
-REATE TABLE IF NOT EXISTS `per_trainers` (
+CREATE TABLE IF NOT EXISTS `per_trainers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `per_trainer_type_id` int(11) NOT NULL,
   `per_profession_id` int(11) NOT NULL,
@@ -116,11 +116,11 @@ REATE TABLE IF NOT EXISTS `per_trainers` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
-  UNIQUE KEY `per_people_type_id` (`per_people_type_id`),
-  UNIQUE KEY `per_trainer_fund_id` (`per_trainer_fund_id`),
-  UNIQUE KEY `site_id` (`site_id`),
   KEY `per_profession_id` (`per_profession_id`),
-  KEY `per_trainer_type_id` (`per_trainer_type_id`)
+  KEY `per_trainer_type_id` (`per_trainer_type_id`),
+  KEY `per_trainer_fund_id` (`per_trainer_fund_id`),
+  KEY `site_id` (`site_id`),
+  KEY `per_people_type_id` (`per_people_type_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 --
 -- Restricciones para tablas volcadas
