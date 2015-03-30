@@ -63,86 +63,137 @@ CREATE TABLE IF NOT EXISTS `fortypes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-CREATE TABLE `per_types` (
-  `id` INT NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `user_id` INT NOT NULL,
-  `creation_date` DATETIME NOT NULL,
-  `modification_date` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`id`));
-
-
-CREATE TABLE `per_professions` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(90) NOT NULL,
-  `state` INT NOT NULL,
-  `user_id` INT NOT NULL,
-  `creation_date` DATETIME NOT NULL,
-  `modification_date` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`id`));
-
-
-CREATE TABLE `per_trainer_schedules` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(90) NOT NULL,
-  `state` INT NOT NULL,
-  `per_trainer_id` INT NOT NULL,
-  `user_id` INT NOT NULL,
-  `creation_date` DATETIME NOT NULL,
-  `modification_date` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`id`));
-
-CREATE TABLE `per_trainer_types` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `state` INT NOT NULL,
-  `user_id` INT NOT NULL,
-  `creation_date` DATETIME NOT NULL,
-  `modification_date` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`id`));
-
-CREATE TABLE `per_trainer_funds`
-(
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `user_id` INT NOT NULL,
- 
- `creation_date` DATETIME NULL,
-  `modification_date` TIMESTAMP NULL,
-  PRIMARY KEY (`id`),
-  
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
-
-CREATE TABLE `per_trainers` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `per_trainer_type_id` INT NOT NULL,
-  `per_profession_id` INT NOT NULL,
-  `per_people_type_id` INT NOT NULL,
-  `per_trainer_fund_id` INT NOTNULL,
-  `site_id` INT NOT NULL,
-  `observations` TEXT NOT NULL,
-  `state` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
-
-CREATE TABLE `appropriation_isp`.`per_types` 
-(
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `user_id` INT NOT NULL,
- 
- `creation_date` DATETIME NULL,
-  `modification_date` TIMESTAMP NULL,
-  PRIMARY KEY (`id`),
- 
- UNIQUE INDEX `id_UNIQUE` (`id` ASC));
-
 CREATE TABLE IF NOT EXISTS `per_people_type` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `person_id` bigint(15) NOT NULL,
   `per_type_id` int(11) NOT NULL,
   `creation_date` datetime NOT NULL,
   `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-3013152711
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `person_id` (`person_id`),
+  UNIQUE KEY `per_type_id` (`per_type_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `per_people_type`
+--
+ALTER TABLE `per_people_type`
+  ADD CONSTRAINT `per_people_type_ibfk_2` FOREIGN KEY (`per_type_id`) REFERENCES `per_types` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_people_type_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `people` (`id_person`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+
+
+CREATE TABLE IF NOT EXISTS `per_professions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(90) NOT NULL,
+  `state` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+
+
+CREATE TABLE IF NOT EXISTS `per_trainers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `per_trainer_type_id` int(11) NOT NULL,
+  `per_profession_id` int(11) NOT NULL,
+  `per_people_type_id` int(11) NOT NULL,
+  `per_trainer_fund_id` int(11) NOT NULL,
+  `site_id` int(11) NOT NULL,
+  `observations` text NOT NULL,
+  `state` int(11) DEFAULT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `per_profession_id` (`per_profession_id`,`per_people_type_id`,`per_trainer_fund_id`,`site_id`),
+  UNIQUE KEY `per_people_type_id` (`per_people_type_id`),
+  UNIQUE KEY `per_people_type_id_2` (`per_people_type_id`),
+  UNIQUE KEY `per_people_type_id_3` (`per_people_type_id`),
+  UNIQUE KEY `per_trainer_fund_id` (`per_trainer_fund_id`),
+  UNIQUE KEY `site_id` (`site_id`),
+  KEY `per_trainer_type_id` (`per_trainer_type_id`,`per_profession_id`,`per_people_type_id`,`per_trainer_fund_id`,`site_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `per_trainers`
+--
+ALTER TABLE `per_trainers`
+  ADD CONSTRAINT `per_trainers_ibfk_5` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_trainers_ibfk_1` FOREIGN KEY (`per_trainer_type_id`) REFERENCES `per_trainer_types` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_trainers_ibfk_2` FOREIGN KEY (`per_profession_id`) REFERENCES `per_professions` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_trainers_ibfk_3` FOREIGN KEY (`per_people_type_id`) REFERENCES `per_people_type` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_trainers_ibfk_4` FOREIGN KEY (`per_trainer_fund_id`) REFERENCES `per_trainer_funds` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+
+
+
+CREATE TABLE IF NOT EXISTS `per_trainer_funds` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `modification_date` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+
+
+CREATE TABLE IF NOT EXISTS `per_trainer_schedules` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(90) NOT NULL,
+  `state` int(11) NOT NULL,
+  `per_trainer_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `per_trainer_id` (`per_trainer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `per_trainer_schedules`
+--
+ALTER TABLE `per_trainer_schedules`
+  ADD CONSTRAINT `per_trainer_schedules_ibfk_1` FOREIGN KEY (`per_trainer_id`) REFERENCES `per_trainers` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+
+
+CREATE TABLE IF NOT EXISTS `per_trainer_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `state` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+
+
+CREATE TABLE IF NOT EXISTS `per_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `modification_date` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
