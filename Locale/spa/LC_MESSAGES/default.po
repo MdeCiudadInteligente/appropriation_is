@@ -91,6 +91,36 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid "Edit Trainer Type"
+msgstr "Editar tipo de formador"
+
+msgid "The trainer type could not be deleted. Please, try again."
+msgstr "El tipo de formador no ha sido eliminado. Por favor trate nuevamente"
+
+msgid "The trainer type has been deleted."
+msgstr "El tipo de formador ha sido eliminado."
+
+msgid "The trainer type could not be saved. Please, try again."
+msgstr "El tipo de formador no ha sido guardado, trate nuevamente"
+
+msgid "The trainer type has been saved."
+msgstr "El tipo de formador ha sido guardado"
+
+msgid "Invalid trainer type"
+msgstr "Tipo de formador no válido"
+
+msgid "List Trainer Types"
+msgstr "Lista tipo de formadores"
+
+msgid "Edit Trainer Type"
+msgstr "Nuevo tipo de formador"
+
+msgid "Edit Trainer Type"
+msgstr "Editar tipo de formador"
+
+msgid "New Trainer Type"
+msgstr "Nuevo tipo de formador"
+
 msgid "The idperson was empty"
 msgstr "No se encontró el idper_people_typef"
 
