@@ -91,6 +91,7 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+
 msgid "Edit Trainer Type"
 msgstr "Editar tipo de formador"
 

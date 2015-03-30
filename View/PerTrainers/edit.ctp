@@ -5,6 +5,7 @@
 	<fieldset>
 		<legend><?php echo __('Edit Per Trainer'); ?></legend>
 	<?php
+		echo $this->Form->input('id');
 		echo $this->Form->input('per_trainer_type_id');
 		echo $this->Form->input('per_profession_id');
 	?>
@@ -18,7 +19,7 @@
 		</div>
 	</div>	
 	<?php 			
-		echo $this->Form->input('per_people_type_id');
+
 		echo $this->Form->input('per_trainer_fund_id');
 		?>
 		
