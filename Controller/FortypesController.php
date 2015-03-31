@@ -70,26 +70,33 @@ class FortypesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->Fortype->create();
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
 			$name_fortype= $this->request->data['Fortype']['name'];
-			$verificar_fortype=$this->Fortype->query("select distinct name from fortypes where name = '$verificar_fortype'");
+			$verificar_fortype=$this->Fortype->query("select distinct name from fortypes where name = '$name_fortype'");
 			$this->set('verificar_fortype',$verificar_fortype);
 			
+			if($verificar_fortype==Array( )){
 			
-			if ($this->Fortype->save($this->request->data)) {
-				$this->Session->setFlash(__('The fortype has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The fortype could not be saved. Please, try again.'));
+				$this->Fortype->create();
+				$data=$this->request->data;
+				$data['Fortype']['name'] = ucwords($data['Fortype']['name']);
+				$data['Fortype']['creation_date']=date('Y-m-d H:i:s');
+				$data['Fortype']['user_id']=$usuario;
+				
+				if ($this->Fortype->save($this->request->data)) {
+					$this->Session->setFlash(__('The fortype has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The fortype could not be saved. Please, try again.'));
+				}
 			}
-		}
-		else
-		{
-			$this->Session->setFlash(__('The fortype already exists, please check.'));
-		}
+			else
+			{
+				$this->Session->setFlash(__('The fortype already exists, please check.'));
+			}
+	  }
 	}
 
 /**
