@@ -58,7 +58,7 @@ class ForProcessesController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->ForProcess->exists($id)) {
-			throw new NotFoundException(__('Invalid for process'));
+			throw new NotFoundException(__('Invalid process'));
 		}
 		$options = array('conditions' => array('ForProcess.' . $this->ForProcess->primaryKey => $id));
 		$this->set('forProcess', $this->ForProcess->find('first', $options));
@@ -75,18 +75,32 @@ class ForProcessesController extends AppController {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 				
-			$name_divulgationtype= $this->request->data['Divtype']['name'];
-			$verificar_divulgationtype=$this->Divtype->query("select distinct name from divtypes where name = '$name_divulgationtype'");
-			$this->set('verificar_divulgationtype',$verificar_divulgationtype);
+			$name_forprocess= $this->request->data['ForProcess']['name'];
+			$verificar_forprocess=$this->ForProcess->query("select distinct name from for_processes where name = '$name_forprocess'");
+			$this->set('verificar_forprocess',$verificar_forprocess);
 			
+			if($verificar_forprocess==Array( )){
+				
+				$this->ForProcess->create();
+				$data=$this->request->data;
+				$data['ForProcess']['name'] = ucwords($data['ForProcess']['name']);
+				$data['ForProcess']['creation_date']=date('Y-m-d H:i:s');
+				$data['ForProcess']['user_id']=$usuario;
+				
+				
+				if ($this->ForProcess->save($data)) {
+					$this->Session->setFlash(__('The process has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The process could not be saved. Please, try again.'));
+				}
 			
-			$this->ForProcess->create();
-			if ($this->ForProcess->save($this->request->data)) {
-				$this->Session->setFlash(__('The for process has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The for process could not be saved. Please, try again.'));
 			}
+			else{
+				$this->Session->setFlash(__('The process already exists , please check.'));
+			}
+			
+			
 		}
 	}
 
@@ -99,14 +113,14 @@ class ForProcessesController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->ForProcess->exists($id)) {
-			throw new NotFoundException(__('Invalid for process'));
+			throw new NotFoundException(__('Invalid process'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->ForProcess->save($this->request->data)) {
-				$this->Session->setFlash(__('The for process has been saved.'));
+				$this->Session->setFlash(__('The process has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The for process could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The process could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('ForProcess.' . $this->ForProcess->primaryKey => $id));
@@ -124,13 +138,13 @@ class ForProcessesController extends AppController {
 	public function delete($id = null) {
 		$this->ForProcess->id = $id;
 		if (!$this->ForProcess->exists()) {
-			throw new NotFoundException(__('Invalid for process'));
+			throw new NotFoundException(__('Invalid process'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->ForProcess->delete()) {
-			$this->Session->setFlash(__('The for process has been deleted.'));
+			$this->Session->setFlash(__('The process has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The for process could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The process could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}
