@@ -1,4 +1,4 @@
-<div class="fortypes form">
+<div class="fortypes form mde-form">
 <?php echo $this->Form->create('Fortype'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Fortype'); ?></legend>

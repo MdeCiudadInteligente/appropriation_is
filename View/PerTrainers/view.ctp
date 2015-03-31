@@ -46,60 +46,13 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li> 
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+	   	if ($usuario_level == '1'){?>
+	   	<li><?php echo $this->Html->link(__('New Per Trainer'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Per Trainer'), array('action' => 'edit', $perTrainer['PerTrainer']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Per Trainer'), array('action' => 'delete', $perTrainer['PerTrainer']['id']), null, __('Are you sure you want to delete # %s?', $perTrainer['PerTrainer']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Per Trainers'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Per Trainer'), array('action' => 'add')); ?> </li>
+		<?php }?>
 		<li><?php echo $this->Html->link(__('List Per Trainer Types'), array('controller' => 'per_trainer_types', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Per Trainer Type'), array('controller' => 'per_trainer_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Per Professions'), array('controller' => 'per_professions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Per Profession'), array('controller' => 'per_professions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Per People Types'), array('controller' => 'per_people_types', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Per People Type'), array('controller' => 'per_people_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Per Trainer Funds'), array('controller' => 'per_trainer_funds', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Per Trainer Fund'), array('controller' => 'per_trainer_funds', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Per Trainer Schedules'), array('controller' => 'per_trainer_schedules', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Per Trainer Schedule'), array('controller' => 'per_trainer_schedules', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<div class="related">
-	<h3><?php echo __('Related Per Trainer Schedules'); ?></h3>
-	<?php if (!empty($perTrainer['PerTrainerSchedule'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Name'); ?></th>
-		<th><?php echo __('State'); ?></th>
-		<th><?php echo __('Per Trainer Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Creation Date'); ?></th>
-		<th><?php echo __('Modification Date'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($perTrainer['PerTrainerSchedule'] as $perTrainerSchedule): ?>
-		<tr>
-			<td><?php echo $perTrainerSchedule['id']; ?></td>
-			<td><?php echo $perTrainerSchedule['name']; ?></td>
-			<td><?php echo $perTrainerSchedule['state']; ?></td>
-			<td><?php echo $perTrainerSchedule['per_trainer_id']; ?></td>
-			<td><?php echo $perTrainerSchedule['user_id']; ?></td>
-			<td><?php echo $perTrainerSchedule['creation_date']; ?></td>
-			<td><?php echo $perTrainerSchedule['modification_date']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'per_trainer_schedules', 'action' => 'view', $perTrainerSchedule['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'per_trainer_schedules', 'action' => 'edit', $perTrainerSchedule['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'per_trainer_schedules', 'action' => 'delete', $perTrainerSchedule['id']), null, __('Are you sure you want to delete # %s?', $perTrainerSchedule['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Per Trainer Schedule'), array('controller' => 'per_trainer_schedules', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
-</div>

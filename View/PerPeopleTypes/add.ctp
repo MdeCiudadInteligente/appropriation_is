@@ -1,4 +1,4 @@
-<div class="perPeopleTypes form">
+<div class="perPeopleTypes form mde-form">
 <?php echo $this->Form->create('PerPeopleType'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Per People Type'); ?></legend>
