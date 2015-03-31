@@ -132,14 +132,14 @@ class PerTrainer extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),
-		'Site' => array(
+		)
+		/*'Site' => array(
 			'className' => 'Site',
 			'foreignKey' => 'site_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		)*/
 	);
 
 /**
@@ -161,6 +161,22 @@ class PerTrainer extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		)
+	);
+	
+	public $hasAndBelongsToMany = array(
+			'Site' => array(
+					'className' => 'Site',
+					'joinTable' => 'sites_per_trainers',
+					'foreignKey' => 'per_trainer_id',
+					'associationForeignKey' => 'site_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
 	);
 
 }

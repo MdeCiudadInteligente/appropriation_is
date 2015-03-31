@@ -191,6 +191,23 @@ class Site extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		)
+			
+	);
+	
+	public $hasAndBelongsToMany = array(
+			'PerTrainer' => array(
+					'className' => 'PerTrainer',
+					'joinTable' => 'sites_per_trainers',
+					'foreignKey' => 'site_id',
+					'associationForeignKey' => 'per_trainer_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
 	);
 
 }

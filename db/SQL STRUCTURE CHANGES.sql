@@ -195,3 +195,27 @@ CREATE TABLE IF NOT EXISTS `per_types` (
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+//Creación de la tabla sites_per_trainers esta se encargará de relacionar sites y per_trainers.
+
+CREATE TABLE `appropriation_isp`.`sites_per_trainers` (
+  `site_id` INT NOT NULL,
+  `per_trainer_id` INT NOT NULL);
+ALTER TABLE `appropriation_isp`.`sites_per_trainers` 
+ADD INDEX `site_id_idx` (`sites_id` ASC);
+ALTER TABLE `appropriation_isp`.`sites_per_trainers` 
+ADD CONSTRAINT `Relacion_PK_1`
+  FOREIGN KEY (`sites_id`)
+  REFERENCES `appropriation_isp`.`sites` (`id_site`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+ALTER TABLE `appropriation_isp`.`sites_per_trainers` 
+ADD INDEX `Relacion_PK_2_idx` (`per_trainers_id` ASC);
+ALTER TABLE `appropriation_isp`.`sites_per_trainers` 
+ADD CONSTRAINT `Relacion_PK_2`
+  FOREIGN KEY (`per_trainers_id`)
+  REFERENCES `appropriation_isp`.`per_trainers` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+ALTER TABLE `appropriation_isp`.`per_trainers` 
+ADD COLUMN `star_date` DATE NOT NULL AFTER `user_id`,
+ADD COLUMN `end_date` DATE NOT NULL AFTER `star_date`;
