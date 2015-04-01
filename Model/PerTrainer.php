@@ -176,6 +176,19 @@ class PerTrainer extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
+			),
+			'Training' => array(
+					'className' => 'Training',
+					'joinTable' => 'per_trainers_training',
+					'foreignKey' => 'per_trainer_id',
+					'associationForeignKey' => 'training_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
 			)
 	);
 

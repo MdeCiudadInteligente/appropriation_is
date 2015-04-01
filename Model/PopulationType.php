@@ -42,18 +42,32 @@ class PopulationType extends AppModel {
  * @var array
  */	
 	public $hasMany = array(
-		'Divulgation' => array(
-			'className' => 'Divulgation',
-			'foreignKey' => 'population_type_id',			
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
+			'Divulgation' => array(
+				'className' => 'Divulgation',
+				'foreignKey' => 'population_type_id',			
+				'dependent' => false,
+				'conditions' => '',
+				'fields' => '',
+				'order' => '',
+				'limit' => '',
+				'offset' => '',
+				'exclusive' => '',
+				'finderQuery' => '',
+				'counterQuery' => ''
+			),	
+		
+		'Training' => array(
+				'className' => 'Training',
+				'joinTable' => 'population_types_training',
+				'foreignKey' => 'population_type_id',
+				'associationForeignKey' => 'training_id',
+				'unique' => 'keepExisting',
+				'conditions' => '',
+				'fields' => '',
+				'order' => '',
+				'limit' => '',
+				'offset' => '',
+				'finderQuery' => '',
 		)
 	);
 
