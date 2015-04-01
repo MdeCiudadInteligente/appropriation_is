@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `forallies` (
   `creation_date` datetime DEFAULT NULL,
   `modification_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `forallies`
@@ -219,3 +219,18 @@ ADD CONSTRAINT `Relacion_PK_2`
 ALTER TABLE `appropriation_isp`.`per_trainers` 
 ADD COLUMN `star_date` DATE NOT NULL AFTER `user_id`,
 ADD COLUMN `end_date` DATE NOT NULL AFTER `star_date`;
+
+//Creación de las tablas intermedias.
+
+CREATE TABLE `appropriation_isp`.`per_trainers_training` (
+  `per_trainer_id` INT NOT NULL,
+  `training_id` INT NOT NULL);
+CREATE TABLE `appropriation_isp`.`sites_training` (
+  `sites_id` INT NOT NULL,
+  `training_id` INT NOT NULL);
+CREATE TABLE `appropriation_isp`.`forallies_training` (
+  `forallies_id` INT NOT NULL,
+  `training_id` INT NOT NULL);
+CREATE TABLE `appropriation_isp`.`population_types_training` (
+  `population_types_id` INT NOT NULL,
+  `training_id` INT NOT NULL);
