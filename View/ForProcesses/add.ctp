@@ -1,7 +1,7 @@
 <div class="forProcesses form mde-form">
 <?php echo $this->Form->create('ForProcess'); ?>
 	<fieldset>
-		<legend><?php echo __('Add For Process'); ?></legend>
+		<legend><?php echo __('Add Process'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
 		echo $this->Form->input('state',array ('options' => array ('1'=>'Activo','0'=>'Inactivo'),'empty'=>'Seleccione estado'));
