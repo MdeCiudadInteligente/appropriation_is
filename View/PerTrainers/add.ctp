@@ -10,7 +10,7 @@
 			<div class="input">
 				<label>Sitio</label>
 				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
-				<div class="results-input-site" data-input-name="data[PerTrainer][site_id]">			
+				<div class="results-input-site" data-input-name="data[Site][Site][]">			
 				</div>
 			</div>
 		</div>	
