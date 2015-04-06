@@ -109,7 +109,7 @@ msgstr "Aliado no válido"
 msgid "Ally"
 msgstr "Aliado"
 
-msgid "New ally"
+msgid "New Ally"
 msgstr "Nuevo aliado"
 
 msgid "Edit Ally"
