@@ -60,4 +60,20 @@ class Forally extends AppModel {
 			),
 		),
 	);
+	
+	public $hasAndBelongsToMany = array(
+			'Training' => array(
+					'className' => 'Training',
+					'joinTable' => 'forallies_training',
+					'foreignKey' => 'forally_id',
+					'associationForeignKey' => 'training_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
+	);
 }

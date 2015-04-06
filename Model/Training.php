@@ -167,6 +167,60 @@ class Training extends AppModel {
  *
  * @var array
  */
+	public $hasAndBelongsToMany = array(
+			'Site' => array(
+					'className' => 'Site',
+					'joinTable' => 'sites_per_trainers',
+					'foreignKey' => 'training_id',
+					'associationForeignKey' => 'site_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			),
+			'Forally' => array(
+					'className' => 'Forally',
+					'joinTable' => 'forallies_training',
+					'foreignKey' => 'training_id',
+					'associationForeignKey' => 'forally_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			),
+			'PopulationType' => array(
+					'className' => 'PopulationType',
+					'joinTable' => 'population_types_training',
+					'foreignKey' => 'training_id',
+					'associationForeignKey' => 'population_type_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			),
+			'PerTrainer' => array(
+					'className' => 'PerTrainer',
+					'joinTable' => 'per_trainers_training',
+					'foreignKey' => 'training_id',
+					'associationForeignKey' => 'per_trainer_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			),
+	);
 	/*
 	public $belongsTo = array(
 		'Type' => array(
