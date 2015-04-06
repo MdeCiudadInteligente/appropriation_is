@@ -1,9 +1,9 @@
-<div class="forProcesses view">
+<div class="traProcesses view">
 <h2><?php echo __('Training Process'); ?></h2>
 	<dl>
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
-			<?php echo h($forProcess['ForProcess']['name']); ?>
+			<?php echo h($traProcess['TraProcess']['name']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -14,10 +14,9 @@
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li> 
 	   	<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 	   	if ($usuario_level == '1'){?>	
-	   	<li><?php echo $this->Html->link(__('New Process'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Edit Process'), array('action' => 'edit', $forProcess['ForProcess']['id'])); ?> </li>
+	   	<li><?php echo $this->Html->link(__('New Training Process'), array('action' => 'add')); ?> </li>
+	   	<li><?php echo $this->Html->link(__('Edit Training Process'), array('action' => 'edit', $traProcess['TraProcess']['id'])); ?> </li>
 		<?php }?>
-		<li><?php echo $this->Html->link(__('List Processes'), array('action' => 'index')); ?> </li>
-		
+	   	<li><?php echo $this->Html->link(__('List Training Processes'), array('action' => 'index')); ?> </li>
 	</ul>
 </div>

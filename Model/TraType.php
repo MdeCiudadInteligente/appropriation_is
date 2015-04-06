@@ -1,10 +1,10 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Fortype Model
+ * TraType Model
  *
  */
-class Fortype extends AppModel {
+class TraType extends AppModel {
 
 /**
  * Display field
@@ -40,14 +40,14 @@ class Fortype extends AppModel {
 			),
 		),
 		'state' => array(
-					'notEmpty' => array(
-							'rule' => array('notEmpty'),
-							//'message' => 'Your custom message here',
-							//'allowEmpty' => false,
-							//'required' => false,
-							//'last' => false, // Stop validation after this rule
-							//'on' => 'create', // Limit validation to 'create' or 'update' operations
-					),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 		),
 		'creation_date' => array(
 			'notEmpty' => array(

@@ -1,7 +1,7 @@
-<div class="fortypes form mde-form">
-<?php echo $this->Form->create('Fortype'); ?>
+<div class="traTypes form mde-form">
+<?php echo $this->Form->create('TraType'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Fortype'); ?></legend>
+		<legend><?php echo __('Edit Training Type'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
@@ -14,6 +14,6 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Fortypes'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Training Types'), array('action' => 'index')); ?></li>
 	</ul>
 </div>

@@ -7,7 +7,7 @@
 				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 				if ($usuario_level == '1'){?>	
 
-				 <li><?php echo $this->Html->link(__('New Process'), array('action' => 'add')); ?> </li>
+				 <li><?php echo $this->Html->link(__('New training Process'), array('action' => 'add')); ?> </li>
 
 				<?php }?>
 				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
@@ -20,13 +20,13 @@
 			<h2><?php echo __('divtypes'); ?></h2>
 			<?php
 				$gridOptions=array(
-						'gridId'=>'gridforprocesses',
+						'gridId'=>'gridtraprocesses',
 						'gridTitle'=>'Procesos de formación',
 						'height'=>801,
-						'serviceUrl'=>'ForProcesses/index_service.json',
+						'serviceUrl'=>'TraProcesses/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"name_p",'header'=>'Proceso','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"name_p",'header'=>'Nombre','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"state_p",'header'=>'Estado proceso','sortable'=>true,'align'=>"center","column"=>false),
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha CreaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"modification_date",'header'=>'Fecha ModificaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),

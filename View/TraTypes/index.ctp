@@ -1,4 +1,4 @@
-<div class="sites-cont app-grid-container">
+ï»¿<div class="sites-cont app-grid-container">
 	<div class="left-block">
 		<div class="actions">
 			<h3><?php echo __('Actions'); ?></h3>
@@ -6,7 +6,7 @@
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 				if ($usuario_level == '1'){?>	
-				<li><?php echo $this->Html->link(__('New Fortype'), array('action' => 'add')); ?></li>
+				<li><?php echo $this->Html->link(__('New Training Type'), array('action' => 'add')); ?></li>
 				<?php }?>
 				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
 			</ul>
@@ -16,19 +16,19 @@
 
 	<div class="right-block">
 		<div class="sites">
-			<h2><?php echo __('Forallies'); ?></h2>
+			<h2><?php echo __('Fortypes'); ?></h2>
 			<?php
 				$gridOptions=array(
 						'gridId'=>'gridFortypes',
-						'gridTitle'=>'Tipos de formación',
+						'gridTitle'=>'Tipos de formaciÃ³n',
 						'height'=>800,
-						'serviceUrl'=>'Fortypes/index_service.json',
+						'serviceUrl'=>'Tratypes/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"nfortype",'header'=>'Aliado','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"ntratype",'header'=>'Nombre','sortable'=>true,'align'=>"left","column"=>true),
 						    array("dataIndex"=>"state_fortype",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>false),
-			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
-			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha CreaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Fecha ModificaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
 			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
 						),
 						'expander'=>false,

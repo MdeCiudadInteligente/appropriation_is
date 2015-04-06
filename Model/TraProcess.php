@@ -1,10 +1,10 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * ForProcess Model
+ * TraProcess Model
  *
  */
-class ForProcess extends AppModel {
+class TraProcess extends AppModel {
 
 /**
  * Display field
@@ -49,7 +49,7 @@ class ForProcess extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'create_date' => array(
+		'creation_date' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',

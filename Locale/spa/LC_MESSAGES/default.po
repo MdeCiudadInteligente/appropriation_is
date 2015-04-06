@@ -91,6 +91,96 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid "The ally could not be deleted. Please, try again.."
+msgstr "El aliado no ha sido eliminado. Por favor, trate nuevamente"
+
+msgid "The ally has been deleted."
+msgstr "El aliado ha sido eliminado"
+
+msgid "The ally could not be saved. Please, try again."
+msgstr "El aliado no ha sido guardado. Por favor, trate nuevamente"
+
+msgid "The ally has been saved."
+msgstr "El aliado ha sido guardado"
+
+msgid "Invalid ally"
+msgstr "Aliado no válido"
+
+msgid "Ally"
+msgstr "Aliado"
+
+msgid "New ally"
+msgstr "Nuevo aliado"
+
+msgid "Edit Ally"
+msgstr "Editar aliado"
+
+msgid "Add Ally"
+msgstr "Agregar aliado"
+
+msgid "List Allies"
+msgstr "Lista aliados"
+
+msgid "The training process could not be deleted. Please, try again."
+msgstr "EL proceso de formaci�n no ha sido eliminado .Por favor, trate nuevamente"
+
+msgid "The training process has been deleted."
+msgstr "El proceso de formación ha sido eliminado"
+
+msgid "The training process could not be saved. Please, try again."
+msgstr "El proceso de formación no ha sido guardado. Por favor, trate nuevamente"
+
+msgid "The training process has been saved."
+msgstr "El proceso de formación ha sido guardado"
+
+msgid "Invalid training process"
+msgstr "Porceso de formación no válido"
+
+msgid "Training Process"
+msgstr "Proceso de formación"
+
+msgid "New Training Process"
+msgstr "Nuevo tipo de formación"
+
+msgid "Edit Training Process"
+msgstr "Editar tipo de formación"
+
+msgid "Add Training Process"
+msgstr "Agregar tipo de formación"
+
+msgid "List Training Processes"
+msgstr "Lista porcesos de formación"
+
+msgid "The training type could not be deleted. Please, try again."
+msgstr "El tipo de formación no pudo ser eliminado. Por favor, trate de nuevo"
+
+msgid "The training type has been deleted."
+msgstr "El tipo de formación ha sido guardado"
+
+msgid "The training type could not be saved. Please, try again."
+msgstr "El tipo de formación no pudo ser guardado. Por favor, trate de nuevo"
+
+msgid "The training type has been saved."
+msgstr "El tipo de formación ha sido guardado"
+
+msgid "Invalid training type"
+msgstr "Tipo de formación no válido"
+
+msgid "New Training Type"
+msgstr "Nuevo tipo de formación"
+
+msgid "Edit Training Type"
+msgstr "Editar tipo de formación"
+
+msgid "List Training Types"
+msgstr "Lista tipos de formación"
+
+msgid "Add Training Type"
+msgstr "Agregar tipo de formación"
+
+msgid "TrainingType"
+msgstr "Tipo de formación"
+
 msgid "Add Process"
 msgstr "Agregar procesos de formación"
 
