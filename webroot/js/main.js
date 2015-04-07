@@ -172,6 +172,7 @@ App.prototype.setMobileScreen=function(){
 App.prototype.bindAutocompleteSites=function(selector){
 
     if($(selector).length){
+    	var limit=($(selector).data('limit'))?$(selector).data('limit'):1;
         var serivce_route=absPath+"Sites/getSite.json";
         $(selector).autoSuggest(serivce_route,
             {   minChars: 2,
@@ -184,7 +185,7 @@ App.prototype.bindAutocompleteSites=function(selector){
                 selectedItemProp: 'nombre',
                 selectedValuesProp:'nombre',
                 searchObjProps: 'direccion,nombre',
-                selectionLimit:1,
+                selectionLimit:limit,
                 starText: 'Seleccione la persona',
 
                 resultClick: function(data){

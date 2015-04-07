@@ -1,6 +1,7 @@
 <div class="perTrainers form mde-form">
 <?php echo $this->Form->create('PerTrainer'); 
 	$site=$this->request->data['Site'];
+	
 ?>
 	<fieldset>
 		<legend><?php echo __('Edit Per Trainer'); ?></legend>
@@ -9,15 +10,19 @@
 		echo $this->Form->input('per_trainer_type_id');
 		echo $this->Form->input('per_profession_id');
 	?>
-	<div class="seccion-person">	
+	<div class="seccion-person">
 		<div class="input">
 			<label>Sitio</label>
-			<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
-			<div class="results-input-site" data-input-name="data[PerTrainer][site_id]">
-				<input type="hidden" name="data[PerTrainer][site_id]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name']?>" id="val-input-site-<?php echo $site['id_site']?>">
+			<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" data-limit="100">
+			<div class="results-input-site" data-input-name="data[Site][Site][]">
+			<?php 
+				foreach ($site as $key => $site) { ?>
+					<input type="hidden" name="data[Site][Site][]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name'] ?>" id="val-input-<?php echo $site['id_site']?>">
+			<?php } ?>
 			</div>
 		</div>
-	</div>	
+	</div>
+	
 	<?php 			
 
 		echo $this->Form->input('per_trainer_fund_id');

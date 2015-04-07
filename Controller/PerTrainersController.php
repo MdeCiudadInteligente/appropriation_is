@@ -49,7 +49,6 @@ class PerTrainersController extends AppController {
 					'per_trainer_type'=>$PerTrainer['PerTrainerType']['name'],
 					'per_profession'=>$PerTrainer['PerProfession']['name'],
 					'per_trainer_fund'=>$PerTrainer['PerTrainerFund']['name'],
-					'site'=>$PerTrainer['Site']['site_name'],
 					'observations'=>$PerTrainer['PerTrainer']['observations'],
 					'state'=>$PerTrainer['PerTrainer']['state'],
 					'creation_date'=>$PerTrainer['PerTrainer']['creation_date'],

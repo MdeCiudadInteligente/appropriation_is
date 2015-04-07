@@ -91,8 +91,17 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
-msgid "The ally could not be deleted. Please, try again.."
-msgstr "El aliado no ha sido eliminado. Por favor, trate nuevamente"
+msgid "Trainer"
+msgstr "Formador"
+
+msgid "New Trainer"
+msgstr "Nuevo Formador"
+
+msgid "Edit Trainer"
+msgstr "Editar Formador"
+
+msgid "List Trainers"
+msgstr "Listado Formadores"
 
 msgid "The ally has been deleted."
 msgstr "El aliado ha sido eliminado"
@@ -134,22 +143,25 @@ msgid "The training process has been saved."
 msgstr "El proceso de formación ha sido guardado"
 
 msgid "Invalid training process"
-msgstr "Porceso de formación no válido"
+msgstr "Proceso de formación no válido"
 
 msgid "Training Process"
 msgstr "Proceso de formación"
 
 msgid "New Training Process"
-msgstr "Nuevo tipo de formación"
+msgstr "Nuevo proceso de formación"
+
+msgid "New training process"
+msgstr "Nuevo proceso de formación"
 
 msgid "Edit Training Process"
-msgstr "Editar tipo de formación"
+msgstr "Editar proceso de formación"
 
 msgid "Add Training Process"
-msgstr "Agregar tipo de formación"
+msgstr "Agregar proceso de formación"
 
 msgid "List Training Processes"
-msgstr "Lista porcesos de formación"
+msgstr "Lista procesos de formación"
 
 msgid "The training type could not be deleted. Please, try again."
 msgstr "El tipo de formación no pudo ser eliminado. Por favor, trate de nuevo"

@@ -1,5 +1,5 @@
 <div class="perTrainers view">
-<h2><?php echo __('Per Trainer'); ?></h2>
+<h2><?php echo __('Trainer'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -26,11 +26,6 @@
 			<?php echo $this->Html->link($perTrainer['PerTrainerFund']['name'], array('controller' => 'per_trainer_funds', 'action' => 'view', $perTrainer['PerTrainerFund']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Site'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($perTrainer['Site']['site_name'], array('controller' => 'sites', 'action' => 'view', $perTrainer['Site']['id_site'])); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Observations'); ?></dt>
 		<dd>
 			<?php echo h($perTrainer['PerTrainer']['observations']); ?>
@@ -49,10 +44,10 @@
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li> 
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 	   	if ($usuario_level == '1'){?>
-	   	<li><?php echo $this->Html->link(__('New Per Trainer'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Edit Per Trainer'), array('action' => 'edit', $perTrainer['PerTrainer']['id'])); ?> </li>
+	   	<li><?php echo $this->Html->link(__('New Trainer'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Trainer'), array('action' => 'edit', $perTrainer['PerTrainer']['id'])); ?> </li>
 		<?php }?>
-		<li><?php echo $this->Html->link(__('List Per Trainer Types'), array('controller' => 'per_trainer_types', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Trainers'), array('action' => 'index')); ?> </li>
 	</ul>
 </div>
 

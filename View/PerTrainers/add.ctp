@@ -6,11 +6,11 @@
 		echo $this->Form->input('per_trainer_type_id',array('empty'=>'Seleccione el tipo de formador'));
 		echo $this->Form->input('per_profession_id',array('empty'=>'Seleccione la profesión'));
 	?>
-<div class="seccion-person">	
+		<div class="seccion-person">	
 			<div class="input">
 				<label>Sitio</label>
-				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
-				<div class="results-input-site" data-input-name="data[Site][Site][]">			
+				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" data-limit="100">
+				<div class="results-input-site" data-input-name="data[Site][Site][]" >			
 				</div>
 			</div>
 		</div>	
@@ -25,8 +25,8 @@
 		<div class="seccion-person">	
 			<div class="input" >
 				<label>Personas</label>
-				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona">
-				<div class="results-input" data-input-name="data[Person][Person][]" data-limit="1">
+				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa una persona" data-limit="1">
+				<div class="results-input" data-input-name="data[Person][Person][]" >
 					
 				</div>
 			</div>
