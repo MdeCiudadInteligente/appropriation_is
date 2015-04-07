@@ -8,6 +8,8 @@ App::uses('AppController', 'Controller');
  */
 class ThematicsController extends AppController {
 
+   var $helpers = array('Html','Form','Csv','Js');	
+
 /**
  * Components
  *
@@ -20,6 +22,16 @@ class ThematicsController extends AppController {
  *
  * @return void
  */
+
+	public function isAuthorized($user) {
+		// Any registered user can access public functions
+		
+		if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '5')) {
+			return true;
+		}	
+	}
+
+
 	public function index() {
 		$this->Thematic->recursive = 0;
 		$this->set('thematics', $this->Paginator->paginate());
@@ -31,7 +43,6 @@ class ThematicsController extends AppController {
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
-	
 		$thematics=$this->Thematic->find('all');
 		$count=0;
 		foreach ($thematics as $key => $thematics) {
@@ -146,7 +157,7 @@ class ThematicsController extends AppController {
 	}
 
 /**
- * Json get Site method
+ * Json get Thematic
  *
  * @param string $query
  * @return $array

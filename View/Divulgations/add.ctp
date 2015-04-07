@@ -34,7 +34,7 @@
 			echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 			echo $this->Form->input('population_type_id',array('empty'=>'Seleccione tipo de población'));
 	?>
-	<div class="seccion-divulgations">	
+	<div class="seccion-person">	
 			<div class="input" >
 				<label>Temáticas</label>
 				<input type="text"  class="Thematics-autocomplete" data-required="true" data-valcontainer=".results-input-thematics" data-emptymsg="Por favor ingresa mínimo una temática">
