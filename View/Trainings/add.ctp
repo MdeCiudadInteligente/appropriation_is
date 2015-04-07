@@ -1,4 +1,4 @@
-<div class="trainings form">
+<div class="trainings form mde-form">
 <?php echo $this->Form->create('Training'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Training'); ?></legend>
@@ -9,13 +9,19 @@
 		echo $this->Form->input('participant_number');
 		echo $this->Form->input('type_id');
 		echo $this->Form->input('site_id');
-		echo $this->Form->input('user_id');
 		echo $this->Form->input('process_id');
 		echo $this->Form->input('alliance_id');
-		echo $this->Form->input('population_type_id');
-		echo $this->Form->input('creation_date');
-		echo $this->Form->input('modification_date');
-	?>
+		?>
+		<div class="seccion-person">	
+			<div class="input" >
+				<label>Tipo de población</label>
+				<input type="text"  class="PopulationTypes-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un tipo de población">
+				<div class="results-input" data-input-name="data[Training][population_type_id]" >
+					
+				</div>
+			</div>
+		</div>	
+
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>

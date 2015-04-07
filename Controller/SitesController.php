@@ -253,10 +253,10 @@ class SitesController extends AppController {
 				    array('Site.site_address LIKE' => '%'.$queryString.'%')
 		));
 
-		$person=$this->Site->find('list',array('fields'=>array('Site.id_site','Site.site_name','Site.site_address'),'order' => array('Site.site_name' => 'ASC'),'conditions' => $condition));
+		$site=$this->Site->find('list',array('fields'=>array('Site.id_site','Site.site_name','Site.site_address'),'order' => array('Site.site_name' => 'ASC'),'conditions' => $condition));
+		debug($site);
 
-
-		foreach ($person as $dir => $value) {
+		foreach ($site as $dir => $value) {
 				$json_data = array();
 				$json_data['direccion']=$dir;
 				$array_keys=array_keys($value);

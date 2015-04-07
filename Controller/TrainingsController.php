@@ -55,9 +55,9 @@ class TrainingsController extends AppController {
 				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
 			}
 		}
-		$types = $this->Training->Type->find('list');
-		$processes = $this->Training->Process->find('list');
-		$this->set(compact('types', 'processes'));
+		//$types = $this->Training->TraType->find('list');
+		//$processes = $this->Training->TraProcess->find('list');
+		//$this->set(compact('types', 'processes'));
 	}
 
 /**

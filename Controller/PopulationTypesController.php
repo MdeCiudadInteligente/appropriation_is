@@ -176,4 +176,29 @@ class PopulationTypesController extends AppController {
 			$this->Session->setFlash(__('The population type could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+
+	public function getPopulationType() {
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$queryString=$_GET['q'];
+		$condition=array('OR' => array(
+				array('PopulationType.name LIKE' => '%'.$queryString.'%')
+				//array('Person.completename LIKE' => '%'.$queryString.'%')
+		));
+		
+		$populationtype=$this->PopulationType->find('list',array('fields'=>array('PopulationType.id_population_type','PopulationType.name'),'order' => array('PopulationType.name' => 'ASC'),'conditions' => $condition));
+		foreach ($populationtype as $id => $value) {
+			
+			$json_data = array();
+			$json_data['id']=$id;
+			$json_data['name']=$value;
+			$data[]=$json_data;
+		}
+	
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	
+	}
+	
+}
