@@ -21,6 +21,18 @@ class PerTrainersController extends AppController {
  *
  * @return void
  */
+
+
+
+	public function isAuthorized($user) {
+		// Any registered user can access public functions
+		
+		if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '5')) {
+			return true;
+		}	
+	}
+
+
 	public function index() {
 		$this->PerTrainer->recursive = 0;
 		$this->set('perTrainers', $this->Paginator->paginate());
@@ -219,4 +231,41 @@ class PerTrainersController extends AppController {
 		}
 		
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+
+	/**
+	 * Json get trainer
+	 *
+	 * @param string $query
+	 * @return $array
+	 */
+		public function getTrainer() {
+		    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+			$queryString=$_GET['q'];
+			$condition=array('OR' => array(
+					    array('Site.site_name LIKE' => '%'.$queryString.'%'),
+					    array('Site.site_address LIKE' => '%'.$queryString.'%')
+			));
+			$site=$this->Site->find('list',array('fields'=>array('Site.id_site','Site.site_name','Site.site_address'),'order' => array('Site.site_name' => 'ASC'),'conditions' => $condition));
+			foreach ($site as $dir => $value) {
+					$json_data = array();
+					$json_data['direccion']=$dir;
+					$array_keys=array_keys($value);
+					$json_data['id_site']=$array_keys[0];
+					$json_data['nombre']=$value[$array_keys[0]];
+					$data[]=$json_data;
+			}	
+
+			$this->set(compact('data')); // Pass $data to the view
+			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+
+		}
+
+
+}
+
+
+
+
+
