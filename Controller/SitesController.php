@@ -254,8 +254,6 @@ class SitesController extends AppController {
 		));
 
 		$site=$this->Site->find('list',array('fields'=>array('Site.id_site','Site.site_name','Site.site_address'),'order' => array('Site.site_name' => 'ASC'),'conditions' => $condition));
-		debug($site);
-
 		foreach ($site as $dir => $value) {
 				$json_data = array();
 				$json_data['direccion']=$dir;
