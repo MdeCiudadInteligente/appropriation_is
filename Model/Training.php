@@ -194,6 +194,19 @@ class Training extends AppModel {
 					'offset' => '',
 					'finderQuery' => '',
 			),
+			'TraProcess' => array(
+					'className' => 'TraProcess',
+					'joinTable' => 'tra_proccesses_training',
+					'foreignKey' => 'training_id',
+					'associationForeignKey' => 'process_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			),
 			'PopulationType' => array(
 					'className' => 'PopulationType',
 					'joinTable' => 'population_types_training',
@@ -230,12 +243,5 @@ class Training extends AppModel {
 					'fields' => '',
 					'order' => ''
 			),
-			'TraProcess' => array(
-					'className' => 'TraProcess',
-					'foreignKey' => 'process_id',
-					'conditions' => '',
-					'fields' => '',
-					'order' => ''
-			)
 	);
 }

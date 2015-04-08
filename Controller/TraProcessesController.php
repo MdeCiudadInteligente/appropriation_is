@@ -138,7 +138,7 @@ class TraProcessesController extends AppController {
 	
 		$traprocess=$this->TraProcess->find('list',array('fields'=>array('TraProcess.id','TraProcess.name'),'order' => array('TraProcess.name' => 'ASC'),'conditions' => $condition));
 		//debug($trally);
-		foreach (traprocess as $id => $value) {
+		foreach ($traprocess as $id => $value) {
 	
 			$json_data = array();
 			$json_data['id']=$id;

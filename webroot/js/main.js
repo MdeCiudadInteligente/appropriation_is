@@ -488,7 +488,7 @@ App.prototype.bindAutocompleteTraAlly=function(selector){
 App.prototype.bindAutocompleteTraProcess=function(selector){
 	if($(selector).length){
 		 var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
-		 var serivce_route=absPath+"TraProcess/getTraProcesses.json";
+		 var serivce_route=absPath+"TraProcesses/getTraProcesses.json";
 		 $(selector).autoSuggest(serivce_route,
 					{  	 minChars: 2,
 			             formatList: function(data, elem){

@@ -82,19 +82,20 @@ class TraProcess extends AppModel {
 	);
 	
 	
-	public $hasMany = array(
+	public $hasAndBelongsToMany = array(
 			'Training' => array(
 					'className' => 'Training',
+					'joinTable' => 'tra_proccesses_training',
 					'foreignKey' => 'process_id',
-					'dependent' => false,
+					'associationForeignKey' => 'training_id',
+					'unique' => 'keepExisting',
 					'conditions' => '',
 					'fields' => '',
 					'order' => '',
 					'limit' => '',
 					'offset' => '',
-					'exclusive' => '',
 					'finderQuery' => '',
-					'counterQuery' => ''
-			)
+			),
+
 	);
 }

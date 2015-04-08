@@ -15,7 +15,7 @@
 			<div class="input">
 				<label>Sitio</label>
 				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" >
-				<div class="results-input-site" data-input-name="data[Site][Site][]" >			
+				<div class="results-input-site" data-input-name="data[Training][site_id]" >			
 				</div>
 			</div>
 		</div>
@@ -25,9 +25,9 @@
 	?>
 	<div class="seccion-person">	
 			<div class="input" >
-				<label>Aliados</label>
-				<input type="text"  class="TraAllies-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un proceso">
-				<div class="results-input" data-input-name="data[Training][alliance_id]" >
+				<label>Procesos</label>
+				<input type="text"  class="TraProcesses-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un proceso">
+				<div class="results-input" data-input-name="data[Training][process_id]" >
 					
 				</div>
 			</div>
