@@ -170,7 +170,7 @@ class Training extends AppModel {
 	public $hasAndBelongsToMany = array(
 			'Site' => array(
 					'className' => 'Site',
-					'joinTable' => 'sites_per_trainers',
+					'joinTable' => 'sites_training',
 					'foreignKey' => 'training_id',
 					'associationForeignKey' => 'site_id',
 					'unique' => 'keepExisting',
@@ -181,11 +181,11 @@ class Training extends AppModel {
 					'offset' => '',
 					'finderQuery' => '',
 			),
-			'Forally' => array(
-					'className' => 'Forally',
-					'joinTable' => 'forallies_training',
+			'TraAlly' => array(
+					'className' => 'TraAlly',
+					'joinTable' => 'tra_allies_training',
 					'foreignKey' => 'training_id',
-					'associationForeignKey' => 'forally_id',
+					'associationForeignKey' => 'tra_ally_id',
 					'unique' => 'keepExisting',
 					'conditions' => '',
 					'fields' => '',
@@ -220,6 +220,23 @@ class Training extends AppModel {
 					'offset' => '',
 					'finderQuery' => '',
 			),
+	);
+	
+	public $belongsTo = array(
+			'TraType' => array(
+					'className' => 'TraType',
+					'foreignKey' => 'type_id',
+					'conditions' => '',
+					'fields' => '',
+					'order' => ''
+			),
+			'TraProcess' => array(
+					'className' => 'TraProcess',
+					'foreignKey' => 'process_id',
+					'conditions' => '',
+					'fields' => '',
+					'order' => ''
+			)
 	);
 	/*
 	public $belongsTo = array(

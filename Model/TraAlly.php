@@ -80,4 +80,20 @@ class TraAlly extends AppModel {
 			),
 		),
 	);
+	
+	public $hasAndBelongsToMany = array(
+			'Training' => array(
+					'className' => 'Training',
+					'joinTable' => 'tra_allies_training',
+					'foreignKey' => 'training_id',
+					'associationForeignKey' => 'tra_ally_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			),
+	 );
 }

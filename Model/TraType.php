@@ -80,4 +80,28 @@ class TraType extends AppModel {
 			),
 		),
 	);
+	
+	
+
+	/**
+	 * hasMany associations
+	 *
+	 * @var array
+	 */
+	public $hasMany = array(
+			'Training' => array(
+					'className' => 'Training',
+					'foreignKey' => 'type_id',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+			)
+	);
+	
 }

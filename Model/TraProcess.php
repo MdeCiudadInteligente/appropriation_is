@@ -80,4 +80,21 @@ class TraProcess extends AppModel {
 			),
 		),
 	);
+	
+	
+	public $hasMany = array(
+			'Training' => array(
+					'className' => 'Training',
+					'foreignKey' => 'process_id',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+			)
+	);
 }
