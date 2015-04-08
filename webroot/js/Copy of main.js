@@ -1,8 +1,7 @@
-App.prototype.bindAutocompletePopulationType=function(selector){
-	 if($(selector).length){
-		 
+App.prototype.bindAutocompleteTraAllies=function(selector){
+	 if($(selector).length){		 
 		 var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
-		 var serivce_route=absPath+"PopulationTypes/getPopulationType.json";
+		 var serivce_route=absPath+"traAllies/getTraAllies.json";
 		 $(selector).autoSuggest(serivce_route,
 			{  	 minChars: 2,
 	             formatList: function(data, elem){
@@ -10,23 +9,23 @@ App.prototype.bindAutocompletePopulationType=function(selector){
 	             return new_elem;
              },
              
-             emptyText:'No se encontraron tipos de población',
+             emptyText:'No se encontraron aliados',
              selectedItemProp: 'name',
              selectedValuesProp:'name',
              searchObjProps: 'name',
              selectionLimit:limit,
-             starText: 'Seleccione el tipo de población',
+             starText: 'Seleccione el aliado',
 
              resultClick: function(data){
                  //Variables de datos
-                 var id=data.attributes.id_population_type;
+                 var id=data.attributes.id;
                  var data_name=$('.results-input').data('input-name');
                  var elementID='val-input-'+id;
                  $('.results-input').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
              },selectionRemoved: function(elem){
                  var prop_data=elem.data('prop-data');
-                 var idpt=prop_data['id_population_type'];
-                 var elementID='val-input-'+idpt;
+                 var idal=prop_data['id'];
+                 var elementID='val-input-'+idal;
                  $('#'+elementID).remove();
                  elem.remove();
              },selectionAdded:function(elem){
@@ -54,9 +53,9 @@ App.prototype.bindAutocompletePopulationType=function(selector){
 	  
 	  if($(selector).data('load')){
           var inputContainer=$($(selector).data('valcontainer'));
-          var loadPopulationTypes=inputContainer.find('input');
+          var loadTraAllies=inputContainer.find('input');
           var autoList=$(selector).closest('ul');
-          $.each(loadPopulationTypes,function(){
+          $.each(loadTraAllies,function(){
               var id=$(this).attr('id');
               var name=$(this).data('display');
               autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');

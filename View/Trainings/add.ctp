@@ -10,9 +10,17 @@
 		echo $this->Form->input('type_id');
 		echo $this->Form->input('site_id');
 		echo $this->Form->input('process_id');
-		echo $this->Form->input('alliance_id');
-		?>
-		<div class="seccion-person">	
+	?>
+	<div class="seccion-person">	
+			<div class="input" >
+				<label>Aliados</label>
+				<input type="text"  class="TraAllies-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un aliado">
+				<div class="results-input" data-input-name="data[Training][alliance_id]" >
+					
+				</div>
+			</div>
+	</div>	
+	<div class="seccion-person">	
 			<div class="input" >
 				<label>Tipo de población</label>
 				<input type="text"  class="PopulationTypes-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un tipo de población">
@@ -20,7 +28,7 @@
 					
 				</div>
 			</div>
-		</div>	
+	</div>	
 
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
