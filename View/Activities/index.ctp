@@ -14,8 +14,12 @@
 			<li><?php echo $this->Html->link(__('Sensibilizaciones'), array('controller' => 'Divulgations', 'action' => 'index')); ?> </li>	
 			<?php }?>	
 			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '4'||$usuario_level == '5'){?>	
+			<li><?php echo $this->Html->link(__('Formaciones'), array('controller' => 'trainings', 'action' => 'index')); ?> </li>
+			<?php }?>
+			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '4'||$usuario_level == '5'){?>	
 			<li><?php echo $this->Html->link(__('Configuration'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
 			<?php }?>
+			
 		</ul>
 	</div>		
 	</div>		

@@ -60,7 +60,7 @@ App.prototype.bind=function(){
     app.bindAutocompleteThematics('.Thematics-autocomplete');
     app.bindAutocompletePopulationType('.PopulationTypes-autocomplete');
     app.bindAutocompleteTraAlly('.TraAllies-autocomplete');
-    app.bindAutocompleteTraProcess('.TraProcess-autocomplete');
+    app.bindAutocompleteTraProcess('.TraProcesses-autocomplete');
     app.removeRequired();
     app.setMobileNav();
     if(isMobile){
