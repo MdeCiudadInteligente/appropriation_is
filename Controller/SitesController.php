@@ -262,10 +262,8 @@ class SitesController extends AppController {
 				$json_data['nombre']=$value[$array_keys[0]];
 				$data[]=$json_data;
 		}	
-
 		$this->set(compact('data')); // Pass $data to the view
 		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
-
 	}
 
 

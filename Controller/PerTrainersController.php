@@ -242,27 +242,46 @@ class PerTrainersController extends AppController {
 	 */
 		public function getTrainer() {
 		    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
-			$queryString=$_GET['q'];
-			$condition=array('OR' => array(
-					    array('Site.site_name LIKE' => '%'.$queryString.'%'),
-					    array('Site.site_address LIKE' => '%'.$queryString.'%')
-			));
-			$site=$this->Site->find('list',array('fields'=>array('Site.id_site','Site.site_name','Site.site_address'),'order' => array('Site.site_name' => 'ASC'),'conditions' => $condition));
-			foreach ($site as $dir => $value) {
+			$queryString='%'.$_GET['q'].'%';
+			$db = $this->PerTrainer->getDataSource();
+			$trainers=$db->fetchAll(
+			   " SELECT 
+			       t1.id, t2.person_id, t3.name , t3.lastname, t3.cedula , t4.name as profesion, t5.name as tipo
+			   FROM
+			       per_trainers t1,
+			       per_people_type t2,
+			       people t3,
+			       per_professions t4,
+			       per_trainer_types t5
+			   WHERE
+			       t1.per_people_type_id = t2.id
+			           AND t2.person_id = t3.id_person
+			           AND t1.per_trainer_type_id=t5.id
+			           AND t1.per_profession_id=t4.id
+			           AND (
+			   			CONCAT(t3.name, ' ', t3.lastname) LIKE :query
+			               OR t3.cedula LIKE :query 
+			           )",
+			    array('query' => $queryString)
+			);
+			foreach ($trainers as $key => $trainer) {
 					$json_data = array();
-					$json_data['direccion']=$dir;
-					$array_keys=array_keys($value);
-					$json_data['id_site']=$array_keys[0];
-					$json_data['nombre']=$value[$array_keys[0]];
+					$json_data = array(
+									'id'=> $trainer['t1']['id'],
+									'person_id' =>$trainer['t2']['person_id'],
+									'name' =>$trainer['t3']['name'],
+									'lastname' =>$trainer['t3']['lastname'],
+									'cedula' =>$trainer['t3']['cedula'],
+									'profesion' =>$trainer['t4']['profesion'],
+									'tipo' =>$trainer['t5']['tipo']
+									);
 					$data[]=$json_data;
 			}	
-
 			$this->set(compact('data')); // Pass $data to the view
 			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
-
 		}
-
-
+		
+//End class		
 }
 
 
