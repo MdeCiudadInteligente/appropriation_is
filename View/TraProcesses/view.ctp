@@ -6,6 +6,11 @@
 			<?php echo h($traProcess['TraProcess']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Prefix'); ?></dt>
+		<dd>
+			<?php echo h($traProcess['TraProcess']['prefix']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

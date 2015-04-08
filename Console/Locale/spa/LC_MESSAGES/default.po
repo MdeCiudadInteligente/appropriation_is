@@ -91,9 +91,14 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid "Prefix"
+msgstr "Prefijo"
+
+msgid "The training process already exists , please check."
+msgstr "El proceso de formación existe actualmente, por favor verifique"
+
 msgid "The people type has been saved."
 msgstr "El tipo de persona ha sido guardada"
-
 
 msgid "The trainer could not be deleted. Please, try again."
 msgstr "El entrenador no ha sido eliminado. Por favor trate nuevamente"
