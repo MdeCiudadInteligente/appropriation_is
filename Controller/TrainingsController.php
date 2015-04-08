@@ -50,12 +50,10 @@ class TrainingsController extends AppController {
 			$this->Training->create();
 			if ($this->Training->save($this->request->data)) {
 				$this->Session->setFlash(__('The training has been saved.'));
-				debug($this->request->data);
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
 			}
-			debug($this->request->data);
 		}
 		
 		$types = $this->Training->TraType->find('list');
