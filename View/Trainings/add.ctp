@@ -46,8 +46,15 @@
 			<div class="input" >
 				<label>Tipo de población</label>
 				<input type="text"  class="PopulationTypes-autocomplete" data-required="true" data-valcontainer=".results-input-typ" data-emptymsg="Por favor ingresa un tipo de población">
-				<!--  <div class="results-input" data-input-name="data[Training][population_type_id]" >-->
 				<div class="results-input-typ" data-input-name="data[PopulationType][PopulationType][]" >	
+				</div>
+			</div>
+	</div>	
+	<div class="seccion-person">	
+			<div class="input" >
+				<label>Formador</label>
+				<input type="text"  class="Trainers-autocomplete" data-required="true" data-valcontainer=".results-input-tra" data-emptymsg="Por favor ingresa un formador">
+				<div class="results-input-tra" data-input-name="data[PerTrainer][PerTrainer][]" >	
 				</div>
 			</div>
 	</div>	
