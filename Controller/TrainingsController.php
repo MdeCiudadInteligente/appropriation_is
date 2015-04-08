@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class TrainingsController extends AppController {
-
+	//var $uses = array('Training','TraType');
 /**
  * Components
  *
@@ -55,9 +55,11 @@ class TrainingsController extends AppController {
 				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
 			}
 		}
-		//$types = $this->Training->TraType->find('list');
-		//$processes = $this->Training->TraProcess->find('list');
-		//$this->set(compact('types', 'processes'));
+		$types = $this->Training->TraType->find('list');
+		$processes = $this->Training->TraProcess->find('list');
+		$TraAllies = $this->Training->TraAlly->find('list');
+		$sites = $this->Training->Site->find('list');
+		$this->set(compact('types', 'processes','TraAllies','sites'));
 	}
 
 /**

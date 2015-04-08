@@ -124,4 +124,33 @@ class TraAlliesController extends AppController {
 			$this->Session->setFlash(__('The ally could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	
+	//función para el servicio de aliados.
+	
+	public function getTraAllies() {
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$queryString=$_GET['q'];
+		$condition=array('OR' => array(
+				array('TraAlly.name LIKE' => '%'.$queryString.'%')
+		));
+	
+		$trally=$this->TraAlly->find('list',array('fields'=>array('TraAlly.id','TraAlly.name'),'order' => array('TraAlly.name' => 'ASC'),'conditions' => $condition));
+		//debug($trally);
+		foreach ($trally as $id => $value) {
+				
+			$json_data = array();
+			$json_data['id']=$id;
+			$json_data['name']=$value;
+			$data[]=$json_data;
+		}
+	
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	
+	}
+	
+	}
+	
+	
+	

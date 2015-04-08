@@ -8,19 +8,39 @@
 		echo $this->Form->input('description');
 		echo $this->Form->input('participant_number');
 		echo $this->Form->input('type_id');
-		echo $this->Form->input('site_id');
-		echo $this->Form->input('process_id');
-		echo $this->Form->input('alliance_id');
+
+
 		?>
-		<div class="seccion-person">	
+  <div class="seccion-person">	
+			<div class="input">
+				<label>Sitio</label>
+				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" >
+				<div class="results-input-site" data-input-name="data[Site][Site][]" >			
+				</div>
+			</div>
+		</div>
+	<?php	
+		echo $this->Form->input('process_id');
+		//echo $this->Form->input('TraAllies');
+	?>
+	<div class="seccion-person">	
 			<div class="input" >
-				<label>Tipo de población</label>
-				<input type="text"  class="PopulationTypes-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un tipo de población">
-				<div class="results-input" data-input-name="data[Training][population_type_id]" >
+				<label>Aliados</label>
+				<input type="text"  class="TraAllies-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un aliado">
+				<div class="results-input" data-input-name="data[Training][alliance_id]" >
 					
 				</div>
 			</div>
-		</div>	
+	</div>	
+	<div class="seccion-person">	
+			<div class="input" >
+				<label>Tipo de población</label>
+				<input type="text"  class="PopulationTypes-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un tipo de población">
+				<!--  <div class="results-input" data-input-name="data[Training][population_type_id]" >-->
+				<div class="results-input" data-input-name="data[Training][Training][]" >	
+				</div>
+			</div>
+	</div>	
 
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
