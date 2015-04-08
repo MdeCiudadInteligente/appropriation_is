@@ -125,4 +125,31 @@ class TraProcessesController extends AppController {
 			$this->Session->setFlash(__('The training process could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+	//función para el servicio de procesos.
+	
+	public function getTraProcesses() {
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$queryString=$_GET['q'];
+		$condition=array('OR' => array(
+				array('TraProcess.name LIKE' => '%'.$queryString.'%')
+		));
+	
+		$traprocess=$this->TraProcess->find('list',array('fields'=>array('TraProcess.id','TraProcess.name'),'order' => array('TraProcess.name' => 'ASC'),'conditions' => $condition));
+		//debug($trally);
+		foreach (traprocess as $id => $value) {
+	
+			$json_data = array();
+			$json_data['id']=$id;
+			$json_data['name']=$value;
+			$data[]=$json_data;
+		}
+	
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	
+	}
+
+
+}

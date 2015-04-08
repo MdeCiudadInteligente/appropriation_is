@@ -20,9 +20,19 @@
 			</div>
 		</div>
 	<?php	
-		echo $this->Form->input('process_id');
+		//echo $this->Form->input('process_id');
 		//echo $this->Form->input('TraAllies');
 	?>
+	<div class="seccion-person">	
+			<div class="input" >
+				<label>Aliados</label>
+				<input type="text"  class="TraAllies-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un proceso">
+				<div class="results-input" data-input-name="data[Training][alliance_id]" >
+					
+				</div>
+			</div>
+	</div>	
+	
 	<div class="seccion-person">	
 			<div class="input" >
 				<label>Aliados</label>

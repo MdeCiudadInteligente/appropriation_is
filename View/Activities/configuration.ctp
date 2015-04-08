@@ -12,6 +12,7 @@
 			<li><?php echo $this->Html->link(__('Tipos de formadores'), array('controller' => 'PerTrainerTypes', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Procesos de formación'), array('controller' => 'TraProcesses', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Formadores'), array('controller' => 'PerTrainers', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Formaciones'), array('controller' => 'trainings', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Tipos de 	Sensibilizaciones'), array('controller' => 'Divtypes', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Tipos de Sitios'), array('controller' => 'SiteTypes', 'action' => 'index')); ?> </li>			
 			<li><?php echo $this->Html->link(__('Tipos de Población'), array('controller' => 'PopulationTypes', 'action' => 'index')); ?> </li>			
