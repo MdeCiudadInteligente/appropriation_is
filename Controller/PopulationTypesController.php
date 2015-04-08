@@ -178,7 +178,7 @@ class PopulationTypesController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
-
+	//función para el servicio tipo de población.
 	public function getPopulationType() {
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$queryString=$_GET['q'];

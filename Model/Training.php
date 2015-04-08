@@ -221,7 +221,7 @@ class Training extends AppModel {
 					'finderQuery' => '',
 			),
 	);
-	
+
 	public $belongsTo = array(
 			'TraType' => array(
 					'className' => 'TraType',
@@ -238,21 +238,4 @@ class Training extends AppModel {
 					'order' => ''
 			)
 	);
-	/*
-	public $belongsTo = array(
-		'Type' => array(
-			'className' => 'Type',
-			'foreignKey' => 'type_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Process' => array(
-			'className' => 'Process',
-			'foreignKey' => 'process_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);*/
 }
