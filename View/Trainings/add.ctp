@@ -14,8 +14,8 @@
   <div class="seccion-person">	
 			<div class="input">
 				<label>Sitio</label>
-				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" >
-				<div class="results-input-site" data-input-name="data[Training][site_id]" >			
+				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-limit="100" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" >
+				<div class="results-input-site" data-input-name="data[Site][Site][]" >			
 				</div>
 			</div>
 		</div>
@@ -26,8 +26,8 @@
 	<div class="seccion-person">	
 			<div class="input" >
 				<label>Procesos</label>
-				<input type="text"  class="TraProcesses-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un proceso">
-				<div class="results-input" data-input-name="data[Training][process_id]" >
+				<input type="text"  class="TraProcesses-autocomplete" data-required="true" data-valcontainer=".results-input-pro" data-emptymsg="Por favor ingresa un proceso">
+				<div class="results-input-pro" data-input-name="data[TraProcess][TraProcess][]" >
 					
 				</div>
 			</div>
@@ -36,8 +36,8 @@
 	<div class="seccion-person">	
 			<div class="input" >
 				<label>Aliados</label>
-				<input type="text"  class="TraAllies-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un aliado">
-				<div class="results-input" data-input-name="data[Training][alliance_id]" >
+				<input type="text"  class="TraAllies-autocomplete" data-required="true" data-valcontainer=".results-input-ally" data-emptymsg="Por favor ingresa un aliado">
+				<div class="results-input-ally" data-input-name="data[TraAlly][TraAlly][]" >
 					
 				</div>
 			</div>
@@ -45,9 +45,9 @@
 	<div class="seccion-person">	
 			<div class="input" >
 				<label>Tipo de población</label>
-				<input type="text"  class="PopulationTypes-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa un tipo de población">
+				<input type="text"  class="PopulationTypes-autocomplete" data-required="true" data-valcontainer=".results-input-typ" data-emptymsg="Por favor ingresa un tipo de población">
 				<!--  <div class="results-input" data-input-name="data[Training][population_type_id]" >-->
-				<div class="results-input" data-input-name="data[Training][Training][]" >	
+				<div class="results-input-typ" data-input-name="data[PopulationType][PopulationType][]" >	
 				</div>
 			</div>
 	</div>	

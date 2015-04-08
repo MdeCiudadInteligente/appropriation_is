@@ -196,12 +196,12 @@ App.prototype.bindAutocompleteSites=function(selector){
                     //Variables de datos
                     var id=data.attributes.id_site;
                     var data_name=$('.results-input-site').data('input-name');
-                    var elementID='val-input-'+id;
+                    var elementID='val-input-si-'+id;
                     $('.results-input-site').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
                 },selectionRemoved: function(elem){
                     var prop_data=elem.data('prop-data');
                     var id_site=prop_data['id_site'];
-                    var elementID='val-input-'+id_site;
+                    var elementID='val-input-si-'+id_site;
                     $('#'+elementID).remove();
                     elem.remove();
                 },selectionAdded:function(elem){
@@ -274,12 +274,12 @@ App.prototype.bindAutocompleteThematics=function(selector){
                     //Variables de datos
                     var id=data.attributes.id;
                     var data_name=$('.results-input-thematics').data('input-name');
-                    var elementID='val-input-'+id;
+                    var elementID='val-input-te-'+id;
                     $('.results-input-thematics').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
                 },selectionRemoved: function(elem){
                     var prop_data=elem.data('prop-data');
                     var id=prop_data['id'];
-                    var elementID='val-input-'+id;
+                    var elementID='val-input-te-'+id;
                     $('#'+elementID).remove();
                     elem.remove();
                 },selectionAdded:function(elem){
@@ -353,14 +353,14 @@ App.prototype.bindAutocompletePopulationType=function(selector){
 
             resultClick: function(data){
                 //Variables de datos
-                var id=data.attributes.id_population_type;
-                var data_name=$('.results-input').data('input-name');
-                var elementID='val-input-'+id;
-                $('.results-input').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
+                var id=data.attributes.id;
+                var data_name=$($(selector).data('valcontainer')).data('input-name');
+                var elementID='val-input-po-'+id;
+                $($(selector).data('valcontainer')).append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
             },selectionRemoved: function(elem){
                 var prop_data=elem.data('prop-data');
-                var idpt=prop_data['id_population_type'];
-                var elementID='val-input-'+idpt;
+                var idpt=prop_data['id'];
+                var elementID='val-input-po-'+idpt;
                 $('#'+elementID).remove();
                 elem.remove();
             },selectionAdded:function(elem){
@@ -430,13 +430,13 @@ App.prototype.bindAutocompleteTraAlly=function(selector){
             resultClick: function(data){
                 //Variables de datos
                 var id=data.attributes.id;
-                var data_name=$('.results-input').data('input-name');
-                var elementID='val-input-'+id;
-                $('.results-input').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
+                var data_name=$($(selector).data('valcontainer')).data('input-name');
+                var elementID='val-input-al-'+id;
+                $($(selector).data('valcontainer')).append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
             },selectionRemoved: function(elem){
                 var prop_data=elem.data('prop-data');
                 var idal=prop_data['id'];
-                var elementID='val-input-'+idal;
+                var elementID='val-input-al-'+idal;
                 $('#'+elementID).remove();
                 elem.remove();
             },selectionAdded:function(elem){
@@ -505,9 +505,9 @@ App.prototype.bindAutocompleteTraProcess=function(selector){
 		            resultClick: function(data){
 		                //Variables de datos
 		                var id=data.attributes.id;
-		                var data_name=$('.results-input').data('input-name');
+		                var data_name=$($(selector).data('valcontainer')).data('input-name');
 		                var elementID='val-input-'+id;
-		                $('.results-input').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
+		                $($(selector).data('valcontainer')).append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
 		            },selectionRemoved: function(elem){
 		                var prop_data=elem.data('prop-data');
 		                var idal=prop_data['id'];
