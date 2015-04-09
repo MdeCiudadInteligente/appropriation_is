@@ -70,7 +70,7 @@
 #  Revision: 7690 \libs\view\pages\home.ctp
 #  Revision: 7296 \tests\test_app\views\posts\test_nocache_tags.ctp
 #  Revision: 7690 \tests\cases\libs\file.test.php
-#  Revision: 7690 \tests\cases\libs\i18n.test.php
+#  Revision: 7690 \tests\cases\libs\i18n.test.php|
 #  Revision: 7690 \tests\cases\libs\view\helpers\form.test.php
 #
 "Project-Id-Version: CakePHP 1.2.1\n"
@@ -103,6 +103,18 @@ msgstr "Editar Formador"
 msgid "List Trainers"
 msgstr "Listado Formadores"
 
+msgid "Add Training"
+msgstr "Agregar Formación"
+
+msgid "The training has been saved."
+msgstr "La formación se ha guardado."
+
+msgid "Code"
+msgstr "Código"
+
+msgid "Type"
+msgstr "Tipo formación"
+	
 msgid "The ally has been deleted."
 msgstr "El aliado ha sido eliminado"
 
@@ -131,7 +143,7 @@ msgid "List Allies"
 msgstr "Lista aliados"
 
 msgid "The training process could not be deleted. Please, try again."
-msgstr "EL proceso de formaci�n no ha sido eliminado .Por favor, trate nuevamente"
+msgstr "EL proceso de formación no ha sido eliminado .Por favor, trate nuevamente"
 
 msgid "The training process has been deleted."
 msgstr "El proceso de formación ha sido eliminado"
@@ -177,6 +189,12 @@ msgstr "El tipo de formación ha sido guardado"
 
 msgid "Invalid training type"
 msgstr "Tipo de formación no válido"
+
+msgid "List Trainings"
+msgstr "Lista de formaciones"
+
+msgid "New Training"
+msgstr "Nueva formación"
 
 msgid "New Training Type"
 msgstr "Nuevo tipo de formación"

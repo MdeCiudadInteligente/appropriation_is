@@ -126,19 +126,46 @@ class TrainingsController extends AppController {
 			$pro_prefix=implode($process_prefix,'-');
 			$code=$this->codeFirst.$pro_prefix.date('Y').'-'.$training_count;
 
+			//validación de tablas intermedias..				
+				$save_switch=true;
+	
+				if(empty($this->request->data['Site']['Site'])){
+					$msg=__('Verifica que el campo sitio este lleno.');
+					$save_switch=false;
+				}
+				if(empty($this->request->data['TraProcess']['TraProcess'])){
+					$msg.='<br>'.__('Verifica que el campo proceso este lleno.');
+					$save_switch=false;
+				}
+				if(empty($this->request->data['TraAlly']['TraAlly'])){
+					$msg.='<br>'.__('Verifica que el campo aliado este lleno.');
+					$save_switch=false;
+				}
+				if(empty($this->request->data['PopulationType']['PopulationType'])){
+					$msg.='<br>'.__('Verifica que el campo tipo de población este lleno.');
+					$save_switch=false;
+				}
+			//end de validación de tablas intermedias...						
+
 			if($data!=''){
 				$data['Training']['creation_date']=date('Y-m-d H:i:s');
 				$data['Training']['user_id']=$usuario;
 				$data['Training']['code']=$code;
+				$this->Training->create();
+
+				if($save_switch){
+					if ($this->Training->save($data)) {
+						$this->Session->setFlash(__('The training has been saved.'));
+						return $this->redirect(array('action' => 'index'));
+					} else {
+						$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
+					}
+				}else{
+						$this->Session->setFlash($msg);			
+				}
+			}else{
+					$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
 			}		
-			
-			$this->Training->create();
-			if ($this->Training->save($data)) {
-				$this->Session->setFlash(__('The training has been saved.'));
-				//return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
-			}
 		}
 		$types = $this->Training->TraType->find('list');
 		$this->set(compact('types'));
