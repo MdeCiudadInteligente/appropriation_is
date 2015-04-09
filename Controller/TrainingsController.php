@@ -7,13 +7,15 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class TrainingsController extends AppController {
-	//var $uses = array('Training','TraType');
+
+ // var $uses = array('TraProcess','TraAlly','TraType','PerTrainer');
 /**
  * Components
  *
  * @var array
  */
 	public $components = array('Paginator');
+	protected $codeFirst='FO';
 
 /**
  * index method
@@ -24,6 +26,69 @@ class TrainingsController extends AppController {
 		$this->Training->recursive = 0;
 		$this->set('trainings', $this->Paginator->paginate());
 	}
+
+
+
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$db = $this->Training->getDataSource();
+		$trainings=$db->fetchAll(
+			   "SELECT 
+			       t1.id, t2.person_id, t3.name , t3.lastname, t3.cedula , t4.name as profesion, t5.name as tipo
+			   FROM
+			       per_trainers t1,
+			       per_people_type t2,
+			       people t3,
+			       per_professions t4,
+			       per_trainer_types t5
+			   WHERE
+			       t1.per_people_type_id = t2.id
+			           AND t2.person_id = t3.id_person
+			           AND t1.per_trainer_type_id=t5.id
+			           AND t1.per_profession_id=t4.id
+			           AND (
+			   			CONCAT(t3.name, ' ', t3.lastname) LIKE :query
+			               OR t3.cedula LIKE :query 
+			           )",
+			    array('query' => $queryString)
+			);
+			foreach ($trainers as $key => $trainer) {
+					$json_data = array();
+					$json_data = array(
+									'id'=> $trainer['t1']['id'],
+									'person_id' =>$trainer['t2']['person_id'],
+									'name' =>$trainer['t3']['name'],
+									'lastname' =>$trainer['t3']['lastname'],
+									'cedula' =>$trainer['t3']['cedula'],
+									'profesion' =>$trainer['t4']['profesion'],
+									'tipo' =>$trainer['t5']['tipo']
+									);
+					$data[]=$json_data;
+			}	
+
+			$data['rows'][$count]=array(
+					'id'=>$PerTrainer['PerTrainer']['id'],
+					'people'=>$per_trainers_responsefp['personname'],
+					'per_trainer_type'=>$PerTrainer['PerTrainerType']['name'],
+					'per_profession'=>$PerTrainer['PerProfession']['name'],
+					'per_trainer_fund'=>$PerTrainer['PerTrainerFund']['name'],
+					'observations'=>$PerTrainer['PerTrainer']['observations'],
+					'state'=>$PerTrainer['PerTrainer']['state'],
+					'creation_date'=>$PerTrainer['PerTrainer']['creation_date'],
+					'modification_date'=>$PerTrainer['PerTrainer']['modification_date'],
+					'user_id'=>$PerTrainer['PerTrainer']['user_id'],
+			);
+			$count++;
+
+			$this->set(compact('data')); // Pass $data to the view
+			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+
+
+
 
 /**
  * view method
@@ -47,20 +112,36 @@ class TrainingsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$usuario = $this->Session->read('Auth.User.id_user');	
+			$data=$this->request->data;
+      		$args=array(
+					'conditions' => array('TraProcess.id' => $data['TraProcess']['TraProcess']),
+				    'recursive' => -1,
+				    'fields' => array('TraProcess.prefix'),
+				    'limit'=>1
+	    	);
+			$process_prefix=$this->Training->TraProcess->find('list',$args);
+			$training_count=$this->Training->find('count');
+			$training_count=$training_count+1;
+			$pro_prefix=implode($process_prefix,'-');
+			$code=$this->codeFirst.$pro_prefix.date('Y').'-'.$training_count;
+
+			if($data!=''){
+				$data['Training']['creation_date']=date('Y-m-d H:i:s');
+				$data['Training']['user_id']=$usuario;
+				$data['Training']['code']=$code;
+			}		
+			
 			$this->Training->create();
-			if ($this->Training->save($this->request->data)) {
+			if ($this->Training->save($data)) {
 				$this->Session->setFlash(__('The training has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				//return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
 			}
 		}
-		
 		$types = $this->Training->TraType->find('list');
-		$processes = $this->Training->TraProcess->find('list');
-		$TraAllies = $this->Training->TraAlly->find('list');
-		$sites = $this->Training->Site->find('list');
-		$this->set(compact('types', 'processes','TraAllies','sites'));
+		$this->set(compact('types'));
 	}
 
 /**
