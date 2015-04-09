@@ -72,12 +72,34 @@ class TraProcessesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->TraProcess->create();
-			if ($this->TraProcess->save($this->request->data)) {
-				$this->Session->setFlash(__('The training process has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The training process could not be saved. Please, try again.'));
+			
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+				
+			$name_process= $this->request->data['TraProcess']['name'];
+			$verificar_process=$this->TraProcess->query("select distinct name from tra_processes where name = '$name_process'");
+			$this->set('verificar_process',$verificar_process);
+			
+			if($verificar_process==Array( )){
+			
+				
+				$this->TraProcess->create();
+				
+				$data=$this->request->data;
+				$data['TraProcess']['name'] = ucwords($data['TraProcess']['name']);
+				$data['TraProcess']['creation_date']=date('Y-m-d H:i:s');
+				$data['TraProcess']['user_id']=$usuario;
+				
+				
+				if ($this->TraProcess->save($data)) {
+					$this->Session->setFlash(__('The training process has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The training process could not be saved. Please, try again.'));
+				}
+			}
+			else{
+				$this->Session->setFlash(__('The training process already exists , please check.'));
 			}
 		}
 	}

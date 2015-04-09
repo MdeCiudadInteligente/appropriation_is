@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS=0;
+
 -- phpMyAdmin SQL Dump
 -- version 3.5.2.2
 -- http://www.phpmyadmin.net
@@ -2090,10 +2092,10 @@ INSERT INTO `per_trainers` (`id`, `per_trainer_type_id`, `per_profession_id`, `p
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `per_trainers_training`
+-- Estructura de tabla para la tabla `training_per_trainers`
 --
 
-CREATE TABLE IF NOT EXISTS `per_trainers_training` (
+CREATE TABLE IF NOT EXISTS `training_per_trainers` (
   `per_trainer_id` int(11) NOT NULL,
   `training_id` int(11) NOT NULL,
   KEY `per_trainer_id` (`per_trainer_id`),
@@ -3097,11 +3099,11 @@ ALTER TABLE `per_trainers`
   ADD CONSTRAINT `per_trainers_ibfk_9` FOREIGN KEY (`per_people_type_id`) REFERENCES `per_people_type` (`id`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `per_trainers_training`
+-- Filtros para la tabla `training_per_trainers`
 --
-ALTER TABLE `per_trainers_training`
-  ADD CONSTRAINT `per_trainers_training_ibfk_2` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `per_trainers_training_ibfk_1` FOREIGN KEY (`per_trainer_id`) REFERENCES `per_trainers` (`id`) ON UPDATE CASCADE;
+ALTER TABLE `training_per_trainers`
+  ADD CONSTRAINT `training_per_trainers_ibfk_2` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `training_per_trainers_ibfk_1` FOREIGN KEY (`per_trainer_id`) REFERENCES `per_trainers` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `per_trainer_schedules`
