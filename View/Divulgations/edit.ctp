@@ -17,7 +17,7 @@ function goBack()
 </script>
 <div class="divulgations form mde-form">
 <?php echo $this->Form->create('Divulgation',array('type'=>'file')); 
-	$currentTraining=$this->request->data['Person'];
+	$trainers=$this->request->data['trainers'];
 	$Thematic=$this->request->data['Thematic'];
 	$site=$this->request->data['Site'];
 ?>	
@@ -59,18 +59,18 @@ function goBack()
 					</div>
 				</div>
 		</div>	
-		<div class="seccion-divulgations">	
+		 <div class="seccion-person">
 			<div class="input">
-				<label>Formadores</label>
-				<input type="text" data-required="true" class="person-autocomplete" data-load="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona" >
-				<div class="results-input" data-input-name="data[Person][Person][]">
+				<label>Formador</label>
+				<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-for" data-emptymsg="Por favor ingresa un tipo de formador" class="Trainers-autocomplete">
+				<div class="results-input-for" data-input-name="data[PerTrainer][PerTrainer][]">
 				<?php 
-					foreach ($currentTraining as $key => $Training) { ?>
-						<input type="hidden" name="data[Person][Person][]" value="<?php echo $Training['id_person'] ?>" data-display="<?php echo $Training['name']." ".$Training['lastname'] ?>" id="val-input-<?php echo $Training['id_person']?>">
+					foreach ($trainers as $key => $trainer) { ?>
+						<input type="hidden" name="data[PerTrainer][PerTrainer][]" value="<?php echo $trainer['t1']['id'] ?>" data-display="<?php echo $trainer['t3']['name'].' '.$trainer['t3']['lastname'] ?>" id="val-input-for-<?php echo $trainer['t1']['id']?>">
 				<?php } ?>
 				</div>
 			</div>
-		</div>	
+	   </div>
 	<?php
 		echo $this->Form->input('activity_place',array('maxLength'=>'80'));
 $druta; $druta=$divulgation['Divulgation']['divulgation_adjunct'];

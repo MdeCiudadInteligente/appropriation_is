@@ -211,6 +211,27 @@ class DivulgationsController extends AppController {
 		$this->set(compact('sites', 'populationTypes','DivTypes','thematicstypes'));
 		$options = array('conditions' => array('Divulgation.' . $this->Divulgation->primaryKey => $id));
 		$this->set('divulgation', $this->Divulgation->find('first', $options));
+		
+		$db = $this->Divulgation->getDataSource();
+		$trainers=$db->fetchAll(
+				"SELECT
+			       t1.id, t3.name , t3.lastname
+			   FROM
+			       per_trainers t1,
+			       per_people_type t2,
+			       people t3,
+				   divulgations_trainers t4
+			   WHERE
+			       t1.per_people_type_id = t2.id
+			       AND t2.person_id = t3.id_person
+				   AND t4.trainer_id=t1.id
+				   AND t4.divulgation_id= :id_divulgation
+			   ",
+				array('id_divulgation' => $id)
+		);
+		
+		$this->request->data['trainers']=$trainers;
+		
 	}
 
 	/**

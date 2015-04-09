@@ -200,7 +200,13 @@ class TrainingsController extends AppController {
 			}		
 		}
 		$types = $this->Training->TraType->find('list');
-		$this->set(compact('types'));
+
+		$processes = $this->Training->TraProcess->find('list');
+		$TraAllies = $this->Training->TraAlly->find('list');
+		$sites = $this->Training->Site->find('list');
+		$populationtype = $this->Training->PopulationType->find('list');
+		$this->set(compact('types', 'processes','TraAllies','sites','populationtype'));
+
 	}
 
 /**
@@ -225,9 +231,33 @@ class TrainingsController extends AppController {
 			$options = array('conditions' => array('Training.' . $this->Training->primaryKey => $id));
 			$this->request->data = $this->Training->find('first', $options);
 		}
-		$types = $this->Training->Type->find('list');
-		$processes = $this->Training->Process->find('list');
-		$this->set(compact('types', 'processes'));
+		$types = $this->Training->TraType->find('list');
+		$processes = $this->Training->TraProcess->find('list');
+		$sites = $this->Training->Site->find('list');
+		$allies = $this->Training->TraAlly->find('list');
+		$populationtypes = $this->Training->PopulationType->find('list');
+		
+
+		$db = $this->Training->getDataSource();
+		$trainers=$db->fetchAll(
+			  "SELECT
+			       t1.id, t3.name , t3.lastname
+			   FROM
+			       per_trainers t1,
+			       per_people_type t2,
+			       people t3,
+				   training_per_trainers t4	
+			   WHERE
+			       t1.per_people_type_id = t2.id
+			       AND t2.person_id = t3.id_person
+				   AND t4.per_trainer_id=t1.id
+				   AND t4.training_id= :id_training	
+			   ",
+				array('id_training' => $id)
+		);
+		
+		$this->request->data['trainers']=$trainers;
+		$this->set(compact('types', 'processes','sites','allies','populationtypes'));
 	}
 
 /**
