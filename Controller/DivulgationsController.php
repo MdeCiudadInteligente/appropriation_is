@@ -162,9 +162,6 @@ class DivulgationsController extends AppController {
 				else{
 					$this->Session->setFlash(__('Los adjuntos no se han podido cargar correctamente'));
 				}
-				
-
-
 				if ($this->Divulgation->save($data)) {
 						$this->Session->setFlash(__('The divulgation has been saved.'));
 						return $this->redirect(array('action' => 'index'));

@@ -37,52 +37,84 @@ class TrainingsController extends AppController {
 		$db = $this->Training->getDataSource();
 		$trainings=$db->fetchAll(
 			   "SELECT 
-			       t1.id, t2.person_id, t3.name , t3.lastname, t3.cedula , t4.name as profesion, t5.name as tipo
-			   FROM
-			       per_trainers t1,
-			       per_people_type t2,
-			       people t3,
-			       per_professions t4,
-			       per_trainer_types t5
-			   WHERE
-			       t1.per_people_type_id = t2.id
-			           AND t2.person_id = t3.id_person
-			           AND t1.per_trainer_type_id=t5.id
-			           AND t1.per_profession_id=t4.id
-			           AND (
-			   			CONCAT(t3.name, ' ', t3.lastname) LIKE :query
-			               OR t3.cedula LIKE :query 
-			           )",
-			    array('query' => $queryString)
+				    t1.*,
+				    t2.name AS training_type,
+				    (SELECT 
+				            GROUP_CONCAT(CONCAT(' ', p.name, ' ', p.lastname, ' '))
+				        FROM
+				            training_per_trainers tPer,
+				            per_trainers per,
+				            per_people_type perTy,
+				            people p
+				        WHERE
+				            t1.id = tPer.training_id
+				                AND tPer.per_trainer_id = per.id
+				                AND per.per_people_type_id = perTy.id
+				                AND perTy.person_id = p.id_person) AS formadores,
+				    (SELECT 
+				            GROUP_CONCAT(CONCAT(' ', site_name, ' '))
+				        FROM
+				            sites_training st,
+				            sites s
+				        WHERE
+				            t1.id = st.training_id
+				                AND st.site_id = s.id_site) AS sitios,
+				    (SELECT 
+				            GROUP_CONCAT(CONCAT(' ', name, ' '))
+				        FROM
+				            tra_allies_training ta,
+				            tra_allies a
+				        WHERE
+				            t1.id = ta.training_id
+				                AND ta.tra_ally_id = a.id) AS aliados,
+				    (SELECT 
+				            GROUP_CONCAT(CONCAT(' ', name, ' '))
+				        FROM
+				            tra_proccesses_training ta,
+				            tra_processes a
+				        WHERE
+				            t1.id = ta.training_id
+				                AND ta.process_id = a.id) AS procesos,
+				    (SELECT 
+				            GROUP_CONCAT(CONCAT(' ', name, ' '))
+				        FROM
+				            population_types_training ta,
+				            population_types a
+				        WHERE
+				            t1.id = ta.training_id
+				                AND ta.population_type_id = a.id_population_type) AS poblacion,
+				    t3.username
+				FROM
+				    training t1,
+				    tra_types t2,
+				    users t3
+				WHERE
+				    t1.type_id = t2.id
+				        AND t3.id_user = t1.user_id",
+			    array('query' => '')
 			);
-			foreach ($trainers as $key => $trainer) {
-					$json_data = array();
-					$json_data = array(
-									'id'=> $trainer['t1']['id'],
-									'person_id' =>$trainer['t2']['person_id'],
-									'name' =>$trainer['t3']['name'],
-									'lastname' =>$trainer['t3']['lastname'],
-									'cedula' =>$trainer['t3']['cedula'],
-									'profesion' =>$trainer['t4']['profesion'],
-									'tipo' =>$trainer['t5']['tipo']
-									);
-					$data[]=$json_data;
+			$count=0;
+			foreach ($trainings as $key => $trainer) {
+				$data['rows'][$count]=array(
+						'id'=>$trainer['t1']['id'],
+						'code'=>$trainer['t1']['code'],
+						'activity_place'=>$trainer['t1']['activity_place'],
+						'description'=>$trainer['t1']['description'],
+						'participant_number'=>$trainer['t1']['participant_number'],
+						'type_id'=>$trainer['t1']['type_id'],
+						'training_type'=>$trainer['t2']['training_type'],
+						'formadores'=>$trainer['0']['formadores'],
+						'sitios'=>$trainer['0']['sitios'],
+						'aliados'=>$trainer['0']['aliados'],
+						'procesos'=>$trainer['0']['procesos'],
+						'poblacion'=>$trainer['0']['poblacion'],
+						'username'=>$trainer['t3']['username'],
+						'user_id'=>$trainer['t1']['user_id'],
+						'creation_date'=>$trainer['t1']['creation_date'],
+						'modification_date'=>$trainer['t1']['modification_date']
+				);
+				$count++;
 			}	
-
-			$data['rows'][$count]=array(
-					'id'=>$PerTrainer['PerTrainer']['id'],
-					'people'=>$per_trainers_responsefp['personname'],
-					'per_trainer_type'=>$PerTrainer['PerTrainerType']['name'],
-					'per_profession'=>$PerTrainer['PerProfession']['name'],
-					'per_trainer_fund'=>$PerTrainer['PerTrainerFund']['name'],
-					'observations'=>$PerTrainer['PerTrainer']['observations'],
-					'state'=>$PerTrainer['PerTrainer']['state'],
-					'creation_date'=>$PerTrainer['PerTrainer']['creation_date'],
-					'modification_date'=>$PerTrainer['PerTrainer']['modification_date'],
-					'user_id'=>$PerTrainer['PerTrainer']['user_id'],
-			);
-			$count++;
-
 			$this->set(compact('data')); // Pass $data to the view
 			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}

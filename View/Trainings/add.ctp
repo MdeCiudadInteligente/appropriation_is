@@ -16,7 +16,7 @@
 		echo $this->Form->input('type_id');
 		echo $this->Form->input('activity_place');
 		echo $this->Form->input('description');
-		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
+		//echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 		echo $this->Form->input('type_id',array('empty'=>'Seleccione el tipo de formación'));
 
 
