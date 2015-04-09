@@ -508,12 +508,12 @@ App.prototype.bindAutocompleteTraProcess=function(selector){
 		                //Variables de datos
 		                var id=data.attributes.id;
 		                var data_name=$($(selector).data('valcontainer')).data('input-name');
-		                var elementID='val-input-'+id;
+		                var elementID='val-input-pro-'+id;
 		                $($(selector).data('valcontainer')).append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
 		            },selectionRemoved: function(elem){
 		                var prop_data=elem.data('prop-data');
 		                var idal=prop_data['id'];
-		                var elementID='val-input-'+idal;
+		                var elementID='val-input-pro-'+idal;
 		                $('#'+elementID).remove();
 		                elem.remove();
 		            },selectionAdded:function(elem){
@@ -583,12 +583,12 @@ App.prototype.bindAutocompleteTrainers=function(selector){
 				                //Variables de datos
 				                var id=data.attributes.id;
 				                var data_name=$($(selector).data('valcontainer')).data('input-name');
-				                var elementID='val-input-'+id;
+				                var elementID='val-input-tra-'+id;
 				                $($(selector).data('valcontainer')).append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
 				            },selectionRemoved: function(elem){
 				                var prop_data=elem.data('prop-data');
 				                var idtrain=prop_data['id'];
-				                var elementID='val-input-'+idtrain;
+				                var elementID='val-input-tra-'+idtrain;
 				                $('#'+elementID).remove();
 				                elem.remove();
 				            },selectionAdded:function(elem){
