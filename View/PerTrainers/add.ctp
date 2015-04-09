@@ -5,7 +5,8 @@
 	<?php
 		echo $this->Form->input('per_trainer_type_id',array('empty'=>'Seleccione el tipo de formador'));
 		echo $this->Form->input('per_profession_id',array('empty'=>'Seleccione la profesión'));
-	?>
+		echo $this->Form->input('star_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Inicio'));	
+		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text','label'=>'Fecha Final'));	?>
 		<div class="seccion-person">	
 			<div class="input">
 				<label>Sitio</label>

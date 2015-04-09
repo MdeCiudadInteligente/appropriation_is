@@ -222,7 +222,7 @@ class Training extends AppModel {
 			),
 			'PerTrainer' => array(
 					'className' => 'PerTrainer',
-					'joinTable' => 'training_per_trainers',
+					'joinTable' => 'per_trainers_training',
 					'foreignKey' => 'training_id',
 					'associationForeignKey' => 'per_trainer_id',
 					'unique' => 'keepExisting',
