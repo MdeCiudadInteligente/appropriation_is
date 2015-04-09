@@ -100,7 +100,6 @@ class TrainingsController extends AppController {
 						'code'=>$trainer['t1']['code'],
 						'activity_place'=>$trainer['t1']['activity_place'],
 						'description'=>$trainer['t1']['description'],
-						'participant_number'=>$trainer['t1']['participant_number'],
 						'type_id'=>$trainer['t1']['type_id'],
 						'training_type'=>$trainer['t2']['training_type'],
 						'formadores'=>$trainer['0']['formadores'],
