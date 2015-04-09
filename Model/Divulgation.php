@@ -192,30 +192,14 @@ class Divulgation extends AppModel {
 	 * hasMany associations
 	 *
 	 * @var array
-	 *//*
-	public $hasMany = array(
-			'MeetingPerson' => array(
-					'className' => 'MeetingPerson',
-					'foreignKey' => 'meeting_id',
-					'dependent' => false,
-					'conditions' => '',
-					'fields' => '',
-					'order' => '',
-					'limit' => '',
-					'offset' => '',
-					'exclusive' => '',
-					'finderQuery' => '',
-					'counterQuery' => ''
-			)
-	);
-	*/
-	
+	 */
+		
 	public $hasAndBelongsToMany = array(
-			'Person' => array(
-					'className' => 'Person',
-					'joinTable' => 'divulgations_people',
+			'PerTrainer' => array(
+					'className' => 'PerTrainer',
+					'joinTable' => 'divulgations_trainers',
 					'foreignKey' => 'divulgation_id',
-					'associationForeignKey' => 'person_id',
+					'associationForeignKey' => 'trainer_id',
 					'unique' => 'keepExisting',
 					'conditions' => '',
 					'fields' => '',

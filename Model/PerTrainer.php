@@ -189,6 +189,19 @@ class PerTrainer extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
+			),
+			'Divulgation' => array(
+					'className' => 'Divulgation',
+					'joinTable' => 'divulgations_trainers',
+					'foreignKey' => 'trainer_id',
+					'associationForeignKey' => 'divulgation_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
 			)
 	);
 
