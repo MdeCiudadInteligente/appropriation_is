@@ -1,3 +1,13 @@
+ <script type="text/javascript">
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+ 
+         return true;
+      }
+</script>
 <div class="trainings form mde-form">
 <?php echo $this->Form->create('Training'); ?>
 	<fieldset>
@@ -6,8 +16,8 @@
 		echo $this->Form->input('code');
 		echo $this->Form->input('activity_place');
 		echo $this->Form->input('description');
-		echo $this->Form->input('participant_number');
-		echo $this->Form->input('type_id');
+		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
+		echo $this->Form->input('type_id',array('empty'=>'Seleccione el tipo de formaciÃ³n'));
 
 
 		?>
@@ -44,7 +54,7 @@
 	</div>	
 	<div class="seccion-person">	
 			<div class="input" >
-				<label>Tipo de población</label>
+				<label>Tipo de poblaciÃ³n</label>
 				<input type="text"  class="PopulationTypes-autocomplete" data-required="true" data-valcontainer=".results-input-typ" data-emptymsg="Por favor ingresa un tipo de población">
 				<!--  <div class="results-input" data-input-name="data[Training][population_type_id]" >-->
 				<div class="results-input-typ" data-input-name="data[PopulationType][PopulationType][]" >	

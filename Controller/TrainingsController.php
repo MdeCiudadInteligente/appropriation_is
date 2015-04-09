@@ -47,15 +47,49 @@ class TrainingsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
 			$this->Training->create();
-			if ($this->Training->save($this->request->data)) {
-				$this->Session->setFlash(__('The training has been saved.'));
-				debug($this->request->data);
-				return $this->redirect(array('action' => 'index'));
-			} else {
+			$data=$this->request->data;
+			
+			//recuperación de variables para la validación de tablas intermedias...
+			$id_site= $this->request->data['Site']['Site'];
+			$id_process= $this->request->data['TraProcess']['TraProcess'];
+			$id_ally= $this->request->data['TraAlly']['TraAlly'];
+			$id_typo= $this->request->data['PopulationType']['PopulationType'];
+			
+			if($data!=''){					
+				$data['Training']['creation_date']=date('Y-m-d H:i:s');
+				$data['Training']['user_id']=$usuario;
+				
+				//validación de tablas intermedias..				
+					if($id_site==''){
+						$this->Session->setFlash(__('Verifica que el campo sitio este lleno.'));
+					}
+					if($id_process==''){
+						$this->Session->setFlash(__('Verifica que el campo proceso este lleno.'));
+					}
+					if($id_ally==''){
+						$this->Session->setFlash(__('Verifica que el campo aliado este lleno.'));
+					}
+					if($id_typo==''){
+						$this->Session->setFlash(__('Verifica que el campo tipo de población este lleno.'));
+					}
+				//end de validación de tablas intermedias...						
+			}		
+			else {
 				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
 			}
-			debug($this->request->data);
+		
+			if ($this->Training->save($data)) {
+				$this->Session->setFlash(__('The training has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			}
+			else
+			{
+				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
+			}	
 		}
 		
 		$types = $this->Training->TraType->find('list');
