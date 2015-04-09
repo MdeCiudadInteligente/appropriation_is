@@ -152,8 +152,6 @@ public function add() {
 
 				$this->Session->setFlash(__('Los adjuntos no se han podido cargar correctamente'));
 			}
-				
-				
 			if ($this->Meeting->save($data)) {
 					$this->Session->setFlash(__('The meeting has been saved.'));
 					return $this->redirect(array('action' => 'index'));

@@ -9,7 +9,9 @@
 		echo $this->Form->input('id',array('type'=>'hidden'));
 		echo $this->Form->input('per_trainer_type_id');
 		echo $this->Form->input('per_profession_id');
-	?>
+		echo $this->Form->input('star_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Inicio'));
+		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text','label'=>'Fecha Final'));	?>
+	
 	<div class="seccion-person">
 		<div class="input">
 			<label>Sitio</label>

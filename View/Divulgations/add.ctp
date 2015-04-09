@@ -1,6 +1,4 @@
-﻿
-
- <script type="text/javascript">
+﻿ <script type="text/javascript">
       function isNumberKey(evt)
       {
          var charCode = (evt.which) ? evt.which : event.keyCode
@@ -46,12 +44,11 @@
 	<div class="input"  style="text-align:right">
 		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
 	</div>
-	<div class="seccion-divulgations">	
+	<div class="seccion-person">	
 			<div class="input" >
-				<label>Formadores</label>
-				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa mínimo un formador">
-				<div class="results-input" data-input-name="data[Person][Person][]">
-					
+				<label>Formador</label>
+				<input type="text"  class="Trainers-autocomplete" data-required="true" data-valcontainer=".results-input-tra" data-emptymsg="Por favor ingresa un formador">
+				<div class="results-input-tra" data-input-name="data[PerTrainer][PerTrainer][]" >	
 				</div>
 			</div>
 	</div>	
