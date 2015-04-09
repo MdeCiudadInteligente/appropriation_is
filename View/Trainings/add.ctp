@@ -13,6 +13,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Training'); ?></legend>
 	<?php
+		echo $this->Form->input('type_id');
 		echo $this->Form->input('activity_place');
 		echo $this->Form->input('description');
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));

@@ -11,10 +11,11 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('code');
+		echo $this->Form->input('type_id');
 		echo $this->Form->input('activity_place');
 		echo $this->Form->input('description');
 		echo $this->Form->input('participant_number');
-		echo $this->Form->input('type_id');
+		
 		?>
 		<div class="seccion-person">
 			<div class="input">
