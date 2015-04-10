@@ -22,7 +22,7 @@
 						'gridId'=>'gridFortypes',
 						'gridTitle'=>'Tipos de formación',
 						'height'=>800,
-						'serviceUrl'=>'Tratypes/index_service.json',
+						'serviceUrl'=>'TraTypes/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
 			                array("dataIndex"=>"ntratype",'header'=>'Nombre','sortable'=>true,'align'=>"left","column"=>true),
