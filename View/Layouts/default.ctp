@@ -53,7 +53,7 @@ $cakeDescription = __d('cake_dev', '');
 	<nav class="mobile-ovelay-menu">
 		<header>
 		 <i class="icon-left close-menu"></i>	
-		 <img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png">
+		 <a href="<?php echo Router::url( '/', true )?>"><img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png"></a>
 		</header>
 	</nav>
 	<div id="container" class="app-container debugging">	
