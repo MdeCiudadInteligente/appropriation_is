@@ -573,9 +573,9 @@ App.prototype.bindAutocompleteTrainers=function(selector){
 					             return new_elem;
 				            },
 				            emptyText:'No se encontraron formadores',
-				            selectedItemProp: 'cedula',
+				            selectedItemProp: 'completeName',
 				            selectedValuesProp:'cedula',
-				            searchObjProps: 'cedula, name, lastname, profesion, tipo',
+				            searchObjProps: 'cedula, name, lastname, profesion, tipo, completeName',
 				            selectionLimit:limit,
 				            starText: 'Seleccione el formador',
 
