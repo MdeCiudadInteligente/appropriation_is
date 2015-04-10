@@ -1,11 +1,6 @@
 <div class="perTrainers view">
 <h2><?php echo __('Trainer'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($perTrainer['PerTrainer']['id']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Per Trainer Type'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($perTrainer['PerTrainerType']['name'], array('controller' => 'per_trainer_types', 'action' => 'view', $perTrainer['PerTrainerType']['id'])); ?>
@@ -29,11 +24,6 @@
 		<dt><?php echo __('Observations'); ?></dt>
 		<dd>
 			<?php echo h($perTrainer['PerTrainer']['observations']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('State'); ?></dt>
-		<dd>
-			<?php echo h($perTrainer['PerTrainer']['state']); ?>
 			&nbsp;
 		</dd>
 	</dl>

@@ -103,6 +103,9 @@ msgstr "Aliados"
 msgid "Training type"
 msgstr "Tipos de formación"
 
+msgid "Training Type"
+msgstr "Tipos de formación"
+
 msgid "Processes"
 msgstr "Procesos"
 

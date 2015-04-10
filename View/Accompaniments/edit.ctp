@@ -50,7 +50,7 @@ $site=$this->request->data['Site'];
 		<div class="input">
 		<label>Sitio</label>
 		<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete">
-		<div class="results-input-site" data-input-name="data[Divulgation][site_id]">
+		<div class="results-input-site" data-input-name="data[Accompaniment][site_id]">
 		<input type="hidden" name="data[Accompaniment][site_id]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name']?>" id="val-input-site-<?php echo $site['id_site']?>">
 		</div>
 		</div>
