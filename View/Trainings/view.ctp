@@ -1,11 +1,9 @@
+﻿<?php
+$trainings=$this->request->data['trainings'];
+?>
 <div class="trainings view">
-<h2><?php echo __('Training'); ?></h2>
+<h2><?php echo __('Formación'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($training['Training']['id']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Code'); ?></dt>
 		<dd>
 			<?php echo h($training['Training']['code']); ?>
@@ -21,49 +19,29 @@
 			<?php echo h($training['Training']['description']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Participant Number'); ?></dt>
+		<dt><?php echo __('Procesos'); ?></dt>
 		<dd>
-			<?php echo h($training['Training']['participant_number']); ?>
+			<?php echo h($trainings['0']['0']['procesos']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Type Id'); ?></dt>
+		<dt><?php echo __('Tipos de población'); ?></dt>
 		<dd>
-			<?php echo h($training['Training']['type_id']); ?>
+			<?php echo h($trainings['0']['0']['poblacion']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Site Id'); ?></dt>
+		<dt><?php echo __('Tipos de formación'); ?></dt>
 		<dd>
-			<?php echo h($training['Training']['site_id']); ?>
+			<?php echo h($trainings['0']['t2']['training_type']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('User Id'); ?></dt>
+		<dt><?php echo __('Sitios'); ?></dt>
 		<dd>
-			<?php echo h($training['Training']['user_id']); ?>
+			<?php echo h($trainings['0']['0']['sitios']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Process Id'); ?></dt>
+		<dt><?php echo __('Aliados'); ?></dt>
 		<dd>
-			<?php echo h($training['Training']['process_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Alliance Id'); ?></dt>
-		<dd>
-			<?php echo h($training['Training']['alliance_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Population Type Id'); ?></dt>
-		<dd>
-			<?php echo h($training['Training']['population_type_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Creation Date'); ?></dt>
-		<dd>
-			<?php echo h($training['Training']['creation_date']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modification Date'); ?></dt>
-		<dd>
-			<?php echo h($training['Training']['modification_date']); ?>
+			<?php echo h($trainings['0']['0']['aliados']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -71,9 +49,12 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Training'), array('action' => 'edit', $training['Training']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Training'), array('action' => 'delete', $training['Training']['id']), null, __('Are you sure you want to delete # %s?', $training['Training']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>	
 		<li><?php echo $this->Html->link(__('List Trainings'), array('action' => 'index')); ?> </li>
+		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+		if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'){?>
+		<li><?php echo $this->Html->link(__('Edit training'), array('action' => 'edit', $training['Training']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('New Training'), array('action' => 'add')); ?> </li>
+		<?php }?>
 	</ul>
 </div>

@@ -91,8 +91,23 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
-msgid "Prefix"
-msgstr "Prefijo"
+msgid "Edit Training"
+msgstr "Editar formación"
+
+msgid "Training"
+msgstr "Formación"
+
+msgid "Allies"
+msgstr "Aliados"
+
+msgid "Training type"
+msgstr "Tipos de formación"
+
+msgid "Processes"
+msgstr "Procesos"
+
+msgid "Population types"
+msgstr "Tipos de población"
 
 msgid "The training process already exists , please check."
 msgstr "El proceso de formación existe actualmente, por favor verifique"
