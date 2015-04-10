@@ -137,7 +137,5 @@ $druta; $druta=$divulgation['Divulgation']['divulgation_adjunct'];
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Lista Sensibilización'), array('action' => 'index')); ?></li>
-		
-		
 	</ul>
 </div>

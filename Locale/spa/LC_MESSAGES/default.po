@@ -191,25 +191,25 @@ msgid "Invalid training type"
 msgstr "Tipo de formación no válido"
 
 msgid "List Trainings"
-msgstr "Lista de formaciones"
+msgstr "Lista de Formaciones"
 
 msgid "New Training"
-msgstr "Nueva formación"
+msgstr "Nueva Formación"
 
 msgid "New Training Type"
-msgstr "Nuevo tipo de formación"
+msgstr "Nuevo Tipo de Formación"
 
 msgid "Edit Training Type"
-msgstr "Editar tipo de formación"
+msgstr "Editar Tipo de Formación"
 
 msgid "List Training Types"
-msgstr "Lista tipos de formación"
+msgstr "Lista Tipos de Formación"
 
 msgid "Add Training Type"
-msgstr "Agregar tipo de formación"
+msgstr "Agregar Tipo de Formación"
 
 msgid "TrainingType"
-msgstr "Tipo de formación"
+msgstr "Tipo de Formación"
 
 msgid "Add Process"
 msgstr "Agregar procesos de formación"
