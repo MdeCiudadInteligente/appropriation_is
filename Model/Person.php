@@ -123,6 +123,36 @@ class Person extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'genre' => array(
+				'notEmpty' => array(
+						'rule' => array('notEmpty'),
+						//'message' => 'Your custom message here',
+						//'allowEmpty' => false,
+						//'required' => false,
+						//'last' => false, // Stop validation after this rule
+						//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				),
+		),
+		'economic_level' => array(
+				'notEmpty' => array(
+						'rule' => array('notEmpty'),
+						//'message' => 'Your custom message here',
+						//'allowEmpty' => false,
+						//'required' => false,
+						//'last' => false, // Stop validation after this rule
+						//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				),
+		),
+		/*'birthday' => array(
+				'notEmpty' => array(
+						'rule' => array('notEmpty'),
+						//'message' => 'Your custom message here',
+						//'allowEmpty' => false,
+						//'required' => false,
+						//'last' => false, // Stop validation after this rule
+						//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				),
+		),*/
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

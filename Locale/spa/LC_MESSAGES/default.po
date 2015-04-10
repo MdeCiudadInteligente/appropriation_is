@@ -364,6 +364,12 @@ msgstr "Editar Tipo Sensibiliación"
 msgid "People"
 msgstr "Personas"
 
+msgid "Economic Level"
+msgstr "Estrato"
+
+msgid "Birthday"
+msgstr "Fecha de Nacimiento"
+
 msgid "Accompaniment"
 msgstr "Acompañamiento"
 

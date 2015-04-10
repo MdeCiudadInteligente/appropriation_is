@@ -65,7 +65,7 @@ class PerTrainer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'per_trainer_fund_id' => array(
+		/*'per_trainer_fund_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -74,7 +74,7 @@ class PerTrainer extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),*/
 		'site_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
