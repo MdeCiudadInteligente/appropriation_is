@@ -273,7 +273,8 @@ class PerTrainersController extends AppController {
 									'lastname' =>$trainer['t3']['lastname'],
 									'cedula' =>$trainer['t3']['cedula'],
 									'profesion' =>$trainer['t4']['profesion'],
-									'tipo' =>$trainer['t5']['tipo']
+									'tipo' =>$trainer['t5']['tipo'],
+									'completeName'=>$trainer['t3']['name']." ".$trainer['t3']['lastname']
 									);
 					$data[]=$json_data;
 			}	
