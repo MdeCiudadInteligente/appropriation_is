@@ -142,11 +142,20 @@ msgstr "Agregar aliado"
 msgid "List Allies"
 msgstr "Lista aliados"
 
+msgid "Edit training"
+msgstr "Editar Formación"
+
+msgid "Add Per Trainer Type"
+msgstr "Agregar Tipo Formador"
+
 msgid "The training process could not be deleted. Please, try again."
 msgstr "EL proceso de formación no ha sido eliminado .Por favor, trate nuevamente"
 
 msgid "The training process has been deleted."
 msgstr "El proceso de formación ha sido eliminado"
+
+msgid "The training has been deleted."
+msgstr "La formación ha sido eliminada."
 
 msgid "The training process could not be saved. Please, try again."
 msgstr "El proceso de formación no ha sido guardado. Por favor, trate nuevamente"
