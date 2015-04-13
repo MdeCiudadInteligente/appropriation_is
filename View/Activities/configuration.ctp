@@ -20,7 +20,7 @@
 			<li><?php echo $this->Html->link(__('Barrios'), array('controller' => 'Neighborhoods', 'action' => 'index')); ?> </li>	
 			<li><?php echo $this->Html->link(__('Comunas'), array('controller' => 'Communes', 'action' => 'index')); ?> </li>		
 			<li><?php echo $this->Html->link(__('Zonas'), array('controller' => 'Zones', 'action' => 'index')); ?> </li>
-			<li><?php echo $this->Html->link(__('Aliados'), array('controller' => 'Forallies', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Aliados'), array('controller' => 'TraAllies', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Tipos de Formación'), array('controller' => 'TraTypes', 'action' => 'index')); ?> </li>
 			
 			<?php }?>	
