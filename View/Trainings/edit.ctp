@@ -10,7 +10,7 @@
 		<legend><?php echo __('Edit Training'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('code');
+		echo $this->Form->input('code',array('disabled'=>'disabled'));
 		echo $this->Form->input('type_id');
 		echo $this->Form->input('activity_place');
 		echo $this->Form->input('description');

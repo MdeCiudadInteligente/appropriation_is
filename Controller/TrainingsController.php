@@ -282,7 +282,9 @@ class TrainingsController extends AppController {
 			throw new NotFoundException(__('Invalid training'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Training->save($this->request->data)) {
+			$data=$this->request->data;
+			unset($data['Training']['code']);
+			if ($this->Training->save($data)) {
 				$this->Session->setFlash(__('The training has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
