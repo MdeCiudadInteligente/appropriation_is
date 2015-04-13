@@ -54,21 +54,24 @@ class PopulationType extends AppModel {
 				'exclusive' => '',
 				'finderQuery' => '',
 				'counterQuery' => ''
-			),	
-		
-		'Training' => array(
-				'className' => 'Training',
-				'joinTable' => 'population_types_training',
-				'foreignKey' => 'population_type_id',
-				'associationForeignKey' => 'training_id',
-				'unique' => 'keepExisting',
-				'conditions' => '',
-				'fields' => '',
-				'order' => '',
-				'limit' => '',
-				'offset' => '',
-				'finderQuery' => '',
-		)
+			)	
 	);
-
+	
+	
+	
+	public $hasAndBelongsToMany = array(
+	'Training' => array(
+					'className' => 'Training',
+					'joinTable' => 'population_types_training',
+					'foreignKey' => 'population_type_id',
+					'associationForeignKey' => 'training_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
+	);
 }
