@@ -22,7 +22,7 @@
 						'gridId'=>'gridTraallies',
 						'gridTitle'=>'Aliados',
 						'height'=>800,
-						'serviceUrl'=>'Traallies/index_service.json',
+						'serviceUrl'=>'TraAllies/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
 			                array("dataIndex"=>"nally",'header'=>'Nombre','sortable'=>true,'align'=>"left","column"=>true),
