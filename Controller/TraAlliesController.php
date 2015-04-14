@@ -71,14 +71,30 @@ class TraAlliesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->TraAlly->create();
-			if ($this->TraAlly->save($this->request->data)) {
-				$this->Session->setFlash(__('The ally has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The ally could not be saved. Please, try again.'));
+			
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+				
+			$name_allies= $this->request->data['TraAlly']['name'];
+			$verificar_allies=$this->TraAlly->query("select distinct name from tra_types where name = '$name_allies'");
+			$this->set('verificar_allies',$verificar_allies);
+			
+			if($verificar_divulgationtype==Array( )){
+			
+				
+				$this->TraAlly->create();
+	
+				if ($this->TraAlly->save($this->request->data)) {
+					$this->Session->setFlash(__('The ally has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The ally could not be saved. Please, try again.'));
+				}
 			}
-		}
+			else{
+				$this->Session->setFlash(__('The ally already exists , please check.'));
+			}
+		}	
 	}
 
 /**
