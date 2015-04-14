@@ -91,17 +91,26 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid  "The TraType already exists , please check."
+msgstr "El tipo de formación existe , por favor verifique."
+
 msgid "The training type already exists , please check."
-msgstr "El tipo de formación existe actualmente, por favor verifique"
+msgstr "El tipo de formación existe , por favor verifique."
 
 msgid "The ally already exists , please check."
-msgstr "El aliado existe actualmente, por favor verifique"
+msgstr "El aliado existe , por favor verifique."
 
 msgid "The per type already exists , please check."
-msgstr "El tipo de persona existe actualmente, por favor verifique"
+msgstr "El tipo de persona existe , por favor verifique."
 
 msgid "The owner already exists , please check."
-msgstr "El propietario existe actualmente, por favor verifique"
+msgstr "El propietario existe , por favor verifique."
+
+msgid "The TraProcess could not be saved. Please, try again."
+msgstr "El Proceso existe , por favor verifique."
+
+msgid "The TraProcess has been saved."
+msgstr "El Proceso ha sido guardado."
 
 msgid "Edit Training"
 msgstr "Editar formación"
@@ -109,11 +118,11 @@ msgstr "Editar formación"
 msgid "Training"
 msgstr "Formación"
 
+msgid "The TraType has been saved."
+msgstr "El Tipo de Formación ha sido guardado."
+
 msgid "Allies"
 msgstr "Aliados"
-
-msgid "Training type"
-msgstr "Tipos de formación"
 
 msgid "Training Type"
 msgstr "Tipos de formación"
@@ -125,25 +134,31 @@ msgid "Population types"
 msgstr "Tipos de población"
 
 msgid "The training process already exists , please check."
-msgstr "El proceso de formación existe actualmente, por favor verifique"
+msgstr "El proceso de formación existe, por favor verifique."
 
 msgid "The people type has been saved."
 msgstr "El tipo de persona ha sido guardada"
 
 msgid "The trainer could not be deleted. Please, try again."
-msgstr "El entrenador no ha sido eliminado. Por favor trate nuevamente"
+msgstr "El entrenador no ha sido eliminado. Por favor verifique."
 
 msgid "The trainer could not be saved. Please, try again."
-msgstr "El entrenador no ha sido guardado. Por favor trate nuevamente"
+msgstr "El entrenador no ha sido guardado. Por favor verifique."
 
-msgid "The trainer could not be saved. Please, try again."
-msgstr "El entrenador no ha sido guardado.Por favor trate nuevamente"
+msgid "The TraProcess could not be saved. Please, try again."
+msgstr "El Proceso de Formación. no ha sido guardado. Por favor verifique."
+
+msgid "The TraProcess already exists , please check."
+msgstr "El Proceso de Formación existe. Por favor verifique."
 
 msgid "Invalid trainer"
 msgstr "Entrenador no válido"
 
+msgid "The training process already exists , please check."
+msgstr "El Proceso de Formación existe. Por favor verifique. "
+
 msgid "The people type could not be saved. Please, try again."
-msgstr "El tipo de persona no ha sido guardado. Pruebe nuevamente"
+msgstr "El tipo de persona no ha sido guardado. Por favor verifica."
 
 msgid "Invalid people type"
 msgstr "El tipo de persona es no válido"
@@ -152,7 +167,7 @@ msgid "The PeopleType was not deleted"
 msgstr "El tipo de persona no ha sido eliminado"
 
 msgid "The PeopleType was saved"
-msgstr "El tipo de persona fue guardado exitosamente"
+msgstr "El tipo de persona fue guardado."
 
 msgid "The PeopleType was not saved"
 msgstr "El tipo de persona no fue guardado. Trate nuevamente"
@@ -319,11 +334,56 @@ msgstr "Nueva Zona"
 msgid "List Users"
 msgstr "Lista Usuarios"
 
+msgid "The thematic has been saved."
+msgstr "La Temática ha sido guardada."
+
+msgid "The thematic could not be saved. Please, try again."
+msgstr "La Temática no pudo ser guardada. Por favor intentelo de nuevo."
+
+msgid "The thematic already exists , please check."
+msgstr "La Temática ya existe. Por favor verifique."
+
+msgid "The site type has been saved."
+msgstr "El Tipo de Sitio ha sido guardado."
+
+msgid "The site type could not be saved. Please, try again."
+msgstr "El Tipo de Sitio no pudo ser guardado. Por favor intentalo de nuevo."
+
+msgid "The site type already exists , please check."
+msgstr "El Tipo de Sitio ya existe. Por favor verifica."
+
 msgid "New User"
 msgstr "Nuevo Usuario"
 
 msgid "Person"
 msgstr "Persona"
+
+msgid "The site has been saved."
+msgstr "El Sitio ha sido guardado."
+
+msgid "The site could not be saved. Please, try again."
+msgstr "El Sitio no pudo ser guardado. Por favor intentalo de nuevo."
+
+msgid "The site already exists , please check."
+msgstr "El Sitio ya existe. Por favor verifica."
+
+msgid "The trainer type has been saved."
+msgstr "El Tipo de Formador ha sido guardado."
+
+msgid "The trainer type could not be saved. Please, try again."
+msgstr "El Tipo de Formador no pudo ser guardado. Por favor intentalo de nuevo."
+
+msgid "The trainer type already exists , please check."
+msgstr "El Tipo de Formador ya existe. Por favor verifica."
+
+msgid "The agent has been saved."
+msgstr "El Agente ha sido guardado."
+
+msgid "The agent could not be saved. Please, try again."
+msgstr "El Agente no pudo ser guardado. Por favor, intentalo de nuevo."
+
+msgid "The agent already exists , please check."
+msgstr "El Agente ya existe. Por favor verifica."
 
 msgid "Zone"
 msgstr "Zona"
@@ -501,6 +561,9 @@ msgstr "La reunión no se pudo guardar. Por favor, inténtalo de nuevo."
 
 msgid "The meeting has been saved."
 msgstr "La reunión se ha guardado."
+
+msgid "The zone already exists , please check."
+msgstr "La Zona ya existe, Por favor verifica."
 
 msgid "Add Meeting"
 msgstr "Agregar reunión"

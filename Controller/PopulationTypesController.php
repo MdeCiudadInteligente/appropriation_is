@@ -137,20 +137,31 @@ class PopulationTypesController extends AppController {
 		if (!$this->PopulationType->exists($id)) {
 			throw new NotFoundException(__('Invalid population type'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			
-				if ($this->PopulationType->save($this->request->data)) 
-				{
+		if ($this->request->is(array('post', 'put'))) 
+		{
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+				
+			$name_poputype= $this->request->data['PopulationType']['name'];
+			$verificar_poputype=$this->PopulationType->query("select distinct name from  population_types where name = '$name_poputype'");
+			$this->set('verificar_poputype',$verificar_poputype);
+				
+			if($verificar_poputype==Array( )){
+					
+					
+				if ($this->PopulationType->save($this->request->data)) {
 					$this->Session->setFlash(__('The population type has been saved.'));
 					return $this->redirect(array('action' => 'index'));
-				} 
-				else 
-				{
+				} else {
 					$this->Session->setFlash(__('The population type could not be saved. Please, try again.'));
 				}
-				
 			}
-			else 
+			else
+			{
+				$this->Session->setFlash(__('The population type already exists , please check.'));
+			}
+		}
+		else 
 		{
 			$options = array('conditions' => array('PopulationType.' . $this->PopulationType->primaryKey => $id));
 			$this->request->data = $this->PopulationType->find('first', $options);
