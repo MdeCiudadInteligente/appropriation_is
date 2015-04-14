@@ -50,13 +50,21 @@ $cakeDescription = __d('cake_dev', '');
 <body>
 	<?php echo $this->Session->flash(); ?>
 	<i class="icon-align-justify open-menu"></i>
-	<nav class="mobile-ovelay-menu">
+	<nav class="mobile-ovelay-menu menu-content">
 		<header>
 		 <i class="icon-left close-menu"></i>	
 		 <a href="<?php echo Router::url( '/', true )?>"><img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png"></a>
 		</header>
 	</nav>
-	<div id="container" class="app-container debugging">	
+
+	<aside id="right-content" class="mobile-ovelay-menu right-display">
+		<header>
+		 <i class="icon-right close-menu"></i>	
+		 <a href="<?php echo Router::url( '/', true )?>"><img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png"></a>
+		</header>
+	</aside>	
+
+	<div id="container" class="app-container <?php echo $body_class ?>">	
 		<div id="header">
 			<div class="top-head" style="background-image:url('<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/header.png')">
 					<img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/LogoMDEpata.png">

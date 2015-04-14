@@ -133,22 +133,35 @@ class AgentsController extends AppController {
 			throw new NotFoundException(__('Invalid agent'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+<<<<<<< HEAD
 			$usuario = $this->Session->read('Auth.User.id_user');
+=======
+			
+			$usuario = $this->Session->read('Auth.User.id_user');				
+>>>>>>> 66cd2df00b1e0f5b8654eeb2c7fad4bf02955627
 			$this->set('usuario',$usuario);
 			
 			$name_agents= $this->request->data['Agent']['person_id'];
 			$verificar_agent=$this->Agent->query("select distinct person_id from agents where person_id = '$name_agents'");
+<<<<<<< HEAD
 			$this->set('verificar_agent',$verificar_agent);
 			
 			if($verificar_agent==Array( )){
 			
 					
+=======
+			$this->set('verificar_agent',$verificar_agent);			
+				
+			if($verificar_agent==Array( )){
+				
+>>>>>>> 66cd2df00b1e0f5b8654eeb2c7fad4bf02955627
 				if ($this->Agent->save($this->request->data)) {
 					$this->Session->setFlash(__('The agent has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash(__('The agent could not be saved. Please, try again.'));
 				}
+<<<<<<< HEAD
 			}			
 			else
 			{
@@ -157,6 +170,14 @@ class AgentsController extends AppController {
 		}
 		else 
 		{
+=======
+			}
+			else
+				{
+					$this->Session->setFlash(__('The person is already agent, please check.'));
+				}		
+		} else {
+>>>>>>> 66cd2df00b1e0f5b8654eeb2c7fad4bf02955627
 			$options = array('conditions' => array('Agent.' . $this->Agent->primaryKey => $id));
 			$this->request->data = $this->Agent->find('first', $options);
 		}

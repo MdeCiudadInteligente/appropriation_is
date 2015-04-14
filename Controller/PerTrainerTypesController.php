@@ -76,7 +76,7 @@ class PerTrainerTypesController extends AppController {
 			$this->set('usuario',$usuario);
 			
 			$name_trainertype= $this->request->data['PerTrainerType']['name'];
-			$verificar_trainertype=$this->PerTrainerType->query("select distinct name from divtypes where name = '$name_trainertype'");
+			$verificar_trainertype=$this->PerTrainerType->query("select distinct name from per_trainer_types where name = '$name_trainertype'");
 			$this->set('verificar_trainertype',$verificar_trainertype);
 			
 			if($verificar_trainertype==Array( )){
@@ -114,6 +114,7 @@ class PerTrainerTypesController extends AppController {
 			throw new NotFoundException(__('Invalid trainer type'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+<<<<<<< HEAD
 		$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
@@ -126,10 +127,28 @@ class PerTrainerTypesController extends AppController {
 					
 				if ($this->PerTrainerType->save($this->request->data)) {
 					$this->Session->setFlash(__('The trainer type has been saved.'));
+=======
+			
+
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+				
+			$name_trainertype= $this->request->data['PerTrainerType']['name'];
+			$verificar_trainertype=$this->PerTrainerType->query("select distinct name from per_trainer_types where name = '$name_trainertype'");
+			$this->set('verificar_trainertype',$verificar_trainertype);
+				
+			if($verificar_trainertype==Array( )){
+
+				if ($this->PerTrainerType->save($this->request->data)) {
+					$this->Session->setFlash(__('The trainer type has been saved.'));
+					
+					debug($verificar_trainertype);
+>>>>>>> 66cd2df00b1e0f5b8654eeb2c7fad4bf02955627
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash(__('The trainer type could not be saved. Please, try again.'));
 				}
+<<<<<<< HEAD
 			}			
 			else
 			{
@@ -138,6 +157,13 @@ class PerTrainerTypesController extends AppController {
 		}		
 		else 
 		{
+=======
+			}
+			else{
+				$this->Session->setFlash(__('The trainer type already exists , please check.'));
+			}	
+		} else {
+>>>>>>> 66cd2df00b1e0f5b8654eeb2c7fad4bf02955627
 			$options = array('conditions' => array('PerTrainerType.' . $this->PerTrainerType->primaryKey => $id));
 			$this->request->data = $this->PerTrainerType->find('first', $options);
 		}

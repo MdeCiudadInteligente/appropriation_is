@@ -68,6 +68,7 @@ App.prototype.bind=function(){
     if(isMobile){
         app.setMobileScreen();
     }
+    app.notificationBox();
 }
 
 
@@ -161,12 +162,12 @@ App.prototype.bindAutocompletePersona=function(selector){
 
 App.prototype.setMobileNav=function(){
     var desktopNav=$('.actions ul').clone();
-    $('.mobile-ovelay-menu').append(desktopNav);
+    $('.mobile-ovelay-menu.menu-content').append(desktopNav);
     $('.close-menu').on('click',function(){
-        $('.mobile-ovelay-menu').removeClass('active');
+        $(this).closest('.mobile-ovelay-menu').removeClass('active');
     });
     $('.open-menu').on('click',function(){
-        $('.mobile-ovelay-menu').addClass('active');
+        $('.mobile-ovelay-menu.menu-content').addClass('active');
     });
 }
 
@@ -255,6 +256,13 @@ App.prototype.bindAutocompleteSites=function(selector){
 
 };
 /* Autocomplete thematics */
+
+App.prototype.notificationBox=function(){
+    $('#flashMessage').addClass('active');
+    setTimeout(function(){
+        $('#flashMessage').removeClass('active');
+    },6000);
+}
 
 App.prototype.bindAutocompleteThematics=function(selector){
 
