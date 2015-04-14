@@ -114,7 +114,6 @@ class PerTrainerTypesController extends AppController {
 			throw new NotFoundException(__('Invalid trainer type'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			
 
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
@@ -127,17 +126,21 @@ class PerTrainerTypesController extends AppController {
 
 				if ($this->PerTrainerType->save($this->request->data)) {
 					$this->Session->setFlash(__('The trainer type has been saved.'));
-					
-					debug($verificar_trainertype);
+
+
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash(__('The trainer type could not be saved. Please, try again.'));
 				}
-			}
-			else{
+
+			}			
+			else
+			{
 				$this->Session->setFlash(__('The trainer type already exists , please check.'));
 			}	
-		} else {
+		}		
+		else 
+		{
 			$options = array('conditions' => array('PerTrainerType.' . $this->PerTrainerType->primaryKey => $id));
 			$this->request->data = $this->PerTrainerType->find('first', $options);
 		}

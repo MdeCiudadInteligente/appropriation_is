@@ -131,17 +131,28 @@ class ZonesController extends AppController {
 		
 		if ($this->request->is(array('post', 'put')))
 		{			
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
 			
-				if ($this->Zone->save($this->request->data)) 
-				{
+			$name_zona= $this->request->data['Zone']['zone_name'];
+			$verificar_zona=$this->Zone->query("select distinct zone_name from zones where zone_name = '$name_zona'");
+			$this->set('verificar_zona',$verificar_zona);
+			
+			if($verificar_zona==Array( )){
+			
+					
+				if ($this->Zone->save($this->request->data)) {
 					$this->Session->setFlash(__('The zone has been saved.'));
 					return $this->redirect(array('action' => 'index'));
-				} 
-				else 
-				{
-					$this->Session->setFlash(__('The zone could not be saved . Please try again.'));
+				} else {
+					$this->Session->setFlash(__('The zone could not be saved. Please, try again.'));
 				}
 			}			
+			else
+			{
+				$this->Session->setFlash(__('The zone already exists , please check.'));
+			}	
+		}		
 		else 
 		{
 			$options = array('conditions' => array('Zone.' . $this->Zone->primaryKey => $id));

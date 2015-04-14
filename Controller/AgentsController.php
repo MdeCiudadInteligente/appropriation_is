@@ -133,28 +133,35 @@ class AgentsController extends AppController {
 			throw new NotFoundException(__('Invalid agent'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			
-			$usuario = $this->Session->read('Auth.User.id_user');				
+
+			$usuario = $this->Session->read('Auth.User.id_user');
+
 			$this->set('usuario',$usuario);
 			
 			$name_agents= $this->request->data['Agent']['person_id'];
 			$verificar_agent=$this->Agent->query("select distinct person_id from agents where person_id = '$name_agents'");
-			$this->set('verificar_agent',$verificar_agent);			
-				
+
+			$this->set('verificar_agent',$verificar_agent);
+			
 			if($verificar_agent==Array( )){
-				
+			
+
 				if ($this->Agent->save($this->request->data)) {
 					$this->Session->setFlash(__('The agent has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash(__('The agent could not be saved. Please, try again.'));
 				}
-			}
+
+			}			
 			else
-				{
-					$this->Session->setFlash(__('The person is already agent, please check.'));
-				}		
-		} else {
+			{
+				$this->Session->setFlash(__('The agent already exists , please check.'));
+			}	
+		}
+		else 
+		{
+
 			$options = array('conditions' => array('Agent.' . $this->Agent->primaryKey => $id));
 			$this->request->data = $this->Agent->find('first', $options);
 		}

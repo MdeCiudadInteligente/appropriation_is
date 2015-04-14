@@ -107,13 +107,28 @@ class TraTypesController extends AppController {
 			throw new NotFoundException(__('Invalid training type'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->TraType->save($this->request->data)) {
-				$this->Session->setFlash(__('The training type has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The training type could not be saved. Please, try again.'));
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+				
+			$name_tratype= $this->request->data['TraType']['name'];
+			$verificar_tratype=$this->TraType->query("select distinct name from tra_types where name = '$name_tratype'");
+			$this->set('verificar_tratype',$verificar_tratype);
+				
+			if($verificar_tratype==Array( )){
+					
+					
+				if ($this->TraType->save($this->request->data)) {
+					$this->Session->setFlash(__('The TraType has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The TraType could not be saved. Please, try again.'));
+				}
 			}
-		} else {
+			else
+			{
+				$this->Session->setFlash(__('The TraType already exists , please check.'));
+			}
+			} else {
 			$options = array('conditions' => array('TraType.' . $this->TraType->primaryKey => $id));
 			$this->request->data = $this->TraType->find('first', $options);
 		}
