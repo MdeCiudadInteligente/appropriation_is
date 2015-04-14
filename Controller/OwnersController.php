@@ -92,30 +92,20 @@ class OwnersController extends AppController {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			
-			$name_owner= $this->request->data['Owner']['name'];
-			$verificar_owner=$this->Owner->query("select distinct name from owners where name = '$name_owner'");
-			$this->set('verificar_owner',$verificar_owner);
-			
-			if($verificar_owner==Array( )){
-				
-				$this->Owner->create();
-				$data=$this->request->data;
-				$data['Owner']['roll'] = ucwords($data['Owner']['roll']);
-				$data['Owner']['creation_date']=date('Y-m-d H:i:s');
-				$data['Owner']['user_id']=$usuario;
-								
-				if ($this->Owner->save($data)) {
-						$this->Session->setFlash(__('The owner has been saved.'));
-						return $this->redirect(array('action' => 'index'));
-				}
-				else
-				{
-					$this->Session->setFlash(__('The owner could not be saved . Please try again.'));
-				}
-				}
-			else{
-					$this->Session->setFlash(__('The owner already exists , please check.'));
-				}
+			$this->Owner->create();
+			$data=$this->request->data;
+			$data['Owner']['roll'] = ucwords($data['Owner']['roll']);
+			$data['Owner']['creation_date']=date('Y-m-d H:i:s');
+			$data['Owner']['user_id']=$usuario;
+							
+			if ($this->Owner->save($data)) {
+					$this->Session->setFlash(__('The owner has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+			}
+			else
+			{
+				$this->Session->setFlash(__('The owner could not be saved . Please try again.'));
+			}
 		}
 		$sites = $this->Owner->Site->find('list');
 		$people = $this->Owner->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
