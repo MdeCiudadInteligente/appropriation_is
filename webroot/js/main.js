@@ -68,6 +68,7 @@ App.prototype.bind=function(){
     if(isMobile){
         app.setMobileScreen();
     }
+    app.notificationBox();
 }
 
 
@@ -255,6 +256,13 @@ App.prototype.bindAutocompleteSites=function(selector){
 
 };
 /* Autocomplete thematics */
+
+App.prototype.notificationBox=function(){
+    $('#flashMessage').addClass('active');
+    setTimeout(function(){
+        $('#flashMessage').removeClass('active');
+    },6000);
+}
 
 App.prototype.bindAutocompleteThematics=function(selector){
 

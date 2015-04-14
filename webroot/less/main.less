@@ -877,32 +877,33 @@ body{
 
 
 #flashMessage{
-    background: none repeat scroll 0 0 rgba(11, 96, 44, 0.84);
+    background: none repeat scroll 0 0 rgba(3, 52, 22, 0.81);
     border: medium none;
     border-radius: 0;
-    left: 80px;
+    font-family: din_lightregular;
+    font-style: italic;
+    font-weight: 800;
+    left: -100%;
+    padding-left: 60px;
+    padding-right: 120px;
     position: absolute;
-    top: 1px;
-    width: 90%;
+    text-shadow: 1px 1px rgba(43, 43, 43, 0.64);
+    top: 60px;
+    width: auto;
     z-index: 100;
+    .transition(all 500ms ease-out 1s);
 	&:before{
 	    border-color: transparent rgba(0, 179, 164, 0.92) transparent transparent;
 	    border-style: solid;
-	    border-width: 19px;
+	    border-width: 17px;
 	    content: " ";
 	    height: 0;
 	    position: absolute;
 	    right: 0;
-	    top: -1px;
+	    top: 1px;
 	    width: 0;
     }
-    &:after{
-    	position: absolute;
-    	left: 0;
-    	content: " ";
-    	width: 10%;
-    	height: 100%;
-    	top: 0;
-    	background: #000000;
+    &.active{
+    	left: -7px;
     }
 }
