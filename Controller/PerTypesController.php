@@ -47,14 +47,27 @@ class PerTypesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->PerType->create();
-			if ($this->PerType->save($this->request->data)) {
-				$this->Session->setFlash(__('The per type has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The per type could not be saved. Please, try again.'));
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
+			$name_pertype= $this->request->data['PerType']['name'];
+			$verificar_pertype=$this->PerType->query("select distinct name from per_types where name = '$name_pertype'");
+			$this->set('verificar_pertype',$verificar_pertype);
+			
+			if($verificar_pertype==Array( )){
+			
+				$this->PerType->create();
+				if ($this->PerType->save($this->request->data)) {
+					$this->Session->setFlash(__('The per type has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The per type could not be saved. Please, try again.'));
+				}	
 			}
-		}
+			else{
+				$this->Session->setFlash(__('The per type already exists , please check.'));
+			}
+		}	
 	}
 
 /**
@@ -69,11 +82,26 @@ class PerTypesController extends AppController {
 			throw new NotFoundException(__('Invalid per type'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->PerType->save($this->request->data)) {
-				$this->Session->setFlash(__('The per type has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The per type could not be saved. Please, try again.'));
+			
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+				
+			$name_pertype= $this->request->data['PerType']['name'];
+			$verificar_pertype=$this->PerType->query("select distinct name from per_types where name = '$name_pertype'");
+			$this->set('verificar_pertype',$verificar_pertype);
+				
+			if($verificar_pertype==Array( )){
+				
+				if ($this->PerType->save($this->request->data)) {
+					$this->Session->setFlash(__('The per type has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The per type could not be saved. Please, try again.'));
+				}
+			}
+
+			else{
+				$this->Session->setFlash(__('The per type already exists , please check.'));
 			}
 		} else {
 			$options = array('conditions' => array('PerType.' . $this->PerType->primaryKey => $id));

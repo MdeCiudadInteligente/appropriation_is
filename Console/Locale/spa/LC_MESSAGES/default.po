@@ -91,6 +91,18 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid "The training type already exists , please check."
+msgstr "El tipo de formación existe actualmente, por favor verifique"
+
+msgid "The ally already exists , please check."
+msgstr "El aliado existe actualmente, por favor verifique"
+
+msgid "The per type already exists , please check."
+msgstr "El tipo de persona existe actualmente, por favor verifique"
+
+msgid "The owner already exists , please check."
+msgstr "El propietario existe actualmente, por favor verifique"
+
 msgid "Edit Training"
 msgstr "Editar formación"
 

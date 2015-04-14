@@ -111,12 +111,31 @@ class DivtypesController extends AppController {
 			throw new NotFoundException(__('Invalid divtype'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Divtype->save($this->request->data)) {
-				$this->Session->setFlash(__('The divtype has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The divtype could not be saved. Please, try again.'));
+			
+			
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+				
+			$name_divulgationtype= $this->request->data['Divtype']['name'];
+			$verificar_divulgationtype=$this->Divtype->query("select distinct name from divtypes where name = '$name_divulgationtype'");
+			$this->set('verificar_divulgationtype',$verificar_divulgationtype);
+			
+			if($verificar_divulgationtype==Array( )){
+			
+			
+				if ($this->Divtype->save($this->request->data)) {
+					$this->Session->setFlash(__('The divtype has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The divtype could not be saved. Please, try again.'));
+				}
 			}
+			
+			else
+			{
+				$this->Session->setFlash(__('The divtype already exists , please check.'));
+			}
+			
 		} else {
 			$options = array('conditions' => array('Divtype.' . $this->Divtype->primaryKey => $id));
 			$this->request->data = $this->Divtype->find('first', $options);
