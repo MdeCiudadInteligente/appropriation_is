@@ -70,9 +70,10 @@
 
 body{
 	font-family: 'din_mediumregular' !important;
-
+	font-size: 14px !important;
 	#login{
 		position: relative;
+		top: -21px;
 		header{
 			position: relative;
 			img{
@@ -95,7 +96,7 @@ body{
 					    background-color: #00a996;
 					    color: #fffffd;
 					    font-size: 21px;
-					    height: 69px;
+					    height: 90px;
 					    left: 23%;
 					    padding-top: 22px;
 					    position: absolute;
@@ -165,10 +166,9 @@ body{
 				}
 				div{
 					width: 80%;
-					margin: auto;
+					margin: auto auto 20px 160px;
 					padding: 0;
 					font-family: 'din_lightregular';
-					margin-bottom: 20px;
 					label{
 					    background-color: #666;
 					    color: #fff;
@@ -176,11 +176,10 @@ body{
 					    font-family: 'din_lightregular';
 					    font-size: 18px;
 					    font-style: italic;
-					    height: 28.8px;
 					    margin: 0;
-					    padding-right: 5%;
-					    padding-left: 7%;
-					    padding-top: 11px;
+                        padding-left: 28px;
+                        padding-right: 7px;
+    					padding-top: 11px;
 					    position: relative;
 					    text-align: left;
 					    vertical-align: top;
@@ -194,7 +193,7 @@ body{
 					    background-color: #E5E5E5 !important;
 					    border: 1px solid #9a9a9a;
 					    display: inline-block;
-					    height: 27.4px;
+					    height: 38.4px;
 					    width: 50%;
 					    border-left: 0;
 					    box-shadow: 1px 1px 1px #c5c5c5;
@@ -206,17 +205,17 @@ body{
 
 				.submit{
 					position: relative;
-					left: 19%;
+					left: 40%;
 					width: 15%;
 				    &:after{
-					    border-bottom: 15px solid transparent;
-					    border-left: 15px solid #00a996;
-					    border-top: 13px solid transparent;
+					    border-bottom: 19px solid transparent;
+					    border-left: 19px solid #00a996;
+					    border-top: 19px solid transparent;
 					    content: "";
 					    height: 0;
 					    position: absolute;
-					    right: -15px;
-					    width: 0;			    	
+					    right: -19px;
+					    width: 0;
 				    }
 
 					input{
@@ -339,7 +338,7 @@ body{
 						padding-left: 0;
 						&:after{
 						    background-color: rgba(133, 133, 133, 0.86);
-						    bottom: 17%;
+						    bottom: -2px;
 						    content: "";
 						    height: 24px;
 						    position: absolute;
@@ -351,7 +350,7 @@ body{
 
 					&.session{
 						position: relative;
-						bottom: 5px;	
+						bottom: -1px;	
 						a{
 							color: #FFFFFF;
 							text-decoration: none;
@@ -422,10 +421,14 @@ body{
 				.mde-form{
 					font-family: 'din_mediumregular';
 					font-weight: 300;
-					padding-left: 0;
-					padding-top: 0;
+					padding: 0;
 					border-left: 0;
+					float: none;
+					margin: auto;
+					margin-top: 80px;
+					max-width: 968px;
 					form{
+						width: 100%;
 						position: relative;
 						fieldset{
 							padding: 0;	
@@ -443,19 +446,19 @@ body{
 
 						}
 						legend{
-							    background-color: #888888;
+							    background-color: #4C4D4C;
 							    border-radius: 2px 2px 0 0;
 							    color: #fff;
 							    font-size: 14px;
-							    height: 20px;
+							    height: 40px;
 							    padding: 10px;
 							    position: absolute;
 							    text-align: center;
 							    top: -39px;
-							    width: 30%;
+							    width: 100%;
 								&:after{
 								    border-bottom: 20px solid transparent;
-								    border-right: 20px solid #888888;
+								    border-right: 20px solid #4C4D4C;
 								    border-top: 20px solid transparent;
 								    content: "";
 								    height: 0;
@@ -468,37 +471,80 @@ body{
 						div{
 							&.input{
 								background-color: @mdeColorFormFirst;
-								margin: 0;
+								margin-bottom: 1px;
+							    padding-bottom: 15px;
+							    padding-top: 5px;	
+							    font-size: 12px;							
 								&:nth-child(2n+1){
 									background-color: @mdeColorFormSecond;
 								}
 								label{
-									display: inline-block;
-									width: 50%;
-									font-weight: 300;
-									font-size: 15px;
-									color: black;
+								    color: #000;
+								    display: inline-block;
+								    font-size: 15px;
+								    font-style: italic;
+								    font-weight: 300;
+								    margin-left: 23px;
+								    margin-top: 17px;
+								    vertical-align: top;
+								    width: 50%;
 								}
 								input{
-									width: 47%;
+									width: 45%;
 									display:inline-block;
 									font-size: 14px;
 								}
 								textarea{
-								    height: 74px;
-								    margin: 10px;
-								    padding: 15px;
-								    width: 94%;
 								    font-size: 14px;
-
+								    font-style: italic;
+								    font-weight: 300;
+								    height: 80px;
+								    margin: 10px 10px 10px 21px;
+								    padding: 16px;
+								    width: 95%;
 								}
 								select{
-									font-size: 14px;
-									width: 46%;
-								}
-							}
+								    font-size: 14px;
+								    font-weight: 300;
+								    height: 35px;
+								    margin-top: 10px;
+								    padding-left: 30px;
+								    vertical-align: top;
+								    width: 45%;		
+								    option{
+									    font-size: 15px;
+									    font-weight: 300;
+									    padding: 10px;
+								    }						}
+							   }
 						}
 					}
+				   .seccion-person{
+				   	    padding: 0 0 1px;
+					.input{
+						padding: 1px;
+					   	>label{
+					   		width: 100%;
+					   		text-align: center;
+					   		margin-left: 0;
+					   		text-decoration: underline;
+					   	}
+                     }	
+				   	 ul{
+						margin-left: 18px;
+					    margin-top: 10px;
+					    width: 96%;
+					    padding: 8px;
+					    li{
+						    input{
+							    height: 25px;
+							    width: 100%;
+							    min-width: 250px;
+   						    }
+					    }
+				   	 }
+				   }
+
 				}
 
 				div{
@@ -906,4 +952,73 @@ body{
     &.active{
     	left: -7px;
     }
+}
+
+.ui-datepicker{
+	min-width: 260px !important;
+}
+
+
+#right-content-aside{
+	.main-content{
+	    font-family: din_lightregular;
+	    font-size: 16px;
+	    h1.tile-section{
+		    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+		    color: #fff;
+		    font-size: 25px;
+		    font-style: italic;
+		    font-weight: 600;
+		    height: 50px;
+		    margin: 0 0 20px;
+		    padding-top: 20px;
+		    text-align: center;
+		    >span{
+		    	border-bottom: 1px solid rgba(0, 169, 149, 0.66);
+		    }
+		}
+
+		.row-service-titles{
+			width: 99.8%;
+			margin: 0;
+			>div{
+			    border-style: none solid solid none;
+			    border-width: 0 1px 1px 0;
+			    border-color: rgba(0, 169, 149, 0.66);
+			    font-size: 20px;
+			    font-style: italic;
+			    font-weight: 600;
+			    text-transform: capitalize;
+			    padding-left: 40px;
+			}
+		}
+		.row-service-value{
+			    margin: 0;
+			    width: 99.6%;
+			    border-bottom: 1px solid rgba(43, 46, 55, 0.56);
+			    border-right: 1px solid rgba(43, 46, 55, 0.56);
+			    padding-bottom: 10px;
+			    padding-top: 18px;	
+			    >div{
+			    	padding-left: 40px;
+			    }		   
+		}
+	}
+}
+
+.view-service-button{
+    cursor: pointer;
+    float: right;
+    position: relative;
+    right: 30px;
+    &:before{
+    	.transition(all 200ms ease-out);
+    }
+    &:hover{
+    	&:before{
+    		font-size: 20px;
+    		color: #08988c;
+    	}
+    }	
+
 }
