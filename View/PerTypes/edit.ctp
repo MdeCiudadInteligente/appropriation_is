@@ -5,9 +5,6 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('creation_date');
-		echo $this->Form->input('modification_date');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -15,8 +12,7 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('PerType.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('PerType.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Per Types'), array('action' => 'index')); ?></li>
+		 <li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+		 <li><?php echo $this->Html->link(__('List Per Types'), array('action' => 'index')); ?></li>
 	</ul>
 </div>

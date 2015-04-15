@@ -22,6 +22,8 @@
 			<li><?php echo $this->Html->link(__('Zonas'), array('controller' => 'Zones', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Aliados'), array('controller' => 'TraAllies', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Tipos de Formación'), array('controller' => 'TraTypes', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Tipos de Profesión'), array('controller' => 'PerProfessions', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('Tipos de Fondo'), array('controller' => 'PerProfessions', 'action' => 'index')); ?> </li>
 			
 			<?php }?>	
 			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '4'||$usuario_level == '5'){?>		

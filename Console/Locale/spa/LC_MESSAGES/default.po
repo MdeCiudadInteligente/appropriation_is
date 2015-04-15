@@ -91,6 +91,38 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid  "The per type could not be deleted. Por favor trate de nuevo"
+msgstr "El tipo de persona no ha sido eliminado"
+
+msgid  "The per type has been deleted."
+msgstr "El tipo de persona ha sido eliminado"
+
+msgid  "The per type already exists , please check."
+msgstr "El tipo de persona existe.Por favor verifique."
+
+msgid  "The per type could not be saved. Please, try again."
+msgstr "El tipo de persona no ha sido guardado.Por favor trate de nuevo"
+
+msgid  "The per type has been saved."
+msgstr "El tipo de persona ha sido guardada"
+
+msgid  "Invalid per type"
+msgstr "Tipo de persona no válido"
+
+msgid  "List Per Types"
+msgstr "Listado tipos de persona"
+
+msgid  "Edit Per Type"
+msgstr "Editar tipo de persona"
+
+msgid  "New Per Type"
+msgstr "Nuevo tipo de persona"
+
+msgid  "Add Per Type"
+msgstr "Agregar tipo de persona"
+
+msgid  "Per Type"
+msgstr "Tipo de persona"
 
 msgid  "Prefix"
 msgstr "prefijo"
