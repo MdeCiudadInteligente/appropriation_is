@@ -20,7 +20,7 @@
 			<?php
 				$gridOptions=array(
 						'gridId'=>'gridProfession',
-						'gridTitle'=>'Professions',
+						'gridTitle'=>'Profesiones',
 						'height'=>800,
 						'serviceUrl'=>'PerProfessions/index_service.json',
 						'fields'=>array(

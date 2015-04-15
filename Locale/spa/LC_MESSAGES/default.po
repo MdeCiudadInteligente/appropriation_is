@@ -91,6 +91,219 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid "The per trainer fund has been deleted."
+msgstr "El fondo del formador ha sido eliminado"
+
+msgid "The per trainer fund has been saved."
+msgstr "El fondo del formador ha sido guardado"
+
+msgid "List Per Trainer Funds"
+msgstr "Lista fondo de formador"
+
+msgid "New Per Trainer Fund"
+msgstr "Nuevo fondo de formador"
+
+msgid "Add Per Trainer Fund"
+msgstr "Agregar fondo de formador"
+
+msgid "Edit Per Trainer Fund"
+msgstr "Editar fondo formador"
+
+msgid  "Professions"
+msgstr "Profesiones"
+
+msgid  "The profession has been saved."
+msgstr "La profesión ha sido guardada"
+
+msgid  "The per type could not be deleted. Por favor trate de nuevo"
+msgstr "El tipo de persona no ha sido eliminado"
+
+msgid  "The per type has been deleted."
+msgstr "El tipo de persona ha sido eliminado"
+
+msgid  "The per type already exists , please check."
+msgstr "El tipo de persona existe.Por favor verifique."
+
+msgid  "The per type could not be saved. Please, try again."
+msgstr "El tipo de persona no ha sido guardado.Por favor trate de nuevo"
+
+msgid  "The per type has been saved."
+msgstr "El tipo de persona ha sido guardada"
+
+msgid  "Invalid per type"
+msgstr "Tipo de persona no válido"
+
+msgid  "List Per Types"
+msgstr "Listado tipos de persona"
+
+msgid  "Edit Per Type"
+msgstr "Editar tipo de persona"
+
+msgid  "New Per Type"
+msgstr "Nuevo tipo de persona"
+
+msgid  "Add Per Type"
+msgstr "Agregar tipo de persona"
+
+msgid  "Per Type"
+msgstr "Tipo de persona"
+
+msgid  "Prefix"
+msgstr "prefijo"
+
+msgid  "prefix"
+msgstr "prefijo"
+
+msgid  "The profession could not be deleted. Please, try again."
+msgstr "La profesión no pudo ser eliminada. Por favor trate nuevamente"
+
+msgid  "The profession has been deleted."
+msgstr "La profesión ha sido eliminada"
+
+msgid  "The profession could not be saved. Please, try again."
+msgstr "La profesión no ha sido guardada, por favor verifique."
+
+msgid  "The profession already exists , please check."
+msgstr "La profesión existe , por favor verifique."
+
+msgid  "The profession could not be saved. Please, try again."
+msgstr "La profesión no ha sido guardada. Por favor verifique."
+
+msgid  "Invalid profession"
+msgstr "Profesi�n no válida"
+
+msgid  "New Profession"
+msgstr "Nueva profesión"
+
+msgid  "Edit Profession"
+msgstr "Editar profesión"
+
+msgid  "Add Profession"
+msgstr "Agregar profesión"
+
+msgid  "List Professions"
+msgstr "Listado de profesiones"
+
+msgid  "The TraType already exists , please check."
+msgstr "El tipo de formación existe , por favor verifique."
+
+msgid  "The TraType already exists , please check."
+msgstr "El tipo de formación existe , por favor verifique."
+
+msgid "The training type already exists , please check."
+msgstr "El tipo de formación existe , por favor verifique."
+
+msgid "The ally already exists , please check."
+msgstr "El aliado existe , por favor verifique."
+
+msgid "The per type already exists , please check."
+msgstr "El tipo de persona existe , por favor verifique."
+
+msgid "The owner already exists , please check."
+msgstr "El propietario existe , por favor verifique."
+
+msgid "The TraProcess could not be saved. Please, try again."
+msgstr "El Proceso no pudo ser guardado , por favor verifique."
+
+msgid "The TraProcess has been saved."
+msgstr "El Proceso ha sido guardado."
+
+msgid "Edit Training"
+msgstr "Editar formación"
+
+msgid "Training"
+msgstr "Formación"
+
+msgid "The TraType has been saved."
+msgstr "El Tipo de Formación ha sido guardado."
+
+msgid "Allies"
+msgstr "Aliados"
+
+msgid "Training Type"
+msgstr "Tipos de formación"
+
+msgid "Processes"
+msgstr "Procesos"
+
+msgid "Population types"
+msgstr "Tipos de población"
+
+msgid "The training process already exists , please check."
+msgstr "El proceso de formación existe, por favor verifique."
+
+msgid "The people type has been saved."
+msgstr "El tipo de persona ha sido guardada"
+
+msgid "The trainer could not be deleted. Please, try again."
+msgstr "El entrenador no ha sido eliminado. Por favor verifique."
+
+msgid "The trainer could not be saved. Please, try again."
+msgstr "El entrenador no ha sido guardado. Por favor verifique."
+
+msgid "The TraProcess could not be saved. Please, try again."
+msgstr "El Proceso de Formación. no ha sido guardado. Por favor verifique."
+
+msgid "The TraProcess already exists , please check."
+msgstr "El Proceso de Formación existe. Por favor verifique."
+
+msgid "Invalid trainer"
+msgstr "Entrenador no válido"
+
+msgid "The training process already exists , please check."
+msgstr "El Proceso de Formación existe. Por favor verifique. "
+
+msgid "The people type could not be saved. Please, try again."
+msgstr "El tipo de persona no ha sido guardado. Por favor verifica."
+
+msgid "Invalid people type"
+msgstr "El tipo de persona es no válido"
+
+msgid "The PeopleType was not deleted"
+msgstr "El tipo de persona no ha sido eliminado"
+
+msgid "The PeopleType was saved"
+msgstr "El tipo de persona fue guardado."
+
+msgid "The PeopleType was not saved"
+msgstr "El tipo de persona no fue guardado. Trate nuevamente"
+
+msgid "The fortype could not be deleted. Please, try again."
+msgstr "El tipo de formación no pudo ser eliminado. Por favor trate nuevamente"
+
+msgid "The fortype has been deleted."
+msgstr "El tipo de formación ha sido eliminado"
+
+msgid "Invalid fortype"
+msgstr "Tipo de formación no válido"
+
+msgid "The fortype could not be saved. Please, try again."
+msgstr "El tipo de formación no pudo ser guardado. Por favor, trate nuevamente"
+
+msgid "The fortype has been saved."
+msgstr "El tipo de formación ha sido guardado"
+
+msgid "Add Fortype"
+msgstr "Añadir tipo de formación"
+
+msgid "Edit Fortype"
+msgstr "Editar tipo de formación"
+
+msgid "Edit Per Trainer Fund"
+msgstr "Editar Fondo Formador"
+
+msgid "Fortype"
+msgstr "Tipo de formación"
+
+msgid "List Fortypes"
+msgstr "Lista tipo de formación"
+
+msgid "New Fortype"
+msgstr "Nuevo tipo de formación"
+
+msgid "Edit Fortype"
+msgstr "Editar tipo de formación"
+
 msgid "Trainer"
 msgstr "Formador"
 
@@ -188,7 +401,7 @@ msgid "The training type could not be deleted. Please, try again."
 msgstr "El tipo de formación no pudo ser eliminado. Por favor, trate de nuevo"
 
 msgid "The training type has been deleted."
-msgstr "El tipo de formación ha sido guardado"
+msgstr "El tipo de formación ha sido eliminado"
 
 msgid "The training type could not be saved. Please, try again."
 msgstr "El tipo de formación no pudo ser guardado. Por favor, trate de nuevo"
