@@ -15,6 +15,6 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Per Trainer Funds'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Funds'), array('action' => 'index')); ?></li>
 	</ul>
 </div>

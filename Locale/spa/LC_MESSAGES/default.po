@@ -1144,6 +1144,11 @@ msgstr "Agregar Barrio"
 msgid "Add Site Type"
 msgstr "Agregar Tipo de Sitio"
 
+msgid "List Funds"
+msgstr "Listado de Fondos"
+
+
+
 #: \console\error.php:96
 msgid "Missing Controller '%s'"
 msgstr "Falta el Controlador '%s'"
