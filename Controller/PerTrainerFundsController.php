@@ -69,7 +69,20 @@ class PerTrainerFundsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->PerTrainerFund->create();
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
+			$name_trafunds= $this->request->data['PerTrainerFund']['name'];
+			$verificar_trafunds=$this->PerTrainerFund->query("select distinct name from per_trainer_funds where name = '$name_trafunds'");
+			$this->set('verificar_trafunds',$verificar_trafunds);
+				
+			if($verificar_trafunds==Array( )){
+				$this->PerTrainerFund->create();
+				$data=$this->request->data;
+				$data['PerTrainerFund']['name'] = ucwords(($data['PerTrainerFund']['name']));
+				$data['PerTrainerFund']['user_id']=$usuario;
+				$data['PerTrainerFund']['creation_date']=date('Y-m-d H:i:s');
+				
 			if ($this->PerTrainerFund->save($this->request->data)) {
 				$this->Session->setFlash(__('The per trainer fund has been saved.'));
 				return $this->redirect(array('action' => 'index'));
@@ -77,7 +90,12 @@ class PerTrainerFundsController extends AppController {
 				$this->Session->setFlash(__('The per trainer fund could not be saved. Please, try again.'));
 			}
 		}
+		else{
+			$this->Session->setFlash(__('The per type already exists , please check.'));
+		}
 	}
+}
+	
 
 /**
  * edit method
