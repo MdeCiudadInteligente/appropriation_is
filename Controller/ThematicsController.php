@@ -180,7 +180,7 @@ class ThematicsController extends AppController {
 	public function getThematic() {
 	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$queryString=isset($_GET['q'])?$_GET['q']:false;
-		$showAll=$_POST['a'];
+		$showAll=isset($_POST['a'])?$_POST['a']:false;
 		if($showAll==1){
 			$condition=array(
 						 'OR' => array(
@@ -199,6 +199,10 @@ class ThematicsController extends AppController {
 			 			)
 			);
 		}
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> dev
 		$fields=array('Thematic.name','Thematic.id','Thematic.description','Thematic.state','Thematic.prefix');
 		$thematics=$this->Thematic->find('all',array('fields'=>$fields,'recursive'=>0,'conditions'=>$condition));
 		foreach ($thematics as $key => $thematic) {
