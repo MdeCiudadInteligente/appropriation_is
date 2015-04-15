@@ -80,9 +80,14 @@ class TraTypesController extends AppController {
 			$this->set('verificar_tratype',$verificar_tratype);
 			
 			if($verificar_tratype==Array( )){
-			
 				$this->TraType->create();
-				if ($this->TraType->save($this->request->data)) {
+				
+				$data=$this->request->data;
+				$data['TraType']['name'] = ucwords(($data['TraType']['name']));
+				$data['TraType']['user_id']=$usuario;
+				$data['TraType']['creation_date']=date('Y-m-d H:i:s');
+								
+				if ($this->TraType->save($data)) {
 					$this->Session->setFlash(__('The training type has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} else {
@@ -110,11 +115,11 @@ class TraTypesController extends AppController {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 				
-			$name_tratype= $this->request->data['TraType']['name'];
-			$verificar_tratype=$this->TraType->query("select distinct name from tra_types where name = '$name_tratype'");
-			$this->set('verificar_tratype',$verificar_tratype);
+			$name_tratypeditar= $this->request->data['TraType']['name'];
+			$verificar_tratypedit=$this->TraType->query("select distinct name from tra_types where name = '$name_tratypeditar'");
+			$this->set('verificar_tratypedit',$verificar_tratypedit);
 				
-			if($verificar_tratype==Array( )){
+			if($verificar_tratypedit==Array( )){
 					
 					
 				if ($this->TraType->save($this->request->data)) {

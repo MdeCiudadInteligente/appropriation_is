@@ -84,7 +84,7 @@ class PerTrainerFundsController extends AppController {
 				$data['PerTrainerFund']['user_id']=$usuario;
 				$data['PerTrainerFund']['creation_date']=date('Y-m-d H:i:s');
 				
-			if ($this->PerTrainerFund->save($this->request->data)) {
+			if ($this->PerTrainerFund->save($data)) {
 				$this->Session->setFlash(__('The per trainer fund has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
