@@ -43,6 +43,6 @@
 	<!-- End right block -->		
 	</div>	
 
-<!-- End meetings container -->
+<!-- End divtypes container -->
 </div>	
 

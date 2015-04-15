@@ -1,4 +1,4 @@
-Ôªø# LANGUAGE translation of CakePHP Application
+ø# LANGUAGE translation of CakePHP Application
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
 #  Revision: 8004 \console\error.php
@@ -91,6 +91,78 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid  "The per type could not be deleted. Por favor trate de nuevo"
+msgstr "El tipo de persona no ha sido eliminado"
+
+msgid  "The per type has been deleted."
+msgstr "El tipo de persona ha sido eliminado"
+
+msgid  "The per type already exists , please check."
+msgstr "El tipo de persona existe.Por favor verifique."
+
+msgid  "The per type could not be saved. Please, try again."
+msgstr "El tipo de persona no ha sido guardado.Por favor trate de nuevo"
+
+msgid  "The per type has been saved."
+msgstr "El tipo de persona ha sido guardada"
+
+msgid  "Invalid per type"
+msgstr "Tipo de persona no v√°lido"
+
+msgid  "List Per Types"
+msgstr "Listado tipos de persona"
+
+msgid  "Edit Per Type"
+msgstr "Editar tipo de persona"
+
+msgid  "New Per Type"
+msgstr "Nuevo tipo de persona"
+
+msgid  "Add Per Type"
+msgstr "Agregar tipo de persona"
+
+msgid  "Per Type"
+msgstr "Tipo de persona"
+
+msgid  "Prefix"
+msgstr "prefijo"
+
+msgid  "prefix"
+msgstr "prefijo"
+
+msgid  "The profession could not be deleted. Please, try again."
+msgstr "La profesiÛn no pudo ser eliminada. Por favor trate nuevamente"
+
+msgid  "The profession has been deleted."
+msgstr "La profesiÛn ha sido eliminada"
+
+msgid  "The profession could not be saved. Please, try again."
+msgstr "La profesiÛn no ha sido guardada, por favor verifique."
+
+msgid  "The profession already exists , please check."
+msgstr "La profesiÛn existe , por favor verifique."
+
+msgid  "The profession could not be saved. Please, try again."
+msgstr "La profesiÛn no ha sido guardada. Por favor verifique."
+
+msgid  "Invalid profession"
+msgstr "ProfesiÛn no v√°lida"
+
+msgid  "New Profession"
+msgstr "Nueva profesiÛn"
+
+msgid  "Edit Profession"
+msgstr "Editar profesiÛn"
+
+msgid  "Add Profession"
+msgstr "Agregar profesiÛn"
+
+msgid  "List Professions"
+msgstr "Listado de profesiones"
+
+msgid  "The TraType already exists , please check."
+msgstr "El tipo de formaci√≥n existe , por favor verifique."
+
 msgid  "The TraType already exists , please check."
 msgstr "El tipo de formaci√≥n existe , por favor verifique."
 
@@ -107,7 +179,7 @@ msgid "The owner already exists , please check."
 msgstr "El propietario existe , por favor verifique."
 
 msgid "The TraProcess could not be saved. Please, try again."
-msgstr "El Proceso existe , por favor verifique."
+msgstr "El Proceso no pudo ser guardado , por favor verifique."
 
 msgid "The TraProcess has been saved."
 msgstr "El Proceso ha sido guardado."
@@ -193,6 +265,9 @@ msgstr "A√±adir tipo de formaci√≥n"
 msgid "Edit Fortype"
 msgstr "Editar tipo de formaci√≥n"
 
+msgid "Edit Per Trainer Fund"
+msgstr "Editar Fondo Formador"
+
 msgid "Fortype"
 msgstr "Tipo de formaci√≥n"
 
@@ -242,7 +317,13 @@ msgid "The divtype has been deleted."
 msgstr "El tipo de divulgaci√≥n ha sido eliminado"
 
 msgid "Add Task"
-msgstr "A√±adir Tarea"
+msgstr "Agregar Tarea"
+
+msgid "Add Per Trainer Fund"
+msgstr "Agregar Fondo de Formador"
+
+msgid "New Per Trainer Fund"
+msgstr "Nuevo Fondo de Formador"
 
 msgid "The divtype could not be saved. Please, try again."
 msgstr "El tipo de divulgaci√≥n no pudo ser guardado. Por favor trate nuevamente"
@@ -285,6 +366,9 @@ msgstr "Tipo Reuni√≥n"
 
 msgid "The site type has been saved."
 msgstr "El tipo de sitio se ha guardado."
+
+msgid "List Per Trainer Funds"
+msgstr "lista Fondo de Formador"
 
 msgid "New Agent"
 msgstr "Nuevo Agente"

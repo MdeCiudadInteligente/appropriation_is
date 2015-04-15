@@ -1,4 +1,4 @@
-<div class="traAllies form">
+<div class="traAllies form mde-form">
 <?php echo $this->Form->create('TraAlly'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Ally'); ?></legend>
