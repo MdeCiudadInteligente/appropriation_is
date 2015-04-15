@@ -91,6 +91,13 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+
+msgid  "Prefix"
+msgstr "prefijo"
+
+msgid  "prefix"
+msgstr "prefijo"
+
 msgid  "The profession could not be deleted. Please, try again."
 msgstr "La profesión no pudo ser eliminada. Por favor trate nuevamente"
 
