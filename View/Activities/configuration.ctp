@@ -22,8 +22,12 @@
 			<li><?php echo $this->Html->link(__('Zonas'), array('controller' => 'Zones', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Aliados'), array('controller' => 'TraAllies', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Tipos de Formación'), array('controller' => 'TraTypes', 'action' => 'index')); ?> </li>
+<<<<<<< HEAD
 			<li><?php echo $this->Html->link(__('Tipos de Profesión'), array('controller' => 'PerProfessions', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('Tipos de Fondo'), array('controller' => 'PerProfessions', 'action' => 'index')); ?> </li>
+=======
+			<li><?php echo $this->Html->link(__('Fondo del Formador'), array('controller' => 'PerTrainerFunds', 'action' => 'index')); ?> </li>
+>>>>>>> e236eb0b1e5f592ac05df7e080b3c2aa685fbd79
 			
 			<?php }?>	
 			<?php if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '4'||$usuario_level == '5'){?>		

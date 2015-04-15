@@ -1,4 +1,4 @@
-﻿# LANGUAGE translation of CakePHP Application
+�# LANGUAGE translation of CakePHP Application
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
 #  Revision: 8004 \console\error.php
@@ -265,6 +265,9 @@ msgstr "Añadir tipo de formación"
 msgid "Edit Fortype"
 msgstr "Editar tipo de formación"
 
+msgid "Edit Per Trainer Fund"
+msgstr "Editar Fondo Formador"
+
 msgid "Fortype"
 msgstr "Tipo de formación"
 
@@ -314,7 +317,13 @@ msgid "The divtype has been deleted."
 msgstr "El tipo de divulgación ha sido eliminado"
 
 msgid "Add Task"
-msgstr "Añadir Tarea"
+msgstr "Agregar Tarea"
+
+msgid "Add Per Trainer Fund"
+msgstr "Agregar Fondo de Formador"
+
+msgid "New Per Trainer Fund"
+msgstr "Nuevo Fondo de Formador"
 
 msgid "The divtype could not be saved. Please, try again."
 msgstr "El tipo de divulgación no pudo ser guardado. Por favor trate nuevamente"
@@ -357,6 +366,9 @@ msgstr "Tipo Reunión"
 
 msgid "The site type has been saved."
 msgstr "El tipo de sitio se ha guardado."
+
+msgid "List Per Trainer Funds"
+msgstr "lista Fondo de Formador"
 
 msgid "New Agent"
 msgstr "Nuevo Agente"
