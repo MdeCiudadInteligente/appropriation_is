@@ -31,7 +31,7 @@ class DivtypesController extends AppController {
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
 		$Divtype=$this->Divtype->find('all');
-		//$sitetype=$this->SiteType->find('all');
+
 		$count=0;
 		foreach ($Divtype as $key => $Divtype) {
 			$data['rows'][$count]=array(

@@ -91,6 +91,39 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+msgid  "The profession could not be deleted. Please, try again."
+msgstr "La profesión no pudo ser eliminada. Por favor trate nuevamente"
+
+msgid  "The profession has been deleted."
+msgstr "La profesión ha sido eliminada"
+
+msgid  "The profession could not be saved. Please, try again."
+msgstr "La profesión no ha sido guardada, por favor verifique."
+
+msgid  "The profession already exists , please check."
+msgstr "La profesión existe , por favor verifique."
+
+msgid  "The profession could not be saved. Please, try again."
+msgstr "La profesión no ha sido guardada. Por favor verifique."
+
+msgid  "Invalid profession"
+msgstr "Profesión no vÃ¡lida"
+
+msgid  "New Profession"
+msgstr "Nueva profesión"
+
+msgid  "Edit Profession"
+msgstr "Editar profesión"
+
+msgid  "Add Profession"
+msgstr "Agregar profesión"
+
+msgid  "List Professions"
+msgstr "Listado de profesiones"
+
+msgid  "The TraType already exists , please check."
+msgstr "El tipo de formaciÃ³n existe , por favor verifique."
+
 msgid  "The TraType already exists , please check."
 msgstr "El tipo de formaciÃ³n existe , por favor verifique."
 
@@ -107,7 +140,7 @@ msgid "The owner already exists , please check."
 msgstr "El propietario existe , por favor verifique."
 
 msgid "The TraProcess could not be saved. Please, try again."
-msgstr "El Proceso existe , por favor verifique."
+msgstr "El Proceso no pudo ser guardado , por favor verifique."
 
 msgid "The TraProcess has been saved."
 msgstr "El Proceso ha sido guardado."

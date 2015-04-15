@@ -1,48 +1,47 @@
-<div class="perProfessions index">
-	<h2><?php echo __('Per Professions'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('state'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('creation_date'); ?></th>
-			<th><?php echo $this->Paginator->sort('modification_date'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($perProfessions as $perProfession): ?>
-	<tr>
-		<td><?php echo h($perProfession['PerProfession']['id']); ?>&nbsp;</td>
-		<td><?php echo h($perProfession['PerProfession']['name']); ?>&nbsp;</td>
-		<td><?php echo h($perProfession['PerProfession']['state']); ?>&nbsp;</td>
-		<td><?php echo h($perProfession['PerProfession']['user_id']); ?>&nbsp;</td>
-		<td><?php echo h($perProfession['PerProfession']['creation_date']); ?>&nbsp;</td>
-		<td><?php echo h($perProfession['PerProfession']['modification_date']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $perProfession['PerProfession']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $perProfession['PerProfession']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $perProfession['PerProfession']['id']), null, __('Are you sure you want to delete # %s?', $perProfession['PerProfession']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Per Profession'), array('action' => 'add')); ?></li>
-	</ul>
-</div>
+<div class="professions-cont app-grid-container">
+	<div class="left-block">
+		<div class="actions">
+			<h3><?php echo __('Actions'); ?></h3>
+			<ul>
+				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+				if ($usuario_level == '1'){?>	
+				<li><?php echo $this->Html->link(__('New Profession'), array('action' => 'add')); ?></li>
+				<?php }?>
+				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
+			</ul>
+		</div>
+	</div>	
+<!-- 	End left block -->	
+
+	<div class="right-block">
+		<div class="people">
+			<h2><?php echo __('People'); ?></h2>
+			<?php
+				$gridOptions=array(
+						'gridId'=>'gridProfession',
+						'gridTitle'=>'Professions',
+						'height'=>800,
+						'serviceUrl'=>'PerProfessions/index_service.json',
+						'fields'=>array(
+						    array("dataIndex"=>"id","column"=>false),
+			                array("dataIndex"=>"nombrep",'header'=>'Nombre','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"estadop",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
+						),
+						'expander'=>false,
+						'AllowAll'=>true,
+						'printCrud'=>true,
+						'baseParams'=>array('start'=>0,'limit'=>100)
+				);
+			?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
+		</div>
+	<!-- End right block -->		
+	</div>	
+
+<!-- End professions container -->
+</div>	
+	
