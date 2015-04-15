@@ -569,6 +569,26 @@ App.prototype.bindAutocompleteTraProcess=function(selector){
 		};
 		
 
+App.prototype.showServiceAside=function(urlService,callback,postData){
+    var callback=(typeof callback != 'undefined')? callback:app.appendServiceHtml;
+    var postData=(typeof postData != 'undefined')? postData:false;
+    $.ajax({
+        url:urlService,
+        data :{'data':'test'},
+        dataType:'json',
+        success: function(data){
+            console.log(data);            
+        }      
+    });
+}
+
+App.prototype.appendServiceHtml=function(data){
+    var html='';
+    $.each(data,function(index,value){
+        console.log(value);
+    });
+}
+
 /* Autocomplete Trainers */
 App.prototype.bindAutocompleteTrainers=function(selector){
 			if($(selector).length){
