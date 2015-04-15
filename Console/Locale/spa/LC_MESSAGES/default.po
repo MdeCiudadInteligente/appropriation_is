@@ -844,6 +844,9 @@ msgstr "Agregar Barrio"
 msgid "Add Site Type"
 msgstr "Agregar Tipo de Sitio"
 
+msgid "test"
+msgstr "prueba"
+
 #: \console\error.php:96
 msgid "Missing Controller '%s'"
 msgstr "Falta el Controlador '%s'"
