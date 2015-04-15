@@ -128,23 +128,6 @@ class PerPeopleTypesController extends AppController {
  * @return void
  */
 	
-	/*
-	public function delete($id = null) {
-		$this->PerPeopleType->id = $id;
-		if (!$this->PerPeopleType->exists()) {
-			throw new NotFoundException(__('Invalid per people type'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		
-		if ($this->PerPeopleType->delete()) {
-			$this->Session->setFlash(__('The per people type has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The per people type could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
-	}
-	*/
-	
 	public function delete($people_type_id = null) {	
 		//$this->request->onlyAllow('post', 'delete');	
 

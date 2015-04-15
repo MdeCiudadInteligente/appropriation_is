@@ -79,12 +79,15 @@ class TraAlliesController extends AppController {
 			$verificar_allies=$this->TraAlly->query("select distinct name from tra_types where name = '$name_allies'");
 			$this->set('verificar_allies',$verificar_allies);
 			
-			if($verificar_divulgationtype==Array( )){
-			
-				
+			if($verificar_allies==Array( )){
 				$this->TraAlly->create();
-	
-				if ($this->TraAlly->save($this->request->data)) {
+				
+					$data=$this->request->data;
+					$data['TraAlly']['name'] = ucwords(($data['TraAlly']['name']));
+					$data['TraAlly']['user_id']=$usuario;
+					$data['TraAlly']['creation_date']=date('Y-m-d H:i:s');
+										
+				if ($this->TraAlly->save($data)) {
 					$this->Session->setFlash(__('The ally has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} else {

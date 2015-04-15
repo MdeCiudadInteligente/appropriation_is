@@ -99,6 +99,7 @@ class ZonesController extends AppController {
 			
 				$this->Zone->create();
 				$data=$this->request->data;
+				$data['Zone']['zone_name'] = ucwords(($data['Zone']['zone_name']));
 				$data['Zone']['creation_date']=date('Y-m-d H:i:s');
 				$data['Zone']['user_id']=$usuario;
 								
