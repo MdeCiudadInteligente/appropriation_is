@@ -4,7 +4,7 @@
 		<legend><?php echo __('Add Training Process'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
-		echo $this->Form->input('prefix');
+		echo $this->Form->input('prefix',array('label'=>'Prefijo'));
 		echo $this->Form->input('state',array ('options' => array ('1'=>'Activo','0'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>

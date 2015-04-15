@@ -71,6 +71,7 @@ class PerTrainerFundsController extends AppController {
 		if ($this->request->is('post')) {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
+<<<<<<< HEAD
 			
 			$name_trafunds= $this->request->data['PerTrainerFund']['name'];
 			$verificar_trafunds=$this->PerTrainerFund->query("select distinct name from per_trainer_funds where name = '$name_trafunds'");
@@ -93,6 +94,32 @@ class PerTrainerFundsController extends AppController {
 		else{
 			$this->Session->setFlash(__('The per type already exists , please check.'));
 		}
+=======
+				
+			$name_trainerfunds= $this->request->data['PerTrainerFund']['name'];
+			$verificar_trainerfunds=$this->PerTrainerFund->query("select distinct name from per_trainer_funds where name = '$name_trainerfunds'");
+			$this->set('verificar_trainerfunds',$verificar_trainerfunds);
+				
+			if($verificar_trainerfunds==Array( )){
+
+				$this->PerTrainerFund->create();
+				$data=$this->request->data;
+				$data['PerTrainerFund']['name'] = ucwords($data['PerTrainerFund']['name']);
+				$data['PerTrainerFund']['creation_date']=date('Y-m-d H:i:s');
+				$data['PerTrainerFund']['user_id']=$usuario;
+			
+				if ($this->PerTrainerFund->save($data)) {
+					$this->Session->setFlash(__('The per trainer fund has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The per trainer fund could not be saved. Please, try again.'));
+				}
+			}
+			else{
+				$this->Session->setFlash(__('The per trainer already exists , please check.'));
+			}
+		}	
+>>>>>>> 9d6456fb58d097815c4e4dbf0b8c03b5acaef27e
 	}
 }
 	
@@ -109,12 +136,36 @@ class PerTrainerFundsController extends AppController {
 			throw new NotFoundException(__('Invalid per trainer fund'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->PerTrainerFund->save($this->request->data)) {
-				$this->Session->setFlash(__('The per trainer fund has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The per trainer fund could not be saved. Please, try again.'));
-			}
+			
+			
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
+			$name_trainerfunds= $this->request->data['PerTrainerFund']['name'];
+			$verificar_trainerfunds=$this->PerTrainerFund->query("select distinct name from per_trainer_funds where name = '$name_trainerfunds'");
+			$this->set('verificar_trainerfunds',$verificar_trainerfunds);
+			
+				if($verificar_trainerfunds==Array( )){
+				
+					$this->PerTrainerFund->create();
+					$data=$this->request->data;
+					$data['PerTrainerFund']['name'] = ucwords($data['PerTrainerFund']['name']);
+					$data['PerTrainerFund']['creation_date']=date('Y-m-d H:i:s');
+					$data['PerTrainerFund']['user_id']=$usuario;
+				
+				
+					if ($this->PerTrainerFund->save($this->request->data)) {
+						$this->Session->setFlash(__('The per trainer fund has been saved.'));
+						return $this->redirect(array('action' => 'index'));
+					} else {
+						$this->Session->setFlash(__('The per trainer fund could not be saved. Please, try again.'));
+					}
+				}
+					else{
+						$this->Session->setFlash(__('The per trainer already exists , please check.'));
+					}
+						
+					
 		} else {
 			$options = array('conditions' => array('PerTrainerFund.' . $this->PerTrainerFund->primaryKey => $id));
 			$this->request->data = $this->PerTrainerFund->find('first', $options);

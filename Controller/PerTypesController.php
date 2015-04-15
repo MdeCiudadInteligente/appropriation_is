@@ -24,6 +24,28 @@ class PerTypesController extends AppController {
 		$this->PerType->recursive = 0;
 		$this->set('perTypes', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$PerType=$this->PerType->find('all');
+	
+		$count=0;
+		foreach ($PerType as $key => $PerType) {
+			$data['rows'][$count]=array(
+					'id'=>$PerType['PerType']['id'],
+					'ptname'=>$PerType['PerType']['name'],
+					'creation_date'=>$PerType['PerType']['creation_date'],
+					'modification_date'=>$PerType['PerType']['modification_date'],
+					'user_id'=>$PerType['PerType']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method
@@ -56,6 +78,7 @@ class PerTypesController extends AppController {
 			
 			if($verificar_pertype==Array( )){
 				$this->PerType->create();
+<<<<<<< HEAD
 				$data=$this->request->data;
 				$data['PerType']['name'] = ucwords(($data['PerType']['name']));
 				$data['PerType']['user_id']=$usuario;
@@ -63,6 +86,15 @@ class PerTypesController extends AppController {
 		
 				
 			if ($this->PerType->save($this->request->data)) {
+=======
+				
+				$data=$this->request->data;
+				$data['PerType']['name'] = ucwords($data['PerType']['name']);
+				$data['PerType']['creation_date']=date('Y-m-d H:i:s');
+				$data['PerType']['user_id']=$usuario;
+				
+				if ($this->PerType->save($data)) {
+>>>>>>> 9d6456fb58d097815c4e4dbf0b8c03b5acaef27e
 					$this->Session->setFlash(__('The per type has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} 

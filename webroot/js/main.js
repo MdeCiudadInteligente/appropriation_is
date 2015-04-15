@@ -15,7 +15,6 @@ var App = function(){
 App.prototype.bind=function(){
 
     if($('#datepicker').length){
-        console.log('datePicker');
         $( "#datepicker" ).datepicker({
           changeMonth: true,
           changeYear: true,
@@ -69,6 +68,16 @@ App.prototype.bind=function(){
         app.setMobileScreen();
     }
     app.notificationBox();
+    $('.view-service').on('click',function(){
+        var data=$(this).data();
+        var router_url=data.url;
+        var name=data.name;
+        var callback_namespace='app.'+data.callback;
+        var postData=eval('('+data.post+')');
+        var allowedIndex=eval('('+data.alowedindex+')');
+        app.showServiceAside(router_url,callback_namespace,postData,name,allowedIndex);
+    });
+    
 }
 
 
@@ -146,7 +155,6 @@ App.prototype.bindAutocompletePersona=function(selector){
             $('.close-load').on('click',function(){
                 var parentLi=$(this).closest('li');
                 var relInput='#'+parentLi.data('relvalue');
-                console.log($(relInput));
                 parentLi.remove();
                 $(relInput).remove();
 
@@ -164,7 +172,7 @@ App.prototype.setMobileNav=function(){
     var desktopNav=$('.actions ul').clone();
     $('.mobile-ovelay-menu.menu-content').append(desktopNav);
     $('.close-menu').on('click',function(){
-        $(this).closest('.mobile-ovelay-menu').removeClass('active');
+        $(this).closest('.mobile-ovelay-menu').removeClass('active').removeAttr('style');
     });
     $('.open-menu').on('click',function(){
         $('.mobile-ovelay-menu.menu-content').addClass('active');
@@ -246,7 +254,6 @@ App.prototype.bindAutocompleteSites=function(selector){
         $('.close-load').on('click',function(){
             var parentLi=$(this).closest('li');
             var relInput='#'+parentLi.data('relvalue');
-            console.log($(relInput));
             parentLi.remove();
             $(relInput).remove();
 
@@ -331,7 +338,6 @@ App.prototype.bindAutocompleteThematics=function(selector){
         $('.close-load').on('click',function(){
             var parentLi=$(this).closest('li');
             var relInput='#'+parentLi.data('relvalue');
-            console.log($(relInput));
             parentLi.remove();
             $(relInput).remove();
 
@@ -409,7 +415,6 @@ App.prototype.bindAutocompletePopulationType=function(selector){
          $('.close-load').on('click',function(){
              var parentLi=$(this).closest('li');
              var relInput='#'+parentLi.data('relvalue');
-             console.log($(relInput));
              parentLi.remove();
              $(relInput).remove();
 
@@ -485,7 +490,6 @@ App.prototype.bindAutocompleteTraAlly=function(selector){
          $('.close-load').on('click',function(){
              var parentLi=$(this).closest('li');
              var relInput='#'+parentLi.data('relvalue');
-             console.log($(relInput));
              parentLi.remove();
              $(relInput).remove();
 
@@ -559,7 +563,6 @@ App.prototype.bindAutocompleteTraProcess=function(selector){
 		         $('.close-load').on('click',function(){
 		             var parentLi=$(this).closest('li');
 		             var relInput='#'+parentLi.data('relvalue');
-		             console.log($(relInput));
 		             parentLi.remove();
 		             $(relInput).remove();
 
@@ -569,24 +572,50 @@ App.prototype.bindAutocompleteTraProcess=function(selector){
 		};
 		
 
-App.prototype.showServiceAside=function(urlService,callback,postData){
-    var callback=(typeof callback != 'undefined')? callback:app.appendServiceHtml;
+App.prototype.showServiceAside=function(urlService,callback,postData,name,allowedIndex){
+    var callback=(typeof callback != 'undefined')? callback+'(data,name,allowedIndex)':app.appendServiceHtml(data,name,allowedIndex);
     var postData=(typeof postData != 'undefined')? postData:false;
     $.ajax({
         url:urlService,
-        data :{'data':'test'},
+        type:'POST',
+        data :postData,
         dataType:'json',
         success: function(data){
-            console.log(data);            
+            eval(callback);            
         }      
     });
 }
 
-App.prototype.appendServiceHtml=function(data){
-    var html='';
+App.prototype.appendServiceHtml=function(data,name,allowedIndex){
+    var html='<h1 class="tile-section"><span>'+name+'</span></h1>';
+    var row_counter=0;
+    var divider=Math.ceil(12/Object.keys(allowedIndex).length);
+    var colClass="col-md-"+divider;
     $.each(data,function(index,value){
-        console.log(value);
+        if(row_counter==0){
+            html+='<div class="row row-service-titles">'
+            $.each(value,function(index,value){
+                if(allowedIndex.hasOwnProperty(index)) 
+                    html+='<div class="'+colClass+'">'+index+'</div>';
+            });
+            html+='</div>';
+            row_counter++;
+        }
+ 
+        html+='<div class="row row-service-value">'
+        $.each(value,function(index,value){
+            if(allowedIndex.hasOwnProperty(index))
+                html+='<div class="'+colClass+'">'+value+'</div>';
+        });
+        html+='</div>';
+        app.putHtmlonAside(html,'100%');
     });
+
+}
+
+App.prototype.putHtmlonAside=function(html,width){
+    $('#right-content-aside .main-content').html(html);
+    $('#right-content-aside').addClass('active').css({'width':width});
 }
 
 /* Autocomplete Trainers */
@@ -656,7 +685,6 @@ App.prototype.bindAutocompleteTrainers=function(selector){
 				            $('.close-load').on('click',function(){
 				                var parentLi=$(this).closest('li');
 				                var relInput='#'+parentLi.data('relvalue');
-				                console.log($(relInput));
 				                parentLi.remove();
 				                $(relInput).remove();
 			

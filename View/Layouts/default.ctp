@@ -15,6 +15,7 @@ $cakeDescription = __d('cake_dev', '');
 	<?php echo $this->Html->charset(); ?>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/js/ext/resources/css/ext-all.css" />
+	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/css/bootstrap.min.css" />
 	<title>
 		<?php $title_for_layout='S.I. MDE Ciudad Inteligente';?>
 		<?php echo $cakeDescription ?>
@@ -38,7 +39,6 @@ $cakeDescription = __d('cake_dev', '');
 	<?php echo $this->Html->script('jquery-1.11.1.min');?>
 	<?php echo $this->Html->script('jquery-ui.min');?>
 	<?php echo $this->Html->script('jquery.autoSuggest');?>
-	<?php echo $this->Html->script('main');?>
 	<?php echo $this->Html->script('ext/adapter/jquery/ext-jquery-adapter.js');?>
 	<?php echo $this->Html->script('ext/ext-all-debug-w-comments.js');?>
 	<?php echo $this->Html->script('ext/RowExpander.js');?>
@@ -57,11 +57,14 @@ $cakeDescription = __d('cake_dev', '');
 		</header>
 	</nav>
 
-	<aside id="right-content" class="mobile-ovelay-menu right-display">
+	<aside id="right-content-aside" class="mobile-ovelay-menu right-display">
 		<header>
 		 <i class="icon-right close-menu"></i>	
 		 <a href="<?php echo Router::url( '/', true )?>"><img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png"></a>
 		</header>
+		<article class="main-content">
+
+		</article>
 	</aside>	
 
 	<div id="container" class="app-container <?php echo $body_class ?>">	
@@ -98,4 +101,9 @@ $cakeDescription = __d('cake_dev', '');
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
+<footer>
+		<?php echo $this->Html->script('main');?>
+		<?php echo $this->Html->script('bootstrap.min');?>
+
+<footer>	
 </html>
