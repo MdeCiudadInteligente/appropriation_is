@@ -78,23 +78,13 @@ class PerTypesController extends AppController {
 			
 			if($verificar_pertype==Array( )){
 				$this->PerType->create();
-<<<<<<< HEAD
-				$data=$this->request->data;
-				$data['PerType']['name'] = ucwords(($data['PerType']['name']));
-				$data['PerType']['user_id']=$usuario;
-				$data['PerType']['creation_date']=date('Y-m-d H:i:s');
-		
-				
-			if ($this->PerType->save($this->request->data)) {
-=======
-				
+
 				$data=$this->request->data;
 				$data['PerType']['name'] = ucwords($data['PerType']['name']);
 				$data['PerType']['creation_date']=date('Y-m-d H:i:s');
 				$data['PerType']['user_id']=$usuario;
 				
 				if ($this->PerType->save($data)) {
->>>>>>> 9d6456fb58d097815c4e4dbf0b8c03b5acaef27e
 					$this->Session->setFlash(__('The per type has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} 
