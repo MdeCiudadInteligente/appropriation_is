@@ -199,10 +199,6 @@ class ThematicsController extends AppController {
 			 			)
 			);
 		}
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> dev
 		$fields=array('Thematic.name','Thematic.id','Thematic.description','Thematic.state','Thematic.prefix');
 		$thematics=$this->Thematic->find('all',array('fields'=>$fields,'recursive'=>0,'conditions'=>$condition));
 		foreach ($thematics as $key => $thematic) {
