@@ -1,0 +1,540 @@
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `divulgations_trainers`
+--
+
+CREATE TABLE IF NOT EXISTS `divulgations_trainers` (
+  `divulgation_id` int(11) NOT NULL,
+  `trainer_id` int(11) NOT NULL,
+  KEY `divulgation_id` (`divulgation_id`),
+  KEY `trainer_id` (`trainer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `per_people_type`
+--
+
+CREATE TABLE IF NOT EXISTS `per_people_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` bigint(15) NOT NULL,
+  `per_type_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `person_id_2` (`person_id`,`per_type_id`),
+  KEY `person_id` (`person_id`),
+  KEY `per_type_id` (`per_type_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `per_professions`
+--
+
+CREATE TABLE IF NOT EXISTS `per_professions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(90) NOT NULL,
+  `state` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `per_trainers`
+--
+
+CREATE TABLE IF NOT EXISTS `per_trainers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `per_trainer_type_id` int(11) NOT NULL,
+  `per_profession_id` int(11) NOT NULL,
+  `per_people_type_id` int(11) NOT NULL,
+  `per_trainer_fund_id` int(11) NOT NULL,
+  `observations` text NOT NULL,
+  `state` int(11) DEFAULT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `star_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `per_profession_id` (`per_profession_id`),
+  KEY `per_trainer_type_id` (`per_trainer_type_id`),
+  KEY `per_trainer_fund_id` (`per_trainer_fund_id`),
+  KEY `per_people_type_id` (`per_people_type_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `per_trainer_funds`
+--
+
+CREATE TABLE IF NOT EXISTS `per_trainer_funds` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `modification_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `per_trainer_schedules`
+--
+
+CREATE TABLE IF NOT EXISTS `per_trainer_schedules` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(90) NOT NULL,
+  `state` int(11) NOT NULL,
+  `per_trainer_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `per_trainer_id` (`per_trainer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `per_trainer_types`
+--
+
+CREATE TABLE IF NOT EXISTS `per_trainer_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `state` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `per_types`
+--
+
+CREATE TABLE IF NOT EXISTS `per_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `modification_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `population_types_training`
+--
+
+CREATE TABLE IF NOT EXISTS `population_types_training` (
+  `population_type_id` int(11) NOT NULL,
+  `training_id` int(11) NOT NULL,
+  KEY `population_type_id` (`population_type_id`),
+  KEY `training_id` (`training_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sites_per_trainers`
+--
+
+CREATE TABLE IF NOT EXISTS `sites_per_trainers` (
+  `site_id` int(11) NOT NULL,
+  `per_trainer_id` int(11) NOT NULL,
+  KEY `site_id_idx` (`site_id`),
+  KEY `Relacion_PK_2_idx` (`per_trainer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sites_training`
+--
+
+CREATE TABLE IF NOT EXISTS `sites_training` (
+  `site_id` int(11) NOT NULL,
+  `training_id` int(11) NOT NULL,
+  KEY `site_id` (`site_id`),
+  KEY `training_id` (`training_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `training`
+--
+
+CREATE TABLE IF NOT EXISTS `training` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(50) NOT NULL,
+  `activity_place` varchar(80) NOT NULL,
+  `description` text NOT NULL,
+  `type_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `type_id` (`type_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `training_per_trainers`
+--
+
+CREATE TABLE IF NOT EXISTS `training_per_trainers` (
+  `per_trainer_id` int(11) NOT NULL,
+  `training_id` int(11) NOT NULL,
+  KEY `per_trainer_id` (`per_trainer_id`),
+  KEY `training_id` (`training_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tra_allies`
+--
+
+CREATE TABLE IF NOT EXISTS `tra_allies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(90) NOT NULL,
+  `state` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tra_allies_training`
+--
+
+CREATE TABLE IF NOT EXISTS `tra_allies_training` (
+  `tra_ally_id` int(11) NOT NULL,
+  `training_id` int(11) NOT NULL,
+  KEY `tra_ally_id` (`tra_ally_id`),
+  KEY `training_id` (`training_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tra_proccesses_training`
+--
+
+CREATE TABLE IF NOT EXISTS `tra_proccesses_training` (
+  `training_id` int(11) NOT NULL,
+  `process_id` int(11) NOT NULL,
+  KEY `training_id` (`training_id`,`process_id`),
+  KEY `process_id` (`process_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tra_processes`
+--
+
+CREATE TABLE IF NOT EXISTS `tra_processes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(90) NOT NULL,
+  `prefix` varchar(45) NOT NULL,
+  `state` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tra_types`
+--
+
+CREATE TABLE IF NOT EXISTS `tra_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(90) NOT NULL,
+  `state` int(11) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `divulgations_trainers`
+--
+ALTER TABLE `divulgations_trainers`
+  ADD CONSTRAINT `divulgations_trainers_ibfk_1` FOREIGN KEY (`divulgation_id`) REFERENCES `divulgations` (`id_divulgation`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `divulgations_trainers_ibfk_2` FOREIGN KEY (`trainer_id`) REFERENCES `per_trainers` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `per_people_type`
+--
+ALTER TABLE `per_people_type`
+  ADD CONSTRAINT `per_people_type_ibfk_3` FOREIGN KEY (`person_id`) REFERENCES `people` (`id_person`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_people_type_ibfk_4` FOREIGN KEY (`per_type_id`) REFERENCES `per_types` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `per_trainers`
+--
+ALTER TABLE `per_trainers`
+  ADD CONSTRAINT `per_trainers_ibfk_10` FOREIGN KEY (`per_trainer_fund_id`) REFERENCES `per_trainer_funds` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_trainers_ibfk_7` FOREIGN KEY (`per_trainer_type_id`) REFERENCES `per_trainer_types` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_trainers_ibfk_8` FOREIGN KEY (`per_profession_id`) REFERENCES `per_professions` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_trainers_ibfk_9` FOREIGN KEY (`per_people_type_id`) REFERENCES `per_people_type` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `per_trainer_schedules`
+--
+ALTER TABLE `per_trainer_schedules`
+  ADD CONSTRAINT `per_trainer_schedules_ibfk_2` FOREIGN KEY (`per_trainer_id`) REFERENCES `per_trainers` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `population_types_training`
+--
+ALTER TABLE `population_types_training`
+  ADD CONSTRAINT `population_types_training_ibfk_1` FOREIGN KEY (`population_type_id`) REFERENCES `population_types` (`id_population_type`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `population_types_training_ibfk_2` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `sites_per_trainers`
+--
+ALTER TABLE `sites_per_trainers`
+  ADD CONSTRAINT `sites_per_trainers_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `sites_per_trainers_ibfk_2` FOREIGN KEY (`per_trainer_id`) REFERENCES `per_trainers` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `sites_training`
+--
+ALTER TABLE `sites_training`
+  ADD CONSTRAINT `sites_training_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `sites_training_ibfk_2` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `training`
+--
+ALTER TABLE `training`
+  ADD CONSTRAINT `training_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `tra_types` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `training_per_trainers`
+--
+ALTER TABLE `training_per_trainers`
+  ADD CONSTRAINT `training_per_trainers_ibfk_1` FOREIGN KEY (`per_trainer_id`) REFERENCES `per_trainers` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `training_per_trainers_ibfk_2` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tra_allies_training`
+--
+ALTER TABLE `tra_allies_training`
+  ADD CONSTRAINT `tra_allies_training_ibfk_1` FOREIGN KEY (`tra_ally_id`) REFERENCES `tra_allies` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tra_allies_training_ibfk_2` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tra_proccesses_training`
+--
+ALTER TABLE `tra_proccesses_training`
+  ADD CONSTRAINT `tra_proccesses_training_ibfk_1` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tra_proccesses_training_ibfk_2` FOREIGN KEY (`process_id`) REFERENCES `tra_processes` (`id`) ON UPDATE CASCADE;
+  
+  
+  
+  
+
+
+ALTER TABLE `accompaniments` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+
+
+ALTER TABLE `agents` ADD INDEX(`user_id`);
+
+ALTER TABLE `agents` DROP FOREIGN KEY `zone_id`; ALTER TABLE `agents` ADD CONSTRAINT `zone_id` FOREIGN KEY (`zone_id`) REFERENCES `zones`(`id_zone`) ON DELETE RESTRICT ON UPDATE CASCADE; ALTER TABLE `agents` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+
+ALTER TABLE `communes` ADD INDEX(`user_id`);
+
+ALTER TABLE `communes` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+
+
+ALTER TABLE `divtypes` ADD INDEX(`user_id`);
+ALTER TABLE `divtypes` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+
+ALTER TABLE `divulgations` ADD INDEX(`user_id`);
+
+
+ALTER TABLE `divulgations` ADD FOREIGN KEY (`divulgation_type_id`) REFERENCES `divtypes`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE; ALTER TABLE `divulgations` ADD FOREIGN KEY (`population_type_id`) REFERENCES `population_types`(`id_population_type`) ON DELETE RESTRICT ON UPDATE CASCADE; ALTER TABLE `divulgations` DROP FOREIGN KEY `divulgations_ibfk_1`; ALTER TABLE `divulgations` ADD CONSTRAINT `divulgations_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites`(`id_site`) ON DELETE RESTRICT ON UPDATE CASCADE; ALTER TABLE `divulgations` DROP FOREIGN KEY `divulgations_ibfk_2`; ALTER TABLE `divulgations` ADD CONSTRAINT `divulgations_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `divulgations_people` ADD FOREIGN KEY (`divulgation_id`) REFERENCES `divulgations`(`id_divulgation`) ON DELETE RESTRICT ON UPDATE CASCADE; ALTER TABLE `divulgations_people` ADD FOREIGN KEY (`person_id`) REFERENCES `people`(`id_person`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `divulgations_thematics` ADD FOREIGN KEY (`divulgation_id`) REFERENCES `divulgations`(`id_divulgation`) ON DELETE RESTRICT ON UPDATE CASCADE; ALTER TABLE `divulgations_thematics` ADD FOREIGN KEY (`thematic_id`) REFERENCES `thematics`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+
+ALTER TABLE `neighborhoods` ADD INDEX(`user_id`);
+
+ALTER TABLE `neighborhoods` DROP FOREIGN KEY `neighborhoods_ibfk_1`; ALTER TABLE `neighborhoods` ADD CONSTRAINT `neighborhoods_ibfk_1` FOREIGN KEY (`commune_id`) REFERENCES `communes`(`id_commune`) ON DELETE RESTRICT ON UPDATE NO ACTION; ALTER TABLE `neighborhoods` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `people` ADD INDEX(`user_id`);
+
+ALTER TABLE `people` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `per_people_type` ADD INDEX(`user_id`);
+
+
+ALTER TABLE `per_professions` ADD INDEX(`user_id`);
+ALTER TABLE `per_professions` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `per_trainers` ADD INDEX(`user_id`);
+
+ALTER TABLE `per_trainers` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+
+ALTER TABLE `per_trainer_funds` ADD INDEX(`user_id`);
+ALTER TABLE `per_trainer_funds` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `per_trainer_schedules` ADD INDEX(`user_id`);
+ALTER TABLE `per_trainer_schedules` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `per_types` ADD INDEX(`user_id`);
+ALTER TABLE `per_types` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `population_types` ADD INDEX(`user_id`);
+ALTER TABLE `population_types` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `population_types` ADD INDEX(`user_id`);
+ALTER TABLE `population_types` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `population_types` ADD INDEX(`user_id`);
+ALTER TABLE `population_types` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `population_types` ADD INDEX(`user_id`);
+ALTER TABLE `population_types` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `population_types` ADD INDEX(`user_id`);
+ALTER TABLE `population_types` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `population_types` ADD INDEX(`user_id`);
+ALTER TABLE `population_types` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `population_types` ADD INDEX(`user_id`);
+ALTER TABLE `population_types` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+
+ALTER TABLE `site_types` ADD INDEX(`user_id`);
+ALTER TABLE `site_types` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `thematics` ADD INDEX(`user_id`);
+ALTER TABLE `thematics` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `training` ADD INDEX(`user_id`);
+ALTER TABLE `training` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `tra_allies` ADD INDEX(`user_id`);
+ALTER TABLE `tra_allies` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `tra_processes` ADD INDEX(`user_id`);
+ALTER TABLE `tra_processes` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `tra_types` ADD INDEX(`user_id`);
+ALTER TABLE `tra_types` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `zones` ADD INDEX(`user_id`);
+ALTER TABLE `zones` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `people` ADD `genre` INT NOT NULL AFTER `entity`;
+ALTER TABLE `people` ADD `economic_level` INT NOT NULL AFTER `genre`;
+ALTER TABLE `people` ADD `birthday` DATE NOT NULL AFTER `economic_level`;
+
+ALTER TABLE `per_trainers` CHANGE `end_date` `end_date` DATE NULL;
+
+
+ALTER TABLE  `agents` ADD UNIQUE (
+`person_id`
+);
+
+ALTER TABLE  `communes` ADD UNIQUE (
+`commune_name`
+);
+
+
+ALTER TABLE  `divtypes` ADD UNIQUE (
+`name`
+);
+
+ALTER TABLE  `neighborhoods` ADD UNIQUE (
+`neighborhood_name`
+);
+
+ALTER TABLE  `per_professions` ADD UNIQUE (
+`name`
+);
+
+ALTER TABLE  `per_trainer_funds` ADD UNIQUE (
+`name`
+);
+
+ALTER TABLE  `per_trainer_types` ADD UNIQUE (
+`name`
+);
+
+ALTER TABLE  `per_types` ADD UNIQUE (
+`name`
+);
+
+ALTER TABLE  `population_types` ADD UNIQUE (
+`name`
+);
+
+ALTER TABLE  `site_types` ADD UNIQUE (
+`site_type`
+);
+
+ALTER TABLE  `thematics` ADD UNIQUE (
+`name`
+);
+
+ALTER TABLE  `tra_allies` ADD UNIQUE (
+`name`
+);
+
+ALTER TABLE  `tra_processes` ADD UNIQUE (
+`name`
+);
+
+ALTER TABLE  `tra_types` ADD UNIQUE (
+`name`
+);
+
+ALTER TABLE  `zones` ADD UNIQUE (
+`zone_name`
+);
