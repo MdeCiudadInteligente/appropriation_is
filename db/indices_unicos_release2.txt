@@ -1,0 +1,60 @@
+ALTER TABLE  `agents` ADD UNIQUE (
+`person_id`
+)
+
+ALTER TABLE  `communes` ADD UNIQUE (
+`commune_name`
+)
+
+
+ALTER TABLE  `divtypes` ADD UNIQUE (
+`name`
+)
+
+ALTER TABLE  `neighborhoods` ADD UNIQUE (
+`neighborhood_name`
+)
+
+ALTER TABLE  `per_professions` ADD UNIQUE (
+`name`
+)
+
+ALTER TABLE  `per_trainer_funds` ADD UNIQUE (
+`name`
+)
+
+ALTER TABLE  `per_trainer_types` ADD UNIQUE (
+`name`
+)
+
+ALTER TABLE  `per_types` ADD UNIQUE (
+`name`
+)
+
+ALTER TABLE  `population_types` ADD UNIQUE (
+`name`
+)
+
+ALTER TABLE  `site_types` ADD UNIQUE (
+`site_type`
+)
+
+ALTER TABLE  `thematics` ADD UNIQUE (
+`name`
+)
+
+ALTER TABLE  `tra_allies` ADD UNIQUE (
+`name`
+)
+
+ALTER TABLE  `tra_processes` ADD UNIQUE (
+`name`
+)
+
+ALTER TABLE  `tra_types` ADD UNIQUE (
+`name`
+)
+
+ALTER TABLE  `zones` ADD UNIQUE (
+`zone_name`
+)

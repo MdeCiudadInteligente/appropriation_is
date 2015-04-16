@@ -91,6 +91,10 @@
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
 
+
+msgid "The thematic already exists , please check."
+msgstr "La temática existe, por favor verifique"
+
 msgid "The per trainer fund has been deleted."
 msgstr "El fondo del formador ha sido eliminado"
 
