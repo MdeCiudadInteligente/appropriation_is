@@ -538,3 +538,11 @@ ALTER TABLE  `tra_types` ADD UNIQUE (
 ALTER TABLE  `zones` ADD UNIQUE (
 `zone_name`
 );
+
+
+ALTER TABLE `appropriation_test`.`per_trainer_funds` 
+CHANGE COLUMN `modification_date` `modification_date` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ;
+
+ALTER TABLE `appropriation_test`.`per_types` 
+CHANGE COLUMN `modification_date` `modification_date` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ;
+

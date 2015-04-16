@@ -4,7 +4,7 @@ USE `appropriation_isp`;
 --
 -- Host: localhost    Database: appropriation_isp
 -- ------------------------------------------------------
--- Server version	5.6.17
+-- Server version	5.1.73
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1181,4 +1181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-16  9:53:49
+-- Dump completed on 2015-04-16 10:14:27
