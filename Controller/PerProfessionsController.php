@@ -82,7 +82,7 @@ class PerProfessionsController extends AppController {
 				
 				$this->PerProfession->create();
 				$data=$this->request->data;
-				$data['PerProfession']['name'] = ucwords($data['Divtype']['name']);
+				$data['PerProfession']['name'] = ucwords($data['PerProfession']['name']);
 				$data['PerProfession']['creation_date']=date('Y-m-d H:i:s');
 				$data['PerProfession']['user_id']=$usuario;
 				
