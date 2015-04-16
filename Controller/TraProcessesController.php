@@ -116,28 +116,18 @@ class TraProcessesController extends AppController {
 			throw new NotFoundException(__('Invalid training process'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-		$usuario = $this->Session->read('Auth.User.id_user');
-			$this->set('usuario',$usuario);
-			
-			$name_TraProcess= $this->request->data['TraProcess']['name'];
-			$verificar_TraProcess=$this->TraProcess->query("select distinct name from tra_processes where name = '$name_TraProcess'");
-			$this->set('verificar_TraProcess',$verificar_TraProcess);
-			
-			if($verificar_TraProcess==Array( )){
-			
-					
+		
 				if ($this->TraProcess->save($this->request->data)) {
 					$this->Session->setFlash(__('The TraProcess has been saved.'));
 					return $this->redirect(array('action' => 'index'));
-				} else {
+				} 
+				else 
+				{
 					$this->Session->setFlash(__('The TraProcess could not be saved. Please, try again.'));
 				}
-			}			
-			else
-			{
-				$this->Session->setFlash(__('The TraProcess already exists , please check.'));
-			}	
-		}		else {
+		}			
+		else 
+		{
 			$options = array('conditions' => array('TraProcess.' . $this->TraProcess->primaryKey => $id));
 			$this->request->data = $this->TraProcess->find('first', $options);
 		}
