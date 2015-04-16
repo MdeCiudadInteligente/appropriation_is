@@ -88,7 +88,7 @@ class PerProfessionsController extends AppController {
 				
 			
 				$this->PerProfession->create();
-				if ($this->PerProfession->save($this->request->data)) {
+				if ($this->PerProfession->save($data)) {
 					$this->Session->setFlash(__('The profession has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} else {
