@@ -546,3 +546,13 @@ CHANGE COLUMN `modification_date` `modification_date` TIMESTAMP NULL DEFAULT CUR
 ALTER TABLE `appropriation_test`.`per_types` 
 CHANGE COLUMN `modification_date` `modification_date` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ;
 
+ALTER TABLE `appropriation_test`.`per_trainers` 
+DROP FOREIGN KEY `per_trainers_ibfk_10`;
+ALTER TABLE `appropriation_test`.`per_trainers` 
+CHANGE COLUMN `per_trainer_fund_id` `per_trainer_fund_id` INT(11) NULL ;
+ALTER TABLE `appropriation_test`.`per_trainers` 
+ADD CONSTRAINT `per_trainers_ibfk_10`
+  FOREIGN KEY (`per_trainer_fund_id`)
+  REFERENCES `appropriation_test`.`per_trainer_funds` (`id`)
+  ON UPDATE CASCADE;
+
