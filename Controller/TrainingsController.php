@@ -217,7 +217,7 @@ class TrainingsController extends AppController {
 			$training_count=$this->Training->find('count');
 			$training_count=$training_count+1;
 			$pro_prefix=implode($process_prefix,'-');
-			$code=$this->codeFirst.$pro_prefix.date('Y').'-'.$training_count;
+			$code=$this->codeFirst.strtoupper($pro_prefix).date('Y').'-'.$training_count;
 
 			//validación de tablas intermedias..				
 				$save_switch=true;

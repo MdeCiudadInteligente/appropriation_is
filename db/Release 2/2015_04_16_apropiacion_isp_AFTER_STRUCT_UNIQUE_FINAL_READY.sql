@@ -672,7 +672,7 @@ CREATE TABLE `per_types` (
   UNIQUE KEY `name` (`name`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `per_types_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -681,6 +681,7 @@ CREATE TABLE `per_types` (
 
 LOCK TABLES `per_types` WRITE;
 /*!40000 ALTER TABLE `per_types` DISABLE KEYS */;
+INSERT INTO `per_types` VALUES (1,'Formador',12,'2015-04-16 15:26:25','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `per_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -890,6 +891,7 @@ CREATE TABLE `thematics` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `prefix` (`prefix`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `thematics_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
@@ -1004,6 +1006,7 @@ CREATE TABLE `tra_processes` (
   `user_id` int(11) NOT NULL,
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `prefix` (`prefix`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `tra_processes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1181,4 +1184,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-16 10:14:27
+-- Dump completed on 2015-04-16 15:40:27

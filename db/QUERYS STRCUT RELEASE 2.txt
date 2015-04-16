@@ -555,4 +555,10 @@ ADD CONSTRAINT `per_trainers_ibfk_10`
   FOREIGN KEY (`per_trainer_fund_id`)
   REFERENCES `appropriation_test`.`per_trainer_funds` (`id`)
   ON UPDATE CASCADE;
+  
+  
+ALTER TABLE `tra_processes` 
+ADD UNIQUE INDEX `prefix` (`prefix` ASC);
 
+ALTER TABLE `thematics` 
+ADD UNIQUE INDEX `prefix` (`prefix` ASC);
