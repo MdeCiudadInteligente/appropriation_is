@@ -37,9 +37,9 @@
 			<?php echo h($site['Site']['site_mail']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Site Estado'); ?></dt>
+		<dt><?php //echo __('Site Estado'); ?></dt>
 		<dd>
-			<?php echo h($site['Site']['syte_estado']); ?>
+			<?php //echo h($site['Site']['syte_estado']); ?>
 			&nbsp;
 		</dd>
 		
@@ -50,11 +50,10 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>	
+		<li><?php echo $this->Html->link(__('List Sites'), array('action' => 'index')); ?> </li>
 		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
 		if ($usuario_level == '1'){?>	
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $site['Site']['id_site']), null, __('Are you sure you want to delete # %s?', $site['Site']['id_site'])); ?> </li>
-        <li><?php echo $this->Html->link(__('Editar Sitio'), array('action' => 'edit', $site['Site']['id_site'])); ?></li>
-		<li><?php echo $this->Html->link(__('List Sites'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Sitio'), array('action' => 'edit', $site['Site']['id_site'])); ?></li>
 		<li><?php echo $this->Html->link(__('New Site'), array('action' => 'add')); ?> </li>
 		<?php }?>
 	</ul>

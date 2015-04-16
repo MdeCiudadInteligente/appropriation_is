@@ -26,10 +26,9 @@ class PeopleController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] === '4')) {
+	if ((isset($user['permission_level']) && $user['permission_level'] == '5')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
-			
 	
 		// Default deny
 		//return false;
@@ -109,6 +108,10 @@ class PeopleController extends AppController {
 					
 					$this->Person->create();
 						$data=$this->request->data;
+						$data['Person']['name'] = ucwords($data['Person']['name']);
+						$data['Person']['lastname'] = ucwords($data['Person']['lastname']);
+						$data['Person']['charge'] = ucwords($data['Person']['charge']);
+						$data['Person']['entity'] = ucwords($data['Person']['entity']);
 						$data['Person']['creation_date']=date('Y-m-d H:i:s');
 						$data['Person']['user_id']=$usuario;
 						
@@ -123,7 +126,7 @@ class PeopleController extends AppController {
 					}
 					else
 					{
-						$this->Session->setFlash(__('El documento ya existe, por favor verifique.'));
+						$this->Session->setFlash(__('The document already exists , please check.'));
 					}
 			}
 	}
@@ -178,7 +181,7 @@ class PeopleController extends AppController {
 		
 		$persona_id = $this->Person->MeetingsPerson->find('first', array('conditions'=>array('MeetingsPerson.person_id' => $id)));
 		if($persona_id!=array()){
-			$this->Session->setFlash(__('La persona no se puede eliminar porque se encuentra asociada a una reunión.'));
+			$this->Session->setFlash(__('The person can not be deleted because it is associated to a meeting.'));
 			return $this->redirect(array('action' => 'index'));
 			
 		}

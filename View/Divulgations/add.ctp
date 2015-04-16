@@ -1,9 +1,4 @@
-﻿<script type="text/javascript">
-function goBack()
-  {
-  window.history.back()
-  }
-</script>
+﻿
 
  <script type="text/javascript">
       function isNumberKey(evt)
@@ -18,7 +13,7 @@ function goBack()
 <div class="divulgations form mde-form">
 <?php echo $this->Form->create('Divulgation',array('type'=>'file')); ?>
 	<fieldset>
-		<legend><?php echo __('Add Divulgation'); ?></legend>
+		<legend><?php echo __('Agregar Sensibilización'); ?></legend>
 
 		<div class="seccion-person">	
 			<div class="input">
@@ -30,17 +25,48 @@ function goBack()
 		</div>	
 
 
-	<?php
-
-		echo $this->Form->input('divulgation_type',array ('type'=>'select','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de divulgación'));
-			echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text'));		
-			echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Divulgación'));
-			echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea'));		
+	<?php  
+			//echo $this->Form->input('divulgation_type',array ('type'=>'select','label'=>'Tipo Sensibilización','options' => array ('Activaciones pedagógicas'=>'Activaciones pedagógicas','Intervención de sitios de gobierno'=>'Intervención de sitios de gobierno' ,'Eventos'=>'Eventos','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de divulgación'));
+			echo $this->Form->input('divulgation_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Sensibilización'));
+			echo $this->Form->input('divulgation_type_id',array('empty'=>'Seleccione el tipo de sensibilización','options' => $DivTypes,'label'=>'Tipo Sensibilización'));
+	        //echo $this->Form->input('divulgation_name',array('maxLength'=>'50','label'=>'Título Divulgación','label'=>'Título Sensibilización'));
+			echo $this->Form->input('divulgation_description',array ( 'type'=>'textarea','label'=>'Descripción Sensibilización'));		
 			echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
+			echo $this->Form->input('population_type_id',array('empty'=>'Seleccione tipo de población'));
+	?>
+	<div class="seccion-person">	
+			<div class="input" >
+				<label>Temáticas</label>
+				<input type="text"  class="Thematics-autocomplete" data-required="true" data-valcontainer=".results-input-thematics" data-emptymsg="Por favor ingresa mínimo una temática">
+				<div class="results-input-thematics" data-input-name="data[Thematic][Thematic][]">
+					
+				</div>
+			</div>
+	</div>	
+	<div class="input"  style="text-align:right">
+		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
+	</div>
+	<div class="seccion-divulgations">	
+			<div class="input" >
+				<label>Formadores</label>
+				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa mínimo un formador">
+				<div class="results-input" data-input-name="data[Person][Person][]">
+					
+				</div>
+			</div>
+	</div>	
+	<?php 		
 			echo $this->Form->input('activity_place',array('maxLength'=>'80'));
-			echo $this->Form->input('divulgation_adjunct',array('type'=>'file'));
-			echo $this->Form->input('divulgation_adjunct1',array('type'=>'file'));
-			echo $this->Form->input('divulgation_adjunct2',array('type'=>'file'));
+			?>
+			<div class="input textarea required" style="text-align: right;padding-right:36px">
+			<?php 
+			echo 'El peso máximo permitido para los archivos adjuntos es de 2 Megas';
+			?>
+			</div>	
+			<?php
+			echo $this->Form->input('divulgation_adjunct',array('type'=>'file','label'=>'Adjunto Sensibilización'));
+			echo $this->Form->input('divulgation_adjunct1',array('type'=>'file','label'=>'Adjunto Sensibilización 1'));
+			echo $this->Form->input('divulgation_adjunct2',array('type'=>'file','label'=>'Adjunto Sensibilización 2'));
 
 		echo $this->Form->input('dir',array('type'=>'hidden'));
 
@@ -52,13 +78,8 @@ function goBack()
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Divulgations'), array('action' => 'index')); ?></li>
-		<?php 
-		$usuario_level= $this->Session->read('Auth.User.permission_level');
-		//if ($usuario_level === '1'){?>
-		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Lista Sensibilizaciones'), array('action' => 'index')); ?></li>
 		<?php //}?>
-		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
+
 	</ul>
 </div>

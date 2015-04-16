@@ -89,6 +89,21 @@ class Accompaniment extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),*/
 		),
+		'accompaniment_adjunct' => array(
+			'rule'=>'Empty',
+			'required' => false,
+			'allowEmpty' => true
+		),
+		'accompaniment_adjunct1' => array(
+		    'rule'=>'Empty',
+		    'required' => false,
+		    'allowEmpty' => true
+		),
+		'accompaniment_adjunct2' => array(
+		   'rule'=>'Empty',
+		   'required' => false,
+		   'allowEmpty' => true
+		),
 		'site_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),

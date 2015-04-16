@@ -7,11 +7,10 @@
 			<h3><?php echo __('Actions'); ?></h3>
 			<ul>
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
-				<li><?php echo $this->Html->link(__('New Divulgation'), array('action' => 'add')); ?></li>
-				<?php 
-				$usuario_level= $this->Session->read('Auth.User.permission_level');
-				?>
-				</li>
+				<?php	$usuario_level= $this->Session->read('Auth.User.permission_level');	
+				if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuario_level == '4'){?>
+				<li><?php echo $this->Html->link(__('Nueva Sensibilización'), array('action' => 'add')); ?></li>
+				<?php }?>
 			</ul>
 		</div>
 	</div>	
@@ -24,16 +23,18 @@
 			<?php
 				$gridOptions=array(
 						'gridId'=>'gridDivulgatios',
-						'gridTitle'=>'Divulgaciones',
+						'gridTitle'=>'Sensibilizaciones',
 						'height'=>500,
 						'serviceUrl'=>'Divulgations/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
 			                array("dataIndex"=>"sitio",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"f_divulgacion",'header'=>'Fecha','sortable'=>true,'align'=>"center","column"=>true),
-			                array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"titulo",'header'=>'Título','sortable'=>true,'align'=>"left","column"=>true),
+			                //array("dataIndex"=>"tipo",'header'=>'Tipo','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"titulo",'header'=>'Código','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"tipodiv",'header'=>'Tipo Sensibilización','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"descripcion",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"tipopob",'header'=>'Tipo Población','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"nparticipantes",'header'=>'Número de participantes','sortable'=>true,'align'=>"center","column"=>true),
 							array("dataIndex"=>"lactividad",'header'=>'Lugar de la actividad','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),

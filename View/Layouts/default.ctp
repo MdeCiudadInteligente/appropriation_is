@@ -16,7 +16,8 @@ $cakeDescription = __d('cake_dev', '');
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/js/ext/resources/css/ext-all.css" />
 	<title>
-		<?php echo $cakeDescription ?>:
+		<?php $title_for_layout='S.I. MDE Ciudad Inteligente';?>
+		<?php echo $cakeDescription ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 
@@ -42,22 +43,23 @@ $cakeDescription = __d('cake_dev', '');
 	<?php echo $this->Html->script('ext/ext-all-debug-w-comments.js');?>
 	<?php echo $this->Html->script('ext/RowExpander.js');?>
 	<?php echo $this->Html->script('ext/src/locale/ext-lang-es.js');?>
-	
+	<?php $body_class=( Configure::read('debug')>0)?'debugging':'production';?>
 
 	
 </head>
 <body>
 	<?php echo $this->Session->flash(); ?>
-	<div id="container" class="app-container">	
+	<i class="icon-align-justify open-menu"></i>
+	<nav class="mobile-ovelay-menu">
+		<header>
+		 <i class="icon-left close-menu"></i>	
+		 <img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png">
+		</header>
+	</nav>
+	<div id="container" class="app-container debugging">	
 		<div id="header">
-			<div class="top-head">
-				<section>
-					<span>
-						<?php $this->Html->image('mde-10.png', array('alt' => $cakeDescription, 'class' => 'mde')) ?>
-						<img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/mde-10.png">
-					</span>
-					<span><img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/alcaldia-09.png"></span>
-				</section>
+			<div class="top-head" style="background-image:url('<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/header.png')">
+					<img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/LogoMDEpata.png">
 			</div>	
 			<div class="bottom-head">
 				<section>

@@ -27,9 +27,10 @@ class AgentsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
+	if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '5')) 
+		{
 			return true;
-		}
+		}	
 	}
 
 /**
@@ -102,17 +103,17 @@ class AgentsController extends AppController {
 				$data['Agent']['user_id']=$usuario;
 							
 				if ($this->Agent->save($data)) {
-						$this->Session->setFlash(__('El agente se ha guardado.'));
+						$this->Session->setFlash(__('The agent has been saved.'));
 						return $this->redirect(array('action' => 'index'));
 				}
 				else
 					{
-						$this->Session->setFlash(__('El agente no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+						$this->Session->setFlash(__('The agent could not be saved.Please,try again.'));
 					}
 				}
 				else
 				{
-					$this->Session->setFlash(__('La persona ya es agente, por favor verifique.'));
+					$this->Session->setFlash(__('The person is already agent, please check.'));
 				}
 		}
 		$people = $this->Agent->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));

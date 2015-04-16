@@ -34,14 +34,21 @@ function goBack()
 	<?php
 		echo $this->Form->input('accompaniment_date',array ('id' => 'datepicker','type'=>'text'));			
 		echo $this->Form->input('accompaniment_type',array ('type'=>'select','options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Estudiantes de PP, jóvenes por la convivencia o alfabetizadores' ,
-				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC','Sensibilización'=>'Sensibilización','Intervención sitio'=>'Intervención sitio','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de acompañamiento'));
+				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC','Sensibilización'=>'Sensibilización','Intervención sitio'=>'Intervención sitio','Laboratorios comunitarios'=>'Laboratorios comunitarios','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de acompañamiento'));
 		echo $this->Form->input('accompaniment_title',array('maxlenght'=>'90'));
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 		//echo $this->Form->input('adjunct');	
-		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file'));
-		echo $this->Form->input('accompaniment_adjunct1',array('type'=>'file'));
-		echo $this->Form->input('accompaniment_adjunct2',array('type'=>'file'));
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		<?php 
+		echo 'El peso máximo permitido para los archivos adjuntos es de 2 Megas';
+		?>
+		</div>	
+		<?php
+		echo $this->Form->input('accompaniment_adjunct',array('type'=>'file','allowEmpty' => true));
+		echo $this->Form->input('accompaniment_adjunct1',array('type'=>'file','allowEmpty' => true));
+		echo $this->Form->input('accompaniment_adjunct2',array('type'=>'file','allowEmpty' => true));
 
 		echo $this->Form->input('dir',array('type'=>'hidden'));			
 	?>	
@@ -53,13 +60,6 @@ function goBack()
 	<h3><?php echo __('Acción'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Accompaniments'), array('action' => 'index')); ?></li>
-		<?php 
-		$usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level === '1'){?>
-		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
-		<?php }?>
-		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Accompaniments'), array('action' => 'index')); ?></li>		
 	</ul>
 </div>

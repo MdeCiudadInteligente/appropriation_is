@@ -4,11 +4,11 @@
 			<h3><?php echo __('Actions'); ?></h3>
 			<ul>
 				<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
+				<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
+				if ($usuario_level == '1'){?>	
 				<li><?php echo $this->Html->link(__('New Site'), array('action' => 'add')); ?></li>
+				<?php }?>
 				<li><?php echo $this->Html->link(__('Regresar'), array('controller' => 'activities', 'action' => 'configuration')); ?> </li>	
-				<?php 
-						$usuario_level= $this->Session->read('Auth.User.permission_level');
-				?>				
 			</ul>
 		</div>
 	</div>	
@@ -31,7 +31,7 @@
 			                array("dataIndex"=>"cor_sitio",'header'=>'Correo','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"bar_sitio",'header'=>'Barrio','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"tsitio",'header'=>'Tipo de sitio','sortable'=>true,'align'=>"left","column"=>true),
-						    array("dataIndex"=>"estado_sitio",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>true),
+						    array("dataIndex"=>"estado_sitio",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
 			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)

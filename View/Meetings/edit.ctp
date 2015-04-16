@@ -46,11 +46,55 @@
 	<?php	
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));
+		
+		$druta; $druta=$meeting['Meeting']['meeting_adjunct'];
+		$druta1; $druta1=$meeting['Meeting']['meeting_adjunct1'];
+		$druta2; $druta2=$meeting['Meeting']['meeting_adjunct2'];
+		$idattach; $idattach=$meeting['Meeting']['id_meeting'];
+			
+			
+		$user_id=$meeting['Meeting']['user_id'];
+		$id_user= $this->Session->read('Auth.User.id_user');
+		$usuario_level= $this->Session->read('Auth.User.permission_level');
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		 <?php 
+		  echo 'El peso máximo permitido para los archivos adjuntos es de 2 Megas';
+		 ?>
+		 </div>	
+		<?php
 		echo $this->Form->input('meeting_adjunct',array('disabled'=>'disabled'));
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		<?php
+		 if(($druta!='') &&($user_id == $id_user || $usuario_level== '1')){
+			echo $this->Html->Link(__('->Eliminar archivo'), array('controller' => 'meetings', 'action' => 'delete_attachment',$idattach,$druta), null, __('Esta seguro que desea eliminar el archivo %s?',$druta));
+		}
+		?>
+		</div>
+		<?php
 		echo $this->Form->input('meeting_adjunct',array('type'=>'file'));
 		echo $this->Form->input('meeting_adjunct1',array('disabled'=>'disabled'));
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		<?php
+		if(($druta1!='') &&($user_id == $id_user || $usuario_level== '1')){
+			echo $this->Html->Link(__('->Eliminar archivo'), array('controller' => 'meetings', 'action' => 'delete_attachment1',$idattach,$druta1), null, __('Esta seguro que desea eliminar el archivo %s?',$druta1));
+		}
+		?>
+		</div>
+		<?php
 		echo $this->Form->input('meeting_adjunct1',array('type'=>'file'));
 		echo $this->Form->input('meeting_adjunct2',array('disabled'=>'disabled'));
+		?>
+		<div class="input textarea required" style="text-align: right;padding-right:36px">
+		<?php
+		if(($druta2!='') &&($user_id == $id_user || $usuario_level== '1')){
+			echo $this->Html->Link(__('->Eliminar archivo'), array('controller' => 'meetings', 'action' => 'delete_attachment2',$idattach,$druta2), null, __('Esta seguro que desea eliminar el archivo %s?',$druta2));
+		}
+		?>
+		</div>
+		<?php
 		echo $this->Form->input('meeting_adjunct2',array('type'=>'file'));
 		echo $this->Form->input('dir',array('type'=>'hidden'));
 		
@@ -63,20 +107,6 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php //echo $this->Html->link(__('Regresar'), array('controller' => 'meetings', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');
-		if ($usuario_level === '1'){?>
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Meeting.id_meeting')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Meeting.id_meeting'))); ?></li>
-		<?php }?>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'activities', 'action' => 'index')); ?> </li>	
 		<li><?php echo $this->Html->link(__('List Meetings'), array('action' => 'index')); ?></li>
-		<?php 
-		$usuario_level= $this->Session->read('Auth.User.permission_level');
-		//if ($usuario_level === '1'){?>
-		<li><?php //echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
-		<li><?php //echo $this->Html->link(__('List People'), array('controller' => 'people', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Person'), array('controller' => 'people', 'action' => 'add')); ?> </li>
-		<?php //}?>
-		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
-	</ul>
 </div>

@@ -8,8 +8,9 @@ App::uses('AppController', 'Controller');
  */
 class DivulgationsController extends AppController {
 
-	var $uses = array('Person','Divulgation','Site','User','Agent','Neighborhood','SiteType','Commune');
+	var $uses = array('Person','Divulgation','Site','User','Agent','Neighborhood','SiteType','Commune','Thematic');
 	var $helpers = array('Html','Form','Csv','Js');
+	var $codeFirst='SE';
 /**
  * Components
  *
@@ -35,7 +36,7 @@ class DivulgationsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] === '4')) {
+	if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '5')) {
 			return true;
 		}
 	}
@@ -76,9 +77,11 @@ class DivulgationsController extends AppController {
 					'id'=>$divulgation['Divulgation']['id_divulgation'],
 					'sitio'=>$divulgation['Site']['site_name'],
 					'f_divulgacion'=>$divulgation['Divulgation']['divulgation_date'],
-					'tipo'=>$divulgation['Divulgation']['divulgation_type'],
+					//'tipo'=>$divulgation['Divulgation']['divulgation_type'],
 					'titulo'=>$divulgation['Divulgation']['divulgation_name'],
+					'tipodiv'=>$divulgation['Divtype']['name'],
 					'descripcion'=>$divulgation['Divulgation']['divulgation_description'],
+					'tipopob'=>$divulgation['PopulationType']['name'],
 					'nparticipantes'=>$divulgation['Divulgation']['participant_number'],
 					'lactividad'=>$divulgation['Divulgation']['activity_place'],
 					'creation_date'=>$divulgation['Divulgation']['creation_date'],
@@ -137,20 +140,49 @@ class DivulgationsController extends AppController {
 			
 				$this->Divulgation->create();
 				$data=$this->request->data;
+
+				$args=array(
+							'conditions' => array('Thematic.id' => $data['Thematic']['Thematic']),
+						    'recursive' => -1,
+						    'fields' => array('Thematic.prefix'),
+						    'limit'=>1
+					  );
+
+				$temas=$this->Thematic->find('list',$args);
+				$divulgation_count=$this->Divulgation->find('count');
+				$divulgation_count=$divulgation_count+1;
+				$theme_prefixes=implode($temas,'-');
+				$code=$this->codeFirst.$theme_prefixes.date('Y').'-'.$divulgation_count;
+
+				if($data!=''){
 				$data['Divulgation']['creation_date']=date('Y-m-d H:i:s');
 				$data['Divulgation']['user_id']=$usuario;
-						
+				$data['Divulgation']['divulgation_name']=$code;
+				}		
+				else{
+					$this->Session->setFlash(__('Los adjuntos no se han podido cargar correctamente'));
+				}
+				
+
+
 				if ($this->Divulgation->save($data)) {
-						$this->Session->setFlash(__('La divulgación se ha guardado.'));
+						$this->Session->setFlash(__('The divulgation has been saved.'));
 						return $this->redirect(array('action' => 'index'));
 				}
 				else
 				{
-					$this->Session->setFlash(__('La divulgación no pudo ser salvado.Por favor ,vuelva a intentarlo.'));
+					$this->Session->setFlash(__('The divulgation could not be saved. Please, try again.'));
 				}
 		}
-		$sites = $this->Divulgation->Site->find('list', array('order'=>array('Site.site_name ASC')));
-		$this->set(compact('sites'));
+				
+		$sites = $this->Divulgation->Site->find('list',array('order' => array('Site.site_name ASC')));
+		$populationTypes = $this->Divulgation->PopulationType->find('list',array('order' => array('PopulationType.name' => 'ASC')));
+		$DivTypes = $this->Divulgation->Divtype->find('list',array('order' => array('Divtype.name' => 'ASC')));
+		$thematicstypes = $this->Divulgation->Thematic->find('list',array('order' => array('Thematic.name' => 'ASC')));
+	
+		$this->set(compact('sites', 'populationTypes','DivTypes','thematicstypes'));
+		
+		
 	}
 
 /**
@@ -175,10 +207,59 @@ class DivulgationsController extends AppController {
 			$options = array('conditions' => array('Divulgation.' . $this->Divulgation->primaryKey => $id));
 			$this->request->data = $this->Divulgation->find('first', $options);
 		}
-		$sites = $this->Divulgation->Site->find('list');
-		$this->set(compact('sites'));
+		$sites = $this->Divulgation->Site->find('list',array('order' => array('Site.site_name ASC')));
+		$populationTypes = $this->Divulgation->PopulationType->find('list',array('order' => array('PopulationType.name' => 'ASC')));
+		$DivTypes = $this->Divulgation->Divtype->find('list',array('order' => array('Divtype.name' => 'ASC')));
+		$thematicstypes = $this->Divulgation->Thematic->find('list',array('order' => array('Thematic.name' => 'ASC')));
+		$this->set(compact('sites', 'populationTypes','DivTypes','thematicstypes'));
+		$options = array('conditions' => array('Divulgation.' . $this->Divulgation->primaryKey => $id));
+		$this->set('divulgation', $this->Divulgation->find('first', $options));
 	}
 
+	/**
+	 * delete files one by one
+	 *
+	 * @return void
+	 */
+	public function delete_attachment($idattach=null,$druta = null) {
+		$this->set('druta',$druta);
+		
+		$deletefile="update divulgations SET divulgation_adjunct='' Where id_divulgation ='$idattach'";
+		$deletefilefinal=$this->Divulgation->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		
+		unlink('../webroot/uploads/divulgation/divulgation_adjunct/'.$druta);
+		
+		return $this->redirect(array('action' => 'edit',$idattach));
+		 
+	}
+	
+	public function delete_attachment1($idattach=null,$druta1 = null) {
+		$this->set('druta1',$druta1);
+
+		$deletefile="update divulgations SET divulgation_adjunct1='' Where id_divulgation ='$idattach'";
+		$deletefilefinal=$this->Divulgation->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/divulgation/divulgation_adjunct1/'.$druta1);
+	
+		return $this->redirect(array('action' => 'edit',$idattach));
+			
+	}
+	
+	public function delete_attachment2($idattach=null,$druta2 = null) {
+		$this->set('druta2',$druta2);
+		
+		$deletefile="update divulgations SET divulgation_adjunct2='' Where id_divulgation ='$idattach'";
+		$deletefilefinal=$this->Divulgation->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/divulgation/divulgation_adjunct2/'.$druta2);
+	
+		return $this->redirect(array('action' => 'edit',$idattach));
+			
+	}
+	
+	
+	
 /**
  * delete method
  *

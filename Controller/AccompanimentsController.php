@@ -35,7 +35,7 @@ class AccompanimentsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
+	if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '5')) {
 			return true;
 		}
 	}
@@ -140,9 +140,15 @@ class AccompanimentsController extends AppController {
 			
 			$this->Accompaniment->create();
 			$data=$this->request->data;
+			if($data!=''){
 			$data['Accompaniment']['creation_date']=date('Y-m-d H:i:s');
 			$data['Accompaniment']['user_id']=$usuario;
-						
+			}
+			else{
+			
+				$this->Session->setFlash(__('Los adjuntos no se han podido cargar correctamente'));
+			}
+			
 			if ($this->Accompaniment->save($data)) {
 					$this->Session->setFlash(__('The accompaniment has been saved.'));
 					return $this->redirect(array('action' => 'index'));
@@ -179,9 +185,52 @@ class AccompanimentsController extends AppController {
 			$this->request->data = $this->Accompaniment->find('first', $options);
 		}
 		$sites = $this->Accompaniment->Site->find('list');
+		$options = array('conditions' => array('Accompaniment.' . $this->Accompaniment->primaryKey => $id));
+		$this->set('accompaniment', $this->Accompaniment->find('first', $options));
 		$this->set(compact('sites'));
 	}
 
+	/**
+	 * delete files one by one
+	 *
+	 * @return void
+	 */
+	public function delete_attachment($idattach=null,$druta = null) {
+		$this->set('druta',$druta);
+	
+		$deletefile="update accompaniments SET accompaniment_adjunct='' Where id_accompaniment ='$idattach'";
+		$deletefilefinal=$this->Accompaniment->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+	
+		unlink('../webroot/uploads/accompaniment/accompaniment_adjunct/'.$druta);
+	
+		return $this->redirect(array('action' => 'edit',$idattach));
+			
+	}
+	
+	public function delete_attachment1($idattach=null,$druta1 = null) {
+		$this->set('druta1',$druta1);
+	
+		$deletefile="update accompaniments SET accompaniment_adjunct1='' Where id_accompaniment ='$idattach'";
+		$deletefilefinal=$this->Accompaniment->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/accompaniment/accompaniment_adjunct1/'.$druta1);
+	
+		return $this->redirect(array('action' => 'edit',$idattach));
+			
+	}
+	
+	public function delete_attachment2($idattach=null,$druta2 = null) {
+		$this->set('druta2',$druta2);
+	
+		$deletefile="update accompaniments SET accompaniment_adjunct2='' Where id_accompaniment ='$idattach'";
+		$deletefilefinal=$this->Accompaniment->query($deletefile);
+		$this->set('deletefilefinal',$deletefilefinal);
+		unlink('../webroot/uploads/accompaniment/accompaniment_adjunct2/'.$druta2);
+	
+		return $this->redirect(array('action' => 'edit',$idattach));
+			
+	}
 /**
  * delete method
  *

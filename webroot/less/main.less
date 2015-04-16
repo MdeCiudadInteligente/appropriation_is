@@ -321,7 +321,7 @@ body{
 		}
 		.bottom-head{
 			height: 30%;
-			background-color: #CCCCCE;
+			background-color: #4C4D4C;
 			section{
 			    float: right;
 			    margin-top: 7px;
@@ -353,7 +353,7 @@ body{
 						position: relative;
 						bottom: 5px;	
 						a{
-							color: #848484;
+							color: #FFFFFF;
 							text-decoration: none;
 							font-size: 12px;
 							font-family: 'din_lightregular';
@@ -385,7 +385,11 @@ body{
 	#container{
 		&.app-container{
 			width: 100%;
-	
+			position: absolute;
+			top: 0;
+			&.debugging{
+				position: relative !important;
+			}
 			#content{
 				min-width: unset;
 				// background-color: #E5E5E5;
@@ -694,3 +698,170 @@ body{
 			width: 76%;
 	}
 }
+
+
+
+
+
+
+.mobile-ovelay-menu{
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: auto;
+	height: 100%;
+	background: #373a47;
+	z-index: 20;
+	width: 0;
+	border-right: 2px solid #000000;
+	box-shadow: 3px 5px 50px #1F1F1F;
+	opacity: 0;
+	.transition(all 500ms ease-out);
+	>header{
+		background: #00A995;
+		position: relative;
+		height: 50px;
+		.close-menu{
+			font-size: 25px;
+			position: absolute;
+			left: 16px;
+			top: 15px;
+			cursor: pointer;
+		}
+		img{
+			height: 28px;
+			position: absolute;
+			right: 22px;
+			top: 10px;
+			width: auto;
+		}
+	}
+	max-width: 380px;
+	&.active{
+		width: 50%;
+		opacity: 1;
+
+	}
+	ul{
+		width: 100%;
+		margin: 0;
+		li{
+			width: 100%;
+			margin: 0;
+			position: relative;
+			border-bottom: 1px solid rgba(43, 46, 55, 0.56);
+			&:after{
+				content: '\e822';
+				position: absolute;
+				right: 0;
+				font-family: fontello;
+				right: 32px;
+				top:20px;
+				font-size: 22px;
+			}
+			>a{
+			    color: #FFFFFF;
+			    display: block;
+			    font-family: "din_lightregular";
+			    font-size: 18px;
+			    font-style: italic;
+			    font-weight: 300;
+			    width: 100%;
+			    padding-bottom: 15px;
+			    padding-left: 20px;
+			    padding-top: 20px;
+			    text-decoration: none;
+			}
+		}
+	}
+}
+
+.open-menu{
+	font-size: 25px;
+	position: absolute;
+	left: 16px;
+	top: 13px;
+	cursor: pointer;
+	color: #FFFFFF;
+	z-index: 20;
+}
+
+.left-block{
+	display: none !important;
+}
+
+.actions{
+	display: none;
+}
+
+.right-block{
+	width: 94% !important;
+	margin-left: 3%;
+	margin-right: 3%;
+	margin-top: 40px;
+	h2{
+		font-style: italic;
+		display: none;
+	}
+}
+
+#bienvenida{
+	display: none !important; 
+}
+
+.x-panel-header{
+	background-image:none !important;
+	color: #DBDEE2;
+	font-weight: bold;
+	font-style: italic;
+	position: relative;
+	font-size: 15px;
+	background: #4C4D4C;
+	border-radius: 5px 5px 0px 0px;
+	border: none;
+}
+
+.top-head{
+	position: relative;
+	.mde{
+		position: absolute;
+		right: 0;
+	}
+}
+
+.x-grid3-row-table{
+	.x-grid3-cell-inner:not(.x-grid3-row-body-tr){
+		height: 74px;
+		white-space: normal;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		font-family: din_lightregular;
+		font-size: 14px;
+		font-weight: 600;
+		color: #000000;
+		padding-left: 18px;
+		line-height: 1.4;
+	}
+}
+
+@media only screen and (max-device-width: 1280px) {
+	#container{
+			&.app-container{
+					.x-grid3-hd{
+					    height: 60px;
+					    font-size: 18px;
+					    text-align: center;
+					    .x-grid3-hd-inner{
+					    	height: 100%;
+					    	padding-top: 21px;
+					    	text-align: center;
+							>a{
+								display: block;
+								width: 14px;
+								height: 100% !important;
+							}
+					    }
+					}
+			}
+	}	
+}		

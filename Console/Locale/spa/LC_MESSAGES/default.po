@@ -90,11 +90,32 @@
 
 #: \console\error.php:84
 #: \libs\view\errors\error404.ctp:30
+
+
+
+msgid "The divtype has been saved."
+msgstr "El tipo de divulgaci髇 fue guardado."
+
+msgid "The divtype could not be deleted. Please, try again."
+msgstr "El tipo de divulgaci髇 no pudo ser eliminado. Por favor, trate nuevamente."
+
 msgid "The requested address %s was not found on this server."
 msgstr "La direcci贸n solitiada %s no existe en el servidor"
 
+msgid "Invalid divtype"
+msgstr "Tipo de divulgaci髇 no v醠ida"
+
+msgid "The divtype has been deleted."
+msgstr "El tipo de divulgaci髇 ha sido eliminado"
+
 msgid "Add Task"
 msgstr "A帽adir Tarea"
+
+msgid "The divtype could not be saved. Please, try again."
+msgstr "El tipo de divulgaci髇 no pudo ser guardado. Por favor trate nuevamente"
+
+msgid "The divtype already exists , please check."
+msgstr "El tipo de divulgaci髇 existe actualmente. Por favor trate nuevamente"
 
 msgid "Actions"
 msgstr "Acciones"
@@ -244,7 +265,7 @@ msgid "Roll"
 msgstr "Rol"
 
 msgid "The divulgation has been saved."
-msgstr "La divulgaci贸n se ha guardado."
+msgstr "La Sencibilizaci贸n se ha guardado."
 
 msgid "name"
 msgstr "Nombres"
@@ -331,16 +352,16 @@ msgid "Id Accompaniment"
 msgstr "Id Acompa帽amiento"
 
 msgid "Divulgation Name"
-msgstr "Nombre Divulgaci贸n"
+msgstr "Nombre Sencibilizaci贸n"
 
 msgid "Id Divulgation"
-msgstr "Id Divulgaci贸n"
+msgstr "Id Sencibilizaci贸n"
 
 msgid "Divulgations"
-msgstr "Divulgaciones"
+msgstr "Sencibilizaciones"
 
 msgid "Divulgation Type"
-msgstr "Tipo Divulgaci贸n"
+msgstr "Tipo Sencibilizaci贸n"
 
 msgid "Divulgation Description"
 msgstr "Descripci贸n Divulgaci贸n"
@@ -349,10 +370,10 @@ msgid "Activity Place"
 msgstr "Lugar Actividad"
 
 msgid "New Divulgation"
-msgstr "Nueva Divulgaci贸n"
+msgstr "Nueva Sencibilizaci贸n"
 
 msgid "Add Divulgation"
-msgstr "A帽adir Divulgaci贸n"
+msgstr "A帽adir Sencibilizaci贸n"
 
 msgid "The meeting could not be saved. Please, try again."
 msgstr "La reuni贸n no se pudo guardar. Por favor, int茅ntalo de nuevo."
@@ -373,7 +394,7 @@ msgid "Site Estado"
 msgstr "Estado Sitio"
 
 msgid "List Divulgations"
-msgstr "Lista Divulgaci贸n"
+msgstr "Lista Sencibilizaciones"
 
 msgid "Add Person"
 msgstr "A帽adir Persona"
@@ -451,10 +472,10 @@ msgid "Delete Accompaniment"
 msgstr "Eliminar Acompa帽amiento"
 
 msgid "Edit Divulgation"
-msgstr "Editar Divulgaci贸n"
+msgstr "Editar Sencibilizaci贸n"
 
 msgid "Delete Divulgation"
-msgstr "Eliminar Divulgaci贸n"
+msgstr "Eliminar Sencibilizaci贸n"
 
 msgid "New Accompaniment"
 msgstr "Nuevo Acompa帽amiento"
@@ -484,16 +505,16 @@ msgid "Accompaniment Adjunct2"
 msgstr "Adjunto Acompa帽amiento 3"
 
 msgid "Divulgation Adjunct"
-msgstr "Adjunto Divulgaci贸n 1"
+msgstr "Adjunto Sencibilizaci贸n 1"
 
 msgid "Divulgation Adjunct1"
-msgstr "Adjunto Divulgaci贸n 2"
+msgstr "Adjunto Sencibilizaci贸n 2"
 
 msgid "Divulgation Adjunct2"
-msgstr "Adjunto Divulgaci贸n 3"
+msgstr "Adjunto Sencibilizaci贸n 3"
 
 msgid "Divulgation Date"
-msgstr "Fecha de Divulgaci贸n"
+msgstr "Fecha de Sencibilizaci贸n"
 
 msgid "Permission Level"
 msgstr "Nivel de permiso"
