@@ -123,28 +123,16 @@ class ThematicsController extends AppController {
 			throw new NotFoundException(__('Invalid thematic'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			$usuario = $this->Session->read('Auth.User.id_user');
-			$this->set('usuario',$usuario);
-				
-			$name_thematic= $this->request->data['Thematic']['name'];
-			$verificar_thematic=$this->Thematic->query("select distinct name from thematics where name = '$name_thematic'");
-			$this->set('verificar_thematic',$verificar_thematic);
-				
-			if($verificar_thematic==Array( )){
-					
-					
+		
 				if ($this->Thematic->save($this->request->data)) {
 					$this->Session->setFlash(__('The thematic has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash(__('The thematic could not be saved. Please, try again.'));
 				}
-			}
-			else
-			{
-				$this->Session->setFlash(__('The thematic already exists , please check.'));
-			}
-		}else {
+		}
+		else 
+		{
 			$options = array('conditions' => array('Thematic.' . $this->Thematic->primaryKey => $id));
 			$this->request->data = $this->Thematic->find('first', $options);
 		}

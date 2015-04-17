@@ -47,9 +47,9 @@ function goBack()
 		<div class="input"  style="text-align:right">
 		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
 		</div>
-		<div class="seccion-divulgations">	
+		<div class="seccion-divulgations seccion-person">	
 				<div class="input" >
-					<label>Temáticas</label>
+					<label>Temáticas <i class="icon-eye view-service view-service-button" data-url="<?php echo Router::url( '/', true ) ?>Thematics/getThematic.json" data-callback="appendServiceHtml" data-post="{'a':'1'}" data-name="Temáticas" data-alowedIndex="{'name':'Nombre','prefijo':'prefijo','description':'Descripción'}">Ver temáticas</i></label>
 					<input type="text"  class="Thematics-autocomplete" data-required="true" data-load="true" data-valcontainer=".results-input-thematics" data-emptymsg="Por favor ingresa mínimo una temática">
 					<div class="results-input-thematics" data-input-name="data[Thematic][Thematic][]">
 						<?php 

@@ -82,13 +82,13 @@ class PerProfessionsController extends AppController {
 				
 				$this->PerProfession->create();
 				$data=$this->request->data;
-				$data['PerProfession']['name'] = ucwords($data['Divtype']['name']);
+				$data['PerProfession']['name'] = ucwords($data['PerProfession']['name']);
 				$data['PerProfession']['creation_date']=date('Y-m-d H:i:s');
 				$data['PerProfession']['user_id']=$usuario;
 				
 			
 				$this->PerProfession->create();
-				if ($this->PerProfession->save($this->request->data)) {
+				if ($this->PerProfession->save($data)) {
 					$this->Session->setFlash(__('The profession has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} else {
@@ -112,32 +112,17 @@ class PerProfessionsController extends AppController {
 		if (!$this->PerProfession->exists($id)) {
 			throw new NotFoundException(__('Invalid profession'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			
-			
-			$usuario = $this->Session->read('Auth.User.id_user');
-			$this->set('usuario',$usuario);
-			
-			$name_perprofessions= $this->request->data['PerProfession']['name'];
-			$verificar_perprofessions=$this->PerProfession->query("select distinct name from per_professions where name = '$name_perprofessions'");
-			$this->set('verificar_perprofessions',$verificar_perprofessions);
-				
-			if($verificar_perprofessions==Array( )){
-
+		if ($this->request->is(array('post', 'put'))) 
+		{
 				if ($this->PerProfession->save($this->request->data)) {
 					$this->Session->setFlash(__('The profession has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash(__('The profession could not be saved. Please, try again.'));
 				}
-			}
-			else
-				{
-					$this->Session->setFlash(__('The profession already exists , please check.'));
-				}
-				
-		} 
-		else {
+		}			
+		else 
+		{
 			$options = array('conditions' => array('PerProfession.' . $this->PerProfession->primaryKey => $id));
 			$this->request->data = $this->PerProfession->find('first', $options);
 		}

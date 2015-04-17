@@ -14,9 +14,7 @@
 		echo $this->Form->input('type_id');
 		echo $this->Form->input('activity_place');
 		echo $this->Form->input('description');
-		echo $this->Form->input('participant_number');
-		
-		?>
+	?>
 		<div class="seccion-person">
 			<div class="input">
 				<label>Sitio</label>
@@ -33,10 +31,10 @@
 			<div class="input">
 				<label>Proceso</label>
 				<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-tra" data-emptymsg="Por favor ingresa un proceso" class="TraProcesses-autocomplete">
-				<div class="results-input-tra" data-input-name="data[PerTrainer][PerTrainer][]">
+				<div class="results-input-tra" data-input-name="data[TraProcess][TraProcess][]">
 				<?php 
 					foreach ($processes as $key => $processes) { ?>
-						<input type="hidden" name="data[PerTrainer][PerTrainer][]" value="<?php echo $processes['id'] ?>" data-display="<?php echo $processes['name'] ?>" id="val-input-pro-<?php echo $processes['id']?>">
+						<input type="hidden" name="data[TraProcess][TraProcess][]" value="<?php echo $processes['id'] ?>" data-display="<?php echo $processes['name'] ?>" id="val-input-pro-<?php echo $processes['id']?>">
 				<?php } ?>
 				</div>
 			</div>
@@ -45,17 +43,17 @@
 			<div class="input">
 				<label>Aliado</label>
 				<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-ally" data-emptymsg="Por favor ingresa un aliado" class="TraAllies-autocomplete">
-				<div class="results-input-ally" data-input-name="data[TraAllies][TraAllies][]">
+				<div class="results-input-ally" data-input-name="data[TraAlly][TraAlly][]">
 				<?php 
 					foreach ($allies as $key => $allies) { ?>
-						<input type="hidden" name="data[TraAllies][TraAllies][]" value="<?php echo $allies['id'] ?>" data-display="<?php echo $allies['name'] ?>" id="val-input-al-<?php echo $allies['id']?>">
+						<input type="hidden" name="data[TraAlly][TraAlly][]" value="<?php echo $allies['id'] ?>" data-display="<?php echo $allies['name'] ?>" id="val-input-al-<?php echo $allies['id']?>">
 				<?php } ?>
 				</div>
 			</div>
 	   </div>
 	   <div class="seccion-person">
 			<div class="input">
-				<label>Tipo Población</label>
+				<label>Tipo Poblaci&oacute;n</label>
 				<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-typ" data-emptymsg="Por favor ingresa un tipo de población" class="PopulationTypes-autocomplete">
 				<div class="results-input-typ" data-input-name="data[PopulationType][PopulationType][]">
 				<?php 

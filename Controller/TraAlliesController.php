@@ -115,10 +115,14 @@ class TraAlliesController extends AppController {
 			if ($this->TraAlly->save($this->request->data)) {
 				$this->Session->setFlash(__('The ally has been saved.'));
 				return $this->redirect(array('action' => 'index'));
-			} else {
+			} 
+			else 
+			{
 				$this->Session->setFlash(__('The ally could not be saved. Please, try again.'));
 			}
-		} else {
+		} 
+		else 
+		{
 			$options = array('conditions' => array('TraAlly.' . $this->TraAlly->primaryKey => $id));
 			$this->request->data = $this->TraAlly->find('first', $options);
 		}

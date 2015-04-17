@@ -217,7 +217,7 @@ class TrainingsController extends AppController {
 			$training_count=$this->Training->find('count');
 			$training_count=$training_count+1;
 			$pro_prefix=implode($process_prefix,'-');
-			$code=$this->codeFirst.$pro_prefix.date('Y').'-'.$training_count;
+			$code=$this->codeFirst.strtoupper($pro_prefix).date('Y').'-'.$training_count;
 
 			//validación de tablas intermedias..				
 				$save_switch=true;
@@ -286,7 +286,7 @@ class TrainingsController extends AppController {
 			unset($data['Training']['code']);
 			if ($this->Training->save($data)) {
 				$this->Session->setFlash(__('The training has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				 return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
 			}
