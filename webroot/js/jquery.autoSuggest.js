@@ -24,9 +24,9 @@
 		var defaults = { 
 			asHtmlID: false,
 			startText: "Ingresar dato de busqueda",
-			emptyText: "No Results Found",
+			emptyText: "No se encontraron resultados",
 			preFill: {},
-			limitText: "No More Selections Are Allowed",
+			limitText: "No se permiten mas selecciones",
 			selectedItemProp: "value", //name of object property
 			selectedValuesProp: "value", //name of object property
 			searchObjProps: "value", //comma separated list of object property names

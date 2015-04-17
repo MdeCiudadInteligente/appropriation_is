@@ -591,12 +591,14 @@ App.prototype.appendServiceHtml=function(data,name,allowedIndex){
     var row_counter=0;
     var divider=Math.ceil(12/Object.keys(allowedIndex).length);
     var colClass="col-md-"+divider;
+    var object=allowedIndex;
     $.each(data,function(index,value){
         if(row_counter==0){
-            html+='<div class="row row-service-titles">'
+            html+='<div class="row row-service-titles">';
             $.each(value,function(index,value){
-                if(allowedIndex.hasOwnProperty(index)) 
-                    html+='<div class="'+colClass+'">'+index+'</div>';
+                if(allowedIndex.hasOwnProperty(index)){
+                    html+='<div class="'+colClass+'">'+allowedIndex[index]+'</div>';
+                } 
             });
             html+='</div>';
             row_counter++;
