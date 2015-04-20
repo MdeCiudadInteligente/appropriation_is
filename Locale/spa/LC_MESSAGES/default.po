@@ -630,7 +630,7 @@ msgid "Type Person"
 msgstr "Tipo Persona"
 
 msgid "Genre"
-msgstr "Género"
+msgstr "GÃ©nero"
 
 msgid "Workplace"
 msgstr "Lugar de Trabajo"
