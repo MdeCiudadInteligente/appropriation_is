@@ -54,6 +54,10 @@ App.prototype.bind=function(){
         });
     }
     
+    $('#datepicker,.datepickerMDE').on('focus',function(){
+    	$(this).blur();
+    });
+    
     app.bindAutocompletePersona('.person-autocomplete');
     app.bindAutocompleteSites('.Site-autocomplete');
     app.bindAutocompleteThematics('.Thematics-autocomplete');
