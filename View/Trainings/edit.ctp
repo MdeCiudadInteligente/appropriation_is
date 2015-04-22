@@ -1,6 +1,6 @@
 <div class="trainings form mde-form">
 <?php echo $this->Form->create('Training'); 
-	$site=$this->request->data['Site'];
+	//$site=$this->request->data['Site'];
 	$processes=$this->request->data['TraProcess'];
 	$allies=$this->request->data['TraAlly'];
 	$populationtype=$this->request->data['PopulationType'];
@@ -10,23 +10,25 @@
 		<legend><?php echo __('Edit Training'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('code',array('disabled'=>'disabled'));
+		echo $this->Form->input('code',array('disabled'=>'disabled'));	
 		echo $this->Form->input('type_id');
+		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Inicio'));
+		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text','label'=>'Fecha Final'));
 		echo $this->Form->input('activity_place');
 		echo $this->Form->input('description');
 	?>
-		<div class="seccion-person">
+	<!--  <div class="seccion-person">
 			<div class="input">
 				<label>Sitio</label>
 				<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" data-limit="100">
 				<div class="results-input-site" data-input-name="data[Site][Site][]">
 				<?php 
-					foreach ($site as $key => $site) { ?>
-						<input type="hidden" name="data[Site][Site][]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name'] ?>" id="val-input-si-<?php echo $site['id_site']?>">
-				<?php } ?>
+					//foreach ($site as $key => $site) { ?>
+						<input type="hidden" name="data[Site][Site][]" value="<?php //echo $site['id_site'] ?>" data-display="<?php //echo $site['site_name'] ?>" id="val-input-si-<?php //echo $site['id_site']?>">
+				<?php //} ?>
 				</div>
 			</div>
-	   </div>
+	   </div> -->
 	   <div class="seccion-person">
 			<div class="input">
 				<label>Proceso</label>

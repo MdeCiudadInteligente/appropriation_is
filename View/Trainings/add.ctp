@@ -14,20 +14,21 @@
 		<legend><?php echo __('Add Training'); ?></legend>
 	<?php
 		echo $this->Form->input('activity_place');
-		echo $this->Form->input('description');
-		//echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
+		echo $this->Form->input('description');			
 		echo $this->Form->input('type_id',array('empty'=>'Seleccione el tipo de formación'));
+		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Inicio'));
+		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text','label'=>'Fecha Final'));
 
 
 		?>
-  <div class="seccion-person">	
+  <!-- <div class="seccion-person">	
 			<div class="input">
 				<label>Sitio</label>
 				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-limit="100" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" >
 				<div class="results-input-site" data-input-name="data[Site][Site][]" >			
 				</div>
 			</div>
-		</div>
+	</div> -->
 	<?php	
 		//echo $this->Form->input('process_id');
 		//echo $this->Form->input('TraAllies');

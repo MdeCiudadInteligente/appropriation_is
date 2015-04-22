@@ -50,15 +50,7 @@ class TrainingsController extends AppController {
 				            t1.id = tPer.training_id
 				                AND tPer.per_trainer_id = per.id
 				                AND per.per_people_type_id = perTy.id
-				                AND perTy.person_id = p.id_person) AS formadores,
-				    (SELECT 
-				            GROUP_CONCAT(CONCAT(' ', site_name, ' '))
-				        FROM
-				            sites_training st,
-				            sites s
-				        WHERE
-				            t1.id = st.training_id
-				                AND st.site_id = s.id_site) AS sitios,
+				                AND perTy.person_id = p.id_person) AS formadores,				   
 				    (SELECT 
 				            GROUP_CONCAT(CONCAT(' ', name, ' '))
 				        FROM
@@ -100,13 +92,12 @@ class TrainingsController extends AppController {
 						'code'=>$trainer['t1']['code'],
 						'activity_place'=>$trainer['t1']['activity_place'],
 						'description'=>$trainer['t1']['description'],
-						'type_id'=>$trainer['t1']['type_id'],
+						//'poblacion'=>$trainer['t1']['type_id'],
 						'training_type'=>$trainer['t2']['training_type'],
 						'formadores'=>$trainer['0']['formadores'],
-						'sitios'=>$trainer['0']['sitios'],
+						//'sitios'=>$trainer['0']['sitios'],
 						'aliados'=>$trainer['0']['aliados'],
 						'procesos'=>$trainer['0']['procesos'],
-						'poblacion'=>$trainer['0']['poblacion'],
 						'username'=>$trainer['t3']['username'],
 						'user_id'=>$trainer['t1']['user_id'],
 						'creation_date'=>$trainer['t1']['creation_date'],
@@ -152,15 +143,7 @@ class TrainingsController extends AppController {
 				            t1.id = tPer.training_id
 				                AND tPer.per_trainer_id = per.id
 				                AND per.per_people_type_id = perTy.id
-				                AND perTy.person_id = p.id_person) AS formadores,
-				    (SELECT
-				            GROUP_CONCAT(CONCAT(' ', site_name, ' '))
-				        FROM
-				            sites_training st,
-				            sites s
-				        WHERE
-				            t1.id = st.training_id
-				                AND st.site_id = s.id_site) AS sitios,
+				                AND perTy.person_id = p.id_person) AS formadores,				   
 				    (SELECT
 				            GROUP_CONCAT(CONCAT(' ', name, ' '))
 				        FROM
@@ -222,10 +205,10 @@ class TrainingsController extends AppController {
 			//validación de tablas intermedias..				
 				$save_switch=true;
 	
-				if(empty($this->request->data['Site']['Site'])){
+				/*if(empty($this->request->data['Site']['Site'])){
 					$msg=__('Verifica que el campo sitio este lleno.');
 					$save_switch=false;
-				}
+				}*/
 				if(empty($this->request->data['TraProcess']['TraProcess'])){
 					$msg.='<br>'.__('Verifica que el campo proceso este lleno.');
 					$save_switch=false;
@@ -245,10 +228,10 @@ class TrainingsController extends AppController {
 				$data['Training']['user_id']=$usuario;
 				$data['Training']['code']=$code;
 				$this->Training->create();
-
+				//debug($data);
 				if($save_switch){
 					if ($this->Training->save($data)) {
-						$this->Session->setFlash(__('The training has been saved.'));
+						$this->Session->setFlash(__('The training has been saved.'));						
 						return $this->redirect(array('action' => 'index'));
 					} else {
 						$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
@@ -264,9 +247,9 @@ class TrainingsController extends AppController {
 
 		$processes = $this->Training->TraProcess->find('list');
 		$TraAllies = $this->Training->TraAlly->find('list');
-		$sites = $this->Training->Site->find('list');
+		//$sites = $this->Training->Site->find('list');
 		$populationtype = $this->Training->PopulationType->find('list');
-		$this->set(compact('types', 'processes','TraAllies','sites','populationtype'));
+		$this->set(compact('types', 'processes','TraAllies','populationtype'));
 
 	}
 
@@ -296,7 +279,7 @@ class TrainingsController extends AppController {
 		}
 		$types = $this->Training->TraType->find('list');
 		$processes = $this->Training->TraProcess->find('list');
-		$sites = $this->Training->Site->find('list');
+		//$sites = $this->Training->Site->find('list');
 		$allies = $this->Training->TraAlly->find('list');
 		$populationtypes = $this->Training->PopulationType->find('list');
 		
@@ -320,7 +303,7 @@ class TrainingsController extends AppController {
 		);
 		
 		$this->request->data['trainers']=$trainers;
-		$this->set(compact('types', 'processes','sites','allies','populationtypes'));
+		$this->set(compact('types', 'processes','allies','populationtypes'));
 
 	}
 
