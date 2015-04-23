@@ -25,6 +25,50 @@ class PerParticipantsController extends AppController {
 		$this->PerParticipant->recursive = 0;
 		$this->set('perParticipants', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$PerParticipant=$this->PerParticipant->find('all');
+		//debug($PerParticipant);
+		$count=0;
+		foreach ($PerParticipant as $key => $PerParticipant) {
+				
+				
+			$idper_people_type=$PerParticipant['PerParticipant']['per_people_type_id'];
+			$PerPeopleTypes = new PerPeopleTypesController;
+	
+			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
+			debug($PerParticipant['PopulationType']);
+			
+			$totalpopulationtype='';
+			
+			
+			foreach ($PerParticipant['PopulationType'] as $key => $popupaltiontype) {
+			 //$totalpopulationtype=$totalpopulationtype.', '.$popupaltiontype['name'];
+				$totalpopulationtype=$popupaltiontype['name'].', '.$totalpopulationtype;
+			}
+			$totalpopulationtype= trim($totalpopulationtype, ',');
+			debug($totalpopulationtype);
+			$data['rows'][$count]=array(
+					'id'=>$PerParticipant['PerParticipant']['id'],
+					'people'=>$per_trainers_responsefp['personname'],
+					'neighborhood'=>$PerParticipant['Neighborhood']['neighborhood_name'],
+					'totalpopulationtype'=>trim($totalpopulationtype, ','),
+					'other_population_type'=>$PerParticipant['PerParticipant']['other_population_type'],
+					'marital_status'=>$PerParticipant['PerMaritalStatus']['name'],
+					'school_level'=>$PerParticipant['PerSchoolLevel']['name'],
+					'creation_date'=>$PerParticipant['PerParticipant']['creation_date'],
+					'modification_date'=>$PerParticipant['PerParticipant']['modification_date'],
+					'user_id'=>$PerParticipant['PerParticipant']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method
