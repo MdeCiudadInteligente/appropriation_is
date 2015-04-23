@@ -119,9 +119,28 @@ class PerParticipantsController extends AppController {
 		} else {
 			$options = array('conditions' => array('PerParticipant.' . $this->PerParticipant->primaryKey => $id));
 			$this->request->data = $this->PerParticipant->find('first', $options);
+			
+			$idper_people_type=$this->request->data['PerParticipant']['per_people_type_id'];
+				
+			$PerPeopleTypes = new PerPeopleTypesController;
+				
+			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
+				
+			if ($per_trainers_responsefp['success']){
+					
+				if(!$per_trainers_responsefp['personname']){
+					$this->Session->setFlash(__('Do not name the person was obtained'));
+				}
+			}
+			else{
+				$this->Session->setFlash(__($per_trainers_responsefp['message']));
+			}
+			
+			$this->set('per_trainers_responsefp',$per_trainers_responsefp);				
+			
 		}
 		$neighborhoods = $this->PerParticipant->Neighborhood->find('list');
-		//$perPeopleTypes = $this->PerParticipant->PerPeopleType->find('list');
+		$perPeopleTypes = $this->PerParticipant->PerPeopleType->find('list');
 		$maritalStatuses = $this->PerParticipant->PerMaritalStatus->find('list');
 		$schoolLevels = $this->PerParticipant->PerSchoolLevel->find('list');
 		$populationTypes = $this->PerParticipant->PopulationType->find('list');

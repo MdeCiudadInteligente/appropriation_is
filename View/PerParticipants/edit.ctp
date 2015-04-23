@@ -1,7 +1,8 @@
 <div class="perParticipants form mde-form">
 <?php echo $this->Form->create('PerParticipant'); 	
 	$neighborhood=$this->request->data['Neighborhood'];
-	$populationTypes=$this->request->data['PopulationType'];
+	$currentPersons=$this->request->data['PerPeopleType'];
+	$populationTypes=$this->request->data['PopulationType'];	
 ?>
 	<fieldset>
 		<legend><?php echo __('Edit Per Participant'); ?></legend>
@@ -16,6 +17,15 @@
 			</div>
 		</div>
 	</div>
+	<div class="input"  style="text-align:right">
+				<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
+		</div>
+		<div class="seccion-person">	
+			<div class="input">
+				<label>Persona</label>
+				<div><?php echo $per_trainers_responsefp['personname']; ?></div>
+			</div>
+	</div>		
 	<div class="seccion-person">	
 			<div class="input" >
 				<label>Tipo de población</label>
