@@ -142,10 +142,28 @@ class PerParticipantsController extends AppController {
 			throw new NotFoundException(__('Invalid per participant'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+		
+		$PerParticipant=$this->PerParticipant->find('first',array('conditions'=>array('PerParticipant.id'=>$id)));
+		$people_type_id=$PerParticipant['PerParticipant']['per_people_type_id'];
+		
+		
+		
 		if ($this->PerParticipant->delete()) {
-			$this->Session->setFlash(__('The per participant has been deleted.'));
+			
+			$PerPeopleTypesd = new PerPeopleTypesController;
+				
+			$per_people_responsed=$PerPeopleTypesd->delete($people_type_id);
+			
+			
+			if (!$per_people_responsed['success']){
+				$this->Session->setFlash(__($per_people_responsed['message']));
+			}
+			else{
+				$this->Session->setFlash(__('The per participant has been deleted.'));
+			}
 		} else {
 			$this->Session->setFlash(__('The per participant could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+}
