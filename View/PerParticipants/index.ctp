@@ -1,4 +1,4 @@
-<div class="sites-cont app-grid-container">
+ï»¿<div class="sites-cont app-grid-container">
 	<div class="left-block">
 		<div class="actions">
 			<h3><?php echo __('Actions'); ?></h3>
@@ -19,20 +19,20 @@
 			<h2><?php echo __('Sites'); ?></h2>
 			<?php
 				$gridOptions=array(
-						'gridId'=>'gridSites',
-						'gridTitle'=>'Sitios',
+						'gridId'=>'gridParticipants',
+						'gridTitle'=>'Participantes',
 						'height'=>800,
 						'serviceUrl'=>'PerParticipants/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
 			                array("dataIndex"=>"people",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"neighborhood",'header'=>'Barrio','sortable'=>true,'align'=>"left","column"=>true),
-							array("dataIndex"=>"totalpopulationtype",'header'=>'Tipo de población','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"other_population_type",'header'=>'Otro tipo de población','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"totalpopulationtype",'header'=>'Tipo de poblaciÃ³n','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"other_population_type",'header'=>'Otro tipo de poblaciÃ³n','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"marital_status",'header'=>'Estado civil','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"school_level",'header'=>'Nivel de escolaridad','sortable'=>true,'align'=>"left","column"=>true),
-			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
-			                array("dataIndex"=>"modification_date",'header'=>'Fecha Modificación','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha CreaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Fecha ModificaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
 			               array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
 						),
 						'expander'=>false,

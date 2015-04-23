@@ -35,13 +35,13 @@ class PerParticipantsController extends AppController {
 		//debug($PerParticipant);
 		$count=0;
 		foreach ($PerParticipant as $key => $PerParticipant) {
-				
+	
 				
 			$idper_people_type=$PerParticipant['PerParticipant']['per_people_type_id'];
 			$PerPeopleTypes = new PerPeopleTypesController;
 	
 			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
-			debug($PerParticipant['PopulationType']);
+			
 			
 			$totalpopulationtype='';
 			
@@ -51,7 +51,6 @@ class PerParticipantsController extends AppController {
 				$totalpopulationtype=$popupaltiontype['name'].', '.$totalpopulationtype;
 			}
 			$totalpopulationtype= trim($totalpopulationtype, ',');
-			debug($totalpopulationtype);
 			$data['rows'][$count]=array(
 					'id'=>$PerParticipant['PerParticipant']['id'],
 					'people'=>$per_trainers_responsefp['personname'],
