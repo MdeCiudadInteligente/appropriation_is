@@ -32,26 +32,16 @@ class PerParticipantsController extends AppController {
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
 		$PerParticipant=$this->PerParticipant->find('all');
-		//debug($PerParticipant);
 		$count=0;
 		foreach ($PerParticipant as $key => $PerParticipant) {
-				
-				
 			$idper_people_type=$PerParticipant['PerParticipant']['per_people_type_id'];
 			$PerPeopleTypes = new PerPeopleTypesController;
-	
 			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
-			debug($PerParticipant['PopulationType']);
-			
 			$totalpopulationtype='';
-			
-			
 			foreach ($PerParticipant['PopulationType'] as $key => $popupaltiontype) {
-			 //$totalpopulationtype=$totalpopulationtype.', '.$popupaltiontype['name'];
 				$totalpopulationtype=$popupaltiontype['name'].', '.$totalpopulationtype;
 			}
-			$totalpopulationtype= trim($totalpopulationtype, ',');
-			debug($totalpopulationtype);
+			$totalpopulationtype= substr($totalpopulationtype, 0, -1);;
 			$data['rows'][$count]=array(
 					'id'=>$PerParticipant['PerParticipant']['id'],
 					'people'=>$per_trainers_responsefp['personname'],
