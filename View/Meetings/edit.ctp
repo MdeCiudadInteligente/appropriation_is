@@ -40,9 +40,6 @@
 				</div>
 			</div>
 		</div>	
-
-
-
 	<?php	
 		echo $this->Form->input('meeting_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('meeting_commitments',array ( 'type'=>'textarea'));
