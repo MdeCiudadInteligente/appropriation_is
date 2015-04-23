@@ -17,7 +17,107 @@
 					"route"=>Router::url( array('controller' => 'People', 'action' => 'add'),true),
 					"label"=>__('New Person'),
 					"custom-class"=>'add-person'
-				  )	
+				),
+				array(
+						"icon-class"=>'icon-comment-1',
+						"route"=>Router::url( array('controller' => 'PerParticipants', 'action' => 'index'),true),
+						"label" =>__('Participants'),
+						"sub-elements"=>array(
+							array(
+								"route"=>Router::url( array('controller' => 'PerParticipants', 'action' => 'index'),true),
+								"label"=>__('List Participants')
+							),	
+							array(
+								"route"=>Router::url( array('controller' => 'PerParticipants', 'action' => 'add'),true),
+								"label"=>__('New Participants')
+							)	
+						)
+				),
+				array(
+						"icon-class"=>'icon-megaphone',
+						"route"=>Router::url( array('controller' => 'PerTrainers', 'action' => 'index'),true),
+						"label" =>__('Trainers'),
+						"custom-class"=>'list-trainers',
+						"sub-elements"=>array(
+							array(
+								"route"=>Router::url( array('controller' => 'PerTrainers', 'action' => 'index'),true),
+								"label"=>__('List Trainers'),
+								"custom-class"=>'list-trainers'
+							),	
+							array(
+								"route"=>Router::url( array('controller' => 'PerTrainers', 'action' => 'add'),true),
+								"label"=>__('New Trainer'),
+								"custom-class"=>'add-trainers'
+							)	
+						)
+				)
+,
+				array(
+						"icon-class"=>'icon-cogs',
+						"route"=>Router::url( array('controller' => 'PerTrainerTypes', 'action' => 'index'),true),
+						"label" =>__('Trainer Types'),
+						"custom-class"=>'Trainer-types',
+						"sub-elements"=>array(
+							array(
+								"route"=>Router::url( array('controller' => 'PerTrainerTypes', 'action' => 'index'),true),
+								"label"=>__('List Trainer Type'),
+								"custom-class"=>'list-thematics'
+							),	
+							array(
+								"route"=>Router::url( array('controller' => 'PerTrainerTypes', 'action' => 'add'),true),
+								"label"=>__('New Trainer Type'),
+								"custom-class"=>'add-thematics'
+							)	
+						)
+				),
+				array(
+						"icon-class"=>'icon-cogs',
+						"route"=>Router::url( array('controller' => ' PerTrainerFunds', 'action' => 'index'),true),
+						"label" =>__('Per Trainer Funds'),
+						"custom-class"=>'Trainer-types',
+						"sub-elements"=>array(
+							array(
+								"route"=>Router::url( array('controller' => ' PerTrainerFunds', 'action' => 'index'),true),
+								"label"=>__('List Per Trainer Funds'),
+								"custom-class"=>'list-thematics'
+							),	
+							array(
+								"route"=>Router::url( array('controller' => ' PerTrainerFunds', 'action' => 'add'),true),
+								"label"=>__('New Per Trainer Fund'),
+								"custom-class"=>'add-thematics'
+							)	
+						)
+				),
+				array(
+						"icon-class"=>'icon-cogs',
+						"route"=>Router::url( array('controller' => 'PerProfessions', 'action' => 'index'),true),
+						"label" =>__('Professions'),
+						"sub-elements"=>array(
+							array(
+								"route"=>Router::url( array('controller' => 'PerProfessions', 'action' => 'index'),true),
+								"label"=>__('List Professions')
+							),	
+							array(
+								"route"=>Router::url( array('controller' => 'PerProfessions', 'action' => 'add'),true),
+								"label"=>__('New Profession')
+							)	
+						)
+				),
+				array(
+						"icon-class"=>'icon-cogs',
+						"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'index'),true),
+						"label" =>__('People Types'),
+						"sub-elements"=>array(
+							array(
+								"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'index'),true),
+								"label"=>__('List People Types')
+							),	
+							array(
+								"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'add'),true),
+								"label"=>__('New People Types')
+							)	
+					)
+				)					
 		    )
 		);
 ?>
