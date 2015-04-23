@@ -7,14 +7,14 @@
 			'elements'=>array(
 				array(
 					"icon-class"=>'icon-doc-1',
-					"route"=>Router::url( array('controller' => 'Accompaniment', 'action' => 'index'),true),
+					"route"=>Router::url( array('controller' => 'Accompaniments', 'action' => 'index'),true),
 					"label" =>__('List Accompaniments'),
 					"custom-class"=>'index-accompamiment'
 				),
 				array(
 					"user_level"=>'1,2,3',
 					"icon-class"=>'icon-pencil-1',
-					"route"=>Router::url( array('controller' => 'Accompaniment', 'action' => 'add'),true),
+					"route"=>Router::url( array('controller' => 'Accompaniments', 'action' => 'add'),true),
 					"label"=>__('New Accompaniment'),
 					"custom-class"=>'add-accompamiment'
 				  )	

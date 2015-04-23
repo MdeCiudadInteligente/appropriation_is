@@ -2,22 +2,35 @@
 
 <?php 
 	$menu_element=array(
-			'custom_class'=>'meetings-internal-menu',
 			'title'=>'Sensibilizaciones',
 			'elements'=>array(
 				array(
 					"icon-class"=>'icon-doc-1',
 					"route"=>Router::url( array('controller' => 'Divulgations', 'action' => 'index'),true),
-					"label" =>__('List Divulgations'),
-					"custom-class"=>'index-divulgation'
+					"label" =>__('List Divulgations')
 				),
 				array(
 					"user_level"=>'1,2,3',
 					"icon-class"=>'icon-pencil-1',
 					"route"=>Router::url( array('controller' => 'Divulgations', 'action' => 'add'),true),
-					"label"=>__('New Divulgation'),
-					"custom-class"=>'add-divulgation'
-				  )	
+					"label"=>__('New Divulgation')
+				),
+				array(
+						"icon-class"=>'icon-cogs',
+						"route"=>Router::url( array('controller' => 'DivTypes', 'action' => 'index'),true),
+						"label" =>__('Divulgation Types'),
+						"custom-class"=>'Trainer-types',
+						"sub-elements"=>array(
+							array(
+								"route"=>Router::url( array('controller' => ' DivTypes', 'action' => 'index'),true),
+								"label"=>__('List Divulgation Types')
+							),	
+							array(
+								"route"=>Router::url( array('controller' => ' DivTypes', 'action' => 'add'),true),
+								"label"=>__('New Divulgation Type')
+							)	
+						)
+				)	
 		    )
 		);
 ?>
