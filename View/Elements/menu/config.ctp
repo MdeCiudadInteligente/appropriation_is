@@ -41,6 +41,25 @@
 						)	
 					)
 				)
+		    ),
+			array(
+					"icon-class"=>'icon-tag',
+					"route"=>Router::url( array('controller' => 'PerTrainerTypes', 'action' => 'index'),true),
+					"label" =>__('Trainers'),
+					"custom-class"=>'Trainer-types',
+					"sub-elements"=>array(
+						array(
+							"route"=>Router::url( array('controller' => 'PerTrainerTypes', 'action' => 'index'),true),
+							"label"=>__('List Trainer Type'),
+							"custom-class"=>'list-thematics'
+						),	
+						array(
+							"route"=>Router::url( array('controller' => 'PerTrainerTypes', 'action' => 'add'),true),
+							"label"=>__('New Trainer Type'),
+							"custom-class"=>'add-thematics'
+						)	
+					)
+				)
 		    )
 		);
 ?>
