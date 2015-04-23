@@ -55,6 +55,13 @@ class PerParticipantsController extends AppController {
 				$this->Session->setFlash(__('The per participant could not be saved. Please, try again.'));
 			}
 		}
+		$neighborhoods = $this->PerParticipant->Neighborhood->find('list');
+		$perPeopleTypes = $this->PerParticipant->PerPeopleType->find('list');
+		$maritalStatuses = $this->PerParticipant->PerMaritalStatus->find('list');
+		$schoolLevels = $this->PerParticipant->PerSchoolLevel->find('list');
+		$populationTypes = $this->PerParticipant->PopulationType->find('list');
+		$trainings = $this->PerParticipant->Training->find('list');
+		$this->set(compact('neighborhoods', 'perPeopleTypes', 'maritalStatuses', 'schoolLevels', 'populationTypes', 'trainings'));
 	}
 
 /**
@@ -79,6 +86,13 @@ class PerParticipantsController extends AppController {
 			$options = array('conditions' => array('PerParticipant.' . $this->PerParticipant->primaryKey => $id));
 			$this->request->data = $this->PerParticipant->find('first', $options);
 		}
+		$neighborhoods = $this->PerParticipant->Neighborhood->find('list');
+		$perPeopleTypes = $this->PerParticipant->PerPeopleType->find('list');
+		$maritalStatuses = $this->PerParticipant->MaritalStatus->find('list');
+		$schoolLevels = $this->PerParticipant->SchoolLevel->find('list');
+		$populationTypes = $this->PerParticipant->PopulationType->find('list');
+		$trainings = $this->PerParticipant->Training->find('list');
+		$this->set(compact('neighborhoods', 'perPeopleTypes', 'maritalStatuses', 'schoolLevels', 'populationTypes', 'trainings'));
 	}
 
 /**

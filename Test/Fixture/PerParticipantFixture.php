@@ -44,8 +44,8 @@ class PerParticipantFixture extends CakeTestFixture {
 			'per_people_type_id' => 1,
 			'marital_status_id' => 1,
 			'school_level_id' => 1,
-			'creation_date' => '2015-04-22 18:07:49',
-			'modification_date' => 1429718869,
+			'creation_date' => '2015-04-22 18:39:44',
+			'modification_date' => 1429720784,
 			'user_id' => 1
 		),
 	);

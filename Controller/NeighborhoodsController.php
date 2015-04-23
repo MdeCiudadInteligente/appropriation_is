@@ -184,4 +184,34 @@ class NeighborhoodsController extends AppController {
 			$this->Session->setFlash(__('The neighborhood could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+	/**
+	 * Json get Neighborhood
+	 *
+	 * @param string $query
+	 * @return $array
+	 */
+public function getNeighborhood() {
+	    $this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$queryString=$_GET['q'];
+		$condition=array('OR' => array(
+				    array('Neighborhood.neighborhood_name LIKE' => '%'.$queryString.'%')
+		));
+
+		$neighborhood=$this->Neighborhood->find('list',array('order' => array('Neighborhood.neighborhood_name' => 'ASC'),'conditions' => $condition));
+		foreach ($neighborhood as $id => $value) {
+			$json_data = array();
+			$json_data['id']=$id;
+			$json_data['name']=$value;
+			$data[]=$json_data;
+			
+			
+		}
+
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+
+
+}

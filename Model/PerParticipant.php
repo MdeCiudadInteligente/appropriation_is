@@ -86,8 +86,8 @@ class PerParticipant extends AppModel {
 			),
 		),
 		'user_id' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -119,15 +119,15 @@ class PerParticipant extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'MaritalStatus' => array(
-			'className' => 'MaritalStatus',
+		'PerMaritalStatus' => array(
+			'className' => 'PerMaritalStatus',
 			'foreignKey' => 'marital_status_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
-		'SchoolLevel' => array(
-			'className' => 'SchoolLevel',
+		'PerSchoolLevel' => array(
+			'className' => 'PerSchoolLevel',
 			'foreignKey' => 'school_level_id',
 			'conditions' => '',
 			'fields' => '',

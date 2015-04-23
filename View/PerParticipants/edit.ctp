@@ -1,4 +1,4 @@
-<div class="perParticipants form">
+<div class="perParticipants mde-form">
 <?php echo $this->Form->create('PerParticipant'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Per Participant'); ?></legend>
@@ -9,9 +9,6 @@
 		echo $this->Form->input('per_people_type_id');
 		echo $this->Form->input('marital_status_id');
 		echo $this->Form->input('school_level_id');
-		echo $this->Form->input('creation_date');
-		echo $this->Form->input('modification_date');
-		echo $this->Form->input('user_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
