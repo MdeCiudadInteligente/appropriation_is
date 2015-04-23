@@ -7,17 +7,17 @@
 			'elements'=>array(
 				array(
 					"icon-class"=>'icon-doc-1',
-					"route"=>Router::url( array('controller' => 'Meeting', 'action' => 'index'),true),
+					"route"=>Router::url( array('controller' => 'Meetings', 'action' => 'index'),true),
 					"label" =>__('List Meetings'),
 					"custom-class"=>'index-meetings'
 				),
 				array(
 					"user_level"=>'1,2,3',
 					"icon-class"=>'icon-pencil-1',
-					"route"=>Router::url( array('controller' => 'Meeting', 'action' => 'add'),true),
+					"route"=>Router::url( array('controller' => 'Meetings', 'action' => 'add'),true),
 					"label"=>__('New Meeting'),
 					"custom-class"=>'add-meeting'
-				  )	
+				)	
 		    )
 		);
 ?>
