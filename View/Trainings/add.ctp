@@ -15,7 +15,6 @@
 	<?php
 		echo $this->Form->input('activity_place');
 		echo $this->Form->input('description');
-		//echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
 		echo $this->Form->input('type_id',array('empty'=>'Seleccione el tipo de formación'));
 
 
@@ -28,10 +27,6 @@
 				</div>
 			</div>
 		</div>
-	<?php	
-		//echo $this->Form->input('process_id');
-		//echo $this->Form->input('TraAllies');
-	?>
 	<div class="seccion-person">	
 			<div class="input" >
 				<label>Procesos</label>

@@ -1,5 +1,6 @@
 var app=null;
 var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+var waypoints=null;
 
 $(document).ready(function(){
 	app=new App;
@@ -67,7 +68,7 @@ App.prototype.bind=function(){
     app.bindAutocompleteTrainers('.Trainers-autocomplete');
     
     app.removeRequired();
-    app.setMobileNav();
+    //app.setMobileNav();
     if(isMobile){
         app.setMobileScreen();
     }
@@ -81,7 +82,43 @@ App.prototype.bind=function(){
         var allowedIndex=eval('('+data.alowedindex+')');
         app.showServiceAside(router_url,callback_namespace,postData,name,allowedIndex);
     });
-    
+
+    $('.icon-menu-view .nav-view').on('click',function(){
+         var rel_content=$(this).data();
+         var rel_content=$('.'+rel_content.rel).html();
+         $('.mobile-ovelay-menu.menu-content section').html(rel_content);
+         $('.mobile-ovelay-menu.menu-content').addClass('active');
+         var i_element=$(this).find('i').clone();
+         $('.mobile-ovelay-menu.menu-content section h2').prepend(i_element);
+         setTimeout(function(){
+            $('.mobile-ovelay-menu.menu-content section h2').addClass('active');
+         },200);
+    });
+
+    $('.close-menu').on('click',function(){
+        $(this).closest('.mobile-ovelay-menu').removeClass('active').removeAttr('style');
+    });
+
+    waypoints = $('.icon-menu-view').waypoint({
+      handler: function(direction) {
+        if(direction=='down'){
+            var logo=$('.mde.mde-intranet-logo').clone();
+            if($('.icon-menu-view .mde.mde-intranet-logo').length==0){
+                $('.icon-menu-view').prepend(logo);
+            }
+            setTimeout(function(){
+                $('.icon-menu-view').addClass("sticky");
+            },200);
+        }else{
+            $('.icon-menu-view').removeClass("sticky");
+        }
+      }
+    });    
+
+    $('.mobile-ovelay-menu').on('click','.display-sub',function(){
+        var parent_menu=$(this).closest('li');
+        $(parent_menu).toggleClass('active');
+    });
 }
 
 
