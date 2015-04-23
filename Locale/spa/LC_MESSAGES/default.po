@@ -107,6 +107,26 @@ msgstr "Lista fondo de formador"
 msgid "New Per Trainer Fund"
 msgstr "Nuevo fondo de formador"
 
+msgid  "Per Participants"
+msgstr "Participantes"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 msgid "Add Per Trainer Fund"
 msgstr "Agregar fondo de formador"
 

@@ -104,7 +104,10 @@ msgid  "The per type could not be saved. Please, try again."
 msgstr "El tipo de persona no ha sido guardado.Por favor trate de nuevo"
 
 msgid  "The per type has been saved."
-msgstr "El tipo de persona ha sido guardada"
+msgstr "El tipo de persona ha sido guardada."
+
+msgid  "Per Participants"
+msgstr "Participantes"
 
 msgid  "Invalid per type"
 msgstr "Tipo de persona no válido"
