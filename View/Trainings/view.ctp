@@ -33,12 +33,7 @@ $trainings=$this->request->data['trainings'];
 		<dd>
 			<?php echo h($trainings['0']['t2']['training_type']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Sitios'); ?></dt>
-		<dd>
-			<?php echo h($trainings['0']['0']['sitios']); ?>
-			&nbsp;
-		</dd>
+		</dd>	 	
 		<dt><?php echo __('Aliados'); ?></dt>
 		<dd>
 			<?php echo h($trainings['0']['0']['aliados']); ?>

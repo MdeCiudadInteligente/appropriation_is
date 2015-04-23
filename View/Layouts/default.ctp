@@ -7,6 +7,7 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  */
 
+$usuario_level= $this->Session->read('Auth.User.permission_level');		//echo $usuario_level;
 $cakeDescription = __d('cake_dev', '');
 ?>
 <!DOCTYPE html>
@@ -44,17 +45,22 @@ $cakeDescription = __d('cake_dev', '');
 	<?php echo $this->Html->script('ext/RowExpander.js');?>
 	<?php echo $this->Html->script('ext/src/locale/ext-lang-es.js');?>
 	<?php $body_class=( Configure::read('debug')>0)?'debugging':'production';?>
-
-	
 </head>
 <body>
 	<?php echo $this->Session->flash(); ?>
-	<i class="icon-align-justify open-menu"></i>
+	<!-- <i class="icon-align-justify open-menu"></i> -->
+	<?php  
+	 	if($usuario_level){
+	 		echo $this->element('main-menu');
+		}
+	 ?>	
 	<nav class="mobile-ovelay-menu menu-content">
 		<header>
 		 <i class="icon-left close-menu"></i>	
 		 <a href="<?php echo Router::url( '/', true )?>"><img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png"></a>
 		</header>
+		<section>
+		</section>
 	</nav>
 
 	<aside id="right-content-aside" class="mobile-ovelay-menu right-display">
@@ -74,16 +80,17 @@ $cakeDescription = __d('cake_dev', '');
 			</div>	
 			<div class="bottom-head">
 				<section>
-					<span><img class="mde" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png"></span>
+					<?php if($usuario_level){ ?>
+					<span><img class="mde mde-intranet-logo" src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png"></span>
 					<span class="cerrar-icon session">
 						<?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout'));?> 
 					</span>
+					<?php } ?> 
 				</section>
 			</div>
 		</div>
 		<div id="content">
-		<?php $usuario_level= $this->Session->read('Auth.User.permission_level');		//echo $usuario_level;
-   		$this->set('usuario_level',$usuario_level);?>		 
+   		<?php $this->set('usuario_level',$usuario_level);?>		 
 		<?php if ($usuario_level == '3'||$usuario_level == '2'||$usuario_level == '1')
 		{?>	
 		<div id="bienvenida"> 		
@@ -104,6 +111,6 @@ $cakeDescription = __d('cake_dev', '');
 <footer>
 		<?php echo $this->Html->script('main');?>
 		<?php echo $this->Html->script('bootstrap.min');?>
-
+		<?php echo $this->Html->script('jquery.waypoints.min');?>
 <footer>	
 </html>
