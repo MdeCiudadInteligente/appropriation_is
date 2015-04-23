@@ -12,17 +12,16 @@
 				<div class="results-input-neighborhood" data-input-name="data[PerParticipant][neighborhood_id]">
 				</div>
 			</div>
-		</div>
-		<!--  
+		</div> 
 		<div class="seccion-person">	
 			<div class="input" >
 				<label>Personas</label>
-				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona">
+				<input type="text"  class="person-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa minimo una persona" data-limit="1">
 				<div class="results-input" data-input-name="data[Person][Person][]">
 					
 				</div>
 			</div>
-		</div>-->
+		</div>
 		<div class="seccion-person">	
 			<div class="input" >
 				<label>Tipo de población</label>
@@ -34,8 +33,8 @@
 	<?php	
 		echo $this->Form->input('other_population_type');
 		//echo $this->Form->input('per_people_type_id');
-		echo $this->Form->input('marital_status_id');
-		echo $this->Form->input('school_level_id');
+		echo $this->Form->input('marital_status_id',array('empty'=>'Seleccione el estado civil'));
+		echo $this->Form->input('school_level_id',array('empty'=>'Seleccione el nivel de escolaridad'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

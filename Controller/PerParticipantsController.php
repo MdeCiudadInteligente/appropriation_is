@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::import('Controller', 'PerPeopleTypes');
 /**
  * PerParticipants Controller
  *
@@ -48,16 +49,49 @@ class PerParticipantsController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->PerParticipant->create();
-			if ($this->PerParticipant->save($this->request->data)) {
-				$this->Session->setFlash(__('The per participant has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The per participant could not be saved. Please, try again.'));
-			}
+			
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
+			
+			$people_id=$this->request->data['Person']['Person'][0];
+			$type_people='2';
+				
+			$this->set('people_id',$people_id);
+			
+			$PerPeopleTypes = new PerPeopleTypesController;
+			
+			$per_people_response=$PerPeopleTypes->add($people_id,$type_people,$usuario);
+			
+			
+			if ($per_people_response['success']){
+			
+				if($per_people_response['last_id']){
+					$per_people_id=$per_people_response['last_id'];
+					$data=$this->request->data;
+					$data['PerParticipant']['per_people_type_id']=$per_people_id;
+					$data['PerParticipant']['creation_date']=date('Y-m-d H:i:s');
+					$data['PerParticipant']['user_id']=$usuario;
+					
+					if ($this->PerParticipant->save($data)) {
+						$this->Session->setFlash(__('The per participant has been saved.'));
+						return $this->redirect(array('action' => 'index'));
+			
+					} else {
+						$this->Session->setFlash(__('The per participant could not be saved. Please, try again.'));
+					}
+				}else{
+					$this->Session->setFlash(__('No hay id'));
+				}
+			
+			}else{
+				$this->Session->setFlash(__($per_people_response['message']));
+			
+			}	
 		}
 		$neighborhoods = $this->PerParticipant->Neighborhood->find('list');
 		$perPeopleTypes = $this->PerParticipant->PerPeopleType->find('list');
-		$maritalStatuses = $this->PerParticipant->PerMaritalStatus->find('list');
+		$maritalStatuses = $this->PerParticipant->PerMaritalStatus->find('list',array('order' => array('PerMaritalStatus.name' => 'ASC')));
 		$schoolLevels = $this->PerParticipant->PerSchoolLevel->find('list');
 		$populationTypes = $this->PerParticipant->PopulationType->find('list');
 		$trainings = $this->PerParticipant->Training->find('list');
