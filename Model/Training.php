@@ -63,16 +63,6 @@ class Training extends AppModel {
 				'rule' => array('notEmpty'),				
 			),
 		),
-		/*'participant_number' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),*/
 		'type_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -83,7 +73,7 @@ class Training extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'site_id' => array(
+		/*'site_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -92,7 +82,7 @@ class Training extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),*/
 		'user_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -163,7 +153,7 @@ class Training extends AppModel {
  * @var array
  */
 	public $hasAndBelongsToMany = array(
-			'Site' => array(
+			/*'Site' => array(
 					'className' => 'Site',
 					'joinTable' => 'sites_training',
 					'foreignKey' => 'training_id',
@@ -175,7 +165,7 @@ class Training extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
-			),
+			),*/
 			'TraAlly' => array(
 					'className' => 'TraAlly',
 					'joinTable' => 'tra_allies_training',

@@ -208,7 +208,7 @@ class Site extends AppModel {
 					'offset' => '',
 					'finderQuery' => '',
 			),
-			'Training' => array(
+			/*'Training' => array(
 					'className' => 'Training',
 					'joinTable' => 'sites_training',
 					'foreignKey' => 'site_id',
@@ -220,7 +220,7 @@ class Site extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
-			)
+			)*/
 	);
 
 }
