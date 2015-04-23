@@ -144,7 +144,7 @@ class PerParticipant extends AppModel {
 		'PopulationType' => array(
 			'className' => 'PopulationType',
 			'joinTable' => 'per_participants_population_types',
-			'foreignKey' => 'per_participant_id',
+			'foreignKey' => 'participant_id',
 			'associationForeignKey' => 'population_type_id',
 			'unique' => 'keepExisting',
 			'conditions' => '',

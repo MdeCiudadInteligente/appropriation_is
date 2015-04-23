@@ -72,6 +72,19 @@ class PopulationType extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
-			)
+	),
+	'PerParticipant' => array(
+					'className' => 'PerParticipant',
+					'joinTable' => 'per_participants_population_types',
+					'foreignKey' => 'population_type_id',
+					'associationForeignKey' => 'participant_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+	)
 	);
 }

@@ -8,12 +8,12 @@
 		<div class="seccion-person">
 			<div class="input">
 				<label>Barrio</label>
-				<input type="text"  class="Neighborhoods-autocomplete" data-required="true" data-valcontainer=".results-input-neighborhood" data-emptymsg="Por favor ingresa un barrio">
+				<input type="text"  class="Neighborhoods-autocomplete" data-required="true" data-valcontainer=".results-input-neighborhood" data-emptymsg="Por favor ingresa un barrio" data-limit="1">
 				<div class="results-input-neighborhood" data-input-name="data[PerParticipant][neighborhood_id]">
 				</div>
 			</div>
 		</div>
-		
+		<!--  
 		<div class="seccion-person">	
 			<div class="input" >
 				<label>Personas</label>
@@ -22,7 +22,7 @@
 					
 				</div>
 			</div>
-		</div>
+		</div>-->
 		<div class="seccion-person">	
 			<div class="input" >
 				<label>Tipo de población</label>
