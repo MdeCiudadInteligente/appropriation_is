@@ -157,7 +157,7 @@ class PerParticipant extends AppModel {
 		'Training' => array(
 			'className' => 'Training',
 			'joinTable' => 'per_participants_training',
-			'foreignKey' => 'per_participant_id',
+			'foreignKey' => 'participant_id',
 			'associationForeignKey' => 'training_id',
 			'unique' => 'keepExisting',
 			'conditions' => '',
