@@ -219,4 +219,58 @@ class PerParticipantsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+	
+	
+	/**
+	 * Json get participant
+	 *
+	 * @param string $query
+	 * @return $array
+	 */
+	public function getParticipant() {
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$queryString='%'.$_GET['q'].'%';
+		$db = $this->PerParticipant->getDataSource();
+		$participants=$db->fetchAll(
+				" SELECT
+			       t1.id, t2.person_id, t3.name , t3.lastname, t3.cedula , t4.name as nivel_escolar, t5.name as estado_civil, t6.neighborhood_name as barrio 
+			   FROM
+			       per_participants t1,
+			       per_people_type t2,
+			       people t3,
+			       per_school_level t4,
+			       per_marital_status t5,
+				   neighborhoods t6
+				
+			   WHERE
+			       t1.per_people_type_id = t2.id
+			           AND t2.person_id = t3.id_person
+			           AND t1.marital_status_id=t5.id
+					   AND t1.school_level_id=t4.id
+					   AND t1.neighborhood_id=t6.id_neighborhood
+			           AND (
+			   			CONCAT(t3.name, ' ', t3.lastname) LIKE :query
+			               OR t3.cedula LIKE :query
+			           )",
+				array('query' => $queryString)
+		);
+		foreach ($participants as $key => $participant) {
+			$json_data = array();
+			$json_data = array(
+					'id'=> $participant['t1']['id'],
+					'person_id' =>$participant['t2']['person_id'],
+					'name' =>$participant['t3']['name'],
+					'lastname' =>$participant['t3']['lastname'],
+					'cedula' =>$participant['t3']['cedula'],
+					'nivel_escolar' =>$participant['t4']['nivel_escolar'],
+					'estado_civil' =>$participant['t5']['estado_civil'],
+					'barrio' =>$participant['t6']['barrio'],
+					'completeName'=>$participant['t3']['name']." ".$participant['t3']['lastname']
+			);
+			$data[]=$json_data;
+		}
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+//End class
 }

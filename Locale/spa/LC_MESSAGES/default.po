@@ -107,6 +107,30 @@ msgstr "Lista fondo de formador"
 msgid "New Per Trainer Fund"
 msgstr "Nuevo fondo de formador"
 
+msgid  "Per Participants"
+msgstr "Participantes"
+
+msgid  "Edit Per Participant"
+msgstr "Editar Participantes"
+
+msgid  "Other Population Type"
+msgstr "Otro Tipo de Población"
+
+msgid  "Marital Status"
+msgstr "Estado Civil"
+
+msgid  "School Level"
+msgstr "Nivel de Escolaridad"
+
+msgid  "Add Per Participant"
+msgstr "Agregar Participante"
+
+msgid  "The per participant has been saved."
+msgstr "El participante ha sido guardado."
+
+msgid  "The per participant has been deleted."
+msgstr "El participante ha sido eliminado."
+
 msgid "Add Per Trainer Fund"
 msgstr "Agregar fondo de formador"
 
