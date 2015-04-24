@@ -306,6 +306,60 @@ class TrainingsController extends AppController {
 		$this->set(compact('types', 'processes','allies','populationtypes'));
 
 	}
+/**
+ * admin method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin($id = null) {
+		debug($id);
+		if (!$this->Training->exists($id)) {
+			throw new NotFoundException(__('Invalid training'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			$data=$this->request->data;
+			unset($data['Training']['code']);
+			if ($this->Training->save($data)) {
+				$this->Session->setFlash(__('The training has been saved.'));
+				 return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
+			}
+		} else {
+			$options = array('conditions' => array('Training.' . $this->Training->primaryKey => $id));
+			$this->request->data = $this->Training->find('first', $options);
+		}
+		$types = $this->Training->TraType->find('list');
+		$processes = $this->Training->TraProcess->find('list');
+		//$sites = $this->Training->Site->find('list');
+		$allies = $this->Training->TraAlly->find('list');
+		$populationtypes = $this->Training->PopulationType->find('list');
+		
+
+		$db = $this->Training->getDataSource();
+		$trainers=$db->fetchAll(
+			  "SELECT
+			       t1.id, t3.name , t3.lastname
+			   FROM
+			       per_trainers t1,
+			       per_people_type t2,
+			       people t3,
+				   training_per_trainers t4	
+			   WHERE
+			       t1.per_people_type_id = t2.id
+			       AND t2.person_id = t3.id_person
+				   AND t4.per_trainer_id=t1.id
+				   AND t4.training_id= :id_training	
+			   ",
+				array('id_training' => $id)
+		);
+		
+		$this->request->data['trainers']=$trainers;
+		$this->set(compact('types', 'processes','allies','populationtypes'));
+
+	}
 
 /**
  * delete method

@@ -657,6 +657,11 @@ App.prototype.appendServiceHtml=function(data,name,allowedIndex){
 
 }
 
+
+App.prototype.goToParameterView=function(url,parameters){
+    location
+};
+
 App.prototype.putHtmlonAside=function(html,width){
     $('#right-content-aside .main-content').html(html);
     $('#right-content-aside').addClass('active').css({'width':width});

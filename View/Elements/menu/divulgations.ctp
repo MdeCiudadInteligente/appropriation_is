@@ -2,6 +2,7 @@
 
 <?php 
 	$menu_element=array(
+		    'custom_class'=>'divulgation-internal-menu',
 			'title'=>'Sensibilizaciones',
 			'elements'=>array(
 				array(
