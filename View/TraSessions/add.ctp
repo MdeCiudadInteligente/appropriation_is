@@ -1,7 +1,16 @@
-<div class="traSessions form">
+<div class="traSessions form mde-form">
 <?php echo $this->Form->create('TraSession'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Tra Session'); ?></legend>
+	
+			<div class="seccion-person">
+				<div class="input" >
+					<label>Participante</label>
+						<input type="text"  class="Participants-autocomplete" data-required="true" data-valcontainer=".results-input-par" data-emptymsg="Por favor ingresa un participante">
+						<div class="results-input-par" data-input-name="data[PerParticipant][PerParticipant][]" >
+						</div>
+				</div>
+			</div>
 	<?php
 		echo $this->Form->input('training_id');
 		echo $this->Form->input('observation');
