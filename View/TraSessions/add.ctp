@@ -2,8 +2,16 @@
 <?php echo $this->Form->create('TraSession'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Tra Session'); ?></legend>
+	
+		<div class="seccion-person">	
+			<div class="input">
+				<label>Formaciones</label>
+				<input type="text" data-required="true" data-valcontainer=".results-input-training" data-emptymsg="Por favor ingresa una formación" class="Trainings-autocomplete">
+				<div class="results-input-training" data-input-name="data[TraSession][training_id]">			
+				</div>
+			</div>
+		</div>	
 	<?php
-		echo $this->Form->input('training_id');
 		echo $this->Form->input('observation');
 		echo $this->Form->input('start_date');
 		echo $this->Form->input('start_time');
