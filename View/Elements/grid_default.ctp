@@ -103,7 +103,7 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 	<?php } //End if custom actions apply ?>	
 
 	<?php  $grantAcces=(isset($gridOptions['AllowAll']))?"|| 1==1":""; ?>
-	var markup=(markup.length)?markup:'';
+	var markup=(typeof(markup) != "undefined")?markup:'';
 	if(user_id==<?php echo $id_usuario ?> || user_id==0 || <?php  echo $usuario_level ?>==1 <?php echo $grantAcces ?> ){
 		return "<div class='function-cont'>"+ver+editar+eliminar+markup+"</div>";
 	}else{

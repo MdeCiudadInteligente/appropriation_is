@@ -121,6 +121,12 @@ App.prototype.bind=function(){
         var parent_menu=$(this).closest('li');
         $(parent_menu).toggleClass('active');
     });
+
+    $('#content').on('click','.go-to-url-id',function(){
+        var url=$(this).data('url')+'/'+$(this).data('id');
+        console.log(url);
+        location.href=url;
+    });
 }
 
 

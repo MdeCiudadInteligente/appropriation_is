@@ -53,7 +53,7 @@
 								'id'=>NULL,
 								'code'=>NULL
 							),
-							'markup'=>'<div class="custom_render"><i class="icon-town-hall  admin-training" data-url="'.$adminUrl.'" data-id="{id}" data-code="{code}"></i></div>'
+							'markup'=>'<div class="custom_render"><i class="icon-town-hall  admin-training go-to-url-id" data-url="'.$adminUrl.'" data-id="{id}" data-code="{code}"></i></div>'
 						))
 				);
 			?>

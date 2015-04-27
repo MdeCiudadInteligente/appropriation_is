@@ -314,29 +314,15 @@ class TrainingsController extends AppController {
  * @return void
  */
 	public function admin($id = null) {
-		debug($id);
 		if (!$this->Training->exists($id)) {
 			throw new NotFoundException(__('Invalid training'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			$data=$this->request->data;
-			unset($data['Training']['code']);
-			if ($this->Training->save($data)) {
-				$this->Session->setFlash(__('The training has been saved.'));
-				 return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Training.' . $this->Training->primaryKey => $id));
-			$this->request->data = $this->Training->find('first', $options);
-		}
+		$options = array('conditions' => array('Training.' . $this->Training->primaryKey => $id));
+		$this->request->data = $this->Training->find('first', $options);
 		$types = $this->Training->TraType->find('list');
 		$processes = $this->Training->TraProcess->find('list');
-		//$sites = $this->Training->Site->find('list');
 		$allies = $this->Training->TraAlly->find('list');
 		$populationtypes = $this->Training->PopulationType->find('list');
-		
 
 		$db = $this->Training->getDataSource();
 		$trainers=$db->fetchAll(

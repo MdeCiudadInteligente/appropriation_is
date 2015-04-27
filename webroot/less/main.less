@@ -451,12 +451,12 @@ body{
 								&:after{
 								    border-bottom: 20px solid transparent;
 								    border-right: 20px solid #373A47;
-								    border-top: 20px solid transparent;
+								    border-top: 21px solid transparent;
 								    content: "";
 								    height: 0;
 								    left: -19px;
 								    position: absolute;
-								    top: 1px;
+								    top: -1px;
 								    width: 0;				
 								}							    
 						}
@@ -1289,5 +1289,34 @@ body{
 				}
 			}
 		}
+	}
+}
+
+.admin-view{
+	section{
+		position: relative;
+	}
+	legend{
+	    background-color: #373a47;
+	    border-radius: 2px 2px 0 0;
+	    color: #fff;
+	    font-size: 14px;
+	    height: 40px;
+	    padding: 10px;
+	    position: absolute;
+	    text-align: center;
+	    top: -39px;
+	    width: 100%;	
+	    &:after{
+		    border-bottom: 20px solid transparent;
+		    border-right: 20px solid #373a47;
+		    border-top: 21px solid transparent;
+		    content: "";
+		    height: 0;
+		    left: -19px;
+		    position: absolute;
+		    top: -1px;
+		    width: 0;	    	
+	    }	
 	}
 }
