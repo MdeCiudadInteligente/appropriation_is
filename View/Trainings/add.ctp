@@ -20,19 +20,8 @@
 		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text','label'=>'Fecha Final'));
 
 
-		?>
-  <!-- <div class="seccion-person">	
-			<div class="input">
-				<label>Sitio</label>
-				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-limit="100" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" >
-				<div class="results-input-site" data-input-name="data[Site][Site][]" >			
-				</div>
-			</div>
-	</div> -->
-	<?php	
-		//echo $this->Form->input('process_id');
-		//echo $this->Form->input('TraAllies');
 	?>
+
 	<div class="seccion-person">	
 			<div class="input" >
 				<label>Procesos</label>

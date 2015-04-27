@@ -247,7 +247,7 @@ class PerParticipantsController extends AppController {
 			           AND t2.person_id = t3.id_person
 			           AND t1.marital_status_id=t5.id
 					   AND t1.school_level_id=t4.id
-					   AND t1.neighborhood_id=t6.id
+					   AND t1.neighborhood_id=t6.id_neighborhood
 			           AND (
 			   			CONCAT(t3.name, ' ', t3.lastname) LIKE :query
 			               OR t3.cedula LIKE :query
@@ -257,15 +257,15 @@ class PerParticipantsController extends AppController {
 		foreach ($participants as $key => $participant) {
 			$json_data = array();
 			$json_data = array(
-					'id'=> $trainer['t1']['id'],
-					'person_id' =>$trainer['t2']['person_id'],
-					'name' =>$trainer['t3']['name'],
-					'lastname' =>$trainer['t3']['lastname'],
-					'cedula' =>$trainer['t3']['cedula'],
-					'nivel_escolar' =>$trainer['t4']['nivel_escolar'],
-					'estado_civil' =>$trainer['t5']['estado_civil'],
-					'barrio' =>$trainer['t6']['barrio'],
-					'completeName'=>$trainer['t3']['name']." ".$trainer['t3']['lastname']
+					'id'=> $participant['t1']['id'],
+					'person_id' =>$participant['t2']['person_id'],
+					'name' =>$participant['t3']['name'],
+					'lastname' =>$participant['t3']['lastname'],
+					'cedula' =>$participant['t3']['cedula'],
+					'nivel_escolar' =>$participant['t4']['nivel_escolar'],
+					'estado_civil' =>$participant['t5']['estado_civil'],
+					'barrio' =>$participant['t6']['barrio'],
+					'completeName'=>$participant['t3']['name']." ".$participant['t3']['lastname']
 			);
 			$data[]=$json_data;
 		}

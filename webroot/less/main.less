@@ -451,12 +451,12 @@ body{
 								&:after{
 								    border-bottom: 20px solid transparent;
 								    border-right: 20px solid #373A47;
-								    border-top: 20px solid transparent;
+								    border-top: 21px solid transparent;
 								    content: "";
 								    height: 0;
 								    left: -19px;
 								    position: absolute;
-								    top: 1px;
+								    top: -1px;
 								    width: 0;				
 								}							    
 						}
@@ -799,7 +799,9 @@ body{
 
 	.function-cont{
 		i{
+			.transition(all 500ms ease-out);
 			font-size: 23px;
+			cursor: pointer;
 			&.view{
 				color: #5a8565;
 			}
@@ -808,6 +810,16 @@ body{
 			}
 			&.cancel{
 				color: #fb5252;
+			}
+			&:hover{
+				opacity: 0.9;
+				filter: grayscale(70%);
+			}
+		}
+		.custom_render{
+			display: inline-block;
+			.admin-training{
+				color: #373A47;
 			}
 		}
 	}
@@ -1072,7 +1084,7 @@ body{
 	font-style: italic;
 	position: relative;
 	font-size: 15px;
-	background: #4C4D4C;
+	background: #373A47;
 	border-radius: 5px 5px 0px 0px;
 	border: none;
 }
@@ -1277,5 +1289,34 @@ body{
 				}
 			}
 		}
+	}
+}
+
+.admin-view{
+	section{
+		position: relative;
+	}
+	legend{
+	    background-color: #373a47;
+	    border-radius: 2px 2px 0 0;
+	    color: #fff;
+	    font-size: 14px;
+	    height: 40px;
+	    padding: 10px;
+	    position: absolute;
+	    text-align: center;
+	    top: -39px;
+	    width: 100%;	
+	    &:after{
+		    border-bottom: 20px solid transparent;
+		    border-right: 20px solid #373a47;
+		    border-top: 21px solid transparent;
+		    content: "";
+		    height: 0;
+		    left: -19px;
+		    position: absolute;
+		    top: -1px;
+		    width: 0;	    	
+	    }	
 	}
 }
