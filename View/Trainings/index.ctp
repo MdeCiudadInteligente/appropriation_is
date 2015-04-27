@@ -17,6 +17,7 @@
 		<div class="divulgations">
 			<h2><?php echo __('Divulgations'); ?></h2>
 			<?php
+				$adminUrl=Router::url( array('controller' => 'Trainings', 'action' => 'admin'),true);
 				$gridOptions=array(
 						'gridId'=>'gridTrainings',
 						'gridTitle'=>'Formaciones',
@@ -46,7 +47,14 @@
 							)
 						),
 						'printCrud'=>true,
-						'baseParams'=>array('start'=>0,'limit'=>100)
+						'baseParams'=>array('start'=>0,'limit'=>100),
+						'add_operations'=>json_encode(array(
+							'vars'=>array(
+								'id'=>NULL,
+								'code'=>NULL
+							),
+							'markup'=>'<div class="custom_render"><i class="icon-town-hall  admin-training go-to-url-id" data-url="'.$adminUrl.'" data-id="{id}" data-code="{code}"></i></div>'
+						))
 				);
 			?>
 			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>

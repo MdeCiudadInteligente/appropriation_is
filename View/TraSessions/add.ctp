@@ -2,8 +2,16 @@
 <?php echo $this->Form->create('TraSession'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Tra Session'); ?></legend>
-	
-			<!--  <div class="seccion-person">
+	       <div class="seccion-person">
+				<div class="input">
+					<label>Formaciones</label>
+					<input type="text" data-required="true" data-valcontainer=".results-input-training" data-emptymsg="Por favor ingresa una formación" class="Trainings-autocomplete">
+					<div class="results-input-training" data-input-name="data[TraSession][training_id]">			
+					</div>
+				</div>
+			</div>	
+
+	<!--  <div class="seccion-person">
 				<div class="input" >
 					<label>Participante</label>
 						<input type="text"  class="Participants-autocomplete" data-required="true" data-valcontainer=".results-input-par" data-emptymsg="Por favor ingresa un participante">
@@ -13,16 +21,15 @@
 			</div>-->
 			
 			<div class="seccion-person">	
-			<div class="input">
-				<label>Sitio</label>
-				<input type="text"  class="Site-autocomplete" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio">
-				<div class="results-input-site" data-input-name="data[Site][Site][]">			
+				<div class="input">
+					<label>Sitio</label>
+					<input type="text"  class="Site-autocomplete" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio">
+					<div class="results-input-site" data-input-name="data[Site][Site][]">			
+					</div>
 				</div>
-			</div>
-		</div>		
+		    </div>		
 	<?php
-		//echo $this->Form->input('training_id');
-		echo $this->Form->input('training_id',array ('type'=>'select','options' => array ('1'=>'1','2'=>'3'),'empty'=>'Seleccione el tipo de reunión'));
+		//echo $this->Form->input('training_id',array ('type'=>'select','options' => array ('1'=>'1','2'=>'3'),'empty'=>'Seleccione el tipo de reunión'));
 		echo $this->Form->input('observation');
 		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('start_time');

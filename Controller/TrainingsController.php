@@ -306,6 +306,46 @@ class TrainingsController extends AppController {
 		$this->set(compact('types', 'processes','allies','populationtypes'));
 
 	}
+/**
+ * admin method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin($id = null) {
+		if (!$this->Training->exists($id)) {
+			throw new NotFoundException(__('Invalid training'));
+		}
+		$options = array('conditions' => array('Training.' . $this->Training->primaryKey => $id));
+		$this->request->data = $this->Training->find('first', $options);
+		$types = $this->Training->TraType->find('list');
+		$processes = $this->Training->TraProcess->find('list');
+		$allies = $this->Training->TraAlly->find('list');
+		$populationtypes = $this->Training->PopulationType->find('list');
+
+		$db = $this->Training->getDataSource();
+		$trainers=$db->fetchAll(
+			  "SELECT
+			       t1.id, t3.name , t3.lastname
+			   FROM
+			       per_trainers t1,
+			       per_people_type t2,
+			       people t3,
+				   training_per_trainers t4	
+			   WHERE
+			       t1.per_people_type_id = t2.id
+			       AND t2.person_id = t3.id_person
+				   AND t4.per_trainer_id=t1.id
+				   AND t4.training_id= :id_training	
+			   ",
+				array('id_training' => $id)
+		);
+		
+		$this->request->data['trainers']=$trainers;
+		$this->set(compact('types', 'processes','allies','populationtypes'));
+
+	}
 
 /**
  * delete method
@@ -326,4 +366,27 @@ class TrainingsController extends AppController {
 			$this->Session->setFlash(__('The training could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	
+	//servicio training...
+	public function getTraining() {
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$queryString=$_GET['q'];
+		$condition=array('OR' => array(
+				array('Training.code LIKE' => '%'.$queryString.'%'),
+				array('Training.activity_place LIKE' => '%'.$queryString.'%')
+		));
+	
+		$training=$this->Training->find('list',array('fields'=>array('Training.id','Training.code','Training.activity_place'),'order' => array('Training.code' => 'ASC'),'conditions' => $condition));
+		foreach ($training as $activity_place => $value) {
+			$json_data = array();
+			$json_data['activity_place']=$activity_place;
+			$array_keys=array_keys($value);
+			$json_data['id']=$array_keys[0];			
+			$json_data['code']=$value[$array_keys[0]];
+			$data[]=$json_data;
+		}
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+}

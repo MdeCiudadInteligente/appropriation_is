@@ -24,9 +24,13 @@
 
 <script type='text/javascript'>
 <?php  $controller=(isset($gridOptions['controller']))?$gridOptions['controller']:$this->name;?>
-var <?php echo $gridOptions['gridId']?>_actionViewUrl="<?php echo  Router::url(array('controller' => $controller, 'action' => 'View')); ?>"
-var <?php echo $gridOptions['gridId']?>_editViewUrl="<?php echo  Router::url(array('controller' => $controller, 'action' => 'edit')); ?>"
-var <?php echo $gridOptions['gridId']?>_delViewUrl="<?php echo  Router::url(array('controller' => $controller, 'action' => 'delete')); ?>"
+var <?php echo $gridOptions['gridId']?>_actionViewUrl="<?php echo  Router::url(array('controller' => $controller, 'action' => 'View')); ?>";
+var <?php echo $gridOptions['gridId']?>_editViewUrl="<?php echo  Router::url(array('controller' => $controller, 'action' => 'edit')); ?>";
+var <?php echo $gridOptions['gridId']?>_delViewUrl="<?php echo  Router::url(array('controller' => $controller, 'action' => 'delete')); ?>";
+<?php if(isset($gridOptions['add_operations'])) {?>
+var <?php echo $gridOptions['gridId']?>_add_operations=<?php echo  $gridOptions['add_operations']?>;
+<?php } //End if custom actions ?>
+
 Ext.BLANK_IMAGE_URL = 'webroot/js/ext/resources/images/default/s.gif';
 Ext.namespace('<?php echo $gridOptions['gridId']?>');
 <?php echo $gridOptions['gridId']?>.store = new Ext.data.GroupingStore({
@@ -81,23 +85,47 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 <?php echo $gridOptions['gridId']?>.render = function(){<?php echo $gridOptions['gridId']?>.grid.render('<?php echo $gridOptions['gridId']?>');};
 
 
+<?php echo $gridOptions['gridId']?>.render_add_operations=function(val,meta,record){
+
+};
 
 <?php echo $gridOptions['gridId']?>.render_crud = function(val,meta,record){
 	var ver="<a href='"+<?php echo $gridOptions['gridId']?>_actionViewUrl+"/"+val+"' target='_blank'><i title='Ver' class='icon-desktop-1 view'></i></a>";
 	var editar="<a href='"+<?php echo $gridOptions['gridId']?>_editViewUrl+"/"+val+"'><i title='Editar' class='icon-export edit'></i></a>";
 	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+<?php echo $gridOptions['gridId']?>_delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Seguro que quieres eliminar # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
 	var user_id=record.get('user_id');
+	
+	<?php if(isset($gridOptions['add_operations'])) {?>
+			var getVarsObject=<?php echo $gridOptions['gridId']?>_add_operations.vars;
+			var markup=<?php echo $gridOptions['gridId']?>_add_operations.markup;
+			var custom_vars=<?php echo $gridOptions['gridId']?>_getCustomVars(val,meta,record,getVarsObject);
+			var markup=<?php echo $gridOptions['gridId']?>_replaceObjectVars(markup,custom_vars);
+	<?php } //End if custom actions apply ?>	
 
 	<?php  $grantAcces=(isset($gridOptions['AllowAll']))?"|| 1==1":""; ?>
-
+	var markup=(typeof(markup) != "undefined")?markup:'';
 	if(user_id==<?php echo $id_usuario ?> || user_id==0 || <?php  echo $usuario_level ?>==1 <?php echo $grantAcces ?> ){
-		return "<div class='function-cont'>"+ver+editar+eliminar+"</div>";
+		return "<div class='function-cont'>"+ver+editar+eliminar+markup+"</div>";
 	}else{
 		return "<div class='grid-msj'>No tienes permisos</div>";
 	}
-
 }; 
 
+
+<?php echo $gridOptions['gridId']?>_getCustomVars=function(val,meta,record,object){
+		var output=object;
+		$.each(object,function(key,value){
+			output[key]=record.get(key);
+		});
+		return output;
+}
+
+<?php echo $gridOptions['gridId']?>_replaceObjectVars=function(markup,object){
+		$.each(object,function(key,value){
+			markup=markup.replace("{"+key+"}", value);
+		});
+		return markup;
+}
 
 <?php echo $gridOptions['gridId']?>.columns = [
 <?php 
