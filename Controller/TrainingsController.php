@@ -27,6 +27,72 @@ class TrainingsController extends AppController {
 		$this->set('trainings', $this->Paginator->paginate());
 	}
 
+/**
+ * person_status
+ *
+ * @throws NotFoundException
+ * @param string $search_query
+ * @return json
+ */
+
+	public function person_status()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$queryString='%'.$_GET['q'].'%';
+		$id=$_GET['id'];
+		$db = $this->Training->getDataSource();
+		$persons=$db->fetchAll(
+			   "SELECT 
+					    id_person,
+					    cedula,
+					    email,
+					    CONCAT(name, ' ', lastname) AS complete_name,
+					    (SELECT 
+					            participants.id
+					        FROM
+					            per_people_type,
+					            per_participants AS participants
+					        WHERE
+					            person_id = people.id_person
+					                AND participants.per_people_type_id = per_people_type.id
+					                AND per_type_id = 2) AS id_participant,
+					    (SELECT 
+					            part_training.id
+					        FROM
+					            per_people_type,
+					            per_participants AS participants,
+					            per_participants_training part_training
+					        WHERE
+					            person_id = people.id_person
+					                AND participants.per_people_type_id = per_people_type.id
+					                AND per_type_id = 2
+					                AND part_training.participant_id = participants.id
+					                AND part_training.training_id = :id_formation) AS is_participant
+					FROM
+					    people
+					WHERE
+					    people.cedula LIKE :query
+					        OR CONCAT(people.name, ' ', people.lastname) LIKE :query
+					        OR people.email LIKE :query",
+			    array('query' => $queryString,'id_formation'=>$id)
+			);	
+			$count=0;
+			foreach ($persons as $key => $trainer) {
+				$json_data=array(
+						'id'=>$trainer['people']['id_person'],
+						'doc'=>$trainer['people']['cedula'],
+						'email'=>$trainer['people']['email'],
+						'complete_name'=>$trainer['0']['complete_name'],
+						'id_participant'=>$trainer['0']['id_participant'],
+						'is_participant'=>$trainer['0']['is_participant']);
+				$count++;
+				$data[]=$json_data;
+			}	
+			$this->set(compact('data')); // Pass $data to the view
+			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 
 	public function index_service()
@@ -366,4 +432,6 @@ class TrainingsController extends AppController {
 			$this->Session->setFlash(__('The training could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+}
