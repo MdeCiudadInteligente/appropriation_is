@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Tra Session'); ?></legend>
 	
-<<<<<<< HEAD
+
 		<div class="seccion-person">	
 			<div class="input">
 				<label>Formaciones</label>
@@ -12,16 +12,15 @@
 				</div>
 			</div>
 		</div>	
-=======
-			<div class="seccion-person">
+		
+		<div class="seccion-person">
 				<div class="input" >
 					<label>Participante</label>
 						<input type="text"  class="Participants-autocomplete" data-required="true" data-valcontainer=".results-input-par" data-emptymsg="Por favor ingresa un participante">
 						<div class="results-input-par" data-input-name="data[PerParticipant][PerParticipant][]" >
 						</div>
 				</div>
-			</div>
->>>>>>> d7fbb70c53ccecce5809596b3940c21f9a367cc9
+		</div>
 	<?php
 		echo $this->Form->input('observation');
 		echo $this->Form->input('start_date');

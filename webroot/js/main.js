@@ -67,11 +67,9 @@ App.prototype.bind=function(){
     app.bindAutocompleteTraProcess('.TraProcesses-autocomplete');
     app.bindAutocompleteTrainers('.Trainers-autocomplete');
     app.bindAutocompleteNeighborhoods('.Neighborhoods-autocomplete');
-<<<<<<< HEAD
     app.bindAutocompleteTrainings('.Trainings-autocomplete');
-=======
     app.bindAutocompleteParticipants('.Participants-autocomplete');
->>>>>>> d7fbb70c53ccecce5809596b3940c21f9a367cc9
+
     
     app.removeRequired();
     //app.setMobileNav();
@@ -832,7 +830,7 @@ App.prototype.bindAutocompleteNeighborhoods=function(selector){
 	 }
 };
 
-<<<<<<< HEAD
+
 
 /* Autocomplete trainings */
 App.prototype.bindAutocompleteTrainings=function(selector){
@@ -913,7 +911,7 @@ App.prototype.bindAutocompleteTrainings=function(selector){
     
 
 };
-=======
+
 /* Autocomplete Participants */
 App.prototype.bindAutocompleteParticipants=function(selector){
 			if($(selector).length){
@@ -991,5 +989,5 @@ App.prototype.bindAutocompleteParticipants=function(selector){
 	  }
 
 };		
->>>>>>> d7fbb70c53ccecce5809596b3940c21f9a367cc9
+
 
