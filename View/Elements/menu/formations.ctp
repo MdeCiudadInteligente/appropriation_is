@@ -35,7 +35,25 @@
 								"custom-class"=>'add-thematics'
 							)	
 						)
-				),
+				),				
+				array(
+							"icon-class"=>'icon-cogs',
+							"route"=>Router::url( array('controller' => 'TraSessions', 'action' => 'index'),true),
+							"label" =>__('Tra Sessions'),
+							"custom-class"=>'Tra-sessions',
+							"sub-elements"=>array(
+									array(
+											"route"=>Router::url( array('controller' => 'TraSessions', 'action' => 'index'),true),
+											"label"=>__('List Tra Sessions'),
+											"custom-class"=>'list-sessions'
+									),
+									array(
+											"route"=>Router::url( array('controller' => 'TraSessions', 'action' => 'add'),true),
+											"label"=>__('New Tra Sessions'),
+											"custom-class"=>'add-sessions'
+									)
+							)
+				),					
 				array(
 						"icon-class"=>'icon-cogs',
 						"route"=>Router::url( array('controller' => ' TraProcesses', 'action' => 'index'),true),

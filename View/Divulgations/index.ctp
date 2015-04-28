@@ -1,6 +1,4 @@
-﻿
-
-<div class="divulgacion-cont app-grid-container">
+﻿<div class="divulgacion-cont app-grid-container">
 
 	<div class="left-block">
 		<div class="actions">
