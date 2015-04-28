@@ -36,7 +36,7 @@ class TraSessionsController extends AppController {
 		$count=0;
 		foreach ($Session as $key => $Session) {
 			$data['rows'][$count]=array(
-					'id'=>$Session['TraSession']['id_divulgation'],
+					'id'=>$Session['TraSession']['id'],
 					'training'=>$Session['Training']['code'],
 					'observation'=>$Session['TraSession']['observation'],
 					'start_date'=>$Session['TraSession']['start_date'],
