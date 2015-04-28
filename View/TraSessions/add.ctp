@@ -2,8 +2,7 @@
 <?php echo $this->Form->create('TraSession'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Tra Session'); ?></legend>
-<<<<<<< HEAD
-	
+
 
 		<div class="seccion-person">	
 			<div class="input">
@@ -14,29 +13,15 @@
 			</div>
 		</div>	
 		
-		<div class="seccion-person">
-=======
-	       <div class="seccion-person">
-				<div class="input">
-					<label>Formaciones</label>
-					<input type="text" data-required="true" data-valcontainer=".results-input-training" data-emptymsg="Por favor ingresa una formación" class="Trainings-autocomplete">
-					<div class="results-input-training" data-input-name="data[TraSession][training_id]">			
-					</div>
-				</div>
-			</div>	
-
 	<!--  <div class="seccion-person">
->>>>>>> 726f7207db71f88c562a0841148c70093a33add1
+
 				<div class="input" >
 					<label>Participante</label>
 						<input type="text"  class="Participants-autocomplete" data-required="true" data-valcontainer=".results-input-par" data-emptymsg="Por favor ingresa un participante">
 						<div class="results-input-par" data-input-name="data[PerParticipant][PerParticipant][]" >
 						</div>
 				</div>
-<<<<<<< HEAD
-		</div>
-=======
-			</div>-->
+	       </div>-->
 			
 			<div class="seccion-person">	
 				<div class="input">
@@ -46,7 +31,7 @@
 					</div>
 				</div>
 		    </div>		
->>>>>>> 726f7207db71f88c562a0841148c70093a33add1
+
 	<?php
 		//echo $this->Form->input('training_id',array ('type'=>'select','options' => array ('1'=>'1','2'=>'3'),'empty'=>'Seleccione el tipo de reunión'));
 		echo $this->Form->input('observation');
