@@ -32,15 +32,11 @@
 				</div>
 		    </div>		
 
-	<?php
-		//echo $this->Form->input('training_id',array ('type'=>'select','options' => array ('1'=>'1','2'=>'3'),'empty'=>'Seleccione el tipo de reunión'));
+	<?php		
 		echo $this->Form->input('observation');
 		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('start_time');
 		echo $this->Form->input('end_time');
-		//echo $this->Form->input('user_id');
-		//echo $this->Form->input('creation_date');
-		//echo $this->Form->input('modification_date');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
