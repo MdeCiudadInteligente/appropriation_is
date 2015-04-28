@@ -17,6 +17,7 @@
 					"label"=>__('New Divulgation')
 				),
 				array(
+						"user_level"=>'1,4,5',
 						"icon-class"=>'icon-cogs',
 						"route"=>Router::url( array('controller' => 'DivTypes', 'action' => 'index'),true),
 						"label" =>__('Divulgation Types'),
@@ -27,6 +28,7 @@
 								"label"=>__('List Divulgation Types')
 							),	
 							array(
+								"user_level"=>'1',
 								"route"=>Router::url( array('controller' => ' DivTypes', 'action' => 'add'),true),
 								"label"=>__('New Divulgation Type')
 							)	

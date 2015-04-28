@@ -1,17 +1,42 @@
-<div class="traSessions form">
-<?php echo $this->Form->create('TraSession'); ?>
+<div class="traSessions form mde-form">
+<?php echo $this->Form->create('TraSession'); 
+	 $site=$this->request->data['Site'];
+	 $training=$this->request->data['Training'];
+
+?>
 	<fieldset>
 		<legend><?php echo __('Edit Tra Session'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('training_id');
+	?>
+	
+	<div class="seccion-person">
+		<div class="input">
+			<label>FormaciÃ³n</label>
+			<input type="text"  class="Trainings-autocomplete" data-load="true" data-required="true" data-valcontainer=".results-input-training" data-emptymsg="Por favor ingresa una formación" data-limit="1">
+			<div class="results-input-training" data-input-name="data[TraSession][training_id]">
+				<input type="hidden" name="data[TraSession][training_id]" value="<?php echo $training['id'] ?>" data-display="<?php echo $training['code']?>" id="val-input-site-<?php echo $training['id']?>">
+			</div>
+		</div>
+	</div>
+	
+	<div class="seccion-person">
+			<div class="input">
+				<label>Sitio</label>
+				<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" data-limit="100">
+					<div class="results-input-site" data-input-name="data[Site][Site][]">
+					<?php
+					foreach ($site as $key => $site) { ?>
+						<input type="hidden" name="data[Site][Site][]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name'] ?>" id="val-input-si-<?php echo $site['id_site']?>">
+					<?php } ?>
+					</div>
+			</div>
+		</div>
+		<?php	   
 		echo $this->Form->input('observation');
-		echo $this->Form->input('start_date');
+		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('start_time');
 		echo $this->Form->input('end_time');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('creation_date');
-		echo $this->Form->input('modification_date');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -125,6 +125,15 @@ msgstr "Nivel de Escolaridad"
 msgid  "Add Per Participant"
 msgstr "Agregar Participante"
 
+msgid  "Observation"
+msgstr "Observación"
+
+msgid  "Start Time"
+msgstr "Hora Inicio"
+
+msgid  "End Time"
+msgstr "Hora Final"
+
 msgid  "The per participant has been saved."
 msgstr "El participante ha sido guardado."
 
@@ -139,6 +148,16 @@ msgstr "Editar fondo formador"
 
 msgid  "Professions"
 msgstr "Profesiones"
+
+msgid  "Edit Tra Session"
+msgstr "Editar Sesión"
+
+msgid  "The tra session has been saved."
+msgstr "La Sesión ha sido guardada."
+
+
+msgid  "The tra session has been deleted."
+msgstr "La Sesión ha sido guardada."
 
 msgid  "The profession has been saved."
 msgstr "La profesión ha sido guardada"

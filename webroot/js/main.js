@@ -67,9 +67,10 @@ App.prototype.bind=function(){
     app.bindAutocompleteTraProcess('.TraProcesses-autocomplete');
     app.bindAutocompleteTrainers('.Trainers-autocomplete');
     app.bindAutocompleteNeighborhoods('.Neighborhoods-autocomplete');
+    app.bindAutocompleteTrainings('.Trainings-autocomplete');
     app.bindAutocompleteParticipants('.Participants-autocomplete');
     app.bindAutocompleteParticipantsRegister('.person-autocomplete-trainers');
-    
+   
     app.removeRequired();
     //app.setMobileNav();
     if(isMobile){
@@ -829,6 +830,87 @@ App.prototype.bindAutocompleteNeighborhoods=function(selector){
 	 }
 };
 
+
+/* Autocomplete trainings */
+App.prototype.bindAutocompleteTrainings=function(selector){
+
+    if($(selector).length){
+    	var limit=($(selector).data('limit'))?$(selector).data('limit'):1;
+        var serivce_route=absPath+"Trainings/getTraining.json";
+        $(selector).autoSuggest(serivce_route,
+            {   minChars: 2,
+                formatList: function(data, elem){
+                
+                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Código:</b> '+data.code+' </div><div class=\'suggest_info clearer_auto\'>  <b>Lugar de Actividad:</b> '+data.activity_place+' </div></div>');
+                return new_elem;
+                },
+                emptyText:'No se encontraron Formaciones',
+                selectedItemProp: 'code',
+                selectedValuesProp:'code',
+                searchObjProps: 'code,activity_place',
+                selectionLimit:limit,
+                starText: 'Seleccione la formaci?n',
+
+                resultClick: function(data){
+                    //Variables de datos
+                    var id=data.attributes.id;
+                    var data_name=$('.results-input-training').data('input-name');
+                    var elementID='val-input-tr-'+id;
+                    $('.results-input-training').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
+                },selectionRemoved: function(elem){
+                    var prop_data=elem.data('prop-data');
+                    var idtr=prop_data['id'];
+                    var elementID='val-input-tr-'+idtr;
+                    $('#'+elementID).remove();
+                    elem.remove();
+                },selectionAdded:function(elem){
+
+                }
+        });    
+
+        if($(selector).data('required')){
+            var parentForm=$(selector).closest('form');
+            var inputContainer=$($(selector).data('valcontainer'));
+            var emptyMsg=$(selector).data('emptymsg');
+            parentForm.on('submit',function(e){
+                if(inputContainer.find('input').length==0){
+                    e.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: $(selector).offset().top-100
+                    }, 500);
+                    setTimeout(function(){
+                        alert(emptyMsg);
+                    },500);
+                    return false;
+                }
+            });
+        }
+
+
+    }
+
+    if($(selector).data('load')){
+        var inputContainer=$($(selector).data('valcontainer'));
+        var loadTraining=inputContainer.find('input');
+        var autoList=$(selector).closest('ul');
+        $.each(loadTraining,function(){
+            var id=$(this).attr('id');
+            var code=$(this).data('display');
+            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+code+'</li>');
+        });
+
+        $('.close-load').on('click',function(){
+            var parentLi=$(this).closest('li');
+            var relInput='#'+parentLi.data('relvalue');
+            parentLi.remove();
+            $(relInput).remove();
+
+        });
+    }
+    
+
+};
+
 /* Autocomplete Participants */
 App.prototype.bindAutocompleteParticipants=function(selector){
             if($(selector).length){
@@ -987,4 +1069,5 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 	  }
 
 };		
+
 

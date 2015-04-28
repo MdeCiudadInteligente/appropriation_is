@@ -1,18 +1,17 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * TraSession Model
+ * PerParticipantsTraining Model
  *
- * @property Training $Training
  */
-class TraSession extends AppModel {
+class PerParticipantsTraining extends AppModel {
 
 /**
  * Use table
  *
  * @var mixed False or table name
  */
-	public $useTable = 'tra_session';
+	public $useTable = 'per_participants_training';
 
 /**
  * Display field
@@ -47,7 +46,17 @@ class TraSession extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'user_id' => array(
+		'participant_id' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'certification_status' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -77,24 +86,18 @@ class TraSession extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-	);
-
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
-/**
- * belongsTo associations
- *
- * @var array
- */
-	public $belongsTo = array(
-		'Training' => array(
-			'className' => 'Training',
-			'foreignKey' => 'training_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
+		'user_id' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 		),
 	);
+	
 	
 	public $hasAndBelongsToMany = array(
 			'Site' => array(
@@ -110,11 +113,11 @@ class TraSession extends AppModel {
 					'offset' => '',
 					'finderQuery' => '',
 			),
-			'PerParticipantsTraining' => array(
-					'className' => 'PerParticipantsTraining',
+			'TraSession' => array(
+					'className' => 'TraSession',
 					'joinTable' => 'per_participants_training_session',
-					'foreignKey' => 'session_id',
-					'associationForeignKey' => 'participants_training_id',
+					'foreignKey' => 'participants_training_id',
+					'associationForeignKey' => 'session_id',
 					'unique' => 'keepExisting',
 					'conditions' => '',
 					'fields' => '',
@@ -124,4 +127,6 @@ class TraSession extends AppModel {
 					'finderQuery' => '',
 			)
 	);
+	
+	
 }

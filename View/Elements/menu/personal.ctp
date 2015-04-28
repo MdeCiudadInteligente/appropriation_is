@@ -28,6 +28,7 @@
 								"label"=>__('List Participants')
 							),	
 							array(
+								"user_level"=>'1,2,3',
 								"route"=>Router::url( array('controller' => 'PerParticipants', 'action' => 'add'),true),
 								"label"=>__('New Participants')
 							)	
@@ -45,6 +46,7 @@
 								"custom-class"=>'list-trainers'
 							),	
 							array(
+								"user_level"=>'1,2,3',
 								"route"=>Router::url( array('controller' => 'PerTrainers', 'action' => 'add'),true),
 								"label"=>__('New Trainer'),
 								"custom-class"=>'add-trainers'
@@ -53,6 +55,7 @@
 				)
 ,
 				array(
+						"user_level"=>'1,4,5',
 						"icon-class"=>'icon-cogs',
 						"route"=>Router::url( array('controller' => 'PerTrainerTypes', 'action' => 'index'),true),
 						"label" =>__('Trainer Types'),
@@ -64,6 +67,7 @@
 								"custom-class"=>'list-thematics'
 							),	
 							array(
+								"user_level"=>'1',
 								"route"=>Router::url( array('controller' => 'PerTrainerTypes', 'action' => 'add'),true),
 								"label"=>__('New Trainer Type'),
 								"custom-class"=>'add-thematics'
@@ -71,6 +75,7 @@
 						)
 				),
 				array(
+						"user_level"=>'1,4,5',
 						"icon-class"=>'icon-cogs',
 						"route"=>Router::url( array('controller' => ' PerTrainerFunds', 'action' => 'index'),true),
 						"label" =>__('Per Trainer Funds'),
@@ -82,6 +87,7 @@
 								"custom-class"=>'list-thematics'
 							),	
 							array(
+								"user_level"=>'1',
 								"route"=>Router::url( array('controller' => ' PerTrainerFunds', 'action' => 'add'),true),
 								"label"=>__('New Per Trainer Fund'),
 								"custom-class"=>'add-thematics'
@@ -89,6 +95,7 @@
 						)
 				),
 				array(
+						"user_level"=>'1,4,5',
 						"icon-class"=>'icon-cogs',
 						"route"=>Router::url( array('controller' => 'PerProfessions', 'action' => 'index'),true),
 						"label" =>__('Professions'),
@@ -98,12 +105,14 @@
 								"label"=>__('List Professions')
 							),	
 							array(
+								"user_level"=>'1',
 								"route"=>Router::url( array('controller' => 'PerProfessions', 'action' => 'add'),true),
 								"label"=>__('New Profession')
 							)	
 						)
 				),
 				array(
+						"user_level"=>'1,4,5',
 						"icon-class"=>'icon-cogs',
 						"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'index'),true),
 						"label" =>__('People Types'),
@@ -113,6 +122,7 @@
 								"label"=>__('List People Types')
 							),	
 							array(
+								"user_level"=>'1',
 								"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'add'),true),
 								"label"=>__('New People Types')
 							)	

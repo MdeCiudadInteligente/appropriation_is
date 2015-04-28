@@ -153,19 +153,6 @@ class Training extends AppModel {
  * @var array
  */
 	public $hasAndBelongsToMany = array(
-			/*'Site' => array(
-					'className' => 'Site',
-					'joinTable' => 'sites_training',
-					'foreignKey' => 'training_id',
-					'associationForeignKey' => 'site_id',
-					'unique' => 'keepExisting',
-					'conditions' => '',
-					'fields' => '',
-					'order' => '',
-					'limit' => '',
-					'offset' => '',
-					'finderQuery' => '',
-			),*/
 			'TraAlly' => array(
 					'className' => 'TraAlly',
 					'joinTable' => 'tra_allies_training',
@@ -229,4 +216,21 @@ class Training extends AppModel {
 					'order' => ''
 			),
 	);
+	
+	public $hasMany = array(
+			'TraSession' => array(
+					'className' => 'TraSession',
+					'foreignKey' => 'training_id',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+			)
+	);
+	
 }

@@ -15,8 +15,7 @@
 				</div>
 			</div>
 		</div>	
-
-
+		
 		<?php
 		echo $this->Form->input('meeting_date',array ('id' => 'datepicker','type'=>'text'));		
 		echo $this->Form->input('meeting_type',array ('type'=>'select','options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme'),'empty'=>'Seleccione el tipo de reunión'));
