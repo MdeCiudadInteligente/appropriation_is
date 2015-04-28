@@ -93,7 +93,7 @@ class TraSession extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
 	);
 	
 	public $hasAndBelongsToMany = array(
