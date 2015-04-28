@@ -7,7 +7,7 @@
 			'elements'=>array(
 				array(
 					"icon-class"=>'icon-user-2',
-					"route"=>Router::url( array('controller' => 'Divulgation', 'action' => 'index'),true),
+					"route"=>Router::url( array('controller' => 'Users', 'action' => 'index'),true),
 					"label" =>__('Users'),
 					"custom-class"=>'users-meetings',
 					"sub-elements"=>array(
@@ -17,6 +17,7 @@
 							"custom-class"=>'list-users'
 						),	
 						array(
+							"user_level"=>'1',
 							"route"=>Router::url( array('controller' => 'Users', 'action' => 'add'),true),
 							"label"=>__('Add User'),
 							"custom-class"=>'add-users'
@@ -35,6 +36,7 @@
 							"custom-class"=>'list-thematics'
 						),	
 						array(
+							"user_level"=>'1',
 							"route"=>Router::url( array('controller' => 'Thematics', 'action' => 'add'),true),
 							"label"=>__('Add Thematic'),
 							"custom-class"=>'add-thematics'
@@ -51,6 +53,7 @@
 							"label"=>__('List Population Types')
 						),	
 						array(
+							"user_level"=>'1',
 							"route"=>Router::url( array('controller' => 'PopulationTypes', 'action' => 'add'),true),
 							"label"=>__('Add Population Types')
 						)	
@@ -66,6 +69,7 @@
 							"label"=>__('List Sites')
 						),	
 						array(
+							"user_level"=>'1',
 							"route"=>Router::url( array('controller' => 'Sites', 'action' => 'add'),true),
 							"label"=>__('Add Site')
 						)	
@@ -81,6 +85,7 @@
 							"label"=>__('List Allies')
 						),	
 						array(
+							"user_level"=>'1',
 							"route"=>Router::url( array('controller' => 'TraAllies', 'action' => 'add'),true),
 							"label"=>__('Add Allie')
 						)	
@@ -96,6 +101,7 @@
 							"label"=>__('List Site Types')
 						),	
 						array(
+							"user_level"=>'1',
 							"route"=>Router::url( array('controller' => 'SiteTypes', 'action' => 'add'),true),
 							"label"=>__('Add Site Types')
 						)	
@@ -111,6 +117,7 @@
 							"label"=>__('List Communes')
 						),	
 						array(
+							"user_level"=>'1',
 							"route"=>Router::url( array('controller' => 'Communes', 'action' => 'add'),true),
 							"label"=>__('Add Commune')
 						)	
@@ -126,6 +133,7 @@
 							"label"=>__('List Neighborhoods')
 						),	
 						array(
+							"user_level"=>'1',
 							"route"=>Router::url( array('controller' => 'Neighborhoods', 'action' => 'add'),true),
 							"label"=>__('Add Neighborhood')
 						)	
@@ -141,6 +149,7 @@
 							"label"=>__('List Agents')
 						),	
 						array(
+							"user_level"=>'1',
 							"route"=>Router::url( array('controller' => 'Agents', 'action' => 'add'),true),
 							"label"=>__('Add Agent')
 						)	
@@ -156,6 +165,7 @@
 							"label"=>__('List Zones')
 						),	
 						array(
+							"user_level"=>'1',
 							"route"=>Router::url( array('controller' => 'Zones', 'action' => 'add'),true),
 							"label"=>__('Add Zone')
 						)	

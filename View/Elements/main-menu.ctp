@@ -5,6 +5,7 @@
 	$usuario_level= $this->Session->read('Auth.User.permission_level');
 	$modulos=array(
 			"reunion"=>array(
+				"user_level"=>'1,2,4,5',
 				"nav-class"=>'meeting-menu',
 				"icon-class"=>'icon-users',
 				"tooltip-desc"=>'Reuniones',
@@ -23,6 +24,7 @@
 				"element-route"=>'menu/formations'
 			),
 			"accompaniment"=>array(
+			    "user_level"=>'1,2,4,5',
 				"nav-class"=>'accompaniment-menu',
 				"icon-class"=>'icon-updown-circle',
 				"tooltip-desc"=>'Modulo de acompañamientos',
@@ -35,6 +37,7 @@
 				"element-route"=>'menu/personal'
 			),
 			"configuration"=>array(
+				"user_level"=>'1,4,5',
 				"nav-class"=>'config-menu',
 				"icon-class"=>'icon-cog',
 				"tooltip-desc"=>'Modulo de configuración',

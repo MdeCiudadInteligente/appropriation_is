@@ -1,4 +1,4 @@
-var app=null;
+﻿var app=null;
 var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 var waypoints=null;
 
@@ -25,9 +25,9 @@ App.prototype.bind=function(){
           yearRange: "2007:2020",
           monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
           monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-          monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃ©e',
+          monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃƒÂ©e',
           dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
-          dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃ¡b'],
+          dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃƒÂ¡b'],
           dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
           dateFormat: 'yy-mm-dd', firstDay: 0,
           initStatus: 'Selecciona la fecha', 
@@ -45,9 +45,9 @@ App.prototype.bind=function(){
           yearRange: "2007:2020",
           monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
           monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-          monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃ©e',
+          monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃƒÂ©e',
           dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
-          dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃ¡b'],
+          dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃƒÂ¡b'],
           dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
           dateFormat: 'yy-mm-dd', firstDay: 0,
           initStatus: 'Selecciona la fecha', 
@@ -69,8 +69,8 @@ App.prototype.bind=function(){
     app.bindAutocompleteNeighborhoods('.Neighborhoods-autocomplete');
     app.bindAutocompleteTrainings('.Trainings-autocomplete');
     app.bindAutocompleteParticipants('.Participants-autocomplete');
-
-    
+    app.bindAutocompleteParticipantsRegister('.person-autocomplete-trainers');
+   
     app.removeRequired();
     //app.setMobileNav();
     if(isMobile){
@@ -200,7 +200,7 @@ App.prototype.bindAutocompletePersona=function(selector){
             $.each(loadPersons,function(){
                 var id=$(this).attr('id');
                 var completename=$(this).data('display');
-                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+completename+'</li>');
+                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+completename+'</li>');
             });
 
             $('.close-load').on('click',function(){
@@ -244,7 +244,7 @@ App.prototype.bindAutocompleteSites=function(selector){
             {   minChars: 2,
                 formatList: function(data, elem){
                 
-                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.nombre+' </div><div class=\'suggest_info clearer_auto\'>  <b>Dirección:</b> '+data.direccion+' </div></div>');
+                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.nombre+' </div><div class=\'suggest_info clearer_auto\'>  <b>DirecciÃ³n:</b> '+data.direccion+' </div></div>');
                 return new_elem;
                 },
                 emptyText:'No se encontraron Sitios',
@@ -299,7 +299,7 @@ App.prototype.bindAutocompleteSites=function(selector){
         $.each(loadPersons,function(){
             var id=$(this).attr('id');
             var completename=$(this).data('display');
-            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+completename+'</li>');
+            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+completename+'</li>');
         });
 
         $('.close-load').on('click',function(){
@@ -329,7 +329,7 @@ App.prototype.bindAutocompleteThematics=function(selector){
         $(selector).autoSuggest(serivce_route,
             {   minChars: 2,
                 formatList: function(data, elem){
-                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Prefijo:</b> '+data.prefijo+' </div><div class=\'suggest_info clearer_auto\'>  <b>Descripción:</b> '+data.description+' </div></div>');
+                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Prefijo:</b> '+data.prefijo+' </div><div class=\'suggest_info clearer_auto\'>  <b>DescripciÃ³n:</b> '+data.description+' </div></div>');
                 return new_elem;
                 },
                 emptyText:'No se encontraron tematicas',
@@ -337,7 +337,7 @@ App.prototype.bindAutocompleteThematics=function(selector){
                 selectedValuesProp:'name',
                 searchObjProps: 'name',
                 selectionLimit:100,
-                starText: 'Seleccione la temática',
+                starText: 'Seleccione la temÃ¡tica',
                 resultClick: function(data){
                     //Variables de datos
                     var id=data.attributes.id;
@@ -383,7 +383,7 @@ App.prototype.bindAutocompleteThematics=function(selector){
         $.each(loadPersons,function(){
             var id=$(this).attr('id');
             var completename=$(this).data('display');
-            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+completename+'</li>');
+            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+completename+'</li>');
         });
 
         $('.close-load').on('click',function(){
@@ -411,12 +411,12 @@ App.prototype.bindAutocompletePopulationType=function(selector){
 	             return new_elem;
             },
             
-            emptyText:'No se encontraron tipos de población',
+            emptyText:'No se encontraron tipos de poblaciÃ³n',
             selectedItemProp: 'name',
             selectedValuesProp:'name',
             searchObjProps: 'name',
             selectionLimit:limit,
-            starText: 'Seleccione el tipo de poblaci�n',
+            starText: 'Seleccione el tipo de población',
 
             resultClick: function(data){
                 //Variables de datos
@@ -460,7 +460,7 @@ App.prototype.bindAutocompletePopulationType=function(selector){
          $.each(loadPopulationTypes,function(){
              var id=$(this).attr('id');
              var name=$(this).data('display');
-             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+name+'</li>');
+             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
          });
 
          $('.close-load').on('click',function(){
@@ -535,7 +535,7 @@ App.prototype.bindAutocompleteTraAlly=function(selector){
          $.each(loadTraAllies,function(){
              var id=$(this).attr('id');
              var name=$(this).data('display');
-             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+name+'</li>');
+             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
          });
 
          $('.close-load').on('click',function(){
@@ -608,7 +608,7 @@ App.prototype.bindAutocompleteTraProcess=function(selector){
 		         $.each(loadTraProcesses,function(){
 		             var id=$(this).attr('id');
 		             var name=$(this).data('display');
-		             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+name+'</li>');
+		             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
 		         });
 
 		         $('.close-load').on('click',function(){
@@ -684,7 +684,7 @@ App.prototype.bindAutocompleteTrainers=function(selector){
 				 $(selector).autoSuggest(serivce_route,
 							{  	 minChars: 2,
 					             formatList: function(data, elem){
-					             var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>Profesión:</b> '+data.profesion+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.tipo+' </div></div>');
+					             var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>ProfesiÃ³n:</b> '+data.profesion+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.tipo+' </div></div>');
 					             return new_elem;
 				            },
 				            emptyText:'No se encontraron formadores',
@@ -737,7 +737,7 @@ App.prototype.bindAutocompleteTrainers=function(selector){
 				            $.each(loadtrainers,function(){
 				                var id=$(this).attr('id');
 				                var name=$(this).data('display');
-				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+name+'</li>');
+				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
 				            });
 			
 				            $('.close-load').on('click',function(){
@@ -816,7 +816,7 @@ App.prototype.bindAutocompleteNeighborhoods=function(selector){
          $.each(loadNeighborhoods,function(){
              var id=$(this).attr('id');
              var name=$(this).data('display');
-             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+name+'</li>');
+             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
          });
 
          $('.close-load').on('click',function(){
@@ -849,7 +849,7 @@ App.prototype.bindAutocompleteTrainings=function(selector){
                 selectedValuesProp:'code',
                 searchObjProps: 'code,activity_place',
                 selectionLimit:limit,
-                starText: 'Seleccione la formaci�n',
+                starText: 'Seleccione la formaci?n',
 
                 resultClick: function(data){
                     //Variables de datos
@@ -913,22 +913,102 @@ App.prototype.bindAutocompleteTrainings=function(selector){
 
 /* Autocomplete Participants */
 App.prototype.bindAutocompleteParticipants=function(selector){
+            if($(selector).length){
+                 var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
+                 var serivce_route=absPath+"PerParticipants/getParticipant.json";
+                 $(selector).autoSuggest(serivce_route,
+                            {    minChars: 2,
+                                 formatList: function(data, elem){
+                                 var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>ProfesiÃ³n:</b> '+data.nivel_escolar+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.estado_civil+' </div><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.barrio+' </div></div>');
+                                 return new_elem;
+                            },
+                            emptyText:'No se encontraron participantes',
+                            selectedItemProp: 'completeName',
+                            selectedValuesProp:'cedula',
+                            searchObjProps: 'cedula, name, lastname, profesion, tipo, completeName',
+                            selectionLimit:limit,
+                            starText: 'Seleccione el participante',
+
+                            resultClick: function(data){
+                                //Variables de datos
+                                var id=data.attributes.id;
+                                var data_name=$($(selector).data('valcontainer')).data('input-name');
+                                var elementID='val-input-par-'+id;
+                                $($(selector).data('valcontainer')).append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
+                            },selectionRemoved: function(elem){
+                                var prop_data=elem.data('prop-data');
+                                var idtrain=prop_data['id'];
+                                var elementID='val-input-par-'+idtrain;
+                                $('#'+elementID).remove();
+                                elem.remove();
+                            },selectionAdded:function(elem){
+
+                            }
+                    });
+                 
+                 
+                     if($(selector).data('required')){
+                            var parentForm=$(selector).closest('form');
+                            var inputContainer=$($(selector).data('valcontainer'));
+                            var emptyMsg=$(selector).data('emptymsg');
+                            parentForm.on('submit',function(e){
+                                if(inputContainer.find('input').length==0){
+                                    e.preventDefault();
+                                    $('html, body').animate({
+                                        scrollTop: $(selector).offset().top-100
+                                    }, 500);
+                                    setTimeout(function(){
+                                        alert(emptyMsg);
+                                    },500);
+                                    return false;
+                                }
+                            });
+                        }
+            
+                        if($(selector).data('load')){
+                            var inputContainer=$($(selector).data('valcontainer'));
+                            var loadparticipants=inputContainer.find('input');
+                            var autoList=$(selector).closest('ul');
+                            $.each(loadparticipants,function(){
+                                var id=$(this).attr('id');
+                                var name=$(this).data('display');
+                                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+                            });
+            
+                            $('.close-load').on('click',function(){
+                                var parentLi=$(this).closest('li');
+                                var relInput='#'+parentLi.data('relvalue');
+                                parentLi.remove();
+                                $(relInput).remove();
+            
+                            });
+                  }
+
+
+      }
+
+};      
+
+App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 			if($(selector).length){
 				 var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
-				 var serivce_route=absPath+"PerParticipants/getParticipant.json";
+                 var id=$(selector).data('id');
+				 var serivce_route=absPath+"Trainings/person_status.json";
 				 $(selector).autoSuggest(serivce_route,
 							{  	 minChars: 2,
 					             formatList: function(data, elem){
-					             var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>Profesión:</b> '+data.nivel_escolar+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.estado_civil+' </div><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.barrio+' </div></div>');
+                                 var participant=(data.id_participant)?'<span class="check" ><i class="icon-check"></i></span>':'<span class="cancel" ><i class="icon-cancel-2"></i></span>'   
+                                 var actual_training=(data.is_participant)?'<span class="check" ><i class="icon-check"></i></span>':'<span class="cancel" ><i class="icon-cancel-2"></i></span>'   
+					             var new_elem = elem.html('<div class="suggest-cont admin-training" data-training="'+data.is_participant+'" data-participant="'+data.id_participant+'"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.complete_name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Email:</b> '+data.email+' </div><div class=\'suggest_info clearer_auto\'>  <b>Registrado en otra formación :</b> '+participant+' </div><div class=\'suggest_info clearer_auto\'>  <b>Pertenece a esta formación</b> '+actual_training+' </div></div>');
 					             return new_elem;
 				            },
-				            emptyText:'No se encontraron participantes',
-				            selectedItemProp: 'completeName',
+				            emptyText:'<div class="no-index-person"><span>No se encontro la persona</span><div class="add-person">Ingresar persona</div> </div>',
+				            selectedItemProp: 'complete_name',
 				            selectedValuesProp:'cedula',
-				            searchObjProps: 'cedula, name, lastname, profesion, tipo, completeName',
+				            searchObjProps: 'cedula,complete_name,doc',
 				            selectionLimit:limit,
-				            starText: 'Seleccione el participante',
-
+                            extraParams:'&id='+id,
+				            startText: 'Ingresar Nombre, Documento o Email',
 				            resultClick: function(data){
 				                //Variables de datos
 				                var id=data.attributes.id;
@@ -944,6 +1024,7 @@ App.prototype.bindAutocompleteParticipants=function(selector){
 				            },selectionAdded:function(elem){
 
 				            }
+
 				    });
 				 
 				 
@@ -972,7 +1053,7 @@ App.prototype.bindAutocompleteParticipants=function(selector){
 				            $.each(loadparticipants,function(){
 				                var id=$(this).attr('id');
 				                var name=$(this).data('display');
-				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">×</a>'+name+'</li>');
+				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
 				            });
 			
 				            $('.close-load').on('click',function(){

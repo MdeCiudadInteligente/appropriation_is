@@ -19,18 +19,20 @@
 					"custom-class"=>'add-training'
 				),
 				array(
+						"user_level"=>'1,4,5',
 						"icon-class"=>'icon-cogs',
-						"route"=>Router::url( array('controller' => 'TrainingTypes', 'action' => 'index'),true),
+						"route"=>Router::url( array('controller' => 'TraTypes', 'action' => 'index'),true),
 						"label" =>__('Training Types'),
 						"custom-class"=>'Trainer-types',
 						"sub-elements"=>array(
 							array(
-								"route"=>Router::url( array('controller' => 'TrainingTypes', 'action' => 'index'),true),
+								"route"=>Router::url( array('controller' => 'TraTypes', 'action' => 'index'),true),
 								"label"=>__('List Training Types'),
 								"custom-class"=>'list-thematics'
 							),	
 							array(
-								"route"=>Router::url( array('controller' => 'TrainingTypes', 'action' => 'add'),true),
+								"user_level"=>'1',
+								"route"=>Router::url( array('controller' => 'TraTypes', 'action' => 'add'),true),
 								"label"=>__('New Training Types'),
 								"custom-class"=>'add-thematics'
 							)	
@@ -55,6 +57,7 @@
 							)
 				),					
 				array(
+						"user_level"=>'1,4,5',
 						"icon-class"=>'icon-cogs',
 						"route"=>Router::url( array('controller' => ' TraProcesses', 'action' => 'index'),true),
 						"label" =>__('Training Process'),
@@ -65,6 +68,7 @@
 								"label"=>__('List Training Processes')
 							),	
 							array(
+								"user_level"=>'1',
 								"route"=>Router::url( array('controller' => ' TraProcesses', 'action' => 'add'),true),
 								"label"=>__('New Training Process')
 							)	
