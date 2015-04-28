@@ -854,13 +854,13 @@ App.prototype.bindAutocompleteTrainings=function(selector){
                 resultClick: function(data){
                     //Variables de datos
                     var id=data.attributes.id;
-                    var data_code=$('.results-input-training').data('input-code');
+                    var data_name=$('.results-input-training').data('input-name');
                     var elementID='val-input-tr-'+id;
-                    $('.results-input-training').append('<input id="'+elementID+'" type="hidden" value="'+id+'" code="'+data_code+'">');
+                    $('.results-input-training').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
                 },selectionRemoved: function(elem){
                     var prop_data=elem.data('prop-data');
-                    var id=prop_data['id'];
-                    var elementID='val-input-tr-'+id;
+                    var idtr=prop_data['id'];
+                    var elementID='val-input-tr-'+idtr;
                     $('#'+elementID).remove();
                     elem.remove();
                 },selectionAdded:function(elem){

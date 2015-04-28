@@ -93,7 +93,7 @@ class TraSessionsController extends AppController {
 			
 			
 			if ($this->TraSession->save($data)) {
-				$this->Session->setFlash(__('The tra session has been saved.'));
+				$this->Session->setFlash(__('The tra session has been saved.'));		
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The tra session could not be saved. Please, try again.'));

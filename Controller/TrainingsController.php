@@ -377,7 +377,7 @@ class TrainingsController extends AppController {
 				array('Training.activity_place LIKE' => '%'.$queryString.'%')
 		));
 	
-		$training=$this->Training->find('list',array('fields'=>array('Training.id','Training.code','Training.activity_place'),'order' => array('Training.code' => 'ASC'),'conditions' => $condition));
+		$training=$this->Training->find('list',array('fields'=>array('Training.id','Training.code','Training.activity_place'),'order' => array('Training.id' => 'ASC'),'conditions' => $condition));
 		foreach ($training as $activity_place => $value) {
 			$json_data = array();
 			$json_data['activity_place']=$activity_place;
