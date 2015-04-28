@@ -10,6 +10,7 @@
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
 							array("dataIndex"=>"training",'header'=>'Formación','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"site",'header'=>'Sitios','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"observation",'header'=>'Observación','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"start_date",'header'=>'Fecha','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"start_time",'header'=>'Hora de Inicio','sortable'=>true,'align'=>"left","column"=>true),
