@@ -830,7 +830,10 @@ App.prototype.bindAutocompleteNeighborhoods=function(selector){
 	 }
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 726f7207db71f88c562a0841148c70093a33add1
 
 /* Autocomplete trainings */
 App.prototype.bindAutocompleteTrainings=function(selector){

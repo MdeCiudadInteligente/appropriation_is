@@ -24,6 +24,41 @@ class TraSessionsController extends AppController {
 		$this->TraSession->recursive = 0;
 		$this->set('traSessions', $this->Paginator->paginate());
 	}
+	
+	
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->TraSession->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$Session=$this->TraSession->find('all');
+		$count=0;
+		foreach ($Session as $key => $Session) {
+			
+			$totalsites='';
+			foreach ($Session['Site'] as $key => $tsites) {
+				$totalsites=$tsites['site_name'].', '.$totalsites;
+			}
+			$totalsites= substr($totalsites, 0, -1);
+			
+			$data['rows'][$count]=array(
+					'id'=>$Session['TraSession']['id'],
+					'training'=>$Session['Training']['code'],
+					'site'=>trim($totalsites, ','),
+					'observation'=>$Session['TraSession']['observation'],
+					'start_date'=>$Session['TraSession']['start_date'],
+					'start_time'=>$Session['TraSession']['start_time'],
+					'end_time'=>$Session['TraSession']['end_time'],
+					'creation_date'=>$Session['TraSession']['creation_date'],
+					'modification_date'=>$Session['TraSession']['modification_date'],
+					'user_id'=>$Session['TraSession']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method
@@ -47,8 +82,17 @@ class TraSessionsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+					
 			$this->TraSession->create();
-			if ($this->TraSession->save($this->request->data)) {
+			
+			$data=$this->request->data;
+			$data['TraSession']['creation_date']=date('Y-m-d H:i:s');
+			$data['TraSession']['user_id']=$usuario;
+			
+			
+			if ($this->TraSession->save($data)) {
 				$this->Session->setFlash(__('The tra session has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
