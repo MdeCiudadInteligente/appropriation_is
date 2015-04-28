@@ -3,23 +3,20 @@
 			<h2><?php echo __('Divulgations'); ?></h2>
 			<?php
 				$gridOptions=array(
-						'gridId'=>'gridTrainings',
-						'gridTitle'=>'Formaciones',
+						'gridId'=>'gridTraSessions',
+						'gridTitle'=>'Sesiones de la formaci髇',
 						'height'=>800,
-						'serviceUrl'=>'trainings/index_service.json',
+						'serviceUrl'=>'TraSessions/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-							array("dataIndex"=>"code",'header'=>'C贸digo','sortable'=>true,'align'=>"left","column"=>true),
-							array("dataIndex"=>"procesos",'header'=>'Proceso','sortable'=>true,'align'=>"left","column"=>true),
-							array("dataIndex"=>"poblacion",'header'=>'Tipo de poblaci贸n','sortable'=>true,'align'=>"left","column"=>false),
-							array("dataIndex"=>"training_type",'header'=>'Tipo de formaci贸n','sortable'=>true,'align'=>"left","column"=>true),
-							//array("dataIndex"=>"sitios",'header'=>'Sitios','sortable'=>true,'align'=>"left","column"=>true),
-							array("dataIndex"=>"aliados",'header'=>'Aliados','sortable'=>true,'align'=>"left","column"=>true),
-							array("dataIndex"=>"description",'header'=>'Descripci贸n','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"training",'header'=>'Formaci髇','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"observation",'header'=>'Observaci髇','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"start_date",'header'=>'Hora de Inicio','sortable'=>true,'align'=>"left","column"=>false),
+							array("dataIndex"=>"start_time",'header'=>'Hora de Finalizaci髇','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"end_time",'header'=>'Hora de Finalizaci髇','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creaci贸n','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"modification_date",'header'=>'Fecha de modificaci贸n','sortable'=>true,'align'=>"left","column"=>false),
-			               array("dataIndex"=>"user_id",'header'=>'Usuario','sortable'=>true,'align'=>"left","column"=>false),
-			               array("dataIndex"=>"username",'header'=>'Usuario','sortable'=>true,'align'=>"left","column"=>false)
+			               	array("dataIndex"=>"user_id",'header'=>'Usuario','sortable'=>true,'align'=>"left","column"=>false)
 						),
 						'expander'=>array(
 							'fields'=>array(
