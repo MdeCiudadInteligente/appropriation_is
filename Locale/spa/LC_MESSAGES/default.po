@@ -149,12 +149,77 @@ msgstr "Editar fondo formador"
 msgid  "Professions"
 msgstr "Profesiones"
 
+msgid  "Training Types"
+msgstr "Tipos de Formación"
+
+msgid  "Participants"
+msgstr "Participantes"
+
+msgid  "List Participants"
+msgstr "Lista Participantes"
+
+msgid  "New Participants"
+msgstr "Nuevo Participante"
+
+msgid  "Trainers"
+msgstr "Formadores"
+
+msgid  "Trainer Types"
+msgstr "Tipos Formadores"
+
+msgid  "List Trainer Type"
+msgstr "Lista Tipos Formadores"
+
+msgid  "Per Trainer Funds"
+msgstr "Fondos Formador"
+
+msgid  "People Types"
+msgstr "Tipos Personas"
+
+msgid  "List People Types"
+msgstr "Lista Tipos Personas"
+
+msgid  "New People Types"
+msgstr "Nuevo Tipo Persona"
+
+msgid  "Thematics"
+msgstr "Temáticas"
+
+msgid  "Add Thematic"
+msgstr "Nueva Temática"
+
+msgid  "Population Types"
+msgstr "Tipos Población"
+
+msgid  "Add Population Types"
+msgstr "Nuevo Tipo Población"
+
+msgid  "Divulgation Types"
+msgstr "Tipos Sensibilizaciones"
+
+msgid  "List Divulgation Types"
+msgstr "Lista Tipos Sensibilizaciones"
+
+msgid  "New Training Types"
+msgstr "Nuevo Tipo de Formación"
+
+msgid  "List Tra Sessions"
+msgstr "Lista Sesiones"
+
+msgid  "New Tra Sessions"
+msgstr "Nueva Sesión"
+
+msgid  "Tra Sessions"
+msgstr "Sesiones"
+
+msgid  "Add Tra Session"
+msgstr "Agregar Sesión"
+
 msgid  "Edit Tra Session"
 msgstr "Editar Sesión"
 
 msgid  "The tra session has been saved."
 msgstr "La Sesión ha sido guardada."
-
 
 msgid  "The tra session has been deleted."
 msgstr "La Sesión ha sido guardada."
@@ -1072,7 +1137,7 @@ msgid "Activity Place"
 msgstr "Lugar Actividad"
 
 msgid "New Divulgation"
-msgstr "Nueva Divulgación"
+msgstr "Nueva Sensibilización"
 
 msgid "Add Divulgation"
 msgstr "Agregar divulgación"
@@ -1156,7 +1221,7 @@ msgid "Site Estado"
 msgstr "Estado Sitio"
 
 msgid "List Divulgations"
-msgstr "Lista Divulgación"
+msgstr "Lista Sensibilizaciones"
 
 msgid "Add Person"
 msgstr "Añadir Persona"
@@ -1201,10 +1266,22 @@ msgid "Id Person"
 msgstr "Documento Persona"
 
 msgid "Add Agent"
-msgstr "Agregar agente"
+msgstr "Nuevo Agente"
 
 msgid "Add Site"
-msgstr "Añadir sitio"
+msgstr "Nuevo Sitio"
+
+msgid "Zones"
+msgstr "Zonas"
+
+msgid "Add Zone"
+msgstr "Nueva Zona"
+
+msgid "Add Allie"
+msgstr "Nuevo Aliado"
+
+msgid "Add Site Types"
+msgstr "Nuevo Tipo Sitio"
 
 msgid "Site Types"
 msgstr "Tipos del Sitio"
@@ -1396,10 +1473,13 @@ msgid "The site could not be deleted. Please, try again."
 msgstr "El sitio no pudo ser eliminado .Por favor , inténtalo de nuevo."
 
 msgid "Add Commune"
-msgstr "Agregar Comuna"
+msgstr "Nueva Comuna"
+
+msgid "Neighborhoods"
+msgstr "Barrios"
 
 msgid "Add Neighborhood"
-msgstr "Agregar Barrio"
+msgstr "Nuevo Barrio"
 
 msgid "Add Site Type"
 msgstr "Agregar Tipo de Sitio"
