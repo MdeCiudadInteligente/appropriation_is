@@ -50,6 +50,7 @@
 											"custom-class"=>'list-sessions'
 									),
 									array(
+											"user_level"=>'1,2,3',
 											"route"=>Router::url( array('controller' => 'TraSessions', 'action' => 'add'),true),
 											"label"=>__('New Tra Sessions'),
 											"custom-class"=>'add-sessions'
