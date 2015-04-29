@@ -73,6 +73,16 @@ $cakeDescription = __d('cake_dev', '');
 		</article>
 	</aside>	
 
+	<aside id="bottom-content-aside" class="mobile-ovelay-menu bottom-display">
+		<header>
+		 <i class="icon-right close-menu"></i>	
+		 <a href="<?php echo Router::url( '/', true )?>"><img src="<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/intranet.png"></a>
+		</header>
+		<article class="main-content">
+
+		</article>
+	</aside>	
+
 	<div id="container" class="app-container <?php echo $body_class ?>">	
 		<div id="header">
 			<div class="top-head" style="background-image:url('<?php echo Router::url( '/', true ).WEBROOT_DIR;?>/img/header.png')">

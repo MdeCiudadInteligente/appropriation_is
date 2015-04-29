@@ -92,21 +92,21 @@ class TrainingsController extends AppController {
 
 				if(isset($trainer['0']['is_participant'])){
 					//Is participant registered to this training
-					$service=Router::url( array('controller' => 'Divulgations', 'action' => 'index'),true);
+					$service=Router::url( array('controller' => 'Trainings', 'action' => 'registerParticipant','register'=>'1'),true);
 					$notice=array(
 						'type'=>'alert',
 						'message'=>__('The current person is already a participant of this training')
 					);
 				} else if (isset($trainer['0']['id_participant'])){
 					//is participant but no registered to this training
-					$service=Router::url( array('controller' => 'Divulgations', 'action' => 'index'),true);
+					$service=Router::url( array('controller' => 'Trainings', 'action' => 'registerParticipant','register'=>'2'),true);
 					$notice=array(
 						'type'=>'confirm',
 						'message'=>__('The current person is already a participant in other training, Do you want to assign him into this training?')
 					);
 				} else{
 					//is not participant but is a person
-					$service=Router::url( array('controller' => 'Divulgations', 'action' => 'index'),true);	
+					$service=Router::url( array('controller' => 'Trainings', 'action' => 'registerParticipant','register'=>'3'),true);	
 					$notice=array(
 						'type'=>'confirm',
 						'message'=>__('The current person has never been a participant. Do you want to assign him to this training?')
@@ -123,6 +123,30 @@ class TrainingsController extends AppController {
 			$this->set(compact('data')); // Pass $data to the view
 			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
+
+
+
+/**
+ * registerParticipant
+ *
+ * @throws NotFoundException
+ * @param  int $registerType
+ * @return json view
+ */
+
+	public function registerParticipant()
+	{
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+
+		$data['req']=$_REQUEST;
+
+		$this->request->data['test']='test data';
+
+	}
+
+
+
 
 
 	public function index_service()

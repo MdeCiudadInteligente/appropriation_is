@@ -676,6 +676,16 @@ App.prototype.putHtmlonAside=function(html,width){
     $('#right-content-aside').addClass('active').css({'width':width});
 }
 
+App.prototype.putHtmlonBottom=function(html,height,autoClose){
+    $('#bottom-content-aside .main-content').html(html);
+    $('#bottom-content-aside').addClass('active').css({'height':height});
+    if(typeof autoClose != 'undefined'){
+        setTimeout(function(){
+            $('#bottom-content-aside').find('.close-menu').click();
+        },autoClose);
+    }
+}
+
 /* Autocomplete Trainers */
 App.prototype.bindAutocompleteTrainers=function(selector){
 			if($(selector).length){
@@ -911,6 +921,7 @@ App.prototype.bindAutocompleteTrainings=function(selector){
 
 };
 
+
 /* Autocomplete Participants */
 App.prototype.bindAutocompleteParticipants=function(selector){
             if($(selector).length){
@@ -989,6 +1000,7 @@ App.prototype.bindAutocompleteParticipants=function(selector){
 
 };      
 
+
 App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 			if($(selector).length){
 				 var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
@@ -999,7 +1011,7 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 					             formatList: function(data, elem){
                                  var participant=(data.id_participant)?'<span class="check" ><i class="icon-check"></i></span>':'<span class="cancel" ><i class="icon-cancel-2"></i></span>'   
                                  var actual_training=(data.is_participant)?'<span class="check" ><i class="icon-check"></i></span>':'<span class="cancel" ><i class="icon-cancel-2"></i></span>'   
-					             var new_elem = elem.html('<div class="suggest-cont admin-training" data-training="'+data.is_participant+'" data-participant="'+data.id_participant+'"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.complete_name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Email:</b> '+data.email+' </div><div class=\'suggest_info clearer_auto\'>  <b>Registrado en otra formación :</b> '+participant+' </div><div class=\'suggest_info clearer_auto\'>  <b>Pertenece a esta formación</b> '+actual_training+' </div></div>');
+					             var new_elem = elem.html('<div class="suggest-cont admin-training" data-training="'+data.is_participant+'" data-participant="'+data.id_participant+'" ><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.complete_name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Email:</b> '+data.email+' </div><div class=\'suggest_info clearer_auto\'>  <b>Registrado en otra formación :</b> '+participant+' </div><div class=\'suggest_info clearer_auto\'>  <b>Pertenece a esta formación</b> '+actual_training+' </div></div>');
 					             return new_elem;
 				            },
 				            emptyText:'<div class="no-index-person"><span>No se encontro la persona</span><div class="add-person">Ingresar persona</div> </div>',
@@ -1010,17 +1022,16 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
                             extraParams:'&id='+id,
 				            startText: 'Ingresar Nombre, Documento o Email',
 				            resultClick: function(data){
-				                //Variables de datos
-				                var id=data.attributes.id;
-				                var data_name=$($(selector).data('valcontainer')).data('input-name');
-				                var elementID='val-input-par-'+id;
-				                $($(selector).data('valcontainer')).append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
+                                //Variables de datos
+                                var notice=data.attributes.actions.notice;
+                                app.notifyProcess(notice,data.attributes,'print-view','cancel-view','200px');
 				            },selectionRemoved: function(elem){
 				                var prop_data=elem.data('prop-data');
 				                var idtrain=prop_data['id'];
 				                var elementID='val-input-par-'+idtrain;
 				                $('#'+elementID).remove();
 				                elem.remove();
+                                app.closeAside('#bottom-content-aside',true);
 				            },selectionAdded:function(elem){
 
 				            }
@@ -1070,4 +1081,34 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 
 };		
 
+App.prototype.notifyProcess=function(notice,data,AceptExtraClass,CancelExtraClass,height,autoClose){
+    var AceptExtraClass=(typeof AceptExtraClass != 'undefined')?AceptExtraClass:'';
+    var CancelExtraClass=(typeof CancelExtraClass != 'undefined')?CancelExtraClass:'';
+    var height=(typeof height != 'undefined')?height:'200px';
+    var noticeHtml="<div class='notice'>"+notice.message+"</div>";
+    switch(notice.type){
+        case 'confirm' : 
+            var interactionHtml="<div class='interaction-notice'><button class='accept "+AceptExtraClass+"'><i class='icon-check'></i>Aceptar</button><button class='cancel "+CancelExtraClass+"'><i class='icon-cancel-2'></i>Cancelar</button></div>";
+        break;
 
+        case 'flash' :
+            var interactionHtml="";
+        break;
+    }
+    console.log(interactionHtml);
+    var interactionHtmlData=$(interactionHtml);
+    $(interactionHtmlData).data(data);
+    var completeHtml=$(noticeHtml).append(interactionHtmlData);
+    app.putHtmlonBottom(completeHtml,height,autoClose);
+}
+
+App.prototype.closeAside=function(id_aside,wipe,time){
+    var time=(typeof time != 'undefined')?time:0.5;
+
+    setTimeout(function(){
+        $(id_aside).find('.close-menu').click();
+    },time);
+    if(typeof wipe != 'undefined'){
+        $(id_aside).find('.main-content').html('');
+    }
+}
