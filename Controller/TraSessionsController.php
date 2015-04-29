@@ -96,14 +96,15 @@ class TraSessionsController extends AppController {
 			if ($this->TraSession->save($data)) {
 				$response['method']['success']=true;
 				$response['class']['TraSession']['data']=array($data);
-				$response['class']['TraSession']['id']='Aqui va el id recien creado';
-				$notice=__('The session reltaive to the formation {Id_formation} has been created with {ID}');
+				$lastid=$this->TraSession->id;
+				$response['class']['TraSession']['id']= $lastid;
+				$notice=__('The session reltaive to the formation with ID '.$data['TraSession']['training_id'].' has been created with ID '.$lastid);
 				$alertType='flash';
 			} else {
 				$response['method']['success']=false;
-				$response['method']['error']="La causa del error";
+				//$response['method']['error']="La causa del error";
 				$response['class']['TraSession']['data']=array($data);
-				$notice=__('The session reltaive to the formation {Id_formation} has not been created');
+				$notice=__('The session reltaive to the formation with ID'.$data['TraSession']['training_id'].' has not been created');
 				$alertType='error';
 			}
 		
