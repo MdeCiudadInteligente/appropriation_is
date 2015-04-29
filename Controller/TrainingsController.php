@@ -78,7 +78,7 @@ class TrainingsController extends AppController {
 					        OR people.email LIKE :query",
 			    array('query' => $queryString,'id_formation'=>$id)
 			);	
-			$count=0;
+
 			foreach ($persons as $key => $trainer) {
 				$json_data=array(
 						'id'=>$trainer['people']['id_person'],
@@ -86,8 +86,38 @@ class TrainingsController extends AppController {
 						'email'=>$trainer['people']['email'],
 						'complete_name'=>$trainer['0']['complete_name'],
 						'id_participant'=>$trainer['0']['id_participant'],
-						'is_participant'=>$trainer['0']['is_participant']);
-				$count++;
+						'is_participant'=>$trainer['0']['is_participant']
+				);
+				
+
+				if(isset($trainer['0']['is_participant'])){
+					//Is participant registered to this training
+					$service=Router::url( array('controller' => 'Divulgations', 'action' => 'index'),true);
+					$notice=array(
+						'type'=>'alert',
+						'message'=>__('The current person is already a participant of this training')
+					);
+				} else if (isset($trainer['0']['id_participant'])){
+					//is participant but no registered to this training
+					$service=Router::url( array('controller' => 'Divulgations', 'action' => 'index'),true);
+					$notice=array(
+						'type'=>'confirm',
+						'message'=>__('The current person is already a participant in other training, Do you want to assign him into this training?')
+					);
+				} else{
+					//is not participant but is a person
+					$service=Router::url( array('controller' => 'Divulgations', 'action' => 'index'),true);	
+					$notice=array(
+						'type'=>'confirm',
+						'message'=>__('The current person has never been a participant. Do you want to assign him to this training?')
+					);			
+				}
+
+				$actions=array(
+					'next-service'=>$service,
+					'notice'=>$notice
+				);	
+				$json_data['actions']=$actions;
 				$data[]=$json_data;
 			}	
 			$this->set(compact('data')); // Pass $data to the view
