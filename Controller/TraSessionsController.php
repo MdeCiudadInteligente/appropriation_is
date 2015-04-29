@@ -180,6 +180,43 @@ class TraSessionsController extends AppController {
  * @param string $id
  * @return void
  */
+	public function delete_service() {
+		$this->request->onlyAllow('ajax');
+		if ($this->request->is('post')) {
+		$this->TraSession->id = $_POST['traSessionId'];
+		
+		if (!$this->TraSession->exists()) {
+			throw new NotFoundException(__('Invalid tra session'));
+		}
+		$response['method']['desc']=__("delete session with ID : ". $_POST['traSessionId']);
+		$this->request->onlyAllow('post', 'delete');
+		if ($this->TraSession->delete()) {
+			$response['method']['success']=true;
+			//$response['class']['TraSession']['data']=array($data);
+			$response['class']['TraSession']['id']='Aqui va el id recien eliminado.';
+			$notice=__('The session reltaive to the formation {Id_formation} has been created with {ID}');
+			$alertType='flash';
+		} else {
+			$response['method']['success']=false;
+			$response['method']['error']="La causa del error";
+			$response['class']['TraSession']['id'];
+			$notice=__('The session reltaive to the formation {Id_formation} has not been created');
+			$alertType='error';
+		}
+		$response['action']=array(  'notify'=>array(
+				'type'=>$alertType,
+				'notice'=>$notice,
+				'ux'=>'down'
+		)
+		);
+		$this->set(compact('response')); // Pass $data to the view
+		$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
+		
+		
+		}
+	}
+	
+		
 	public function delete($id = null) {
 		$this->TraSession->id = $id;
 		if (!$this->TraSession->exists()) {
@@ -192,4 +229,6 @@ class TraSessionsController extends AppController {
 			$this->Session->setFlash(__('The tra session could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+}
+	
