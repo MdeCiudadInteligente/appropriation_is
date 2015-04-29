@@ -1095,7 +1095,6 @@ App.prototype.notifyProcess=function(notice,data,AceptExtraClass,CancelExtraClas
             var interactionHtml="";
         break;
     }
-    console.log(interactionHtml);
     var interactionHtmlData=$(interactionHtml);
     $(interactionHtmlData).data(data);
     var completeHtml=$(noticeHtml).append(interactionHtmlData);
@@ -1112,3 +1111,15 @@ App.prototype.closeAside=function(id_aside,wipe,time){
         $(id_aside).find('.main-content').html('');
     }
 }
+
+App.prototype.ajaxView=function(serviceUrl,data,container,callback){
+    var callback=(typeof callback != 'undefined')?callback:function(data){
+        console.log(data);
+    };
+    $.ajax({
+        url:serviceUrl,
+        type:'POST',
+        data:data,
+        success:callback(data)
+    });
+};
