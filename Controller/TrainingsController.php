@@ -95,6 +95,7 @@ class TrainingsController extends AppController {
 					$service=Router::url( array('controller' => 'Trainings', 'action' => 'registerParticipant','?'=>array(
 								'type'=>'registered',
 								'id'=>$trainer['people']['id_person'],
+								'training'=>$id,
 								'id_participant'=>$trainer['0']['id_participant'],
 								'id_asistant'=>$trainer['0']['is_participant']
 							)
@@ -109,6 +110,7 @@ class TrainingsController extends AppController {
 					$service=Router::url( array('controller' => 'Trainings', 'action' => 'registerParticipant','?'=>array(
 								'type'=>'training',
 								'id'=>$trainer['people']['id_person'],
+								'training'=>$id,
 								'id_participant'=>$trainer['0']['id_participant']
 							)
 						),true
@@ -121,7 +123,8 @@ class TrainingsController extends AppController {
 					//is not participant but is a person
 					$service=Router::url( array('controller' => 'Trainings', 'action' => 'registerParticipant','?'=>array(
 								'type'=>'person',
-								'id'=>$trainer['people']['id_person']
+								'id'=>$trainer['people']['id_person'],
+								'training'=>$id
 							)
 						),true
 					);
@@ -156,8 +159,26 @@ class TrainingsController extends AppController {
 	{
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
+		$person_id=$this->request->query['id'];
 
-		$data['req']=$_REQUEST;
+		$db = $this->Training->getDataSource();
+		$completePerson=$db->fetchAll(
+				"SELECT
+					people.*,
+					per_people_type.*,
+					per_participants.*,
+					per_participants_training.* 
+					FROM  
+					      people LEFT JOIN per_people_type           ON per_people_type.person_id=people.id_person 
+								 LEFT JOIN per_participants          ON per_participants.per_people_type_id=per_people_type.id 
+					             LEFT JOIN per_participants_training ON per_participants_training.participant_id=per_participants.id 
+
+					WHERE
+						  people.id_person=:person_id",
+				array('person_id' => $person_id)
+		);
+
+		debug($completePerson);
 
 		$this->request->data['test']='test data';
 

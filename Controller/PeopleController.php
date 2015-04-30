@@ -139,8 +139,6 @@ class PeopleController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		$persona_id = $this->Person->MeetingsPerson->find('first', array('conditions'=>array('MeetingsPerson.person_id' => $id)));
-		$this->set('persona_id', $persona_id);
 		if (!$this->Person->exists($id)) {
 			throw new NotFoundException(__('Invalid person'));
 		}

@@ -129,6 +129,15 @@ App.prototype.bind=function(){
         console.log(url);
         location.href=url;
     });
+
+    $('#bottom-content-aside').on('click','.print-view',function(){
+        var dataService=$(this).closest('.interaction-notice').data();
+        console.log(dataService);
+        var serviceUrl=dataService.actions['next-service'];
+        var data={'retrive':'1'};
+        var container='#right-content-aside';
+        app.ajaxView(serviceUrl,data,container);
+    });
 }
 
 
@@ -671,9 +680,14 @@ App.prototype.goToParameterView=function(url,parameters){
     location
 };
 
-App.prototype.putHtmlonAside=function(html,width){
+App.prototype.putHtmlonAside=function(html,width,bootstrap){
     $('#right-content-aside .main-content').html(html);
     $('#right-content-aside').addClass('active').css({'width':width});
+    if(bootstrap){
+        $('#right-content-aside').find('fieldset').addClass('row');
+        $('#right-content-aside').find('legend').addClass('col-md-12');
+        $('#right-content-aside').find('.input').addClass('col-md-6');
+    }
 }
 
 App.prototype.putHtmlonBottom=function(html,height,autoClose){
@@ -917,8 +931,6 @@ App.prototype.bindAutocompleteTrainings=function(selector){
 
         });
     }
-    
-
 };
 
 
@@ -1113,13 +1125,19 @@ App.prototype.closeAside=function(id_aside,wipe,time){
 }
 
 App.prototype.ajaxView=function(serviceUrl,data,container,callback){
-    var callback=(typeof callback != 'undefined')?callback:function(data){
-        console.log(data);
-    };
     $.ajax({
         url:serviceUrl,
         type:'POST',
         data:data,
-        success:callback(data)
+        success:function(data){
+            if(typeof callback != 'undefined'){
+                callback(data);
+            }else{
+                var htmlView=data;
+                app.closeAside('#bottom-content-aside',true);
+                app.putHtmlonAside(htmlView,'100%',true);
+                app.bind();
+            }
+        }
     });
 };
