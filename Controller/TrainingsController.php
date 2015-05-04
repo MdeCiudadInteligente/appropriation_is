@@ -1,5 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
+App::import('Controller', 'Person');
+App::import('Controller', 'PerPeopleTypesController');
+App::import('Controller', 'PerParticipants');
+App::import('Controller', 'PerParticipantsTrainings');
 /**
  * Trainings Controller
  *
@@ -8,7 +12,7 @@ App::uses('AppController', 'Controller');
  */
 class TrainingsController extends AppController {
 
- // var $uses = array('TraProcess','TraAlly','TraType','PerTrainer');
+  //var $uses = array('PerParticipant');
 /**
  * Components
  *
@@ -145,6 +149,48 @@ class TrainingsController extends AppController {
 			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
 
+/**
+ * complete_participant_data
+ *
+ * @throws NotFoundException
+ * @param  array $data
+ * @return json
+ */
+
+	public function complete_participant_data()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+    	$id_usuario = $this->Session->read('Auth.User.id_user');
+    	$data=$this->request->data;
+		$Person = new PersonController();
+		$PerPeopleTypes = new PerPeopleTypesController();
+		$PerParticipants = new PerParticipantsController();
+		$PerParticipantsTrainings = new PerParticipantsTrainingsController();
+		$datasource = $this->Training->getDataSource();
+		try{
+		    $datasource->begin();
+
+		    if(!$this->Product->save($data)){
+		        throw new Exception();
+		    }
+
+		    if(!$this->Price->save($data_one)){
+		        throw new Exception();
+		    }
+
+		    if(!$this->Property->save($my_data)){
+		        throw new Exception();
+		    }
+		    $datasource->commit();
+		} catch(Exception $e) {
+		    $datasource->rollback();
+		}   	
+
+
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+
 
 
 /**
@@ -160,28 +206,61 @@ class TrainingsController extends AppController {
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
 		$person_id=$this->request->query['id'];
-
 		$db = $this->Training->getDataSource();
 		$completePerson=$db->fetchAll(
 				"SELECT
 					people.*,
-					per_people_type.*,
 					per_participants.*,
-					per_participants_training.* 
+                    per_marital_status.name as marital_status,
+                    per_school_level.name as school_level,
+                    neighborhoods.neighborhood_name as neighborhood,
+                    neighborhoods.id_neighborhood,
+                    per_participants_training.id as is_training
 					FROM  
 					      people LEFT JOIN per_people_type           ON per_people_type.person_id=people.id_person 
 								 LEFT JOIN per_participants          ON per_participants.per_people_type_id=per_people_type.id 
 					             LEFT JOIN per_participants_training ON per_participants_training.participant_id=per_participants.id 
-
+                                 LEFT JOIN per_marital_status        ON per_participants.marital_status_id=per_marital_status.id
+                                 LEFT JOIN per_school_level          ON per_participants.school_level_id=per_school_level.id
+                                 LEFT JOIN neighborhoods             ON per_participants.neighborhood_id=neighborhoods.id_neighborhood
 					WHERE
 						  people.id_person=:person_id",
 				array('person_id' => $person_id)
 		);
 
-		debug($completePerson);
-
-		$this->request->data['test']='test data';
-
+		if(isset($completePerson[0]['per_participants']['id'])){
+			$participantPopulation=$db->fetchAll(
+					"SELECT 
+					    population_types.id_population_type,
+					    population_types.name
+					FROM
+					    per_participants_population_types,
+					    per_participants,
+					    population_types
+					WHERE
+					    per_participants_population_types.participant_id = per_participants.id
+					    AND per_participants_population_types.population_type_id = population_types.id_population_type
+					    AND per_participants.id = :per_participant_id",
+					array('per_participant_id' => $completePerson[0]['per_participants']['id'])
+			);
+		}
+		$data=$this->request->data;
+		$data['saveService']=Router::url( array('controller' => 'Trainings', 'action' => 'complete_participant_data',
+							'ext'=>'json'
+						),true
+		);
+		$data['PerParticipant']=$completePerson[0]['per_participants'];
+		$data['Person']=$completePerson[0]['people'];
+		$data['PopulationType']=(isset($participantPopulation))?$participantPopulation:NULL;
+		$data['Neighborhood']=(isset($completePerson[0]['neighborhoods']['id_neighborhood']))?array(
+			'id'    => $completePerson[0]['neighborhoods']['id_neighborhood'],
+			'name'  =>$completePerson[0]['neighborhoods']['neighborhood']
+		):NULL;
+		$this->request->data=$data;
+		$PerParticipant = new PerParticipantsController();
+		$maritalStatuses = $PerParticipant->PerParticipant->PerMaritalStatus->find('list');
+		$schoolLevels = $PerParticipant->PerParticipant->PerSchoolLevel->find('list');
+		$this->set(compact('maritalStatuses', 'schoolLevels'));
 	}
 
 

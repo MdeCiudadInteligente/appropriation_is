@@ -1,14 +1,21 @@
 ﻿
 <?php  
-		
+	$neighborhood=$this->request->data['Neighborhood'];		
+	$populationTypes=$this->request->data['PopulationType'];
+
 
 
 ?>
 
 	<div class="people form mde-form">
-		<form accept-charset="utf-8" method="post" id="PersonRegisterParticipantForm" action="/apropiacion/Trainings/registerParticipant?regType=1&amp;id=10">
+	<?php echo $this->Form->create('Person',array('class'=>'serviceSubmit',"data-service"=>$this->request->data['saveService'])); ?>
 			<fieldset>
 				<legend><?php echo __('Add Person'); ?></legend>
+					<div class="reg-data">
+						<input type="hidden" name="id_person" value="<?php echo $this->request->data['Person']['id_person']  ?>">
+						<input type="hidden" name="id_training" value="<?php echo $this->request->query['training']  ?>">
+						<input type="hidden" name="participant_id" value="<?php echo $this->request->data['PerParticipant']['id']  ?>">
+					</div>
 					<?php
 						echo $this->Form->input('name',array('maxLength'=>50));
 						echo $this->Form->input('lastname',array('maxLength'=>50));
@@ -21,9 +28,9 @@
 						echo $this->Form->input('genre',array('type'=>'select','options'=> array('1'=>'Femenino','2'=>'Masculino'),'empty'=>'Seleccione Género'));
 						echo $this->Form->input('economic_level',array('type'=>'select','options'=> array('1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5'),'empty'=>'Seleccione Estrato'));
 						echo $this->Form->input('birthday',array ('id' => 'datepicker','type'=>'text'));
-						echo $this->Form->input('other_population_type');
-						echo $this->Form->input('marital_status_id',array('empty'=>'Seleccione el estado civil'));
-						echo $this->Form->input('school_level_id',array('empty'=>'Seleccione el nivel de escolaridad'));
+						echo $this->Form->input('PerParticipant.other_population_type');
+						echo $this->Form->input('PerParticipant.marital_status_id',array('empty'=>'Seleccione el estado civil'));
+						echo $this->Form->input('PerParticipant.school_level_id',array('empty'=>'Seleccione el nivel de escolaridad'));
 					?>
 					<div class="seccion-person">
 						<div class="input">
@@ -31,7 +38,7 @@
 							<input type="text"  class="Neighborhoods-autocomplete" data-load="true" data-required="true" data-valcontainer=".results-input-neighborhood" data-emptymsg="Por favor ingresa un barrio" data-limit="1">
 							<div class="results-input-neighborhood" data-input-name="data[PerParticipant][neighborhood_id]">
 								<?php if(isset($neighborhood)) { ?>
-										<input type="hidden" name="data[PerParticipant][neighborhood_id]" value="<?php echo $neighborhood['id_neighborhood'] ?>" data-display="<?php echo $neighborhood['neighborhood_name']?>" id="val-input-site-<?php echo $neighborhood['id_neighborhood']?>">
+										<input type="hidden" name="data[PerParticipant][neighborhood_id]" value="<?php echo $neighborhood['id'] ?>" data-display="<?php echo $neighborhood['name']?>" id="val-input-site-<?php echo $neighborhood['id']?>">
 								<?php } ?>	
 							</div>
 						</div>
@@ -45,7 +52,7 @@
 									if(isset($populationTypes)){
 										if(is_array($populationTypes)){
 											foreach ($populationTypes as $key => $PopulationType) { ?>
-												<input type="hidden" name="data[PopulationType][PopulationType][]" value="<?php echo $PopulationType['id_population_type'] ?>" data-display="<?php echo $PopulationType['name']." ".$PopulationType['name'] ?>" id="val-input-<?php echo $PopulationType['id_population_type']?>">
+												<input type="hidden" name="data[PopulationType][PopulationType][]" value="<?php echo $PopulationType['population_types']['id_population_type'] ?>" data-display="<?php echo $PopulationType['population_types']['name']?>" id="val-input-<?php echo $PopulationType['population_types']['id_population_type']?>">
 								<?php	}
 									}
 								 } ?>
@@ -53,6 +60,6 @@
 						</div>
 					</div>		
 			</fieldset>
-		</form>	
+			<?php echo $this->Form->end(__('Submit')); ?>
 	</div>
 
