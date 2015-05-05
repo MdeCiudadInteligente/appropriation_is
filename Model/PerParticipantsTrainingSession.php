@@ -18,7 +18,7 @@ class PerParticipantsTrainingSession extends AppModel {
  *
  * @var string
  */
-	public $primaryKey = 'n';
+	public $primaryKey = 'id';
 
 /**
  * Validation rules

@@ -45,6 +45,70 @@ class PerParticipantsTrainingSessionsController extends AppController {
  *
  * @return void
  */
+	
+	public function add_service() {
+		$this->request->onlyAllow('ajax');
+		// No direct access via browser URL - Note for Cake2.5: allowMethod()		
+		if ($this->request->is('post')) {
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			$data=$this->request->data;			
+			//$asistencia=$data['PerParticipantsTrainingSession']['participants_training_id'];
+			$asistencia=(isset($data['PerParticipantsTrainingSession']['participants_training_id']))?$data['PerParticipantsTrainingSession']['participants_training_id']:array();
+			$sessionasit=$data['PerParticipantsTrainingSession']['session_id'];
+			
+			if(!empty($asistencia))
+			{
+				$Error = False;
+				foreach ($asistencia as $key => $asistencia)
+				{			
+					$this->PerParticipantsTrainingSession->create();
+					$assistence['PerParticipantsTrainingSession']['participants_training_id']=$asistencia;
+					$assistence['PerParticipantsTrainingSession']['session_id']=$sessionasit;
+				
+					try {
+							$prueba= $this->PerParticipantsTrainingSession->save($assistence);
+						}catch(Exception $e) {
+							$Error= $e;
+						}
+					
+				}
+				if($Error == false){
+						$response['method']['success']=true;
+						$notice=__(' El registro de la asistencia ha sido guardado');
+						$alertType='flash';
+				}
+				else
+					{
+						$response['method']['success']=false;
+						$response['method']['Error']['obj']= $Error;
+						$response['method']['Error']['data']=$assistence;
+						$notice=__(' El registro de la asistencia no se ha guardado completamente.');
+						$alertType='error';
+						break;
+					}
+			}
+			else
+				{
+					$notice=__(' El registro de la asistencia no puede ser guardado ya que no tiene datos');
+					$response['method']['success']=false;
+					$alertType='flash';
+				}
+					
+				$response['class']['PerParticipantsTrainingSession']=$data['PerParticipantsTrainingSession'];
+				$response['action']=array(  'notify'=>array(
+						'type'=>$alertType,
+						'notice'=>$notice,
+						'ux'=>'down'
+				)
+				);
+					
+				$this->set(compact('response')); // Pass $data to the view
+				$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
+					
+			}
+	}
+	
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->PerParticipantsTrainingSession->create();
@@ -64,7 +128,101 @@ class PerParticipantsTrainingSessionsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function edit_service() {
+				//Eliminar
+				$this->request->onlyAllow('ajax');				
+				if ($this->request->is('post')) {
+				
+				$usuario = $this->Session->read('Auth.User.id_user');
+				$this->set('usuario',$usuario);
+				$data=$this->request->data;
+				$idsession=$data['PerParticipantsTrainingSession']['session_id'];				
+				$errordelete = False;
+				
+				try 
+				{
+					$pruebadelete = $this->PerParticipantsTrainingSession->deleteAll(array('PerParticipantsTrainingSession.session_id' => $idsession));
+				}
+				catch(Exception $e) 
+				{
+					$errordelete = $e;
+				}
+				
+				if($errordelete == false)
+				{
+					$response['method']['success']=true;
+					$notice=__(' El registro ha sido eliminado.');
+					$alertType='flash';
+				}
+				else 
+				{
+					$response['method']['success']=false;
+					$response['method']['errordelete']['obj']= $errordelete;
+					$response['method']['errordelete']['delete']=$idsession;
+					$notice=__(' El registro de la asistencia no ha sido eliminado.');
+					$alertType='error';
+					break;
+				}
+				//Guardar...
+					
+				$asistencia=(isset($data['PerParticipantsTrainingSession']['participants_training_id']))?$data['PerParticipantsTrainingSession']['participants_training_id']:array();
+				$sessionasit=$data['PerParticipantsTrainingSession']['session_id'];
+						
+				if(!empty($asistencia))
+				{
+					$Error = False;
+					foreach ($asistencia as $key => $asistencia)
+					{			
+						$this->PerParticipantsTrainingSession->create();
+						$assistence['PerParticipantsTrainingSession']['participants_training_id']=$asistencia;
+						$assistence['PerParticipantsTrainingSession']['session_id']=$sessionasit;
+				
+						try {
+								$prueba= $this->PerParticipantsTrainingSession->save($assistence);
+							}catch(Exception $e) {
+								$Error= $e;
+							}
+					
+					}
+					if($Error == false){
+						$response['method']['success']=true;
+						$notice.=__(' El registro de la asistencia ha sido guardado');
+						$alertType='flash';
+					}
+					else
+						{
+							$response['method']['success']=false;
+							$response['method']['Error']['obj']= $Error;
+							$response['method']['Error']['data']=$assistence;
+							$notice.=__(' El registro de la asistencia no se ha guardado completamente.');
+							$alertType='error';
+							break;
+						}
+				}
+				else
+					{
+						$notice=__(' El registro de la asistencia no puede ser guardado ya que no tiene datos');
+						$response['method']['success']=false;
+						$alertType='flash';
+					}
+					
+					$response['class']['PerParticipantsTrainingSession']=$data['PerParticipantsTrainingSession'];
+					$response['action']=array(  'notify'=>array(
+							'type'=>$alertType,
+							'notice'=>$notice,
+							'ux'=>'down'
+					)
+					);
+					
+					$this->set(compact('response')); // Pass $data to the view
+					$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
+					
+				}
+				
+			       
+}
+
+public function edit($id = null) {
 		if (!$this->PerParticipantsTrainingSession->exists($id)) {
 			throw new NotFoundException(__('Invalid per participants training session'));
 		}
