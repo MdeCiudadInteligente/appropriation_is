@@ -139,12 +139,6 @@ App.prototype.bind=function(){
         app.ajaxView(serviceUrl,data,container);
     });
 
-    $('.seccion-person').on('click','.empty-person',function(){
-          var notice=$(this).data('notice');
-          var data=$(this).data();
-          console.log(data);
-          app.notifyProcess(notice,data,'print-view','cancel-view','200px');
-    });
 }
 
 
@@ -1018,6 +1012,7 @@ App.prototype.bindAutocompleteParticipants=function(selector){
 
 
 App.prototype.bindAutocompleteParticipantsRegister=function(selector){
+            var notFoundTimer; 
 			if($(selector).length){
 				 var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
                  var id=$(selector).data('id');
@@ -1030,16 +1025,30 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 					             var new_elem = elem.html('<div class="suggest-cont admin-training" data-training="'+data.is_participant+'" data-participant="'+data.id_participant+'" ><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.complete_name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Email:</b> '+data.email+' </div><div class=\'suggest_info clearer_auto\'>  <b>Registrado en otra formación :</b> '+participant+' </div><div class=\'suggest_info clearer_auto\'>  <b>Pertenece a esta formación</b> '+actual_training+' </div></div>');
 					             return new_elem;
 				            },
-				            emptyText:'<div class="no-index-person"><span class="print-view">No se encontro la persona</span><div class="add-person empty-person" data-notice="La persona no existe, ¿Desea registrala en esta formación?" >Ingresar persona</div> </div>',
-				            selectedItemProp: 'complete_name',
+                            emptyText:function(resultCont){
+                                var data=$('#empty-data-holder').data();
+                                var notice={'message':data.message,'type':data.type};
+                                var passData={'actions':{'next-service':data.service}};
+                                notFoundTimer=setTimeout(function(){
+                                    app.notifyProcess(notice,passData,'print-view','cancel-view','150px');
+                                },data.messageTime);
+                            },
+                            selectedItemProp: 'complete_name',
 				            selectedValuesProp:'cedula',
 				            searchObjProps: 'cedula,complete_name,doc',
 				            selectionLimit:limit,
                             extraParams:'&id='+id,
 				            startText: 'Ingresar Nombre, Documento o Email',
+                            resultsComplete:function(matchCount){
+                                if(matchCount>=1){
+                                    clearTimeout(notFoundTimer);
+                                    app.closeAside('#bottom-content-aside',true);
+                                }
+                            },
 				            resultClick: function(data){
                                 //Variables de datos
                                 var notice=data.attributes.actions.notice;
+                                console.log(data.attributes);
                                 app.notifyProcess(notice,data.attributes,'print-view','cancel-view','200px');
 				            },selectionRemoved: function(elem){
 				                var prop_data=elem.data('prop-data');

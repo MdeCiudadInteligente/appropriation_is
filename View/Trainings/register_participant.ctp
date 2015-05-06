@@ -2,7 +2,7 @@
 <?php  
 	$neighborhood=$this->request->data['Neighborhood'];		
 	$populationTypes=$this->request->data['PopulationType'];
-
+	$CurrentTrainingParticipant=(isset($this->request->data['CurrentTraining']['id']))?$this->request->data['CurrentTraining']['id']:'';
 
 
 ?>
@@ -15,6 +15,7 @@
 						<input type="hidden" name="id_person" value="<?php echo $this->request->data['Person']['id_person']  ?>">
 						<input type="hidden" name="id_training" value="<?php echo $this->request->query['training']  ?>">
 						<input type="hidden" name="participant_id" value="<?php echo $this->request->data['PerParticipant']['id']  ?>">
+						<input type="hidden" name="id_training_participant" value="<?php echo $CurrentTrainingParticipant  ?>">
 					</div>
 					<?php
 						echo $this->Form->input('name',array('maxLength'=>50));

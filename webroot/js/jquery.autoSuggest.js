@@ -26,6 +26,7 @@
 				asHtmlID: false,
 				startText: "Ingresar dato de busqueda",
 				emptyText: "No se encontraron resultados",
+				emptyTextHtml:"No se encontraron resultados",
 				preFill: {},
 				limitText: "No se permiten mas selecciones",
 				selectedItemProp: "value", //name of object property
@@ -321,11 +322,16 @@
 						}
 						selections_holder.removeClass("loading");
 						if(matchCount <= 0){
-							results_ul.html('<li class="as-message">'+opts.emptyText+'</li>');
+							if(typeof(opts.emptyText) === "function" ){
+								opts.emptyText.call(results_ul);
+								results_ul.html('<li class="as-message">'+opts.emptyTextHtml+'</li>');
+							}else{
+								results_ul.html('<li class="as-message">'+opts.emptyText+'</li>');
+							}
 						}
 						results_ul.css("width", selections_holder.outerWidth());
 						results_holder.show();
-						opts.resultsComplete.call(this);
+						opts.resultsComplete(matchCount);  
 					}
 					
 					function add_selected_item(data, num){
