@@ -70,6 +70,7 @@ App.prototype.bind=function(){
     app.bindAutocompleteTrainings('.Trainings-autocomplete');
     app.bindAutocompleteParticipants('.Participants-autocomplete');
     app.bindAutocompleteParticipantsRegister('.person-autocomplete-trainers');
+    app.ajaxSubmitService('.serviceSubmit');
    
     app.removeRequired();
     //app.setMobileNav();
@@ -132,12 +133,12 @@ App.prototype.bind=function(){
 
     $('#bottom-content-aside').on('click','.print-view',function(){
         var dataService=$(this).closest('.interaction-notice').data();
-        console.log(dataService);
         var serviceUrl=dataService.actions['next-service'];
         var data={'retrive':'1'};
         var container='#right-content-aside';
         app.ajaxView(serviceUrl,data,container);
     });
+
 }
 
 
@@ -209,7 +210,7 @@ App.prototype.bindAutocompletePersona=function(selector){
             $.each(loadPersons,function(){
                 var id=$(this).attr('id');
                 var completename=$(this).data('display');
-                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+completename+'</li>');
+                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+completename+'</li>');
             });
 
             $('.close-load').on('click',function(){
@@ -392,7 +393,7 @@ App.prototype.bindAutocompleteThematics=function(selector){
         $.each(loadPersons,function(){
             var id=$(this).attr('id');
             var completename=$(this).data('display');
-            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+completename+'</li>');
+            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+completename+'</li>');
         });
 
         $('.close-load').on('click',function(){
@@ -469,7 +470,7 @@ App.prototype.bindAutocompletePopulationType=function(selector){
          $.each(loadPopulationTypes,function(){
              var id=$(this).attr('id');
              var name=$(this).data('display');
-             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
          });
 
          $('.close-load').on('click',function(){
@@ -544,7 +545,7 @@ App.prototype.bindAutocompleteTraAlly=function(selector){
          $.each(loadTraAllies,function(){
              var id=$(this).attr('id');
              var name=$(this).data('display');
-             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
          });
 
          $('.close-load').on('click',function(){
@@ -617,7 +618,7 @@ App.prototype.bindAutocompleteTraProcess=function(selector){
 		         $.each(loadTraProcesses,function(){
 		             var id=$(this).attr('id');
 		             var name=$(this).data('display');
-		             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+		             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
 		         });
 
 		         $('.close-load').on('click',function(){
@@ -676,9 +677,6 @@ App.prototype.appendServiceHtml=function(data,name,allowedIndex){
 }
 
 
-App.prototype.goToParameterView=function(url,parameters){
-    location
-};
 
 App.prototype.putHtmlonAside=function(html,width,bootstrap){
     $('#right-content-aside .main-content').html(html);
@@ -761,7 +759,7 @@ App.prototype.bindAutocompleteTrainers=function(selector){
 				            $.each(loadtrainers,function(){
 				                var id=$(this).attr('id');
 				                var name=$(this).data('display');
-				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
 				            });
 			
 				            $('.close-load').on('click',function(){
@@ -840,7 +838,7 @@ App.prototype.bindAutocompleteNeighborhoods=function(selector){
          $.each(loadNeighborhoods,function(){
              var id=$(this).attr('id');
              var name=$(this).data('display');
-             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
          });
 
          $('.close-load').on('click',function(){
@@ -1014,6 +1012,7 @@ App.prototype.bindAutocompleteParticipants=function(selector){
 
 
 App.prototype.bindAutocompleteParticipantsRegister=function(selector){
+            var notFoundTimer; 
 			if($(selector).length){
 				 var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
                  var id=$(selector).data('id');
@@ -1026,16 +1025,30 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 					             var new_elem = elem.html('<div class="suggest-cont admin-training" data-training="'+data.is_participant+'" data-participant="'+data.id_participant+'" ><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.complete_name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Email:</b> '+data.email+' </div><div class=\'suggest_info clearer_auto\'>  <b>Registrado en otra formación :</b> '+participant+' </div><div class=\'suggest_info clearer_auto\'>  <b>Pertenece a esta formación</b> '+actual_training+' </div></div>');
 					             return new_elem;
 				            },
-				            emptyText:'<div class="no-index-person"><span>No se encontro la persona</span><div class="add-person">Ingresar persona</div> </div>',
-				            selectedItemProp: 'complete_name',
+                            emptyText:function(resultCont){
+                                var data=$('#empty-data-holder').data();
+                                var notice={'message':data.message,'type':data.type};
+                                var passData={'actions':{'next-service':data.service}};
+                                notFoundTimer=setTimeout(function(){
+                                    app.notifyProcess(notice,passData,'print-view','cancel-view','150px');
+                                },data.messageTime);
+                            },
+                            selectedItemProp: 'complete_name',
 				            selectedValuesProp:'cedula',
 				            searchObjProps: 'cedula,complete_name,doc',
 				            selectionLimit:limit,
                             extraParams:'&id='+id,
 				            startText: 'Ingresar Nombre, Documento o Email',
+                            resultsComplete:function(matchCount){
+                                if(matchCount>=1){
+                                    clearTimeout(notFoundTimer);
+                                    app.closeAside('#bottom-content-aside',true);
+                                }
+                            },
 				            resultClick: function(data){
                                 //Variables de datos
                                 var notice=data.attributes.actions.notice;
+                                console.log(data.attributes);
                                 app.notifyProcess(notice,data.attributes,'print-view','cancel-view','200px');
 				            },selectionRemoved: function(elem){
 				                var prop_data=elem.data('prop-data');
@@ -1141,3 +1154,25 @@ App.prototype.ajaxView=function(serviceUrl,data,container,callback){
         }
     });
 };
+
+App.prototype.ajaxSubmitService=function(formClass,notice,callback){
+    var form=$(formClass);
+    var serviceUrl=$(form).data('service');
+    $(form).on('submit',function(e){
+        e.preventDefault();
+        var data=$(form).serialize();
+        $.ajax({
+            url:serviceUrl,
+            type:'POST',
+            data:data,
+            dataType:'JSON',
+            success:function(data){
+                if(typeof callback != 'undefined'){
+                    callback(data);
+                }else{
+                    console.log(data);
+                }
+            }
+        });
+    });
+}

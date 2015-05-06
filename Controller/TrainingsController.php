@@ -1,5 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
+App::import('Controller', 'People');
+App::import('Controller', 'PerPeopleTypes');
+App::import('Controller', 'PerParticipants');
+App::import('Controller', 'PerParticipantsTrainings');
 /**
  * Trainings Controller
  *
@@ -8,7 +12,7 @@ App::uses('AppController', 'Controller');
  */
 class TrainingsController extends AppController {
 
- // var $uses = array('TraProcess','TraAlly','TraType','PerTrainer');
+  //var $uses = array('PerParticipant');
 /**
  * Components
  *
@@ -69,7 +73,7 @@ class TrainingsController extends AppController {
 					                AND participants.per_people_type_id = per_people_type.id
 					                AND per_type_id = 2
 					                AND part_training.participant_id = participants.id
-					                AND part_training.training_id = :id_formation) AS is_participant
+					                AND part_training.training_id = :id_formation LIMIT 1) AS is_participant
 					FROM
 					    people
 					WHERE
@@ -145,6 +149,117 @@ class TrainingsController extends AppController {
 			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
 
+/**
+ * complete_participant_data
+ *
+ * @throws NotFoundException
+ * @param  array $data
+ * @return json
+ */
+
+	public function complete_participant_data()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+    	$id_usuario = $this->Session->read('Auth.User.id_user');
+    	$data=$this->request->data;
+    	$id_training=(isset($data['id_training']))?$data['id_training']:NULL;
+		$Person = new PeopleController();
+		$PerPeopleTypes = new PerPeopleTypesController();
+		$PerParticipants = new PerParticipantsController();
+		$PerParticipantsTrainings = new PerParticipantsTrainingsController();
+		$currentDate=date('Y-m-d H:i:s');
+		$datasource = $this->Training->getDataSource();
+		//Set save data , if Ids edit 
+		$PersonData=array('Person'=>array_merge($data['Person'],array('creation_date'=>$currentDate,'user_id'=>$id_usuario)));
+    	$id_person=(isset($data['id_person']))?$data['id_person']:NULL;
+    	if($id_person){
+    		$PersonData['Person']['id_person']=$id_person;
+    	}
+		$PerParticipantData=array(
+			'PopulationType'=>$data['PopulationType'],
+			'PerParticipant'=>array_merge($data['PerParticipant'],array('creation_date'=>$currentDate,'user_id'=>$id_usuario))
+		);
+    	$id_participant=(isset($data['participant_id']))?$data['participant_id']:NULL;
+    	$id_training_participant=(isset($data['id_training_participant']))?$data['id_training_participant']:NULL;
+    	if($id_participant){
+			$PerParticipantData['PerParticipant']['id']=$id_participant;    		
+    		if(!$id_training_participant){
+    			$registerParticipant=true;
+    			$ParticipantExist=true;
+				$PerParticipantsTrainingData=array('PerParticipantsTraining' =>array_merge(array(
+						'training_id'=>$id_training,
+						'participant_id'=>$id_participant
+					),array('creation_date'=>$currentDate,'user_id'=>$id_usuario))
+				);
+    		}else{
+    			$registerParticipant=false;
+    		}
+    	}else{
+    		$registerParticipant=true;
+			$PerParticipantsTrainingData=array('PerParticipantsTraining' =>array_merge(array(
+					'training_id'=>$id_training
+				),array('creation_date'=>$currentDate,'user_id'=>$id_usuario))
+			);
+    	}
+		$error=false;
+		$commit_switch=0;
+		$debug="";
+		try{
+		    $datasource->begin();
+		    if(!$Person->Person->save($PersonData)){
+		        throw new Exception();
+		    }else{
+		    	$person_id=($id_person)?$id_person:$Person->Person->getLastInsertId();
+		    	$commit_switch=1;
+				$type_people='2';
+				$PerPeopleTypes = new PerPeopleTypesController;
+				if(!$id_participant){
+					$per_people_response=$PerPeopleTypes->add($person_id,$type_people,$id_usuario);
+					$per_people_type_id=isset($per_people_response['last_id'])?$per_people_response['last_id']:false;
+					$debug['peopleTypeResponse']=$per_people_response;
+					if($per_people_type_id){
+						$PerParticipantData['PerParticipant']['per_people_type_id']=$per_people_type_id;
+						$commit_switch='2-newParticipant';
+						$newParticipant=true;
+					}else{
+						$debug['errorMsg'][]='Fail to create people type id';
+					}
+				}else{
+					$newParticipant=false;
+					$commit_switch='2-existent-participant';
+				}
+				if (!$PerParticipants->PerParticipant->save($PerParticipantData)) {
+					throw new Exception();				
+				}else {
+					$commit_switch=3;
+					if($registerParticipant){
+						if(!isset($ParticipantExist)){
+							$PerParticipantsTrainingData['PerParticipantsTraining']['participant_id']=$PerParticipants->PerParticipant->getLastInsertID();
+						}
+						$debug=$PerParticipantsTrainingData;
+						if(!$PerParticipantsTrainings->PerParticipantsTraining->save($PerParticipantsTrainingData)){
+							throw new Exception();
+						}else{
+							$commit_switch='4-registerParticipant';
+						}
+					}
+					
+				}
+		    }
+		    $datasource->commit();
+		    $commit='commit';
+		} catch(Exception $e) {
+		    $error=$e;
+		    $datasource->rollback();
+		    $commit='rollback';
+		}   	
+		$response['sendData']=array_merge($PersonData,$PerParticipantData,$PerParticipantsTrainingData);
+		$response['error']=$error;
+		$response['debug']=array('data'=>$debug,'switch'=>$commit_switch,'commit'=>$commit);
+		$this->set(compact('response')); // Pass $data to the view
+		$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
+	}
+
 
 
 /**
@@ -159,29 +274,71 @@ class TrainingsController extends AppController {
 	{
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
-		$person_id=$this->request->query['id'];
+		$person_id=(isset($this->request->query['id']))?$this->request->query['id']:NULL;
+		$training_id=(isset($this->request->query['training']))?$this->request->query['training']:NULL;
+		if($person_id){
+			$db = $this->Training->getDataSource();
+			$completePerson=$db->fetchAll(
+					"SELECT
+						people.*,
+						per_participants.*,
+	                    per_marital_status.name as marital_status,
+	                    per_school_level.name as school_level,
+	                    neighborhoods.neighborhood_name as neighborhood,
+	                    neighborhoods.id_neighborhood,
+	                    per_participants_training.id as is_training
+						FROM  
+						      people LEFT JOIN per_people_type           ON per_people_type.person_id=people.id_person 
+									 LEFT JOIN per_participants          ON per_participants.per_people_type_id=per_people_type.id 
+						             LEFT JOIN per_participants_training ON per_participants_training.participant_id=per_participants.id 
+	                                 LEFT JOIN per_marital_status        ON per_participants.marital_status_id=per_marital_status.id
+	                                 LEFT JOIN per_school_level          ON per_participants.school_level_id=per_school_level.id
+	                                 LEFT JOIN neighborhoods             ON per_participants.neighborhood_id=neighborhoods.id_neighborhood
+						WHERE
+							  people.id_person=:person_id",
+					array('person_id' => $person_id)
+			);
 
-		$db = $this->Training->getDataSource();
-		$completePerson=$db->fetchAll(
-				"SELECT
-					people.*,
-					per_people_type.*,
-					per_participants.*,
-					per_participants_training.* 
-					FROM  
-					      people LEFT JOIN per_people_type           ON per_people_type.person_id=people.id_person 
-								 LEFT JOIN per_participants          ON per_participants.per_people_type_id=per_people_type.id 
-					             LEFT JOIN per_participants_training ON per_participants_training.participant_id=per_participants.id 
+			if(isset($completePerson[0]['per_participants']['id'])){
+				$participantPopulation=$db->fetchAll(
+						"SELECT 
+						    population_types.id_population_type,
+						    population_types.name
+						FROM
+						    per_participants_population_types,
+						    per_participants,
+						    population_types
+						WHERE
+						    per_participants_population_types.participant_id = per_participants.id
+						    AND per_participants_population_types.population_type_id = population_types.id_population_type
+						    AND per_participants.id = :per_participant_id",
+						array('per_participant_id' => $completePerson[0]['per_participants']['id'])
+				);
+			
+				$PerParticipantsTrainings = new PerParticipantsTrainingsController();
+				$options = array('conditions' => array('PerParticipantsTraining.participant_id'=> $completePerson[0]['per_participants']['id'],'PerParticipantsTraining.training_id'=>$training_id));
+				$currentTraining= $PerParticipantsTrainings->PerParticipantsTraining->find('first', $options);
+			}
+		}
 
-					WHERE
-						  people.id_person=:person_id",
-				array('person_id' => $person_id)
+		$data=$this->request->data;
+		$data['saveService']=Router::url( array('controller' => 'Trainings', 'action' => 'complete_participant_data',
+							'ext'=>'json'
+						),true
 		);
-
-		debug($completePerson);
-
-		$this->request->data['test']='test data';
-
+		$data['PerParticipant']=isset($completePerson[0]['per_participants'])?$completePerson[0]['per_participants']:NULL;
+		$data['Person']=(isset($completePerson[0]['people']))?$completePerson[0]['people']:NULL;
+		$data['PopulationType']=(isset($participantPopulation))?$participantPopulation:NULL;
+		$data['Neighborhood']=(isset($completePerson[0]['neighborhoods']['id_neighborhood']))?array(
+			'id'    => $completePerson[0]['neighborhoods']['id_neighborhood'],
+			'name'  =>$completePerson[0]['neighborhoods']['neighborhood']
+		):NULL;
+		$data['CurrentTraining']=(isset($currentTraining))?$currentTraining:'';
+		$this->request->data=$data;
+		$PerParticipant = new PerParticipantsController();
+		$maritalStatuses = $PerParticipant->PerParticipant->PerMaritalStatus->find('list');
+		$schoolLevels = $PerParticipant->PerParticipant->PerSchoolLevel->find('list');
+		$this->set(compact('maritalStatuses', 'schoolLevels'));
 	}
 
 
