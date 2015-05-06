@@ -59,7 +59,9 @@ $site=$this->request->data['Site'];
 		echo $this->Form->input('id_accompaniment');
 		echo $this->Form->input('accompaniment_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('accompaniment_type',array ('options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Estudiantes de PP, jóvenes por la convivencia o alfabetizadores' ,
-				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC','Laboratorios comunitarios'=>'Laboratorios comunitarios','Estudiantes del pascual bravo'=>'Estudiantes del pascual bravo','Otros'=>'Otros')));
+				'Aula Abierta'=>'Aula Abierta','Grados'=>'Grados','Curso, taller o charla'=>'Curso, taller o charla','DiverTIC'=>'DiverTIC','Laboratorios comunitarios'=>'Laboratorios comunitarios','Estudiantes del pascual bravo'=>'Estudiantes del pascual bravo','Kit de inclusion digital
+					'=>'Kit de inclusión digital
+					','Otros'=>'Otros')));
 		echo $this->Form->input('accompaniment_title',array('maxlenght'=>'90'));
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));
