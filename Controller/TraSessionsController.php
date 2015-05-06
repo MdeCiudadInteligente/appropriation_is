@@ -80,10 +80,13 @@ class TraSessionsController extends AppController {
  *
  * @return void
  */
+	
+	
 	public function add_service() {
 		$this->request->onlyAllow('ajax');
 		 // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		if ($this->request->is('post')) {
+			
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			$this->TraSession->create();
@@ -184,40 +187,45 @@ class TraSessionsController extends AppController {
 	public function delete_service() {
 		$this->request->onlyAllow('ajax');
 		if ($this->request->is('post')) {
-		$this->TraSession->id = $_POST['traSessionId'];
+			$usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('usuario',$usuario);
+			
+			$this->TraSession->id = $_POST['traSessionId'];
+			
+			if (!$this->TraSession->exists()) {
+				throw new NotFoundException(__('the session you want to delete does not exist'));			
+			}
+			
+			$response['method']['desc']=__("the session deleted with ID : ". $_POST['traSessionId']);
+			$this->request->onlyAllow('post', 'delete');
+			
+			if ($this->TraSession->delete()) {
+				$response['method']['success']=true;
+				//$response['class']['TraSession']['data']=array($data);
+				//$response['class']['TraSession']['id']='Aqui va el id recien eliminado.';
+				$notice=__('The session has been deleted with id'. $_POST['traSessionId']);
+				$alertType='flash';
+			} else {
+				$response['method']['success']=false;
+				//$response['method']['error']="La causa del error";
+				$response['class']['TraSession']['id'];
+				$notice=__('The session has not been deleted');
+				//$alertType='error';
+			}
+			$response['action']=array(  'notify'=>array(
+					//'type'=>$alertType,
+					'notice'=>$notice,
+					'ux'=>'down'
+				)
+			);
 		
-		if (!$this->TraSession->exists()) {
-			throw new NotFoundException(__('Invalid tra session'));
-		}
-		$response['method']['desc']=__("delete session with ID : ". $_POST['traSessionId']);
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->TraSession->delete()) {
-			$response['method']['success']=true;
-			//$response['class']['TraSession']['data']=array($data);
-			$response['class']['TraSession']['id']='Aqui va el id recien eliminado.';
-			$notice=__('The session reltaive to the formation {Id_formation} has been created with {ID}');
-			$alertType='flash';
-		} else {
-			$response['method']['success']=false;
-			$response['method']['error']="La causa del error";
-			$response['class']['TraSession']['id'];
-			$notice=__('The session reltaive to the formation {Id_formation} has not been created');
-			$alertType='error';
-		}
-		$response['action']=array(  'notify'=>array(
-				'type'=>$alertType,
-				'notice'=>$notice,
-				'ux'=>'down'
-		)
-		);
-		$this->set(compact('response')); // Pass $data to the view
-		$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
-		
-		
+			$this->set(compact('response')); // Pass $data to the view
+			$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
+			
+			
 		}
 	}
 	
-		
 	public function delete($id = null) {
 		$this->TraSession->id = $id;
 		if (!$this->TraSession->exists()) {
