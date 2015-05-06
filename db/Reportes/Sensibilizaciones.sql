@@ -1,4 +1,4 @@
-SELECT 
+﻿SELECT 
     t1.divulgation_date AS Fecha,
     'Sensibilización' AS 'Tipo de actividad',
     t1.divulgation_type AS 'Tipo de acompañamiento',
@@ -9,7 +9,13 @@ SELECT
     t6.name AS 'Tipo de poblacion',
     t2.site_name AS Sitio,
     t3.neighborhood_name AS Barrio,
-    t4.commune_name AS Comuna
+    t4.commune_name AS Comuna, 
+    t1.divulgation_adjunct AS 'Adjunto 1',
+    t1.divulgation_adjunct1 AS 'Adjunto 2',
+    t1.divulgation_adjunct2 AS 'Adjunto 3'
+
+
+
 FROM
     divulgations t1,
     sites t2,
@@ -23,6 +29,6 @@ WHERE
         AND t3.commune_id = t4.id_commune
 		AND t1.divulgation_type_id=t5.id
         AND t1.population_type_id=t6.id_population_type
-        AND t1.divulgation_date BETWEEN '2015-02-16' AND '2015-03-30'
+        AND t1.divulgation_date BETWEEN '2015-04-1' AND '2015-04-30'
 ORDER BY 
 	t1.divulgation_date,t1.divulgation_type		
