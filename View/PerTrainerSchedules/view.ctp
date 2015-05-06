@@ -1,4 +1,4 @@
-<div class="perTrainerSchedules view">
+﻿<div class="perTrainerSchedules view">
 <h2><?php echo __('Per Trainer Schedule'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>

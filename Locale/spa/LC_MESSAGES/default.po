@@ -104,6 +104,15 @@ msgstr "El fondo del formador ha sido guardado"
 msgid "List Per Trainer Funds"
 msgstr "Lista fondo de formador"
 
+msgid "Schedules"
+msgstr "Horarios"
+
+msgid "List Schedules"
+msgstr "Lista Horarios"
+
+msgid "New Schedules"
+msgstr "Nuevo Horario"
+
 msgid "New Per Trainer Fund"
 msgstr "Nuevo fondo de formador"
 
@@ -518,6 +527,9 @@ msgstr "El tipo de formación ha sido eliminado"
 msgid "The training type could not be saved. Please, try again."
 msgstr "El tipo de formación no pudo ser guardado. Por favor, trate de nuevo"
 
+msgid "Edit Per Trainer Schedule"
+msgstr "Editar Horario del Formador"
+
 msgid "The training type has been saved."
 msgstr "El tipo de formación ha sido guardado"
 
@@ -731,8 +743,14 @@ msgstr "Fecha de Final"
 msgid "Observations"
 msgstr "Observaciones"
 
-msgid "Schedule"
-msgstr "Horario"
+msgid "PerTrainer Schedules"
+msgstr "Horario Formador"
+
+msgid "Add Per Trainer Schedule"
+msgstr "Agregar Horario del Formador"
+
+msgid "Per Trainer Schedule"
+msgstr "Horario del Formador"
 
 msgid "Type Person"
 msgstr "Tipo Persona"
@@ -1491,7 +1509,7 @@ msgid "List Funds"
 msgstr "Listado de Fondos"
 
 msgid "Day"
-msgstr "D�*a"
+msgstr "Día"
 
 
 
@@ -2921,7 +2939,7 @@ msgstr "Hace %s"
 
 #: \libs\view\helpers\time.php:486
 msgid "days"
-msgstr "dias"
+msgstr "días"
 
 #: \libs\view\helpers\time.php:428
 msgid "year"

@@ -121,9 +121,28 @@ class PerTrainerSchedulesController extends AppController {
 			} else {
 				$this->Session->setFlash(__('The per trainer schedule could not be saved. Please, try again.'));
 			}
-		} else {
+		}
+		else {
 			$options = array('conditions' => array('PerTrainerSchedule.' . $this->PerTrainerSchedule->primaryKey => $id));
 			$this->request->data = $this->PerTrainerSchedule->find('first', $options);
+			
+			$idper_people_type=$this->request->data['PerTrainer']['per_people_type_id'];
+				
+			$PerPeopleTypes = new PerPeopleTypesController;
+				
+			$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
+				
+			if ($per_trainers_responsefp['success']){
+					
+				if(!$per_trainers_responsefp['personname']){
+					$this->Session->setFlash(__('Do not name the person was obtained'));
+				}
+			}
+			else{
+				$this->Session->setFlash(__($per_trainers_responsefp['message']));
+			}
+			
+			$this->set('per_trainers_responsefp',$per_trainers_responsefp);	
 		}
 		$perTrainers = $this->PerTrainerSchedule->PerTrainer->find('list');
 		$this->set(compact('perTrainers'));

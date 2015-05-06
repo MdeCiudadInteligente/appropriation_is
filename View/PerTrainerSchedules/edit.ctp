@@ -1,16 +1,23 @@
-<div class="perTrainerSchedules form">
+﻿<div class="perTrainerSchedules form">
 <?php echo $this->Form->create('PerTrainerSchedule'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Per Trainer Schedule'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('day');
+		echo $this->Form->input('day',array ('options' => array ('Lunes'=>'Lunes','Martes'=>'Martes','Miércoles'=>'Miércoles','Jueves'=>'Jueves','Viernes'=>'Viernes','Sabado'=>'Sabado','Domingo'=>'Domingo'),'empty'=>'Seleccione el día'));
 		echo $this->Form->input('start_time');
 		echo $this->Form->input('end_time');
-		echo $this->Form->input('per_trainer_id');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('creation_date');
-		echo $this->Form->input('modification_date');
+	?>
+	<div class="seccion-person">
+			<div class="input">
+				<label>Formador</label>
+				<div><?php echo $per_trainers_responsefp['personname']; ?></div>
+			</div>
+	</div>		
+	<?php	
+		//echo $this->Form->input('user_id');
+		//echo $this->Form->input('creation_date');
+		//echo $this->Form->input('modification_date');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
