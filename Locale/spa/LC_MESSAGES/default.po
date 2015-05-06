@@ -1487,6 +1487,12 @@ msgstr "Agregar Tipo de Sitio"
 msgid "List Funds"
 msgstr "Listado de Fondos"
 
+msgid "List Funds"
+msgstr "Listado de Fondos"
+
+msgid "Day"
+msgstr "DÃ*a"
+
 
 
 #: \console\error.php:96

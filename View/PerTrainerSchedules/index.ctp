@@ -1,56 +1,31 @@
-<div class="perTrainerSchedules index">
-	<h2><?php echo __('Per Trainer Schedules'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('day'); ?></th>
-			<th><?php echo $this->Paginator->sort('start_time'); ?></th>
-			<th><?php echo $this->Paginator->sort('end_time'); ?></th>
-			<th><?php echo $this->Paginator->sort('per_trainer_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('creation_date'); ?></th>
-			<th><?php echo $this->Paginator->sort('modification_date'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($perTrainerSchedules as $perTrainerSchedule): ?>
-	<tr>
-		<td><?php echo h($perTrainerSchedule['PerTrainerSchedule']['id']); ?>&nbsp;</td>
-		<td><?php echo h($perTrainerSchedule['PerTrainerSchedule']['day']); ?>&nbsp;</td>
-		<td><?php echo h($perTrainerSchedule['PerTrainerSchedule']['start_time']); ?>&nbsp;</td>
-		<td><?php echo h($perTrainerSchedule['PerTrainerSchedule']['end_time']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($perTrainerSchedule['PerTrainer']['id'], array('controller' => 'per_trainers', 'action' => 'view', $perTrainerSchedule['PerTrainer']['id'])); ?>
-		</td>
-		<td><?php echo h($perTrainerSchedule['PerTrainerSchedule']['user_id']); ?>&nbsp;</td>
-		<td><?php echo h($perTrainerSchedule['PerTrainerSchedule']['creation_date']); ?>&nbsp;</td>
-		<td><?php echo h($perTrainerSchedule['PerTrainerSchedule']['modification_date']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $perTrainerSchedule['PerTrainerSchedule']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $perTrainerSchedule['PerTrainerSchedule']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $perTrainerSchedule['PerTrainerSchedule']['id']), null, __('Are you sure you want to delete # %s?', $perTrainerSchedule['PerTrainerSchedule']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Per Trainer Schedule'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Per Trainers'), array('controller' => 'per_trainers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Per Trainer'), array('controller' => 'per_trainers', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+﻿<div class="right-block">
+		<div class="divtypes">
+			<h2><?php echo __('divtypes'); ?></h2>
+			<?php
+				$gridOptions=array(
+						'gridId'=>'gridpertrainersschedule',
+						'gridTitle'=>'Horarios de los formadores',
+						'height'=>801,
+						'serviceUrl'=>'PerTrainerSchedules/index_service.json',
+						'fields'=>array(
+						    array("dataIndex"=>"id","column"=>false),
+							array("dataIndex"=>"people",'header'=>'Formador','sortable'=>true,'align'=>"center","column"=>true),
+			                array("dataIndex"=>"day",'header'=>'Día','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"start_time",'header'=>'Hora inicio','sortable'=>true,'align'=>"center","column"=>true),
+							array("dataIndex"=>"end_time",'header'=>'Hora fin','sortable'=>true,'align'=>"center","column"=>true),
+			                array("dataIndex"=>"creation_date",'header'=>'Fecha CreaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"modification_date",'header'=>'Fecha ModificaciÃ³n','sortable'=>true,'align'=>"left","column"=>false),
+			                array("dataIndex"=>"user_id",'header'=>'user_id','sortable'=>true,'align'=>"left","column"=>false)
+						),
+						'expander'=>false,
+						'AllowAll'=>true,
+						'printCrud'=>true,
+						'baseParams'=>array('start'=>0,'limit'=>100)
+				);
+			?>
+			<?php echo $this->element('grid_default',array('gridOptions'=>$gridOptions)); ?>
+		</div>
+	<!-- End right block -->		
+<!-- End divtypes container -->
+</div>	
+
