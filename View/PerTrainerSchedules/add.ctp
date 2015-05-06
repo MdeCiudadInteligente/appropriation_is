@@ -1,15 +1,22 @@
-<div class="perTrainerSchedules form">
+<div class="perTrainerSchedules form mde-form">
 <?php echo $this->Form->create('PerTrainerSchedule'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Per Trainer Schedule'); ?></legend>
 	<?php
-		echo $this->Form->input('day');
+		echo $this->Form->input('day',array ('options' => array ('Lunes'=>'Lunes','Martes'=>'Martes','Miércoles'=>'Miércoles','Jueves'=>'Jueves','Viernes'=>'Viernes','Sabado'=>'Sabado','Domingo'=>'Domingo'),'empty'=>'Seleccione el día'));
 		echo $this->Form->input('start_time');
 		echo $this->Form->input('end_time');
-		echo $this->Form->input('per_trainer_id');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('creation_date');
-		echo $this->Form->input('modification_date');
+	?>	
+		<div class="seccion-person">
+		<div class="input" >
+		<label>Formador</label>
+		<input type="text"  class="Trainers-autocomplete" data-required="true" data-valcontainer=".results-input" data-emptymsg="Por favor ingresa una formador" data-limit="1">
+		<div class="results-input" data-input-name="data[PerTrainerSchedule][per_trainer_id]" >
+			
+		</div>
+		</div>
+		</div>
+	<?php //echo $this->Form->input('per_trainer_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
