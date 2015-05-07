@@ -25,22 +25,7 @@
 		<dd>
 			<?php echo $this->Html->link($perTrainerSchedule['PerTrainer']['id'], array('controller' => 'per_trainers', 'action' => 'view', $perTrainerSchedule['PerTrainer']['id'])); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('User Id'); ?></dt>
-		<dd>
-			<?php echo h($perTrainerSchedule['PerTrainerSchedule']['user_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Creation Date'); ?></dt>
-		<dd>
-			<?php echo h($perTrainerSchedule['PerTrainerSchedule']['creation_date']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modification Date'); ?></dt>
-		<dd>
-			<?php echo h($perTrainerSchedule['PerTrainerSchedule']['modification_date']); ?>
-			&nbsp;
-		</dd>
+		</dd>		
 	</dl>
 </div>
 <div class="actions">

@@ -104,6 +104,12 @@ msgstr "El fondo del formador ha sido guardado"
 msgid "List Per Trainer Funds"
 msgstr "Lista fondo de formador"
 
+msgid "The per trainer schedule has been saved."
+msgstr "El horario del formador ha sido guardado."
+
+msgid "The per trainer schedule has been deleted."
+msgstr "El horario del formador ha sido eliminado."
+
 msgid "Schedules"
 msgstr "Horarios"
 
