@@ -1,9 +1,19 @@
 <div class="perParticipants view">
-<h2><?php echo __('Per Participant'); ?></h2>
+<h2><?php echo __('Participant'); ?></h2>
 	<dl>
-		<dt><?php echo __('Neighborhood Id'); ?></dt>
+		<dt><?php echo __('Name'); ?></dt>
+		<dd>
+			<?php echo h($per_trainers_responsefp['personname']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Neighborhood'); ?></dt>
 		<dd>
 			<?php echo h($perParticipant['Neighborhood']['neighborhood_name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Population Type'); ?></dt>
+		<dd>
+			<?php echo h($totalpopulationtype); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Other Population Type'); ?></dt>
@@ -11,17 +21,12 @@
 			<?php echo h($perParticipant['PerParticipant']['other_population_type']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Per People Type Id'); ?></dt>
-		<dd>
-			<?php echo h($perParticipant['PerParticipant']['per_people_type_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Marital Status Id'); ?></dt>
+		<dt><?php echo __('Marital Status'); ?></dt>
 		<dd>
 			<?php echo h($perParticipant['PerMaritalStatus']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('School Level Id'); ?></dt>
+		<dt><?php echo __('School Level'); ?></dt>
 		<dd>
 			<?php echo h($perParticipant['PerSchoolLevel']['name']); ?>
 			&nbsp;

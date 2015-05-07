@@ -73,6 +73,36 @@ class PerParticipantsController extends AppController {
 		}
 		$options = array('conditions' => array('PerParticipant.' . $this->PerParticipant->primaryKey => $id));
 		$this->set('perParticipant', $this->PerParticipant->find('first', $options));
+		
+		$this->request->data = $this->PerParticipant->find('first', $options);
+		
+		$totalpopulationtype='';
+		foreach ($this->request->data['PopulationType'] as $key => $popupaltiontype) {
+			$totalpopulationtype=$popupaltiontype['name'].', '.$totalpopulationtype;
+		}
+		$totalpopulationtype=trim($totalpopulationtype, ',');
+		
+		$idper_people_type=$this->request->data['PerParticipant']['per_people_type_id'];
+		
+		$PerPeopleTypes = new PerPeopleTypesController;
+		
+		$per_trainers_responsefp=$PerPeopleTypes->findperson($idper_people_type);
+		
+		if ($per_trainers_responsefp['success']){
+				
+			if(!$per_trainers_responsefp['personname']){
+				$this->Session->setFlash(__('Do not name the person was obtained'));
+			}
+		}
+		else{
+			$this->Session->setFlash(__($per_trainers_responsefp['message']));
+		}
+			
+		$this->set('per_trainers_responsefp',$per_trainers_responsefp);
+		$this->set('totalpopulationtype',$totalpopulationtype);
+		
+		
+		
 	}
 
 /**

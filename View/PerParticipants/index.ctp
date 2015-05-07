@@ -25,7 +25,7 @@
 						'serviceUrl'=>'PerParticipants/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"people",'header'=>'Sitio','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"people",'header'=>'Participante','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"neighborhood",'header'=>'Barrio','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"totalpopulationtype",'header'=>'Tipo de población','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"other_population_type",'header'=>'Otro tipo de población','sortable'=>true,'align'=>"left","column"=>true),
