@@ -179,7 +179,6 @@ class PerParticipantsController extends AppController {
 		$schoolLevels = $this->PerParticipant->PerSchoolLevel->find('list');
 		$populationTypes = $this->PerParticipant->PopulationType->find('list');
 		$trainings = $this->PerParticipant->Training->find('list');
-		debug($maritalStatuses);
 		$this->set(compact('neighborhoods', 'perPeopleTypes', 'maritalStatuses', 'schoolLevels', 'populationTypes', 'trainings'));
 	}
 
