@@ -75,6 +75,23 @@
 						)
 				),
 				array(
+							"user_level"=>'1,4,5',
+							"icon-class"=>'icon-cogs',
+							"route"=>Router::url( array('controller' => 'PerTrainerSchedules', 'action' => 'index'),true),
+							"label" =>__('PerTrainer Schedules'),
+							"sub-elements"=>array(
+									array(
+											"route"=>Router::url( array('controller' => 'PerTrainerSchedules', 'action' => 'index'),true),
+											"label"=>__('List Schedules')
+									),
+									array(
+											"user_level"=>'1',
+											"route"=>Router::url( array('controller' => 'PerTrainerSchedules', 'action' => 'add'),true),
+											"label"=>__('New Schedules')
+									)
+							)
+				),
+				array(
 						"user_level"=>'1,4,5',
 						"icon-class"=>'icon-cogs',
 						"route"=>Router::url( array('controller' => ' PerTrainerFunds', 'action' => 'index'),true),
@@ -127,23 +144,6 @@
 								"label"=>__('New People Types')
 							)	
 					)
-				),
-				array(
-							"user_level"=>'1,4,5',
-							"icon-class"=>'icon-cogs',
-							"route"=>Router::url( array('controller' => 'PerTrainerSchedules', 'action' => 'index'),true),
-							"label" =>__('PerTrainer Schedules'),
-							"sub-elements"=>array(
-									array(
-											"route"=>Router::url( array('controller' => 'PerTrainerSchedules', 'action' => 'index'),true),
-											"label"=>__('List Schedules')
-									),
-									array(
-											"user_level"=>'1',
-											"route"=>Router::url( array('controller' => 'PerTrainerSchedules', 'action' => 'add'),true),
-											"label"=>__('New Schedules')
-									)
-							)
 				)
 										
 		    )

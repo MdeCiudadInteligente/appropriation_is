@@ -1517,7 +1517,8 @@ msgstr "Listado de Fondos"
 msgid "Day"
 msgstr "Día"
 
-
+msgid "Participant"
+msgstr "Participante"
 
 #: \console\error.php:96
 msgid "Missing Controller '%s'"
