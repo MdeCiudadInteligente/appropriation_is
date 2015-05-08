@@ -159,8 +159,13 @@ class AccompanimentsController extends AppController {
 				}
 		}
 		$sites = $this->Accompaniment->Site->find('list', array('order'=>array('Site.site_name ASC')));
+<<<<<<< HEAD
 		$AccTypes = $this->Accompaniment->AccType->find('list',array('order' => array('AccType.name' => 'ASC')));
 		$this->set(compact('sites','AccTypes'));
+=======
+		$accTypes = $this->Accompaniment->AccType->find('list',array('order' => array('AccType.name ASC')));
+		$this->set(compact('sites','accTypes'));
+>>>>>>> 7c285cd4d034529eea2cc71306100ec1666a9e91
 	}
 
 /**
@@ -186,9 +191,10 @@ class AccompanimentsController extends AppController {
 			$this->request->data = $this->Accompaniment->find('first', $options);
 		}
 		$sites = $this->Accompaniment->Site->find('list');
+		$accTypes = $this->Accompaniment->AccType->find('list',array('order' => array('AccType.name ASC')));
 		$options = array('conditions' => array('Accompaniment.' . $this->Accompaniment->primaryKey => $id));
 		$this->set('accompaniment', $this->Accompaniment->find('first', $options));
-		$this->set(compact('sites'));
+		$this->set(compact('sites','accTypes'));
 	}
 
 	/**

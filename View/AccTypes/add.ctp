@@ -1,13 +1,10 @@
-<div class="accTypes form">
+<div class="accTypes form mde-form">
 <?php echo $this->Form->create('AccType'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Acc Type'); ?></legend>
 	<?php
-		echo $this->Form->input('name');
-		echo $this->Form->input('state');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('creation_date');
-		echo $this->Form->input('modification_date');
+		echo $this->Form->input('name');		
+		echo $this->Form->input('state',array ('options' => array ('1'=>'Activo','0'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
