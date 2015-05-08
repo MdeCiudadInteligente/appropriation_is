@@ -159,7 +159,8 @@ class AccompanimentsController extends AppController {
 				}
 		}
 		$sites = $this->Accompaniment->Site->find('list', array('order'=>array('Site.site_name ASC')));
-		$this->set(compact('sites'));
+		$AccTypes = $this->Accompaniment->AccType->find('list',array('order' => array('AccType.name' => 'ASC')));
+		$this->set(compact('sites','AccTypes'));
 	}
 
 /**
