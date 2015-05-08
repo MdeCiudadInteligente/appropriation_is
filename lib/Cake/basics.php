@@ -547,18 +547,7 @@ if (!function_exists('__')) {
  * @return mixed translated string
  * @link http://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#__
  */
-	function <div class="seccion-person">
-			<div class="input">
-				<label>Formador</label>
-				<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-for" data-emptymsg="Por favor ingresa un tipo de formador" class="Trainers-autocomplete">
-				<div class="results-input-for" data-input-name="data[PerTrainer][PerTrainer][]">
-				<?php 
-					foreach ($trainers as $key => $trainer) { ?>
-						<input type="hidden" name="data[PerTrainer][PerTrainer][]" value="<?php echo $trainer['t1']['id'] ?>" data-display="<?php echo $trainer['t3']['name'].' '.$trainer['t3']['lastname'] ?>" id="val-input-for-<?php echo $trainer['t1']['id']?>">
-				<?php } ?>
-				</div>
-			</div>
-	   </div>($singular, $args = null) {
+	function __($singular, $args = null) {
 		if (!$singular) {
 			return;
 		}
