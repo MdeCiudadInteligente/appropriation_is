@@ -120,6 +120,13 @@ class Meeting extends AppModel {
 					'conditions' => '',
 					'fields' => '',
 					'order' => ''
+		),
+		'MeeType' => array(
+					'className' => 'MeeType',
+					'foreignKey' => 'meeting_type_id',
+					'conditions' => '',
+					'fields' => '',
+					'order' => ''
 		)
 	);
 

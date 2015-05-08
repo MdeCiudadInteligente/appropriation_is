@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('Meeting Type'); ?></dt>
 		<dd>
-			<?php echo h($meeting['Meeting']['meeting_type']); ?>
+			<?php echo h($meeting['MeeType']['name']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Meeting Title'); ?></dt>

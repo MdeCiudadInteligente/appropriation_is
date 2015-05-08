@@ -1,14 +1,11 @@
-<div class="meeTypes form">
+<div class="meeTypes form mde-form">
 <?php echo $this->Form->create('MeeType'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Mee Type'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
-		echo $this->Form->input('state');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('creation_date');
-		echo $this->Form->input('modification_date');
+		echo $this->Form->input('state',array ('options' => array ('1'=>'Activo','0'=>'Inactivo'),'empty'=>'Seleccione estado'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

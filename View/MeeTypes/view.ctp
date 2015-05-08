@@ -1,34 +1,9 @@
 <div class="meeTypes view">
 <h2><?php echo __('Mee Type'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($meeType['MeeType']['id']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
 			<?php echo h($meeType['MeeType']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('State'); ?></dt>
-		<dd>
-			<?php echo h($meeType['MeeType']['state']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('User Id'); ?></dt>
-		<dd>
-			<?php echo h($meeType['MeeType']['user_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Creation Date'); ?></dt>
-		<dd>
-			<?php echo h($meeType['MeeType']['creation_date']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modification Date'); ?></dt>
-		<dd>
-			<?php echo h($meeType['MeeType']['modification_date']); ?>
 			&nbsp;
 		</dd>
 	</dl>

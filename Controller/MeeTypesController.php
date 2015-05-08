@@ -24,6 +24,29 @@ class MeeTypesController extends AppController {
 		$this->MeeType->recursive = 0;
 		$this->set('meeTypes', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$Meetype=$this->MeeType->find('all');
+	
+		$count=0;
+		foreach ($Meetype as $key => $Meetype) {
+			$data['rows'][$count]=array(
+					'id'=>$Meetype['MeeType']['id'],
+					'name'=>$Meetype['MeeType']['name'],
+					'state'=>$Meetype['MeeType']['state'],
+					'creation_date'=>$Meetype['MeeType']['creation_date'],
+					'modification_date'=>$Meetype['MeeType']['modification_date'],
+					'user_id'=>$Meetype['MeeType']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method

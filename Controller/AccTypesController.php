@@ -25,6 +25,28 @@ class AccTypesController extends AppController {
 		$this->set('accTypes', $this->Paginator->paginate());
 	}
 
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$Acctype=$this->AccType->find('all');
+	
+		$count=0;
+		foreach ($Acctype as $key => $Acctype) {
+			$data['rows'][$count]=array(
+					'id'=>$Acctype['AccType']['id'],
+					'name'=>$Acctype['AccType']['name'],
+					'state'=>$Acctype['AccType']['state'],
+					'creation_date'=>$Acctype['AccType']['creation_date'],
+					'modification_date'=>$Acctype['AccType']['modification_date'],
+					'user_id'=>$Acctype['AccType']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 /**
  * view method
  *

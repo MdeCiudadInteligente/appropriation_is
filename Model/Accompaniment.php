@@ -147,6 +147,13 @@ class Accompaniment extends AppModel {
 					'conditions' => '',
 					'fields' => '',
 					'order' => ''
+		),
+		'AccType' => array(
+					'className' => 'AccType',
+					'foreignKey' => 'accompaniment_type_id',
+					'conditions' => '',
+					'fields' => '',
+					'order' => ''
 		)
 	);
 }

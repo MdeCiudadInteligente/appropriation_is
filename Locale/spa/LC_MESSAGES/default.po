@@ -113,8 +113,59 @@ msgstr "El horario del formador ha sido eliminado."
 msgid "Schedules"
 msgstr "Horarios"
 
+msgid "Acc Types"
+msgstr "Tipos Acompañamientos"
+
+msgid "Add Acc Type"
+msgstr "Agregar Tipo Acompañamiento"
+
 msgid "List Schedules"
 msgstr "Lista Horarios"
+
+msgid "Add Mee Type"
+msgstr "Agregar Tipo Reunión"
+
+msgid "MeeTypes"
+msgstr "Tipo Reunión"
+
+msgid "List MeeTypes"
+msgstr "Lista Tipo Reunión"
+
+msgid "New MeeType"
+msgstr "Nuevo Tipo Reunión"
+
+msgid "Mee Type"
+msgstr "Tipo Reunión"
+
+msgid "The mee type has been saved."
+msgstr "El tipo de reunión ha sido guardado."
+
+msgid "The mee type has been deleted."
+msgstr "El tipo de reunión ha sido eliminado."
+
+msgid "Edit Mee Type"
+msgstr "Editar Tipo Reunión"
+
+msgid "The acc type has been saved."
+msgstr "El tipo acompañamiento ha sido guardado."
+
+msgid "The acc type has been deleted."
+msgstr "El tipo acompañamiento ha sido eliminado."
+
+msgid "Edit Acc Type"
+msgstr "Editar Tipo Acompañamiento"
+
+msgid "Acc Type"
+msgstr "Tipo Acompañamiento"
+
+msgid "AccTypes"
+msgstr "Tipo Acompañamiento"
+
+msgid "List AccTypes"
+msgstr "Lista Tipo Acompañamiento"
+
+msgid "New AccType"
+msgstr "Nuevo Tipo Acompañamiento"
 
 msgid "New Schedules"
 msgstr "Nuevo Horario"
