@@ -1,11 +1,6 @@
 ﻿<div class="perTrainerSchedules view">
 <h2><?php echo __('Per Trainer Schedule'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($perTrainerSchedule['PerTrainerSchedule']['id']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Day'); ?></dt>
 		<dd>
 			<?php echo h($perTrainerSchedule['PerTrainerSchedule']['day']); ?>
@@ -21,9 +16,10 @@
 			<?php echo h($perTrainerSchedule['PerTrainerSchedule']['end_time']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Per Trainer'); ?></dt>
+		<dt><?php echo __('Trainer'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($perTrainerSchedule['PerTrainer']['id'], array('controller' => 'per_trainers', 'action' => 'view', $perTrainerSchedule['PerTrainer']['id'])); ?>
+			<?php //echo $this->Html->link($perTrainerSchedule['PerTrainer']['id'], array('controller' => 'per_trainers', 'action' => 'view', $perTrainerSchedule['PerTrainer']['id'])); ?>
+			<?php echo h($per_trainers_responsefp['personname']); ?>
 			&nbsp;
 		</dd>		
 	</dl>
