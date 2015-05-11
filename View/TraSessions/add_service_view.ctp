@@ -30,6 +30,7 @@ $service=Router::url( array('controller' => 'TraSessions', 'action' => 'add_serv
 
 	<div class="seccion-person">	
 			<div class="input" >
+				<label>Temáticas</label>
 				<input type="text"  class="Thematics-autocomplete" data-required="true" data-valcontainer=".results-input-thematics" data-emptymsg="Por favor ingresa mínimo una temática">
 				<div class="results-input-thematics" data-input-name="data[Thematic][Thematic][]">
 				</div>

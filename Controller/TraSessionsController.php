@@ -89,7 +89,7 @@ class TraSessionsController extends AppController {
 			$this->set('usuario',$usuario);
 			$this->TraSession->create();
 			$debug['request']=$this->request->data;
-			$data=$this->request->data;;
+			$data=$this->request->data;
 			$training_id=$this->request->query['training'];
 			$data['TraSession']['training_id']=$training_id;
 			$data['TraSession']['creation_date']=date('Y-m-d H:i:s');

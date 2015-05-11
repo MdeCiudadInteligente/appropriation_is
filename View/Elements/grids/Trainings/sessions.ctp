@@ -21,16 +21,16 @@
 			    array("dataIndex"=>"username","column"=>false),
 			    array("dataIndex"=>"modification_date","column"=>false),
 			    array("dataIndex"=>"creation_date","column"=>false),
-			    array("dataIndex"=>"other_population_type","column"=>false),
-				array("dataIndex"=>"person_name",'header'=>'Nombre','sortable'=>true,'align'=>"left","column"=>true),
-				array("dataIndex"=>"population_types",'header'=>'Tipo de población','sortable'=>true,'align'=>"left","column"=>true),
-				array("dataIndex"=>"neighborhood_name",'header'=>'Barrio','sortable'=>true,'align'=>"left","column"=>true),
-				array("dataIndex"=>"marital_status",'header'=>'Estado civil','sortable'=>true,'align'=>"left","column"=>true),
-				array("dataIndex"=>"school_level",'header'=>'Escolaridad','sortable'=>true,'align'=>"left","column"=>true)
+			    array("dataIndex"=>"observation","column"=>false),
+				array("dataIndex"=>"start_date",'header'=>'Fecha','sortable'=>true,'align'=>"left","column"=>true),
+				array("dataIndex"=>"start_time",'header'=>'Hora Inicial','sortable'=>true,'align'=>"left","column"=>true),
+				array("dataIndex"=>"end_time",'header'=>'Hora Final','sortable'=>true,'align'=>"left","column"=>true),
+				array("dataIndex"=>"thematics",'header'=>'Tematicas','sortable'=>true,'align'=>"left","column"=>true),
+				array("dataIndex"=>"participants",'header'=>'Participantes','sortable'=>true,'align'=>"left","column"=>true)
 			),
 			'expander'=>array(
 				'fields'=>array(
-					array('title'=>'Otro tipo de población','field'=>'other_population_type'),
+					array('title'=>'Observaciones','field'=>'observation'),
 					array('title'=>'Fecha de creacion ','field'=>'creation_date'),
 					array('title'=>'Fecha de modificación ','field'=>'modification_date'
 						),
