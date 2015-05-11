@@ -84,42 +84,61 @@ class TraSessionsController extends AppController {
 	public function add_service() {
 		$this->request->onlyAllow('ajax');
 		 // No direct access via browser URL - Note for Cake2.5: allowMethod()
-		if ($this->request->is('post')) {
-			
 			$usuario = $this->Session->read('Auth.User.id_user');
+			$debug=array();
 			$this->set('usuario',$usuario);
 			$this->TraSession->create();
-			$data=$this->request->data;
+			$debug['request']=$this->request->data;
+			$data=$this->request->data;;
+			$training_id=$this->request->query['training'];
+			$data['TraSession']['training_id']=$training_id;
 			$data['TraSession']['creation_date']=date('Y-m-d H:i:s');
 			$data['TraSession']['user_id']=$usuario;
-			
-			$response['method']['desc']=__("Create session related to the training with ID : ".$data['TraSession']['training_id']);
-			
-			if ($this->TraSession->save($data)) {
-				$response['method']['success']=true;
-				$response['class']['TraSession']['data']=array($data);
-				$lastid=$this->TraSession->id;
-				$response['class']['TraSession']['id']= $lastid;
-				$notice=__('The session reltaive to the formation with ID '.$data['TraSession']['training_id'].' has been created with ID '.$lastid);
-				$alertType='flash';
-			} else {
-				$response['method']['success']=false;
-				//$response['method']['error']="La causa del error";
-				$response['class']['TraSession']['data']=array($data);
-				$notice=__('The session reltaive to the formation with ID'.$data['TraSession']['training_id'].' has not been created');
-				$alertType='error';
-			}
-		
-		}
+			$error=false;
+			try{
+				if (!$this->TraSession->save($data)) {
+					throw new Exception();	
+				} else {
+					$lastid=$this->TraSession->id;
+				}
+			} catch(Exception $e) {
+			    $error=$e;
+			}	
 
-		$response['action']=array(  'notify'=>array(
-										    'type'=>$alertType,
-											'notice'=>$notice,
-											'ux'=>'down'
-									    )
-							);
-		$this->set(compact('response')); // Pass $data to the view
-		$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
+			//Response actions 
+			$success_actions=array(
+				'closeAside'=>array(
+					array(
+						'element'=>'#right-content-aside',
+						'wipe'=>true,
+						'time'=>2000
+					)
+				),
+				'reloadGrid'=>array('gridTrainingParticipant'),
+				'cleanform' =>array('.add-participant form .seccion-person')
+			);
+
+			$actions=array();
+			if(!$error){
+				$message=__('The session reltaive to the formation with ID '.$data['TraSession']['training_id'].' has been created with ID '.$lastid);
+				$actions=$success_actions;
+			}else{
+				$message=__('The session reltaive to the formation with ID '.$data['TraSession']['training_id'].' could not be created, please contact  the administrator' );
+			}
+			$notify=array(
+				'notify'=>array(
+						'type'=>'flash',
+						'message'=>$message,
+						'autoclose'=>2000
+				)
+			);
+			$actions=array_merge($notify,$actions);
+			$response['sendData']=$data;
+			$response['error']=$error;
+			$response['debug']=array('data'=>$debug);
+			$response['actions']=$actions;
+			$this->set(compact('response')); // Pass $data to the view
+			$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
 	}
 
 /**

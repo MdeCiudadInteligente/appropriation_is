@@ -756,11 +756,21 @@ App.prototype.putHtmlonAside=function(html,width,bootstrap){
         $(inputs).each(function(){
           if($(this).hasClass('textarea')){
             $(this).addClass('col-md-12');
-          }else{
+          }else if ($(this).hasClass('time')){
             $(this).addClass('col-md-6');
+            $(this).wrapInner('<div class="row"></div>');
+            $(this).find('label').addClass('col-md-12');
+            $(this).find('select').wrap('<div class="col-md-3" style="clear:unset"></div>');
+          }else{
+            if($(this).find('input').hasClass('custom-col')){
+              var dataGrid=$(this).find('input').attr('grid');
+              var gridClass='col-md-'+dataGrid;  
+              $(this).addClass(gridClass);
+            }else{
+              $(this).addClass('col-md-6');
+            }
           }
         });
-        $('#right-content-aside').find('.input').addClass('col-md-6');
         $('#right-content-aside').find('.input.textarea').removeClass('col-md-6').addClass('col-md-12');
     }
 }
