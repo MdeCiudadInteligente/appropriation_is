@@ -11,16 +11,20 @@
 			)
 		),true
 	);
+	$session_service=Router::url( array('controller' => 'TraSessions', 'action' => 'add_service_view','?'=>array(
+				'training'=>$id_training
+			)
+		),true
+	);
 	$message=__('The current person is not registered to the system.Do you want to register him?');
-
 ?>
-<div class="training-admin admin-view  form mde-form">
+<div class="training-admin admin-view samallAdminView  form mde-form">
 	<section class="tra-info">
 		<div id="empty-data-holder" data-message="<?php echo $message ?>" data-service="<?php echo $empty_service ?>"  style="display:none;" data-messageTime="1000" data-type="confirm">
 		</div>		
 	</section>
 
-	<section class="add-participant">
+	<section class="add-participant ">
 		<form>
 			<fieldset>
 	    	<legend> Agregar participante</legend>
@@ -34,5 +38,31 @@
 				</div>	
 			</fieldset>
 		</form>
+		<div class="Training-grid">
+	    <?php
+	    	//Participants Training grid 
+	    	echo $this->element('grids/Trainings/participants',array('Training'=>$id_training))
+	    ?>
+    	</div>
+    </section>
+
+    <!-- Admin  sessions -->
+    
+	<section class="add-session">
+		<form>
+			<fieldset>
+		    	<legend> Agregar Sessiones 
+		    		<div class="legend-buttons">
+		    			<div class="icon-action data-icon ajax-view " data-service="<?php echo $session_service ?>" data-aside="#right-content-aside" data-training="<?php echo $id_training ?>" ><i class="icon-user-add add-session"></i></div>
+		    		</div>
+		    	</legend>
+			</fieldset>
+		</form>
+		<div class="Training-grid">
+	    <?php
+	    	//Participants Training grid 
+	    	echo $this->element('grids/Trainings/participants',array('Training'=>$id_training))
+	    ?>
+    	</div>
     </section>
 </div>	

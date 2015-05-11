@@ -35,7 +35,6 @@ class TraSessionsController extends AppController {
 		$Session=$this->TraSession->find('all');
 		$count=0;
 		foreach ($Session as $key => $Session) {
-			
 			$totalsites='';
 			foreach ($Session['Site'] as $key => $tsites) {
 				$totalsites=$tsites['site_name'].', '.$totalsites;
@@ -152,6 +151,16 @@ class TraSessionsController extends AppController {
 	}
 
 /**
+ * add method service
+ *
+ * @return void
+ */
+	public function add_service_view() {
+	
+	
+	}
+
+/**
  * edit method
  *
  * @throws NotFoundException
@@ -239,5 +248,7 @@ class TraSessionsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+
 }
 	

@@ -1131,27 +1131,48 @@ body{
 	}
 }
 
-@media only screen and (max-device-width: 1280px) {
-	#container{
-			&.app-container{
-					.x-grid3-hd{
-					    height: 60px;
-					    font-size: 18px;
-					    text-align: center;
-					    .x-grid3-hd-inner{
-					    	height: 100%;
-					    	padding-top: 21px;
-					    	text-align: center;
-							>a{
-								display: block;
-								width: 14px;
-								height: 100% !important;
-							}
-					    }
-					}
-			}
-	}	
-}		
+.x-toolbar.x-small-editor.x-toolbar-layout-ct{
+	width: 100% !important;
+}
+
+.samallAdminView{
+	.x-grid3-row-table{
+		.x-grid3-cell-inner:not(.x-grid3-row-body-tr){
+			height: 40px;
+			white-space: normal;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			font-family: din_lightregular;
+			font-size: 14px;
+			font-weight: 600;
+			color: #000000;
+			padding-left: 18px;
+			line-height: 1.4;
+		}
+	}
+}
+
+// @media only screen and (max-device-width: 1280px) {
+// 	#container{
+// 			&.app-container{
+// 					.x-grid3-hd{
+// 					    height: 60px;
+// 					    font-size: 18px;
+// 					    text-align: center;
+// 					    .x-grid3-hd-inner{
+// 					    	height: 100%;
+// 					    	padding-top: 21px;
+// 					    	text-align: center;
+// 							>a{
+// 								display: block;
+// 								width: 14px;
+// 								height: 100% !important;
+// 							}
+// 					    }
+// 					}
+// 			}
+// 	}	
+// }		
 
 
 #flashMessage{
@@ -1390,6 +1411,8 @@ body{
 	    text-align: center;
 	    top: -39px;
 	    width: 100%;	
+	    margin-top: 20px;
+	    position: relative;
 	    &:after{
 		    border-bottom: 20px solid transparent;
 		    border-right: 20px solid #373a47;
@@ -1401,6 +1424,33 @@ body{
 		    top: -1px;
 		    width: 0;	    	
 	    }	
+	    .legend-buttons{
+		    height: 100%;
+		    margin: 0 10px 0 0;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    width: 100%;
+		    >div{
+			    float: right;
+			    display: inline-block;
+			    margin: 0;
+			    padding: 0;			    
+		    	i{
+				    bottom: 0;
+				    cursor: pointer;
+				    position: relative;
+				    right: 0;
+				    color: #FFFFFF;
+				    font-size: 23px;
+	    			.transition(all 500ms ease-out);
+	    			&:hover{
+	    				color: #c4c4c4;
+	    			}
+		    	}
+		    }
+	    }
+		
 	}
 }
 
@@ -1494,3 +1544,4 @@ body{
 		}		
 	}
 }
+

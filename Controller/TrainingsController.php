@@ -253,9 +253,37 @@ class TrainingsController extends AppController {
 		    $datasource->rollback();
 		    $commit='rollback';
 		}   	
+		//Response actions 
+		$success_actions=array(
+			'closeAside'=>array(
+				array(
+					'element'=>'#right-content-aside',
+					'wipe'=>true,
+					'time'=>2000
+				)
+			),
+			'reloadGrid'=>array('gridTrainingParticipant'),
+			'cleanform' =>array('.add-participant form .seccion-person')
+		);
+		$actions=array();
+		if(!$error){
+			$message=__("The parcticipant was succesfully registered to this training");
+			$actions=$success_actions;
+		}else{
+			$message=__("The parcticipant  was not registered to this training.please try again later");
+		}
+		$notify=array(
+			'notify'=>array(
+					'type'=>'flash',
+					'message'=>$message,
+					'autoclose'=>2000
+			)
+		);
+		$actions=array_merge($notify,$actions);
 		$response['sendData']=array_merge($PersonData,$PerParticipantData,$PerParticipantsTrainingData);
 		$response['error']=$error;
 		$response['debug']=array('data'=>$debug,'switch'=>$commit_switch,'commit'=>$commit);
+		$response['actions']=$actions;
 		$this->set(compact('response')); // Pass $data to the view
 		$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
 	}
@@ -342,8 +370,13 @@ class TrainingsController extends AppController {
 	}
 
 
-
-
+/**
+ * Main Grid Index
+ *
+ * @throws NotFoundException
+ * @param  
+ * @return json view
+ */
 
 	public function index_service()
 	{
@@ -424,6 +457,61 @@ class TrainingsController extends AppController {
 			$this->set(compact('data')); // Pass $data to the view
 			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 			
+	}
+
+
+
+/**
+ * Training Participants service
+ *
+ * @throws NotFoundException
+ * @param  $id_training
+ * @return json view
+ */
+
+	public function index_participants()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$id_training=$this->request->query['training'];
+		$db = $this->Training->getDataSource();
+		$participants=$db->fetchAll(
+			   "SELECT t1.*,CONCAT(t4.name,' ',t4.lastname) as person_name,t2.other_population_type,t6.neighborhood_name,t7.name as marital_status ,t8.name as school_level , t5.username,
+					(SELECT GROUP_CONCAT(population_types.name) FROM per_participants_population_types ,population_types WHERE per_participants_population_types.participant_id=t2.id AND per_participants_population_types.population_type_id=population_types.id_population_type ) as population_types
+				FROM  per_participants_training t1, per_participants t2, per_people_type t3, people t4,users t5 ,neighborhoods t6, per_marital_status t7 , per_school_level t8 
+				WHERE t1.participant_id=t2.id
+				AND   t2.neighborhood_id=t6.id_neighborhood
+				AND   t2.marital_status_id=t7.id
+				AND   t2.school_level_id=t8.id
+				AND   t2.per_people_type_id=t3.id
+				AND   t3.person_id=t4.id_person
+				AND   t1.user_id=t5.id_user
+				AND   t1.training_id=:training",
+			    array('training' => $id_training)
+			);
+			$count=0;
+			foreach ($participants as $key => $value) {
+				$data['rows'][$count]=array(
+						'id'=>$value['t1']['id'],
+						'training_id'=>$value['t1']['training_id'],
+						'participant_id'=>$value['t1']['participant_id'],
+						'certification_status'=>$value['t1']['certification_status'],
+						'person_name'=>$value['0']['person_name'],
+						'population_types'=>$value['0']['population_types'],
+						'other_population_type'=>$value['t2']['other_population_type'],
+						'neighborhood_name'=>$value['t6']['neighborhood_name'],
+						'marital_status'=>$value['t7']['marital_status'],
+						'school_level'=>$value['t8']['school_level'],
+						'username'=>$value['t5']['username'],
+						'user_id'=>$value['t1']['user_id'],
+						'creation_date'=>$value['t1']['creation_date'],
+						'modification_date'=>$value['t1']['modification_date']
+				);
+				$count++;
+			}	
+			$this->set(compact('data')); // Pass $data to the view
+			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
 
 

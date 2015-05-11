@@ -71,6 +71,7 @@ App.prototype.bind=function(){
     app.bindAutocompleteParticipants('.Participants-autocomplete');
     app.bindAutocompleteParticipantsRegister('.person-autocomplete-trainers');
     app.ajaxSubmitService('.serviceSubmit');
+    app.send_service('.grid-send-service');
    
     app.removeRequired();
     //app.setMobileNav();
@@ -139,7 +140,73 @@ App.prototype.bind=function(){
         app.ajaxView(serviceUrl,data,container);
     });
 
+    $(document).on('click','.ajax-view',function(){
+        var data=$(this).data();
+        var serviceUrl=data.service;
+        var container=data.aside;
+        app.ajaxView(serviceUrl,data,container);
+    });
+
 }
+
+
+App.prototype.afterBind=function(){
+    app.bindAutocompletePersona('.person-autocomplete');
+    app.bindAutocompleteSites('.Site-autocomplete');
+    app.bindAutocompleteThematics('.Thematics-autocomplete');
+    app.bindAutocompletePopulationType('.PopulationTypes-autocomplete');
+    app.bindAutocompleteTraAlly('.TraAllies-autocomplete');
+    app.bindAutocompleteTraProcess('.TraProcesses-autocomplete');
+    app.bindAutocompleteTrainers('.Trainers-autocomplete');
+    app.bindAutocompleteNeighborhoods('.Neighborhoods-autocomplete');
+    app.bindAutocompleteTrainings('.Trainings-autocomplete');
+    app.bindAutocompleteParticipants('.Participants-autocomplete');
+    app.bindAutocompleteParticipantsRegister('.person-autocomplete-trainers');
+    if($('#datepicker').length){
+        $( "#datepicker" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          closeText: 'Fermer',
+          prevText: 'Previo',
+          nextText: 'Proximo',
+          yearRange: "2007:2020",
+          monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃƒÂ©e',
+          dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
+          dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃƒÂ¡b'],
+          dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+          dateFormat: 'yy-mm-dd', firstDay: 0,
+          initStatus: 'Selecciona la fecha', 
+          isRTL: false        
+        });
+    }
+
+    if($('.datepickerMDE').length){
+         $( ".datepickerMDE" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          closeText: 'Fermer',
+          prevText: 'Previo',
+          nextText: 'Proximo',
+          yearRange: "2007:2020",
+          monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃƒÂ©e',
+          dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
+          dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃƒÂ¡b'],
+          dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+          dateFormat: 'yy-mm-dd', firstDay: 0,
+          initStatus: 'Selecciona la fecha', 
+          isRTL: false        
+        });
+    }
+    
+    $('#datepicker,.datepickerMDE').on('focus',function(){
+        $(this).blur();
+    });
+}
+
 
 
 
@@ -148,6 +215,7 @@ App.prototype.removeRequired=function(){
 	$('.mde-form').find('.input.file').find('input').removeAttr('required');
 	$('.mde-form').find('.input.file').removeClass('required');
 }
+
 /* Autocomplete persona */
 App.prototype.bindAutocompletePersona=function(selector){
 
@@ -684,7 +752,16 @@ App.prototype.putHtmlonAside=function(html,width,bootstrap){
     if(bootstrap){
         $('#right-content-aside').find('fieldset').addClass('row');
         $('#right-content-aside').find('legend').addClass('col-md-12');
+        var inputs=$('#right-content-aside').find('.input');
+        $(inputs).each(function(){
+          if($(this).hasClass('textarea')){
+            $(this).addClass('col-md-12');
+          }else{
+            $(this).addClass('col-md-6');
+          }
+        });
         $('#right-content-aside').find('.input').addClass('col-md-6');
+        $('#right-content-aside').find('.input.textarea').removeClass('col-md-6').addClass('col-md-12');
     }
 }
 
@@ -1106,11 +1183,101 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 
 };		
 
+
+App.prototype.ajaxView=function(serviceUrl,data,container,callback){
+    $.ajax({
+        url:serviceUrl,
+        type:'POST',
+        data:data,
+        success:function(data){
+            if(typeof callback != 'undefined'){
+                callback(data);
+            }else{
+                var htmlView=data;
+                app.closeAside('#bottom-content-aside',true);
+                app.putHtmlonAside(htmlView,'100%',true);
+                app.afterBind();
+            }
+        }
+    });
+};
+
+App.prototype.ajaxSubmitService=function(formClass,notice,callback){
+    $(document).on('submit',formClass,function(e){
+        var serviceUrl=$(this).data('service');
+        e.preventDefault();
+        var data=$(this).serialize();
+        $.ajax({
+            url:serviceUrl,
+            type:'POST',
+            data:data,
+            dataType:'JSON',
+            success:function(data){
+                if(typeof callback != 'undefined'){
+                    callback(data);
+                }else{
+                    if(data.actions)
+                        app.serviceResponseCallback(data.actions);
+                }
+            }
+        });
+    });
+}
+
+App.prototype.send_service=function(element,callback){
+    $(document).on('click',element,function(){
+        var data=$(this).data();
+        $.ajax({
+            url:data.url,
+            type:'POST',
+            dataType:'JSON',
+            data:data,
+            success:function(data){
+                if(typeof callback != 'undefined'){
+                    callback(data);
+                }else{
+                    if(data.actions)
+                        app.serviceResponseCallback(data.actions);
+                }
+            }
+        });
+    });
+}
+
+App.prototype.serviceResponseCallback=function(actions){
+    $.each(actions,function(index,value){
+        switch (index){
+            case 'notify':
+                app.notifyProcess(value);
+            break;           
+
+            case 'closeAside':
+                $.each(value,function(closeIndex,closeValue){
+                    app.closeAside(closeValue.element,closeValue.wipe,closeValue.time);
+                });
+            break;            
+
+            case 'reloadGrid':
+                $.each(value,function(reloadIndex,reloadValue){
+                    app.reloadGrid(reloadValue);
+                });
+            break;   
+
+            case 'cleanform':
+                $.each(value,function(formIndex,formValue){
+                    app.cleanForm(formValue);
+                });
+            break;            
+        }
+    });
+}
+
 App.prototype.notifyProcess=function(notice,data,AceptExtraClass,CancelExtraClass,height,autoClose){
-    var AceptExtraClass=(typeof AceptExtraClass != 'undefined')?AceptExtraClass:'';
-    var CancelExtraClass=(typeof CancelExtraClass != 'undefined')?CancelExtraClass:'';
+    var AceptExtraClass=(typeof AceptExtraClass != 'undefined')?AceptExtraClass:'notice-accept-default';
+    var CancelExtraClass=(typeof CancelExtraClass != 'undefined')?CancelExtraClass:'notice-cancel-default';
     var height=(typeof height != 'undefined')?height:'200px';
     var noticeHtml="<div class='notice'>"+notice.message+"</div>";
+    var autoClose=(!notice.autoclose)?autoClose:notice.autoclose;
     switch(notice.type){
         case 'confirm' : 
             var interactionHtml="<div class='interaction-notice'><button class='accept "+AceptExtraClass+"'><i class='icon-check'></i>Aceptar</button><button class='cancel "+CancelExtraClass+"'><i class='icon-cancel-2'></i>Cancelar</button></div>";
@@ -1137,42 +1304,13 @@ App.prototype.closeAside=function(id_aside,wipe,time){
     }
 }
 
-App.prototype.ajaxView=function(serviceUrl,data,container,callback){
-    $.ajax({
-        url:serviceUrl,
-        type:'POST',
-        data:data,
-        success:function(data){
-            if(typeof callback != 'undefined'){
-                callback(data);
-            }else{
-                var htmlView=data;
-                app.closeAside('#bottom-content-aside',true);
-                app.putHtmlonAside(htmlView,'100%',true);
-                app.bind();
-            }
-        }
-    });
-};
+App.prototype.reloadGrid=function(gridId){
+  var grid=eval(gridId);
+  grid.store.reload();
+}
 
-App.prototype.ajaxSubmitService=function(formClass,notice,callback){
-    var form=$(formClass);
-    var serviceUrl=$(form).data('service');
-    $(form).on('submit',function(e){
-        e.preventDefault();
-        var data=$(form).serialize();
-        $.ajax({
-            url:serviceUrl,
-            type:'POST',
-            data:data,
-            dataType:'JSON',
-            success:function(data){
-                if(typeof callback != 'undefined'){
-                    callback(data);
-                }else{
-                    console.log(data);
-                }
-            }
-        });
-    });
+App.prototype.cleanForm=function(parentElemet){
+  var parentElemet=$(parentElemet);
+  $(parentElemet).find('input').val('');
+  $(parentElemet).find('.as-selections .as-selection-item').remove();
 }
