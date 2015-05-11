@@ -1,9 +1,9 @@
-<div class="perTrainerSchedules form mde-form">
+ï»¿<div class="perTrainerSchedules form mde-form">
 <?php echo $this->Form->create('PerTrainerSchedule'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Per Trainer Schedule'); ?></legend>
 	<?php
-		echo $this->Form->input('day',array ('options' => array ('Lunes'=>'Lunes','Martes'=>'Martes','Miércoles'=>'Miércoles','Jueves'=>'Jueves','Viernes'=>'Viernes','Sabado'=>'Sabado','Domingo'=>'Domingo'),'empty'=>'Seleccione el día'));
+		echo $this->Form->input('day',array ('options' => array ('Lunes'=>'Lunes','Martes'=>'Martes','MiÃ©rcoles'=>'MiÃ©rcoles','Jueves'=>'Jueves','Viernes'=>'Viernes','Sabado'=>'Sabado','Domingo'=>'Domingo'),'empty'=>'Seleccione el dÃ­a'));
 		echo $this->Form->input('start_time');
 		echo $this->Form->input('end_time');
 	?>	

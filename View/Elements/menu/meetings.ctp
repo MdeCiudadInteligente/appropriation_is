@@ -17,8 +17,25 @@
 					"route"=>Router::url( array('controller' => 'Meetings', 'action' => 'add'),true),
 					"label"=>__('New Meeting'),
 					"custom-class"=>'add-meeting'
-				)	
-		    )
+				),	
+				array(
+					"icon-class"=>'icon-cogs',
+					"route"=>Router::url( array('controller' => 'MeeTypes', 'action' => 'index'),true),
+					"label" =>__('MeeTypes'),
+					"sub-elements"=>array(
+							array(
+									"route"=>Router::url( array('controller' => 'MeeTypes', 'action' => 'index'),true),
+									"label"=>__('List MeeTypes')
+								),
+							array(
+									"user_level"=>'1,2,3',
+									"route"=>Router::url( array('controller' => 'MeeTypes', 'action' => 'add'),true),
+									"label"=>__('New MeeType')
+							)
+						)
+					)
+			)
+		    
 		);
 ?>
 

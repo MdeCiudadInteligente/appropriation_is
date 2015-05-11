@@ -22,7 +22,7 @@
 
 	<?php	
 		echo $this->Form->input('meeting_date',array ('id' => 'datepicker','type'=>'text'));
-		echo $this->Form->input('meeting_type',array ('options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme')));
+		echo $this->Form->input('meeting_type_id',array('empty'=>'Seleccione el tipo de reunión','options' => $meeTypes,'label'=>'Tipo Reunión'));
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));?>
 	
 			<div class="input"  style="text-align:right">

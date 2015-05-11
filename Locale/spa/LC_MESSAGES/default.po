@@ -104,6 +104,72 @@ msgstr "El fondo del formador ha sido guardado"
 msgid "List Per Trainer Funds"
 msgstr "Lista fondo de formador"
 
+msgid "The per trainer schedule has been saved."
+msgstr "El horario del formador ha sido guardado."
+
+msgid "The per trainer schedule has been deleted."
+msgstr "El horario del formador ha sido eliminado."
+
+msgid "Schedules"
+msgstr "Horarios"
+
+msgid "Acc Types"
+msgstr "Tipos Acompañamientos"
+
+msgid "Add Acc Type"
+msgstr "Agregar Tipo Acompañamiento"
+
+msgid "List Schedules"
+msgstr "Lista Horarios"
+
+msgid "Add Mee Type"
+msgstr "Agregar Tipo Reunión"
+
+msgid "MeeTypes"
+msgstr "Tipo Reunión"
+
+msgid "List MeeTypes"
+msgstr "Lista Tipo Reunión"
+
+msgid "New MeeType"
+msgstr "Nuevo Tipo Reunión"
+
+msgid "Mee Type"
+msgstr "Tipo Reunión"
+
+msgid "The mee type has been saved."
+msgstr "El tipo de reunión ha sido guardado."
+
+msgid "The mee type has been deleted."
+msgstr "El tipo de reunión ha sido eliminado."
+
+msgid "Edit Mee Type"
+msgstr "Editar Tipo Reunión"
+
+msgid "The acc type has been saved."
+msgstr "El tipo acompañamiento ha sido guardado."
+
+msgid "The acc type has been deleted."
+msgstr "El tipo acompañamiento ha sido eliminado."
+
+msgid "Edit Acc Type"
+msgstr "Editar Tipo Acompañamiento"
+
+msgid "Acc Type"
+msgstr "Tipo Acompañamiento"
+
+msgid "AccTypes"
+msgstr "Tipo Acompañamiento"
+
+msgid "List AccTypes"
+msgstr "Lista Tipo Acompañamiento"
+
+msgid "New AccType"
+msgstr "Nuevo Tipo Acompañamiento"
+
+msgid "New Schedules"
+msgstr "Nuevo Horario"
+
 msgid "New Per Trainer Fund"
 msgstr "Nuevo fondo de formador"
 
@@ -518,6 +584,9 @@ msgstr "El tipo de formación ha sido eliminado"
 msgid "The training type could not be saved. Please, try again."
 msgstr "El tipo de formación no pudo ser guardado. Por favor, trate de nuevo"
 
+msgid "Edit Per Trainer Schedule"
+msgstr "Editar Horario del Formador"
+
 msgid "The training type has been saved."
 msgstr "El tipo de formación ha sido guardado"
 
@@ -731,8 +800,14 @@ msgstr "Fecha de Final"
 msgid "Observations"
 msgstr "Observaciones"
 
-msgid "Schedule"
-msgstr "Horario"
+msgid "PerTrainer Schedules"
+msgstr "Horario Formador"
+
+msgid "Add Per Trainer Schedule"
+msgstr "Agregar Horario del Formador"
+
+msgid "Per Trainer Schedule"
+msgstr "Horario del Formador"
 
 msgid "Type Person"
 msgstr "Tipo Persona"
@@ -1487,7 +1562,14 @@ msgstr "Agregar Tipo de Sitio"
 msgid "List Funds"
 msgstr "Listado de Fondos"
 
+msgid "List Funds"
+msgstr "Listado de Fondos"
 
+msgid "Day"
+msgstr "Día"
+
+msgid "Participant"
+msgstr "Participante"
 
 #: \console\error.php:96
 msgid "Missing Controller '%s'"
@@ -2915,7 +2997,7 @@ msgstr "Hace %s"
 
 #: \libs\view\helpers\time.php:486
 msgid "days"
-msgstr "dias"
+msgstr "días"
 
 #: \libs\view\helpers\time.php:428
 msgid "year"
