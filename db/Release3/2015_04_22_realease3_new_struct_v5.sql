@@ -3986,7 +3986,7 @@ ALTER TABLE `per_professions`
 -- Filtros para la tabla `per_school_level`
 --
 ALTER TABLE `per_school_level`
-  ADD CONSTRAINT `per_school_level_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `appropriation_isp_old5`.`users` (`id_user`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `per_school_level_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `per_trainers`
