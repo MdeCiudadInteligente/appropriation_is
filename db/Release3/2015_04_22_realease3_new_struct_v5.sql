@@ -1,11 +1,9 @@
-SET FOREIGN_KEY_CHECKS=0;
-
 -- phpMyAdmin SQL Dump
 -- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2015 a las 22:18:27
+-- Tiempo de generación: 12-05-2015 a las 22:50:33
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -3599,6 +3597,8 @@ CREATE TABLE IF NOT EXISTS `training` (
   `activity_place` varchar(80) NOT NULL,
   `description` text NOT NULL,
   `type_id` int(11) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `current_state` int(11) NOT NULL COMMENT '1--> En curso  2--> Finalizada',
   `creation_date` datetime NOT NULL,
