@@ -122,6 +122,19 @@ class TraSession extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
+			),
+			'Thematic' => array(
+					'className' => 'Thematic',
+					'joinTable' => 'tra_sessions_thematics',
+					'foreignKey' => 'session_id',
+					'associationForeignKey' => 'thematic_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
 			)
 	);
 }

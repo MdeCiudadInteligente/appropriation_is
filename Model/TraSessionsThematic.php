@@ -7,12 +7,19 @@ App::uses('AppModel', 'Model');
  * @property Thematic $Thematic
  */
 class TraSessionsThematic extends AppModel {
+/**
+ * Use table
+ *
+ * @var mixed False or table name
+ */
+	public $useTable = 'tra_sessions_thematics';
 
 /**
- * Primary key field
+ * Display field
  *
  * @var string
  */
+	public $displayField = 'id';
 
 /**
  * Validation rules

@@ -61,7 +61,7 @@
 		<div class="Training-grid">
 	    <?php
 	    	//Participants Training grid 
-	    	echo $this->element('grids/Trainings/participants',array('Training'=>$id_training))
+	    	echo $this->element('grids/Trainings/sessions',array('Training'=>$id_training))
 	    ?>
     	</div>
     </section>

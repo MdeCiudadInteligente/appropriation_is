@@ -516,6 +516,65 @@ class TrainingsController extends AppController {
 
 
 
+/**
+ * Training Participants service
+ *
+ * @throws NotFoundException
+ * @param  $id_training
+ * @return json view
+ */
+
+	public function index_sessions()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$id_training=$this->request->query['training'];
+		$db = $this->Training->getDataSource();
+		$sessions=$db->fetchAll(
+			   "SELECT t1.*,users.username,
+				(
+					SELECT GROUP_CONCAT(thematics.name)
+					FROM tra_sessions_thematics , thematics
+					WHERE tra_sessions_thematics.thematic_id=thematics.id
+				    AND   tra_sessions_thematics.session_id=t1.id
+				)as thematics,
+				(
+					SELECT COUNT(per_participants_training_session.participants_training_id)
+				    FROM per_participants_training_session
+				    WHERE t1.id=per_participants_training_session.session_id
+
+				)as participants
+				FROM  tra_session  t1, training t2 , users
+				WHERE t1.training_id=t2.id
+				AND   users.id_user=t1.user_id
+				AND   t2.id=:training",
+			    array('training' => $id_training)
+			);
+			$count=0;
+			foreach ($sessions as $key => $value) {
+				$data['rows'][$count]=array(
+						'id'=>$value['t1']['id'],
+						'training_id'=>$value['t1']['training_id'],
+						'start_date'=>$value['t1']['start_date'],
+						'start_time'=>$value['t1']['start_time'],
+						'end_time'=>$value['t1']['start_time'],
+						'observation'=>$value['t1']['observation'],
+						'thematics'=>$value['0']['thematics'],
+						'participants'=>$value['0']['thematics'],
+						'username'=>$value['users']['username'],
+						'user_id'=>$value['t1']['user_id'],
+						'creation_date'=>$value['t1']['creation_date'],
+						'modification_date'=>$value['t1']['modification_date']
+				);
+				$count++;
+			}	
+			$this->set(compact('data')); // Pass $data to the view
+			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+
+
+
 
 /**
  * view method

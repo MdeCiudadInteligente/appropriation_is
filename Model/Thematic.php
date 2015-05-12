@@ -119,6 +119,19 @@ public $hasAndBelongsToMany = array(
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
+			),
+			'TraSession' => array(
+					'className' => 'TraSession',
+					'joinTable' => 'tra_sessions_thematics',
+					'foreignKey' => 'thematic_id',
+					'associationForeignKey' => 'session_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
 			)
 	);
 }
