@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2015 a las 22:01:10
+-- Tiempo de generación: 12-05-2015 a las 22:18:27
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -3598,7 +3598,7 @@ CREATE TABLE IF NOT EXISTS `training` (
   `description` text NOT NULL,
   `type_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `state` int(11) NOT NULL,
+  `current_state` int(11) NOT NULL COMMENT '1--> En curso  2--> Finalizada',
   `creation_date` datetime NOT NULL,
   `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
