@@ -1,3 +1,4 @@
+﻿SET_FOREIGN_KEY_CHECKS=0;
 -- phpMyAdmin SQL Dump
 -- version 3.5.2.2
 -- http://www.phpmyadmin.net
