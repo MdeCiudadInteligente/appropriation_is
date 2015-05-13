@@ -19,11 +19,65 @@
 	$message=__('The current person is not registered to the system.Do you want to register him?');
 ?>
 <div class="training-admin admin-view samallAdminView  form mde-form">
+<!-- Context block --> 
+
+	<section class="context-info-block waypont-fixed">
+		<legend> Formación</legend>
+		<div class="row"> 
+			<div class="col-md-3">
+				<label>Descripcion</label>
+				<span><?php echo $this->request->data['Training']['description'] ?></span>
+			</div>	
+			<div class="col-md-3">
+				<label>Tipo de población</label>
+				<span><?php echo concatIndex($this->request->data['PopulationType'],'name')?></span>
+			</div>	
+			<div class="col-md-3">
+				<label>Formadores</label>
+				<span><?php echo concatIndex($this->request->data['trainers'],'name')?></span>
+			</div>	
+			<div class="col-md-3">
+				<label>Proceso</label>
+				<span><?php echo concatIndex($this->request->data['TraProcess'],'name')?></span>
+			</div>	
+		</div>
+
+		<div class="row">	
+			<div class="col-md-3">
+				<label>Código</label>
+				<span><?php echo $this->request->data['Training']['code'] ?></span>
+			</div>	
+			<div class="col-md-3">
+				<label>Tipo</label>
+				<span><?php echo $this->request->data['TraType']['name'] ?></span>
+			</div>	
+			<div class="col-md-3">
+				<label>Fecha de inicio</label>
+				<span><?php echo $this->request->data['Training']['start_date'] ?></span>
+			</div>	
+
+<!--		<div class="col-md-2">
+				<label>Fecha final</label>
+				<span><?php echo $this->request->data['Training']['start_date'] ?></span>
+			</div>	
+ -->
+ 			<div class="col-md-3">
+				<label>Estado</label>
+				<span><?php echo $this->request->data['Training']['current_state'] ?></span>
+			</div>	
+		</div>
+	</section> 
+
+
+<!-- Invisible info block, Not found person  -->
+
 	<section class="tra-info">
 		<div id="empty-data-holder" data-message="<?php echo $message ?>" data-service="<?php echo $empty_service ?>"  style="display:none;" data-messageTime="1000" data-type="confirm">
 		</div>		
 	</section>
 
+
+<!-- Add participant -->
 	<section class="add-participant ">
 		<form>
 			<fieldset>

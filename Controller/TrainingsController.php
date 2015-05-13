@@ -770,6 +770,8 @@ class TrainingsController extends AppController {
 		$this->set(compact('types', 'processes','allies','populationtypes'));
 
 	}
+
+
 /**
  * admin method
  *
@@ -805,8 +807,10 @@ class TrainingsController extends AppController {
 			   ",
 				array('id_training' => $id)
 		);
-		
-		$this->request->data['trainers']=$trainers;
+		foreach ($trainers as $key => $value) {
+			$finalTrainers[]['name']=$value['t3']['name']." ".$value['t3']['lastname'];
+		}
+		$this->request->data['trainers']=$finalTrainers;
 		$this->set(compact('types', 'processes','allies','populationtypes'));
 
 	}
