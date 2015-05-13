@@ -447,6 +447,7 @@ class TrainingsController extends AppController {
 						//'sitios'=>$trainer['0']['sitios'],
 						'aliados'=>$trainer['0']['aliados'],
 						'procesos'=>$trainer['0']['procesos'],
+						'estado'=>$trainer['t1']['current_state'],
 						'username'=>$trainer['t3']['username'],
 						'user_id'=>$trainer['t1']['user_id'],
 						'creation_date'=>$trainer['t1']['creation_date'],

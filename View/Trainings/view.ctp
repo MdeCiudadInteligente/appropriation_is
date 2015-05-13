@@ -39,6 +39,11 @@ $trainings=$this->request->data['trainings'];
 			<?php echo h($trainings['0']['0']['aliados']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Estado'); ?></dt>
+		<dd>
+			<?php echo h($training['Training']['current_state']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

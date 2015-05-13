@@ -18,8 +18,7 @@
 		echo $this->Form->input('type_id',array('empty'=>'Seleccione el tipo de formación'));
 		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Inicio'));
 		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text','label'=>'Fecha Final'));
-
-
+		echo $this->Form->input('current_state',array ('options' => array ('1'=>'En Curso','2'=>'Finalizada'),'empty'=>'Seleccione estado'));
 	?>
 
 	<div class="seccion-person">	
