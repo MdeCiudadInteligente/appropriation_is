@@ -1,10 +1,10 @@
-﻿SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=0;
 -- phpMyAdmin SQL Dump
 -- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2015 a las 22:50:33
+-- Tiempo de generación: 13-05-2015 a las 22:20:58
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -1282,8 +1282,8 @@ INSERT INTO `meetings` (`id_meeting`, `meeting_date`, `meeting_type`, `meeting_t
 CREATE TABLE IF NOT EXISTS `meetings_people` (
   `meeting_id` int(11) NOT NULL,
   `person_id` bigint(15) NOT NULL,
-  KEY `meeting_id` (`meeting_id`,`person_id`),
-  KEY `person_id` (`person_id`)
+  KEY `person_id` (`person_id`),
+  KEY `meeting_id` (`meeting_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1971,6 +1971,7 @@ CREATE TABLE IF NOT EXISTS `mee_types` (
   `creation_date` datetime NOT NULL,
   `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -2187,8 +2188,8 @@ CREATE TABLE IF NOT EXISTS `owners` (
   `modification_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id_owner`),
-  KEY `site_id` (`site_id`),
-  KEY `person_id` (`person_id`)
+  UNIQUE KEY `person_id` (`person_id`),
+  KEY `site_id` (`site_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -2762,6 +2763,7 @@ CREATE TABLE IF NOT EXISTS `per_marital_status` (
   `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -2890,6 +2892,7 @@ CREATE TABLE IF NOT EXISTS `per_school_level` (
   `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -2913,7 +2916,6 @@ CREATE TABLE IF NOT EXISTS `per_trainers` (
   `star_date` date NOT NULL,
   `end_date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `per_profession_id` (`per_profession_id`),
   KEY `per_trainer_type_id` (`per_trainer_type_id`),
   KEY `per_trainer_fund_id` (`per_trainer_fund_id`),
@@ -2934,7 +2936,6 @@ CREATE TABLE IF NOT EXISTS `per_trainer_funds` (
   `creation_date` datetime DEFAULT NULL,
   `modification_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -2994,14 +2995,15 @@ CREATE TABLE IF NOT EXISTS `per_types` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `per_types`
 --
 
 INSERT INTO `per_types` (`id`, `name`, `user_id`, `creation_date`, `modification_date`) VALUES
-(1, 'Formador', 12, '2015-04-16 15:26:25', '0000-00-00 00:00:00');
+(1, 'Formador', 12, '2015-04-16 15:26:25', '0000-00-00 00:00:00'),
+(2, 'Participante', 12, '2015-05-13 00:00:00', '2015-05-13 14:29:12');
 
 -- --------------------------------------------------------
 
@@ -3710,6 +3712,19 @@ CREATE TABLE IF NOT EXISTS `tra_session` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tra_sessions_per_trainers`
+--
+
+CREATE TABLE IF NOT EXISTS `tra_sessions_per_trainers` (
+  `trainer_id` int(11) DEFAULT NULL,
+  `session_id` int(11) DEFAULT NULL,
+  KEY `trainer_id` (`trainer_id`),
+  KEY `session_id` (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tra_sessions_thematics`
 --
 
@@ -3922,8 +3937,8 @@ ALTER TABLE `neighborhoods`
 -- Filtros para la tabla `owners`
 --
 ALTER TABLE `owners`
-  ADD CONSTRAINT `owners_ibfk_5` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `owners_ibfk_4` FOREIGN KEY (`person_id`) REFERENCES `people` (`id_person`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `owners_ibfk_4` FOREIGN KEY (`person_id`) REFERENCES `people` (`id_person`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `owners_ibfk_5` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `people`
@@ -4058,6 +4073,13 @@ ALTER TABLE `sites_per_trainers`
   ADD CONSTRAINT `sites_per_trainers_ibfk_2` FOREIGN KEY (`per_trainer_id`) REFERENCES `per_trainers` (`id`) ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `sites_sessions`
+--
+ALTER TABLE `sites_sessions`
+  ADD CONSTRAINT `sites_sessions_ibfk_2` FOREIGN KEY (`tra_session_id`) REFERENCES `tra_session` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `sites_sessions_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `site_types`
 --
 ALTER TABLE `site_types`
@@ -4115,6 +4137,13 @@ ALTER TABLE `tra_processes`
 ALTER TABLE `tra_session`
   ADD CONSTRAINT `tra_session_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tra_session_ibfk_1` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tra_sessions_per_trainers`
+--
+ALTER TABLE `tra_sessions_per_trainers`
+  ADD CONSTRAINT `tra_sessions_per_trainers_ibfk_2` FOREIGN KEY (`session_id`) REFERENCES `tra_session` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tra_sessions_per_trainers_ibfk_1` FOREIGN KEY (`trainer_id`) REFERENCES `per_trainers` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tra_sessions_thematics`
