@@ -7,7 +7,8 @@
 		),true
 	);
 
-	$adminUrl=Router::url( array('controller' => 'PerParticipantsTrainings', 'action' => 'service_delete','ext'=>'json'),true);
+	$adminUrl=Router::url( array('controller' => 'TraSessions', 'action' => 'service_delete','ext'=>'json'),true);
+	$assistUrl=Router::url( array('controller' => 'TraSessions', 'action' => 'assist'),true);
 	$gridOptions=array(
 			'gridId'=>'gridTrainingSessions',
 			'gridTitle'=>'Sesiones',
@@ -44,10 +45,15 @@
 			'add_operations'=>json_encode(array(
 				'vars'=>array(
 					'id'=>NULL,
-					'training_id'=>NULL,
-					'participant_id'=>NULL,
+					'training_id'=>NULL
 				),
-				'markup'=>'<div class="custom_render"><i class="icon-minus-circle  remove_participant grid-send-service" data-url="'.$adminUrl.'" data-id="{id}" data-trainingId="{training_id}" data-participantId="{participant_id}"></i></div>'
+				'markup'=>'
+				<div class="custom_render">
+					<i class="icon-minus-circle  remove_session  grid-send-service" data-confirm="true" data-type="confirm"  data-message="'.__("Are you sure do you want to delete this session?").'" data-url="'.$adminUrl.'" data-id="{id}" data-trainingId="{training_id}">
+					</i>
+					<i class="icon-users  add_assist ajax-view" data-service="'.$assistUrl.'/{id}" data-id="{id}" data-aside="#right-content-aside" data-trainingId="{training_id}">
+					</i>
+				</div>'
 			))
 	);
 ?>

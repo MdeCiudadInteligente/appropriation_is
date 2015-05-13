@@ -561,7 +561,7 @@ class TrainingsController extends AppController {
 						'end_time'=>$value['t1']['start_time'],
 						'observation'=>$value['t1']['observation'],
 						'thematics'=>$value['0']['thematics'],
-						'participants'=>$value['0']['thematics'],
+						'participants'=>$value['0']['participants'],
 						'username'=>$value['users']['username'],
 						'user_id'=>$value['t1']['user_id'],
 						'creation_date'=>$value['t1']['creation_date'],
@@ -809,6 +809,47 @@ class TrainingsController extends AppController {
 		$this->set(compact('types', 'processes','allies','populationtypes'));
 
 	}
+
+	public function getRegisteredParticipants($id_training){
+		if (!$this->Training->exists($id_training)) {
+			throw new NotFoundException(__('Invalid training'));
+		}		
+		$db = $this->Training->getDataSource();
+		$participants=$db->fetchAll(
+			   "SELECT t1.*,CONCAT(t4.name,' ',t4.lastname) as person_name,t2.other_population_type,t6.neighborhood_name,t7.name as marital_status ,t8.name as school_level , t5.username,
+					(SELECT GROUP_CONCAT(population_types.name) FROM per_participants_population_types ,population_types WHERE per_participants_population_types.participant_id=t2.id AND per_participants_population_types.population_type_id=population_types.id_population_type ) as population_types
+				FROM  per_participants_training t1, per_participants t2, per_people_type t3, people t4,users t5 ,neighborhoods t6, per_marital_status t7 , per_school_level t8 
+				WHERE t1.participant_id=t2.id
+				AND   t2.neighborhood_id=t6.id_neighborhood
+				AND   t2.marital_status_id=t7.id
+				AND   t2.school_level_id=t8.id
+				AND   t2.per_people_type_id=t3.id
+				AND   t3.person_id=t4.id_person
+				AND   t1.user_id=t5.id_user
+				AND   t1.training_id=:training",
+			    array('training' => $id_training)
+			);
+			foreach ($participants as $key => $value) {
+				$data[]=array(
+						'id'=>$value['t1']['id'],
+						'training_id'=>$value['t1']['training_id'],
+						'participant_id'=>$value['t1']['participant_id'],
+						'certification_status'=>$value['t1']['certification_status'],
+						'person_name'=>$value['0']['person_name'],
+						'population_types'=>$value['0']['population_types'],
+						'other_population_type'=>$value['t2']['other_population_type'],
+						'neighborhood_name'=>$value['t6']['neighborhood_name'],
+						'marital_status'=>$value['t7']['marital_status'],
+						'school_level'=>$value['t8']['school_level'],
+						'username'=>$value['t5']['username'],
+						'user_id'=>$value['t1']['user_id'],
+						'creation_date'=>$value['t1']['creation_date'],
+						'modification_date'=>$value['t1']['modification_date']
+				);
+			}	
+			return $data;
+	}
+
 
 /**
  * delete method
