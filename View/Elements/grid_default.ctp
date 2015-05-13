@@ -130,7 +130,9 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 
 <?php echo $gridOptions['gridId']?>_replaceObjectVars=function(markup,object){
 		$.each(object,function(key,value){
-			markup=markup.replace("{"+key+"}", value);
+			var find = "{"+key+"}";
+			var re = new RegExp(find, 'g');
+			markup=markup.replace(re, value);
 		});
 		return markup;
 }

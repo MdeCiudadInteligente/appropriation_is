@@ -778,7 +778,7 @@ App.prototype.putHtmlonAside=function(html,width,bootstrap){
 App.prototype.putHtmlonBottom=function(html,height,autoClose){
     $('#bottom-content-aside .main-content').html(html);
     $('#bottom-content-aside').addClass('active').css({'height':height});
-    if(typeof autoClose != 'undefined'){
+    if(autoClose){
         setTimeout(function(){
             $('#bottom-content-aside').find('.close-menu').click();
         },autoClose);
@@ -1237,6 +1237,21 @@ App.prototype.ajaxSubmitService=function(formClass,notice,callback){
 App.prototype.send_service=function(element,callback){
     $(document).on('click',element,function(){
         var data=$(this).data();
+        if(data['confirm']){
+            var notice={'message':data.message,'type':data.type};
+            var passData={'actions':{'next-service':data.service}};
+            app.notifyProcess(notice,passData,'do-callback','cancel-view','150px',false,function(element){
+              $(element).find('.do-callback').on('click',function(){
+                  app.callService(data,callback);
+              });
+            });
+        }else{
+          app.callService(data,callback);
+        }
+    });
+}
+
+App.prototype.callService=function(data,callback){
         $.ajax({
             url:data.url,
             type:'POST',
@@ -1251,7 +1266,6 @@ App.prototype.send_service=function(element,callback){
                 }
             }
         });
-    });
 }
 
 App.prototype.serviceResponseCallback=function(actions){
@@ -1282,7 +1296,7 @@ App.prototype.serviceResponseCallback=function(actions){
     });
 }
 
-App.prototype.notifyProcess=function(notice,data,AceptExtraClass,CancelExtraClass,height,autoClose){
+App.prototype.notifyProcess=function(notice,data,AceptExtraClass,CancelExtraClass,height,autoClose,callback){
     var AceptExtraClass=(typeof AceptExtraClass != 'undefined')?AceptExtraClass:'notice-accept-default';
     var CancelExtraClass=(typeof CancelExtraClass != 'undefined')?CancelExtraClass:'notice-cancel-default';
     var height=(typeof height != 'undefined')?height:'200px';
@@ -1301,6 +1315,9 @@ App.prototype.notifyProcess=function(notice,data,AceptExtraClass,CancelExtraClas
     $(interactionHtmlData).data(data);
     var completeHtml=$(noticeHtml).append(interactionHtmlData);
     app.putHtmlonBottom(completeHtml,height,autoClose);
+    if(typeof(callback) === "function"){
+      callback($('#bottom-content-aside .main-content .notice'));
+    } 
 }
 
 App.prototype.closeAside=function(id_aside,wipe,time){
