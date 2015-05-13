@@ -24,7 +24,7 @@ $service=Router::url( array('controller' => 'TraSessions', 'action' => 'add_serv
 		    </div>		
 	<?php		
 		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text','class'=>'custom-col','grid'=>'12'));
-		echo $this->Form->input('start_time',array('class' => 'printTime'));
+		echo $this->Form->input('start_time',array('class' => 'printTime populate'));
 		echo $this->Form->input('end_time',array('class' => 'printTime'));
 	?>	
 

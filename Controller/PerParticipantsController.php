@@ -250,6 +250,10 @@ class PerParticipantsController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 	
+
+	public function getParticipantPerson($id_participant){
+
+	}
 	
 	/**
 	 * Json get participant

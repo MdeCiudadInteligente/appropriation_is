@@ -119,7 +119,6 @@ class PerParticipantsTrainingsController extends AppController {
     	$id_usuario = $this->Session->read('Auth.User.id_user');
     	$data=$this->request->data;
     	$id_training=(isset($data['id']))?$data['id']:NULL;
-		$PerParticipantsTrainings = new PerParticipantsTrainingsController();
 		$error=false;
 		$this->PerParticipantsTraining->id = $id_training;
 		if (!$this->PerParticipantsTraining->exists()) {
@@ -128,8 +127,6 @@ class PerParticipantsTrainingsController extends AppController {
 		try{
 			if (!$this->PerParticipantsTraining->delete()) {
 				throw new Exception();
-			} else {
-
 			}
 		}catch(Exception $e){
 			$error=$e;
@@ -141,7 +138,7 @@ class PerParticipantsTrainingsController extends AppController {
 
 		$actions=array();
 		if(!$error){
-			$message=__('The participant was succesfully removed from this training ');
+			$message=__('The participant was successfully removed from this training ');
 			$actions=$success_actions;
 		}else{
 			$message=__('The participant could not be removed please try again later');
