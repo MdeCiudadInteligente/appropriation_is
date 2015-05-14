@@ -22,7 +22,7 @@
 <!-- Context block --> 
 
 	<section class="context-info-block waypont-toggler " data-toggleclass="fixed-top">
-		<legend> Formación <i class="control-accordion  icon-up-open-big" data-container=".context-info-block" data-toggleclass="close"></i></legend>
+		<legend>Administrar Formación : <?php echo $this->request->data['Training']['code'] ?> <i class="control-accordion  icon-up-open-big" data-container=".context-info-block" data-toggleclass="close"></i></legend>
 		<div class="row"> 
 			<div class="col-md-3">
 				<label>Descripcion</label>
@@ -78,10 +78,10 @@
 
 
 <!-- Add participant -->
-	<section class="add-participant ">
+	<section class="add-participant section-accordion ">
 		<form>
 			<fieldset>
-	    	<legend> Agregar participante</legend>
+	    	<legend> Agregar participante <i class="control-accordion  icon-up-open-big" data-container=".add-participant" data-toggleclass="closed"></i></legend>
 				<div class="seccion-person">	
 					<div class="input" >
 						<label>Ingresa la informacion de la persona ( Nombre / Documento ) </label>
@@ -102,13 +102,14 @@
 
     <!-- Admin  sessions -->
     
-	<section class="add-session">
+	<section class="add-session section-accordion">
 		<form>
 			<fieldset>
 		    	<legend> Agregar Sessiones 
 		    		<div class="legend-buttons">
-		    			<div class="icon-action data-icon ajax-view " data-service="<?php echo $session_service ?>" data-aside="#right-content-aside" data-training="<?php echo $id_training ?>" ><i class="icon-user-add add-session"></i></div>
+		    			<div class="icon-action data-icon ajax-view " data-service="<?php echo $session_service ?>" data-aside="#right-content-aside" data-training="<?php echo $id_training ?>" ><i class="icon-plus-1 add-session"></i></div>
 		    		</div>
+					<i class="control-accordion  icon-up-open-big" data-container=".add-session" data-toggleclass="closed"></i>		    		
 		    	</legend>
 			</fieldset>
 		</form>

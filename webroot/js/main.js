@@ -128,7 +128,6 @@ App.prototype.bind=function(){
 
     $('#content').on('click','.go-to-url-id',function(){
         var url=$(this).data('url')+'/'+$(this).data('id');
-        console.log(url);
         location.href=url;
     });
 
@@ -1136,7 +1135,6 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 				            resultClick: function(data){
                                 //Variables de datos
                                 var notice=data.attributes.actions.notice;
-                                console.log(data.attributes);
                                 app.notifyProcess(notice,data.attributes,'print-view','cancel-view','200px');
 				            },selectionRemoved: function(elem){
 				                var prop_data=elem.data('prop-data');
@@ -1346,26 +1344,19 @@ App.prototype.cleanForm=function(parentElemet){
 App.prototype.tooggleAcoordion=function(element){
   $(document).on('click',element,function(){
       var data=$(this).data();
-      console.log(data);
-      console.log($(data.container));
-      console.log(data.toggleclass);
       $(this).closest(data.container).toggleClass('closed');
   });
 }
 
 App.prototype.wayPointClass=function(element){
   var data=$(element).data(),toggle=data.toggleclass;
-  console.log(data);
   $(element).waypoint({
       handler: function(direction) {
         if(direction=='down'){
           $(element).addClass(toggle);
           $(element).addClass('closed');
         }else{
-          setTimeout(function(){
             $(element).removeClass(toggle);
-            $(element).removeClass('closed');
-          },300);
         }
       }
     });  

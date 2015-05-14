@@ -541,6 +541,14 @@ class TrainingsController extends AppController {
 				    AND   tra_sessions_thematics.session_id=t1.id
 				)as thematics,
 				(
+					SELECT GROUP_CONCAT(CONCAT(' ',people.name,' ',people.lastname,' '))
+					FROM tra_sessions_per_trainers , per_trainers , per_people_type , people
+					WHERE tra_sessions_per_trainers.trainer_id=per_trainers.id
+                    AND   per_trainers.per_people_type_id=per_people_type.id
+                    AND   per_people_type.person_id=people.id_person
+				    AND   tra_sessions_per_trainers.session_id=t1.id
+				)as trainers,
+				(
 					SELECT COUNT(per_participants_training_session.participants_training_id)
 				    FROM per_participants_training_session
 				    WHERE t1.id=per_participants_training_session.session_id
@@ -562,6 +570,7 @@ class TrainingsController extends AppController {
 						'end_time'=>$value['t1']['start_time'],
 						'observation'=>$value['t1']['observation'],
 						'thematics'=>$value['0']['thematics'],
+						'trainers'=>$value['0']['trainers'],
 						'participants'=>$value['0']['participants'],
 						'username'=>$value['users']['username'],
 						'user_id'=>$value['t1']['user_id'],
