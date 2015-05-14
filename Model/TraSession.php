@@ -140,7 +140,7 @@ class TraSession extends AppModel {
 					'className' => 'PerTrainer',
 					'joinTable' => 'tra_sessions_per_trainers',
 					'foreignKey' => 'session_id',
-					'associationForeignKey' => 'training_id',
+					'associationForeignKey' => 'trainer_id',
 					'unique' => 'keepExisting',
 					'conditions' => '',
 					'fields' => '',

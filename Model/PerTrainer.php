@@ -216,7 +216,7 @@ class PerTrainer extends AppModel {
 			'TraSession' => array(
 					'className' => 'TraSession',
 					'joinTable' => 'tra_sessions_per_trainers',
-					'foreignKey' => 'training_id',
+					'foreignKey' => 'trainer_id',
 					'associationForeignKey' => 'session_id',
 					'unique' => 'keepExisting',
 					'conditions' => '',

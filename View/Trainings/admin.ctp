@@ -21,8 +21,8 @@
 <div class="training-admin admin-view samallAdminView  form mde-form">
 <!-- Context block --> 
 
-	<section class="context-info-block waypont-fixed">
-		<legend> Formación</legend>
+	<section class="context-info-block waypont-toggler " data-toggleclass="fixed-top">
+		<legend> Formación <i class="control-accordion  icon-up-open-big" data-container=".context-info-block" data-toggleclass="close"></i></legend>
 		<div class="row"> 
 			<div class="col-md-3">
 				<label>Descripcion</label>

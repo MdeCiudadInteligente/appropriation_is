@@ -444,9 +444,12 @@ body{
 							    background-color: #373A47;
 							    border-radius: 2px 2px 0 0;
 							    color: #fff;
-							    font-size: 14px;
+							    font-size: 18px;
 							    height: 40px;
 							    padding: 10px;
+							    font-style: italic;
+							    font-family: din_lightregular;
+							    font-weight: 300;
 							    position: absolute;
 							    text-align: center;
 							    top: -39px;
@@ -460,7 +463,8 @@ body{
 								    left: -19px;
 								    position: absolute;
 								    top: -1px;
-								    width: 0;				
+								    width: 0;		
+								    display: none;		
 								}							    
 						}
 						div{
@@ -1423,7 +1427,8 @@ body{
 		    left: -19px;
 		    position: absolute;
 		    top: -1px;
-		    width: 0;	    	
+		    width: 0;	 
+		    display: none;   	
 	    }	
 	    .legend-buttons{
 		    height: 100%;
@@ -1452,6 +1457,9 @@ body{
 		    }
 	    }
 		
+	}
+	&.mde-form form div.input label{
+		margin-top: 40px !important;
 	}
 }
 
@@ -1546,12 +1554,74 @@ body{
 	}
 }
 
-
-
-.context-info-block{
+#content .context-info-block{
 	box-shadow: 0 1px 4px #888;
-	background: #E4E4E4;
+	background: none repeat scroll 0 0 #f8f8f8;
+	overflow: hidden;
+	max-height: 800px;
+	.transition(all 1000ms cubic-bezier(0.215, 0.610, 0.355, 1.000));
 	legend{
 		margin: 0 !important;
+		top: 0;
+	    font-family: 'din_lightregular';
+	    font-size: 18px;
+	    font-style: italic;
+	    position: relative;
+	    i{
+		    bottom: -3px;
+		    font-size: 23px;
+		    position: absolute;
+		    right: 8px;
+		    .transition(all 1000ms cubic-bezier(0.215, 0.610, 0.355, 1.000));
+		    cursor: pointer;
+		    &:hover{
+		    	color:#B8913B;
+		    }
+	    }
+	}
+	>div{
+		&.row{
+			padding:  20px;
+			border-bottom: 1px solid #cccccc;
+			>div{
+				label{
+				    color: #040404;
+				    font-family: din_lightregular;
+				    font-weight: 600;
+				    margin-bottom: 14px;
+				    font-size: 15px;
+				    position: relative;
+				    .transition(all 1000ms cubic-bezier(0.215, 0.610, 0.355, 1.000));
+				    &:after{
+					    background: none repeat scroll 0 0 rgba(0, 180, 165, 0.64);
+					    bottom: 0;
+					    content: "";
+					    height: 1px;
+					    left: 0;
+					    position: absolute;
+					    width: 29px;
+				    }
+				}	
+				span{
+					padding-left: 4px;
+					display: block;
+				}			
+			}
+		}
+	}
+	&.fixed-top{
+	    max-width: 969px;
+	    position: fixed;
+	    top: 40px;
+	    z-index: 100;
+	}
+	&.closed{
+		max-height:40px;
+		legend{
+			i{
+				.transform(rotate(540deg));
+			}
+		}
 	}
 }
+

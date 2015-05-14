@@ -146,7 +146,8 @@ App.prototype.bind=function(){
         var container=data.aside;
         app.ajaxView(serviceUrl,data,container);
     });
-
+    app.tooggleAcoordion('.control-accordion');
+    app.wayPointClass('.waypont-toggler');
 }
 
 
@@ -1340,4 +1341,33 @@ App.prototype.cleanForm=function(parentElemet){
   var parentElemet=$(parentElemet);
   $(parentElemet).find('input').val('');
   $(parentElemet).find('.as-selections .as-selection-item').remove();
+}
+
+App.prototype.tooggleAcoordion=function(element){
+  $(document).on('click',element,function(){
+      var data=$(this).data();
+      console.log(data);
+      console.log($(data.container));
+      console.log(data.toggleclass);
+      $(this).closest(data.container).toggleClass('closed');
+  });
+}
+
+App.prototype.wayPointClass=function(element){
+  var data=$(element).data(),toggle=data.toggleclass;
+  console.log(data);
+  $(element).waypoint({
+      handler: function(direction) {
+        if(direction=='down'){
+          $(element).addClass(toggle);
+          $(element).addClass('closed');
+        }else{
+          setTimeout(function(){
+            $(element).removeClass(toggle);
+            $(element).removeClass('closed');
+          },300);
+        }
+      }
+    });  
+
 }
