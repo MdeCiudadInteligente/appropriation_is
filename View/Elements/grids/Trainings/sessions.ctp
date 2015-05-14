@@ -26,8 +26,9 @@
 				array("dataIndex"=>"start_date",'header'=>'Fecha','sortable'=>true,'align'=>"left","column"=>true),
 				array("dataIndex"=>"start_time",'header'=>'Hora Inicial','sortable'=>true,'align'=>"left","column"=>true),
 				array("dataIndex"=>"end_time",'header'=>'Hora Final','sortable'=>true,'align'=>"left","column"=>true),
+				array("dataIndex"=>"trainers",'header'=>'Formadores','sortable'=>true,'align'=>"left","column"=>true),
 				array("dataIndex"=>"thematics",'header'=>'Tematicas','sortable'=>true,'align'=>"left","column"=>true),
-				array("dataIndex"=>"participants",'header'=>'Participantes','sortable'=>true,'align'=>"left","column"=>true)
+				array("dataIndex"=>"participants",'header'=>'Asistentes','sortable'=>true,'align'=>"left","column"=>true)
 			),
 			'expander'=>array(
 				'fields'=>array(

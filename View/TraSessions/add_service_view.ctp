@@ -37,6 +37,15 @@ $service=Router::url( array('controller' => 'TraSessions', 'action' => 'add_serv
 			</div>
 	</div>	
 
+	<div class="seccion-person">	
+			<div class="input" >
+				<label>Formador</label>
+				<input type="text"  class="Trainers-autocomplete" data-required="true" data-valcontainer=".results-input-tra" data-emptymsg="Por favor ingresa un formador">
+				<div class="results-input-tra" data-input-name="data[PerTrainer][PerTrainer][]" >	
+				</div>
+			</div>
+	</div>	
+	
 	<?php	
 		echo $this->Form->input('observation');
 	?>

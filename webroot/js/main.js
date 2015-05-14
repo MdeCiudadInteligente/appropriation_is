@@ -128,7 +128,6 @@ App.prototype.bind=function(){
 
     $('#content').on('click','.go-to-url-id',function(){
         var url=$(this).data('url')+'/'+$(this).data('id');
-        console.log(url);
         location.href=url;
     });
 
@@ -146,7 +145,8 @@ App.prototype.bind=function(){
         var container=data.aside;
         app.ajaxView(serviceUrl,data,container);
     });
-
+    app.tooggleAcoordion('.control-accordion');
+    app.wayPointClass('.waypont-toggler');
 }
 
 
@@ -1135,7 +1135,6 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 				            resultClick: function(data){
                                 //Variables de datos
                                 var notice=data.attributes.actions.notice;
-                                console.log(data.attributes);
                                 app.notifyProcess(notice,data.attributes,'print-view','cancel-view','200px');
 				            },selectionRemoved: function(elem){
 				                var prop_data=elem.data('prop-data');
@@ -1340,4 +1339,26 @@ App.prototype.cleanForm=function(parentElemet){
   var parentElemet=$(parentElemet);
   $(parentElemet).find('input').val('');
   $(parentElemet).find('.as-selections .as-selection-item').remove();
+}
+
+App.prototype.tooggleAcoordion=function(element){
+  $(document).on('click',element,function(){
+      var data=$(this).data();
+      $(this).closest(data.container).toggleClass('closed');
+  });
+}
+
+App.prototype.wayPointClass=function(element){
+  var data=$(element).data(),toggle=data.toggleclass;
+  $(element).waypoint({
+      handler: function(direction) {
+        if(direction=='down'){
+          $(element).addClass(toggle);
+          $(element).addClass('closed');
+        }else{
+            $(element).removeClass(toggle);
+        }
+      }
+    });  
+
 }
