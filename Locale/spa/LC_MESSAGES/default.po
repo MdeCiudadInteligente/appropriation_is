@@ -92,11 +92,29 @@
 #: \libs\view\errors\error404.ctp:30
 
 
+msgid "The school level could not be deleted. Please, try again."
+msgstr "El nivel de escolaridad ha sido eliminado. Por favor, trate nuevamente"
+
+msgid "The school level has been deleted."
+msgstr "El nivel de escolaridad ha sido eliminado"
+
+msgid "The school level has been saved."
+msgstr "El nivel de escolaridad ha sido guardado"
+
+msgid "The school level could not be saved. Please, try again."
+msgstr "El nivel de escolaridad no ha podido ser guardado. Por favor trate nuevamente"
+
+msgid "Invalid school level"
+msgstr "Nivel de escolaridad no v·lido"
+
+msgid "Edit School Level"
+msgstr "Editar Nivel de escolaridad"
+
 msgid "The thematic already exists , please check."
 msgstr "La tem√°tica existe, por favor verifique"
 
-msgid "The per trainer fund has been deleted."
-msgstr "El fondo del formador ha sido eliminado"
+msgid "Add School Level"
+msgstr "Agregar Nivel de escolaridad"
 
 msgid "The per trainer fund has been saved."
 msgstr "El fondo del formador ha sido guardado"
