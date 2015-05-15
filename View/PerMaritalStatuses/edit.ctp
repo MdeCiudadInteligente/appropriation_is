@@ -1,13 +1,10 @@
-<div class="perMaritalStatuses form">
+<div class="perMaritalStatuses form mde-form">
 <?php echo $this->Form->create('PerMaritalStatus'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Per Marital Status'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
-		echo $this->Form->input('creation_date');
-		echo $this->Form->input('modification_date');
-		echo $this->Form->input('user_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

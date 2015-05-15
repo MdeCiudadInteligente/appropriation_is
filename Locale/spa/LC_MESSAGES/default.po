@@ -104,6 +104,42 @@ msgstr "El fondo del formador ha sido guardado"
 msgid "List Per Trainer Funds"
 msgstr "Lista fondo de formador"
 
+msgid "The per marital status has been saved."
+msgstr "El Estado Civil ha sido guardado."
+
+msgid "The per marital status has been deleted."
+msgstr "El Estado Civil ha sido eliminado."
+
+msgid "New perMaritalStatuses"
+msgstr "Nuevo Estado Civil"
+
+msgid "Per Marital Status"
+msgstr "Estado Civil"
+
+msgid "Edit Per Marital Status"
+msgstr "Editar Estado Civil"
+
+msgid "Add Per Marital Status"
+msgstr "Agregar Estado Civil"
+
+msgid "PerSchoolLevels"
+msgstr "Nivel de escolaridad"
+
+msgid "List PerSchoolLevels"
+msgstr "Lista Nivel de escolaridad"
+
+msgid "New PerSchoolLevels"
+msgstr "Nuevo Nivel de escolaridad"
+
+msgid "PerMaritalStatuses"
+msgstr "Estado Civil"
+
+msgid "List PerMaritalStatuses"
+msgstr "Lista Estado Civil"
+
+msgid "New PerMaritalStatuses"
+msgstr "Nuevo Estado Civil"
+
 msgid "The per trainer schedule has been saved."
 msgstr "El horario del formador ha sido guardado."
 
