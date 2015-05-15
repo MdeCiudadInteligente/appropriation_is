@@ -1349,16 +1349,17 @@ App.prototype.tooggleAcoordion=function(element){
 }
 
 App.prototype.wayPointClass=function(element){
-  var data=$(element).data(),toggle=data.toggleclass;
-  $(element).waypoint({
-      handler: function(direction) {
-        if(direction=='down'){
-          $(element).addClass(toggle);
-          $(element).addClass('closed');
-        }else{
-            $(element).removeClass(toggle);
+  if($(element).length){
+    var data=$(element).data(),toggle=data.toggleclass;
+    $(element).waypoint({
+        handler: function(direction) {
+          if(direction=='down'){
+            $(element).addClass(toggle);
+            $(element).addClass('closed');
+          }else{
+              $(element).removeClass(toggle);
+          }
         }
-      }
-    });  
-
+      });  
+  }
 }
