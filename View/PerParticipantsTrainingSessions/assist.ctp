@@ -4,7 +4,7 @@
 	$participants=$this->request->data['participants'];
 ?>
 
-<div class="traSessions form mde-form">
+<div class="Assist list-rows-style form mde-form">
 <?php echo $this->Form->create('TraSession', array('class'=>'serviceSubmit check_submit',"data-service"=>$service)); ?>
 	<fieldset>
 		<legend><?php echo __('Add Assist'); ?></legend>

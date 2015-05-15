@@ -10,7 +10,7 @@ $service=Router::url( array('controller' => 'TraSessions', 'action' => 'add_serv
 
 
 
-<div class="traSessions form mde-form">
+<div class="traSessions  form mde-form">
 <?php echo $this->Form->create('TraSession', array('class'=>'serviceSubmit',"data-service"=>$service)); ?>
 	<fieldset>
 		<legend><?php echo __('Add Tra Session'); ?></legend>
