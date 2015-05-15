@@ -17,3 +17,7 @@ END;
 UPDATE 
 `meetings`
 SET meeting_type_id=meeting_type; 
+
+
+ALTER TABLE `appropriation_test`.`meetings` 
+DROP COLUMN `meeting_type`;
