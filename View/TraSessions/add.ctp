@@ -1,4 +1,4 @@
-<div class="traSessions form mde-form">
+﻿<div class="traSessions form mde-form">
 <?php echo $this->Form->create('TraSession'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Tra Session'); ?></legend>
@@ -7,23 +7,31 @@
 		<div class="seccion-person">	
 			<div class="input">
 				<label>Formaciones</label>
-				<input type="text" data-required="true" data-valcontainer=".results-input-training" data-emptymsg="Por favor ingresa una formaci�n" class="Trainings-autocomplete">
+				<input type="text" data-required="true" data-valcontainer=".results-input-training" data-emptymsg="Por favor ingresa una formación" class="Trainings-autocomplete">
 				<div class="results-input-training" data-input-name="data[TraSession][training_id]">			
 				</div>
 			</div>
 		</div>	
-		
-	<!--  <div class="seccion-person">
-
-				<div class="input" >
-					<label>Participante</label>
-						<input type="text"  class="Participants-autocomplete" data-required="true" data-valcontainer=".results-input-par" data-emptymsg="Por favor ingresa un participante">
-						<div class="results-input-par" data-input-name="data[PerParticipant][PerParticipant][]" >
-						</div>
+		<div class="seccion-person">	
+			<div class="input" >
+				<label>Temáticas <i class="icon-eye view-service view-service-button" data-url="<?php echo Router::url( '/', true ) ?>Thematics/getThematic.json" data-callback="appendServiceHtml" data-post="{'a':'1'}" data-name="Temáticas" data-alowedIndex="{'name':'Nombre','prefijo':'prefijo','description':'Descripción'}">Ver temáticas</i></label>
+				<input type="text"  class="Thematics-autocomplete" data-required="true" data-valcontainer=".results-input-thematics" data-emptymsg="Por favor ingresa mínimo una temática">
+				<div class="results-input-thematics" data-input-name="data[Thematic][Thematic][]">
+			</div>
+			</div>
+		</div>	
+		<div class="input"  style="text-align:right">
+		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'PerTrainers', 'action' => 'add'),array('target'=>'_blank')); ?>
+		</div>
+		<div class="seccion-person">	
+			<div class="input" >
+				<label>Formador</label>
+				<input type="text"  class="Trainers-autocomplete" data-required="true" data-valcontainer=".results-input-tra" data-emptymsg="Por favor ingresa un formador">
+				<div class="results-input-tra" data-input-name="data[PerTrainer][PerTrainer][]" >	
 				</div>
-	       </div>-->
-			
-			<div class="seccion-person">	
+			</div>
+		</div>	
+		<div class="seccion-person">	
 				<div class="input">
 					<label>Sitio</label>
 					<input type="text"  class="Site-autocomplete" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio">

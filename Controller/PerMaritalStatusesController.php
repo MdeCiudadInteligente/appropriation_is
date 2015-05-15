@@ -24,6 +24,28 @@ class PerMaritalStatusesController extends AppController {
 		$this->PerMaritalStatus->recursive = 0;
 		$this->set('perMaritalStatuses', $this->Paginator->paginate());
 	}
+	
+	public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$permaritalstatus=$this->PerMaritalStatus->find('all');
+	
+		$count=0;
+		foreach ($permaritalstatus as $key => $permaritalstatus) {
+			$data['rows'][$count]=array(
+					'id'=>$permaritalstatus['PerMaritalStatus']['id'],
+					'name'=>$permaritalstatus['PerMaritalStatus']['name'],					
+					'creation_date'=>$permaritalstatus['PerMaritalStatus']['creation_date'],
+					'modification_date'=>$permaritalstatus['PerMaritalStatus']['modification_date'],
+					'user_id'=>$permaritalstatus['PerMaritalStatus']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method
