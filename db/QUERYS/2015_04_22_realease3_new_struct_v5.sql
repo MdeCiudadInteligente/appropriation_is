@@ -4,7 +4,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2015 a las 15:08:12
+-- Tiempo de generación: 13-05-2015 a las 22:20:58
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `accompaniments` (
   KEY `site_id` (`site_id`),
   KEY `user_id` (`user_id`),
   KEY `accompaniment_type_id` (`accompaniment_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=473 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=462 ;
 
 --
 -- Volcado de datos para la tabla `accompaniments`
@@ -382,7 +382,7 @@ INSERT INTO `accompaniments` (`id_accompaniment`, `accompaniment_date`, `accompa
 (405, '2015-04-13', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Acompañamiento curso', 'Se realizó acompañamiento a los Gestores TIC en la octava sesión de Alfabetización digital.', 0, 'Unidad_Integral_6_Belen_Acompanamiento_Gestores_TIC.jpg', 'Unidad_Integral_6_Belen_Acompanamiento_Gestores_TIC_2.jpg', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 362, 15, '2015-04-15 17:43:40', '0000-00-00 00:00:00'),
 (406, '2015-04-15', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Acompañamiento curso', 'Se realizó un acompañamiento a las Gestoras TIC en la sesión cuarta de AD.', 0, 'CEDEZO_San_Antonio_de_Prado_Curso_AD.jpg', 'CEDEZO_San_Antonio_de_Prado_Acompanamiento_Gestoras_TIC.jpg', 'CEDEZO_San_Antonio_de_Prado_Acompanamiento_Gestoras_TIC_2.jpg', 'uploads/accompaniment/accompaniment_adjunct', 0, 178, 15, '2015-04-15 17:53:33', '0000-00-00 00:00:00'),
 (407, '2015-04-15', 'Curso, taller o charla', 'Seguimiento curso AD Y GEL', 'Se dictó la sesión 3 de Herramientas Web 2.0, los alumnos descargaron videos y música de YouTube', 8, 'Telecentro_La_Carmelita_AD_Y_GEL_1.JPG', 'Telecentro_La_Carmelita_AD_Y_GEL.JPG', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 483, 42, '2015-04-20 15:18:09', '0000-00-00 00:00:00'),
-(408, '2015-04-17', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Capacitación a gestora TIC.', 'Se realizó una reunión con la gestora TIC Alejandra Moreno para planear el inicio del curso de Alfabetización Digital que ella orientará en el Parque Biblioteca Guayabal, además iniciamos la capacitación en los contenidos del curso.', 1, 'Parque_Biblioteca_Guayabal_Acompanamiento_a_gestor_TIC.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 192, 43, '2015-04-20 15:50:07', '2015-05-14 12:39:21'),
+(408, '2015-04-17', 'practicantes', 'Capacitación a gestora TIC.', 'Se realizó una reunión con la gestora TIC Alejandra Moreno para planear el inicio del curso de Alfabetización Digital que ella orientará en el Parque Biblioteca Guayabal, además iniciamos la capacitación en los contenidos del curso.', 1, 'Parque_Biblioteca_Guayabal_Acompanamiento_a_gestor_TIC.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 192, 43, '2015-04-20 15:50:07', '2015-04-27 12:38:06'),
 (409, '2015-04-01', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Vinculación de gestores TIC', 'Reunión con 5 estudiantes beneficiarios de presupuesto participativo para vincularlos en la figura de Gestores TIC y acompañen los procesos de apropiación en el punto de navegación del Mascerca y en aulas abiertas. ', 5, 'Mascerca_Buenos_Aire_acompanamiento_gestoresTIC.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 314, 20, '2015-04-21 11:20:39', '0000-00-00 00:00:00');
 INSERT INTO `accompaniments` (`id_accompaniment`, `accompaniment_date`, `accompaniment_type`, `accompaniment_title`, `accompaniment_description`, `participant_number`, `accompaniment_adjunct`, `accompaniment_adjunct1`, `accompaniment_adjunct2`, `dir`, `accompaniment_type_id`, `site_id`, `user_id`, `creation_date`, `modification_date`) VALUES
 (410, '2015-04-16', 'practicantes', 'Vinculación de gestor TIC', 'Reunión con un estudiante de PP para su vinculación como Gestor TIC del programa. Sus labores principales estarán orientadas al diseño de los tutoriales en la plantilla de Power Point, adaptando los contenidos a la imagen del programa. Compromisos: Enviarle las plantillas de PPT y los formatos de tutoriales que debe elaborar; trabajar 8 horas a la semana para terminar estos turoriales.', 1, 'Mascerca_Buenos_Aires_Acompanamiento_Jerson_Rodriguez_1.JPG', 'Mascerca_Buenos_Aires_Acompanamiento_Jerson_Rodriguez_2.JPG', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 314, 20, '2015-04-21 11:31:00', '2015-05-07 17:07:28'),
@@ -390,7 +390,7 @@ INSERT INTO `accompaniments` (`id_accompaniment`, `accompaniment_date`, `accompa
 (412, '2015-04-13', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Planeación del proceso formativo', 'Encuentro con una estudiante quien realizará sus prácticas universitarias en la biblioteca, para vincularla como Gestora TIC y poder así facilitar diversos procesos de formación. Compromiso: Comenzar los viernes en la tarde un curso con adultos sobre alfabetización, narrativas digitales y lecto-escritura; y los lunes en la tarde un taller de herramientas Web con jóvenes.', 2, 'Biblioteca_Villatina_Reunion_Gestora_TIC_1.JPG', 'Biblioteca_Villatina_Reunion_Gestora_TIC_2.JPG', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 525, 17, '2015-04-22 15:17:15', '0000-00-00 00:00:00'),
 (413, '2015-04-14', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Seguimiento y planeación de actividades', 'Visita de seguimiento y acompañamiento al Gestor TIC que está desarrollando las horas en el punto de navegación de la Casa de Gobierno. El sitio es poco frecuentado por la comunidad, pero hay muy buena disposición de los funcionarios para prestar el servicio.', 1, 'Casa_Gobierno_Santa_Elena_Seguimiento_Gestor_TIC_1.jpg', 'Casa_Gobierno_Santa_Elena_Seguimiento_Gestor_TIC_2.jpg', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 296, 17, '2015-04-22 16:41:04', '0000-00-00 00:00:00'),
 (415, '2015-04-24', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Vinculación de gestora TIC', 'Se realizó una reunión con María Isabel Rúa, estudiante de PP con el fin de realizar su vinculación como gestora TIC del programa, específicamente en el Parque Biblioteca Guayabal para apoyar inicialmente, el curso de Alfabetización Digital y Gobierno en Línea que se dictará los sábados de 9:00 am a 12:00 m. \r\nAdemás se realizó la inducción general sobre el programa, su proceso como gestora TIC y los contenidos del curso de Alfabetización Digital y Gobierno en Línea.', 1, 'Parque_Biblioteca_Guayabal_Acompanamiento_a_gestora_TIC.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 192, 43, '2015-04-27 08:10:24', '0000-00-00 00:00:00'),
-(416, '2015-04-25', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Vinculación de gestor TIC', 'Se realizó una reunión con Diego Gonzalez Muñoz, estudiante de PP con el fin de realizar su vinculación como gestor TIC del programa, él acompañará el curso de Alfabetización Digital y Gobierno en Línea que se dictará los sábados de 08:00 am a 12:00 m en la Institución Educativa José Acevedo y Gómez. Además se realizó la inducción general sobre el programa, su proceso como gestor TIC y los contenidos del curso de Alfabetización Digital y Gobierno en Línea.\r\nLuego de la reunión, se realizó en compañía de Diego la sensibilización del curso a la comunidad.\r\n', 1, 'Institucion_Educativa_Jose_Acevedo_y_Gomez_Acompanamiento_Gestor_TIC.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 344, 43, '2015-04-27 08:35:41', '2015-05-14 12:38:54'),
+(416, '2015-04-25', 'practicantes', 'Vinculación de gestor TIC', 'Se realizó una reunión con Diego Gonzalez Muñoz, estudiante de PP con el fin de realizar su vinculación como gestor TIC del programa, él acompañará el curso de Alfabetización Digital y Gobierno en Línea que se dictará los sábados de 08:00 am a 12:00 m en la Institución Educativa José Acevedo y Gómez. Además se realizó la inducción general sobre el programa, su proceso como gestor TIC y los contenidos del curso de Alfabetización Digital y Gobierno en Línea.\r\nLuego de la reunión, se realizó en compañía de Diego la sensibilización del curso a la comunidad.\r\n', 1, 'Institucion_Educativa_Jose_Acevedo_y_Gomez_Acompanamiento_Gestor_TIC.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 344, 43, '2015-04-27 08:35:41', '2015-04-27 13:40:24'),
 (417, '2015-04-24', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Acompañamiento', 'Acompañamiento a gestor tic en el curso Alfabetización Digital', 8, 'Cedezo_Manrique_A_D1_800x600.jpg', 'Cedezo_Manrique_A_D2_800x600.jpg', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 165, 10, '2015-04-27 08:58:43', '0000-00-00 00:00:00'),
 (418, '2015-04-25', 'Otros', 'Cine para todos', 'Acompañamiento a 7 integrantes de la fundación casa Maren en Cine para Todos, programa de cine de inclusión del ministerio TIC', 8, 'Casa_Maren_Cine_para_todos_600x800.jpg', 'Casa_Maren_Cine_para_todos1_600x800.jpg', 'Casa_Maren_Cine_para_todos2_800x600.jpg', 'uploads/accompaniment/accompaniment_adjunct', 0, 465, 10, '2015-04-27 09:00:56', '0000-00-00 00:00:00'),
 (419, '2015-04-22', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Inducción a Gestores Tic', 'Se visitó el centro de Servicios de Lusitania donde se realizó el empalme de las nuevas gestoras Tic en relación a las actividades que generalmente se realizan en los sitios de Gobierno con zonas WIFI- Puntos de Navegación, se dieron tips variados de relación con las personas, formas de acercamiento, diligenciamiento de planillas, tipos de asesorías. Se les contó de qué se trata el programa, se diligenciaron formatos, se indagaron expectativas, intereses, se les entregó a cada una la carpeta con alguana documentación para leer y se firmó el pacto de acompañamiento, entre otras actividades. ', 2, 'IMG_20150422_103051011.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 272, 23, '2015-04-27 16:03:08', '0000-00-00 00:00:00'),
@@ -425,18 +425,7 @@ INSERT INTO `accompaniments` (`id_accompaniment`, `accompaniment_date`, `accompa
 (458, '2015-05-05', 'practicantes', 'Acompañamiento a Curso', 'Acompañamiento al curso de alfabetización digital y gobierno en Línea con adulto mayor, realizado por el gestor TIC voluntario, Jhon Andrés Mestra en el telecentro Fátima de la comuna 16.', 1, 'Telecentro_Fatima_Acompanamiento_a_gestor_TIC_Jhon_Andres_Mestra_en_curso_de_Alfabetizacion_digital_y_gobierno_en_linea.JPG', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 207, 38, '2015-05-11 14:19:33', '2015-05-11 19:21:39'),
 (459, '2015-05-07', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Acompañamiento a Curso', 'Acompañamiento al curso de alfabetización digital y gobierno en Línea con adulto mayor, realizado por la gestora TIC de Pascual Bravo, Carolina Moreno en el telecentro Fátima de la comuna 16.', 1, 'Telecentro_Fatima_Acompanamiento_a_gestora_TIC_Carolina_Moreno_en_curso_de_Alfabetizacion_digital_y_gobierno_en_linea.JPG', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 207, 38, '2015-05-11 14:23:23', '0000-00-00 00:00:00'),
 (460, '2015-05-09', 'Estudiantes del Pascual Bravo', 'Acompañamiento gestora TIC ', 'Acompañamiento a la gestora TIC del Pascual Bravo en el punto de navegación. El próximo sábado termina su labor social y se le entregará el certificado de terminación de sus horas.', 1, 'Parque_de_la_Vida_Acompanamiento_gestoraPB_Irianda_Osorio_1.jpg', 'Parque_de_la_Vida_seguimiento.jpg', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 318, 20, '2015-05-11 16:45:03', '0000-00-00 00:00:00'),
-(461, '2015-05-07', 'Kit de inclusion digital\r\n', 'Seguimiento kit de inclusión digital', 'Seguimiento al kit de inclusión digital y acompañamiento al curso de alfabetización digital para personas en situación de discapacidad. Se señala la necesidad de utilizar algunas herramientas del kit para algunos participantes del curso', 3, 'PB_Leon_de_Greiff_acompanamiento_kit_de_inclusion_5.jpg', 'PB_Leon_de_Greiff_acompanamiento_kit_de_inclusion_4.jpg', 'PB_Leon_de_Greiff_acompanamiento_kit_de_inclusion_3.jpg', 'uploads/accompaniment/accompaniment_adjunct', 0, 188, 20, '2015-05-11 16:51:55', '0000-00-00 00:00:00'),
-(462, '2015-05-12', 'Aula Abierta', 'Acompañamiento Aula Abierta', 'Revisión de contenidos y proceso de Aula Abierta con la comunidad', 3, '20150512_102828_HDR.jpg', 'IMG_20150512_WA0006.jpeg', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 254, 10, '2015-05-12 12:00:53', '0000-00-00 00:00:00'),
-(463, '2015-05-12', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Acompañamiento Gestor TIC', 'Socialización de contenidos NSN para todo publico con los psicólogos de la institución para todo publico', 2, '20150512_100854_HDR.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 254, 10, '2015-05-12 12:02:59', '0000-00-00 00:00:00'),
-(464, '2015-05-12', 'Laboratorios comunitarios', 'Acompañamiento Aulab', 'Se acompañó a los chicos y chicas del laboratorio a grabar un documental que se encontraban preparando para unas madres comunitarias del sector aledaño a la institución educativa', 10, 'Institucion_Educativa_Aures_Laboratorio_Comunitario.JPG', 'Institucion_Educativa_Aures_Laboratorio_Comunitario_1.JPG', 'Institucion_Educativa_Aures_Laboratorio_Comunitario_2.JPG', 'uploads/accompaniment/accompaniment_adjunct', 0, 568, 42, '2015-05-12 13:42:01', '0000-00-00 00:00:00'),
-(465, '2015-05-12', 'Curso, taller o charla', 'Acompañamiento curso', 'Se realiza sesión 3 de Alfabetización digital cubriendo a la gestora TIC que no pudo acompañar la sesión por quehaceres de la universidad.', 12, '20150512_140121_HDR.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 463, 10, '2015-05-12 17:10:16', '0000-00-00 00:00:00'),
-(466, '2015-05-12', 'Intervención sitio', 'Atención a usuarios', 'Acompañamiento al punto de navegación, verificación del adecuado funcionamiento de los equipos; recolección de indicadores.Se atiende a un usuario que se encuentra en el punto; se indaga por la asistencia de los estudiantes de PP', 1, 'Mascerca_acompanamiento_al_sitio.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 314, 20, '2015-05-13 11:06:50', '0000-00-00 00:00:00'),
-(467, '2015-05-12', 'Intervención sitio', 'Sitio de gobierno', 'Acompañamiento al punto de navegación, verificación del adecuado funcionamiento de los equipos; recolección de indicadores. El vigilante comenta que procura por el buen uso de los equipos por parte de los usuarios. ', 1, 'Inspeccion_9B_El_Salvador_acompanamiento_al_sitio.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 307, 20, '2015-05-13 11:11:50', '0000-00-00 00:00:00'),
-(468, '2015-05-09', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Acompañamiento a gestora TIC en curso de AD y GEL ', 'Se realizó acompañamiento a la gestora TIC Maria Isabel Rúa Taborda en la segunda sesión de Alfabetización Digital y Gobierno en Línea dirigido a adultos y se resolvieron las principales dudas con respecto a los contenidos.', 1, 'Parque_Biblioteca_Guayabal_Seguimiento_a_la_gestora_TIC_Maria_Isabel_Rua.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 192, 43, '2015-05-13 15:20:37', '2015-05-13 20:27:32'),
-(469, '2015-05-09', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Acompañamiento a gestora TIC en curso de AD y GEL ', 'Se realizó acompañamiento y apoyo a la gestora TIC Maria Alejandra Moreno en la segunda sesión de Alfabetización Digital y Gobierno en Línea dirigido a adultos, además se realizó una dinámica de integración con el grupo.', 1, 'Parque_Biblioteca_Guayabal_Seguimiento_a_gestora_TIC_Maria_Alejandra_Moreno.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 192, 43, '2015-05-13 15:26:50', '0000-00-00 00:00:00'),
-(470, '2015-05-11', 'Kit de inclusion digital\r\n', 'Seguimiento a Kit de Inclusión Digital', 'Se realizó seguimiento al Kit de inclusión digital, se evidencio que en el aula de sistemas el Kit está visible y utilizado por 11 estudiantes de la institución con discapacidad cognitiva, se planeó con la docente de apoyo una estrategia para incluir a personas de la comunidad, dicha estrategia consiste en realizar un curso de Alfabetización Digital con personas en situación de discapacidad de la comuna.', 2, 'Institucion_Educativa_Santos_Angeles_Custodios_Seguimiento_al_KIT_de_inclusion.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 359, 43, '2015-05-13 15:49:31', '0000-00-00 00:00:00'),
-(471, '2015-05-13', 'Kit de inclusion digital\r\n', 'Seguimiento kit de inclusión digital', 'Reunión con la encargada del kit de inclusión digital para verificar su uso de los dispositivos. Este institución se ha empederado positivamente del kit con las personas en situación de discapacidad. Además, se le extiende la invitación para 7 estudiantes el 30 de mayo  con la propuesta del Ministerio de "Cine para todos". Confirmación de los participantes y envio de la programación del 30 de mayo.', 1, 'ITM_Fraternidad_acompanamiento_kit_inclusion.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 308, 20, '2015-05-13 16:50:56', '0000-00-00 00:00:00'),
-(472, '2015-05-13', 'Estudiantes de PP, jóvenes por la convivencia o al', 'Acompañamiento seguimiento Gestores TIC', 'Se hace acompañamiento a los gestores TIC del la I.E Bravo Márquez, se realiza un refuerzo en contenidos del curso, se revisan las listas de asistencia. ', 6, '20150513_145852_HDR.jpg', '', '', 'uploads/accompaniment/accompaniment_adjunct', 0, 159, 10, '2015-05-14 08:20:41', '0000-00-00 00:00:00');
+(461, '2015-05-07', 'Kit de inclusion digital\r\n', 'Seguimiento kit de inclusión digital', 'Seguimiento al kit de inclusión digital y acompañamiento al curso de alfabetización digital para personas en situación de discapacidad. Se señala la necesidad de utilizar algunas herramientas del kit para algunos participantes del curso', 3, 'PB_Leon_de_Greiff_acompanamiento_kit_de_inclusion_5.jpg', 'PB_Leon_de_Greiff_acompanamiento_kit_de_inclusion_4.jpg', 'PB_Leon_de_Greiff_acompanamiento_kit_de_inclusion_3.jpg', 'uploads/accompaniment/accompaniment_adjunct', 0, 188, 20, '2015-05-11 16:51:55', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -454,14 +443,14 @@ CREATE TABLE IF NOT EXISTS `acc_types` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Volcado de datos para la tabla `acc_types`
 --
 
 INSERT INTO `acc_types` (`id`, `name`, `state`, `user_id`, `creation_date`, `modification_date`) VALUES
-(0, 'No asignado', 1, 12, '2015-05-07 00:00:00', '2015-05-14 21:19:39');
+(0, 'No asignado', 1, 12, '2015-05-12 00:00:00', '2015-05-12 15:14:38');
 
 -- --------------------------------------------------------
 
@@ -711,7 +700,7 @@ CREATE TABLE IF NOT EXISTS `meetings` (
   KEY `site_id` (`site_id`),
   KEY `user_id` (`user_id`),
   KEY `meeting_type_id` (`meeting_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=629 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=624 ;
 
 --
 -- Volcado de datos para la tabla `meetings`
@@ -1282,12 +1271,7 @@ INSERT INTO `meetings` (`id_meeting`, `meeting_date`, `meeting_type`, `meeting_t
 (620, '2015-05-06', 'Seguimiento', 'Reunión con Coordinador de la biblioteca', 'Reunión para definir fechas de charlas y cursos', 'Se agendó para el mes de mayo dos charlas, una para el mes de junio y empezar un taller de narrativas en agosto.', 'Biblioteca_Tren_de_Papel_Reunion_de_planeacion.JPG', NULL, NULL, 'uploads/meeting/meeting_adjunct', 0, 182, 42, '2015-05-11 07:54:44', '2015-05-11 13:06:21'),
 (621, '2015-05-08', 'Seguimiento', 'Reunion encargados de sitios recolecciòn indicador', 'Reunión de seguimiento de sitio con la encargada y recolección de indicadores', 'Continuar con la capacitación de funcionarios en tramites en línea.', 'Casa_de_Justicia_Villa_del_Socorro_seguimiento_2.jpg', 'Casa_de_Justicia_Villa_del_Socorro_seguimiento.jpg', NULL, 'uploads/meeting/meeting_adjunct', 0, 242, 10, '2015-05-11 08:48:12', '0000-00-00 00:00:00'),
 (622, '2015-05-05', 'Seguimiento', 'Reunión de planeación', 'Reunión para planificar actividades de articulación entre MCI y el PB con personas en situación de discapacidad. Se acuerda participar de la planeación y de la formación de uno de los cursos, porque cuentan con más de 50 inscritos entre cuidadores y personas en situación de discapacidad, se piensa en dividirlo en tres grupos para un mejor acompañamiento. ', 'Participar de la planeación del curso de alfabetización con personas en situación de discapacidad. Utilización de algunos dispositivos del kit de inclusión', 'PB_Leon_de_Greiff_reunion_planeacion_1.jpg', 'PB_Leon_de_Greiff_reunion_planeacion_2.jpg', 'PB_Leon_de_Greiff_reunion_planeacion_3.jpg', 'uploads/meeting/meeting_adjunct', 0, 188, 20, '2015-05-11 17:02:53', '0000-00-00 00:00:00'),
-(623, '2015-05-08', 'Empalme', 'Empalme con encargados del sitio', 'Reunión de empalme con encargados del nuevo sitio de navegación y zona wifi', 'Seguimiento continuo para contarle a la comunidad sobre los servicios del sitio.', 'Centro_de_Salud_Vila_del_Socorro_seguimiento_2.jpg', 'Centro_de_Salud_Vila_del_Socorro_seguimiento.jpg', NULL, 'uploads/meeting/meeting_adjunct', 0, 499, 10, '2015-05-12 08:42:57', '0000-00-00 00:00:00'),
-(624, '2015-05-12', 'Gestión con aliados', 'Reunión con la JAL ', 'Reunión con el coordinador de educación de la JAL de comuna 9; para solicitarle la participación de algunos de los estudiantes que están con el programa desplazarse a otras comunas para realizar actividades del programa', 'Enviar una relación de los estudiantes que están realizando la labor social con el programa MCI', 'Mascerca_Buenos_Aires_gestion_con_aliados.jpg', NULL, NULL, 'uploads/meeting/meeting_adjunct', 0, 314, 20, '2015-05-13 10:58:06', '0000-00-00 00:00:00'),
-(625, '2015-05-13', 'Empalme', 'Reunión de empalme y planeación', 'Reunión con el coordinador de la institución para agendar dos charlas de GEL para los estudiantes del grado 11. Se nota disposición para la propuesta del programa. ', 'Confirmar la charla días antes de su realización', 'IE_Juan_de_Dios_Carvajal_empalme.jpg', NULL, NULL, 'uploads/meeting/meeting_adjunct', 0, 310, 20, '2015-05-13 16:40:05', '2015-05-13 21:42:06'),
-(626, '2015-05-13', 'Seguimiento', 'Planeación procesos Junio y Julio', 'La reunión se lleva a cabo con la Coordinadora del espacio y las dos Gestoras de Cultura Digital encargadas de formar a la comunidad en Alfabetización Digital, en está se planean las actividades que se tendrán en la Biblioteca durante junio y julio del presente año. ', 'La biblioteca se compromete a realizar la convocatoria para el nuevo grupo de Alfabetización Digital, La Gestora de Cultura Digital será la encargada de formular el nuevo contenido para las personas que se están formando. ', 'Biblioteca_Familia_La_Esperanza_Reunion_Planeacion_1.jpg', 'Biblioteca_Familia_La_Esperanza_Reunion_Planeacion_2.jpg', NULL, 'uploads/meeting/meeting_adjunct', 0, 479, 24, '2015-05-13 21:18:57', '0000-00-00 00:00:00'),
-(627, '2015-05-13', 'Seguimiento', 'Planeación procesos mayo', 'El día de hoy se tenía programado iniciar el curso con las madres comunitarias del buen comienzo, la cual no se dio por mal manejo de la información por parte de los convocantes a la cita, el Parque Biblioteca era el encargado de realizarla y las personas no acataron el mensaje, por ende la sensibilización se cancelo, de igual forma se hablaron de los procesos que se llevarán a cabo este mes con el motivo de la celebración del día de la Internet. Para esto nos sumaremos con charlas de NSN para niños y padres de familia. ', 'Sara López sera la encargada de mirar los contenidos y decidir si la información es necesaria para las charlas relámpago. ', 'PB_Doce_de_Octubre_Planeacion_Mes_de_Mayo.jpg', NULL, NULL, 'uploads/meeting/meeting_adjunct', 0, 183, 24, '2015-05-13 21:27:12', '0000-00-00 00:00:00'),
-(628, '2015-05-13', 'Seguimiento', 'Reuniòn Coordinadores', 'Seguimiento del proceso de Aula Abierta, y programación de posibles charlas.', 'revisión de horarios y programación de charlas.', '20150513_145842_HDR.jpg', NULL, NULL, 'uploads/meeting/meeting_adjunct', 0, 159, 10, '2015-05-14 08:25:04', '0000-00-00 00:00:00');
+(623, '2015-05-08', 'Empalme', 'Empalme con encargados del sitio', 'Reunión de empalme con encargados del nuevo sitio de navegación y zona wifi', 'Seguimiento continuo para contarle a la comunidad sobre los servicios del sitio.', 'Centro_de_Salud_Vila_del_Socorro_seguimiento_2.jpg', 'Centro_de_Salud_Vila_del_Socorro_seguimiento.jpg', NULL, 'uploads/meeting/meeting_adjunct', 0, 499, 10, '2015-05-12 08:42:57', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1971,12 +1955,7 @@ INSERT INTO `meetings_people` (`meeting_id`, `person_id`) VALUES
 (622, 729),
 (622, 730),
 (622, 731),
-(623, 732),
-(624, 733),
-(625, 734),
-(626, 703),
-(627, 735),
-(628, 345);
+(623, 732);
 
 -- --------------------------------------------------------
 
@@ -2001,7 +1980,7 @@ CREATE TABLE IF NOT EXISTS `mee_types` (
 --
 
 INSERT INTO `mee_types` (`id`, `name`, `state`, `user_id`, `creation_date`, `modification_date`) VALUES
-(0, 'No asignado', 1, 12, '2015-05-07 00:00:00', '2015-05-14 21:19:42');
+(0, 'No asignado', 1, 12, '2015-05-07 00:00:00', '2015-05-12 15:14:02');
 
 -- --------------------------------------------------------
 
@@ -2238,7 +2217,7 @@ CREATE TABLE IF NOT EXISTS `people` (
   PRIMARY KEY (`id_person`),
   UNIQUE KEY `cedula_UNIQUE` (`cedula`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=736 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=733 ;
 
 --
 -- Volcado de datos para la tabla `people`
@@ -2769,10 +2748,7 @@ INSERT INTO `people` (`id_person`, `cedula`, `name`, `lastname`, `charge`, `emai
 (729, 1035852880, 'Sirley Natalia', 'Trespalacios Jiménez', 'Técnica De Biblioteca', 'trespalacios18@gmail.com', '3857333', '3146434095', 'Biblioteca La Ladera', 1, 3, NULL, '2015-05-11 16:56:38', '0000-00-00 00:00:00', 20),
 (730, 1128270206, 'Luisa Fernanda', 'Rodríguez López', 'Técnica De Biblioteca', 'luisafer1987@gmail.com', '3857538', '3107112583', 'Biblioteca La Ladera', 1, 3, NULL, '2015-05-11 16:58:22', '0000-00-00 00:00:00', 20),
 (731, 1017160045, 'Lenyn Johana ', 'Córdoba Palacios', 'Técnica En Cultura Digital', 'lenyn.cordobaf@gmail.com', '3857538', '3013987211', 'Biblioteca La Ladera', 1, 3, NULL, '2015-05-11 17:00:21', '0000-00-00 00:00:00', 20),
-(732, 71362981, 'Jose Manuel ', 'Gomez', 'Coordinador', 'coordinacionvillasocorro@metrosalud.gov.co', '25828302', '', 'Centro Salud Villa Del Socorro', 2, 2, NULL, '2015-05-12 08:37:57', '0000-00-00 00:00:00', 10),
-(733, 6183414, 'Gustavo', 'Valencia Ocampo', 'Coordinador De Educación (edil Comuna 9)', 'gustavovalenciao@hotmail.com', '2280620', '3003918609', 'Edil Comuna 9', 2, 4, NULL, '2015-05-13 10:56:50', '0000-00-00 00:00:00', 20),
-(734, 9991631, 'José ', 'Gómez', 'Coordinador Académico', 'guanacasarte@yahoo.es', '2840808', '3002658805', 'IE Juan De Dios Carvajal', 2, 3, NULL, '2015-05-13 16:28:14', '0000-00-00 00:00:00', 20),
-(735, 1152436462, 'Sara Maria', 'López Muñoz', 'Técnico De Cultura Digital', 'munozsaramaria@gmail.com', '477 62 84', '', 'Parque Biblioteca Doce De Octubre', 1, 3, NULL, '2015-05-13 21:22:51', '0000-00-00 00:00:00', 24);
+(732, 71362981, 'Jose Manuel ', 'Gomez', 'Coordinador', 'coordinacionvillasocorro@metrosalud.gov.co', '25828302', '', 'Centro Salud Villa Del Socorro', 2, 2, NULL, '2015-05-12 08:37:57', '0000-00-00 00:00:00', 10);
 
 -- --------------------------------------------------------
 
@@ -3016,6 +2992,7 @@ CREATE TABLE IF NOT EXISTS `per_types` (
   `creation_date` datetime DEFAULT NULL,
   `modification_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -3026,7 +3003,7 @@ CREATE TABLE IF NOT EXISTS `per_types` (
 
 INSERT INTO `per_types` (`id`, `name`, `user_id`, `creation_date`, `modification_date`) VALUES
 (1, 'Formador', 12, '2015-04-16 15:26:25', '0000-00-00 00:00:00'),
-(2, 'Participante', 12, '2015-05-13 00:00:00', '2015-05-14 21:19:56');
+(2, 'Participante', 12, '2015-05-13 00:00:00', '2015-05-13 14:29:12');
 
 -- --------------------------------------------------------
 
@@ -3042,13 +3019,7 @@ CREATE TABLE IF NOT EXISTS `population_types` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id_population_type`),
   UNIQUE KEY `name` (`name`),
-  KEY `user_id` (`user_id`),
-  KEY `user_id_2` (`user_id`),
-  KEY `user_id_3` (`user_id`),
-  KEY `user_id_4` (`user_id`),
-  KEY `user_id_5` (`user_id`),
-  KEY `user_id_6` (`user_id`),
-  KEY `user_id_7` (`user_id`)
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
@@ -3693,8 +3664,8 @@ CREATE TABLE IF NOT EXISTS `tra_allies_training` (
 CREATE TABLE IF NOT EXISTS `tra_proccesses_training` (
   `training_id` int(11) NOT NULL,
   `process_id` int(11) NOT NULL,
-  KEY `process_id` (`process_id`),
-  KEY `training_id` (`training_id`)
+  KEY `training_id` (`training_id`,`process_id`),
+  KEY `process_id` (`process_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -3799,7 +3770,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modification_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id_user`),
-  UNIQUE KEY `agent_id_UNIQUE` (`agent_id`)
+  UNIQUE KEY `agent_id_UNIQUE` (`agent_id`),
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
@@ -3848,6 +3820,7 @@ CREATE TABLE IF NOT EXISTS `zones` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id_zone`),
   UNIQUE KEY `zone_name_UNIQUE` (`zone_name`),
+  UNIQUE KEY `zone_name` (`zone_name`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
@@ -3870,9 +3843,10 @@ INSERT INTO `zones` (`id_zone`, `zone_name`, `creation_date`, `modification_date
 -- Filtros para la tabla `accompaniments`
 --
 ALTER TABLE `accompaniments`
-  ADD CONSTRAINT `accompaniments_ibfk_5` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `accompaniments_ibfk_3` FOREIGN KEY (`accompaniment_type_id`) REFERENCES `acc_types` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `accompaniments_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `accompaniments_ibfk_6` FOREIGN KEY (`accompaniment_type_id`) REFERENCES `acc_types` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `accompaniments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `accompaniments_ibfk_4` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `accompaniments_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `acc_types`
@@ -3899,7 +3873,7 @@ ALTER TABLE `communes`
 -- Filtros para la tabla `divtypes`
 --
 ALTER TABLE `divtypes`
-  ADD CONSTRAINT `divtypes_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `divtypes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `divulgations`
@@ -3950,7 +3924,7 @@ ALTER TABLE `meetings_people`
 -- Filtros para la tabla `mee_types`
 --
 ALTER TABLE `mee_types`
-  ADD CONSTRAINT `mee_types_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `mee_types_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `agents` (`user_id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `neighborhoods`
@@ -3982,11 +3956,11 @@ ALTER TABLE `per_marital_status`
 -- Filtros para la tabla `per_participants`
 --
 ALTER TABLE `per_participants`
-  ADD CONSTRAINT `per_participants_ibfk_6` FOREIGN KEY (`per_people_type_id`) REFERENCES `per_people_type` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_participants_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
   ADD CONSTRAINT `per_participants_ibfk_1` FOREIGN KEY (`neighborhood_id`) REFERENCES `neighborhoods` (`id_neighborhood`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_participants_ibfk_2` FOREIGN KEY (`per_people_type_id`) REFERENCES `population_types` (`id_population_type`) ON UPDATE CASCADE,
   ADD CONSTRAINT `per_participants_ibfk_3` FOREIGN KEY (`marital_status_id`) REFERENCES `per_marital_status` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `per_participants_ibfk_4` FOREIGN KEY (`school_level_id`) REFERENCES `per_school_level` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `per_participants_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `per_participants_ibfk_4` FOREIGN KEY (`school_level_id`) REFERENCES `per_school_level` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `per_participants_population_types`
@@ -4007,14 +3981,13 @@ ALTER TABLE `per_participants_training`
 -- Filtros para la tabla `per_participants_training_session`
 --
 ALTER TABLE `per_participants_training_session`
-  ADD CONSTRAINT `per_participants_training_session_ibfk_2` FOREIGN KEY (`participants_training_id`) REFERENCES `per_participants_training` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `per_participants_training_session_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `tra_session` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `per_participants_training_session_ibfk_2` FOREIGN KEY (`session_id`) REFERENCES `tra_session` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `per_participants_training_session_ibfk_1` FOREIGN KEY (`participants_training_id`) REFERENCES `per_participants_training` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `per_people_type`
 --
 ALTER TABLE `per_people_type`
-  ADD CONSTRAINT `per_people_type_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
   ADD CONSTRAINT `per_people_type_ibfk_3` FOREIGN KEY (`person_id`) REFERENCES `people` (`id_person`) ON UPDATE CASCADE,
   ADD CONSTRAINT `per_people_type_ibfk_4` FOREIGN KEY (`per_type_id`) REFERENCES `per_types` (`id`) ON UPDATE CASCADE;
 
@@ -4069,8 +4042,13 @@ ALTER TABLE `per_types`
 -- Filtros para la tabla `population_types`
 --
 ALTER TABLE `population_types`
-  ADD CONSTRAINT `population_types_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `population_types_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `population_types_ibfk_8` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `population_types_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `population_types_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `population_types_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `population_types_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `population_types_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `population_types_ibfk_6` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `population_types_training`
@@ -4083,9 +4061,9 @@ ALTER TABLE `population_types_training`
 -- Filtros para la tabla `sites`
 --
 ALTER TABLE `sites`
-  ADD CONSTRAINT `sites_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `sites_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `sites_ibfk_1` FOREIGN KEY (`neighborhood_id`) REFERENCES `neighborhoods` (`id_neighborhood`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `sites_ibfk_4` FOREIGN KEY (`site_type_id`) REFERENCES `site_types` (`id_site_type`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `sites_ibfk_3` FOREIGN KEY (`site_type_id`) REFERENCES `site_types` (`id_site_type`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `sites_per_trainers`
@@ -4184,6 +4162,7 @@ ALTER TABLE `tra_types`
 -- Filtros para la tabla `users`
 --
 ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
   ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`agent_id`) REFERENCES `agents` (`id_agent`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
