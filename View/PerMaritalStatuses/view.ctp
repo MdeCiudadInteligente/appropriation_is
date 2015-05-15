@@ -1,29 +1,9 @@
 <div class="perMaritalStatuses view">
 <h2><?php echo __('Per Marital Status'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($perMaritalStatus['PerMaritalStatus']['id']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
 			<?php echo h($perMaritalStatus['PerMaritalStatus']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Creation Date'); ?></dt>
-		<dd>
-			<?php echo h($perMaritalStatus['PerMaritalStatus']['creation_date']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modification Date'); ?></dt>
-		<dd>
-			<?php echo h($perMaritalStatus['PerMaritalStatus']['modification_date']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('User Id'); ?></dt>
-		<dd>
-			<?php echo h($perMaritalStatus['PerMaritalStatus']['user_id']); ?>
 			&nbsp;
 		</dd>
 	</dl>

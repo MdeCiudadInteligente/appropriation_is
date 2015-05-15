@@ -116,13 +116,7 @@ class SitesController extends AppController {
 			
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
-			
-			$name_site= $this->request->data['Site']['site_name'];
-			$verificar_site=$this->Site->query("select distinct site_name from sites where site_name = '$name_site'");
-			$this->set('verificar_site',$verificar_site);
-				
-			if($verificar_site==Array( )){
-			
+					
 				$this->Site->create();
 				$data=$this->request->data;						
 				$data['Site']['site_name'] = ucwords($data['Site']['site_name']);
@@ -137,11 +131,6 @@ class SitesController extends AppController {
 				{
 					$this->Session->setFlash(__('The site could not be saved . Please try again.'));
 				}
-			}
-			else
-			{
-				$this->Session->setFlash(__('The site already exists, please check.'));
-			}
 		}
 		$neighborhoods = $this->Site->Neighborhood->find('list',array('order' => array('Neighborhood.neighborhood_name' => 'ASC')));
 		$siteTypes = $this->Site->SiteType->find('list',array('order' => array('SiteType.site_type' => 'ASC')));
