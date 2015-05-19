@@ -377,7 +377,7 @@ App.prototype.bindAutocompleteSites=function(selector){
         $.each(loadPersons,function(){
             var id=$(this).attr('id');
             var completename=$(this).data('display');
-            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+completename+'</li>');
+            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+completename+'</li>');
         });
 
         $('.close-load').on('click',function(){
@@ -1080,7 +1080,7 @@ App.prototype.bindAutocompleteParticipants=function(selector){
                             $.each(loadparticipants,function(){
                                 var id=$(this).attr('id');
                                 var name=$(this).data('display');
-                                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+                                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
                             });
             
                             $('.close-load').on('click',function(){
@@ -1175,7 +1175,7 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 				            $.each(loadparticipants,function(){
 				                var id=$(this).attr('id');
 				                var name=$(this).data('display');
-				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
 				            });
 			
 				            $('.close-load').on('click',function(){
