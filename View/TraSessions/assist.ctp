@@ -1,7 +1,7 @@
 <?php 
 	$session=$this->request->data['session'];
 	$service=$this->request->data['formService'];
-	$participants=$this->request->data['participants'];
+	$participants=(isset($this->request->data['participants']))?$this->request->data['participants']:array();
 ?>
 
 <div class="traSessions form mde-form">

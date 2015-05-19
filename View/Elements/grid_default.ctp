@@ -192,6 +192,11 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 	columns : <?php echo $gridOptions['gridId']?>.columns,
 	iconCls: 'grid-icon',
 	title: "<?php echo $gridOptions['gridTitle'] ?>",
+	listeners:{
+		refresh:function(data){
+			console.log('data reload',data);
+		}
+	},
 	loadMask:{msg:'Procesando datos...'},
 	height: "<?php echo $gridOptions['height'] ?>",
 //if the grid has expander
