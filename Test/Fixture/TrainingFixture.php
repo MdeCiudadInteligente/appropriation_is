@@ -4,19 +4,26 @@
  *
  */
 class TrainingFixture extends CakeTestFixture {
+	
+	//public $import = array('model' => 'Training');
 
 /**
  * Table name
  *
  * @var string
  */
-	public $table = 'training';
+	//public $table = 'training';
+	
+	
+	//public $name='Training';
 
-/**
- * Fields
+	//public $import='Training';
+
+ /** Fields
  *
  * @var array
  */
+
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
 		'code' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 50, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
@@ -36,7 +43,7 @@ class TrainingFixture extends CakeTestFixture {
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
 	);
-
+	
 /**
  * Records
  *

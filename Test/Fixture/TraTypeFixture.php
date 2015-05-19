@@ -31,7 +31,7 @@ class TraTypeFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'name' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet que bonito',
 			'state' => 1,
 			'creation_date' => '2015-04-01 16:55:35',
 			'modification_date' => 1427900135,

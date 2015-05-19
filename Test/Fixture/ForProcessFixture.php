@@ -5,6 +5,8 @@
  */
 class ForProcessFixture extends CakeTestFixture {
 
+	public $useDbConfig = 'test';
+	
 /**
  * Fields
  *

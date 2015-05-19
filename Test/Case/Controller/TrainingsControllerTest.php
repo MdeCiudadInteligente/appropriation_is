@@ -14,9 +14,10 @@ class TrainingsControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.training',
-		'app.type',
-		'app.process'
+		'app.tratype',
+		'app.traprocess'
 	);
+	
 
 /**
  * testIndex method
@@ -24,6 +25,9 @@ class TrainingsControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testIndex() {
+		$result = $this->testAction('/Trainings/index', array('return'=>'vars'));
+		$this->assertEquals($result['trainings'][0]['Training']['code'], 'Lorem ipsum dolor sit amet');
+		//debug($result['trainings'][0]);
 	}
 
 /**

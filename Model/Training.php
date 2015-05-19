@@ -13,7 +13,7 @@ class Training extends AppModel {
  *
  * @var mixed False or table name
  */
-	public $useTable = 'training';
+	public $useTable = 'trainings';
 
 /**
  * Display field

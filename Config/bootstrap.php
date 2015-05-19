@@ -16,6 +16,9 @@
 // Setup a 'default' cache configuration for use in the application.
 Cache::config('default', array('engine' => 'File'));
 
+//Call composer autoload.php - by Diego
+App::import('Vendors', array('file' => 'autoload'));
+ 
 /**
  * The settings below can be used to set additional paths to models, views and controllers.
  *
@@ -83,6 +86,8 @@ Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
 	'CacheDispatcher'
 ));
+
+
 
 /**
  * Configures default file logging options

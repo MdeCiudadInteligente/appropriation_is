@@ -12,11 +12,13 @@ class TrainingTest extends CakeTestCase {
  *
  * @var array
  */
+
 	public $fixtures = array(
 		'app.training',
-		'app.type',
-		'app.process'
+		'app.tratype',
+		'app.traprocess'
 	);
+
 
 /**
  * setUp method
@@ -26,6 +28,13 @@ class TrainingTest extends CakeTestCase {
 	public function setUp() {
 		parent::setUp();
 		$this->Training = ClassRegistry::init('Training');
+	}
+	
+	public function testGetInstance()	
+	{
+		$code = $this->Training->find('first');
+		debug($code);
+		$this->assertEquals($code, 'Lorem ipsum dolor sit amet');
 	}
 
 /**
