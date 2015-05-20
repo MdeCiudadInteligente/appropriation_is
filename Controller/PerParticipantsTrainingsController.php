@@ -100,4 +100,63 @@ class PerParticipantsTrainingsController extends AppController {
 			$this->Session->setFlash(__('The per participants training could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+
+
+
+/**
+ * remove_participant_from_training
+ *
+ * @throws NotFoundException
+ * @param  array $data
+ * @return json
+ */
+
+
+	public function service_delete() {
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+    	$id_usuario = $this->Session->read('Auth.User.id_user');
+    	$data=$this->request->data;
+    	$id_training=(isset($data['id']))?$data['id']:NULL;
+		$error=false;
+		$this->PerParticipantsTraining->id = $id_training;
+		if (!$this->PerParticipantsTraining->exists()) {
+			throw new NotFoundException(__('Invalid per participants training'));
+		}
+		try{
+			if (!$this->PerParticipantsTraining->delete()) {
+				throw new Exception();
+			}
+		}catch(Exception $e){
+			$error=$e;
+		}
+
+		$success_actions=array(
+			'reloadGrid'=>array('gridTrainingParticipant')
+		);
+
+		$actions=array();
+		if(!$error){
+			$message=__('The participant was successfully removed from this training ');
+			$actions=$success_actions;
+		}else{
+			$message=__('The participant could not be removed please try again later');
+		}
+
+		$notify=array(
+			'notify'=>array(
+					'type'=>'flash',
+					'message'=>$message,
+					'autoclose'=>2000
+			)
+		);
+		$actions=array_merge($notify,$actions);
+		$response['sendData']=$data;
+		$response['error']=$error;
+		$response['actions']=$actions;
+		$this->set(compact('response')); // Pass $data to the view
+		$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
+	}
+
+}

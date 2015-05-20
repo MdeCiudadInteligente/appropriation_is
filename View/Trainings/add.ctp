@@ -18,14 +18,13 @@
 		echo $this->Form->input('type_id',array('empty'=>'Seleccione el tipo de formación'));
 		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Inicio'));
 		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text','label'=>'Fecha Final'));
-
-
+		echo $this->Form->input('current_state',array ('options' => array ('1'=>'En Curso','2'=>'Finalizada'),'empty'=>'Seleccione estado'));
 	?>
 
 	<div class="seccion-person">	
 			<div class="input" >
 				<label>Procesos</label>
-				<input type="text"  class="TraProcesses-autocomplete" data-required="true" data-valcontainer=".results-input-pro" data-emptymsg="Por favor ingresa un proceso">
+				<input type="text"  class="TraProcesses-autocomplete" data-required="true" data-valcontainer=".results-input-pro" data-emptymsg="Por favor ingresa un proceso" data-limit="1">
 				<div class="results-input-pro" data-input-name="data[TraProcess][TraProcess][]" >
 					
 				</div>

@@ -33,14 +33,13 @@
 				<div class="results-input-typ" data-input-name="data[PopulationType][PopulationType][]" >	
 				<?php 
 					foreach ($populationTypes as $key => $PopulationType) { ?>
-						<input type="hidden" name="data[PopulationType][PopulationType][]" value="<?php echo $PopulationType['id_population_type'] ?>" data-display="<?php echo $PopulationType['name']." ".$PopulationType['name'] ?>" id="val-input-<?php echo $PopulationType['id_population_type']?>">
+						<input type="hidden" name="data[PopulationType][PopulationType][]" value="<?php echo $PopulationType['id_population_type'] ?>" data-display="<?php echo $PopulationType['name']?>" id="val-input-<?php echo $PopulationType['id_population_type']?>">
 				<?php } ?>
 				</div>
 		</div>
 	</div>		
 	<?php 
 		echo $this->Form->input('other_population_type');
-		//echo $this->Form->input('per_people_type_id');
 		echo $this->Form->input('marital_status_id');
 		echo $this->Form->input('school_level_id');
 	?>

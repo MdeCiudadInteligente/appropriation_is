@@ -18,7 +18,9 @@
 		
 	}	
 	$usuario_level= $this->Session->read('Auth.User.permission_level');		
-	$id_usuario=$this->Session->read('Auth.User.id_user');		
+	$id_usuario=$this->Session->read('Auth.User.id_user');	
+
+	$serviceUrl=(is_array($gridOptions['serviceUrl']))?$gridOptions['serviceUrl']['route']:Router::url( '/', true ).$gridOptions['serviceUrl'];
 ?>
 
 
@@ -38,7 +40,7 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 	proxy: new Ext.data.HttpProxy({
 		method: 'POST',
 		api: {
-				read : absPath+"<?php echo $gridOptions['serviceUrl']?>"
+				read : "<?php echo $serviceUrl?>"
 		}
 	}),
 	reader: new Ext.data.JsonReader({
@@ -90,10 +92,13 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 };
 
 <?php echo $gridOptions['gridId']?>.render_crud = function(val,meta,record){
-	var ver="<a href='"+<?php echo $gridOptions['gridId']?>_actionViewUrl+"/"+val+"' target='_blank'><i title='Ver' class='icon-desktop-1 view'></i></a>";
-	var editar="<a href='"+<?php echo $gridOptions['gridId']?>_editViewUrl+"/"+val+"'><i title='Editar' class='icon-export edit'></i></a>";
-	var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+<?php echo $gridOptions['gridId']?>_delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Seguro que quieres eliminar # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
-	var user_id=record.get('user_id');
+
+			var user_id=record.get('user_id');
+	<?php if(!isset($gridOptions['showOnlyCustomCrud'])) {?>
+			var ver="<a href='"+<?php echo $gridOptions['gridId']?>_actionViewUrl+"/"+val+"' target='_blank'><i title='Ver' class='icon-desktop-1 view'></i></a>";
+			var editar="<a href='"+<?php echo $gridOptions['gridId']?>_editViewUrl+"/"+val+"'><i title='Editar' class='icon-export edit'></i></a>";
+			var eliminar="<form method='post' style='display:none;' id='post_"+val+"578464"+val+"5848' name='post_"+val+"578464"+val+"5848' action='"+<?php echo $gridOptions['gridId']?>_delViewUrl+"/"+val+"'><input type='hidden' value='POST' name='_method'></form> <a onclick='if (confirm(&quot;Seguro que quieres eliminar # "+val+"?&quot;)) { document.post_"+val+"578464"+val+"5848.submit(); } event.returnValue = false; return false;' href='#'><i title='Eliminar' class='icon-cancel-1 cancel'></i></a>";
+	<?php } //End if showOnlyCustomCrud ?>
 	
 	<?php if(isset($gridOptions['add_operations'])) {?>
 			var getVarsObject=<?php echo $gridOptions['gridId']?>_add_operations.vars;
@@ -104,6 +109,9 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 
 	<?php  $grantAcces=(isset($gridOptions['AllowAll']))?"|| 1==1":""; ?>
 	var markup=(typeof(markup) != "undefined")?markup:'';
+	var ver=(typeof(ver) != "undefined")?ver:'';
+	var editar=(typeof(editar) != "undefined")?editar:'';
+	var eliminar=(typeof(eliminar) != "undefined")?eliminar:'';
 	if(user_id==<?php echo $id_usuario ?> || user_id==0 || <?php  echo $usuario_level ?>==1 <?php echo $grantAcces ?> ){
 		return "<div class='function-cont'>"+ver+editar+eliminar+markup+"</div>";
 	}else{
@@ -122,7 +130,9 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 
 <?php echo $gridOptions['gridId']?>_replaceObjectVars=function(markup,object){
 		$.each(object,function(key,value){
-			markup=markup.replace("{"+key+"}", value);
+			var find = "{"+key+"}";
+			var re = new RegExp(find, 'g');
+			markup=markup.replace(re, value);
 		});
 		return markup;
 }
@@ -182,6 +192,11 @@ Ext.namespace('<?php echo $gridOptions['gridId']?>');
 	columns : <?php echo $gridOptions['gridId']?>.columns,
 	iconCls: 'grid-icon',
 	title: "<?php echo $gridOptions['gridTitle'] ?>",
+	listeners:{
+		refresh:function(data){
+			console.log('data reload',data);
+		}
+	},
 	loadMask:{msg:'Procesando datos...'},
 	height: "<?php echo $gridOptions['height'] ?>",
 //if the grid has expander

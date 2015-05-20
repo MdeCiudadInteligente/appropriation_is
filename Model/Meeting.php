@@ -45,7 +45,8 @@ class Meeting extends AppModel {
 							//'on' => 'create', // Limit validation to 'create' or 'update' operations
 					),
 		),
-		'meeting_type' => array(
+
+		'meeting_type_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -55,6 +56,7 @@ class Meeting extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+
 		'meeting_title' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),				 
@@ -117,6 +119,13 @@ class Meeting extends AppModel {
 		'User' => array(
 					'className' => 'User',
 					'foreignKey' => 'user_id',
+					'conditions' => '',
+					'fields' => '',
+					'order' => ''
+		),
+		'MeeType' => array(
+					'className' => 'MeeType',
+					'foreignKey' => 'meeting_type_id',
 					'conditions' => '',
 					'fields' => '',
 					'order' => ''

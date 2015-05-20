@@ -37,6 +37,16 @@ class TraSession extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'start_date' => array(
+					'notEmpty' => array(
+							'rule' => array('notEmpty'),
+							//'message' => 'Your custom message here',
+							//'allowEmpty' => false,
+							//'required' => false,
+							//'last' => false, // Stop validation after this rule
+							//'on' => 'create', // Limit validation to 'create' or 'update' operations
+					),
+		),	
 		'training_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -115,6 +125,32 @@ class TraSession extends AppModel {
 					'joinTable' => 'per_participants_training_session',
 					'foreignKey' => 'session_id',
 					'associationForeignKey' => 'participants_training_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			),
+			'Thematic' => array(
+					'className' => 'Thematic',
+					'joinTable' => 'tra_sessions_thematics',
+					'foreignKey' => 'session_id',
+					'associationForeignKey' => 'thematic_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			),
+			'PerTrainer' => array(
+					'className' => 'PerTrainer',
+					'joinTable' => 'tra_sessions_per_trainers',
+					'foreignKey' => 'session_id',
+					'associationForeignKey' => 'trainer_id',
 					'unique' => 'keepExisting',
 					'conditions' => '',
 					'fields' => '',

@@ -33,8 +33,10 @@ function goBack()
 
 	<?php
 		echo $this->Form->input('accompaniment_date',array ('id' => 'datepicker','type'=>'text'));			
-		echo $this->Form->input('accompaniment_type',array ('type'=>'select','options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Gestores TIC' ,
-				'Aula Abierta'=>'Aula Abierta','Grados'=>'Certificación','Curso, taller o charla'=>'Curso, taller','Intervención sitio'=>'Intervención sitio','Laboratorios comunitarios'=>'Laboratorios comunitarios','Estudiantes del Pascual Bravo'=>'Estudiantes del Pascual Bravo','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de acompañamiento'));
+		//echo $this->Form->input('accompaniment_type',array ('type'=>'select','options' => array ('practicantes'=>'Practicantes','Estudiantes de PP, jóvenes por la convivencia o alfabetizadores'=>'Gestores TIC' ,
+				//'Aula Abierta'=>'Aula Abierta','Grados'=>'Certificación','Curso, taller o charla'=>'Curso, taller','Intervención sitio'=>'Intervención sitio','Laboratorios comunitarios'=>'Laboratorios comunitarios','Estudiantes del Pascual Bravo'=>'Estudiantes del Pascual Bravo','Otros'=>'Otros'),'empty'=>'Seleccione el tipo de acompañamiento'));
+		echo $this->Form->input('accompaniment_type_id',array('empty'=>'Seleccione el tipo de acompañamiento','options' => $AccTypes,'label'=>'Tipo Acompañamiento'));
+
 		echo $this->Form->input('accompaniment_title',array('maxlenght'=>'90'));
 		echo $this->Form->input('accompaniment_description',array ( 'type'=>'textarea'));		
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));

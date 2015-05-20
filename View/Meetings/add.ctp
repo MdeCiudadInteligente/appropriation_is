@@ -17,8 +17,8 @@
 		</div>	
 		
 		<?php
-		echo $this->Form->input('meeting_date',array ('id' => 'datepicker','type'=>'text'));		
-		echo $this->Form->input('meeting_type',array ('type'=>'select','options' => array ('Seguimiento'=>'Seguimiento','Gestión con aliados'=>'Gestión con aliados' ,'Empalme'=>'Empalme'),'empty'=>'Seleccione el tipo de reunión'));
+		echo $this->Form->input('meeting_date',array ('id' => 'datepicker','type'=>'text'));
+		echo $this->Form->input('meeting_type_id',array('empty'=>'Seleccione el tipo de reunión','options' => $meeTypes,'label'=>'Tipo Reunión'));
 		echo $this->Form->input('meeting_title',array('maxlenght'=>'90'));
 		//echo $this->Form->input('Person');/*La persona la acbe de agregar*/
 		?>

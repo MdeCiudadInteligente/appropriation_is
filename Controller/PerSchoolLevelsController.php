@@ -24,6 +24,29 @@ class PerSchoolLevelsController extends AppController {
 		$this->PerSchoolLevel->recursive = 0;
 		$this->set('perSchoolLevels', $this->Paginator->paginate());
 	}
+	
+	
+    public function index_service()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$id_usuario = $this->Session->read('Auth.User.id_user');
+		$this->set('id_usuario',$id_usuario);
+		$SchoolLevel=$this->PerSchoolLevel->find('all');
+	
+		$count=0;
+		foreach ($SchoolLevel as $key => $SchoolLevel) {
+			$data['rows'][$count]=array(
+					'id'=>$SchoolLevel['PerSchoolLevel']['id'],
+					'name'=>$SchoolLevel['PerSchoolLevel']['name'],
+					'creation_date'=>$SchoolLevel['PerSchoolLevel']['creation_date'],
+					'modification_date'=>$SchoolLevel['PerSchoolLevel']['modification_date'],
+					'user_id'=>$SchoolLevel['PerSchoolLevel']['user_id'],
+			);
+			$count++;
+		}
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
 
 /**
  * view method
@@ -34,7 +57,7 @@ class PerSchoolLevelsController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->PerSchoolLevel->exists($id)) {
-			throw new NotFoundException(__('Invalid per school level'));
+			throw new NotFoundException(__('Invalid school level'));
 		}
 		$options = array('conditions' => array('PerSchoolLevel.' . $this->PerSchoolLevel->primaryKey => $id));
 		$this->set('perSchoolLevel', $this->PerSchoolLevel->find('first', $options));
@@ -49,10 +72,10 @@ class PerSchoolLevelsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->PerSchoolLevel->create();
 			if ($this->PerSchoolLevel->save($this->request->data)) {
-				$this->Session->setFlash(__('The per school level has been saved.'));
+				$this->Session->setFlash(__('The school level has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The per school level could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The school level could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -66,14 +89,14 @@ class PerSchoolLevelsController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->PerSchoolLevel->exists($id)) {
-			throw new NotFoundException(__('Invalid per school level'));
+			throw new NotFoundException(__('Invalid school level'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->PerSchoolLevel->save($this->request->data)) {
-				$this->Session->setFlash(__('The per school level has been saved.'));
+				$this->Session->setFlash(__('The school level has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The per school level could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The school level could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('PerSchoolLevel.' . $this->PerSchoolLevel->primaryKey => $id));
@@ -95,9 +118,9 @@ class PerSchoolLevelsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->PerSchoolLevel->delete()) {
-			$this->Session->setFlash(__('The per school level has been deleted.'));
+			$this->Session->setFlash(__('The school level has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The per school level could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The school level could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

@@ -212,6 +212,19 @@ class PerTrainer extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
+			),
+			'TraSession' => array(
+					'className' => 'TraSession',
+					'joinTable' => 'tra_sessions_per_trainers',
+					'foreignKey' => 'trainer_id',
+					'associationForeignKey' => 'session_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
 			)
 	);
 

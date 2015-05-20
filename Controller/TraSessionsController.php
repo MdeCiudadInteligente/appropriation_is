@@ -1,5 +1,8 @@
 <?php
 App::uses('AppController', 'Controller');
+App::import('Controller', 'PerParticipantsTrainings');
+App::import('Controller', 'Trainings');
+
 /**
  * TraSessions Controller
  *
@@ -35,7 +38,6 @@ class TraSessionsController extends AppController {
 		$Session=$this->TraSession->find('all');
 		$count=0;
 		foreach ($Session as $key => $Session) {
-			
 			$totalsites='';
 			foreach ($Session['Site'] as $key => $tsites) {
 				$totalsites=$tsites['site_name'].', '.$totalsites;
@@ -85,42 +87,60 @@ class TraSessionsController extends AppController {
 	public function add_service() {
 		$this->request->onlyAllow('ajax');
 		 // No direct access via browser URL - Note for Cake2.5: allowMethod()
-		if ($this->request->is('post')) {
-			
 			$usuario = $this->Session->read('Auth.User.id_user');
+			$debug=array();
 			$this->set('usuario',$usuario);
 			$this->TraSession->create();
+			$debug['request']=$this->request->data;
 			$data=$this->request->data;
+			$training_id=$this->request->query['training'];
+			$data['TraSession']['training_id']=$training_id;
 			$data['TraSession']['creation_date']=date('Y-m-d H:i:s');
 			$data['TraSession']['user_id']=$usuario;
-			
-			$response['method']['desc']=__("Create session related to the training with ID : ".$data['TraSession']['training_id']);
-			
-			if ($this->TraSession->save($data)) {
-				$response['method']['success']=true;
-				$response['class']['TraSession']['data']=array($data);
-				$lastid=$this->TraSession->id;
-				$response['class']['TraSession']['id']= $lastid;
-				$notice=__('The session reltaive to the formation with ID '.$data['TraSession']['training_id'].' has been created with ID '.$lastid);
-				$alertType='flash';
-			} else {
-				$response['method']['success']=false;
-				//$response['method']['error']="La causa del error";
-				$response['class']['TraSession']['data']=array($data);
-				$notice=__('The session reltaive to the formation with ID'.$data['TraSession']['training_id'].' has not been created');
-				$alertType='error';
-			}
-		
-		}
+			$error=false;
+			try{
+				if (!$this->TraSession->save($data)) {
+					throw new Exception();	
+				} else {
+					$lastid=$this->TraSession->id;
+				}
+			} catch(Exception $e) {
+			    $error=$e;
+			}	
 
-		$response['action']=array(  'notify'=>array(
-										    'type'=>$alertType,
-											'notice'=>$notice,
-											'ux'=>'down'
-									    )
-							);
-		$this->set(compact('response')); // Pass $data to the view
-		$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
+			//Response actions 
+			$success_actions=array(
+				'closeAside'=>array(
+					array(
+						'element'=>'#right-content-aside',
+						'wipe'=>true,
+						'time'=>2000
+					)
+				),
+				'reloadGrid'=>array('gridTrainingSessions')
+			);
+
+			$actions=array();
+			if(!$error){
+				$message=__('The session reltaive to the formation with ID '.$data['TraSession']['training_id'].' has been created with ID '.$lastid);
+				$actions=$success_actions;
+			}else{
+				$message=__('The session reltaive to the formation with ID '.$data['TraSession']['training_id'].' could not be created, please contact  the administrator' );
+			}
+			$notify=array(
+				'notify'=>array(
+						'type'=>'flash',
+						'message'=>$message,
+						'autoclose'=>2000
+				)
+			);
+			$actions=array_merge($notify,$actions);
+			$response['sendData']=$data;
+			$response['error']=$error;
+			$response['debug']=array('data'=>$debug);
+			$response['actions']=$actions;
+			$this->set(compact('response')); // Pass $data to the view
+			$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
 	}
 
 /**
@@ -152,6 +172,16 @@ class TraSessionsController extends AppController {
 	}
 
 /**
+ * add method service
+ *
+ * @return void
+ */
+	public function add_service_view() {
+	
+	
+	}
+
+/**
  * edit method
  *
  * @throws NotFoundException
@@ -177,54 +207,150 @@ class TraSessionsController extends AppController {
 		$this->set(compact('trainings'));
 	}
 
+
+
+	public function getRegisteredParticipantsAssist($id_training,$id_session){
+		if (!$this->TraSession->exists($id_session)) {
+			throw new NotFoundException(__('Invalid Session'));
+		}		
+		$db = $this->TraSession->getDataSource();
+		$participants=$db->fetchAll(
+			   "SELECT t1.*,
+				CONCAT(t4.name,' ',t4.lastname) as person_name,t2.other_population_type,t6.neighborhood_name,t7.name as marital_status ,t8.name as school_level , t5.username,
+				(SELECT GROUP_CONCAT(population_types.name) FROM per_participants_population_types ,population_types WHERE per_participants_population_types.participant_id=t2.id AND per_participants_population_types.population_type_id=population_types.id_population_type ) as population_types,
+				(
+					SELECT per_participants_training_session.id
+				    FROM per_participants_training_session
+				    WHERE per_participants_training_session.participants_training_id=t1.id
+				    AND  per_participants_training_session.session_id=:session_id
+				) as assist
+				FROM  per_participants_training t1, per_participants t2, per_people_type t3, people t4,users t5 ,neighborhoods t6, per_marital_status t7 , per_school_level t8 
+				WHERE t1.participant_id=t2.id
+				AND   t2.neighborhood_id=t6.id_neighborhood
+				AND   t2.marital_status_id=t7.id
+				AND   t2.school_level_id=t8.id
+				AND   t2.per_people_type_id=t3.id
+				AND   t3.person_id=t4.id_person
+				AND   t1.user_id=t5.id_user
+				AND   t1.training_id=:training",
+			    array('training' => $id_training,'session_id'=>$id_session)
+			);
+			$data=array();
+			foreach ($participants as $key => $value) {
+				$data[]=array(
+						'id'=>$value['t1']['id'],
+						'training_id'=>$value['t1']['training_id'],
+						'participant_id'=>$value['t1']['participant_id'],
+						'certification_status'=>$value['t1']['certification_status'],
+						'person_name'=>$value['0']['person_name'],
+						'population_types'=>$value['0']['population_types'],
+						'other_population_type'=>$value['t2']['other_population_type'],
+						'neighborhood_name'=>$value['t6']['neighborhood_name'],
+						'marital_status'=>$value['t7']['marital_status'],
+						'school_level'=>$value['t8']['school_level'],
+						'assist'=>$value['0']['assist'],
+						'username'=>$value['t5']['username'],
+						'user_id'=>$value['t1']['user_id'],
+						'creation_date'=>$value['t1']['creation_date'],
+						'modification_date'=>$value['t1']['modification_date']
+				);
+			}	
+
+			return $data;
+	}
+
+
+
+
 /**
- * delete method
+ * view method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function delete_service() {
-		$this->request->onlyAllow('ajax');
-		if ($this->request->is('post')) {
-			$usuario = $this->Session->read('Auth.User.id_user');
-			$this->set('usuario',$usuario);
-			
-			$this->TraSession->id = $_POST['traSessionId'];
-			
-			if (!$this->TraSession->exists()) {
-				throw new NotFoundException(__('the session you want to delete does not exist'));			
-			}
-			
-			$response['method']['desc']=__("the session deleted with ID : ". $_POST['traSessionId']);
-			$this->request->onlyAllow('post', 'delete');
-			
-			if ($this->TraSession->delete()) {
-				$response['method']['success']=true;
-				//$response['class']['TraSession']['data']=array($data);
-				//$response['class']['TraSession']['id']='Aqui va el id recien eliminado.';
-				$notice=__('The session has been deleted with id'. $_POST['traSessionId']);
-				$alertType='flash';
-			} else {
-				$response['method']['success']=false;
-				//$response['method']['error']="La causa del error";
-				$response['class']['TraSession']['id'];
-				$notice=__('The session has not been deleted');
-				//$alertType='error';
-			}
-			$response['action']=array(  'notify'=>array(
-					//'type'=>$alertType,
-					'notice'=>$notice,
-					'ux'=>'down'
-				)
-			);
-		
-			$this->set(compact('response')); // Pass $data to the view
-			$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
-			
-			
+
+	public function assist($id=null) {
+		$session_id=$id;
+		$PerParticipants = new PerParticipantsTrainingsController();
+		$TrainingsController = new TrainingsController();
+		if (!$this->TraSession->exists($session_id)) {
+			throw new NotFoundException(__('Invalid session'));
 		}
+		$optionsSession = array('conditions' => array('TraSession.' . $this->TraSession->primaryKey => $session_id));
+		$session=$this->TraSession->find('first', $optionsSession);
+		$training_id=$session['TraSession']['training_id'];
+		$participants=$this->getRegisteredParticipantsAssist($training_id,$session_id);
+		$SaveFormService=Router::url( array('controller' => 'PerParticipantsTrainingSessions', 'action' => 'service_save_assist','?'=>array(
+				'session'=>$session_id
+				)
+			),true
+		);
+		$data=$this->request->data;
+		$data['participants']=$participants;
+		$data['session']=$session;
+		$data['formService']=$SaveFormService;
+		$this->request->data=$data;
 	}
+
+
+
+
+/**
+ * remove_participant_from_training
+ *
+ * @throws NotFoundException
+ * @param  array $data
+ * @return json
+ */
+
+
+	public function service_delete() {
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+    	$id_usuario = $this->Session->read('Auth.User.id_user');
+    	$data=$this->request->data;
+    	$id_session=(isset($data['id']))?$data['id']:NULL;
+		$error=false;
+		$this->TraSession->id = $id_session;
+		if (!$this->TraSession->exists()) {
+			throw new NotFoundException(__('Invalid per participants training'));
+		}
+		try{
+			if (!$this->TraSession->delete()) {
+				throw new Exception();
+			}
+		}catch(Exception $e){
+			$error=$e;
+		}
+
+		$success_actions=array(
+			'reloadGrid'=>array('gridTrainingSessions')
+		);
+
+		$actions=array();
+		if(!$error){
+			$message=__('The session was successfully removed from this training ');
+			$actions=$success_actions;
+		}else{
+			$message=__('The participant could not be removed please try again later');
+		}
+
+		$notify=array(
+			'notify'=>array(
+					'type'=>'flash',
+					'message'=>$message,
+					'autoclose'=>2000
+			)
+		);
+		$actions=array_merge($notify,$actions);
+		$response['sendData']=$data;
+		$response['error']=$error;
+		$response['actions']=$actions;
+		$this->set(compact('response')); // Pass $data to the view
+		$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
+	}
+
+
 	
 	public function delete($id = null) {
 		$this->TraSession->id = $id;
@@ -239,5 +365,7 @@ class TraSessionsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+
 }
 	

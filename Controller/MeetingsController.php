@@ -84,7 +84,8 @@ class MeetingsController extends AppController {
 					'id'=>$meeting['Meeting']['id_meeting'],
 					'sitio'=>$meeting['Site']['site_name'],
 					'f_reunion'=>$meeting['Meeting']['meeting_date'],
-					'tipo'=>$meeting['Meeting']['meeting_type'],
+					//'tipo'=>$meeting['Meeting']['meeting_type'],
+					'tipo'=>$meeting['MeeType']['name'],
 					'titulo'=>$meeting['Meeting']['meeting_title'],
 					'descripcion'=>$meeting['Meeting']['meeting_description'],
 					'compromisos'=>$meeting['Meeting']['meeting_commitments'],
@@ -163,7 +164,8 @@ public function add() {
 		}
 		$sites = $this->Meeting->Site->find('list',array('order' => array('Site.site_name' => 'ASC')));
 		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
-		$this->set(compact('sites', 'people'));
+		$meeTypes = $this->Meeting->MeeType->find('list',array('order' => array('MeeType.name ASC')));
+		$this->set(compact('sites', 'people','meeTypes'));
 		
 	}
 
@@ -194,7 +196,8 @@ public function add() {
 		
 		$sites = $this->Meeting->Site->find('list');
 		$people = $this->Meeting->Person->find('list', array('fields'=>array('Person.id_person','Person.completename'),'order' => array('Person.completename' => 'ASC')));
-		$this->set(compact('sites', 'people'));
+		$meeTypes = $this->Meeting->MeeType->find('list',array('order' => array('MeeType.name ASC')));
+		$this->set(compact('sites', 'people','meeTypes'));
 		$options = array('conditions' => array('Meeting.' . $this->Meeting->primaryKey => $id));
 		$this->set('meeting', $this->Meeting->find('first', $options));
 	}

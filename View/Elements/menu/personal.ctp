@@ -52,8 +52,41 @@
 								"custom-class"=>'add-trainers'
 							)	
 						)
-				)
-,
+				),
+				array(
+						"user_level"=>'1,4,5',
+						"icon-class"=>'icon-cogs',
+						"route"=>Router::url( array('controller' => 'PerMaritalStatuses', 'action' => 'index'),true),
+						"label" =>__('PerMaritalStatuses'),
+						"sub-elements"=>array(
+							array(
+								"route"=>Router::url( array('controller' => 'PerMaritalStatuses', 'action' => 'index'),true),
+								"label"=>__('List PerMaritalStatuses')
+							),	
+							array(
+								"user_level"=>'1',
+								"route"=>Router::url( array('controller' => 'PerMaritalStatuses', 'action' => 'add'),true),
+								"label"=>__('New PerMaritalStatuses')
+							)	
+						)
+				),
+				array(
+							"user_level"=>'1,4,5',
+							"icon-class"=>'icon-cogs',
+							"route"=>Router::url( array('controller' => 'PerSchoolLevels', 'action' => 'index'),true),
+							"label" =>__('PerSchoolLevels'),
+							"sub-elements"=>array(
+									array(
+											"route"=>Router::url( array('controller' => 'PerSchoolLevels', 'action' => 'index'),true),
+											"label"=>__('List PerSchoolLevels')
+									),
+									array(
+											"user_level"=>'1',
+											"route"=>Router::url( array('controller' => 'PerSchoolLevels', 'action' => 'add'),true),
+											"label"=>__('New PerSchoolLevels')
+									)
+							)
+				),
 				array(
 						"user_level"=>'1,4,5',
 						"icon-class"=>'icon-cogs',
@@ -73,6 +106,23 @@
 								"custom-class"=>'add-thematics'
 							)	
 						)
+				),
+				array(
+							"user_level"=>'1,4,5',
+							"icon-class"=>'icon-cogs',
+							"route"=>Router::url( array('controller' => 'PerTrainerSchedules', 'action' => 'index'),true),
+							"label" =>__('PerTrainer Schedules'),
+							"sub-elements"=>array(
+									array(
+											"route"=>Router::url( array('controller' => 'PerTrainerSchedules', 'action' => 'index'),true),
+											"label"=>__('List Schedules')
+									),
+									array(
+											"user_level"=>'1',
+											"route"=>Router::url( array('controller' => 'PerTrainerSchedules', 'action' => 'add'),true),
+											"label"=>__('New Schedules')
+									)
+							)
 				),
 				array(
 						"user_level"=>'1,4,5',
@@ -110,24 +160,8 @@
 								"label"=>__('New Profession')
 							)	
 						)
-				),
-				array(
-						"user_level"=>'1,4,5',
-						"icon-class"=>'icon-cogs',
-						"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'index'),true),
-						"label" =>__('People Types'),
-						"sub-elements"=>array(
-							array(
-								"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'index'),true),
-								"label"=>__('List People Types')
-							),	
-							array(
-								"user_level"=>'1',
-								"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'add'),true),
-								"label"=>__('New People Types')
-							)	
-					)
-				)					
+				)
+										
 		    )
 		);
 ?>

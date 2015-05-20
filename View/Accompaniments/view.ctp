@@ -15,7 +15,7 @@
 
 		<dt><?php echo __('Accompaniment Type'); ?></dt>
 		<dd>		
-			<?php echo h($accompaniment['Accompaniment']['accompaniment_type']); ?>
+			<?php echo h($accompaniment['AccType']['name']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Accompaniment Description'); ?></dt>

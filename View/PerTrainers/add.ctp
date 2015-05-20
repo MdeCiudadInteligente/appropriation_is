@@ -21,7 +21,7 @@
 		?>
 		
 		<div class="input"  style="text-align:right">
-				<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
+				<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'PerTrainers', 'action' => 'add'),array('target'=>'_blank')); ?>
 		</div>
 		<div class="seccion-person">	
 			<div class="input" >

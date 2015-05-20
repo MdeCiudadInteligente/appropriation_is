@@ -103,3 +103,16 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+
+
+
+// Custom global functions
+
+function concatIndex($data,$indexKey){
+		$concat="";
+		foreach ($data as $key => $value) {
+			$concat.=$value[$indexKey]." , ";
+		}
+		return substr($concat, 0, -2);
+}

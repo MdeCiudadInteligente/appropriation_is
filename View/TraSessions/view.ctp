@@ -31,21 +31,6 @@
 			<?php echo h($traSession['TraSession']['end_time']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('User Id'); ?></dt>
-		<dd>
-			<?php echo h($traSession['TraSession']['user_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Creation Date'); ?></dt>
-		<dd>
-			<?php echo h($traSession['TraSession']['creation_date']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modification Date'); ?></dt>
-		<dd>
-			<?php echo h($traSession['TraSession']['modification_date']); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">

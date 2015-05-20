@@ -22,7 +22,7 @@ App.prototype.bind=function(){
           closeText: 'Fermer',
           prevText: 'Previo',
           nextText: 'Proximo',
-          yearRange: "2007:2020",
+          yearRange: "1920:2020",
           monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
           monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
           monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃƒÂ©e',
@@ -42,7 +42,7 @@ App.prototype.bind=function(){
           closeText: 'Fermer',
           prevText: 'Previo',
           nextText: 'Proximo',
-          yearRange: "2007:2020",
+          yearRange: "1920:2020",
           monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
           monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
           monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃƒÂ©e',
@@ -70,6 +70,8 @@ App.prototype.bind=function(){
     app.bindAutocompleteTrainings('.Trainings-autocomplete');
     app.bindAutocompleteParticipants('.Participants-autocomplete');
     app.bindAutocompleteParticipantsRegister('.person-autocomplete-trainers');
+    app.ajaxSubmitService('.serviceSubmit');
+    app.send_service('.grid-send-service');
    
     app.removeRequired();
     //app.setMobileNav();
@@ -99,6 +101,10 @@ App.prototype.bind=function(){
          },200);
     });
 
+    $(document).on('click','.cancel-view',function(){
+        app.closeAside('#bottom-content-aside',true);
+    });
+
     $('.close-menu').on('click',function(){
         $(this).closest('.mobile-ovelay-menu').removeClass('active').removeAttr('style');
     });
@@ -126,19 +132,85 @@ App.prototype.bind=function(){
 
     $('#content').on('click','.go-to-url-id',function(){
         var url=$(this).data('url')+'/'+$(this).data('id');
-        console.log(url);
         location.href=url;
     });
 
     $('#bottom-content-aside').on('click','.print-view',function(){
         var dataService=$(this).closest('.interaction-notice').data();
-        console.log(dataService);
         var serviceUrl=dataService.actions['next-service'];
         var data={'retrive':'1'};
         var container='#right-content-aside';
         app.ajaxView(serviceUrl,data,container);
     });
+
+    $(document).on('click','.ajax-view',function(){
+        var data=$(this).data();
+        var serviceUrl=data.service;
+        var container=data.aside;
+        app.ajaxView(serviceUrl,data,container);
+    });
+    app.tooggleAcoordion('.control-accordion');
+    app.wayPointClass('.waypont-toggler');
 }
+
+
+App.prototype.afterBind=function(){
+    app.bindAutocompletePersona('.person-autocomplete');
+    app.bindAutocompleteSites('.Site-autocomplete');
+    app.bindAutocompleteThematics('.Thematics-autocomplete');
+    app.bindAutocompletePopulationType('.PopulationTypes-autocomplete');
+    app.bindAutocompleteTraAlly('.TraAllies-autocomplete');
+    app.bindAutocompleteTraProcess('.TraProcesses-autocomplete');
+    app.bindAutocompleteTrainers('.Trainers-autocomplete');
+    app.bindAutocompleteNeighborhoods('.Neighborhoods-autocomplete');
+    app.bindAutocompleteTrainings('.Trainings-autocomplete');
+    app.bindAutocompleteParticipants('.Participants-autocomplete');
+    app.bindAutocompleteParticipantsRegister('.person-autocomplete-trainers');
+    if($('#datepicker').length){
+        $( "#datepicker" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          closeText: 'Fermer',
+          prevText: 'Previo',
+          nextText: 'Proximo',
+          yearRange: "1920:2020",
+          monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃƒÂ©e',
+          dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
+          dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃƒÂ¡b'],
+          dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+          dateFormat: 'yy-mm-dd', firstDay: 0,
+          initStatus: 'Selecciona la fecha', 
+          isRTL: false        
+        });
+    }
+
+    if($('.datepickerMDE').length){
+         $( ".datepickerMDE" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          closeText: 'Fermer',
+          prevText: 'Previo',
+          nextText: 'Proximo',
+          yearRange: "1920:2020",
+          monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre annÃƒÂ©e',
+          dayNames: ['Domingo','Lunes','Martes','Mi\u00e9rcoles','Jueves','Viernes','S\u00e1bado'],
+          dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','SÃƒÂ¡b'],
+          dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+          dateFormat: 'yy-mm-dd', firstDay: 0,
+          initStatus: 'Selecciona la fecha', 
+          isRTL: false        
+        });
+    }
+    
+    $('#datepicker,.datepickerMDE').on('focus',function(){
+        $(this).blur();
+    });
+}
+
 
 
 
@@ -147,6 +219,7 @@ App.prototype.removeRequired=function(){
 	$('.mde-form').find('.input.file').find('input').removeAttr('required');
 	$('.mde-form').find('.input.file').removeClass('required');
 }
+
 /* Autocomplete persona */
 App.prototype.bindAutocompletePersona=function(selector){
 
@@ -209,7 +282,7 @@ App.prototype.bindAutocompletePersona=function(selector){
             $.each(loadPersons,function(){
                 var id=$(this).attr('id');
                 var completename=$(this).data('display');
-                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+completename+'</li>');
+                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+completename+'</li>');
             });
 
             $('.close-load').on('click',function(){
@@ -253,7 +326,7 @@ App.prototype.bindAutocompleteSites=function(selector){
             {   minChars: 2,
                 formatList: function(data, elem){
                 
-                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.nombre+' </div><div class=\'suggest_info clearer_auto\'>  <b>DirecciÃ³n:</b> '+data.direccion+' </div></div>');
+                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.nombre+' </div><div class=\'suggest_info clearer_auto\'>  <b>Dirección:</b> '+data.direccion+' </div></div>');
                 return new_elem;
                 },
                 emptyText:'No se encontraron Sitios',
@@ -308,7 +381,7 @@ App.prototype.bindAutocompleteSites=function(selector){
         $.each(loadPersons,function(){
             var id=$(this).attr('id');
             var completename=$(this).data('display');
-            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+completename+'</li>');
+            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+completename+'</li>');
         });
 
         $('.close-load').on('click',function(){
@@ -338,7 +411,7 @@ App.prototype.bindAutocompleteThematics=function(selector){
         $(selector).autoSuggest(serivce_route,
             {   minChars: 2,
                 formatList: function(data, elem){
-                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Prefijo:</b> '+data.prefijo+' </div><div class=\'suggest_info clearer_auto\'>  <b>DescripciÃ³n:</b> '+data.description+' </div></div>');
+                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Prefijo:</b> '+data.prefijo+' </div><div class=\'suggest_info clearer_auto\'>  <b>Descripción:</b> '+data.description+' </div></div>');
                 return new_elem;
                 },
                 emptyText:'No se encontraron tematicas',
@@ -392,7 +465,7 @@ App.prototype.bindAutocompleteThematics=function(selector){
         $.each(loadPersons,function(){
             var id=$(this).attr('id');
             var completename=$(this).data('display');
-            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+completename+'</li>');
+            autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+completename+'</li>');
         });
 
         $('.close-load').on('click',function(){
@@ -420,7 +493,7 @@ App.prototype.bindAutocompletePopulationType=function(selector){
 	             return new_elem;
             },
             
-            emptyText:'No se encontraron tipos de poblaciÃ³n',
+            emptyText:'No se encontraron tipos de población',
             selectedItemProp: 'name',
             selectedValuesProp:'name',
             searchObjProps: 'name',
@@ -469,7 +542,7 @@ App.prototype.bindAutocompletePopulationType=function(selector){
          $.each(loadPopulationTypes,function(){
              var id=$(this).attr('id');
              var name=$(this).data('display');
-             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
          });
 
          $('.close-load').on('click',function(){
@@ -544,7 +617,7 @@ App.prototype.bindAutocompleteTraAlly=function(selector){
          $.each(loadTraAllies,function(){
              var id=$(this).attr('id');
              var name=$(this).data('display');
-             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
          });
 
          $('.close-load').on('click',function(){
@@ -617,7 +690,7 @@ App.prototype.bindAutocompleteTraProcess=function(selector){
 		         $.each(loadTraProcesses,function(){
 		             var id=$(this).attr('id');
 		             var name=$(this).data('display');
-		             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+		             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
 		         });
 
 		         $('.close-load').on('click',function(){
@@ -676,9 +749,6 @@ App.prototype.appendServiceHtml=function(data,name,allowedIndex){
 }
 
 
-App.prototype.goToParameterView=function(url,parameters){
-    location
-};
 
 App.prototype.putHtmlonAside=function(html,width,bootstrap){
     $('#right-content-aside .main-content').html(html);
@@ -686,14 +756,33 @@ App.prototype.putHtmlonAside=function(html,width,bootstrap){
     if(bootstrap){
         $('#right-content-aside').find('fieldset').addClass('row');
         $('#right-content-aside').find('legend').addClass('col-md-12');
-        $('#right-content-aside').find('.input').addClass('col-md-6');
+        var inputs=$('#right-content-aside').find('.input');
+        $(inputs).each(function(){
+          if($(this).hasClass('textarea')){
+            $(this).addClass('col-md-12');
+          }else if ($(this).hasClass('time')){
+            $(this).addClass('col-md-6');
+            $(this).wrapInner('<div class="row"></div>');
+            $(this).find('label').addClass('col-md-12');
+            $(this).find('select').wrap('<div class="col-md-3" style="clear:unset"></div>');
+          }else{
+            if($(this).find('input').hasClass('custom-col')){
+              var dataGrid=$(this).find('input').attr('grid');
+              var gridClass='col-md-'+dataGrid;  
+              $(this).addClass(gridClass);
+            }else{
+              $(this).addClass('col-md-6');
+            }
+          }
+        });
+        $('#right-content-aside').find('.input.textarea').removeClass('col-md-6').addClass('col-md-12');
     }
 }
 
 App.prototype.putHtmlonBottom=function(html,height,autoClose){
     $('#bottom-content-aside .main-content').html(html);
     $('#bottom-content-aside').addClass('active').css({'height':height});
-    if(typeof autoClose != 'undefined'){
+    if(autoClose){
         setTimeout(function(){
             $('#bottom-content-aside').find('.close-menu').click();
         },autoClose);
@@ -708,7 +797,7 @@ App.prototype.bindAutocompleteTrainers=function(selector){
 				 $(selector).autoSuggest(serivce_route,
 							{  	 minChars: 2,
 					             formatList: function(data, elem){
-					             var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>ProfesiÃ³n:</b> '+data.profesion+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.tipo+' </div></div>');
+					             var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>Profesión:</b> '+data.profesion+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.tipo+' </div></div>');
 					             return new_elem;
 				            },
 				            emptyText:'No se encontraron formadores',
@@ -761,7 +850,7 @@ App.prototype.bindAutocompleteTrainers=function(selector){
 				            $.each(loadtrainers,function(){
 				                var id=$(this).attr('id');
 				                var name=$(this).data('display');
-				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
 				            });
 			
 				            $('.close-load').on('click',function(){
@@ -840,7 +929,7 @@ App.prototype.bindAutocompleteNeighborhoods=function(selector){
          $.each(loadNeighborhoods,function(){
              var id=$(this).attr('id');
              var name=$(this).data('display');
-             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+             autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
          });
 
          $('.close-load').on('click',function(){
@@ -942,7 +1031,7 @@ App.prototype.bindAutocompleteParticipants=function(selector){
                  $(selector).autoSuggest(serivce_route,
                             {    minChars: 2,
                                  formatList: function(data, elem){
-                                 var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>ProfesiÃ³n:</b> '+data.nivel_escolar+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.estado_civil+' </div><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.barrio+' </div></div>');
+                                 var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>Profesión:</b> '+data.nivel_escolar+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.estado_civil+' </div><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.barrio+' </div></div>');
                                  return new_elem;
                             },
                             emptyText:'No se encontraron participantes',
@@ -995,7 +1084,7 @@ App.prototype.bindAutocompleteParticipants=function(selector){
                             $.each(loadparticipants,function(){
                                 var id=$(this).attr('id');
                                 var name=$(this).data('display');
-                                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+                                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
                             });
             
                             $('.close-load').on('click',function(){
@@ -1014,6 +1103,7 @@ App.prototype.bindAutocompleteParticipants=function(selector){
 
 
 App.prototype.bindAutocompleteParticipantsRegister=function(selector){
+            var notFoundTimer; 
 			if($(selector).length){
 				 var limit=($(selector).data('limit'))?$(selector).data('limit'):100;
                  var id=$(selector).data('id');
@@ -1026,13 +1116,26 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 					             var new_elem = elem.html('<div class="suggest-cont admin-training" data-training="'+data.is_participant+'" data-participant="'+data.id_participant+'" ><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.complete_name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Email:</b> '+data.email+' </div><div class=\'suggest_info clearer_auto\'>  <b>Registrado en otra formación :</b> '+participant+' </div><div class=\'suggest_info clearer_auto\'>  <b>Pertenece a esta formación</b> '+actual_training+' </div></div>');
 					             return new_elem;
 				            },
-				            emptyText:'<div class="no-index-person"><span>No se encontro la persona</span><div class="add-person">Ingresar persona</div> </div>',
-				            selectedItemProp: 'complete_name',
+                            emptyText:function(resultCont){
+                                var data=$('#empty-data-holder').data();
+                                var notice={'message':data.message,'type':data.type};
+                                var passData={'actions':{'next-service':data.service}};
+                                notFoundTimer=setTimeout(function(){
+                                    app.notifyProcess(notice,passData,'print-view','cancel-view','150px');
+                                },data.messageTime);
+                            },
+                            selectedItemProp: 'complete_name',
 				            selectedValuesProp:'cedula',
 				            searchObjProps: 'cedula,complete_name,doc',
 				            selectionLimit:limit,
                             extraParams:'&id='+id,
 				            startText: 'Ingresar Nombre, Documento o Email',
+                            resultsComplete:function(matchCount){
+                                if(matchCount>=1){
+                                    clearTimeout(notFoundTimer);
+                                    app.closeAside('#bottom-content-aside',true);
+                                }
+                            },
 				            resultClick: function(data){
                                 //Variables de datos
                                 var notice=data.attributes.actions.notice;
@@ -1076,7 +1179,7 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 				            $.each(loadparticipants,function(){
 				                var id=$(this).attr('id');
 				                var name=$(this).data('display');
-				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">Ã—</a>'+name+'</li>');
+				                autoList.prepend('<li id="as-selection-1" data-relvalue="'+id+'" class="as-selection-item blur"><a class="as-close close-load">x</a>'+name+'</li>');
 				            });
 			
 				            $('.close-load').on('click',function(){
@@ -1093,36 +1196,6 @@ App.prototype.bindAutocompleteParticipantsRegister=function(selector){
 
 };		
 
-App.prototype.notifyProcess=function(notice,data,AceptExtraClass,CancelExtraClass,height,autoClose){
-    var AceptExtraClass=(typeof AceptExtraClass != 'undefined')?AceptExtraClass:'';
-    var CancelExtraClass=(typeof CancelExtraClass != 'undefined')?CancelExtraClass:'';
-    var height=(typeof height != 'undefined')?height:'200px';
-    var noticeHtml="<div class='notice'>"+notice.message+"</div>";
-    switch(notice.type){
-        case 'confirm' : 
-            var interactionHtml="<div class='interaction-notice'><button class='accept "+AceptExtraClass+"'><i class='icon-check'></i>Aceptar</button><button class='cancel "+CancelExtraClass+"'><i class='icon-cancel-2'></i>Cancelar</button></div>";
-        break;
-
-        case 'flash' :
-            var interactionHtml="";
-        break;
-    }
-    var interactionHtmlData=$(interactionHtml);
-    $(interactionHtmlData).data(data);
-    var completeHtml=$(noticeHtml).append(interactionHtmlData);
-    app.putHtmlonBottom(completeHtml,height,autoClose);
-}
-
-App.prototype.closeAside=function(id_aside,wipe,time){
-    var time=(typeof time != 'undefined')?time:0.5;
-
-    setTimeout(function(){
-        $(id_aside).find('.close-menu').click();
-    },time);
-    if(typeof wipe != 'undefined'){
-        $(id_aside).find('.main-content').html('');
-    }
-}
 
 App.prototype.ajaxView=function(serviceUrl,data,container,callback){
     $.ajax({
@@ -1136,8 +1209,161 @@ App.prototype.ajaxView=function(serviceUrl,data,container,callback){
                 var htmlView=data;
                 app.closeAside('#bottom-content-aside',true);
                 app.putHtmlonAside(htmlView,'100%',true);
-                app.bind();
+                app.afterBind();
             }
         }
     });
 };
+
+App.prototype.ajaxSubmitService=function(formClass,notice,callback){
+    $(document).on('submit',formClass,function(e){
+        var serviceUrl=$(this).data('service');
+        e.preventDefault();
+        var data=$(this).serialize();
+        $.ajax({
+            url:serviceUrl,
+            type:'POST',
+            data:data,
+            dataType:'JSON',
+            success:function(data){
+                if(typeof callback != 'undefined'){
+                    callback(data);
+                }else{
+                    if(data.actions)
+                        app.serviceResponseCallback(data.actions);
+                }
+            }
+        });
+    });
+}
+
+App.prototype.send_service=function(element,callback){
+    $(document).on('click',element,function(){
+        var data=$(this).data();
+        if(data['confirm']){
+            var notice={'message':data.message,'type':data.type};
+            var passData={'actions':{'next-service':data.service}};
+            app.notifyProcess(notice,passData,'do-callback','cancel-view','150px',false,function(element){
+              $(element).find('.do-callback').on('click',function(){
+                  app.callService(data,callback);
+              });
+            });
+        }else{
+          app.callService(data,callback);
+        }
+    });
+}
+
+App.prototype.callService=function(data,callback){
+        $.ajax({
+            url:data.url,
+            type:'POST',
+            dataType:'JSON',
+            data:data,
+            success:function(data){
+                if(typeof callback != 'undefined'){
+                    callback(data);
+                }else{
+                    if(data.actions)
+                        app.serviceResponseCallback(data.actions);
+                }
+            }
+        });
+}
+
+App.prototype.serviceResponseCallback=function(actions){
+    $.each(actions,function(index,value){
+        switch (index){
+            case 'notify':
+                app.notifyProcess(value);
+            break;           
+
+            case 'closeAside':
+                $.each(value,function(closeIndex,closeValue){
+                    app.closeAside(closeValue.element,closeValue.wipe,closeValue.time);
+                });
+            break;            
+
+            case 'reloadGrid':
+                $.each(value,function(reloadIndex,reloadValue){
+                    app.reloadGrid(reloadValue);
+                });
+            break;   
+
+            case 'cleanform':
+                $.each(value,function(formIndex,formValue){
+                    app.cleanForm(formValue);
+                });
+            break;            
+        }
+    });
+}
+
+App.prototype.notifyProcess=function(notice,data,AceptExtraClass,CancelExtraClass,height,autoClose,callback){
+    var AceptExtraClass=(typeof AceptExtraClass != 'undefined')?AceptExtraClass:'notice-accept-default';
+    var CancelExtraClass=(typeof CancelExtraClass != 'undefined')?CancelExtraClass:'notice-cancel-default';
+    var height=(typeof height != 'undefined')?height:'200px';
+    var noticeHtml="<div class='notice'>"+notice.message+"</div>";
+    var autoClose=(!notice.autoclose)?autoClose:notice.autoclose;
+    switch(notice.type){
+        case 'confirm' : 
+            var interactionHtml="<div class='interaction-notice'><button class='accept "+AceptExtraClass+"'><i class='icon-check'></i>Aceptar</button><button class='cancel "+CancelExtraClass+"'><i class='icon-cancel-2'></i>Cancelar</button></div>";
+        break;
+
+        case 'flash' :
+            var interactionHtml="";
+        break;
+    }
+    var interactionHtmlData=$(interactionHtml);
+    $(interactionHtmlData).data(data);
+    var completeHtml=$(noticeHtml).append(interactionHtmlData);
+    app.putHtmlonBottom(completeHtml,height,autoClose);
+    if(typeof(callback) === "function"){
+      callback($('#bottom-content-aside .main-content .notice'));
+    } 
+}
+
+App.prototype.closeAside=function(id_aside,wipe,time){
+    var time=(typeof time != 'undefined')?time:0.5;
+
+    setTimeout(function(){
+        $(id_aside).find('.close-menu').click();
+    },time);
+    if(typeof wipe != 'undefined'){
+        $(id_aside).find('.main-content').html('');
+    }
+}
+
+App.prototype.reloadGrid=function(gridId){
+  var grid=eval(gridId);
+  grid.store.reload();
+}
+
+App.prototype.cleanForm=function(parentElemet){
+  var parentElemet=$(parentElemet);
+  $(parentElemet).find('input').val('');
+  $(parentElemet).find('.as-selections .as-selection-item').remove();
+}
+
+App.prototype.tooggleAcoordion=function(element){
+  $(document).on('click',element,function(){
+      var data=$(this).data();
+      $(this).closest(data.container).toggleClass('closed');
+  });
+}
+
+App.prototype.wayPointClass=function(element){
+  if($(element).length){
+    var data=$(element).data(),toggle=data.toggleclass;
+    $(element).waypoint({
+        handler: function(direction) {
+          if(direction=='down'){
+            $(element).addClass(toggle);
+            $(element).addClass('closed');
+          }else{
+              $(element).removeClass(toggle);
+          }
+        }
+      });  
+  }
+}

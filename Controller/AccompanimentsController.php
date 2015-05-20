@@ -81,7 +81,8 @@ class AccompanimentsController extends AppController {
 					'id'=>$accompaniment['Accompaniment']['id_accompaniment'],
 					'sitio'=>$accompaniment['Site']['site_name'],
 					'f_reunion'=>$accompaniment['Accompaniment']['accompaniment_date'],
-					'tipo'=>$accompaniment['Accompaniment']['accompaniment_type'],
+					//'tipo'=>$accompaniment['Accompaniment']['accompaniment_type'],
+					'tipo'=>$accompaniment['AccType']['name'],
 					'titulo'=>$accompaniment['Accompaniment']['accompaniment_title'],
 					'descripcion'=>$accompaniment['Accompaniment']['accompaniment_description'],
 					'num_participantes'=>$accompaniment['Accompaniment']['participant_number'],										
@@ -159,7 +160,9 @@ class AccompanimentsController extends AppController {
 				}
 		}
 		$sites = $this->Accompaniment->Site->find('list', array('order'=>array('Site.site_name ASC')));
-		$this->set(compact('sites'));
+		$AccTypes = $this->Accompaniment->AccType->find('list',array('order' => array('AccType.name' => 'ASC')));
+		$this->set(compact('sites','AccTypes'));
+
 	}
 
 /**
@@ -185,9 +188,10 @@ class AccompanimentsController extends AppController {
 			$this->request->data = $this->Accompaniment->find('first', $options);
 		}
 		$sites = $this->Accompaniment->Site->find('list');
+		$accTypes = $this->Accompaniment->AccType->find('list',array('order' => array('AccType.name ASC')));
 		$options = array('conditions' => array('Accompaniment.' . $this->Accompaniment->primaryKey => $id));
 		$this->set('accompaniment', $this->Accompaniment->find('first', $options));
-		$this->set(compact('sites'));
+		$this->set(compact('sites','accTypes'));
 	}
 
 	/**
