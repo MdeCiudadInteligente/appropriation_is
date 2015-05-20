@@ -281,9 +281,6 @@ class TraSessionsController extends AppController {
 		$session=$this->TraSession->find('first', $optionsSession);
 		$training_id=$session['TraSession']['training_id'];
 		$participants=$this->getRegisteredParticipantsAssist($training_id,$session_id);
-		debug($participants);
-		debug($training_id);
-		debug($session_id);
 		$SaveFormService=Router::url( array('controller' => 'PerParticipantsTrainingSessions', 'action' => 'service_save_assist','?'=>array(
 				'session'=>$session_id
 				)
