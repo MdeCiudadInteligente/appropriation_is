@@ -92,11 +92,29 @@
 #: \libs\view\errors\error404.ctp:30
 
 
+msgid "The school level could not be deleted. Please, try again."
+msgstr "El nivel de escolaridad ha sido eliminado. Por favor, trate nuevamente"
+
+msgid "The school level has been deleted."
+msgstr "El nivel de escolaridad ha sido eliminado"
+
+msgid "The school level has been saved."
+msgstr "El nivel de escolaridad ha sido guardado"
+
+msgid "The school level could not be saved. Please, try again."
+msgstr "El nivel de escolaridad no ha podido ser guardado. Por favor trate nuevamente"
+
+msgid "Invalid school level"
+msgstr "Nivel de escolaridad no v醠ido"
+
+msgid "Edit School Level"
+msgstr "Editar Nivel de escolaridad"
+
 msgid "The thematic already exists , please check."
 msgstr "La tem谩tica existe, por favor verifique"
 
-msgid "The per trainer fund has been deleted."
-msgstr "El fondo del formador ha sido eliminado"
+msgid "Add School Level"
+msgstr "Agregar Nivel de escolaridad"
 
 msgid "The per trainer fund has been saved."
 msgstr "El fondo del formador ha sido guardado"
@@ -104,6 +122,7 @@ msgstr "El fondo del formador ha sido guardado"
 msgid "List Per Trainer Funds"
 msgstr "Lista fondo de formador"
 
+<<<<<<< HEAD
 msgid "The per trainer fund has been deleted"
 msgstr "El fondo del formador ha sido eliminado"
 
@@ -113,6 +132,8 @@ msgstr "Estado Actual"
 msgid "List Persons"
 msgstr "Lista Personas"
 
+=======
+>>>>>>> 2a2597f592e929e32fba50959f415f231ed31148
 msgid "The per marital status has been saved."
 msgstr "El Estado Civil ha sido guardado."
 
@@ -122,6 +143,7 @@ msgstr "El Estado Civil ha sido eliminado."
 msgid "New perMaritalStatuses"
 msgstr "Nuevo Estado Civil"
 
+<<<<<<< HEAD
 msgid "The current person is already a participant of this training"
 msgstr "La persona actual ya es un participante de esta formaci贸n"
 
@@ -140,6 +162,8 @@ msgstr "Asistencia"
 msgid "The assistance of the session has been successfully updated"
 msgstr "La asistencia de la sesi髇 se ha actualizado correctamente"
 
+=======
+>>>>>>> 2a2597f592e929e32fba50959f415f231ed31148
 msgid "Per Marital Status"
 msgstr "Estado Civil"
 
@@ -351,7 +375,7 @@ msgid  "The tra session has been saved."
 msgstr "La Sesi贸n ha sido guardada."
 
 msgid  "The tra session has been deleted."
-msgstr "La Sesi贸n ha sido eliminada."
+msgstr "La Sesi贸n ha sido guardada."
 
 msgid  "The profession has been saved."
 msgstr "La profesi贸n ha sido guardada"

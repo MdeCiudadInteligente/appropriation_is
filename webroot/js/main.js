@@ -101,6 +101,10 @@ App.prototype.bind=function(){
          },200);
     });
 
+    $(document).on('click','.cancel-view',function(){
+        app.closeAside('#bottom-content-aside',true);
+    });
+
     $('.close-menu').on('click',function(){
         $(this).closest('.mobile-ovelay-menu').removeClass('active').removeAttr('style');
     });
@@ -322,7 +326,7 @@ App.prototype.bindAutocompleteSites=function(selector){
             {   minChars: 2,
                 formatList: function(data, elem){
                 
-                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.nombre+' </div><div class=\'suggest_info clearer_auto\'>  <b>DirecciÃ³n:</b> '+data.direccion+' </div></div>');
+                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.nombre+' </div><div class=\'suggest_info clearer_auto\'>  <b>Dirección:</b> '+data.direccion+' </div></div>');
                 return new_elem;
                 },
                 emptyText:'No se encontraron Sitios',
@@ -407,7 +411,7 @@ App.prototype.bindAutocompleteThematics=function(selector){
         $(selector).autoSuggest(serivce_route,
             {   minChars: 2,
                 formatList: function(data, elem){
-                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Prefijo:</b> '+data.prefijo+' </div><div class=\'suggest_info clearer_auto\'>  <b>DescripciÃ³n:</b> '+data.description+' </div></div>');
+                var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Prefijo:</b> '+data.prefijo+' </div><div class=\'suggest_info clearer_auto\'>  <b>Descripción:</b> '+data.description+' </div></div>');
                 return new_elem;
                 },
                 emptyText:'No se encontraron tematicas',
@@ -489,7 +493,7 @@ App.prototype.bindAutocompletePopulationType=function(selector){
 	             return new_elem;
             },
             
-            emptyText:'No se encontraron tipos de poblaciÃ³n',
+            emptyText:'No se encontraron tipos de población',
             selectedItemProp: 'name',
             selectedValuesProp:'name',
             searchObjProps: 'name',
@@ -793,7 +797,7 @@ App.prototype.bindAutocompleteTrainers=function(selector){
 				 $(selector).autoSuggest(serivce_route,
 							{  	 minChars: 2,
 					             formatList: function(data, elem){
-					             var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>ProfesiÃ³n:</b> '+data.profesion+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.tipo+' </div></div>');
+					             var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>Profesión:</b> '+data.profesion+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.tipo+' </div></div>');
 					             return new_elem;
 				            },
 				            emptyText:'No se encontraron formadores',
@@ -1027,7 +1031,7 @@ App.prototype.bindAutocompleteParticipants=function(selector){
                  $(selector).autoSuggest(serivce_route,
                             {    minChars: 2,
                                  formatList: function(data, elem){
-                                 var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>ProfesiÃ³n:</b> '+data.nivel_escolar+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.estado_civil+' </div><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.barrio+' </div></div>');
+                                 var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div><div class=\'suggest_info clearer_auto\'>  <b>Apellido:</b> '+data.lastname+' </div><div class=\'suggest_info clearer_auto\'>  <b>Documento:</b> '+data.cedula+' </div><div class=\'suggest_info clearer_auto\'>  <b>Profesión:</b> '+data.nivel_escolar+' </div><div class=\'suggest_info clearer_auto\'>  <b>Tipo:</b> '+data.estado_civil+' </div><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.barrio+' </div></div>');
                                  return new_elem;
                             },
                             emptyText:'No se encontraron participantes',

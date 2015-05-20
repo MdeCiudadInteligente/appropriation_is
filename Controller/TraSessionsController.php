@@ -232,7 +232,6 @@ class TraSessionsController extends AppController {
 				AND   t2.per_people_type_id=t3.id
 				AND   t3.person_id=t4.id_person
 				AND   t1.user_id=t5.id_user
-				AND   t1.training_id=1
 				AND   t1.training_id=:training",
 			    array('training' => $id_training,'session_id'=>$id_session)
 			);
