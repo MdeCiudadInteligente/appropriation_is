@@ -707,7 +707,6 @@ class TrainingsController extends AppController {
 				$data['Training']['user_id']=$usuario;
 				$data['Training']['code']=$code;
 				$this->Training->create();
-				//debug($data);
 				if($save_switch){
 					if ($this->Training->save($data)) {
 						$this->Session->setFlash(__('The training has been saved.'));						
