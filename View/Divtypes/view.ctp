@@ -6,11 +6,6 @@
 			<?php echo h($divtype['Divtype']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php //echo __('Site Estado'); ?></dt>
-		<dd>
-			<?php //echo h($divtype['Divtype']['state']); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -21,7 +16,6 @@
 	   if ($usuario_level == '1'){?>	
 	   <li><?php echo $this->Html->link(__('Nuevo Tipo Sensibilización'), array('action' => 'add')); ?> </li>
 	   <li><?php echo $this->Html->link(__('Editar Tipo Sensibilización'), array('action' => 'edit', $divtype['Divtype']['id'])); ?> </li>
-	   <li><?php //echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $divtype['Divtype']['id']), null, __('Are you sure you want to delete # %s?', $divtype['Divtype']['id'])); ?> </li>
 	   <?php }?>
 	   <li><?php echo $this->Html->link(__('Lista Tipo Sensibilización'), array('action' => 'index')); ?> </li>
 		

@@ -29,7 +29,7 @@ class Accompaniment extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'accompaniment_type' => array(
+		'accompaniment_type_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
