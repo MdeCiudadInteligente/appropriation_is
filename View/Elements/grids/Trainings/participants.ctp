@@ -46,7 +46,7 @@
 					'training_id'=>NULL,
 					'participant_id'=>NULL,
 				),
-				'markup'=>'<div class="custom_render"><i class="icon-minus-circle  remove_participant grid-send-service" data-url="'.$adminUrl.'" data-id="{id}" data-trainingId="{training_id}" data-participantId="{participant_id}"></i></div>'
+				'markup'=>'<div class="custom_render"><i class="icon-minus-circle  remove_participant grid-send-service" data-confirm="true" data-type="confirm" data-message="¿Estás seguro de quieres eliminar este participante?, Si aceptas perdera toda la informacion de asistencia correspondiente." data-url="'.$adminUrl.'" data-id="{id}" data-trainingId="{training_id}" data-participantId="{participant_id}"></i></div>'
 			))
 	);
 ?>

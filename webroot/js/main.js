@@ -101,6 +101,10 @@ App.prototype.bind=function(){
          },200);
     });
 
+    $(document).on('click','.cancel-view',function(){
+        app.closeAside('#bottom-content-aside',true);
+    });
+
     $('.close-menu').on('click',function(){
         $(this).closest('.mobile-ovelay-menu').removeClass('active').removeAttr('style');
     });
