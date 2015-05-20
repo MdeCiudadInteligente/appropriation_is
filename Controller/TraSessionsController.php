@@ -236,6 +236,7 @@ class TraSessionsController extends AppController {
 				AND   t1.training_id=:training",
 			    array('training' => $id_training,'session_id'=>$id_session)
 			);
+			$data=array();
 			foreach ($participants as $key => $value) {
 				$data[]=array(
 						'id'=>$value['t1']['id'],
@@ -255,6 +256,7 @@ class TraSessionsController extends AppController {
 						'modification_date'=>$value['t1']['modification_date']
 				);
 			}	
+
 			return $data;
 	}
 

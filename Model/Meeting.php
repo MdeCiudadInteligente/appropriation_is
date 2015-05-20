@@ -45,6 +45,7 @@ class Meeting extends AppModel {
 							//'on' => 'create', // Limit validation to 'create' or 'update' operations
 					),
 		),
+
 		'meeting_type_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -55,6 +56,7 @@ class Meeting extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+
 		'meeting_title' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),				 
