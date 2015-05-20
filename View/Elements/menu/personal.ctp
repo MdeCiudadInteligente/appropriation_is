@@ -160,23 +160,6 @@
 								"label"=>__('New Profession')
 							)	
 						)
-				),
-				array(
-						"user_level"=>'1,4,5',
-						"icon-class"=>'icon-cogs',
-						"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'index'),true),
-						"label" =>__('People Types'),
-						"sub-elements"=>array(
-							array(
-								"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'index'),true),
-								"label"=>__('List People Types')
-							),	
-							array(
-								"user_level"=>'1',
-								"route"=>Router::url( array('controller' => 'PerTypes', 'action' => 'add'),true),
-								"label"=>__('New People Types')
-							)	
-					)
 				)
 										
 		    )

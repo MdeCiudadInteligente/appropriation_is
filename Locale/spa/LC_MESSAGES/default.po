@@ -92,29 +92,11 @@
 #: \libs\view\errors\error404.ctp:30
 
 
-msgid "The school level could not be deleted. Please, try again."
-msgstr "El nivel de escolaridad ha sido eliminado. Por favor, trate nuevamente"
-
-msgid "The school level has been deleted."
-msgstr "El nivel de escolaridad ha sido eliminado"
-
-msgid "The school level has been saved."
-msgstr "El nivel de escolaridad ha sido guardado"
-
-msgid "The school level could not be saved. Please, try again."
-msgstr "El nivel de escolaridad no ha podido ser guardado. Por favor trate nuevamente"
-
-msgid "Invalid school level"
-msgstr "Nivel de escolaridad no válido"
-
-msgid "Edit School Level"
-msgstr "Editar Nivel de escolaridad"
-
 msgid "The thematic already exists , please check."
 msgstr "La temÃ¡tica existe, por favor verifique"
 
-msgid "Add School Level"
-msgstr "Agregar Nivel de escolaridad"
+msgid "The per trainer fund has been deleted."
+msgstr "El fondo del formador ha sido eliminado"
 
 msgid "The per trainer fund has been saved."
 msgstr "El fondo del formador ha sido guardado"
@@ -141,13 +123,13 @@ msgid "The current person is already a participant of this training"
 msgstr "La persona actual ya es un participante de esta formación"
 
 msgid "The participant was successfully removed from this training"
-msgstr "El participante se retiró con éxito de esta formación"
+msgstr "El participante se retir?con éxito de esta formación"
 
 msgid "The current person has never been a participant. Do you want to assign him to this training?"
 msgstr "La persona corriente nunca ha sido un participante . ¿Quieres asignarle a esta formación?"
 
 msgid "Are you sure do you want to delete this session?"
-msgstr "¿Seguro qué quieres eliminar esta sesión?"
+msgstr "¿Seguro qu?quieres eliminar esta sesión?"
 
 msgid "Add Assist"
 msgstr "Agregar Asistencia"

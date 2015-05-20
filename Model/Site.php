@@ -51,7 +51,7 @@ class Site extends AppModel {
 							//'on' => 'create', // Limit validation to 'create' or 'update' operations
 					),
 			),
-		'neighborhood_name' => array(
+		'neighborhood_id' => array(
 					'notEmpty' => array(
 							'rule' => array('notEmpty'),
 							//'message' => 'Your custom message here',
