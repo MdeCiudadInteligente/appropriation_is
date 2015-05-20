@@ -125,6 +125,9 @@ msgstr "Lista fondo de formador"
 msgid "Current State"
 msgstr "Estado Actual"
 
+msgid "List Persons"
+msgstr "Lista Personas"
+
 msgid "The per marital status has been saved."
 msgstr "El Estado Civil ha sido guardado."
 
@@ -366,7 +369,7 @@ msgid  "The tra session has been saved."
 msgstr "La Sesión ha sido guardada."
 
 msgid  "The tra session has been deleted."
-msgstr "La Sesión ha sido guardada."
+msgstr "La Sesión ha sido eliminada."
 
 msgid  "The profession has been saved."
 msgstr "La profesión ha sido guardada"
