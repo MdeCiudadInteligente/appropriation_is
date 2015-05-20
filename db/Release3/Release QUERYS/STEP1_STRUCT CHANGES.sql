@@ -566,3 +566,14 @@ ALTER TABLE users DROP INDEX id_agent;
 ALTER TABLE zones DROP INDEX zone_name;
 
 ALTER TABLE users DROP INDEX user_id;
+
+ALTER TABLE `per_trainers` 
+DROP FOREIGN KEY `per_trainers_ibfk_10`;
+ALTER TABLE `per_trainers` 
+CHANGE COLUMN `per_trainer_fund_id` `per_trainer_fund_id` INT(11) NULL ;
+ALTER TABLE `per_trainers` 
+ADD CONSTRAINT `per_trainers_ibfk_10`
+  FOREIGN KEY (`per_trainer_fund_id`)
+  REFERENCES `per_trainer_funds` (`id`)
+  ON UPDATE CASCADE;
+
