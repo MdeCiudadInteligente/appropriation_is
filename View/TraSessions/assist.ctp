@@ -1,7 +1,7 @@
 <?php 
 	$session=$this->request->data['session'];
 	$service=$this->request->data['formService'];
-	$participants=$this->request->data['participants'];
+	$participants=(isset($this->request->data['participants']))?$this->request->data['participants']:array();
 ?>
 
 <div class="traSessions form mde-form">
@@ -30,7 +30,7 @@
 			<?php foreach ($participants as $key => $value) { 
 				$assist=(isset($value['assist']))?'checked="checked"':'';
 			?>	
-				<div class="check-cont row header-row">
+				<div class="check-cont row">
 					<div class="col-md-3 col-sm-4 col-xs-10">
 						<label><?php echo  $value['person_name'] ?></label>
 					</div>
@@ -43,8 +43,8 @@
 					<div class="col-md-2 hidden-sm hidden-xs">
 						<label><?php echo $value['school_level']?></label>
 					</div>
-					<div class="col-md-2 col-sm-2 col-xs-2 ">
-						<label><input class="input-check-data" <?php echo $assist ?> type="checkbox" name="data[IdPerParticipantsTraining][]" value="<?php echo $value['id']?>"></label>
+					<div class="col-md-2 col-sm-2 col-xs-2 assist-input">
+						<input class="input-check-data" <?php echo $assist ?> type="checkbox" name="data[IdPerParticipantsTraining][]" value="<?php echo $value['id']?>">
 					</div>
 				</div>	
 			<?php } ?>

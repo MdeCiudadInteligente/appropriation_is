@@ -19,17 +19,17 @@
 				array(
 						"user_level"=>'1,4,5',
 						"icon-class"=>'icon-cogs',
-						"route"=>Router::url( array('controller' => 'DivTypes', 'action' => 'index'),true),
+						"route"=>Router::url( array('controller' => 'Divtypes', 'action' => 'index'),true),
 						"label" =>__('Divulgation Types'),
 						"custom-class"=>'Trainer-types',
 						"sub-elements"=>array(
 							array(
-								"route"=>Router::url( array('controller' => ' DivTypes', 'action' => 'index'),true),
+								"route"=>Router::url( array('controller' => ' Divtypes', 'action' => 'index'),true),
 								"label"=>__('List Divulgation Types')
 							),	
 							array(
 								"user_level"=>'1',
-								"route"=>Router::url( array('controller' => ' DivTypes', 'action' => 'add'),true),
+								"route"=>Router::url( array('controller' => ' Divtypes', 'action' => 'add'),true),
 								"label"=>__('New Divulgation Type')
 							)	
 						)

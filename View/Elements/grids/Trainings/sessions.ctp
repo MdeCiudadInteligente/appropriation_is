@@ -6,7 +6,6 @@
 			)
 		),true
 	);
-
 	$adminUrl=Router::url( array('controller' => 'TraSessions', 'action' => 'service_delete','ext'=>'json'),true);
 	$assistUrl=Router::url( array('controller' => 'TraSessions', 'action' => 'assist'),true);
 	$gridOptions=array(

@@ -18,7 +18,7 @@
 		</dd>
 		<dt><?php echo __('Tipo Sensibilización'); ?></dt>
 		<dd>
-			<?php echo h($divulgation['Divulgation']['divulgation_type']); ?>
+			<?php echo h($divulgation['Divtype']['name']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Descripción Sensibilización'); ?></dt>

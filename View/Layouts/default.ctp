@@ -14,6 +14,7 @@ $cakeDescription = __d('cake_dev', '');
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
+	<meta name="viewport" content="initial-scale=1">
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/js/ext/resources/css/ext-all.css" />
 	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/css/bootstrap.min.css" />

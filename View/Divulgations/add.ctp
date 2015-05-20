@@ -17,7 +17,7 @@
 			<div class="input">
 				<label>Sitio</label>
 				<input type="text"  class="Site-autocomplete" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio">
-				<div class="results-input-site" data-input-name="data[Site][Site][]">			
+				<div class="results-input-site" data-input-name="data[Divulgation][site_id]">			
 				</div>
 			</div>
 		</div>	
@@ -40,7 +40,7 @@
 			</div>
 	</div>	
 	<div class="input"  style="text-align:right">
-		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
+		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'Pertrainers', 'action' => 'add'),array('target'=>'_blank')); ?>
 	</div>
 	<div class="seccion-person">	
 			<div class="input" >

@@ -511,6 +511,9 @@ class TrainingsController extends AppController {
 				);
 				$count++;
 			}	
+			if(!isset($data)){
+				$data=array('rows'=>array());
+			}
 			$this->set(compact('data')); // Pass $data to the view
 			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
@@ -579,6 +582,9 @@ class TrainingsController extends AppController {
 				);
 				$count++;
 			}	
+			if(!isset($data)){
+				$data=array('rows'=>array());
+			}
 			$this->set(compact('data')); // Pass $data to the view
 			$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
