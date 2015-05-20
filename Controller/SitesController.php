@@ -144,33 +144,19 @@ class SitesController extends AppController {
  * @param string $id
  * @return void
  */
+	
 	public function edit($id = null) {
 		if (!$this->Site->exists($id)) {
 			throw new NotFoundException(__('Invalid site'));
 		}
-		if ($this->request->is(array('post', 'put'))) {			
-			$usuario = $this->Session->read('Auth.User.id_user');
-			$this->set('usuario',$usuario);
-				
-			$name_site= $this->request->data['Site']['site_name'];
-			$verificar_site=$this->Site->query("select distinct site_name from sites where site_name = '$name_site'");
-			$this->set('verificar_site',$verificar_site);
-				
-			if($verificar_site==Array( )){
-					
-					
-				if ($this->Site->save($this->request->data)) {
-					$this->Session->setFlash(__('The site has been saved.'));
-					return $this->redirect(array('action' => 'index'));
-				} else {
-					$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
-				}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Site->save($this->request->data)) {
+				$this->Session->setFlash(__('The site has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The site could not be saved. Please, try again.'));
 			}
-			else
-			{
-				$this->Session->setFlash(__('The site already exists , please check.'));
-			}
-		}else {
+		} else {
 			$options = array('conditions' => array('Site.' . $this->Site->primaryKey => $id));
 			$this->request->data = $this->Site->find('first', $options);
 		}
@@ -178,8 +164,6 @@ class SitesController extends AppController {
 		$siteTypes = $this->Site->SiteType->find('list');
 		$this->set(compact('neighborhoods', 'siteTypes'));
 	}
-
-
 /**
  * delete method
  *
