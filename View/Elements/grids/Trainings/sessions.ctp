@@ -49,7 +49,7 @@
 				),
 				'markup'=>'
 				<div class="custom_render">
-					<i class="icon-minus-circle  remove_session  grid-send-service" data-confirm="true" data-type="confirm"  data-message="'.__("Are you sure do you want to delete this session?").'" data-url="'.$adminUrl.'" data-id="{id}" data-trainingId="{training_id}">
+					<i class="icon-minus-circle  remove_session  grid-send-service" data-confirm="true" data-type="confirm" data-message="¿Estas seguro de quieres eliminar esta sesión?" data-url="'.$adminUrl.'" data-id="{id}" data-trainingId="{training_id}">
 					</i>
 					<i class="icon-users  add_assist ajax-view" data-service="'.$assistUrl.'/{id}" data-id="{id}" data-aside="#right-content-aside" data-trainingId="{training_id}">
 					</i>
