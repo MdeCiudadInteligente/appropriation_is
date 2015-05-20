@@ -1,4 +1,4 @@
-﻿<div class="perTrainerSchedules form">
+﻿<div class="perTrainerSchedules form mde-form">
 <?php echo $this->Form->create('PerTrainerSchedule'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Per Trainer Schedule'); ?></legend>
