@@ -105,7 +105,7 @@
 	<section class="add-session section-accordion">
 		<form>
 			<fieldset>
-		    	<legend> Agregar Sessiones 
+		    	<legend> Agregar Sesiónes 
 		    		<div class="legend-buttons">
 		    			<div class="icon-action data-icon ajax-view " data-service="<?php echo $session_service ?>" data-aside="#right-content-aside" data-training="<?php echo $id_training ?>" ><i class="icon-plus-1 add-session"></i></div>
 		    		</div>

@@ -122,18 +122,6 @@ msgstr "El fondo del formador ha sido guardado"
 msgid "List Per Trainer Funds"
 msgstr "Lista fondo de formador"
 
-<<<<<<< HEAD
-msgid "The per trainer fund has been deleted"
-msgstr "El fondo del formador ha sido eliminado"
-
-msgid "Current State"
-msgstr "Estado Actual"
-
-msgid "List Persons"
-msgstr "Lista Personas"
-
-=======
->>>>>>> 2a2597f592e929e32fba50959f415f231ed31148
 msgid "The per marital status has been saved."
 msgstr "El Estado Civil ha sido guardado."
 
@@ -143,27 +131,6 @@ msgstr "El Estado Civil ha sido eliminado."
 msgid "New perMaritalStatuses"
 msgstr "Nuevo Estado Civil"
 
-<<<<<<< HEAD
-msgid "The current person is already a participant of this training"
-msgstr "La persona actual ya es un participante de esta formaci贸n"
-
-msgid "The participant was successfully removed from this training"
-msgstr "El participante se retir贸 con exito de esta formaci贸n"
-
-msgid "The current person has never been a participant. Do you want to assign him to this training?"
-msgstr "La persona corriente nunca ha sido un participante . 縌uieres asignarle a esta formaci贸n?"
-
-msgid "Add Assist"
-msgstr "Agregar Asistencia"
-
-msgid "Assist"
-msgstr "Asistencia"
-
-msgid "The assistance of the session has been successfully updated"
-msgstr "La asistencia de la sesi髇 se ha actualizado correctamente"
-
-=======
->>>>>>> 2a2597f592e929e32fba50959f415f231ed31148
 msgid "Per Marital Status"
 msgstr "Estado Civil"
 
@@ -1341,7 +1308,7 @@ msgid "The accompaniment could not be saved. Please, try again."
 msgstr "El acompa帽amiento no se pudo guardar .Por favor , int茅ntalo de nuevo."
 
 msgid "The meeting has been deleted."
-msgstr "La reuni贸n ha sido eliminada."
+msgstr "La reuni贸n ha sido eliminado."
 
 msgid "The agent has been deleted."
 msgstr "El agente ha sido eliminado."

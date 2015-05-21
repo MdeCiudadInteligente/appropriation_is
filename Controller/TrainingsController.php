@@ -107,7 +107,7 @@ class TrainingsController extends AppController {
 					);
 					$notice=array(
 						'type'=>'alert',
-						'message'=>__('The current person is already a participant of this training')
+						'message'=>__('Esta persona ya se encuentra registrada en esta formación.')
 					);
 				} else if (isset($trainer['0']['id_participant'])){
 					//is participant but no registered to this training
@@ -121,7 +121,7 @@ class TrainingsController extends AppController {
 					);
 					$notice=array(
 						'type'=>'confirm',
-						'message'=>__('The current person is already a participant in other training, Do you want to assign him into this training?')
+						'message'=>__('Esta persona ya ha participado en anteriores formaciones. ¿Desea actualizar los datos y registralo a esta formación?.')
 					);
 				} else{
 					//is not participant but is a person
@@ -134,7 +134,7 @@ class TrainingsController extends AppController {
 					);
 					$notice=array(
 						'type'=>'confirm',
-						'message'=>__('The current person has never been a participant. Do you want to assign him to this training?')
+						'message'=>__('Esta persona nunca ha participado en una formación anterior. ¿Desea registrar sus datos y registrarlo a esta formación?.')
 					);			
 				}
 
@@ -267,10 +267,10 @@ class TrainingsController extends AppController {
 		);
 		$actions=array();
 		if(!$error){
-			$message=__("The parcticipant was succesfully registered to this training");
+			$message=__("El participante fue correctamente registrado a esta formación.");
 			$actions=$success_actions;
 		}else{
-			$message=__("The parcticipant  was not registered to this training.please try again later");
+			$message=__("No ha sido posible registrar el participante a esta formación.Por favor intente de nuevo mas tarde.");
 		}
 		$notify=array(
 			'notify'=>array(
@@ -556,7 +556,13 @@ class TrainingsController extends AppController {
 				    FROM per_participants_training_session
 				    WHERE t1.id=per_participants_training_session.session_id
 
-				)as participants
+				) as participants,
+				(
+					SELECT GROUP_CONCAT(sites.site_name)
+				    FROM sites_sessions,sites
+				    WHERE sites_sessions.tra_session_id=t1.id
+				    AND   sites_sessions.site_id=sites.id_site
+				) as site
 				FROM  tra_session  t1, training t2 , users
 				WHERE t1.training_id=t2.id
 				AND   users.id_user=t1.user_id
@@ -568,6 +574,7 @@ class TrainingsController extends AppController {
 				$data['rows'][$count]=array(
 						'id'=>$value['t1']['id'],
 						'training_id'=>$value['t1']['training_id'],
+						'site'=>$value['0']['site'],
 						'start_date'=>$value['t1']['start_date'],
 						'start_time'=>$value['t1']['start_time'],
 						'end_time'=>$value['t1']['start_time'],
@@ -709,16 +716,16 @@ class TrainingsController extends AppController {
 				$this->Training->create();
 				if($save_switch){
 					if ($this->Training->save($data)) {
-						$this->Session->setFlash(__('The training has been saved.'));						
+						$this->Session->setFlash(__('La formacion ha sido correctamente almacendada.'));						
 						return $this->redirect(array('action' => 'index'));
 					} else {
-						$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
+						$this->Session->setFlash(__('La formacion no pudo ser almacenada, por favor intente de nuevo o comuniquese con el administrador del sistema.'));
 					}
 				}else{
 						$this->Session->setFlash($msg);			
 				}
 			}else{
-					$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
+					$this->Session->setFlash(__('La formación no pudo ser almacenada, por favor intente de nuevo o comuniquese con el administrador del sistema.'));
 			}		
 		}
 		$types = $this->Training->TraType->find('list');
@@ -746,10 +753,10 @@ class TrainingsController extends AppController {
 			$data=$this->request->data;
 			unset($data['Training']['code']);
 			if ($this->Training->save($data)) {
-				$this->Session->setFlash(__('The training has been saved.'));
+				$this->Session->setFlash(__('La formación ha sido correctamente almacenada.'));
 				 return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('La formación no pudo ser almacenada, por favor intente de nuevo o comuniquese con el administrador del sistema.'));
 			}
 		} else {
 			$options = array('conditions' => array('Training.' . $this->Training->primaryKey => $id));
@@ -884,9 +891,9 @@ class TrainingsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Training->delete()) {
-			$this->Session->setFlash(__('The training has been deleted.'));
+			$this->Session->setFlash(__('La formacíon ha sido correctamente eliminada.'));
 		} else {
-			$this->Session->setFlash(__('The training could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('La formación no pudo ser eliminada. Por favor intente de nuevo mas tarde.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
