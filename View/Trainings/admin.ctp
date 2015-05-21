@@ -16,7 +16,7 @@
 			)
 		),true
 	);
-	$message=__('The current person is not registered to the system.Do you want to register him?');
+	$message=__('La persona actual no se encuentra registrada en el sistema. ¿Desea registrarlo y asociarlo a esta formación?');
 ?>
 <div class="training-admin admin-view samallAdminView  form mde-form">
 <!-- Context block --> 

@@ -130,7 +130,7 @@ class TraSessionsController extends AppController {
 			$notify=array(
 				'notify'=>array(
 						'type'=>'flash',
-						'message'=>$message,
+						'message'=>mb_convert_encoding($message, "UTF-8", "Windows-1252"),
 						'autoclose'=>2000
 				)
 			);
@@ -355,11 +355,10 @@ class TraSessionsController extends AppController {
 		}else{
 			$message=__('No ha sido posible eliminar el participante. Por favor intente de nuevo mas tarde.');
 		}
-
 		$notify=array(
 			'notify'=>array(
 					'type'=>'flash',
-					'message'=>$message,
+					'message'=>mb_convert_encoding($message, "UTF-8", "Windows-1252"),
 					'autoclose'=>2000
 			)
 		);
