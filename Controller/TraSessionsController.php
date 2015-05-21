@@ -122,10 +122,10 @@ class TraSessionsController extends AppController {
 
 			$actions=array();
 			if(!$error){
-				$message=__('La sesi贸n fue guardada correctamente.');
+				$message=__('La sesi髇 fue guardada correctamente.');
 				$actions=$success_actions;
 			}else{
-				$message=__('La sesi贸n no pudo ser eliminada.Por favor intente de nuevo mas tarde.');
+				$message=__('La sesi髇 no pudo ser eliminada.Por favor intente de nuevo mas tarde.');
 			}
 			$notify=array(
 				'notify'=>array(
@@ -161,10 +161,10 @@ class TraSessionsController extends AppController {
 			
 			
 			if ($this->TraSession->save($data)) {
-				$this->Session->setFlash(__('La sesi贸n fue almacenada correctamente.'));		
+				$this->Session->setFlash(__('La sesi髇 fue almacenada correctamente.'));		
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('La ses铆on no pudo ser almacenada. Por favor intente de nuevo mas tarde.'));
+				$this->Session->setFlash(__('La ses韔n no pudo ser almacenada. Por favor intente de nuevo mas tarde.'));
 			}
 		}
 		$trainings = $this->TraSession->Training->find('list');
@@ -194,10 +194,10 @@ class TraSessionsController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->TraSession->save($this->request->data)) {
-				$this->Session->setFlash(__('La sesi贸n fue almacenada correctamente.'));
+				$this->Session->setFlash(__('La sesi髇 fue almacenada correctamente.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('La ses铆on no pudo ser almacenada. Por favor intente de nuevo mas tarde.'));
+				$this->Session->setFlash(__('La ses韔n no pudo ser almacenada. Por favor intente de nuevo mas tarde.'));
 			}
 		} else {
 			$options = array('conditions' => array('TraSession.' . $this->TraSession->primaryKey => $id));
@@ -350,10 +350,10 @@ class TraSessionsController extends AppController {
 
 		$actions=array();
 		if(!$error){
-			$message=__('El participante ha sido correctamente eliminado de esta sesi贸n.');
+			$message=__('La sesi髇 ha sido correctamente eliminada.');
 			$actions=$success_actions;
 		}else{
-			$message=__('No ha sido posible eliminar el participante. Por favor intente de nuevo mas tarde.');
+			$message=__('No ha sido posible eliminar la sesi髇. Por favor intente de nuevo mas tarde.');
 		}
 		$notify=array(
 			'notify'=>array(
@@ -379,9 +379,9 @@ class TraSessionsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->TraSession->delete()) {
-			$this->Session->setFlash(__('La sesi贸n ha sido correctamente eliminada.'));
+			$this->Session->setFlash(__('La sesi髇 ha sido correctamente eliminada.'));
 		} else {
-			$this->Session->setFlash(__('No ha sido posible eliminar la sesi贸n. Por favor intente de nuevo mas tarde.'));
+			$this->Session->setFlash(__('No ha sido posible eliminar la sesi髇. Por favor intente de nuevo mas tarde.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

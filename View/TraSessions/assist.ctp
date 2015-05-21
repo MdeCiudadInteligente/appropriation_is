@@ -7,7 +7,7 @@
 <div class="traSessions form mde-form">
 <?php echo $this->Form->create('TraSession', array('class'=>'serviceSubmit check_submit',"data-service"=>$service)); ?>
 	<fieldset>
-		<legend><?php echo __('Add Assist'); ?></legend>
+		<legend><?php echo __('Actualizar Asistencia'); ?></legend>
 		<div class="input-contaniner">
 			<div class="check-cont row header-row">
 				<div class="col-md-3 col-sm-4 col-xs-10">
@@ -23,7 +23,7 @@
 					<label><?php echo __('School Level')?></label>
 				</div>
 				<div class="col-md-2 col-sm-2 col-xs-2">
-					<label><?php echo __('Assist')?></label>
+					<label><?php echo __('Asiste')?></label>
 				</div>
 			</div>	
 

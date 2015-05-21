@@ -103,15 +103,15 @@ class PerParticipantsTrainingSessionsController extends AppController {
 
 			$actions=array();
 			if(!$error){
-				$message=__('The assistance of the session has been successfully updated');
+				$message=__('La asistencia de la sesión ha sido correctamente actualizada.');
 				$actions=$success_actions;
 			}else{
-				$message=__('The assistance of the session cannot be updated. Please contact the administrator for more details' );
+				$message=__('No se ha actualizado la asistencia. Por favor intente de nuevo mas tarde.');
 			}
 			$notify=array(
 				'notify'=>array(
 						'type'=>'flash',
-						'message'=>$message,
+						'message'=>mb_convert_encoding($message, "UTF-8", "Windows-1252"),
 						'autoclose'=>2000
 				)
 			);
