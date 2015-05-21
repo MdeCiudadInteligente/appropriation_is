@@ -151,6 +151,8 @@ App.prototype.bind=function(){
     });
     app.tooggleAcoordion('.control-accordion');
     app.wayPointClass('.waypont-toggler');
+    app.registerValidations();
+
 }
 
 
@@ -1366,4 +1368,10 @@ App.prototype.wayPointClass=function(element){
         }
       });  
   }
+}
+
+App.prototype.registerValidations=function(){
+  $(document).on('keyup','.validate-numeric',function(){
+      this.value = this.value.replace(/[^0-9\.]/g,'');
+  });
 }
