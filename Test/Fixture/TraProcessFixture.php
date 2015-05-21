@@ -17,6 +17,7 @@ class TraProcessFixture extends CakeTestFixture {
 		'creation_date' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'modification_date' => array('type' => 'timestamp', 'null' => false, 'default' => 'CURRENT_TIMESTAMP'),
 		'user_id' => array('type' => 'integer', 'null' => false, 'default' => null),
+		'prefix' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 10, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'id' => array('column' => 'id', 'unique' => 1)
 		),
@@ -35,7 +36,8 @@ class TraProcessFixture extends CakeTestFixture {
 			'state' => 1,
 			'creation_date' => '2015-04-01 17:27:15',
 			'modification_date' => 1427902035,
-			'user_id' => 1
+			'user_id' => 1,
+			'prefix' => 'pbp2'
 		),
 	);
 

@@ -711,7 +711,7 @@ class TrainingsController extends AppController {
 					if ($this->Training->save($data)) {
 						$this->Session->setFlash(__('The training has been saved.'));						
 						return $this->redirect(array('action' => 'index'));
-					} else {
+				} else {
 						$this->Session->setFlash(__('The training could not be saved. Please, try again.'));
 					}
 				}else{
@@ -728,7 +728,9 @@ class TrainingsController extends AppController {
 		//$sites = $this->Training->Site->find('list');
 		$populationtype = $this->Training->PopulationType->find('list');
 		$this->set(compact('types', 'processes','TraAllies','populationtype'));
-
+		
+		//si llega a este punto es porque no guardó, entonces debe retornar false.
+		return false;
 	}
 
 /**
