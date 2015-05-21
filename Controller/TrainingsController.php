@@ -137,7 +137,7 @@ class TrainingsController extends AppController {
 						'message'=>__('Esta persona nunca ha participado en una formación anterior. ¿Desea registrar sus datos y registrarlo a esta formación?.')
 					);			
 				}
-
+				$notice['message']=mb_convert_encoding($notice['message'], "UTF-8", "Windows-1252");
 				$actions=array(
 					'next-service'=>$service,
 					'notice'=>$notice
