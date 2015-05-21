@@ -14,7 +14,7 @@
 		echo $this->Form->input('type_id');
 		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Inicio'));
 		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text','label'=>'Fecha Final'));
-		echo $this->Form->input('current_state',array ('options' => array ('1'=>'En Curso','2'=>'Finalizada'),'empty'=>'Seleccione estado'));
+		echo $this->Form->input('current_state',array ('options' => array ('1'=>'En Curso','2'=>'Finalizada'),'empty'=>'Seleccione estado','label'=>'Estado Actual'));
 		echo $this->Form->input('activity_place');
 		echo $this->Form->input('description');
 	?>
