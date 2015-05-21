@@ -324,7 +324,8 @@ class TrainingsController extends AppController {
 	                                 LEFT JOIN per_school_level          ON per_participants.school_level_id=per_school_level.id
 	                                 LEFT JOIN neighborhoods             ON per_participants.neighborhood_id=neighborhoods.id_neighborhood
 						WHERE
-							  people.id_person=:person_id",
+							  people.id_person=:person_id
+						AND per_people_type.per_type_id=2",
 					array('person_id' => $person_id)
 			);
 
