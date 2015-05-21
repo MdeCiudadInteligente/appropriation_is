@@ -17,6 +17,10 @@
 		),true
 	);
 	$message=__('La persona actual no se encuentra registrada en el sistema. ¿Desea registrarlo y asociarlo a esta formación?');
+	$training_states=array(
+		1=>'En curso',
+		2=>'Finalizado'
+	);
 ?>
 <div class="training-admin admin-view samallAdminView  form mde-form">
 <!-- Context block --> 
@@ -63,7 +67,7 @@
  -->
  			<div class="col-md-3">
 				<label>Estado</label>
-				<span><?php echo $this->request->data['Training']['current_state'] ?></span>
+				<span><?php echo $training_states[$this->request->data['Training']['current_state']] ?></span>
 			</div>	
 		</div>
 	</section> 

@@ -10,7 +10,7 @@
 	<div class="people form mde-form">
 	<?php echo $this->Form->create('Person',array('class'=>'serviceSubmit',"data-service"=>$this->request->data['saveService'])); ?>
 			<fieldset>
-				<legend><?php echo __('Add Person'); ?></legend>
+				<legend><?php echo __('Agregar Participante'); ?></legend>
 					<div class="reg-data">
 						<input type="hidden" name="id_person" value="<?php echo $this->request->data['Person']['id_person']  ?>">
 						<input type="hidden" name="id_training" value="<?php echo $this->request->query['training']  ?>">
