@@ -103,7 +103,7 @@ class PerParticipantsTrainingSessionsController extends AppController {
 
 			$actions=array();
 			if(!$error){
-				$message=__('La asistencia de la sesiÃ³n ha sido correctamente actualizada.');
+				$message=__('La asistencia de la sesión ha sido correctamente actualizada.');
 				$actions=$success_actions;
 			}else{
 				$message=__('No se ha actualizado la asistencia. Por favor intente de nuevo mas tarde.');
