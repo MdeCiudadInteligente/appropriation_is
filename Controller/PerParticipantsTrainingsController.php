@@ -138,16 +138,16 @@ class PerParticipantsTrainingsController extends AppController {
 
 		$actions=array();
 		if(!$error){
-			$message=__('The participant was successfully removed from this training ');
+			$message=__('EL participante fue removido correctamente de esta formación.');
 			$actions=$success_actions;
 		}else{
-			$message=__('The participant could not be removed please try again later');
+			$message=__('No ha sido posible remover el participante de esta formación.');
 		}
 
 		$notify=array(
 			'notify'=>array(
 					'type'=>'flash',
-					'message'=>$message,
+					'message'=>mb_convert_encoding($message, "UTF-8", "Windows-1252"),
 					'autoclose'=>2000
 			)
 		);
