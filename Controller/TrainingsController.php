@@ -26,6 +26,21 @@ class TrainingsController extends AppController {
  *
  * @return void
  */
+
+
+
+	public function isAuthorized($user) {
+		// Any registered user can access public functions
+
+		if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '3')) {
+			return true;
+		}
+		// Default deny
+		//return false;
+	}
+	
+
+
 	public function index() {
 		$this->Training->recursive = 0;
 		$this->set('trainings', $this->Paginator->paginate());

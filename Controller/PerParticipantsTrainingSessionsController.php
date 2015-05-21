@@ -28,6 +28,15 @@ class PerParticipantsTrainingSessionsController extends AppController {
 	}
 
 
+	public function isAuthorized($user) {
+		// Any registered user can access public functions
+		
+		if ((isset($user['permission_level']) && $user['permission_level'] == '1')||(isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '3')||(isset($user['permission_level']) && $user['permission_level'] == '4')||(isset($user['permission_level']) && $user['permission_level'] == '5')) {
+			return true;
+		}	
+	}
+
+
 /**
  * add method
  *
