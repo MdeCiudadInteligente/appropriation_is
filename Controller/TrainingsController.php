@@ -436,6 +436,14 @@ class TrainingsController extends AppController {
 			);
 			$count=0;
 			foreach ($trainings as $key => $trainer) {
+				
+				$estado=$trainer['t1']['current_state'];
+				if($estado=='1'){
+				$estado='En curso';
+				}else{
+				$estado='Finalizada';
+				}
+				
 				$data['rows'][$count]=array(
 						'id'=>$trainer['t1']['id'],
 						'code'=>$trainer['t1']['code'],
@@ -447,7 +455,7 @@ class TrainingsController extends AppController {
 						//'sitios'=>$trainer['0']['sitios'],
 						'aliados'=>$trainer['0']['aliados'],
 						'procesos'=>$trainer['0']['procesos'],
-						'estado'=>$trainer['t1']['current_state'],
+						'estado'=>$estado,
 						'username'=>$trainer['t3']['username'],
 						'user_id'=>$trainer['t1']['user_id'],
 						'creation_date'=>$trainer['t1']['creation_date'],
