@@ -43,10 +43,7 @@ function goBack()
 		echo $this->Form->input('divulgation_description',array ('type'=>'textarea','label'=>'Descripción Sensibilización'));	
 		echo $this->Form->input('participant_number',array('onkeypress'=>'return isNumberKey(event)','type'=>'text'));	
 		echo $this->Form->input('population_type_id',array('empty'=>'Seleccione tipo de población'));
-	?>
-		<div class="input"  style="text-align:right">
-		<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'Pertrainers', 'action' => 'add'),array('target'=>'_blank')); ?>
-		</div>
+	?>		
 		<div class="seccion-divulgations seccion-person">	
 				<div class="input" >
 					<label>Temáticas <i class="icon-eye view-service view-service-button" data-url="<?php echo Router::url( '/', true ) ?>Thematics/getThematic.json" data-callback="appendServiceHtml" data-post="{'a':'1'}" data-name="Temáticas" data-alowedIndex="{'name':'Nombre','prefijo':'prefijo','description':'Descripción'}">Ver temáticas</i></label>
@@ -59,6 +56,9 @@ function goBack()
 					</div>
 				</div>
 		</div>	
+		<div class="input"  style="text-align:right">
+				<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'Pertrainers', 'action' => 'add'),array('target'=>'_blank')); ?>
+		</div>
 		 <div class="seccion-person">
 			<div class="input">
 				<label>Formador</label>

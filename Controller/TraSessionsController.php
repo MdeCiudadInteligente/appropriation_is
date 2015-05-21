@@ -204,7 +204,28 @@ class TraSessionsController extends AppController {
 			$this->request->data = $this->TraSession->find('first', $options);
 		}
 		$trainings = $this->TraSession->Training->find('list');
-		$this->set(compact('trainings'));
+		$thematicstypes = $this->TraSession->Thematic->find('list',array('order' => array('Thematic.name' => 'ASC')));
+		$this->set(compact('trainings','thematicstypes'));
+		
+		$db = $this->TraSession->getDataSource();
+		$trainers=$db->fetchAll(
+			  "SELECT
+			       t1.id, t3.name , t3.lastname
+			   FROM
+			       per_trainers t1,
+			       per_people_type t2,
+			       people t3,
+				   tra_sessions_per_trainers t4	
+			   WHERE
+			       t1.per_people_type_id = t2.id
+			       AND t2.person_id = t3.id_person
+				   AND t4.trainer_id=t1.id
+				   AND t4.session_id= :id_session	
+			   ",
+				array('id_session' => $id)
+		);
+		
+		$this->request->data['trainers']=$trainers;
 	}
 
 
