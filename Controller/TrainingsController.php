@@ -272,10 +272,11 @@ class TrainingsController extends AppController {
 		}else{
 			$message=__("No ha sido posible registrar el participante a esta formación.Por favor intente de nuevo mas tarde.");
 		}
+
 		$notify=array(
 			'notify'=>array(
 					'type'=>'flash',
-					'message'=>$message,
+					'message'=>mb_convert_encoding($message, "UTF-8", "Windows-1252"),
 					'autoclose'=>2000
 			)
 		);
