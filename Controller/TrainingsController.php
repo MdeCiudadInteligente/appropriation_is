@@ -340,8 +340,8 @@ class TrainingsController extends AppController {
 	                                 LEFT JOIN neighborhoods             ON per_participants.neighborhood_id=neighborhoods.id_neighborhood
 						WHERE
 							  people.id_person=:person_id
-		                      ORDER BY   per_people_type.per_type_id DESC    
-	                          LIMIT 1
+		                      ORDER BY   per_people_type.per_type_id <> 2 , per_people_type.per_type_id DESC     
+		                      LIMIT 1
 						",
 					array('person_id' => $person_id)
 			);
