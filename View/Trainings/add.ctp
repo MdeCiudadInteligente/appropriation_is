@@ -23,7 +23,7 @@
 
 	<div class="seccion-person">	
 			<div class="input" >
-				<label>Procesos</label>
+				<label>Ruta de Formación</label>
 				<input type="text"  class="TraProcesses-autocomplete" data-required="true" data-valcontainer=".results-input-pro" data-emptymsg="Por favor ingresa un proceso" data-limit="1">
 				<div class="results-input-pro" data-input-name="data[TraProcess][TraProcess][]" >
 					

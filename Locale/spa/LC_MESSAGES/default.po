@@ -594,40 +594,35 @@ msgid "Add Per Trainer Type"
 msgstr "Agregar Tipo Formador"
 
 msgid "The training process could not be deleted. Please, try again."
-msgstr "EL proceso de formación no ha sido eliminado .Por favor, trate nuevamente"
+msgstr "La Ruta de formación no ha sido eliminada .Por favor, trate nuevamente"
 
 msgid "The training process has been deleted."
-msgstr "El proceso de formación ha sido eliminado"
+msgstr "La Ruta de formación ha sido eliminada"
 
 msgid "The training has been deleted."
 msgstr "La formación ha sido eliminada."
 
 msgid "The training process could not be saved. Please, try again."
-msgstr "El proceso de formación no ha sido guardado. Por favor, trate nuevamente"
+msgstr "La Ruta de formación no ha sido guardada. Por favor, trate nuevamente"
 
 msgid "The training process has been saved."
-msgstr "El proceso de formación ha sido guardado"
+msgstr "La ruta de formación ha sido guardada"
 
 msgid "Invalid training process"
-msgstr "Proceso de formación no válido"
+msgstr "Ruta de formación no válida"
 
-msgid "Training Process"
-msgstr "Proceso de formación"
 
-msgid "New Training Process"
-msgstr "Nuevo proceso de formación"
-
-msgid "New training process"
-msgstr "Nuevo proceso de formación"
+msgid "New training Process"
+msgstr "Nueva Ruta de formación"
 
 msgid "Edit Training Process"
-msgstr "Editar proceso de formación"
+msgstr "Editar Ruta de formación"
 
 msgid "Add Training Process"
-msgstr "Agregar proceso de formación"
+msgstr "Agregar Ruta de formación"
 
 msgid "List Training Processes"
-msgstr "Lista procesos de formación"
+msgstr "Lista Rutas de formación"
 
 msgid "The training type could not be deleted. Please, try again."
 msgstr "El tipo de formación no pudo ser eliminado. Por favor, trate de nuevo"
@@ -669,37 +664,37 @@ msgid "TrainingType"
 msgstr "Tipo de Formación"
 
 msgid "Add Process"
-msgstr "Agregar procesos de formación"
+msgstr "Agregar Rutas de formación"
 
 msgid "Training Process"
-msgstr "Procesos de formación"
+msgstr "Rutas de formación"
 
 msgid "List Processes"
-msgstr "Lista procesos de formación"
+msgstr "Lista Rutas de formación"
 
 msgid "Edit Process"
-msgstr "Editar proceso de formación"
+msgstr "Editar Rutas de formación"
 
 msgid "New Process"
-msgstr "Nuevo proceso de formación"
+msgstr "Nueva Ruta de formación"
 
 msgid "The process could not be deleted. Please, try again."
-msgstr "El proceso de formación no ha sido eliminado. Por favor trate de nuevo"
+msgstr "La Ruta de formación no ha sido eliminada. Por favor trate de nuevo"
 
 msgid "The process has been deleted."
-msgstr "El proceso de formación ha sido eliminado"
+msgstr "La ruta de formación ha sido eliminada"
 
 msgid "The process already exists , please check."
-msgstr "El proceso de formación existe actualmente, por favor verifique"
+msgstr "La Ruta de formación existe actualmente, por favor verifique"
 
 msgid "The process could not be saved. Please, try again."
-msgstr "El proceso de formación no ha sido guardado.Por favor trate de nuevo."
+msgstr "La Ruta de formación no ha sido guardado.Por favor trate de nuevo."
 
 msgid "The process has been saved."
-msgstr "El proceso de formación ha sido guardado"
+msgstr "La Ruta de formación ha sido guardado"
 
 msgid "Invalid process"
-msgstr "Proceso de formación no válido"
+msgstr "Ruta de formación no válido"
 
 msgid "The trainer type already exists , please check."
 msgstr "El tipo de formador existe actualmente, por favor verifique"

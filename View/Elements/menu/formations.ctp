@@ -71,7 +71,7 @@
 							array(
 								"user_level"=>'1',
 								"route"=>Router::url( array('controller' => ' TraProcesses', 'action' => 'add'),true),
-								"label"=>__('New Training Process')
+								"label"=>__('Nueva Ruta de Formación')
 							)	
 						)
 				)	
