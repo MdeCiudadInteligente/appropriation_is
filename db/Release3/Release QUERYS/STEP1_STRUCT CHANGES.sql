@@ -576,4 +576,30 @@ ADD CONSTRAINT `per_trainers_ibfk_10`
   FOREIGN KEY (`per_trainer_fund_id`)
   REFERENCES `per_trainer_funds` (`id`)
   ON UPDATE CASCADE;
+  
+ALTER TABLE `communes` CHANGE `commune_name` `commune_name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `divulgations` CHANGE `divulgation_name` `divulgation_name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `divulgations` CHANGE `activity_place` `activity_place` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `divulgations` CHANGE `dir` `dir` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `meetings` CHANGE `meeting_title` `meeting_title` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `neighborhoods` CHANGE `neighborhood_name` `neighborhood_name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `people` CHANGE `name` `name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `lastname` `lastname` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `charge` `charge` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `entity` `entity` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+ALTER TABLE `per_trainer_funds` CHANGE `name` `name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `sites` CHANGE `site_name` `site_name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `site_address` `site_address` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `thematics` CHANGE `name` `name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `training` CHANGE `activity_place` `activity_place` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `tra_allies` CHANGE `name` `name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `tra_processes` CHANGE `name` `name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
 
