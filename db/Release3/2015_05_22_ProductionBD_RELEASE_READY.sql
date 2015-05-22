@@ -4,7 +4,7 @@ USE `appropriation_isp`;
 --
 -- Host: localhost    Database: appropriation_isp
 -- ------------------------------------------------------
--- Server version	5.6.17
+-- Server version	5.1.73
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -134,7 +134,7 @@ DROP TABLE IF EXISTS `communes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `communes` (
   `id_commune` int(11) NOT NULL AUTO_INCREMENT,
-  `commune_name` varchar(60) NOT NULL,
+  `commune_name` varchar(200) NOT NULL,
   `zone_id` int(11) NOT NULL,
   `creation_date` datetime NOT NULL,
   `modification_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
@@ -143,8 +143,8 @@ CREATE TABLE `communes` (
   UNIQUE KEY `commune_name` (`commune_name`),
   KEY `zone_id` (`zone_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `communes_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
-  CONSTRAINT `communes_ibfk_1` FOREIGN KEY (`zone_id`) REFERENCES `zones` (`id_zone`) ON UPDATE CASCADE
+  CONSTRAINT `communes_ibfk_1` FOREIGN KEY (`zone_id`) REFERENCES `zones` (`id_zone`) ON UPDATE CASCADE,
+  CONSTRAINT `communes_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -199,14 +199,14 @@ DROP TABLE IF EXISTS `divulgations`;
 CREATE TABLE `divulgations` (
   `id_divulgation` int(11) NOT NULL AUTO_INCREMENT,
   `divulgation_date` date NOT NULL,
-  `divulgation_name` varchar(50) NOT NULL,
+  `divulgation_name` varchar(200) NOT NULL,
   `divulgation_description` text NOT NULL,
   `participant_number` int(11) NOT NULL,
-  `activity_place` varchar(80) NOT NULL,
+  `activity_place` varchar(200) NOT NULL,
   `divulgation_adjunct` varchar(256) NOT NULL,
   `divulgation_adjunct1` varchar(256) NOT NULL,
   `divulgation_adjunct2` varchar(256) NOT NULL,
-  `dir` varchar(80) NOT NULL,
+  `dir` varchar(200) NOT NULL,
   `divulgation_type_id` int(11) NOT NULL,
   `population_type_id` int(11) NOT NULL,
   `site_id` int(11) NOT NULL,
@@ -354,7 +354,7 @@ DROP TABLE IF EXISTS `meetings`;
 CREATE TABLE `meetings` (
   `id_meeting` int(11) NOT NULL AUTO_INCREMENT,
   `meeting_date` date NOT NULL,
-  `meeting_title` varchar(50) NOT NULL,
+  `meeting_title` varchar(200) NOT NULL,
   `meeting_description` text NOT NULL,
   `meeting_commitments` text NOT NULL,
   `meeting_adjunct` varchar(256) DEFAULT NULL,
@@ -422,7 +422,7 @@ DROP TABLE IF EXISTS `neighborhoods`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `neighborhoods` (
   `id_neighborhood` int(11) NOT NULL AUTO_INCREMENT,
-  `neighborhood_name` varchar(45) NOT NULL,
+  `neighborhood_name` varchar(200) NOT NULL,
   `commune_id` int(11) NOT NULL,
   `creation_date` datetime NOT NULL,
   `modification_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
@@ -431,8 +431,8 @@ CREATE TABLE `neighborhoods` (
   UNIQUE KEY `neighborhood_name` (`neighborhood_name`),
   KEY `commune_id` (`commune_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `neighborhoods_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
-  CONSTRAINT `neighborhoods_ibfk_3` FOREIGN KEY (`commune_id`) REFERENCES `communes` (`id_commune`) ON UPDATE CASCADE
+  CONSTRAINT `neighborhoods_ibfk_3` FOREIGN KEY (`commune_id`) REFERENCES `communes` (`id_commune`) ON UPDATE CASCADE,
+  CONSTRAINT `neighborhoods_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -488,9 +488,9 @@ DROP TABLE IF EXISTS `people`;
 CREATE TABLE `people` (
   `id_person` bigint(15) NOT NULL AUTO_INCREMENT,
   `cedula` bigint(20) NOT NULL,
-  `name` varchar(90) NOT NULL,
-  `lastname` varchar(45) NOT NULL,
-  `charge` varchar(45) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `lastname` varchar(200) NOT NULL,
+  `charge` varchar(100) NOT NULL,
   `email` varchar(200) NOT NULL,
   `phone` varchar(45) NOT NULL,
   `cell` varchar(45) NOT NULL,
@@ -779,7 +779,7 @@ DROP TABLE IF EXISTS `per_trainer_funds`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `per_trainer_funds` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
+  `name` varchar(200) NOT NULL,
   `user_id` int(11) NOT NULL,
   `creation_date` datetime DEFAULT NULL,
   `modification_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1039,9 +1039,9 @@ DROP TABLE IF EXISTS `sites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sites` (
   `id_site` int(11) NOT NULL AUTO_INCREMENT,
-  `site_name` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `site_name` varchar(200) CHARACTER SET latin1 NOT NULL,
   `site_phone` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `site_address` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `site_address` varchar(200) CHARACTER SET latin1 NOT NULL,
   `site_mail` varchar(45) CHARACTER SET latin1 NOT NULL,
   `neighborhood_id` int(11) NOT NULL,
   `site_type_id` int(11) NOT NULL,
@@ -1053,9 +1053,9 @@ CREATE TABLE `sites` (
   KEY `neighborhood_id` (`neighborhood_id`,`site_type_id`),
   KEY `site_type_id` (`site_type_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `sites_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
   CONSTRAINT `sites_ibfk_1` FOREIGN KEY (`neighborhood_id`) REFERENCES `neighborhoods` (`id_neighborhood`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `sites_ibfk_4` FOREIGN KEY (`site_type_id`) REFERENCES `site_types` (`id_site_type`) ON UPDATE CASCADE
+  CONSTRAINT `sites_ibfk_4` FOREIGN KEY (`site_type_id`) REFERENCES `site_types` (`id_site_type`) ON UPDATE CASCADE,
+  CONSTRAINT `sites_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=570 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1130,7 +1130,7 @@ DROP TABLE IF EXISTS `thematics`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `thematics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(90) NOT NULL,
+  `name` varchar(200) NOT NULL,
   `state` int(11) NOT NULL,
   `prefix` varchar(45) NOT NULL,
   `description` text,
@@ -1164,7 +1164,7 @@ DROP TABLE IF EXISTS `tra_allies`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tra_allies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(90) NOT NULL,
+  `name` varchar(200) NOT NULL,
   `state` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `creation_date` datetime NOT NULL,
@@ -1246,7 +1246,7 @@ DROP TABLE IF EXISTS `tra_processes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tra_processes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(90) NOT NULL,
+  `name` varchar(200) NOT NULL,
   `prefix` varchar(45) NOT NULL,
   `state` int(11) NOT NULL,
   `creation_date` datetime NOT NULL,
@@ -1395,7 +1395,7 @@ DROP TABLE IF EXISTS `training`;
 CREATE TABLE `training` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(50) NOT NULL,
-  `activity_place` varchar(80) NOT NULL,
+  `activity_place` varchar(200) NOT NULL,
   `description` text NOT NULL,
   `type_id` int(11) NOT NULL,
   `start_date` date NOT NULL,
@@ -1519,4 +1519,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-22 10:34:46
+-- Dump completed on 2015-05-22 11:43:07
