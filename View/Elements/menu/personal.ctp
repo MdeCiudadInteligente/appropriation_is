@@ -8,7 +8,7 @@
 				array(
 					"icon-class"=>'icon-doc-1',
 					"route"=>Router::url( array('controller' => 'People', 'action' => 'index'),true),
-					"label" =>__('List Persons'),
+					"label" =>__('Lista Personas'),
 					"custom-class"=>'index-person'
 				),
 				array(
