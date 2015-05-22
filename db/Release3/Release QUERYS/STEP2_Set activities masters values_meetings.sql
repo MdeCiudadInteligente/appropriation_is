@@ -19,5 +19,5 @@ UPDATE
 SET meeting_type_id=meeting_type; 
 
 
-ALTER TABLE `appropriation_test`.`meetings` 
+ALTER TABLE `meetings` 
 DROP COLUMN `meeting_type`;

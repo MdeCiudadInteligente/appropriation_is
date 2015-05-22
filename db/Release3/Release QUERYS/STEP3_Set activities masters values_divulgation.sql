@@ -20,5 +20,5 @@ UPDATE
 `divulgations`
 SET divulgation_type_id=divulgation_type; 
 
-ALTER TABLE `appropriation_test`.`divulgations` 
+ALTER TABLE `divulgations` 
 DROP COLUMN `divulgation_type`;

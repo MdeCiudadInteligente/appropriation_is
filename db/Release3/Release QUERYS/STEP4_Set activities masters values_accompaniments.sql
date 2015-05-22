@@ -35,7 +35,7 @@ UPDATE
 SET accompaniment_type_id=accompaniment_type; 
 
 
-ALTER TABLE `appropriation_test`.`accompaniments` 
+ALTER TABLE `accompaniments` 
 DROP COLUMN `accompaniment_type`;
 
 
