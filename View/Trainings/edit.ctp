@@ -1,6 +1,6 @@
 <div class="trainings form mde-form">
 <?php echo $this->Form->create('Training'); 
-	//$site=$this->request->data['Site'];
+	$site=$this->request->data['Site'];
 	$processes=$this->request->data['TraProcess'];
 	$allies=$this->request->data['TraAlly'];
 	$populationtype=$this->request->data['PopulationType'];
@@ -17,18 +17,18 @@
 		echo $this->Form->input('current_state',array ('options' => array ('1'=>'En Curso','2'=>'Finalizada'),'empty'=>'Seleccione estado','label'=>'Estado Actual'));
 		echo $this->Form->input('description');
 	?>
-	<!--  <div class="seccion-person">
+	 <div class="seccion-person">
 			<div class="input">
 				<label>Sitio</label>
 				<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" data-limit="100">
 				<div class="results-input-site" data-input-name="data[Site][Site][]">
 				<?php 
-					//foreach ($site as $key => $site) { ?>
-						<input type="hidden" name="data[Site][Site][]" value="<?php //echo $site['id_site'] ?>" data-display="<?php //echo $site['site_name'] ?>" id="val-input-si-<?php //echo $site['id_site']?>">
-				<?php //} ?>
+					foreach ($site as $key => $site) { ?>
+						<input type="hidden" name="data[Site][Site][]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name'] ?>" id="val-input-si-<?php echo $site['id_site']?>">
+				<?php } ?>
 				</div>
 			</div>
-	   </div> -->
+	   </div> 
 	   <div class="seccion-person">
 			<div class="input">
 				<label>Proceso</label>

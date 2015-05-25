@@ -470,7 +470,7 @@ class TrainingsController extends AppController {
 						//'poblacion'=>$trainer['t1']['type_id'],
 						'training_type'=>$trainer['t2']['training_type'],
 						'formadores'=>$trainer['0']['formadores'],
-						//'sitios'=>$trainer['0']['sitios'],
+						'sitios'=>$trainer['0']['sitios'],
 						'aliados'=>$trainer['0']['aliados'],
 						'procesos'=>$trainer['0']['procesos'],
 						'estado'=>$estado,

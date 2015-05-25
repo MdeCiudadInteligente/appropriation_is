@@ -205,6 +205,19 @@ class Training extends AppModel {
 					'offset' => '',
 					'finderQuery' => '',
 			),
+			'Site' => array(
+					'className' => 'Site',
+					'joinTable' => 'sites_trainings',
+					'foreignKey' => 'training_id',
+					'associationForeignKey' => 'site_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
 	);
 
 	public $belongsTo = array(
@@ -230,7 +243,8 @@ class Training extends AppModel {
 					'exclusive' => '',
 					'finderQuery' => '',
 					'counterQuery' => ''
-			)
+			),
 	);
+	
 	
 }
