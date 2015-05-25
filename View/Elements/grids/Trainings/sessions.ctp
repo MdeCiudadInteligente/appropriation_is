@@ -23,6 +23,7 @@
 			    array("dataIndex"=>"creation_date","column"=>false),
 			    array("dataIndex"=>"observation","column"=>false),
 				array("dataIndex"=>"start_date",'header'=>'Fecha','sortable'=>true,'align'=>"left","column"=>true),
+				array("dataIndex"=>"activity_place",'header'=>'Lugar','sortable'=>true,'align'=>"left","column"=>true),
 				array("dataIndex"=>"start_time",'header'=>'Hora Inicial','sortable'=>true,'align'=>"left","column"=>true),
 				array("dataIndex"=>"end_time",'header'=>'Hora Final','sortable'=>true,'align'=>"left","column"=>true),
 				array("dataIndex"=>"trainers",'header'=>'Formadores','sortable'=>true,'align'=>"left","column"=>true),
