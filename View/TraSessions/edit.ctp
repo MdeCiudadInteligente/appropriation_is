@@ -1,8 +1,6 @@
 ﻿<div class="traSessions form mde-form">
 <?php echo $this->Form->create('TraSession'); 
-	 $site=$this->request->data['Site'];
 	 $training=$this->request->data['Training'];
-	 //$trainers=$this->request->data['trainers'];
 	 $Thematic=$this->request->data['Thematic'];
 	 $trainers=$this->request->data['trainers'];
 
@@ -49,19 +47,8 @@
 				</div>
 			</div>
 	   </div>
-	<div class="seccion-person">
-			<div class="input">
-				<label>Sitio</label>
-				<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" data-limit="100">
-					<div class="results-input-site" data-input-name="data[Site][Site][]">
-					<?php
-					foreach ($site as $key => $site) { ?>
-						<input type="hidden" name="data[Site][Site][]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name'] ?>" id="val-input-si-<?php echo $site['id_site']?>">
-					<?php } ?>
-					</div>
-			</div>
-		</div>
-		<?php	   
+       <?php	   
+		echo $this->Form->input('activity_place',array('maxLength'=>'200'));	
 		echo $this->Form->input('observation');
 		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('start_time');

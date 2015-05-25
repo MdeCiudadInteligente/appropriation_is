@@ -51,17 +51,12 @@ class TraSessionsController extends AppController {
 		$Session=$this->TraSession->find('all');
 		$count=0;
 		foreach ($Session as $key => $Session) {
-			$totalsites='';
-			foreach ($Session['Site'] as $key => $tsites) {
-				$totalsites=$tsites['site_name'].', '.$totalsites;
-			}
-			$totalsites= substr($totalsites, 0, -1);
-			
+	
 			$data['rows'][$count]=array(
 					'id'=>$Session['TraSession']['id'],
 					'training'=>$Session['Training']['code'],
-					'site'=>trim($totalsites, ','),
 					'observation'=>$Session['TraSession']['observation'],
+					'activity_place'=>$Session['TraSession']['activity_place'],
 					'start_date'=>$Session['TraSession']['start_date'],
 					'start_time'=>$Session['TraSession']['start_time'],
 					'end_time'=>$Session['TraSession']['end_time'],
