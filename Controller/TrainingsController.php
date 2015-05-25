@@ -407,8 +407,7 @@ class TrainingsController extends AppController {
 			   "SELECT 
 				    t1.*,
 				    t2.name AS training_type,
-				    (SELECT 
-				            GROUP_CONCAT(CONCAT(' ', p.name, ' ', p.lastname, ' '))
+				    (SELECT GROUP_CONCAT(CONCAT(' ', p.name, ' ', p.lastname, ' '))
 				        FROM
 				            training_per_trainers tPer,
 				            per_trainers per,
@@ -435,6 +434,15 @@ class TrainingsController extends AppController {
 				        WHERE
 				            t1.id = ta.training_id
 				                AND ta.process_id = a.id) AS procesos,
+				    (SELECT 
+				            GROUP_CONCAT(CONCAT(' ', site_name, ' '))
+				        FROM
+				            sites_trainings ta,
+				            sites a
+				        WHERE
+				            t1.id = ta.training_id
+				                AND ta.site_id = a.id_site) AS sites,
+                                
 				    (SELECT 
 				            GROUP_CONCAT(CONCAT(' ', name, ' '))
 				        FROM
@@ -470,7 +478,7 @@ class TrainingsController extends AppController {
 						//'poblacion'=>$trainer['t1']['type_id'],
 						'training_type'=>$trainer['t2']['training_type'],
 						'formadores'=>$trainer['0']['formadores'],
-						'sitios'=>$trainer['0']['sitios'],
+						'sitios'=>$trainer['0']['sites'],
 						'aliados'=>$trainer['0']['aliados'],
 						'procesos'=>$trainer['0']['procesos'],
 						'estado'=>$estado,
