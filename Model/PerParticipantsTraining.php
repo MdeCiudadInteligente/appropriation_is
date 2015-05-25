@@ -100,19 +100,6 @@ class PerParticipantsTraining extends AppModel {
 	
 	
 	public $hasAndBelongsToMany = array(
-			'Site' => array(
-					'className' => 'Site',
-					'joinTable' => 'sites_sessions',
-					'foreignKey' => 'tra_session_id',
-					'associationForeignKey' => 'site_id',
-					'unique' => 'keepExisting',
-					'conditions' => '',
-					'fields' => '',
-					'order' => '',
-					'limit' => '',
-					'offset' => '',
-					'finderQuery' => '',
-			),
 			'TraSession' => array(
 					'className' => 'TraSession',
 					'joinTable' => 'per_participants_training_session',
