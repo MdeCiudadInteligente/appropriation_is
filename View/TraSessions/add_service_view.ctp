@@ -14,7 +14,8 @@ $service=Router::url( array('controller' => 'TraSessions', 'action' => 'add_serv
 <?php echo $this->Form->create('TraSession', array('class'=>'serviceSubmit',"data-service"=>$service)); ?>
 	<fieldset>
 		<legend><?php echo __('Add Tra Session'); ?></legend>
-	<?php		
+	<?php	
+		echo $this->Form->input('activity_place',array('maxLength'=>'200','class'=>'custom-col','grid'=>'12'));	
 		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text','class'=>'custom-col','grid'=>'12'));
 		echo $this->Form->input('start_time',array('class' => 'printTime populate'));
 		echo $this->Form->input('end_time',array('class' => 'printTime'));

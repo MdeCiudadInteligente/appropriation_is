@@ -28,8 +28,7 @@
 						echo $this->Form->input('entity',array('maxLength'=>80,'label'=>'Entidad/Organización/Grupo'));
 						echo $this->Form->input('genre',array('type'=>'select','options'=> array('1'=>'Femenino','2'=>'Masculino'),'empty'=>'Seleccione Género'));
 						echo $this->Form->input('economic_level',array('type'=>'select','options'=> array('1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5'),'empty'=>'Seleccione Estrato'));
-						echo $this->Form->input('birthday',array ('id' => 'datepicker','type'=>'text'));
-						echo $this->Form->input('PerParticipant.other_population_type');
+						echo $this->Form->input('birthday',array ('id' => 'datepicker','type'=>'text','class'=>'custom-col','data-grid'=>'12'));
 						echo $this->Form->input('PerParticipant.marital_status_id',array('empty'=>'Seleccione el estado civil'));
 						echo $this->Form->input('PerParticipant.school_level_id',array('empty'=>'Seleccione el nivel de escolaridad'));
 					?>
@@ -59,7 +58,8 @@
 								 } ?>
 								</div>
 						</div>
-					</div>		
+					</div>
+					<?php echo $this->Form->input('PerParticipant.other_population_type');   ?>	
 			</fieldset>
 			<?php echo $this->Form->end(__('Submit')); ?>
 	</div>
