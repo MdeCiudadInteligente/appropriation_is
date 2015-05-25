@@ -142,7 +142,6 @@ class PerTrainersController extends AppController {
 		$perProfessions = $this->PerTrainer->PerProfession->find('list');
 		$perPeopleTypes = $this->PerTrainer->PerPeopleType->find('list');
 		$perTrainerFunds = $this->PerTrainer->PerTrainerFund->find('list');
-		$sites = $this->PerTrainer->Site->find('list');
 		$this->set(compact('perTrainerTypes', 'perProfessions', 'perPeopleTypes', 'perTrainerFunds', 'sites', 'people'));
 	}
 

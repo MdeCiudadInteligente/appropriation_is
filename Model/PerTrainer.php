@@ -174,19 +174,6 @@ class PerTrainer extends AppModel {
 	);
 	
 	public $hasAndBelongsToMany = array(
-			'Site' => array(
-					'className' => 'Site',
-					'joinTable' => 'sites_per_trainers',
-					'foreignKey' => 'per_trainer_id',
-					'associationForeignKey' => 'site_id',
-					'unique' => 'keepExisting',
-					'conditions' => '',
-					'fields' => '',
-					'order' => '',
-					'limit' => '',
-					'offset' => '',
-					'finderQuery' => '',
-			),
 			'Training' => array(
 					'className' => 'Training',
 					'joinTable' => 'training_per_trainers',

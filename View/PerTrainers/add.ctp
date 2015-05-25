@@ -7,14 +7,6 @@
 		echo $this->Form->input('per_profession_id',array('empty'=>'Seleccione la profesión'));
 		echo $this->Form->input('star_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Inicio'));	
 		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text','label'=>'Fecha Final'));	?>
-		<div class="seccion-person">	
-			<div class="input">
-				<label>Sitio</label>
-				<input type="text" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" data-limit="100">
-				<div class="results-input-site" data-input-name="data[Site][Site][]" >			
-				</div>
-			</div>
-		</div>	
 	<?php 			
 		//echo $this->Form->input('per_people_type_id',array('empty'=>'Seleccione el tipo de persona'));
 		echo $this->Form->input('per_trainer_fund_id',array('empty'=>'Seleccione el fondo'));

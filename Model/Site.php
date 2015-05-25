@@ -185,19 +185,6 @@ class Site extends AppModel {
 	);
 	
 	public $hasAndBelongsToMany = array(
-			'PerTrainer' => array(
-					'className' => 'PerTrainer',
-					'joinTable' => 'sites_per_trainers',
-					'foreignKey' => 'site_id',
-					'associationForeignKey' => 'per_trainer_id',
-					'unique' => 'keepExisting',
-					'conditions' => '',
-					'fields' => '',
-					'order' => '',
-					'limit' => '',
-					'offset' => '',
-					'finderQuery' => '',
-			),
 			'TraSession' => array(
 					'className' => 'TraSession',
 					'joinTable' => 'sites_sessions',
@@ -211,7 +198,7 @@ class Site extends AppModel {
 					'offset' => '',
 					'finderQuery' => '',
 			)
-			/*'Training' => array(
+			'Training' => array(
 					'className' => 'Training',
 					'joinTable' => 'sites_training',
 					'foreignKey' => 'site_id',
@@ -223,7 +210,7 @@ class Site extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
-			)*/
+			)
 	);
 
 }
