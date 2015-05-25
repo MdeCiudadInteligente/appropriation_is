@@ -582,13 +582,7 @@ class TrainingsController extends AppController {
 				    FROM per_participants_training_session
 				    WHERE t1.id=per_participants_training_session.session_id
 
-				) as participants,
-				(
-					SELECT GROUP_CONCAT(sites.site_name)
-				    FROM sites_sessions,sites
-				    WHERE sites_sessions.tra_session_id=t1.id
-				    AND   sites_sessions.site_id=sites.id_site
-				) as site
+				) as participants
 				FROM  tra_session  t1, training t2 , users
 				WHERE t1.training_id=t2.id
 				AND   users.id_user=t1.user_id
@@ -600,7 +594,6 @@ class TrainingsController extends AppController {
 				$data['rows'][$count]=array(
 						'id'=>$value['t1']['id'],
 						'training_id'=>$value['t1']['training_id'],
-						'site'=>$value['0']['site'],
 						'start_date'=>$value['t1']['start_date'],
 						'start_time'=>$value['t1']['start_time'],
 						'end_time'=>$value['t1']['start_time'],
