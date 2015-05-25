@@ -597,6 +597,7 @@ class TrainingsController extends AppController {
 						'start_date'=>$value['t1']['start_date'],
 						'start_time'=>$value['t1']['start_time'],
 						'end_time'=>$value['t1']['start_time'],
+						'activity_place'=>$value['t1']['activity_place'],
 						'observation'=>$value['t1']['observation'],
 						'thematics'=>$value['0']['thematics'],
 						'trainers'=>$value['0']['trainers'],
@@ -922,17 +923,14 @@ class TrainingsController extends AppController {
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$queryString=$_GET['q'];
 		$condition=array('OR' => array(
-				array('Training.code LIKE' => '%'.$queryString.'%'),
-				array('Training.activity_place LIKE' => '%'.$queryString.'%')
+				array('Training.code LIKE' => '%'.$queryString.'%')
 		));
 	
-		$training=$this->Training->find('list',array('fields'=>array('Training.id','Training.code','Training.activity_place'),'order' => array('Training.id' => 'ASC'),'conditions' => $condition));
-		foreach ($training as $activity_place => $value) {
+		$training=$this->Training->find('list',array('fields'=>array('Training.id','Training.code'),'order' => array('Training.id' => 'ASC'),'conditions' => $condition));
+		foreach ($training as $id => $value) {
 			$json_data = array();
-			$json_data['activity_place']=$activity_place;
-			$array_keys=array_keys($value);
-			$json_data['id']=$array_keys[0];			
-			$json_data['code']=$value[$array_keys[0]];
+			$json_data['id']=$id;			
+			$json_data['code']=$value;
 			$data[]=$json_data;
 		}
 		$this->set(compact('data')); // Pass $data to the view

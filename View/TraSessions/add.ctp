@@ -31,16 +31,10 @@
 				</div>
 			</div>
 		</div>	
-		<div class="seccion-person">	
-				<div class="input">
-					<label>Sitio</label>
-					<input type="text"  class="Site-autocomplete" data-required="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio">
-					<div class="results-input-site" data-input-name="data[Site][Site][]">			
-					</div>
-				</div>
-		    </div>		
+
 
 	<?php		
+		echo $this->Form->input('activity_place',array('maxLength'=>'200'));	
 		echo $this->Form->input('observation');
 		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text'));
 		echo $this->Form->input('start_time');
