@@ -1,38 +1,20 @@
 <div class="perTrainers form mde-form">
 <?php echo $this->Form->create('PerTrainer'); 
-	$site=$this->request->data['Site'];
+	//$site=$this->request->data['Site'];
 	
 ?>
 	<fieldset>
-		<legend><?php echo __('Edit Per Trainer'); ?></legend>
+		<legend><?php echo __('Editar Formador'); ?></legend>
 	<?php
 		echo $this->Form->input('id',array('type'=>'hidden'));
 		echo $this->Form->input('per_trainer_type_id');
 		echo $this->Form->input('per_profession_id');
 		echo $this->Form->input('star_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Inicio'));
 		echo $this->Form->input('end_date',array ('class' => 'datepickerMDE','type'=>'text','label'=>'Fecha Final'));	?>
-	
-	<div class="seccion-person">
-		<div class="input">
-			<label>Sitio</label>
-			<input type="text" data-required="true" data-load="true" data-valcontainer=".results-input-site" data-emptymsg="Por favor ingresa un sitio" class="Site-autocomplete" data-limit="100">
-			<div class="results-input-site" data-input-name="data[Site][Site][]">
-			<?php 
-				foreach ($site as $key => $site) { ?>
-					<input type="hidden" name="data[Site][Site][]" value="<?php echo $site['id_site'] ?>" data-display="<?php echo $site['site_name'] ?>" id="val-input-<?php echo $site['id_site']?>">
-			<?php } ?>
-			</div>
-		</div>
-	</div>
-	
 	<?php 			
 
 		echo $this->Form->input('per_trainer_fund_id');
 		?>
-		
-		<div class="input"  style="text-align:right">
-				<?php echo $this->Html->link('+ Nueva persona', array('controller' => 'People', 'action' => 'add'),array('target'=>'_blank')); ?>
-		</div>
 		<div class="seccion-person">	
 			<div class="input">
 				<label>Persona</label>
