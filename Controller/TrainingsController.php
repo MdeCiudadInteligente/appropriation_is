@@ -466,7 +466,6 @@ class TrainingsController extends AppController {
 				$data['rows'][$count]=array(
 						'id'=>$trainer['t1']['id'],
 						'code'=>$trainer['t1']['code'],
-						'activity_place'=>$trainer['t1']['activity_place'],
 						'description'=>$trainer['t1']['description'],
 						//'poblacion'=>$trainer['t1']['type_id'],
 						'training_type'=>$trainer['t2']['training_type'],

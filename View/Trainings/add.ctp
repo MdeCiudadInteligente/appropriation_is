@@ -13,7 +13,6 @@
 	<fieldset>
 		<legend><?php echo __('Add Training'); ?></legend>
 	<?php
-		echo $this->Form->input('activity_place');
 		echo $this->Form->input('description');			
 		echo $this->Form->input('type_id',array('empty'=>'Seleccione el tipo de formación'));
 		echo $this->Form->input('start_date',array ('id' => 'datepicker','type'=>'text','label'=>'Fecha Inicio'));
