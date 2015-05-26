@@ -603,3 +603,19 @@ ALTER TABLE `tra_allies` CHANGE `name` `name` VARCHAR(200) CHARACTER SET latin1 
 
 ALTER TABLE `tra_processes` CHANGE `name` `name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
 
+
+DROP TABLE `sites_sessions`;
+
+CREATE TABLE IF NOT EXISTS `sites_trainings` (
+  `site_id` int(11) NOT NULL,
+  `training_id` int(11) NOT NULL,
+  KEY `site_id` (`site_id`),
+  KEY `training_id` (`training_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `sites_trainings`
+  ADD CONSTRAINT `sites_trainings_ibfk_2` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `sites_trainings_ibfk_1` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id_site`) ON UPDATE CASCADE;
+
+ALTER TABLE `tra_session` ADD `activity_place` VARCHAR(200) NOT NULL AFTER `end_time`;
+ALTER TABLE `training` DROP `activity_place`;
