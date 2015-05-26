@@ -1,6 +1,7 @@
 ﻿var app=null;
 var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 var waypoints=null;
+var fileDataHolder=null;
 
 $(document).ready(function(){
 	app=new App;
@@ -72,6 +73,7 @@ App.prototype.bind=function(){
     app.bindAutocompleteParticipantsRegister('.person-autocomplete-trainers');
     app.ajaxSubmitService('.serviceSubmit');
     app.send_service('.grid-send-service');
+    app.uploaderBind();
    
     app.removeRequired();
     //app.setMobileNav();
@@ -1374,4 +1376,81 @@ App.prototype.registerValidations=function(){
   $(document).on('keyup','.validate-numeric',function(){
       this.value = this.value.replace(/[^0-9\.]/g,'');
   });
+}
+
+
+App.prototype.uploaderBind=function(){
+
+    $(document).on('drop dragover',function (e) {
+        e.preventDefault();
+    });
+
+    $(document).on('dragover','.drag-area' ,function (e) {
+            e.preventDefault();
+            e = e.originalEvent;
+            e.dataTransfer.dropEffect = 'copy';
+    });
+
+    $(document).on('drop','.drag-area' ,function (e) {
+        e.preventDefault();
+        e = e.originalEvent;
+        var target = e.dataTransfer || e.target,
+            files = target && target.files && target.files,
+            options = {
+                maxWidth: 400,
+                canvas: true
+        };
+        if (!files) {
+            return;
+        }
+        
+        $.each(files,function(index,value){
+          loadImage.parseMetaData(value, function (data) {
+              if (data.exif) {
+                  options.orientation = data.exif.get('Orientation');
+              }
+          });
+
+            if (!loadImage(
+                    file,
+                    function(){
+                        var content;
+                        if (!(img.src || img instanceof HTMLCanvasElement)) {
+                            content = $('<span>Loading image file failed</span>');
+                        } else {
+                            content = $('<a target="_blank">').append(img)
+                                .attr('download', currentFile.name)
+                                .attr('href', img.src || img.toDataURL());
+                        }
+                        result.children().replaceWith(content);
+                        if (img.getContext) {
+                            actionsNode.show();
+                        }
+                    },
+                    options
+                )) {
+                result.children().replaceWith(
+                    $('<span>Your browser does not support the URL or FileReader API.</span>')
+                );
+            }
+
+
+
+        });
+
+    });
+
+
+
+}
+
+App.prototype.getFileData=function (exif) {
+            var thumbnail = exif.get('Thumbnail'),
+                tags = exif.getAll(),
+                table = exifNode.find('table').empty(),
+                row = $('<tr></tr>'),
+                cell = $('<td></td>'),
+                prop;
+
+            console.log(thumbnail);    
 }

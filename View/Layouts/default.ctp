@@ -18,6 +18,7 @@ $cakeDescription = __d('cake_dev', '');
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/js/ext/resources/css/ext-all.css" />
 	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/css/owl.carousel.css" />
 	<title>
 		<?php $title_for_layout='S.I. MDE Ciudad Inteligente';?>
 		<?php echo $cakeDescription ?>
@@ -124,5 +125,6 @@ $cakeDescription = __d('cake_dev', '');
 		<?php echo $this->Html->script('bootstrap.min');?>
 		<?php echo $this->Html->script('jquery.waypoints.min');?>
 		<?php echo $this->Html->script('load-image.all.min');?>
+		<?php echo $this->Html->script('owl.carousel.min');?>
 <footer>	
 </html>

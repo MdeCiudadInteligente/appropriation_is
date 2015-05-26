@@ -69,6 +69,7 @@ $(function () {
             }
             exifNode.show();
         },
+        
         dropChangeHandler = function (e) {
             e.preventDefault();
             e = e.originalEvent;
@@ -96,6 +97,7 @@ $(function () {
     if (window.createObjectURL || window.URL || window.webkitURL || window.FileReader) {
         result.children().hide();
     }
+    
     $(document)
         .on('dragover', function (e) {
             e.preventDefault();
@@ -103,7 +105,9 @@ $(function () {
             e.dataTransfer.dropEffect = 'copy';
         })
         .on('drop', dropChangeHandler);
+    
     $('#file-input').on('change', dropChangeHandler);
+
     $('#edit').on('click', function (event) {
         event.preventDefault();
         var imgNode = result.find('img, canvas'),
@@ -120,6 +124,7 @@ $(function () {
             event.preventDefault();
         });
     });
+    
     $('#crop').on('click', function (event) {
         event.preventDefault();
         var img = result.find('img, canvas')[0];
