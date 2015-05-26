@@ -14,9 +14,10 @@ $service=Router::url( array('controller' => 'Uploads', 'action' => 'add_service'
 	<?php echo $this->Form->create('Uploads', array('class'=>'serviceSubmit',"data-service"=>$service)); ?>	
 	<fieldset>
 		<legend><?php echo __('Archivos adjuntos'); ?></legend>
-
-
-
+		<header>Arrastra o selecciona los archivos que quieres adjuntar</header>
+		<div class="drag-area">
+			
+		</div>	
 
 	</fieldset>	
 	<?php echo $this->Form->end(__('Submit')); ?>

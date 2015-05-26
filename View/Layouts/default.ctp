@@ -123,5 +123,6 @@ $cakeDescription = __d('cake_dev', '');
 		<?php echo $this->Html->script('main');?>
 		<?php echo $this->Html->script('bootstrap.min');?>
 		<?php echo $this->Html->script('jquery.waypoints.min');?>
+		<?php echo $this->Html->script('load-image.all.min');?>
 <footer>	
 </html>
