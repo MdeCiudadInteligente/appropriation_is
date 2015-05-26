@@ -781,10 +781,10 @@ class TrainingsController extends AppController {
 			$data=$this->request->data;
 			unset($data['Training']['code']);
 			if ($this->Training->save($data)) {
-				$this->Session->setFlash(__('La formación ha sido correctamente almacenada.'));
+				$this->Session->setFlash(__('La formacion ha sido correctamente almacenada.'));
 				 return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('La formación no pudo ser almacenada, por favor intente de nuevo o comuniquese con el administrador del sistema.'));
+				$this->Session->setFlash(__('La formacion no pudo ser almacenada, por favor intente de nuevo o comuniquese con el administrador del sistema.'));
 			}
 		} else {
 			$options = array('conditions' => array('Training.' . $this->Training->primaryKey => $id));
@@ -919,9 +919,9 @@ class TrainingsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Training->delete()) {
-			$this->Session->setFlash(__('La formacíon ha sido correctamente eliminada.'));
+			$this->Session->setFlash(__('La formacion ha sido correctamente eliminada.'));
 		} else {
-			$this->Session->setFlash(__('La formación no pudo ser eliminada. Por favor intente de nuevo mas tarde.'));
+			$this->Session->setFlash(__('La formacion no pudo ser eliminada. Por favor intente de nuevo mas tarde.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

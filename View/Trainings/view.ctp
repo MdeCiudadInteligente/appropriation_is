@@ -9,11 +9,6 @@ $trainings=$this->request->data['trainings'];
 			<?php echo h($training['Training']['code']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Activity Place'); ?></dt>
-		<dd>
-			<?php echo h($training['Training']['activity_place']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Description'); ?></dt>
 		<dd>
 			<?php echo h($training['Training']['description']); ?>
@@ -37,11 +32,6 @@ $trainings=$this->request->data['trainings'];
 		<dt><?php echo __('Aliados'); ?></dt>
 		<dd>
 			<?php echo h($trainings['0']['0']['aliados']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Estado'); ?></dt>
-		<dd>
-			<?php echo h($training['Training']['current_state']); ?>
 			&nbsp;
 		</dd>
 	</dl>
