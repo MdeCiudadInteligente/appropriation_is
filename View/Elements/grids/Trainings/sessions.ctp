@@ -9,7 +9,7 @@
 	$adminUrl=Router::url( array('controller' => 'TraSessions', 'action' => 'service_delete','ext'=>'json'),true);
 	$assistUrl=Router::url( array('controller' => 'TraSessions', 'action' => 'assist'),true);
 	
-	$UploadUrl=Router::url( array('controller' => 'Uploads', 'action' => 'add_service_view','?'=>		array('scope'=>array('session_id'))
+	$UploadUrl=Router::url( array('controller' => 'Upload', 'action' => 'add_service_view','?'=>		array('scope'=>array('session_id'))
 		),true
 	);
 

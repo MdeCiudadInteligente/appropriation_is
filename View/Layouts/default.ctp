@@ -49,6 +49,9 @@ $cakeDescription = __d('cake_dev', '');
 	<?php $body_class=( Configure::read('debug')>0)?'debugging':'production';?>
 </head>
 <body>
+	<div class="loading">
+		<i class="icon-spin4 spinner"></i>
+	</div>
 	<?php echo $this->Session->flash(); ?>
 	<!-- <i class="icon-align-justify open-menu"></i> -->
 	<?php  

@@ -2,6 +2,8 @@
 var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 var waypoints=null;
 var fileDataHolder=null;
+var uploadObject=new Array();
+var uploadFormData=new FormData();
 
 $(document).ready(function(){
 	app=new App;
@@ -1397,60 +1399,77 @@ App.prototype.uploaderBind=function(){
         var target = e.dataTransfer || e.target,
             files = target && target.files && target.files,
             options = {
-                maxWidth: 400,
+                maxWidth: 1200,
                 canvas: true
         };
         if (!files) {
             return;
         }
-        
-        $.each(files,function(index,value){
-          loadImage.parseMetaData(value, function (data) {
-              if (data.exif) {
-                  options.orientation = data.exif.get('Orientation');
-              }
-          });
 
+        var chargeImages=$.each(files,function(index,value){
+            var  randomInt=Math.floor((Math.random() * 10000) + 1);
+            var thumbnail=null;
+            loadImage.parseMetaData(value, function (data) {
+                thumbnail=data.exif;
+                if (data.exif) {
+                    options.orientation = data.exif.get('Orientation');
+                }
+            });
             if (!loadImage(
-                    file,
-                    function(){
+                    value,
+                    function(img){
                         var content;
                         if (!(img.src || img instanceof HTMLCanvasElement)) {
-                            content = $('<span>Loading image file failed</span>');
+
                         } else {
-                            content = $('<a target="_blank">').append(img)
-                                .attr('download', currentFile.name)
-                                .attr('href', img.src || img.toDataURL());
-                        }
-                        result.children().replaceWith(content);
-                        if (img.getContext) {
-                            actionsNode.show();
+                              var itemId='item'+randomInt;
+                              var uploadPile=
+                                {
+                                  id:itemId, 
+                                  file:value,
+                                  img:img,
+                                  thumbnail:thumbnail,
+                                  dataURI:img.toDataURL()
+                                };
+                              uploadObject.push(uploadPile);
                         }
                     },
                     options
-                )) {
-                result.children().replaceWith(
-                    $('<span>Your browser does not support the URL or FileReader API.</span>')
-                );
-            }
-
-
-
+                )) 
+                 {
+                    console.log('Your browser does not support the URL or FileReader API.</span>');
+                 }
         });
-
+        $('body').addClass('loading');
+        $.when(chargeImages).then(function(){
+          console.log('LOADED DEFERRED',uploadObject);
+          setTimeout(function(){
+            $.when(app.upload_showControllerThumbnails(uploadObject,'.preview-controller')).then(function(){
+                $('body').removeClass('loading');
+            });        
+          },500);
+        });
     });
-
-
-
 }
 
-App.prototype.getFileData=function (exif) {
-            var thumbnail = exif.get('Thumbnail'),
-                tags = exif.getAll(),
-                table = exifNode.find('table').empty(),
-                row = $('<tr></tr>'),
-                cell = $('<td></td>'),
-                prop;
+App.prototype.prepareUploadData=function(uploadObject,uploadFormData){
+  $.each(uploadObject,function(index,value){
+      console.log(value.file);
+      uploadFormData.append('files[]',value.file);
+  });
+  return uploadFormData;
+};
 
-            console.log(thumbnail);    
+App.prototype.upload_showControllerThumbnails=function(uploadObject,element){
+  $(element).html();
+  $(element).addClass('files');
+  var htmlObject='<div class="files row">';
+  $.each(uploadObject,function(index,value){
+    var thumbnail=(typeof value.thumbnail != 'undefined')?value.thumbnail['Thumbnail']:value.dataURI;
+    htmlObject+='<div class="item col-md-2"><img src="'+thumbnail+'" ></div>'; 
+  });
+    htmlObject+="</div>";
+  $(element).html(htmlObject);
 }
+
+
