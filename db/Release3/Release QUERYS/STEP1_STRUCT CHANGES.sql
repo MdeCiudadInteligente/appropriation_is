@@ -619,3 +619,7 @@ ALTER TABLE `sites_trainings`
 
 ALTER TABLE `tra_session` ADD `activity_place` VARCHAR(200) NOT NULL AFTER `end_time`;
 ALTER TABLE `training` DROP `activity_place`;
+
+
+ALTER TABLE `people` 
+CHANGE COLUMN `email` `email` VARCHAR(200) NULL ;

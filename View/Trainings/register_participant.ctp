@@ -21,7 +21,7 @@
 						echo $this->Form->input('name',array('maxLength'=>50));
 						echo $this->Form->input('lastname',array('maxLength'=>50));
 						echo $this->Form->input('cedula',array('type'=>'text','class'=>'validate-numeric'));
-						echo $this->Form->input('charge',array('maxLength'=>80,'class'=>'input-validate','data-numeric'=>'true'));
+						echo $this->Form->input('charge',array('maxLength'=>80,'class'=>'input-validate','data-numeric'=>'true','label'=>'Cargo / Ocupación'));
 						echo $this->Form->input('email',array('maxLength'=>256,'type'=>'email'));
 						echo $this->Form->input('phone',array('class'=>'validate-numeric'));
 						echo $this->Form->input('cell',array('class'=>'validate-numeric'));
