@@ -2,7 +2,7 @@
 
 $file_scope=$this->request->query['scope'];
 $data=$this->request->data;
-$service=Router::url( array('controller' => 'Uploads', 'action' => 'add_service','?'=>array(
+$service=Router::url( array('controller' => 'Upload', 'action' => 'add_service','?'=>array(
 			'file_scope'=>$file_scope
 			)
 	),true
@@ -11,7 +11,7 @@ $service=Router::url( array('controller' => 'Uploads', 'action' => 'add_service'
 ?>
 
 <div class="Uploads  form mde-form">
-	<?php echo $this->Form->create('Uploads', array('class'=>'serviceSubmit',"data-service"=>$service)); ?>	
+	<?php echo $this->Form->create('Uploads', array('class'=>'serviceSubmit aj-upload-service',"data-service"=>$service)); ?>	
 	<fieldset>
 		<legend><?php echo __('Archivos adjuntos'); ?></legend>
 		<section class="upload-controller">

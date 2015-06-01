@@ -1226,20 +1226,46 @@ App.prototype.ajaxSubmitService=function(formClass,notice,callback){
         var serviceUrl=$(this).data('service');
         e.preventDefault();
         var data=$(this).serialize();
-        $.ajax({
-            url:serviceUrl,
-            type:'POST',
-            data:data,
-            dataType:'JSON',
-            success:function(data){
-                if(typeof callback != 'undefined'){
-                    callback(data);
-                }else{
-                    if(data.actions)
-                        app.serviceResponseCallback(data.actions);
-                }
-            }
-        });
+        if(!$(this).hasClass('aj-upload-service')){
+          console.log('service ajax');
+          $.ajax({
+              url:serviceUrl,
+              type:'POST',
+              data:data,
+              dataType:'JSON',
+              success:function(data){
+                  if(typeof callback != 'undefined'){
+                      callback(data);
+                  }else{
+                      if(data.actions)
+                          app.serviceResponseCallback(data.actions);
+                  }
+              }
+          });
+        }else{
+           console.log('upload ajax');
+           app.prepareUploadData(uploadObject,uploadFormData);
+           app.loading();
+           $.ajax({
+              url: serviceUrl,
+              data: uploadFormData,
+              processData: false,
+              contentType:false,
+              dataType:'json',
+              type: 'POST',
+              success:function(data){
+                console.log('do');
+                  if(typeof callback != 'undefined'){
+                      callback(data);
+                  }else{
+                      if(data.actions)
+                          app.serviceResponseCallback(data.actions);
+                      console.log('do intern');
+                      app.removeLoading();  
+                  }
+              }      
+            });
+        }
     });
 }
 
@@ -1440,12 +1466,11 @@ App.prototype.uploaderBind=function(){
                     console.log('Your browser does not support the URL or FileReader API.</span>');
                  }
         });
-        $('body').addClass('loading');
+        app.loading();
         $.when(chargeImages).then(function(){
-          console.log('LOADED DEFERRED',uploadObject);
           setTimeout(function(){
             $.when(app.upload_showControllerThumbnails(uploadObject,'.preview-controller')).then(function(){
-                $('body').removeClass('loading');
+                app.removeLoading();
             });        
           },500);
         });
@@ -1472,4 +1497,12 @@ App.prototype.upload_showControllerThumbnails=function(uploadObject,element){
   $(element).html(htmlObject);
 }
 
+
+App.prototype.loading=function(){
+  $('body').addClass('loading');
+}
+
+App.prototype.removeLoading=function(){
+  $('body').removeClass('loading');
+}
 

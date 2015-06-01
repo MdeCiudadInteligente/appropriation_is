@@ -24,11 +24,10 @@ App::uses('AppController', 'Controller');
 
 class UploadHandlerController extends AppController {
 
-
-
     public $options;
     // PHP File Upload error message codes:
     // http://php.net/manual/en/features.file-upload.errors.php
+    private $var_response;
     public $error_messages = array(
         1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
         2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
@@ -160,7 +159,8 @@ class UploadHandlerController extends AppController {
                     'max_height' => 80
                 )
             ),
-            'print_response' => true
+            'print_response' => true,
+            'var_response' => false
         );
         if ($options) {
             $this->options = $options + $this->options;
@@ -1077,8 +1077,12 @@ class UploadHandlerController extends AppController {
         }
         return readfile($file_path);
     }
-    public function body($str) {
-        echo $str;
+    public function body($str,$varResponse=false) {
+        if(!$varResponse){
+            echo $str;
+        }else{
+            $this->var_response=$str;
+        }
     }
     
     public function header($str) {
@@ -1206,7 +1210,8 @@ class UploadHandlerController extends AppController {
                     ));
                 }
             }
-            $this->body($json);
+
+            $this->body($json,$this->options['var_response']);
         }
         return $content;
     }
@@ -1240,13 +1245,20 @@ class UploadHandlerController extends AppController {
         }
         return $this->generate_response($response, $print_response);
     }
+
+
     public function post($print_response = true) {
+
         if ($this->get_query_param('_method') === 'DELETE') {
             return $this->delete($print_response);
         }
+
         $upload = $this->get_upload_data($this->options['param_name']);
+
         // Parse the Content-Disposition header, if available:
+        
         $content_disposition_header = $this->get_server_var('HTTP_CONTENT_DISPOSITION');
+        
         $file_name = $content_disposition_header ?
             rawurldecode(preg_replace(
                 '/(^[^"]+")|("$)/',
@@ -1295,6 +1307,8 @@ class UploadHandlerController extends AppController {
         $response = array($this->options['param_name'] => $files);
         return $this->generate_response($response, $print_response);
     }
+
+
     public function delete($print_response = true) {
         $file_names = $this->get_file_names_params();
         if (empty($file_names)) {
@@ -1317,6 +1331,11 @@ class UploadHandlerController extends AppController {
             $response[$file_name] = $success;
         }
         return $this->generate_response($response, $print_response);
+    }
+
+    public function get_var_response($decode=false){
+        $response=($decode)?json_decode($this->var_response):$this->var_response;
+        return $response;
     }
 	
 }
