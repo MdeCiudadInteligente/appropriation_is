@@ -57,7 +57,7 @@ function goBack()
 				</div>
 		</div>	
 		<div class="input"  style="text-align:right">
-				<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'Pertrainers', 'action' => 'add'),array('target'=>'_blank')); ?>
+				<?php echo $this->Html->link('+ Nuevo formador', array('controller' => 'PerTrainers', 'action' => 'add'),array('target'=>'_blank')); ?>
 		</div>
 		 <div class="seccion-person">
 			<div class="input">

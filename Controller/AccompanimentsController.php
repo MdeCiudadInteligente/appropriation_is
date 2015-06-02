@@ -96,9 +96,9 @@ class AccompanimentsController extends AppController {
 		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
 	
-	public function download()
+	/*public function download()
 	{
-		$this->Accompaniment->recursive = 0;
+		//$this->Accompaniment->recursive = 0;
 		$this->set('accompaniments', $this->Accompaniment->find('all'));
 		$this->set('sites',$this->Site->find('all'));
 		$this->set('agents',$this->Agent->find('all'));
@@ -111,6 +111,46 @@ class AccompanimentsController extends AppController {
 		$this->layout = null;
 		//$this->autoLayout = false;
 		//Configure::write('debug', '0');
+	}*/
+	
+	public function download()
+	{
+		$db = $this->Accompaniment->getDataSource();
+		$accompaniments=$db->fetchAll("SELECT 
+    	t1.accompaniment_date AS Fecha,
+    	'Acompañamiento' AS 'Tipo_actividad',
+    	t5.name AS 'Tipo_acompanamiento',
+    	t1.accompaniment_title AS 'Titulo',
+	    t1.accompaniment_description AS 'Descripcion',
+	    t1.participant_number AS 'Numero_Participantes',
+	    t2.site_name AS Sitio,
+	    t3.neighborhood_name AS Barrio,
+	    t4.commune_name AS Comuna,
+	    t1.accompaniment_adjunct AS 'Adjunto1',
+	    t1.accompaniment_adjunct1 AS 'Adjunto2',
+	    t1.accompaniment_adjunct2 AS 'Adjunto3'
+	    FROM
+	    accompaniments t1,
+	    sites t2,
+	    neighborhoods t3,
+	    communes t4,
+	    acc_types t5
+	    
+	    WHERE
+	    t1.site_id = t2.id_site
+		AND t2.neighborhood_id = t3.id_neighborhood
+		AND t3.commune_id = t4.id_commune
+	    AND t1.accompaniment_type_id = t5.id
+	    AND t1.accompaniment_date BETWEEN '2015-04-1' AND '2015-04-30'
+	    
+	    ORDER BY 
+		t1.accompaniment_date,t5.name");
+		$this->request->data["result"]=$accompaniments;
+		
+		$this->layout = null;
+		//$this->autoLayout = false;
+		//Configure::write('debug', '0');
+	
 	}
 
 /**
