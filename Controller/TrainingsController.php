@@ -122,7 +122,7 @@ class TrainingsController extends AppController {
 					);
 					$notice=array(
 						'type'=>'alert',
-						'message'=>__('Esta persona ya se encuentra registrada en esta formación.')
+						'message'=>__('Esta persona ya se encuentra registrada en esta formacion.')
 					);
 				} else if (isset($trainer['0']['id_participant'])){
 					//is participant but no registered to this training
@@ -136,7 +136,7 @@ class TrainingsController extends AppController {
 					);
 					$notice=array(
 						'type'=>'confirm',
-						'message'=>__('Esta persona ya ha participado en anteriores formaciones. ¿Desea actualizar los datos y registralo a esta formación?.')
+						'message'=>__('Esta persona ya ha participado en anteriores formaciones. ¿Desea actualizar los datos y registralo a esta formacion?.')
 					);
 				} else{
 					//is not participant but is a person
@@ -149,7 +149,7 @@ class TrainingsController extends AppController {
 					);
 					$notice=array(
 						'type'=>'confirm',
-						'message'=>__('Esta persona nunca ha participado en una formación anterior. ¿Desea registrar sus datos y asociarlo a esta formación?.')
+						'message'=>__('Esta persona nunca ha participado en una formacion anterior. ¿Desea registrar sus datos y asociarlo a esta formacion?.')
 					);			
 				}
 				$notice['message']=mb_convert_encoding($notice['message'], "UTF-8", "Windows-1252");
@@ -282,10 +282,10 @@ class TrainingsController extends AppController {
 		);
 		$actions=array();
 		if(!$error){
-			$message=__("El participante fue correctamente registrado a esta formación.");
+			$message=__("El participante fue correctamente registrado a esta formacion.");
 			$actions=$success_actions;
 		}else{
-			$message=__("No ha sido posible registrar el participante a esta formación.Por favor intente de nuevo mas tarde.");
+			$message=__("No ha sido posible registrar el participante a esta formacion.Por favor intente de nuevo mas tarde.");
 		}
 
 		$notify=array(
@@ -753,7 +753,7 @@ class TrainingsController extends AppController {
 						$this->Session->setFlash($msg);			
 				}
 			}else{
-					$this->Session->setFlash(__('La formación no pudo ser almacenada, por favor intente de nuevo o comuniquese con el administrador del sistema.'));
+					$this->Session->setFlash(__('La formacion no pudo ser almacenada, por favor intente de nuevo o comuniquese con el administrador del sistema.'));
 			}		
 		}
 		$types = $this->Training->TraType->find('list');
