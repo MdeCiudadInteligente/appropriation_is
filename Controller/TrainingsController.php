@@ -918,9 +918,11 @@ class TrainingsController extends AppController {
 			throw new NotFoundException(__('Invalid training'));
 		}
 		$options = array('conditions' => array('TraSession.training_id'=> $id));
+		$options_participants = array('conditions' => array('PerParticipantsTraining.training_id'=> $id));
 		$sessions = $this->Training->TraSession->find('list',$options);
+		$participants = $this->Training->PerParticipantsTraining->find('list',$options_participants);
 		$this->request->onlyAllow('post', 'delete');
-		if(empty($sessions)){
+		if(empty($sessions)&&empty($participants)){
 			if ($this->Training->delete()) {
 				$this->Session->setFlash(__('La formacion ha sido correctamente eliminada.'));
 			} else {
@@ -929,7 +931,6 @@ class TrainingsController extends AppController {
 		}else{
 				$this->Session->setFlash(__('La formacion no puede ser eliminada debido a que existen sesiones o participantes asociados. Por favor elimine todas las sesiones y / o participantes.'));
 		}
-		
 		return $this->redirect(array('action' => 'index'));
 	}
 	
