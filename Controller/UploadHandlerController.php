@@ -462,7 +462,7 @@ class UploadHandlerController extends AppController {
         // Add missing file extension for known image types:
         if (strpos($name, '.') === false &&
                 preg_match('/^image\/(gif|jpe?g|png)/', $type, $matches)) {
-            $name .= '.'.$matches[1];
+            $name .='.'.$matches[1];
         }
         if ($this->options['correct_image_extensions'] &&
                 function_exists('exif_imagetype')) {
@@ -504,8 +504,8 @@ class UploadHandlerController extends AppController {
     }
     public function get_file_name($file_path, $name, $size, $type, $error,
             $index, $content_range) {
-        $name = $this->trim_file_name($file_path, $name, $size, $type, $error,
-            $index, $content_range);
+        $name =$this->append_random_chars($this->trim_file_name($file_path, $name, $size, $type, $error,
+            $index, $content_range));
         return $this->get_unique_filename(
             $file_path,
             $this->fix_file_extension($file_path, $name, $size, $type, $error,
@@ -1062,6 +1062,14 @@ class UploadHandlerController extends AppController {
         }
         return $file;
     }
+
+    public function append_random_chars($name){
+        $unique_key = substr(md5(rand(0, 1000000)), 0, 7);
+        $trim_name=explode('.', $name);
+        $name_part=$trim_name[0].'_'.$unique_key;
+        return $name_part.$name_part[1];
+    }
+
     public function readfile($file_path) {
         $file_size = $this->get_file_size($file_path);
         $chunk_size = $this->options['readfile_chunk_size'];

@@ -60,7 +60,7 @@
 					</i>
 					<i class="icon-users  add_assist ajax-view" data-service="'.$assistUrl.'/{id}" data-id="{id}" data-aside="#right-content-aside" data-trainingId="{training_id}">
 					</i>
-					<i class="icon-upload  add_file ajax-view" data-service="'.$UploadUrl.'" data-session_id="{id}" data-aside="#right-content-aside" data-trainingId="{training_id}">
+					<i class="icon-upload  add_file ajax-view" data-service="'.$UploadUrl.'" data-session_id="{id}" data-aside="#right-content-aside" data-training_id="{training_id}">
 					</i>
 				</div>'
 			))

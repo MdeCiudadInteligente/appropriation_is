@@ -2,8 +2,13 @@
 
 $file_scope=$this->request->query['scope'];
 $data=$this->request->data;
+
+foreach ($file_scope as $key => $value) {
+	$dataScope[$value]=$data[$value];
+}
+
 $service=Router::url( array('controller' => 'Upload', 'action' => 'add_service','?'=>array(
-			'file_scope'=>$file_scope
+			'file_scope'=>$dataScope
 			)
 	),true
 );
