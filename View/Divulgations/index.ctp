@@ -54,4 +54,6 @@
 	</div>	
 
 <!-- End meetings container -->
-</div>	
+</div>
+<?php echo $this->Form->create('Exportar'); ?>
+<?php echo $this->Form->end(__('Exportar a excel')); ?>	
