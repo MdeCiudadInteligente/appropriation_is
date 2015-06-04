@@ -604,7 +604,7 @@ class TrainingsController extends AppController {
 						'training_id'=>$value['t1']['training_id'],
 						'start_date'=>$value['t1']['start_date'],
 						'start_time'=>$value['t1']['start_time'],
-						'end_time'=>$value['t1']['start_time'],
+						'end_time'=>$value['t1']['end_time'],
 						'activity_place'=>$value['t1']['activity_place'],
 						'observation'=>$value['t1']['observation'],
 						'thematics'=>$value['0']['thematics'],
