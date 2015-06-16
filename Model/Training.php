@@ -217,6 +217,19 @@ class Training extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
+			),
+			'PerParticipant' => array(
+					'className' => 'PerParticipant',
+					'joinTable' => 'per_participants_training',
+					'foreignKey' => 'training_id',
+					'associationForeignKey' => 'participant_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
 			)
 	);
 
@@ -243,7 +256,7 @@ class Training extends AppModel {
 					'exclusive' => '',
 					'finderQuery' => '',
 					'counterQuery' => ''
-			),
+			)
 	);
 	
 	

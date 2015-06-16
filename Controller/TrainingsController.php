@@ -604,7 +604,7 @@ class TrainingsController extends AppController {
 						'training_id'=>$value['t1']['training_id'],
 						'start_date'=>$value['t1']['start_date'],
 						'start_time'=>$value['t1']['start_time'],
-						'end_time'=>$value['t1']['start_time'],
+						'end_time'=>$value['t1']['end_time'],
 						'activity_place'=>$value['t1']['activity_place'],
 						'observation'=>$value['t1']['observation'],
 						'thematics'=>$value['0']['thematics'],
@@ -917,11 +917,19 @@ class TrainingsController extends AppController {
 		if (!$this->Training->exists()) {
 			throw new NotFoundException(__('Invalid training'));
 		}
+		$options = array('conditions' => array('TraSession.training_id'=> $id));
+		$options_participants = array('conditions' => array('PerParticipantsTraining.training_id'=> $id));
+		$sessions = $this->Training->TraSession->find('list',$options);
+		$participants = $this->Training->PerParticipantsTraining->find('list',$options_participants);
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->Training->delete()) {
-			$this->Session->setFlash(__('La formacion ha sido correctamente eliminada.'));
-		} else {
-			$this->Session->setFlash(__('La formacion no pudo ser eliminada. Por favor intente de nuevo mas tarde.'));
+		if(empty($sessions)&&empty($participants)){
+			if ($this->Training->delete()) {
+				$this->Session->setFlash(__('La formacion ha sido correctamente eliminada.'));
+			} else {
+				$this->Session->setFlash(__('La formacion no pudo ser eliminada. Por favor intente de nuevo mas tarde.'));
+			}
+		}else{
+				$this->Session->setFlash(__('La formacion no puede ser eliminada debido a que existen sesiones o participantes asociados. Por favor elimine todas las sesiones y / o participantes.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
