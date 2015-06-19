@@ -1,6 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
-App::import('Controller', 'UploadHandler');
+App::import('Controller', 'UploadRouteHandler');
+App::import('Controller','UploadHandler');
 
 /**
  * Uploads Controller
@@ -47,68 +48,107 @@ class UploadController extends AppController {
 			$usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('usuario',$usuario);
 			$fileSaveScope=$this->request->query['file_scope'];
+			$model=$this->request->query['model'];
 			$debug=array();
-			$debug['file_scope']=$fileSaveScope;
-			$options=array(
-	            'script_url' => $this->get_full_url().'/'.basename($this->get_server_var('SCRIPT_NAME')),
-	            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/',
-	            'upload_url' => $this->get_full_url().'/files/',
-	            'print_response' => true,
-	            'var_response'=>true
-			);
-			try {
-				//Handle upload 
-				$uploadHandler = new UploadHandlerController($options);
-				//Get response via variable -- true -- json_decode
-				$uploadResponse=$uploadHandler->get_var_response(true);
-			}catch(Exception $e) {
-				$debug['error_file']=$e;
+			$dirScopeData=array();
+			$errorControl=false;
+			$debug['error']=false;
+
+			foreach ($fileSaveScope as $key => $value) {
+				$dirScopeData['key']=$key;
+				$dirScopeData['value']=$value;
+				break;
 			}
-			//Uploaded files
-			$Files=$uploadResponse->files;
-			//recibe all file upload response and process the database actions
-			foreach ($Files as $index => $file) {
-				$file=(array)$file;
-				$savedFile=$this->registerFile($file,$fileSaveScope);
-				$fileSaveResponse[]=$savedFile;
+
+			try {
+				$uploadHandlerRoute = new UploadRouteHandlerController();
+				$createdDir=$uploadHandlerRoute->createDir($model,$dirScopeData);
+				if(!is_array($createdDir)){
+					throw new Exception("Could not create directory, please try again later");
+				}else{
+					$dir=$createdDir['dir_name'];
+					$imagePrefix=$createdDir['prefix_file_name'];
+				}
+			}catch(Exception $e) {
+				$debug['error']['error_file_dir']=$e;
+				$errorControl=true;
+			}			
+			
+			$debug['file_scope']=$fileSaveScope;
+			$debug['RouteHandlerDir']=$createdDir;
+
+			if(!$errorControl){
+
+				$options=array(
+		            'script_url' => $this->get_full_url().'/'.basename($this->get_server_var('SCRIPT_NAME')),
+		            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/'.$dir.'/',
+		            'upload_url' => $this->get_full_url().'/files/'.$dir.'/',
+		            'print_response' => true,
+		            'var_response'=>true,
+		            'image_name_identifier'=>$imagePrefix,
+		            'limit_name'   => 100,
+		            'disable_name'=>true
+				);
+
+				try {
+					//Handle upload 
+					$uploadHandler = new UploadHandlerController($options);
+					//Get response via variable -- true -- json_decode
+					$uploadResponse=$uploadHandler->get_var_response(true);
+				}catch(Exception $e) {
+					$debug['error']['error_file']=$e;
+					$errorControl=true;
+				}
+
+				if(!$errorControl){
+					//Uploaded files
+					try{
+						$Files=$uploadResponse->files;
+						//recibe all file upload response and process the database actions
+						foreach ($Files as $index => $file) {
+							$file=(array)$file;
+							$savedFile=$this->registerFile($file,$fileSaveScope);
+							$fileSaveResponse[]=$savedFile;
+						}
+					}catch (Exception $e){
+						$debug['error']['error_register_file']=$e;
+						$errorControl=true;
+					}
+				}
 			}
 
 			$debug['saveResponse']=$fileSaveResponse;
+			$fileuploads=count($fileSaveResponse);
+			//Response actions 
+			$success_actions=array(
+				'closeAside'=>array(
+					array(
+						'element'=>'#right-content-aside',
+						'wipe'=>true,
+						'time'=>2000
+					)
+				),
+				'reloadGrid'=>array('gridTrainingSessions')
+			);
 
-
-
-			// //Response actions 
-			// $success_actions=array(
-			// 	'closeAside'=>array(
-			// 		array(
-			// 			'element'=>'#right-content-aside',
-			// 			'wipe'=>true,
-			// 			'time'=>2000
-			// 		)
-			// 	),
-			// 	'reloadGrid'=>array('gridTrainingSessions')
-			// );
-
-			// $actions=array();
-			// if(!$error){
-			// 	$message=__('La sesión fue guardada correctamente.');
-			// 	$actions=$success_actions;
-			// }else{
-			// 	$message=__('La sesión no pudo ser eliminada.Por favor intente de nuevo mas tarde.');
-			// }
-			// $notify=array(
-			// 	'notify'=>array(
-			// 			'type'=>'flash',
-			// 			'message'=>mb_convert_encoding($message, "UTF-8", "Windows-1252"),
-			// 			'autoclose'=>2000
-			// 	)
-			// );
-			// $actions=array_merge($notify,$actions);
-			// $response['sendData']=$data;
-			// $response['error']=$error;
-			// $response['debug']=array('data'=>$debug);
-			// $response['actions']=$actions;
-			$response['debug']=$debug;
+			$actions=array();
+			if(!$errorControl){
+				$message=__('Se cargaron correctamente  '.$fileuploads.' archivos al sistema');
+				$actions=$success_actions;
+			}else{
+				$message=__('No fue posible cargar los archivos seleccionados, por favor comuniquese con el administrador del sistema');
+			}
+			$notify=array(
+				'notify'=>array(
+						'type'=>'flash',
+						'message'=>mb_convert_encoding($message, "UTF-8", "Windows-1252"),
+						'autoclose'=>2000
+				)
+			);
+			$actions=array_merge($notify,$actions);
+			$response['error']=$debug['error'];
+			$response['actions']=$actions;
+			$response['debug']=array('data'=>$debug);
 			$this->set(compact('response')); // Pass $data to the view
 			$this->set('_serialize', 'response'); // Let the JsonView class know what variable to use
 	}

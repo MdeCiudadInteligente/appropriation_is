@@ -14,12 +14,6 @@
 
 
 App::uses('AppController', 'Controller');
-/**
- * Uploads Controller
- *
- * @property Upload $Upload
- * @property PaginatorComponent $Paginator
- */
 
 
 class UploadHandlerController extends AppController {
@@ -136,7 +130,7 @@ class UploadHandlerController extends AppController {
                 '' => array(
                     // Automatically rotate images based on EXIF meta data:
                     'auto_orient' => true
-                ),
+                )
                 // Uncomment the following to create medium sized images:
                 /*
                 'medium' => array(
@@ -144,23 +138,27 @@ class UploadHandlerController extends AppController {
                     'max_height' => 600
                 ),
                 */
-                'thumbnail' => array(
-                    // Uncomment the following to use a defined directory for the thumbnails
-                    // instead of a subdirectory based on the version identifier.
-                    // Make sure that this directory doesn't allow execution of files if you
-                    // don't pose any restrictions on the type of uploaded files, e.g. by
-                    // copying the .htaccess file from the files directory for Apache:
-                    //'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/thumb/',
-                    //'upload_url' => $this->get_full_url().'/thumb/',
-                    // Uncomment the following to force the max
-                    // dimensions and e.g. create square thumbnails:
-                    //'crop' => true,
-                    'max_width' => 80,
-                    'max_height' => 80
-                )
+                // 'thumbnailxx' => array(
+                //     // Uncomment the following to use a defined directory for the thumbnails
+                //     // instead of a subdirectory based on the version identifier.
+                //     // Make sure that this directory doesn't allow execution of files if you
+                //     // don't pose any restrictions on the type of uploaded files, e.g. by
+                //     // copying the .htaccess file from the files directory for Apache:
+                //     //'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/thumb/',
+                //     //'upload_url' => $this->get_full_url().'/thumb/',
+                //     // Uncomment the following to force the max
+                //     // dimensions and e.g. create square thumbnails:
+                //     //'crop' => true,
+                //     'max_width' => 80,
+                //     'max_height' => 80
+                // )
             ),
             'print_response' => true,
-            'var_response' => false
+            'var_response' => false,
+            'limit_name'   => false,
+            'image_name_identifier'=>false,
+            'disable_name'=>false,
+            'random_chars'=>5
         );
         if ($options) {
             $this->options = $options + $this->options;
@@ -1064,8 +1062,22 @@ class UploadHandlerController extends AppController {
     }
 
     public function append_random_chars($name){
-        $unique_key = substr(md5(rand(0, 1000000)), 0, 7);
+        $unique_key = substr(md5(rand(0, 1000000)), 0, $this->options['random_chars']);
         $trim_name=explode('.', $name);
+
+        if($this->options['limit_name']){
+            $trim_name[0] = substr($trim_name[0], 0, $this->options['limit_name']).'-';
+        }
+
+        if($this->options['image_name_identifier']){
+            if($this->options['disable_name']){
+                $trim_name[0]=$this->options['image_name_identifier'].'_';                
+            }else{
+                $trim_name[0]=$this->options['image_name_identifier'].'_'.$trim_name[0];
+            }
+        }
+
+
         $name_part=$trim_name[0].'_'.$unique_key;
         return $name_part.$name_part[1];
     }

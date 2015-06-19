@@ -1227,7 +1227,6 @@ App.prototype.ajaxSubmitService=function(formClass,notice,callback){
         e.preventDefault();
         var data=$(this).serialize();
         if(!$(this).hasClass('aj-upload-service')){
-          console.log('service ajax');
           $.ajax({
               url:serviceUrl,
               type:'POST',
@@ -1243,7 +1242,6 @@ App.prototype.ajaxSubmitService=function(formClass,notice,callback){
               }
           });
         }else{
-           console.log('upload ajax');
            app.prepareUploadData(uploadObject,uploadFormData);
            app.loading();
            $.ajax({
@@ -1254,14 +1252,16 @@ App.prototype.ajaxSubmitService=function(formClass,notice,callback){
               dataType:'json',
               type: 'POST',
               success:function(data){
-                console.log('do');
                   if(typeof callback != 'undefined'){
                       callback(data);
                   }else{
                       if(data.actions)
                           app.serviceResponseCallback(data.actions);
-                      console.log('do intern');
                       app.removeLoading();  
+                      uploadObject=new Array();
+                      uploadFormData=new FormData();
+                      $('.preview-controller').html('');
+                      $('#file-input-md').val('');
                   }
               }      
             });
@@ -1419,8 +1419,16 @@ App.prototype.uploaderBind=function(){
             e.dataTransfer.dropEffect = 'copy';
     });
 
-    $(document).on('drop','.drag-area' ,function (e) {
+    $(document).on('drop','.drag-area' , app.handleUpload);
+    
+    $(document).on('change','#file-input-md' , app.handleUpload);
+
+
+}
+
+App.prototype.handleUpload=function(e){
         e.preventDefault();
+        console.log('fire');
         e = e.originalEvent;
         var target = e.dataTransfer || e.target,
             files = target && target.files && target.files,
@@ -1432,69 +1440,44 @@ App.prototype.uploaderBind=function(){
             return;
         }
 
-        var chargeImages=$.each(files,function(index,value){
-            var  randomInt=Math.floor((Math.random() * 10000) + 1);
-            var thumbnail=null;
-            loadImage.parseMetaData(value, function (data) {
-                thumbnail=data.exif;
-                if (data.exif) {
-                    options.orientation = data.exif.get('Orientation');
-                }
-            });
-            if (!loadImage(
-                    value,
-                    function(img){
-                        var content;
-                        if (!(img.src || img instanceof HTMLCanvasElement)) {
+        var promise=app.populateUploadData(files,options);
 
-                        } else {
-                              var itemId='item'+randomInt;
-                              var uploadPile=
-                                {
-                                  id:itemId, 
-                                  file:value,
-                                  img:img,
-                                  thumbnail:thumbnail,
-                                  dataURI:img.toDataURL()
-                                };
-                              uploadObject.push(uploadPile);
-                        }
-                    },
-                    options
-                )) 
-                 {
-                    console.log('Your browser does not support the URL or FileReader API.</span>');
-                 }
+        promise.done(function(){
+          var promiseShow=app.upload_showControllerThumbnails(uploadObject,'.preview-controller');
+          promiseShow.done(function(){
+            app.removeLoading();
+          });
         });
-        app.loading();
-        $.when(chargeImages).then(function(){
-          setTimeout(function(){
-            $.when(app.upload_showControllerThumbnails(uploadObject,'.preview-controller')).then(function(){
-                app.removeLoading();
-            });        
-          },500);
-        });
-    });
 }
 
 App.prototype.prepareUploadData=function(uploadObject,uploadFormData){
   $.each(uploadObject,function(index,value){
-      console.log(value.file);
-      uploadFormData.append('files[]',value.file);
+        var makeFile="";
+      if (value.file.size>2000000){
+        makeFile=app.dataURItoBlob(value.dataURI);
+        makeFile.name=value.file.name;
+        uploadFormData.append('files[]',makeFile,value.file.name);
+      }else{
+        makeFile=value.file;
+        uploadFormData.append('files[]',makeFile);
+      }
   });
   return uploadFormData;
 };
 
 App.prototype.upload_showControllerThumbnails=function(uploadObject,element){
+  var deferred=$.Deferred();
   $(element).html();
   $(element).addClass('files');
   var htmlObject='<div class="files row">';
   $.each(uploadObject,function(index,value){
-    var thumbnail=(typeof value.thumbnail != 'undefined')?value.thumbnail['Thumbnail']:value.dataURI;
+    var thumbnail=(value && value.thumbnail)?value.thumbnail['Thumbnail']:value.dataURI;
     htmlObject+='<div class="item col-md-2"><img src="'+thumbnail+'" ></div>'; 
   });
     htmlObject+="</div>";
   $(element).html(htmlObject);
+  deferred.resolve(htmlObject);
+  return deferred.promise();
 }
 
 
@@ -1506,3 +1489,78 @@ App.prototype.removeLoading=function(){
   $('body').removeClass('loading');
 }
 
+
+App.prototype.dataURItoBlob=function (dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
+
+
+ App.prototype.populateUploadData=function(files,options){
+      var deferred=new $.Deferred();
+      app.loading();
+      var file_count=files.length;
+      var object_start_count=uploadObject.length;
+      console.log(file_count,object_start_count);
+      $.each(files,function(index,value){
+          var  randomInt=Math.floor((Math.random() * 10000) + 1);
+          var thumbnail=null;
+          loadImage.parseMetaData(value, function (data) {
+              thumbnail=data.exif;
+              if (data.exif) {
+                  options.orientation = data.exif.get('Orientation');
+              }
+          });
+          if (!loadImage(
+                  value,
+                  function(img){
+                      var content;
+                      if (!(img.src || img instanceof HTMLCanvasElement)) {
+                          console.log('Its not a canvas');
+                          file_count=file_count-1;
+                      } else {
+                            var itemId='item'+randomInt;
+                            var uploadPile=
+                              {
+                                id:itemId, 
+                                file:value,
+                                img:img,
+                                thumbnail:thumbnail,
+                                dataURI:img.toDataURL()
+                              };
+                            uploadObject.push(uploadPile);
+                      }
+                  },
+                  options
+              )) 
+               {
+                  console.log('Your browser does not support the URL or FileReader API.</span>');
+               }
+      });
+      
+      var seekComplete=setInterval(
+        function(){
+          var object_count=uploadObject.length;
+           if(object_count==file_count){
+              deferred.resolve(uploadObject);
+              clearInterval(seekComplete);      
+           }
+      }, 200);
+
+      return deferred.promise();
+ };

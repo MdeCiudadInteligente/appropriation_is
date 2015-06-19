@@ -8,7 +8,8 @@ foreach ($file_scope as $key => $value) {
 }
 
 $service=Router::url( array('controller' => 'Upload', 'action' => 'add_service','?'=>array(
-			'file_scope'=>$dataScope
+			'file_scope'=>$dataScope,
+			'model'=>$data['model']
 			)
 	),true
 );
@@ -21,7 +22,7 @@ $service=Router::url( array('controller' => 'Upload', 'action' => 'add_service',
 		<legend><?php echo __('Archivos adjuntos'); ?></legend>
 		<section class="upload-controller">
 			<header>Arrastra o selecciona los archivos que quieres adjuntar</header>
-			<div class="file-input-cont"><input type="file" class="input-file-cont" multiple></div>
+			<div class="file-input-cont" ><input id="file-input-md" type="file" class="input-file-cont" multiple></div>
 			<div class="drag-area">
 				
 			</div>	
@@ -32,4 +33,11 @@ $service=Router::url( array('controller' => 'Upload', 'action' => 'add_service',
 
 	</fieldset>	
 	<?php echo $this->Form->end(__('Submit')); ?>
+
+	<section class="upload-grid">
+	    <?php
+	    	//Participants Training grid 
+	    	echo $this->element('grids/Uploads/uploads',array('dataScope'=>$id_training))
+	    ?>
+	</section>	
 </div>
