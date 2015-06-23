@@ -1071,7 +1071,7 @@ class UploadHandlerController extends AppController {
 
         if($this->options['image_name_identifier']){
             if($this->options['disable_name']){
-                $trim_name[0]=$this->options['image_name_identifier'].'_';                
+                $trim_name[0]=str_replace(' ', '_', $this->options['image_name_identifier']).'_';                
             }else{
                 $trim_name[0]=$this->options['image_name_identifier'].'_'.$trim_name[0];
             }

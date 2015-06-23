@@ -33,7 +33,7 @@ var <?php echo $gridOptions['gridId']?>_delViewUrl="<?php echo  Router::url(arra
 var <?php echo $gridOptions['gridId']?>_add_operations=<?php echo  $gridOptions['add_operations']?>;
 <?php } //End if custom actions ?>
 
-Ext.BLANK_IMAGE_URL = 'webroot/js/ext/resources/images/default/s.gif';
+Ext.BLANK_IMAGE_URL ="<?php echo Router::url( '/', true )?>/webroot/js/ext/resources/images/default/s.gif";
 Ext.namespace('<?php echo $gridOptions['gridId']?>');
 <?php echo $gridOptions['gridId']?>.store = new Ext.data.GroupingStore({
 	id: 'id',
@@ -228,7 +228,7 @@ jQuery(document).ready(<?php echo $gridOptions['gridId']?>.render, '<?php echo $
 </script>
 
 <div  class='grid_cont'>
-    <div id='<?php echo $gridOptions['gridId']?>'></div>
+    <div id='<?php echo $gridOptions['gridId']?>' class="main-grid-cont"></div>
 </div>
 
 

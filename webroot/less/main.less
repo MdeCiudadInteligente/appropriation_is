@@ -1293,6 +1293,75 @@ body{
 
 		}
 	}
+	.Uploads{
+		.upload-controller{
+			header{
+				margin-left: 20px;
+				font-size: 17px;
+			}
+			.drag-area{
+			    border: 2px dashed #555555;
+			    height: 200px;
+			    margin-left: 20px;
+			    width: 97%;		
+			    position: relative;
+			    .text-info{
+				    color: #f7f7f7;
+				    font-size: 17px;
+				    left: 25%;
+				    margin-top: 50px;
+				    position: absolute;
+				    text-align: center;
+				    width: 50%;
+			    }
+			}
+
+			.file-input-cont{
+				.submit{
+					input{
+						&.fake-input{
+							width: 20%;
+						}
+
+						&.input-file-cont{
+							width: 60%;
+							border-radius: 0;
+    						opacity: 0.16;
+    						width: 60%;
+						}
+						display: inline-block;
+						font-size: 14px;
+					}
+				}
+			}
+
+			.preview-controller{
+				.transition(all 1000ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s);
+				height: 0;
+				&.active{
+					height: 200px;
+				}
+			}
+		}
+
+		.upload-grid-cont{
+
+			.x-grid3-row-table{
+				.x-grid3-cell-inner:not(.x-grid3-row-body-tr){
+					height: 30px;
+					font-weight: 400;
+					color: #000000;
+				}
+			}
+
+			.x-toolbar.x-small-editor.x-toolbar-layout-ct{
+				width: 100% !important;
+			}
+
+
+
+		}
+	}
 }
 
 
@@ -1356,6 +1425,33 @@ body{
 			    }
 	    	}
 	    }
+    }
+
+    .owl-gallery.bottom-content{
+    	width: 80%;
+    	margin: auto;
+    	.owl-item{
+    		.item{
+    			position: relative;
+    			img{
+				    display: block;
+				    margin: auto;
+				    position: relative;
+				    width: 65%;
+				    height: auto;
+    			}
+    		}
+    	}
+
+    	@media only screen and (max-width: 1024px) { 
+	    	.owl-item{
+	    		.item{
+	    			img{
+					    width: 100%;
+	    			}
+	    		}
+	    	}    		
+    	}
     }
 }
 
@@ -1766,24 +1862,7 @@ i{
 
 
 
-.upload-controller{
-	header{
-		margin-right: 10px;
 
-	}
-
-	.drag-area{
-	    border: 2px dashed #555555;
-	    height: 200px;
-	    margin-left: 20px;
-	    width: 97%;		
-	    position: relative;
-	}
-
-	.preview-controller{
-		height: 200px;
-	}
-}
 
 
 .files{
@@ -1830,4 +1909,8 @@ body{
 			  }
 			}  
 	}
+}
+
+.show-full-resource{
+
 }

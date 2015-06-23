@@ -4,6 +4,7 @@ var waypoints=null;
 var fileDataHolder=null;
 var uploadObject=new Array();
 var uploadFormData=new FormData();
+var currentOwl;
 
 $(document).ready(function(){
 	app=new App;
@@ -157,6 +158,16 @@ App.prototype.bind=function(){
     app.wayPointClass('.waypont-toggler');
     app.registerValidations();
 
+    $(document).on('click','.show-full-picture-view-gallery',function(){
+        var galleryClass=$(this).data('galleryclass');
+        var currentId=$(this).data('id');
+        var requestedItemClass='.item-'+currentId;
+        console.log(requestedItemClass);
+        app.showGallery('.'+galleryClass,requestedItemClass);
+    });
+    $(document).on('click','.fake-input',function(){
+        $('#file-input-md').click();
+    });
 }
 
 
@@ -1216,10 +1227,22 @@ App.prototype.ajaxView=function(serviceUrl,data,container,callback){
                 app.closeAside('#bottom-content-aside',true);
                 app.putHtmlonAside(htmlView,'100%',true);
                 app.afterBind();
+                app.reloadAjaxViewGrid('#right-content-aside');
             }
         }
     });
 };
+
+
+App.prototype.reloadAjaxViewGrid=function(element){
+    setTimeout(function(){
+      var grids=$(element).find('.grid_cont .main-grid-cont');
+      $(grids).each(function(){
+         var grid_id=$(this).attr('id');
+         eval(grid_id).grid.getView().refresh(true);
+      });
+    },500);
+}
 
 App.prototype.ajaxSubmitService=function(formClass,notice,callback){
     $(document).on('submit',formClass,function(e){
@@ -1446,6 +1469,7 @@ App.prototype.handleUpload=function(e){
           var promiseShow=app.upload_showControllerThumbnails(uploadObject,'.preview-controller');
           promiseShow.done(function(){
             app.removeLoading();
+            $('.preview-controller').addClass('active');
           });
         });
 }
@@ -1564,3 +1588,52 @@ App.prototype.dataURItoBlob=function (dataURI) {
 
       return deferred.promise();
  };
+
+
+ App.prototype.showGallery=function(element,selectedClass){
+  var owlID=app.makeId();
+    var itemCount=0;
+    var html='<div class="owl-carousel owl-theme owl-gallery bottom-content" id='+owlID+'>';
+    $(element).each(function(){
+        var imgUrl=$(this).data('url');
+        var dataName=$(this).data('name');
+        var dataId=$(this).data('id');
+        var uniqueImageClass='item-'+dataId;
+        html+='<div class="item '+uniqueImageClass+'" data-indexowl="'+itemCount+'"><h1>'+dataName+'</h1><img src="'+imgUrl+'"></div>';
+        itemCount++;
+    });
+        html+='</div>';
+    app.putHtmlonBottom(html,'100%');    
+    app.loadOwlGallery('#'+owlID);
+    app.goToOwlGallery('#'+owlID,selectedClass);
+ }
+
+ App.prototype.goToOwlGallery=function(gallerySelector,itemSelector){
+  console.log(gallerySelector,itemSelector);
+    var dataIndex=$(gallerySelector).find(itemSelector).data('indexowl');
+    currentOwl.goTo(dataIndex);
+ }
+
+ App.prototype.loadOwlGallery=function(element){
+        if($(element).length>0){
+        // Client slider
+        $(element).owlCarousel({
+             items : 1,
+             autoPlay: false,
+             singleItem:true,
+             navigation : true
+        });
+        currentOwl=$(element).data('owlCarousel');
+    }
+ }
+
+ App.prototype.makeId=function makeid()
+  {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      for( var i=0; i < 5; i++ )
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
+  }
