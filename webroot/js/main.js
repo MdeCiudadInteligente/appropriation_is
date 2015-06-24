@@ -1598,8 +1598,10 @@ App.prototype.dataURItoBlob=function (dataURI) {
         var imgUrl=$(this).data('url');
         var dataName=$(this).data('name');
         var dataId=$(this).data('id');
+        var galleryheader=$(this).data('galleryheader');
+        var galleryheadlabel=$(this).data('galleryheadlabel');
         var uniqueImageClass='item-'+dataId;
-        html+='<div class="item '+uniqueImageClass+'" data-indexowl="'+itemCount+'"><h1>'+dataName+'</h1><img src="'+imgUrl+'"></div>';
+        html+='<div class="item '+uniqueImageClass+'" data-indexowl="'+itemCount+'"><h1> <i class="icon-pencil ref-data"></i> '+galleryheadlabel+' '+galleryheader+'  <i class="icon-note file-data"></i>'+dataName+'</h1><img src="'+imgUrl+'"></div>';
         itemCount++;
     });
         html+='</div>';
@@ -1615,7 +1617,7 @@ App.prototype.dataURItoBlob=function (dataURI) {
  }
 
  App.prototype.loadOwlGallery=function(element){
-        if($(element).length>0){
+    if($(element).length>0){
         // Client slider
         $(element).owlCarousel({
              items : 1,
@@ -1624,6 +1626,7 @@ App.prototype.dataURItoBlob=function (dataURI) {
              navigation : true
         });
         currentOwl=$(element).data('owlCarousel');
+        $(element).find('.owl-buttons > div').html('');
     }
  }
 

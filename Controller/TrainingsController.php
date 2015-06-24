@@ -570,7 +570,7 @@ class TrainingsController extends AppController {
 		$id_training=$this->request->query['training'];
 		$db = $this->Training->getDataSource();
 		$sessions=$db->fetchAll(
-			   "SELECT t1.*,users.username,
+			   "SELECT t1.*,users.username,t2.code,
 				(
 					SELECT GROUP_CONCAT(thematics.name)
 					FROM tra_sessions_thematics , thematics
@@ -602,6 +602,7 @@ class TrainingsController extends AppController {
 				$data['rows'][$count]=array(
 						'id'=>$value['t1']['id'],
 						'training_id'=>$value['t1']['training_id'],
+						'training_code'=>$value['t2']['code'],
 						'start_date'=>$value['t1']['start_date'],
 						'start_time'=>$value['t1']['start_time'],
 						'end_time'=>$value['t1']['end_time'],

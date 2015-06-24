@@ -2,6 +2,8 @@
 
 $file_scope=$this->request->query['scope'];
 $data=$this->request->data;
+$galleryHeader=$data['galleryhead'];
+$galleryheadlabel=$data['galleryheadlabel'];
 
 foreach ($file_scope as $key => $value) {
 	$dataScope[$value]=$data[$value];
@@ -43,7 +45,7 @@ $service=Router::url( array('controller' => 'Upload', 'action' => 'add_service',
 	<section class="upload-grid-cont">
 	    <?php
 	    	//Participants Training grid 
-	    	echo $this->element('grids/Uploads/uploads',array('dataScope'=>$dataScope))
+	    	echo $this->element('grids/Uploads/uploads',array('dataScope'=>$dataScope,'galleryHeader'=>$galleryHeader,'galleryheadlabel'=>$galleryheadlabel))
 	    ?>
 	</section>	
 </div>
