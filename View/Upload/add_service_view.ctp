@@ -32,7 +32,7 @@ $service=Router::url( array('controller' => 'Upload', 'action' => 'add_service',
 				
 			</div>
 			<div class="drag-area">
-					<div class="text-info">Para cargar archivos al sistema puedes seleccionarlos por medio del boton en la parte superior o arrastralos aquí. Posteriomente haz click en el boton guardar</div>
+					<div class="text-info">Para cargar archivos al sistema puedes seleccionarlos por medio del boton en la parte superior o arrastralos aquí. Posteriomente haz click en el boton guardar (Puedes subir hasta 3 archivos)</div>
 			</div>	
 			<div class="preview-controller">
 
