@@ -1378,6 +1378,26 @@ App.prototype.notifyProcess=function(notice,data,AceptExtraClass,CancelExtraClas
     } 
 }
 
+App.prototype.shortNotify=function(html,type){
+
+    var height=(typeof height != 'undefined')?height:'200px';
+    var noticeHtml="<div class='notice'>"+html+"</div>";
+    var autoClose=(autoClose)?autoClose:false;
+    var autoClose=(typeof type != 'undefined')?type:'flash';
+    switch(type){
+        case 'confirm' : 
+            var interactionHtml="<div class='interaction-notice'><button class='accept "+AceptExtraClass+"'><i class='icon-check'></i>Aceptar</button><button class='cancel "+CancelExtraClass+"'><i class='icon-cancel-2'></i>Cancelar</button></div>";
+        break;
+
+        case 'flash' :
+            var interactionHtml="";
+        break;
+    }
+    var interactionHtmlData=$(interactionHtml);
+    var completeHtml=$(noticeHtml).append(interactionHtmlData);
+    app.putHtmlonBottom(completeHtml);
+}
+
 App.prototype.closeAside=function(id_aside,wipe,time){
     var time=(typeof time != 'undefined')?time:0.5;
 
@@ -1451,7 +1471,6 @@ App.prototype.uploaderBind=function(){
 
 App.prototype.handleUpload=function(e){
         e.preventDefault();
-        console.log('fire');
         e = e.originalEvent;
         var target = e.dataTransfer || e.target,
             files = target && target.files && target.files,
@@ -1463,15 +1482,19 @@ App.prototype.handleUpload=function(e){
             return;
         }
 
-        var promise=app.populateUploadData(files,options);
-
-        promise.done(function(){
-          var promiseShow=app.upload_showControllerThumbnails(uploadObject,'.preview-controller');
-          promiseShow.done(function(){
-            app.removeLoading();
-            $('.preview-controller').addClass('active');
+        if(files.length>3){
+          app.shortNotify('<div class="alter">Lo sentimos, no se permite cargar mas de 3 archivos</div>');
+        }else{
+          var promise=app.populateUploadData(files,options);
+          promise.done(function(){
+            var promiseShow=app.upload_showControllerThumbnails(uploadObject,'.preview-controller');
+            promiseShow.done(function(){
+              app.removeLoading();
+              $('.preview-controller').addClass('active');
+            });
           });
-        });
+        }
+
 }
 
 App.prototype.prepareUploadData=function(uploadObject,uploadFormData){
