@@ -2,15 +2,15 @@
 $Sens=$this->request->data['result'];
 $this->Csv->delimiter='|';
 $this->Csv->enclosure =' ';
- $line= (array('Fecha'=>"",'Tipo_actividad'=>"",'Tipo_sensibilización'=>"",'Titulo'=>"",'Descripcion'=>"",'Numero_participantes'=>"",'Tipo_poblacion'=>"",'Sitio'=>"",'Barrio'=>"",'Comuna'=>"",'Formadores'=>"",'Temáticas'=>"",'Adjunto1'=>"",'Adjunto2'=>"",'Adjunto3'=>""));
+ $line= (array('Fecha'=>"",'Tipo_actividad'=>"",'Tipo_sensibilizacion'=>"",'Titulo'=>"",'Descripcion'=>"",'Numero_participantes'=>"",'Tipo_poblacion'=>"",'Sitio'=>"",'Barrio'=>"",'Comuna'=>"",'Formadores'=>"",'Temáticas'=>"",'Adjunto1'=>"",'Adjunto2'=>"",'Adjunto3'=>""));
  
  $divulgation_date='Fecha de la sencibilización';
  $divulgation_tact='Tipo Actividad';
  $divulgation_ts='Tipo Sensibilización';
  $divulgation_tit='Título';
  $divulgation_desc='Descripción';
- $divulgation_np='Número de Participantes';
- $divulgation_tp='Tipo Población';
+ $divulgation_npar='Número Participantes';
+ $divulgation_tpobla='Tipo Población';
  $divulgation_si='Sitio';
  $divulgation_ba='Barrio';
  $divulgation_co='Comuna';
@@ -22,11 +22,12 @@ $this->Csv->enclosure =' ';
  
  $line['Fecha']=$divulgation_date;
  $line['Tipo_actividad']=$divulgation_tact;
- $line['Tipo_sensibilización']=$divulgation_ts;
+ $line['Tipo_sensibilizacion']=$divulgation_ts;
  $line['Titulo']=$divulgation_tit;
  $line['Descripcion']=$divulgation_desc;
- $line['Numero_Participantes']=$divulgation_np;
- $line['Tipo_Poblacion']=$divulgation_tp;
+ $line['Numero_participantes']=$divulgation_npar;
+ $line['Tipo_poblacion']=$divulgation_tpobla;
+
  $line['Sitio']=$divulgation_si;
  $line['Barrio']=$divulgation_ba;
  $line['Comuna']=$divulgation_co;
@@ -44,11 +45,11 @@ $this->Csv->enclosure =' ';
  foreach ($Sens as $key => $Sensi) { 
  	$divulgation_date=$Sensi['t1']['Fecha'];
  	$divulgation_tact=$Sensi['0']['Tipo_actividad'];
- 	$divulgation_tacc=$Sensi['t5']['Tipo_sensibilización'];
+ 	$divulgation_ts=$Sensi['t5']['Tipo_sensibilizacion'];
  	$divulgation_tit=$Sensi['t1']['Titulo'];
  	$divulgation_desc=$Sensi['t1']['Descripcion'];
- 	$divulgation_np=$Sensi['t1']['Numero_participantes'];
- 	$divulgation_tp=$Sensi['t6']['Tipo_poblacion'];
+ 	$divulgation_npar=$Sensi['t1']['Numero_participantes'];
+ 	$divulgation_tpobla=$Sensi['t6']['Tipo_poblacion'];
  	$divulgation_si=$Sensi['t2']['Sitio'];
  	$divulgation_ba=$Sensi['t3']['Barrio'];
  	$divulgation_co=$Sensi['t4']['Comuna'];
@@ -61,11 +62,11 @@ $this->Csv->enclosure =' ';
  	
  	$line['Fecha']=$divulgation_date;
  	$line['Tipo_actividad']=$divulgation_tact;
- 	$line['Tipo_acompanamiento']=$divulgation_tacc;
+ 	$line['Tipo_sensibilizacion']=$divulgation_ts;
  	$line['Titulo']=preg_replace( "/\r|\n/", "", str_replace(";",",", $divulgation_tit) );
  	$line['Descripcion']=preg_replace( "/\r|\n/", "", str_replace(";",",", $divulgation_desc) );
- 	$line['Numero_Participantes']=$divulgation_np;
- 	$line['Tipo_poblacion']=$divulgation_tp;
+ 	$line['Numero_participantes']=$divulgation_npar;
+ 	$line['Tipo_poblacion']=$divulgation_tpobla;
  	$line['Sitio']=$divulgation_si;
  	$line['Barrio']=$divulgation_ba;
  	$line['Comuna']=$divulgation_co;

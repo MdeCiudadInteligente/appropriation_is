@@ -141,7 +141,6 @@ class AccompanimentsController extends AppController {
 		AND t2.neighborhood_id = t3.id_neighborhood
 		AND t3.commune_id = t4.id_commune
 	    AND t1.accompaniment_type_id = t5.id
-	    AND t1.accompaniment_date BETWEEN '2015-04-1' AND '2015-04-30'
 	    
 	    ORDER BY 
 		t1.accompaniment_date,t5.name");
