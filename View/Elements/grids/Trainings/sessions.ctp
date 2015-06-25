@@ -8,6 +8,12 @@
 	);
 	$adminUrl=Router::url( array('controller' => 'TraSessions', 'action' => 'service_delete','ext'=>'json'),true);
 	$assistUrl=Router::url( array('controller' => 'TraSessions', 'action' => 'assist'),true);
+	
+	$UploadUrl=Router::url( array('controller' => 'Upload', 'action' => 'add_service_view','?'=>		array('scope'=>array('session_id'))
+		),true
+	);
+
+
 	$gridOptions=array(
 			'gridId'=>'gridTrainingSessions',
 			'gridTitle'=>'Sesiones',
@@ -19,6 +25,7 @@
 			    array("dataIndex"=>"participant_id","column"=>false),
 			    array("dataIndex"=>"user_id","column"=>false),
 			    array("dataIndex"=>"username","column"=>false),
+			    array("dataIndex"=>"training_code","column"=>false),
 			    array("dataIndex"=>"modification_date","column"=>false),
 			    array("dataIndex"=>"creation_date","column"=>false),
 			    array("dataIndex"=>"observation","column"=>false),
@@ -46,13 +53,16 @@
 			'add_operations'=>json_encode(array(
 				'vars'=>array(
 					'id'=>NULL,
-					'training_id'=>NULL
+					'training_id'=>NULL,
+					'training_code'=>NULL
 				),
 				'markup'=>'
 				<div class="custom_render">
 					<i class="icon-minus-circle  remove_session  grid-send-service" data-confirm="true" data-type="confirm" data-message="¿Estás seguro que deseas eliminar esta sesión?" data-url="'.$adminUrl.'" data-id="{id}" data-trainingId="{training_id}">
 					</i>
 					<i class="icon-users  add_assist ajax-view" data-service="'.$assistUrl.'/{id}" data-id="{id}" data-aside="#right-content-aside" data-trainingId="{training_id}">
+					</i>
+					<i class="icon-upload  add_file ajax-view" data-service="'.$UploadUrl.'" data-session_id="{id}" data-model="Session" data-galleryheadlabel="Formación : " data-galleryHead={training_code} data-aside="#right-content-aside" data-training_id="{training_id}">
 					</i>
 				</div>'
 			))

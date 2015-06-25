@@ -7,6 +7,36 @@
   "ascent": 850,
   "glyphs": [
     {
+      "uid": "72109d2fb3088d0e66ea6a9204297651",
+      "css": "spin1",
+      "code": 59556,
+      "src": "fontelico"
+    },
+    {
+      "uid": "f0c301ac841dafc38d8eb1b933fc73e5",
+      "css": "spin2",
+      "code": 59558,
+      "src": "fontelico"
+    },
+    {
+      "uid": "2a6740fc2f9d0edea54205963f662594",
+      "css": "spin3",
+      "code": 59555,
+      "src": "fontelico"
+    },
+    {
+      "uid": "9bd60140934a1eb9236fd7a8ab1ff6ba",
+      "css": "spin4",
+      "code": 59554,
+      "src": "fontelico"
+    },
+    {
+      "uid": "9bc2902722abb366a213a052ade360bc",
+      "css": "spin6",
+      "code": 59557,
+      "src": "fontelico"
+    },
+    {
       "uid": "31972e4e9d080eaa796290349ae6c1fd",
       "css": "users-1",
       "code": 59506,
@@ -187,9 +217,27 @@
       "src": "typicons"
     },
     {
+      "uid": "b9cd6e266f74ac97272b2fabbfbd0b85",
+      "css": "user-add-outline",
+      "code": 59552,
+      "src": "typicons"
+    },
+    {
       "uid": "076f940ac56adee91dd43d6fd77dd0cf",
       "css": "user-add",
       "code": 59416,
+      "src": "typicons"
+    },
+    {
+      "uid": "344c1c070cd0018ced51d3f051c6f4dd",
+      "css": "user-delete-outline",
+      "code": 59551,
+      "src": "typicons"
+    },
+    {
+      "uid": "d139ce97a43aedd333fa40f776328c3c",
+      "css": "user-delete",
+      "code": 59550,
       "src": "typicons"
     },
     {
@@ -545,6 +593,12 @@
       "css": "gplus-circled",
       "code": 59438,
       "src": "mfglabs"
+    },
+    {
+      "uid": "020dbfb0a5a4a25775bc751e5891e161",
+      "css": "college",
+      "code": 59553,
+      "src": "maki"
     },
     {
       "uid": "a9d3392264236bb9fe4d60a130c662d1",

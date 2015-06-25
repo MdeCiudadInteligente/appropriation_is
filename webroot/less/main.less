@@ -1293,6 +1293,73 @@ body{
 
 		}
 	}
+	.Uploads{
+		.upload-controller{
+			header{
+				margin-left: 20px;
+				font-size: 17px;
+			}
+			.drag-area{
+			    border: 2px dashed #555555;
+			    height: 200px;
+			    margin-left: 20px;
+			    width: 97%;		
+			    position: relative;
+			    .text-info{
+				    color: #f7f7f7;
+				    font-size: 17px;
+				    left: 25%;
+				    margin-top: 50px;
+				    position: absolute;
+				    text-align: center;
+				    width: 50%;
+			    }
+			}
+
+			.file-input-cont{
+				.submit{
+					input{
+						&.fake-input{
+							width: 20%;
+						}
+
+						&.input-file-cont{
+							width: 60%;
+							border-radius: 0;
+    						opacity: 0.16;
+    						width: 60%;
+						}
+						display: inline-block;
+						font-size: 14px;
+					}
+				}
+			}
+
+			.preview-controller{
+				.transition(all 1000ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s);
+				height: 0;
+				&.active{
+					height: 200px;
+				}
+			}
+		}
+
+		.upload-grid-cont{
+			.x-grid3-row-table{
+				.x-grid3-cell-inner:not(.x-grid3-row-body-tr){
+					height: 30px;
+					font-weight: 400;
+					color: #000000;
+				}
+			}
+			.x-toolbar.x-small-editor.x-toolbar-layout-ct{
+				width: 100% !important;
+			}
+			.x-panel-bbar{
+				width: 100% !important;
+			}
+		}
+	}
 }
 
 
@@ -1356,6 +1423,99 @@ body{
 			    }
 	    	}
 	    }
+    }
+
+    .owl-gallery.bottom-content{
+    	position: relative;
+    	h1{
+		    background-color: transparent;
+		    border-bottom: 1px solid rgba(0, 169, 149, 0.14);
+		    color: #b8ad18;
+		    font-family: din_lightregular;
+		    font-size: 20px;
+		    font-style: italic;
+		    font-weight: 300;
+		    margin-bottom: 30px;
+		    padding-bottom: 10px;
+		    padding-left: 19px;
+		    i{
+		    	&.file-data{
+		    		margin-left: 40px;
+		    		margin-right: 20px;
+		    	}
+		    }
+    	}
+    	width: 80%;
+    	margin: auto;
+    	.owl-item{
+    		.item{
+    			position: relative;
+    			img{
+				    border-radius: 1px;
+				    box-shadow: inset 0 0 8px rgba(0,0,0,.6);
+				    display: block;
+				    height: auto;
+				    margin: auto;
+				    position: relative;
+				    width: 80%;
+    			}
+    		}
+    	}
+
+    	@media only screen and (max-width: 1024px) { 
+	    	.owl-item{
+	    		.item{
+	    			img{
+					    width: 100%;
+	    			}
+	    		}
+	    	}    		
+    	}
+    	.owl-controls{
+    		position: absolute;
+    		top: 50%;
+    		width: 100%;
+	    	.owl-buttons{
+	    		position: absolute;
+	    		width: 100%;
+	    		>div{
+	    			width: 60px;
+	    			position: absolute;
+	    			color: #B8AD18;
+	    			font-size: 27px;
+	    			.transition(all 200ms ease-out);
+	    			&:hover{
+	    				color: #00B4A4;
+	    			}
+	    			&.owl-prev{
+	    				left: 0;
+	    				&:before{
+	    					content: '\e821';
+	    				}
+	    			}
+	    			&.owl-next{
+	    				right: 0;
+	    				&:before{
+	    					content: '\e822';
+	    				}
+	    			}
+	    			&:before{
+					    display: inline-block;
+					    font-family: fontello;
+					    font-style: normal;
+					    font-variant: normal;
+					    font-weight: 400;
+					    line-height: 1em;
+					    margin-left: 0.2em;
+					    margin-right: 0.2em;
+					    text-align: center;
+					    text-decoration: inherit;
+					    text-transform: none;
+					    width: 1em;	    				
+	    			}
+	    		}
+	    	}
+    	}
     }
 }
 
@@ -1759,6 +1919,83 @@ i{
 				width: 30%;
 				margin-left: 20px;
 			}
+		}
+	}
+}
+
+
+
+
+
+
+
+.files{
+		.item{
+			img{
+				width: 100%;
+				height: auto;
+			}
+		}
+}
+
+
+
+body{
+	&.loading{
+		.loading{
+			opacity: 0.8;
+			display: block;
+			left: 0;
+			i{
+			  -moz-animation: spin 2s infinite linear;
+			  -o-animation: spin 2s infinite linear;
+			  -webkit-animation: spin 2s infinite linear;
+			  animation: spin 2s infinite linear;
+			  display: inline-block;
+			}			
+		}	
+	}
+	.loading{
+		    background: #000000 none repeat scroll 0 0;
+		    height: 100%;
+		    left: -100%;
+		    opacity: 0;
+		    position: fixed;
+		    width: 100%;
+		    z-index: 10000;
+			i{
+			  &.spinner{
+			    font-size: 60px;
+			    left: 47%;
+			    margin: auto;
+			    position: absolute;
+			    top: 50%;
+			  }
+			}  
+	}
+}
+
+.show-full-resource{
+
+}
+
+
+i{
+	&.add_file{
+		color: #373A47;
+	}
+	&.view_file{
+		.transition(all 1000ms cubic-bezier(0.215, 0.610, 0.355, 1.000));
+		color: #373A47;
+		&:hover{
+			color: #0BAA8F;
+		}
+	}
+	&.icon-trash{
+		font-size: 12px;
+		color: #373A47;
+		&:hover{
+			color: #DD000A;
 		}
 	}
 }

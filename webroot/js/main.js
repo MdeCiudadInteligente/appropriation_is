@@ -1,6 +1,10 @@
 ﻿var app=null;
 var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 var waypoints=null;
+var fileDataHolder=null;
+var uploadObject=new Array();
+var uploadFormData=new FormData();
+var currentOwl;
 
 $(document).ready(function(){
 	app=new App;
@@ -72,6 +76,7 @@ App.prototype.bind=function(){
     app.bindAutocompleteParticipantsRegister('.person-autocomplete-trainers');
     app.ajaxSubmitService('.serviceSubmit');
     app.send_service('.grid-send-service');
+    app.uploaderBind();
    
     app.removeRequired();
     //app.setMobileNav();
@@ -153,6 +158,16 @@ App.prototype.bind=function(){
     app.wayPointClass('.waypont-toggler');
     app.registerValidations();
 
+    $(document).on('click','.show-full-picture-view-gallery',function(){
+        var galleryClass=$(this).data('galleryclass');
+        var currentId=$(this).data('id');
+        var requestedItemClass='.item-'+currentId;
+        console.log(requestedItemClass);
+        app.showGallery('.'+galleryClass,requestedItemClass);
+    });
+    $(document).on('click','.fake-input',function(){
+        $('#file-input-md').click();
+    });
 }
 
 
@@ -1212,30 +1227,68 @@ App.prototype.ajaxView=function(serviceUrl,data,container,callback){
                 app.closeAside('#bottom-content-aside',true);
                 app.putHtmlonAside(htmlView,'100%',true);
                 app.afterBind();
+                app.reloadAjaxViewGrid('#right-content-aside');
             }
         }
     });
 };
+
+
+App.prototype.reloadAjaxViewGrid=function(element){
+    setTimeout(function(){
+      var grids=$(element).find('.grid_cont .main-grid-cont');
+      $(grids).each(function(){
+         var grid_id=$(this).attr('id');
+         eval(grid_id).grid.getView().refresh(true);
+      });
+    },500);
+}
 
 App.prototype.ajaxSubmitService=function(formClass,notice,callback){
     $(document).on('submit',formClass,function(e){
         var serviceUrl=$(this).data('service');
         e.preventDefault();
         var data=$(this).serialize();
-        $.ajax({
-            url:serviceUrl,
-            type:'POST',
-            data:data,
-            dataType:'JSON',
-            success:function(data){
-                if(typeof callback != 'undefined'){
-                    callback(data);
-                }else{
-                    if(data.actions)
-                        app.serviceResponseCallback(data.actions);
-                }
-            }
-        });
+        if(!$(this).hasClass('aj-upload-service')){
+          $.ajax({
+              url:serviceUrl,
+              type:'POST',
+              data:data,
+              dataType:'JSON',
+              success:function(data){
+                  if(typeof callback != 'undefined'){
+                      callback(data);
+                  }else{
+                      if(data.actions)
+                          app.serviceResponseCallback(data.actions);
+                  }
+              }
+          });
+        }else{
+           app.prepareUploadData(uploadObject,uploadFormData);
+           app.loading();
+           $.ajax({
+              url: serviceUrl,
+              data: uploadFormData,
+              processData: false,
+              contentType:false,
+              dataType:'json',
+              type: 'POST',
+              success:function(data){
+                  if(typeof callback != 'undefined'){
+                      callback(data);
+                  }else{
+                      if(data.actions)
+                          app.serviceResponseCallback(data.actions);
+                      app.removeLoading();  
+                      uploadObject=new Array();
+                      uploadFormData=new FormData();
+                      $('.preview-controller').html('');
+                      $('#file-input-md').val('');
+                  }
+              }      
+            });
+        }
     });
 }
 
@@ -1375,3 +1428,215 @@ App.prototype.registerValidations=function(){
       this.value = this.value.replace(/[^0-9\.]/g,'');
   });
 }
+
+
+App.prototype.uploaderBind=function(){
+
+    $(document).on('drop dragover',function (e) {
+        e.preventDefault();
+    });
+
+    $(document).on('dragover','.drag-area' ,function (e) {
+            e.preventDefault();
+            e = e.originalEvent;
+            e.dataTransfer.dropEffect = 'copy';
+    });
+
+    $(document).on('drop','.drag-area' , app.handleUpload);
+    
+    $(document).on('change','#file-input-md' , app.handleUpload);
+
+
+}
+
+App.prototype.handleUpload=function(e){
+        e.preventDefault();
+        console.log('fire');
+        e = e.originalEvent;
+        var target = e.dataTransfer || e.target,
+            files = target && target.files && target.files,
+            options = {
+                maxWidth: 1200,
+                canvas: true
+        };
+        if (!files) {
+            return;
+        }
+
+        var promise=app.populateUploadData(files,options);
+
+        promise.done(function(){
+          var promiseShow=app.upload_showControllerThumbnails(uploadObject,'.preview-controller');
+          promiseShow.done(function(){
+            app.removeLoading();
+            $('.preview-controller').addClass('active');
+          });
+        });
+}
+
+App.prototype.prepareUploadData=function(uploadObject,uploadFormData){
+  $.each(uploadObject,function(index,value){
+        var makeFile="";
+      if (value.file.size>2000000){
+        makeFile=app.dataURItoBlob(value.dataURI);
+        makeFile.name=value.file.name;
+        uploadFormData.append('files[]',makeFile,value.file.name);
+      }else{
+        makeFile=value.file;
+        uploadFormData.append('files[]',makeFile);
+      }
+  });
+  return uploadFormData;
+};
+
+App.prototype.upload_showControllerThumbnails=function(uploadObject,element){
+  var deferred=$.Deferred();
+  $(element).html();
+  $(element).addClass('files');
+  var htmlObject='<div class="files row">';
+  $.each(uploadObject,function(index,value){
+    var thumbnail=(value && value.thumbnail)?value.thumbnail['Thumbnail']:value.dataURI;
+    htmlObject+='<div class="item col-md-2"><img src="'+thumbnail+'" ></div>'; 
+  });
+    htmlObject+="</div>";
+  $(element).html(htmlObject);
+  deferred.resolve(htmlObject);
+  return deferred.promise();
+}
+
+
+App.prototype.loading=function(){
+  $('body').addClass('loading');
+}
+
+App.prototype.removeLoading=function(){
+  $('body').removeClass('loading');
+}
+
+
+App.prototype.dataURItoBlob=function (dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
+
+
+ App.prototype.populateUploadData=function(files,options){
+      var deferred=new $.Deferred();
+      app.loading();
+      var file_count=files.length;
+      var object_start_count=uploadObject.length;
+      console.log(file_count,object_start_count);
+      $.each(files,function(index,value){
+          var  randomInt=Math.floor((Math.random() * 10000) + 1);
+          var thumbnail=null;
+          loadImage.parseMetaData(value, function (data) {
+              thumbnail=data.exif;
+              if (data.exif) {
+                  options.orientation = data.exif.get('Orientation');
+              }
+          });
+          if (!loadImage(
+                  value,
+                  function(img){
+                      var content;
+                      if (!(img.src || img instanceof HTMLCanvasElement)) {
+                          console.log('Its not a canvas');
+                          file_count=file_count-1;
+                      } else {
+                            var itemId='item'+randomInt;
+                            var uploadPile=
+                              {
+                                id:itemId, 
+                                file:value,
+                                img:img,
+                                thumbnail:thumbnail,
+                                dataURI:img.toDataURL()
+                              };
+                            uploadObject.push(uploadPile);
+                      }
+                  },
+                  options
+              )) 
+               {
+                  console.log('Your browser does not support the URL or FileReader API.</span>');
+               }
+      });
+      
+      var seekComplete=setInterval(
+        function(){
+          var object_count=uploadObject.length;
+           if(object_count==file_count){
+              deferred.resolve(uploadObject);
+              clearInterval(seekComplete);      
+           }
+      }, 200);
+
+      return deferred.promise();
+ };
+
+
+ App.prototype.showGallery=function(element,selectedClass){
+  var owlID=app.makeId();
+    var itemCount=0;
+    var html='<div class="owl-carousel owl-theme owl-gallery bottom-content" id='+owlID+'>';
+    $(element).each(function(){
+        var imgUrl=$(this).data('url');
+        var dataName=$(this).data('name');
+        var dataId=$(this).data('id');
+        var galleryheader=$(this).data('galleryheader');
+        var galleryheadlabel=$(this).data('galleryheadlabel');
+        var uniqueImageClass='item-'+dataId;
+        html+='<div class="item '+uniqueImageClass+'" data-indexowl="'+itemCount+'"><h1> <i class="icon-pencil ref-data"></i> '+galleryheadlabel+' '+galleryheader+'  <i class="icon-note file-data"></i>'+dataName+'</h1><img src="'+imgUrl+'"></div>';
+        itemCount++;
+    });
+        html+='</div>';
+    app.putHtmlonBottom(html,'100%');    
+    app.loadOwlGallery('#'+owlID);
+    app.goToOwlGallery('#'+owlID,selectedClass);
+ }
+
+ App.prototype.goToOwlGallery=function(gallerySelector,itemSelector){
+  console.log(gallerySelector,itemSelector);
+    var dataIndex=$(gallerySelector).find(itemSelector).data('indexowl');
+    currentOwl.goTo(dataIndex);
+ }
+
+ App.prototype.loadOwlGallery=function(element){
+    if($(element).length>0){
+        // Client slider
+        $(element).owlCarousel({
+             items : 1,
+             autoPlay: false,
+             singleItem:true,
+             navigation : true
+        });
+        currentOwl=$(element).data('owlCarousel');
+        $(element).find('.owl-buttons > div').html('');
+    }
+ }
+
+ App.prototype.makeId=function makeid()
+  {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      for( var i=0; i < 5; i++ )
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
+  }
