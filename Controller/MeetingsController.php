@@ -99,7 +99,7 @@ class MeetingsController extends AppController {
 		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
 
-	public function download()
+	/*public function download()
 	{
 		$this->Meeting->recursive = 0;
 		$this->set('meetings', $this->Meeting->find('all'));
@@ -116,6 +116,47 @@ class MeetingsController extends AppController {
 		$this->layout = null;
 		//$this->autoLayout = false;
 		//Configure::write('debug', '0');
+	}*/
+	
+	public function download()
+	{
+		$db = $this->Meeting->getDataSource();
+		$meetings=$db->fetchAll("SELECT 
+     	t1.meeting_date AS Fecha,
+    	'Reunion' AS 'Tipo_actividad',
+    	t5.name AS 'Tipo_Reunion',
+    	t1.meeting_title AS 'Titulo',
+    	t1.meeting_description AS 'Descripcion',
+    	(SELECT COUNT(t20.meeting_id) FROM meetings_people t20 WHERE t20.meeting_id=t1.id_meeting ) AS 'Numero_Participantes',
+    	t1.meeting_commitments as 'Compromisos',
+    	t2.site_name AS Sitio,
+    	t3.neighborhood_name AS Barrio,
+    	t4.commune_name AS Comuna,
+    	t1.meeting_adjunct AS 'Adjunto1',
+    	t1.meeting_adjunct1 AS 'Adjunto2',
+    	t1.meeting_adjunct2 AS 'Adjunto3'
+    	FROM
+		meetings t1,
+    	sites t2,
+    	neighborhoods t3,
+    	communes t4,
+    	mee_types t5
+    
+    	WHERE
+    	t1.site_id = t2.id_site
+		AND t2.neighborhood_id = t3.id_neighborhood
+		AND t3.commune_id = t4.id_commune
+    	AND t1.meeting_type_id=t5.id
+    	
+    
+    	ORDER BY 
+		t1.meeting_date,t5.name");
+		$this->request->data["result"]=$meetings;
+	
+		$this->layout = null;
+		//$this->autoLayout = false;
+		//Configure::write('debug', '0');
+	
 	}
 	
 /**

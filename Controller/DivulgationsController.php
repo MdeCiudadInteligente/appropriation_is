@@ -118,7 +118,7 @@ class DivulgationsController extends AppController {
 	$db = $this->Divulgation->getDataSource();
 	$divulgations=$db->fetchAll("SELECT t1.divulgation_date AS Fecha, 
     'Sensibilización' AS 'Tipo_actividad',
-    t5.name AS 'Tipo_sensibilización',
+    t5.name AS 'Tipo_sensibilizacion',
     t1.divulgation_name AS 'Titulo',
     t1.divulgation_description AS 'Descripcion',
     t1.participant_number AS 'Numero_participantes',
@@ -165,7 +165,6 @@ class DivulgationsController extends AppController {
     AND t3.commune_id = t4.id_commune
     AND t1.divulgation_type_id=t5.id
     AND t1.population_type_id=t6.id_population_type
-    AND t1.divulgation_date BETWEEN '2014-03-1' AND '2015-04-30'
     ORDER BY 
 	t1.divulgation_date,t5.name");
 	$this->request->data["result"]=$divulgations;
