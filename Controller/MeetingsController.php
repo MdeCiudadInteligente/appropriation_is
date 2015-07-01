@@ -122,6 +122,7 @@ class MeetingsController extends AppController {
 	{
 		$db = $this->Meeting->getDataSource();
 		$meetings=$db->fetchAll("SELECT 
+		t1.id_meeting,	
      	t1.meeting_date AS Fecha,
     	'Reunion' AS 'Tipo_actividad',
     	t5.name AS 'Tipo_Reunion',

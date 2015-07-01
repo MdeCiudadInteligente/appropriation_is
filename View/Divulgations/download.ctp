@@ -2,8 +2,7 @@
 $Sens=$this->request->data['result'];
 $this->Csv->delimiter='|';
 $this->Csv->enclosure =' ';
- $line= (array('Fecha'=>"",'Tipo_actividad'=>"",'Tipo_sensibilizacion'=>"",'Titulo'=>"",'Descripcion'=>"",'Numero_participantes'=>"",'Tipo_poblacion'=>"",'Sitio'=>"",'Barrio'=>"",'Comuna'=>"",'Formadores'=>"",'Temáticas'=>"",'Adjunto1'=>"",'Adjunto2'=>"",'Adjunto3'=>""));
- 
+
  $divulgation_date='Fecha de la sencibilización';
  $divulgation_tact='Tipo Actividad';
  $divulgation_ts='Tipo Sensibilización';
@@ -63,8 +62,8 @@ $this->Csv->enclosure =' ';
  	$line['Fecha']=$divulgation_date;
  	$line['Tipo_actividad']=$divulgation_tact;
  	$line['Tipo_sensibilizacion']=$divulgation_ts;
- 	$line['Titulo']=preg_replace( "/\r|\n/", "", str_replace(";",",", $divulgation_tit) );
- 	$line['Descripcion']=preg_replace( "/\r|\n/", "", str_replace(";",",", $divulgation_desc) );
+ 	$line['Titulo']=$divulgation_tit;
+ 	$line['Descripcion']=$divulgation_desc;
  	$line['Numero_participantes']=$divulgation_npar;
  	$line['Tipo_poblacion']=$divulgation_tpobla;
  	$line['Sitio']=$divulgation_si;
@@ -75,16 +74,11 @@ $this->Csv->enclosure =' ';
  	$line['Adjunto1']=$divulgation_adu;
  	$line['Adjunto2']=$divulgation_add;
  	$line['Adjunto3']=$divulgation_adt;
- 	
+	$line=recursiveSanitize($line);
  	$this->Csv->addRow($line);
- 	/*
- 	var_dump($line);
- 	echo "<br>";
- 	echo "<br>";
- 	echo "<br>";*/
   } 
   
-  
- $filename='Divulgations';
+ $date=date('d-m-y');
+ $filename='sensibilizaciones_'.$date;
  echo  $this->Csv->render($filename);
  

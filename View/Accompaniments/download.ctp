@@ -62,16 +62,11 @@ $this->Csv->enclosure =' ';
  	$line['Adjunto1']=$accompaniment_adu;
  	$line['Adjunto2']=$accompaniment_add;
  	$line['Adjunto3']=$accompaniment_adt;
- 	
+ 	$line=recursiveSanitize($line);
  	$this->Csv->addRow($line);
- 	/*
- 	var_dump($line);
- 	echo "<br>";
- 	echo "<br>";
- 	echo "<br>";*/
   } 
   
-  
- $filename='Accompaniments';
+ $date=date('d-m-y');
+ $filename='acompanamientos_'.$date;
  echo  $this->Csv->render($filename);
  

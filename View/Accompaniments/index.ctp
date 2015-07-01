@@ -49,8 +49,6 @@
 	</div>	
 <!-- End accompaniments container -->
 </div>	
- 	<?php echo $this->Form->create('Exportar'); ?>
-	<?php echo $this->Form->end(__('Exportar a excel')); ?>
 				
 
 

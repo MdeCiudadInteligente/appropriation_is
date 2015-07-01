@@ -2,7 +2,6 @@
 $trai=$this->request->data['result'];
 $this->Csv->delimiter='|';
 $this->Csv->enclosure =' ';
- $line= (array('Codigo'=>"",'Zonas'=>"",'Comunas'=>"",'Barrios'=>"",'Sitios'=>"",'Tipo_Sitio'=>"",'Lugar_Formacion'=>"",'Tipo_Formacion'=>"",'Tematicas'=>"",'Tipo_Poblacion'=>"",'Fecha_Inicio'=>"",'Fecha_Final'=>"",'Estado_Actual'=>"",'Formadores'=>"",'Aliados'=>"",'Procesos'=>"",'Usuario'=>""));
  
  $training_cod='Código';
  $training_zon='Zonas';
@@ -18,6 +17,7 @@ $this->Csv->enclosure =' ';
  $training_fefin='Fecha Final';
  $training_estact='Estado Actual';
  $training_for='Formadores';
+ $training_participants='participantes';
  $training_ali='Aliados';
  $training_pro='Procesos';
  $training_usu='Usuario';
@@ -68,8 +68,8 @@ $this->Csv->enclosure =' ';
  	$line['Codigo']=$training_cod;
  	$line['Zonas']=$training_zon;
  	$line['Comunas']=$training_co;
- 	$line['Barrios']=preg_replace( "/\r|\n/", "", str_replace(";",",", $training_bar) );
- 	$line['Sitios']=preg_replace( "/\r|\n/", "", str_replace(";",",", $training_sit) );
+ 	$line['Barrios']=$training_bar;
+ 	$line['Sitios']=$training_sit;
  	$line['Tipo_Sitio']=$training_tsit;
  	$line['Lugar_Formacion']=$training_lf;
  	$line['Tipo_Formacion']=$training_tfor;
@@ -82,16 +82,12 @@ $this->Csv->enclosure =' ';
  	$line['Aliados']=$training_ali;
  	$line['Procesos']=$training_pro;
  	$line['Usuario']=$training_usu;
- 	
+ 	$line=recursiveSanitize($line);
  	$this->Csv->addRow($line);
- 	/*
- 	var_dump($line);
- 	echo "<br>";
- 	echo "<br>";
- 	echo "<br>";*/
+
   } 
   
-  
- $filename='Trainings';
+ $date=date('d-m-y');
+ $filename='Formaciones_'.$date;
  echo  $this->Csv->render($filename);
  

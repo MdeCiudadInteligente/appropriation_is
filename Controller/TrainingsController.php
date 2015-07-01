@@ -422,7 +422,9 @@ class TrainingsController extends AppController {
 				            t1.id = tPer.training_id
 				                AND tPer.per_trainer_id = per.id
 				                AND per.per_people_type_id = perTy.id
-				                AND perTy.person_id = p.id_person) AS formadores,				   
+				                AND perTy.person_id = p.id_person) AS formadores,
+				    (SELECT COUNT(id) FROM per_participants_training WHERE t1.id=per_participants_training.training_id) as participants,            				   
+				    
 				    (SELECT 
 				            GROUP_CONCAT(CONCAT(' ', name, ' '))
 				        FROM
@@ -483,6 +485,7 @@ class TrainingsController extends AppController {
 						//'poblacion'=>$trainer['t1']['type_id'],
 						'training_type'=>$trainer['t2']['training_type'],
 						'formadores'=>$trainer['0']['formadores'],
+						'participantes'=>$trainer['0']['participants'],
 						'sitios'=>$trainer['0']['sites'],
 						'aliados'=>$trainer['0']['aliados'],
 						'procesos'=>$trainer['0']['procesos'],

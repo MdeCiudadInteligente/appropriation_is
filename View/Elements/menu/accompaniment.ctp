@@ -33,8 +33,14 @@
 								"label"=>__('New AccType')
 							)	
 						)
+				),
+				array(
+					"user_level"=>'1,2,3',
+					"icon-class"=>'icon-chart',
+					"route"=>Router::url( array('controller' => 'Accompaniments', 'action' => 'download'),true),
+					"label" =>__('Descargar Reporte'),
+					"custom-class"=>'report-csv'
 				)
-					
 		    )
 		);
 ?>
