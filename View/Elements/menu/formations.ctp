@@ -74,7 +74,14 @@
 								"label"=>__('Nueva Ruta de Formación')
 							)	
 						)
-				)	
+				),
+				array(
+					"user_level"=>'1,2,3',
+					"icon-class"=>'icon-chart',
+					"route"=>Router::url( array('controller' => 'Trainings', 'action' => 'download'),true),
+					"label" =>__('Descargar Reporte'),
+					"custom-class"=>'report-csv'
+				)
 		    )
 		);
 ?>

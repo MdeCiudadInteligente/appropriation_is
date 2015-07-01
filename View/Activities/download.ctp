@@ -55,8 +55,8 @@ $line= (array('Fecha'=>"",'Tipo_actividad'=>"",'Tipo'=>"",'Titulo'=>"",'Descripc
  	$line['Fecha']=$accomp_date;
  	$line['Tipo_actividad']=$accomp_tact;
  	$line['Tipo']=$accomp_tipo;
- 	$line['Titulo']=preg_replace( "/\r|\n/", "", str_replace(";",",", $accomp_tit) );
- 	$line['Descripcion']=preg_replace( "/\r|\n/", "", str_replace(";",",", $accomp_desc) );
+ 	$line['Titulo']=$accomp_tit;
+ 	$line['Descripcion']=$accomp_desc;
  	$line['numero_participantes']=$accomp_np;
  	$line['Sitio']=$accomp_si;
  	$line['Barrio']=$accomp_ba;
@@ -64,14 +64,11 @@ $line= (array('Fecha'=>"",'Tipo_actividad'=>"",'Tipo'=>"",'Titulo'=>"",'Descripc
  	$line['Adjunto1']=$accomp_adu;
  	$line['Adjunto2']=$accomp_add;
  	$line['Adjunto3']=$accomp_adt;
- 	
- 	$this->Csv->addRow($line);
 
- 	/*
- 	var_dump($line);
- 	echo "<br>";
- 	echo "<br>";
- 	echo "<br>";*/
+  $line=recursiveSanitize($line);
+  $this->Csv->addRow($line);
+ 	
+
  } 
   
   
@@ -94,8 +91,8 @@ foreach ($Sens as $key => $Sensi) {
  	$line['Fecha']=$divulgation_date;
  	$line['Tipo_actividad']=$divulgation_tact;
  	$line['Tipo']=$divulgation_ts;
- 	$line['Titulo']=preg_replace( "/\r|\n/", "", str_replace(";",",", $divulgation_tit) );
- 	$line['Descripcion']=preg_replace( "/\r|\n/", "", str_replace(";",",", $divulgation_desc) );
+ 	$line['Titulo']=$divulgation_tit;
+ 	$line['Descripcion']=$divulgation_desc;
  	$line['numero_participantes']=$divulgation_np;
  	$line['Sitio']=$divulgation_si;
  	$line['Barrio']=$divulgation_ba;
@@ -104,43 +101,41 @@ foreach ($Sens as $key => $Sensi) {
  	$line['Adjunto2']=$divulgation_add;
  	$line['Adjunto3']=$divulgation_adt;
  	
- 	$this->Csv->addRow($line);
- 	/*
- 	var_dump($line);
- 	echo "<br>";
- 	echo "<br>";
- 	echo "<br>";*/
+  $line=recursiveSanitize($line);
+  $this->Csv->addRow($line);
+
   } 
   
-   foreach ($Mee as $key => $Meet) { 
- 	$meeting_date=$Meet['t1']['Fecha'];
- 	$meeting_tact=$Meet['0']['Tipo_actividad'];
- 	$meeting_tacc=$Meet['t5']['Tipo'];
- 	$meeting_tit=$Meet['t1']['Titulo'];
- 	$meeting_desc=$Meet['t1']['Descripcion'];
- 	$meeting_np=$Meet['0']['numero_participantes'];
- 	$meeting_si=$Meet['t2']['Sitio'];
- 	$meeting_ba=$Meet['t3']['Barrio'];
- 	$meeting_co=$Meet['t4']['Comuna'];
- 	$meeting_adu=$Meet['t1']['Adjunto1'];
- 	$meeting_add=$Meet['t1']['Adjunto2'];
- 	$meeting_adt=$Meet['t1']['Adjunto3'];
- 	
- 	
- 	$line['Fecha']=$meeting_date;
- 	$line['Tipo_actividad']=$meeting_tact;
- 	$line['Tipo']=$meeting_tacc;
- 	$line['Titulo']=preg_replace( "/\r|\n/", "", str_replace(";",",", $meeting_tit) );
- 	$line['Descripcion']=preg_replace( "/\r|\n/", "", str_replace(";",",", $meeting_desc) );
- 	$line['numero_participantes']=$meeting_np;
- 	$line['Sitio']=$meeting_si;
- 	$line['Barrio']=$meeting_ba;
- 	$line['Comuna']=$meeting_co;
- 	$line['Adjunto1']=$meeting_adu;
- 	$line['Adjunto2']=$meeting_add;
- 	$line['Adjunto3']=$meeting_adt;
-  
-  	$this->Csv->addRow($line);
+  foreach ($Mee as $key => $Meet) { 
+   	$meeting_date=$Meet['t1']['Fecha'];
+   	$meeting_tact=$Meet['0']['Tipo_actividad'];
+   	$meeting_tacc=$Meet['t5']['Tipo'];
+   	$meeting_tit=$Meet['t1']['Titulo'];
+   	$meeting_desc=$Meet['t1']['Descripcion'];
+   	$meeting_np=$Meet['0']['numero_participantes'];
+   	$meeting_si=$Meet['t2']['Sitio'];
+   	$meeting_ba=$Meet['t3']['Barrio'];
+   	$meeting_co=$Meet['t4']['Comuna'];
+   	$meeting_adu=$Meet['t1']['Adjunto1'];
+   	$meeting_add=$Meet['t1']['Adjunto2'];
+   	$meeting_adt=$Meet['t1']['Adjunto3'];
+   	
+   	
+   	$line['Fecha']=$meeting_date;
+   	$line['Tipo_actividad']=$meeting_tact;
+   	$line['Tipo']=$meeting_tacc;
+   	$line['Titulo']=$meeting_tit;
+   	$line['Descripcion']=$meeting_desc;
+   	$line['numero_participantes']=$meeting_np;
+   	$line['Sitio']=$meeting_si;
+   	$line['Barrio']=$meeting_ba;
+   	$line['Comuna']=$meeting_co;
+   	$line['Adjunto1']=$meeting_adu;
+   	$line['Adjunto2']=$meeting_add;
+   	$line['Adjunto3']=$meeting_adt;
+    
+    $line=recursiveSanitize($line);
+    $this->Csv->addRow($line);
   	 
   }
   
@@ -166,17 +161,19 @@ foreach ($Sens as $key => $Sensi) {
  	$line['Titulo']=$training_cod;
  	$line['Descripcion']=$training_desc;
  	$line['numero_participantes']=$training_np;
- 	$line['Sitio']=preg_replace( "/\r|\n/", "", str_replace(";",",", $training_sit) );
- 	$line['Barrio']=preg_replace( "/\r|\n/", "", str_replace(";",",", $training_bar) );
+ 	$line['Sitio']=$training_sit;
+ 	$line['Barrio']=$training_bar;
  	$line['Comuna']=$training_co;
  	$line['Adjunto1']=$training_adu;
  	$line['Adjunto2']=$training_add;
  	$line['Adjunto3']=$training_adt;
  	
-  	$this->Csv->addRow($line);
+  $line=recursiveSanitize($line);
+  $this->Csv->addRow($line);
+
   
   }
-  
- $filename='Completo';
+ $date=date('d-m-y');
+ $filename='Completo_'.$date;
  echo  $this->Csv->render($filename);
  ?>

@@ -111,3 +111,16 @@ function concatIndex($data,$indexKey){
 		}
 		return substr($concat, 0, -2);
 }
+
+
+function sanitizeCsv($string){
+	return preg_replace( "/\r|\n/", "", str_replace(";",",", $string) );
+}
+
+function recursiveSanitize($array){
+	foreach ($array as $key => $value) {
+		$newArr[$key]=sanitizeCsv($value);	
+	}
+	return $newArr;
+}
+

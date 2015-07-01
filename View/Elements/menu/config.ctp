@@ -25,6 +25,42 @@
 					)
 				),
 				array(
+					"icon-class"=>'icon-chart',
+					"label" =>__('Reportes'),
+					"sub-elements"=>array(
+						array(
+							"user_level"=>'1,2,3',
+							"route"=>Router::url( array('controller' => 'Accompaniments', 'action' => 'download'),true),
+							"label" =>__('Acompañamientos'),
+							"custom-class"=>'report-csv'
+						),
+						array(
+							"user_level"=>'1,2,3',
+							"route"=>Router::url( array('controller' => 'Divulgations', 'action' => 'download'),true),
+							"label" =>__('Sensibilizaciones'),
+							"custom-class"=>'report-csv'
+						),
+						array(
+							"user_level"=>'1,2,3',
+							"route"=>Router::url( array('controller' => 'Meetings', 'action' => 'download'),true),
+							"label" =>__('Reuniones'),
+							"custom-class"=>'report-csv'
+						),
+						array(
+							"user_level"=>'1,2,3',
+							"route"=>Router::url( array('controller' => 'Trainings', 'action' => 'download'),true),
+							"label" =>__('Formaciones'),
+							"custom-class"=>'report-csv'
+						),array(	
+		         			"user_level"=>'1,2,3',
+							"route"=>Router::url( array('controller' => 'Activities', 'action' => 'download'),true),
+							"label" =>__('Actividades Completas'),
+							"custom-class"=>'report-csv'
+						)
+
+					)
+				),
+				array(
 					"icon-class"=>'icon-tag-1',
 					"route"=>Router::url( array('controller' => 'Thematics', 'action' => 'index'),true),
 					"label" =>__('Thematics'),
@@ -171,6 +207,7 @@
 						)	
 					)
 				)
+
 	    	)
 		    
 		);

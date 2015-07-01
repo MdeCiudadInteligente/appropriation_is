@@ -30,6 +30,7 @@
 							array("dataIndex"=>"poblacion",'header'=>'Tipo de población','sortable'=>true,'align'=>"left","column"=>false),
 							array("dataIndex"=>"training_type",'header'=>'Tipo de formación','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"sitios",'header'=>'Sitios','sortable'=>true,'align'=>"left","column"=>true),
+							array("dataIndex"=>"participantes",'header'=>'Participantes','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"aliados",'header'=>'Aliados','sortable'=>true,'align'=>"left","column"=>true),							
 							array("dataIndex"=>"description",'header'=>'Descripción','sortable'=>true,'align'=>"left","column"=>true),
 							array("dataIndex"=>"estado",'header'=>'Estado','sortable'=>true,'align'=>"left","column"=>true),
@@ -64,7 +65,4 @@
 	</div>	
 <!-- End meetings container -->
 </div>	
-<?php echo $this->Form->create('Exportar'); ?>
-<?php echo $this->Form->end(__('Exportar a excel')); ?>	
-
 
