@@ -150,7 +150,5 @@ if ($usuario_level == '1'||$usuario_level == '2'||$usuario_level == '3'||$usuari
 	</div>	
 <!-- End meetings container -->
 </div>	
-<?php echo $this->Form->create('Exportar'); ?>
-<?php echo $this->Form->end(__('Exportar a excel')); ?>
 	
 	
