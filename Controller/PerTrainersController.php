@@ -244,7 +244,7 @@ class PerTrainersController extends AppController {
 			$queryString='%'.$_GET['q'].'%';
 			$db = $this->PerTrainer->getDataSource();
 			$trainers=$db->fetchAll(
-			   " SELECT 
+			   "SELECT 
 			       t1.id, t2.person_id, t3.name , t3.lastname, t3.cedula , t4.name as profesion, t5.name as tipo
 			   FROM
 			       per_trainers t1,

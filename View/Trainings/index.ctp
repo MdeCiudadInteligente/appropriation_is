@@ -37,7 +37,7 @@
 			                array("dataIndex"=>"creation_date",'header'=>'Fecha Creación','sortable'=>true,'align'=>"left","column"=>false),
 			                array("dataIndex"=>"modification_date",'header'=>'Fecha de modificación','sortable'=>true,'align'=>"left","column"=>false),
 			               array("dataIndex"=>"user_id",'header'=>'Usuario','sortable'=>true,'align'=>"left","column"=>false),
-			               array("dataIndex"=>"username",'header'=>'Usuario','sortable'=>true,'align'=>"left","column"=>false)
+			               array("dataIndex"=>"username",'header'=>'Usuario','sortable'=>true,'align'=>"left","column"=>true)
 						),
 						'expander'=>array(
 							'fields'=>array(

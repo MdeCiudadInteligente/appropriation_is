@@ -14,7 +14,9 @@ SELECT
 						AND a.neighborhood_id = n.id_neighborhood 
 						AND n.commune_id= c.id_commune 
                         AND c.zone_id= z.id_zone limit 1) AS Zonas,
-                        
+
+						(SELECT COUNT(id) FROM per_participants_training WHERE t1.id=per_participants_training.training_id) as participantes,                  
+                  
                         (SELECT 
 						commune_name
 						FROM
@@ -132,5 +134,6 @@ SELECT
 				WHERE
 				    t1.type_id = t2.id
 				        AND t3.id_user = t1.user_id
+                        AND t1.end_date BETWEEN '2015-06-01' AND '2015-06-30'
                 ORDER BY 
-				t1.code,t1.start_date      
+				t1.code,t1.start_date  
