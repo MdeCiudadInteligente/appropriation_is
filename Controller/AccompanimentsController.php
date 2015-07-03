@@ -89,6 +89,7 @@ class AccompanimentsController extends AppController {
 					'creation_date'=>$accompaniment['Accompaniment']['creation_date'],
 					'modification_date'=>$accompaniment['Accompaniment']['modification_date'],
 					'user_id'=>$accompaniment['Accompaniment']['user_id'],
+					'username'=>$accompaniment['User']['username']
 			);
 			$count++;
 		}

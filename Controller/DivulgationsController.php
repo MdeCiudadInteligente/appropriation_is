@@ -87,6 +87,7 @@ class DivulgationsController extends AppController {
 					'creation_date'=>$divulgation['Divulgation']['creation_date'],
 					'modification_date'=>$divulgation['Divulgation']['modification_date'],
 					'user_id'=>$divulgation['Divulgation']['user_id'],
+					'username'=>$divulgation['User']['username']
 			);
 			$count++;
 		}

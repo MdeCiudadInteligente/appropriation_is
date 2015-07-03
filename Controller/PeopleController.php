@@ -66,7 +66,7 @@ class PeopleController extends AppController {
 					'entidad'=>$people['Person']['entity'],
 					'creation_date'=>$people['Person']['creation_date'],
 					'modification_date'=>$people['Person']['modification_date'],
-					'user_id'=>$people['Person']['user_id'],
+					'user_id'=>$people['Person']['user_id']
 			);
 			$count++;
 		}
