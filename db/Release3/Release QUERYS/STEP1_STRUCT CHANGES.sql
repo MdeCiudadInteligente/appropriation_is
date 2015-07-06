@@ -623,3 +623,6 @@ ALTER TABLE `training` DROP `activity_place`;
 
 ALTER TABLE `people` 
 CHANGE COLUMN `email` `email` VARCHAR(200) NULL ;
+
+
+ALTER TABLE `people` ADD `document_type` INT NOT NULL AFTER `id_person`;

@@ -270,6 +270,13 @@ class TrainingsController extends AppController {
 		    $commit='commit';
 		} catch(Exception $e) {
 		    $error=$e;
+		    /////validar duplicado de cedula 
+		    if($commit_switch==0){
+		    	if($e->errorInfo['1']=='1062'){
+		    		$message=__('La nueva persona nueva no pudo ser creada debido a que su número de documento ya se encuentra actualmente en el sistema, por favor registrelo a la formación por medio del número de documento en la sección Agregar Participante.');
+		    	}
+		    }
+		    $debug['errorCode']=$e->errorInfo['1'];
 		    $datasource->rollback();
 		    $commit='rollback';
 		}   	
@@ -289,15 +296,17 @@ class TrainingsController extends AppController {
 		if(!$error){
 			$message=__("El participante fue correctamente registrado a esta formacion.");
 			$actions=$success_actions;
+			$autoclose=2000;
 		}else{
-			$message=__("No ha sido posible registrar el participante a esta formacion.Por favor intente de nuevo mas tarde.");
+			$message=($message)?$message:__("No ha sido posible registrar el participante a esta formacion.Por favor intente de nuevo mas tarde.");
+			$autoclose=false;
 		}
 
 		$notify=array(
 			'notify'=>array(
 					'type'=>'flash',
 					'message'=>mb_convert_encoding($message, "UTF-8", "Windows-1252"),
-					'autoclose'=>2000
+					'autoclose'=>$autoclose
 			)
 		);
 		$actions=array_merge($notify,$actions);

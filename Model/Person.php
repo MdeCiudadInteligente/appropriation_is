@@ -47,6 +47,19 @@ class Person extends AppModel {
 					'message' => 'El usuario ya existe'
 			)
 		),
+		'document_type'=> array(
+					'notEmpty' => array(
+							//'rule' => array('maxLength', '15'),
+							//'message' => 'Los nombres de usuario no pueden tener un largo mayor a 15 caracteres.',
+							'rule' => array('notEmpty'),
+							//'message' => 'Your custom message here',
+							//'allowEmpty' => false,
+							//'required' => false,
+							//'last' => false, // Stop validation after this rule
+							//'on' => 'update' // Limit validation to 'create' or 'update' operations
+								
+					),
+		),
 		'cedula' => array(
 					'notEmpty' => array(
 							//'rule' => array('maxLength', '15'),

@@ -50,12 +50,14 @@ class PeopleController extends AppController {
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		$id_usuario = $this->Session->read('Auth.User.id_user');
 		$this->set('id_usuario',$id_usuario);
-	
+		$document_type_list=$GLOBALS['STATIC_LIST_ARRAY']['document_type'];
 		$people=$this->Person->find('all');
 		$count=0;
 		foreach ($people as $key => $people) {
+			$document_type=($people['Person']['document_type']==0)?'No asignado':$GLOBALS['STATIC_LIST_ARRAY']['document_type'][$people['Person']['document_type']];
 			$data['rows'][$count]=array(
 					'id'=>$people['Person']['id_person'],
+					'document_type'=>$document_type,
 					'cedula'=>$people['Person']['cedula'],
 					'nombre'=>$people['Person']['name'],
 					'apellido'=>$people['Person']['lastname'],

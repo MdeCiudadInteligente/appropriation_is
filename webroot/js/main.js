@@ -784,7 +784,7 @@ App.prototype.putHtmlonAside=function(html,width,bootstrap){
             $(this).find('select').wrap('<div class="col-md-3" style="clear:unset"></div>');
           }else{
             if($(this).find('input').hasClass('custom-col')){
-              var dataGrid=$(this).find('input').attr('grid');
+              var dataGrid=$(this).find('input').data('grid');
               var gridClass='col-md-'+dataGrid;  
               $(this).addClass(gridClass);
             }else{

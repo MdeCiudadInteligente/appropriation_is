@@ -124,3 +124,36 @@ function recursiveSanitize($array){
 	return $newArr;
 }
 
+/////Master static lists//////
+
+/////document_type
+$document_type_list=array(
+	"1"=>"Cédula de ciudadanía",
+	"2"=>"Tarjeta de identidad",
+	"3"=>"Cédula de extranjería",
+	"4"=>"Pasaporte",
+	"5"=>"Registro civil"
+);
+/////genero
+$genero_list=array(
+	'1'=>'Femenino',
+	'2'=>'Masculino',
+	'3'=>'Lesbiana',
+	'4'=>'Gay',
+	'5'=>'Transexual',
+	'6'=>'Bisexual',
+	'7'=>'Intersexual'
+);
+///estrato
+$estrato_list=array('1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5');
+
+
+$static_list_array=array(
+	'document_type'=>$document_type_list,
+	'genero'=>$genero_list,
+	'estrato'=>$estrato_list
+);
+
+$GLOBALS['STATIC_LIST_ARRAY']=$static_list_array;
+
+

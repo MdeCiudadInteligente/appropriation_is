@@ -25,7 +25,8 @@
 						'serviceUrl'=>'People/index_service.json',
 						'fields'=>array(
 						    array("dataIndex"=>"id","column"=>false),
-			                array("dataIndex"=>"cedula",'header'=>'Cédula','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"document_type",'header'=>'Tipo Documento','sortable'=>true,'align'=>"left","column"=>true),
+			                array("dataIndex"=>"cedula",'header'=>'Número Documento','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"nombre",'header'=>'Nombres','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"apellido",'header'=>'Apellidos','sortable'=>true,'align'=>"left","column"=>true),
 			                array("dataIndex"=>"cargo",'header'=>'Cargo','sortable'=>true,'align'=>"left","column"=>true),

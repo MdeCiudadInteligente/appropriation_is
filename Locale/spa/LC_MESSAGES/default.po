@@ -1155,8 +1155,15 @@ msgstr "La divulgación se ha guardado."
 msgid "Name"
 msgstr "Nombres"
 
+msgid "Document Type"
+msgstr "Tipo de documento"
+
+
 msgid "Lastname"
 msgstr "Apellidos"
+
+msgid "Cedula"
+msgstr "Numero de documento"
 
 msgid "Email"
 msgstr "Correo"

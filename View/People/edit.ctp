@@ -16,6 +16,7 @@
 		<legend><?php echo __('Add Person'); ?></legend>
 	<?php
 		echo $this->Form->input('id_person',array('type'=>'hidden'));
+		echo $this->Form->input('document_type',array('type'=>'select','options'=>$GLOBALS['STATIC_LIST_ARRAY']['document_type']));		
 		echo $this->Form->input('cedula',array('type'=>'text','onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('name',array('maxLength'=>50));
 		echo $this->Form->input('lastname',array('maxLength'=>50));
@@ -24,8 +25,8 @@
 		echo $this->Form->input('phone',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('cell',array('onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('entity',array('maxLength'=>80,'label'=>'Entidad/Organización/Grupo'));
-		echo $this->Form->input('genre',array('type'=>'select','options'=> array('1'=>'Femenino','2'=>'Masculino'),'empty'=>'Seleccione Género'));
-		echo $this->Form->input('economic_level',array('type'=>'select','options'=> array('1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5'),'empty'=>'Seleccione Estrato'));
+		echo $this->Form->input('genre',array('type'=>'select','options'=> $GLOBALS['STATIC_LIST_ARRAY']['genero'],'empty'=>'Seleccione Género'));
+		echo $this->Form->input('economic_level',array('type'=>'select','options'=> $GLOBALS['STATIC_LIST_ARRAY']['estrato'],'empty'=>'Seleccione Estrato'));
 		echo $this->Form->input('birthday',array ('id' => 'datepicker','type'=>'text'));
 	?>
 	</fieldset>
