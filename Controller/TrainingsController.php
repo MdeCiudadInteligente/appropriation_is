@@ -273,7 +273,7 @@ class TrainingsController extends AppController {
 		    /////validar duplicado de cedula 
 		    if($commit_switch==0){
 		    	if($e->errorInfo['1']=='1062'){
-		    		$message=__('La nueva persona nueva no pudo ser creada debido a que su número de documento ya se encuentra actualmente en el sistema, por favor registrelo a la formación por medio del número de documento en la sección Agregar Participante.');
+		    		$message=__('La persona con número de documento '.$PersonData['Person']['cedula'].', actualmente se encuentra registrada en el sistema.');
 		    	}
 		    }
 		    $debug['errorCode']=$e->errorInfo['1'];

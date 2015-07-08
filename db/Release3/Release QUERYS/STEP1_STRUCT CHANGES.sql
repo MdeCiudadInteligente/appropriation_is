@@ -626,3 +626,4 @@ CHANGE COLUMN `email` `email` VARCHAR(200) NULL ;
 
 
 ALTER TABLE `people` ADD `document_type` INT NOT NULL AFTER `id_person`;
+UPDATE people SET document_type='1' WHERE 1=1;

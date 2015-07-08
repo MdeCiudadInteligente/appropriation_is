@@ -19,6 +19,25 @@
 					"custom-class"=>'add-person'
 				),
 				array(
+					"user_level"=>'1,2,3',
+					"icon-class"=>'icon-chart',
+					"label" =>__('Reportes'),
+					"sub-elements"=>array(
+						array(
+							"user_level"=>'1,2,3',
+							"route"=>Router::url( array('controller' => 'People', 'action' => 'download_all'),true),
+							"label" =>__('Todas las Personas'),
+							"custom-class"=>'report-csv'
+						),
+						array(
+							"user_level"=>'1,2,3',
+							"route"=>Router::url( array('controller' => 'People', 'action' => 'download_participants_formation'),true),
+							"label" =>__('Participantes (Formaciones)'),
+							"custom-class"=>'report-csv'
+						)
+					)
+				),				
+				array(
 						"icon-class"=>'icon-comment-1',
 						"route"=>Router::url( array('controller' => 'PerParticipants', 'action' => 'index'),true),
 						"label" =>__('Participants'),
