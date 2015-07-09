@@ -28,7 +28,9 @@ SELECT
         WHEN '6' THEN 'Bisexual'
         WHEN '7' THEN 'Intersexual'
     END) AS Genero,
-    t5.name as 'Estado Civil',
+    tt.name as 'Tipo de Formador',
+    pro.name as 'Profesion',
+    tf.name as 'Fondo',
     t5.code as 'Formación',
     t5.description as 'Descripción',
     t6.name as 'Tipo de Formación',
@@ -43,14 +45,23 @@ FROM
 		LEFT JOIN 
     per_types t3 ON t2.per_type_id=t3.id
 		LEFT JOIN 
-	training_per_trainers t4
+    per_trainers tr ON tr.per_people_type_id=t2.id    
+        LEFT JOIN
+    per_trainer_types tt ON tr.per_trainer_type_id=tt.id
+		LEFT JOIN
+    per_professions pro ON tr.per_profession_id=pro.id
+		LEFT JOIN
+    per_trainer_funds tf ON tr.per_trainer_fund_id=tf.id 
+		LEFT JOIN 
+	training_per_trainers t4 ON t4.per_trainer_id=tr.id
 		LEFT JOIN
     training t5 ON  t4.training_id=t5.id
 		LEFT JOIN 
     tra_types t6 ON t5.type_id=t6.id 
-		LEFT JOIN 
-    users t7 ON t2.user_id=t7.id_user    
     
+WHERE t3.id=1    
+
+
     
 		
     

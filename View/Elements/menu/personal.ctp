@@ -34,6 +34,18 @@
 							"route"=>Router::url( array('controller' => 'People', 'action' => 'download_participants_formation'),true),
 							"label" =>__('Participantes (Formaciones)'),
 							"custom-class"=>'report-csv'
+						),
+						array(
+							"user_level"=>'1,2,3',
+							"route"=>Router::url( array('controller' => 'People', 'action' => 'download_trainers_formation_single'),true),
+							"label" =>__('Formadores'),
+							"custom-class"=>'report-csv'
+						),
+						array(
+							"user_level"=>'1,2,3',
+							"route"=>Router::url( array('controller' => 'People', 'action' => 'download_trainers_formation'),true),
+							"label" =>__('Formadores (Formaciones)'),
+							"custom-class"=>'report-csv'
 						)
 					)
 				),				
