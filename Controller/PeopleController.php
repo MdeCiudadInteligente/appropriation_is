@@ -223,65 +223,63 @@ class PeopleController extends AppController {
 	public function download_all()
 	{
 		$db = $this->Person->getDataSource();
-		$persons=$db->fetchAll("SELECT 
-    t1.id_person,
-    (CASE  t1.document_type
-		WHEN '1' THEN 'Cédula de ciudadanía'
-        WHEN '2' THEN 'Tarjeta de identidad'
-        WHEN '3' THEN 'Cédula de extranjería'
-        WHEN '4' THEN 'Pasaporte'
-        WHEN '5' THEN 'Registro civil'
-        END
-    ) as 'Tipo de documento',
-    t1.cedula as 'Número de documento',
-    t1.name as 'Nombre',
-    t1.lastname as 'Apellido',
-    t1.charge as 'Cargo',
-    t1.email as 'Email',
-    t1.phone as 'Telefono',
-    t1.cell AS 'Celular',
-    t1.entity AS Entidad,
-    t1.birthday as 'Fecha de Nacimiento',
-    t1.economic_level as 'Estrato',
-    (IFNULL(t8.name,'Persona')) AS 'Rol',
-    (CASE t1.genre
-        WHEN '1' THEN 'Femenino'
-        WHEN '2' THEN 'Masculino'
-        WHEN '3' THEN 'Lesbiana'
-        WHEN '4' THEN 'Gay'
-        WHEN '5' THEN 'Transexual'
-        WHEN '6' THEN 'Bisexual'
-        WHEN '7' THEN 'Intersexual'
-    END) AS Genero,
-    (SELECT GROUP_CONCAT(pt.name) FROM per_participants_population_types pp, population_types pt WHERE pp.participant_id=t3.id AND pp.population_type_id=pt.id_population_type)  as 'Tipo de Población',
-    t3.other_population_type as 'Otro tipo de poblacion',
-    t4.neighborhood_name as 'Barrio',
-    t5.commune_name as 'Comuna',
-    t6.name as 'Estado Civil',
-    t7.name as 'Escolaridad',
-    t1.creation_date as 'Fecha de registro',
-    t9.username as 'Usuario Registro'
-FROM
-    people t1
-        LEFT JOIN
-    per_people_type t2 ON t1.id_person = t2.person_id
-        LEFT JOIN
-    per_participants t3 ON t2.id = t3.per_people_type_id
-		LEFT JOIN  
-    neighborhoods t4 ON t3.neighborhood_id=t4.id_neighborhood
-		LEFT JOIN 
-    communes t5 ON t4.commune_id=t5.id_commune
-		LEFT JOIN 
-    per_marital_status t6 ON t3.marital_status_id=t6.id
-		LEFT JOIN 
-    per_school_level t7 ON t3.school_level_id=t7.id
-		LEFT JOIN 
-    per_types t8 ON t2.per_type_id=t8.id    
-		LEFT JOIN 
-    users t9 ON t1.user_id=t9.id_user
-
+		$data=$db->fetchAll("SELECT 
+		    t1.id_person,
+		    (CASE  t1.document_type
+				WHEN '1' THEN 'Cédula de ciudadanía'
+		        WHEN '2' THEN 'Tarjeta de identidad'
+		        WHEN '3' THEN 'Cédula de extranjería'
+		        WHEN '4' THEN 'Pasaporte'
+		        WHEN '5' THEN 'Registro civil'
+		        END
+		    ) as 'Tipo de documento',
+		    t1.cedula as 'Número de documento',
+		    t1.name as 'Nombre',
+		    t1.lastname as 'Apellido',
+		    t1.charge as 'Cargo',
+		    t1.email as 'Email',
+		    t1.phone as 'Telefono',
+		    t1.cell AS 'Celular',
+		    t1.entity AS Entidad,
+		    t1.birthday as 'Fecha de Nacimiento',
+		    t1.economic_level as 'Estrato',
+		    (IFNULL(t8.name,'Persona')) AS 'Rol',
+		    (CASE t1.genre
+		        WHEN '1' THEN 'Femenino'
+		        WHEN '2' THEN 'Masculino'
+		        WHEN '3' THEN 'Lesbiana'
+		        WHEN '4' THEN 'Gay'
+		        WHEN '5' THEN 'Transexual'
+		        WHEN '6' THEN 'Bisexual'
+		        WHEN '7' THEN 'Intersexual'
+		    END) AS Genero,
+		    (SELECT GROUP_CONCAT(pt.name) FROM per_participants_population_types pp, population_types pt WHERE pp.participant_id=t3.id AND pp.population_type_id=pt.id_population_type)  as 'Tipo de Población',
+		    t3.other_population_type as 'Otro tipo de poblacion',
+		    t4.neighborhood_name as 'Barrio',
+		    t5.commune_name as 'Comuna',
+		    t6.name as 'Estado Civil',
+		    t7.name as 'Escolaridad',
+		    t1.creation_date as 'Fecha de registro',
+		    t9.username as 'Usuario Registro'
+		FROM
+		    people t1
+		        LEFT JOIN
+		    per_people_type t2 ON t1.id_person = t2.person_id
+		        LEFT JOIN
+		    per_participants t3 ON t2.id = t3.per_people_type_id
+				LEFT JOIN  
+		    neighborhoods t4 ON t3.neighborhood_id=t4.id_neighborhood
+				LEFT JOIN 
+		    communes t5 ON t4.commune_id=t5.id_commune
+				LEFT JOIN 
+		    per_marital_status t6 ON t3.marital_status_id=t6.id
+				LEFT JOIN 
+		    per_school_level t7 ON t3.school_level_id=t7.id
+				LEFT JOIN 
+		    per_types t8 ON t2.per_type_id=t8.id    
+				LEFT JOIN 
+		    users t9 ON t1.user_id=t9.id_user
 	    ");
-		$notAllowedIndex=array();
 
 		//Example define custom Headers
 			$customHeaders=array(
@@ -309,473 +307,254 @@ FROM
 				'Usuario Registro'=>'Usuario Registro'
 			);
 
-		//Set the use of costom header or automatic
 		$autoHeadersControl=false;
-
-		$fetchDataIndex=array();
-		$reportLoopCounter=0;
-
-
-		foreach ($persons as $tableAlias => $tableValue) {
-			if(!in_array($tableAlias,$notAllowedIndex)){
-				foreach ($tableValue as $index => $arrayValues) {
-					foreach ($arrayValues as $index => $value) {
-						$fetchData[$reportLoopCounter][$index]=$value;
-					}
-				}
-			}	
-			$reportLoopCounter++;
-		}
-
-		//check header configuration if custom or automatic
-		if($autoHeadersControl==false){
-			$headers=$customHeaders;
-			 $CustomOrderData=array();
-			 foreach ($fetchData as $index => $data) {
-			 	foreach ($headers as $key => $value) {
-			 		$customOrderLine[$key]=$data[$key];
-			 	}
-			 	$CustomOrderData[$index]=$customOrderLine;
-             }
-             $fetchData=$CustomOrderData;
-		}else{
-			foreach ($fetchData[1] as $key => $value) {
-				$autoHeaders[$key]=$key;
-			}
-			$headers=$autoHeaders;
-		}
 		$date=date('d-m-y');
- 		$filename='Personas_Completas_'.$date;
-		$this->request->data['headers']=$headers;
-		$this->request->data['results']=$fetchData;
-		$this->request->data['filename']=$filename;
+		$filename='Personas_gen'.$date;
+		///Config::Bootsrap function--- Fetch model data into a csv structured array 
+		$preparedData=csv_fetch_data($data,$filename,$autoHeadersControl,$customHeaders);
+		$this->request->data=array_merge($this->request->data,$preparedData);
 		$this->layout = null;
-		$this -> render('/People/download');
+		$this -> render('/Reports/download');
+
 	}
 
 	public function download_participants_formation()
 	{
 		$db = $this->Person->getDataSource();
-		$persons=$db->fetchAll("SELECT 
-    t1.id_person,
-    (CASE  t1.document_type
-		WHEN '1' THEN 'Cédula de ciudadanía'
-        WHEN '2' THEN 'Tarjeta de identidad'
-        WHEN '3' THEN 'Cédula de extranjería'
-        WHEN '4' THEN 'Pasaporte'
-        WHEN '5' THEN 'Registro civil'
-        END
-    ) as 'Tipo de documento',
-    t1.cedula as 'Número de documento',
-    t1.name as 'Nombre',
-    t1.lastname as 'Apellido',
-    t1.charge as 'Cargo',
-    t1.email as 'Email',
-    t1.phone as 'Telefono',
-    t1.cell AS 'Celular',
-    t1.entity AS Entidad,
-    t1.birthday as 'Fecha de Nacimiento',
-    t1.economic_level as 'Estrato',
-    (IFNULL(t8.name,'Persona')) AS 'Rol',
-    (CASE t1.genre
-        WHEN '1' THEN 'Femenino'
-        WHEN '2' THEN 'Masculino'
-        WHEN '3' THEN 'Lesbiana'
-        WHEN '4' THEN 'Gay'
-        WHEN '5' THEN 'Transexual'
-        WHEN '6' THEN 'Bisexual'
-        WHEN '7' THEN 'Intersexual'
-    END) AS Genero,
-    (SELECT GROUP_CONCAT(pt.name) FROM per_participants_population_types pp, population_types pt WHERE pp.participant_id=t3.id AND pp.population_type_id=pt.id_population_type)  as 'Tipo de Población',
-    t3.other_population_type as 'Otro tipo de poblacion',
-    t4.neighborhood_name as 'Barrio',
-    t5.commune_name as 'Comuna',
-    t6.name as 'Estado Civil',
-    t7.name as 'Escolaridad',
-    t10.code as 'Formación',
-    t10.description as 'Descripción',
-    t11.name as 'Tipo de Formación',
-    t10.start_date as 'Fecha de inicio (Formacion)',
-    t10.end_date as 'Fecha de Terminacion (Formacion)',    
-    (CASE t10.current_state WHEN '1' THEN 'En Curso' WHEN '2' THEN 'Finalizada' END) as 'Estado (Formación)'
+		$data=$db->fetchAll("SELECT 
+			    t1.id_person,
+			    (CASE  t1.document_type
+					WHEN '1' THEN 'Cédula de ciudadanía'
+			        WHEN '2' THEN 'Tarjeta de identidad'
+			        WHEN '3' THEN 'Cédula de extranjería'
+			        WHEN '4' THEN 'Pasaporte'
+			        WHEN '5' THEN 'Registro civil'
+			        END
+			    ) as 'Tipo de documento',
+			    t1.cedula as 'Número de documento',
+			    t1.name as 'Nombre',
+			    t1.lastname as 'Apellido',
+			    t1.charge as 'Cargo',
+			    t1.email as 'Email',
+			    t1.phone as 'Telefono',
+			    t1.cell AS 'Celular',
+			    t1.entity AS Entidad,
+			    t1.birthday as 'Fecha de Nacimiento',
+			    t1.economic_level as 'Estrato',
+			    (IFNULL(t8.name,'Persona')) AS 'Rol',
+			    (CASE t1.genre
+			        WHEN '1' THEN 'Femenino'
+			        WHEN '2' THEN 'Masculino'
+			        WHEN '3' THEN 'Lesbiana'
+			        WHEN '4' THEN 'Gay'
+			        WHEN '5' THEN 'Transexual'
+			        WHEN '6' THEN 'Bisexual'
+			        WHEN '7' THEN 'Intersexual'
+			    END) AS Genero,
+			    (SELECT GROUP_CONCAT(pt.name) FROM per_participants_population_types pp, population_types pt WHERE pp.participant_id=t3.id AND pp.population_type_id=pt.id_population_type)  as 'Tipo de Población',
+			    t3.other_population_type as 'Otro tipo de poblacion',
+			    t4.neighborhood_name as 'Barrio',
+			    t5.commune_name as 'Comuna',
+			    t6.name as 'Estado Civil',
+			    t7.name as 'Escolaridad',
+			    t10.code as 'Formación',
+			    t10.description as 'Descripción',
+			    t11.name as 'Tipo de Formación',
+			    t10.start_date as 'Fecha de inicio (Formacion)',
+			    t10.end_date as 'Fecha de Terminacion (Formacion)',    
+			    (CASE t10.current_state WHEN '1' THEN 'En Curso' WHEN '2' THEN 'Finalizada' END) as 'Estado (Formación)'
 
-FROM
-    people t1
-        LEFT JOIN
-    per_people_type t2 ON t1.id_person = t2.person_id
-        LEFT JOIN
-    per_participants t3 ON t2.id = t3.per_people_type_id
-		LEFT JOIN  
-    neighborhoods t4 ON t3.neighborhood_id=t4.id_neighborhood
-		LEFT JOIN 
-    communes t5 ON t4.commune_id=t5.id_commune
-		LEFT JOIN 
-    per_marital_status t6 ON t3.marital_status_id=t6.id
-		LEFT JOIN 
-    per_school_level t7 ON t3.school_level_id=t7.id
-		LEFT JOIN 
-    per_types t8 ON t2.per_type_id=t8.id
-		LEFT JOIN 
-    per_participants_training t9 ON t3.id=t9.participant_id 
-		LEFT JOIN 
-    training t10 ON  t9.training_id=t10.id
-		LEFT JOIN 
-    tra_types t11 ON t10.type_id=t11.id  
-   
-    
-WHERE t2.per_type_id=2    
-AND   t10.code IS NOT NULL
+			FROM
+			    people t1
+			        LEFT JOIN
+			    per_people_type t2 ON t1.id_person = t2.person_id
+			        LEFT JOIN
+			    per_participants t3 ON t2.id = t3.per_people_type_id
+					LEFT JOIN  
+			    neighborhoods t4 ON t3.neighborhood_id=t4.id_neighborhood
+					LEFT JOIN 
+			    communes t5 ON t4.commune_id=t5.id_commune
+					LEFT JOIN 
+			    per_marital_status t6 ON t3.marital_status_id=t6.id
+					LEFT JOIN 
+			    per_school_level t7 ON t3.school_level_id=t7.id
+					LEFT JOIN 
+			    per_types t8 ON t2.per_type_id=t8.id
+					LEFT JOIN 
+			    per_participants_training t9 ON t3.id=t9.participant_id 
+					LEFT JOIN 
+			    training t10 ON  t9.training_id=t10.id
+					LEFT JOIN 
+			    tra_types t11 ON t10.type_id=t11.id  
+			   
+			    
+			WHERE t2.per_type_id=2    
+			AND   t10.code IS NOT NULL
 	    ");
-		$notAllowedIndex=array();
 
-		//Example define custom Headers
-			// $customHeaders=array(
-			// 	'id_person'=>'id_person',
-			// 	'Tipo de documento'=>'Tipo de documento',
-			// 	'Número de documento'=>'Número de documento',
-			// 	'Nombre'=>'Nombre',
-			// 	'Apellido'=>'Apellido',
-			// 	'Cargo'=>'Cargo',
-			// 	'Email'=>'Email',
-			// 	'Telefono'=>'Telefono',
-			// 	'Celular'=>'Celular',
-			// 	'Entidad'=>'Entidad',
-			// 	'Fecha de Nacimiento'=>'Fecha de Nacimiento',
-			// 	'Estrato'=>'Estrato',
-			// 	'Rol'=>'Rol',
-			// 	'Genero'=>'Genero',
-			// 	'Tipo de Población'=>'Tipo de Población',
-			// 	'Otro tipo de poblacion'=>'Otro tipo de poblacion',
-			// 	'Barrio'=>'Barrio',
-			// 	'Comuna'=>'Comuna',
-			// 	'Estado Civil'=>'Estado Civil',
-			// 	'Escolaridad'=>'Escolaridad',
-			// 	'Fecha de registro'=>'Fecha de registro',
-			// 	'Usuario Registro'=>'Usuario Registro'
-			// );
-
-		//Set the use of costom header or automatic
 		$autoHeadersControl=true;
-
-		$fetchDataIndex=array();
-		$reportLoopCounter=0;
-
-
-		foreach ($persons as $tableAlias => $tableValue) {
-			if(!in_array($tableAlias,$notAllowedIndex)){
-				foreach ($tableValue as $index => $arrayValues) {
-					foreach ($arrayValues as $index => $value) {
-						$fetchData[$reportLoopCounter][$index]=$value;
-					}
-				}
-			}	
-			$reportLoopCounter++;
-		}
-
-		//check header configuration if custom or automatic
-		if($autoHeadersControl==false){
-			$headers=$customHeaders;
-			 $CustomOrderData=array();
-			 foreach ($fetchData as $index => $data) {
-			 	foreach ($headers as $key => $value) {
-			 		$customOrderLine[$key]=$data[$key];
-			 	}
-			 	$CustomOrderData[$index]=$customOrderLine;
-             }
-             $fetchData=$CustomOrderData;
-		}else{
-			foreach ($fetchData[1] as $key => $value) {
-				$autoHeaders[$key]=$key;
-			}
-			$headers=$autoHeaders;
-		}
 		$date=date('d-m-y');
- 		$filename='Partcipantes_Formaciones_gen_'.$date;
-		$this->request->data['headers']=$headers;
-		$this->request->data['results']=$fetchData;
-		$this->request->data['filename']=$filename;
+			$filename='participantes_fomaciones_gen'.$date;
+			///Config::Bootsrap function--- Fetch model data into a csv structured array 
+		$preparedData=csv_fetch_data($data,$filename,$autoHeadersControl,$customHeaders=array());
+		$this->request->data=array_merge($this->request->data,$preparedData);
 		$this->layout = null;
-		$this -> render('/People/download');
+		$this -> render('/Reports/download');
+
 	}
 
 	public function download_trainers_formation()
 	{
 		$db = $this->Person->getDataSource();
-		$persons=$db->fetchAll("SELECT 
-    t1.id_person,
-    (CASE  t1.document_type
-		WHEN '1' THEN 'Cédula de ciudadanía'
-        WHEN '2' THEN 'Tarjeta de identidad'
-        WHEN '3' THEN 'Cédula de extranjería'
-        WHEN '4' THEN 'Pasaporte'
-        WHEN '5' THEN 'Registro civil'
-        END
-    ) as 'Tipo de documento',
-    t1.cedula as 'Número de documento',
-    t1.name as 'Nombre',
-    t1.lastname as 'Apellido',
-    t1.charge as 'Cargo',
-    t1.email as 'Email',
-    t1.phone as 'Telefono',
-    t1.cell AS 'Celular',
-    t1.entity AS Entidad,
-    t1.birthday as 'Fecha de Nacimiento',
-    t1.economic_level as 'Estrato',
-    (IFNULL(t3.name,'Persona')) AS 'Rol',
-    (CASE t1.genre
-        WHEN '1' THEN 'Femenino'
-        WHEN '2' THEN 'Masculino'
-        WHEN '3' THEN 'Lesbiana'
-        WHEN '4' THEN 'Gay'
-        WHEN '5' THEN 'Transexual'
-        WHEN '6' THEN 'Bisexual'
-        WHEN '7' THEN 'Intersexual'
-    END) AS Genero,
-    tt.name as 'Tipo de Formador',
-    pro.name as 'Profesion',
-    tf.name as 'Fondo',
-    t5.code as 'Formación',
-    t5.description as 'Descripción',
-    t6.name as 'Tipo de Formación',
-    t5.start_date as 'Fecha de inicio (Formacion)',
-    t5.end_date as 'Fecha de Terminacion (Formacion)',    
-    (CASE t5.current_state WHEN '1' THEN 'En Curso' WHEN '2' THEN 'Finalizada' END) as 'Estado (Formación)'
+		$data=$db->fetchAll("SELECT 
+			    t1.id_person,
+			    (CASE  t1.document_type
+					WHEN '1' THEN 'Cédula de ciudadanía'
+			        WHEN '2' THEN 'Tarjeta de identidad'
+			        WHEN '3' THEN 'Cédula de extranjería'
+			        WHEN '4' THEN 'Pasaporte'
+			        WHEN '5' THEN 'Registro civil'
+			        END
+			    ) as 'Tipo de documento',
+			    t1.cedula as 'Número de documento',
+			    t1.name as 'Nombre',
+			    t1.lastname as 'Apellido',
+			    t1.charge as 'Cargo',
+			    t1.email as 'Email',
+			    t1.phone as 'Telefono',
+			    t1.cell AS 'Celular',
+			    t1.entity AS Entidad,
+			    t1.birthday as 'Fecha de Nacimiento',
+			    t1.economic_level as 'Estrato',
+			    (IFNULL(t3.name,'Persona')) AS 'Rol',
+			    (CASE t1.genre
+			        WHEN '1' THEN 'Femenino'
+			        WHEN '2' THEN 'Masculino'
+			        WHEN '3' THEN 'Lesbiana'
+			        WHEN '4' THEN 'Gay'
+			        WHEN '5' THEN 'Transexual'
+			        WHEN '6' THEN 'Bisexual'
+			        WHEN '7' THEN 'Intersexual'
+			    END) AS Genero,
+			    tt.name as 'Tipo de Formador',
+			    pro.name as 'Profesion',
+			    tf.name as 'Fondo',
+			    t5.code as 'Formación',
+			    t5.description as 'Descripción',
+			    t6.name as 'Tipo de Formación',
+			    t5.start_date as 'Fecha de inicio (Formacion)',
+			    t5.end_date as 'Fecha de Terminacion (Formacion)',    
+			    (CASE t5.current_state WHEN '1' THEN 'En Curso' WHEN '2' THEN 'Finalizada' END) as 'Estado (Formación)'
 
-FROM
-    people t1
-        LEFT JOIN
-    per_people_type t2 ON t1.id_person = t2.person_id
-		LEFT JOIN 
-    per_types t3 ON t2.per_type_id=t3.id
-		LEFT JOIN 
-    per_trainers tr ON tr.per_people_type_id=t2.id    
-        LEFT JOIN
-    per_trainer_types tt ON tr.per_trainer_type_id=tt.id
-		LEFT JOIN
-    per_professions pro ON tr.per_profession_id=pro.id
-		LEFT JOIN
-    per_trainer_funds tf ON tr.per_trainer_fund_id=tf.id 
-		LEFT JOIN 
-	training_per_trainers t4 ON t4.per_trainer_id=tr.id
-		LEFT JOIN
-    training t5 ON  t4.training_id=t5.id
-		LEFT JOIN 
-    tra_types t6 ON t5.type_id=t6.id 
-    
-WHERE t3.id=1    
+			FROM
+			    people t1
+			        LEFT JOIN
+			    per_people_type t2 ON t1.id_person = t2.person_id
+					LEFT JOIN 
+			    per_types t3 ON t2.per_type_id=t3.id
+					LEFT JOIN 
+			    per_trainers tr ON tr.per_people_type_id=t2.id    
+			        LEFT JOIN
+			    per_trainer_types tt ON tr.per_trainer_type_id=tt.id
+					LEFT JOIN
+			    per_professions pro ON tr.per_profession_id=pro.id
+					LEFT JOIN
+			    per_trainer_funds tf ON tr.per_trainer_fund_id=tf.id 
+					LEFT JOIN 
+				training_per_trainers t4 ON t4.per_trainer_id=tr.id
+					LEFT JOIN
+			    training t5 ON  t4.training_id=t5.id
+					LEFT JOIN 
+			    tra_types t6 ON t5.type_id=t6.id 
+			    
+			WHERE t3.id=1    
 	    ");
-
-		$notAllowedIndex=array();
-
-		//Example define custom Headers
-			// $customHeaders=array(
-			// 	'id_person'=>'id_person',
-			// 	'Tipo de documento'=>'Tipo de documento',
-			// 	'Número de documento'=>'Número de documento',
-			// 	'Nombre'=>'Nombre',
-			// 	'Apellido'=>'Apellido',
-			// 	'Cargo'=>'Cargo',
-			// 	'Email'=>'Email',
-			// 	'Telefono'=>'Telefono',
-			// 	'Celular'=>'Celular',
-			// 	'Entidad'=>'Entidad',
-			// 	'Fecha de Nacimiento'=>'Fecha de Nacimiento',
-			// 	'Estrato'=>'Estrato',
-			// 	'Rol'=>'Rol',
-			// 	'Genero'=>'Genero',
-			// 	'Tipo de Población'=>'Tipo de Población',
-			// 	'Otro tipo de poblacion'=>'Otro tipo de poblacion',
-			// 	'Barrio'=>'Barrio',
-			// 	'Comuna'=>'Comuna',
-			// 	'Estado Civil'=>'Estado Civil',
-			// 	'Escolaridad'=>'Escolaridad',
-			// 	'Fecha de registro'=>'Fecha de registro',
-			// 	'Usuario Registro'=>'Usuario Registro'
-			// );
-
-		//Set the use of costom header or automatic
 		$autoHeadersControl=true;
-
-		$fetchDataIndex=array();
-		$reportLoopCounter=0;
-
-
-		foreach ($persons as $tableAlias => $tableValue) {
-			if(!in_array($tableAlias,$notAllowedIndex)){
-				foreach ($tableValue as $index => $arrayValues) {
-					foreach ($arrayValues as $index => $value) {
-						$fetchData[$reportLoopCounter][$index]=$value;
-					}
-				}
-			}	
-			$reportLoopCounter++;
-		}
-
-		//check header configuration if custom or automatic
-		if($autoHeadersControl==false){
-			$headers=$customHeaders;
-			 $CustomOrderData=array();
-			 foreach ($fetchData as $index => $data) {
-			 	foreach ($headers as $key => $value) {
-			 		$customOrderLine[$key]=$data[$key];
-			 	}
-			 	$CustomOrderData[$index]=$customOrderLine;
-             }
-             $fetchData=$CustomOrderData;
-		}else{
-			foreach ($fetchData[1] as $key => $value) {
-				$autoHeaders[$key]=$key;
-			}
-			$headers=$autoHeaders;
-		}
 		$date=date('d-m-y');
- 		$filename='Formadores_todas_las_formaciones_gen'.$date;
-		$this->request->data['headers']=$headers;
-		$this->request->data['results']=$fetchData;
-		$this->request->data['filename']=$filename;
+			$filename='Formadores_con_formaciones_gen'.$date;
+			///Config::Bootsrap function--- Fetch model data into a csv structured array 
+		$preparedData=csv_fetch_data($data,$filename,$autoHeadersControl,$customHeaders=array());
+		$this->request->data=array_merge($this->request->data,$preparedData);
 		$this->layout = null;
-		$this -> render('/People/download');
+		$this -> render('/Reports/download');
 	}
 
 
 	public function download_trainers_formation_single()
 	{
 		$db = $this->Person->getDataSource();
-		$persons=$db->fetchAll("SELECT 
-    t1.id_person,
-    (CASE  t1.document_type
-		WHEN '1' THEN 'Cédula de ciudadanía'
-        WHEN '2' THEN 'Tarjeta de identidad'
-        WHEN '3' THEN 'Cédula de extranjería'
-        WHEN '4' THEN 'Pasaporte'
-        WHEN '5' THEN 'Registro civil'
-        END
-    ) as 'Tipo de documento',
-    t1.cedula as 'Número de documento',
-    t1.name as 'Nombre',
-    t1.lastname as 'Apellido',
-    t1.charge as 'Cargo',
-    t1.email as 'Email',
-    t1.phone as 'Telefono',
-    t1.cell AS 'Celular',
-    t1.entity AS Entidad,
-    t1.birthday as 'Fecha de Nacimiento',
-    t1.economic_level as 'Estrato',
-    (IFNULL(t3.name,'Persona')) AS 'Rol',
-    (CASE t1.genre
-        WHEN '1' THEN 'Femenino'
-        WHEN '2' THEN 'Masculino'
-        WHEN '3' THEN 'Lesbiana'
-        WHEN '4' THEN 'Gay'
-        WHEN '5' THEN 'Transexual'
-        WHEN '6' THEN 'Bisexual'
-        WHEN '7' THEN 'Intersexual'
-    END) AS Genero,
-    tt.name as 'Tipo de Formador',
-    pro.name as 'Profesion',
-    tf.name as 'Fondo',
-    t5.code as 'Formación',
-    t5.description as 'Descripción',
-    t6.name as 'Tipo de Formación',
-    t5.start_date as 'Fecha de inicio (Formacion)',
-    t5.end_date as 'Fecha de Terminacion (Formacion)',    
-    (CASE t5.current_state WHEN '1' THEN 'En Curso' WHEN '2' THEN 'Finalizada' END) as 'Estado (Formación)'
+		$data=$db->fetchAll("SELECT 
+			    t1.id_person,
+			    (CASE  t1.document_type
+					WHEN '1' THEN 'Cédula de ciudadanía'
+			        WHEN '2' THEN 'Tarjeta de identidad'
+			        WHEN '3' THEN 'Cédula de extranjería'
+			        WHEN '4' THEN 'Pasaporte'
+			        WHEN '5' THEN 'Registro civil'
+			        END
+			    ) as 'Tipo de documento',
+			    t1.cedula as 'Número de documento',
+			    t1.name as 'Nombre',
+			    t1.lastname as 'Apellido',
+			    t1.charge as 'Cargo',
+			    t1.email as 'Email',
+			    t1.phone as 'Telefono',
+			    t1.cell AS 'Celular',
+			    t1.entity AS Entidad,
+			    t1.birthday as 'Fecha de Nacimiento',
+			    t1.economic_level as 'Estrato',
+			    (IFNULL(t3.name,'Persona')) AS 'Rol',
+			    (CASE t1.genre
+			        WHEN '1' THEN 'Femenino'
+			        WHEN '2' THEN 'Masculino'
+			        WHEN '3' THEN 'Lesbiana'
+			        WHEN '4' THEN 'Gay'
+			        WHEN '5' THEN 'Transexual'
+			        WHEN '6' THEN 'Bisexual'
+			        WHEN '7' THEN 'Intersexual'
+			    END) AS Genero,
+			    tt.name as 'Tipo de Formador',
+			    pro.name as 'Profesion',
+			    tf.name as 'Fondo',
+			    t5.code as 'Formación',
+			    t5.description as 'Descripción',
+			    t6.name as 'Tipo de Formación',
+			    t5.start_date as 'Fecha de inicio (Formacion)',
+			    t5.end_date as 'Fecha de Terminacion (Formacion)',    
+			    (CASE t5.current_state WHEN '1' THEN 'En Curso' WHEN '2' THEN 'Finalizada' END) as 'Estado (Formación)'
 
-FROM
-    people t1
-        LEFT JOIN
-    per_people_type t2 ON t1.id_person = t2.person_id
-		LEFT JOIN 
-    per_types t3 ON t2.per_type_id=t3.id
-		LEFT JOIN 
-    per_trainers tr ON tr.per_people_type_id=t2.id    
-        LEFT JOIN
-    per_trainer_types tt ON tr.per_trainer_type_id=tt.id
-		LEFT JOIN
-    per_professions pro ON tr.per_profession_id=pro.id
-		LEFT JOIN
-    per_trainer_funds tf ON tr.per_trainer_fund_id=tf.id 
-		LEFT JOIN 
-	training_per_trainers t4 ON t4.per_trainer_id=tr.id
-		LEFT JOIN
-    training t5 ON  t4.training_id=t5.id
-		LEFT JOIN 
-    tra_types t6 ON t5.type_id=t6.id 
-    
-WHERE t3.id=1    
-GROUP BY t1.id_person
+			FROM
+			    people t1
+			        LEFT JOIN
+			    per_people_type t2 ON t1.id_person = t2.person_id
+					LEFT JOIN 
+			    per_types t3 ON t2.per_type_id=t3.id
+					LEFT JOIN 
+			    per_trainers tr ON tr.per_people_type_id=t2.id    
+			        LEFT JOIN
+			    per_trainer_types tt ON tr.per_trainer_type_id=tt.id
+					LEFT JOIN
+			    per_professions pro ON tr.per_profession_id=pro.id
+					LEFT JOIN
+			    per_trainer_funds tf ON tr.per_trainer_fund_id=tf.id 
+					LEFT JOIN 
+				training_per_trainers t4 ON t4.per_trainer_id=tr.id
+					LEFT JOIN
+			    training t5 ON  t4.training_id=t5.id
+					LEFT JOIN 
+			    tra_types t6 ON t5.type_id=t6.id 
+			    
+			WHERE t3.id=1    
+			GROUP BY t1.id_person
 	    ");
-
-		$notAllowedIndex=array();
-
-		//Example define custom Headers
-			// $customHeaders=array(
-			// 	'id_person'=>'id_person',
-			// 	'Tipo de documento'=>'Tipo de documento',
-			// 	'Número de documento'=>'Número de documento',
-			// 	'Nombre'=>'Nombre',
-			// 	'Apellido'=>'Apellido',
-			// 	'Cargo'=>'Cargo',
-			// 	'Email'=>'Email',
-			// 	'Telefono'=>'Telefono',
-			// 	'Celular'=>'Celular',
-			// 	'Entidad'=>'Entidad',
-			// 	'Fecha de Nacimiento'=>'Fecha de Nacimiento',
-			// 	'Estrato'=>'Estrato',
-			// 	'Rol'=>'Rol',
-			// 	'Genero'=>'Genero',
-			// 	'Tipo de Población'=>'Tipo de Población',
-			// 	'Otro tipo de poblacion'=>'Otro tipo de poblacion',
-			// 	'Barrio'=>'Barrio',
-			// 	'Comuna'=>'Comuna',
-			// 	'Estado Civil'=>'Estado Civil',
-			// 	'Escolaridad'=>'Escolaridad',
-			// 	'Fecha de registro'=>'Fecha de registro',
-			// 	'Usuario Registro'=>'Usuario Registro'
-			// );
-
-		//Set the use of costom header or automatic
 		$autoHeadersControl=true;
-
-		$fetchDataIndex=array();
-		$reportLoopCounter=0;
-
-
-		foreach ($persons as $tableAlias => $tableValue) {
-			if(!in_array($tableAlias,$notAllowedIndex)){
-				foreach ($tableValue as $index => $arrayValues) {
-					foreach ($arrayValues as $index => $value) {
-						$fetchData[$reportLoopCounter][$index]=$value;
-					}
-				}
-			}	
-			$reportLoopCounter++;
-		}
-
-		//check header configuration if custom or automatic
-		if($autoHeadersControl==false){
-			$headers=$customHeaders;
-			 $CustomOrderData=array();
-			 foreach ($fetchData as $index => $data) {
-			 	foreach ($headers as $key => $value) {
-			 		$customOrderLine[$key]=$data[$key];
-			 	}
-			 	$CustomOrderData[$index]=$customOrderLine;
-             }
-             $fetchData=$CustomOrderData;
-		}else{
-			foreach ($fetchData[1] as $key => $value) {
-				$autoHeaders[$key]=$key;
-			}
-			$headers=$autoHeaders;
-		}
 		$date=date('d-m-y');
- 		$filename='Formadores_todas_las_formaciones_gen'.$date;
-		$this->request->data['headers']=$headers;
-		$this->request->data['results']=$fetchData;
-		$this->request->data['filename']=$filename;
+			$filename='Formadores_gen'.$date;
+			///Config::Bootsrap function--- Fetch model data into a csv structured array 
+		$preparedData=csv_fetch_data($data,$filename,$autoHeadersControl,$customHeaders=array());
+		$this->request->data=array_merge($this->request->data,$preparedData);
 		$this->layout = null;
-		$this -> render('/People/download');
+		$this -> render('/Reports/download');
 	}
 
 

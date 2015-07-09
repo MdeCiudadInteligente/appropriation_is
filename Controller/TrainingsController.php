@@ -46,9 +46,6 @@ class TrainingsController extends AppController {
 		$this->Training->recursive = 0;
 		$this->set('trainings', $this->Paginator->paginate());
 		
-		if ($this->request->is('post')) {
-			return $this->redirect(array('action' => 'download'));
-		}
 	}
 
 /**
@@ -645,7 +642,7 @@ class TrainingsController extends AppController {
 	public function download()
 	{
 		$db = $this->Training->getDataSource();
-		$trainings=$db->fetchAll("SELECT 
+		$data=$db->fetchAll("SELECT 
 					t1.code AS Codigo,
                     (SELECT 
 						zone_name
@@ -781,11 +778,15 @@ class TrainingsController extends AppController {
 				        AND t3.id_user = t1.user_id
                 ORDER BY 
 				t1.code,t1.start_date");
-		$this->request->data["result"]=$trainings;
-	
-		$this->layout = null;
-		//$this->autoLayout = false;
-		//Configure::write('debug', '0');
+	$autoHeadersControl=true;
+	$date=date('d-m-y');
+		$filename='formaciones_gen'.$date;
+		///Config::Bootsrap function--- Fetch model data into a csv structured array 
+	$preparedData=csv_fetch_data($data,$filename,$autoHeadersControl,$customHeaders=array());
+	$this->request->data=array_merge($this->request->data,$preparedData);
+	$this->layout = null;
+	$this -> render('/Reports/download');
+
 	
 	}
 

@@ -117,7 +117,7 @@ class DivulgationsController extends AppController {
 	public function download()
 	{
 	$db = $this->Divulgation->getDataSource();
-	$divulgations=$db->fetchAll("SELECT t1.divulgation_date AS Fecha, 
+	$data=$db->fetchAll("SELECT t1.divulgation_date AS Fecha, 
     'Sensibilización' AS 'Tipo_actividad',
     t5.name AS 'Tipo_sensibilizacion',
     t1.divulgation_name AS 'Titulo',
@@ -168,9 +168,21 @@ class DivulgationsController extends AppController {
     AND t1.population_type_id=t6.id_population_type
     ORDER BY 
 	t1.divulgation_date,t5.name");
-	$this->request->data["result"]=$divulgations;
-	
+	//Example define custom Headers
+		// $customHeaders=array(
+		// 	'id_person'=>'id_person',
+		// 	'Tipo de documento'=>'Tipo de documento'
+		// );
+
+	//Set the use of custom header or automatic
+	$autoHeadersControl=true;
+	$date=date('d-m-y');
+		$filename='Sensibilizaciones_gen'.$date;
+		///Config::Bootsrap function--- Fetch model data into a csv structured array 
+	$preparedData=csv_fetch_data($data,$filename,$autoHeadersControl,$customHeaders=array());
+	$this->request->data=array_merge($this->request->data,$preparedData);
 	$this->layout = null;
+	$this -> render('/Reports/download');
  	
 	}
 

@@ -96,28 +96,11 @@ class AccompanimentsController extends AppController {
 		$this->set(compact('data'));
 		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
-	
-	/*public function download()
-	{
-		//$this->Accompaniment->recursive = 0;
-		$this->set('accompaniments', $this->Accompaniment->find('all'));
-		$this->set('sites',$this->Site->find('all'));
-		$this->set('agents',$this->Agent->find('all'));
-		$this->set('users',$this->User->find('all'));
-		$this->set('neighborhoods',$this->Neighborhood->find('all'));
-		$this->set('site_types',$this->SiteType->find('all'));
-		$this->set('people',$this->Person->find('all'));
-		$this->set('communes',$this->Commune->find('all'));
-	
-		$this->layout = null;
-		//$this->autoLayout = false;
-		//Configure::write('debug', '0');
-	}*/
-	
+
 	public function download()
 	{
 		$db = $this->Accompaniment->getDataSource();
-		$accompaniments=$db->fetchAll("SELECT 
+		$data=$db->fetchAll("SELECT 
     	t1.accompaniment_date AS Fecha,
     	'Acompañamiento' AS 'Tipo_actividad',
     	t5.name AS 'Tipo_acompanamiento',
@@ -144,14 +127,26 @@ class AccompanimentsController extends AppController {
 	    AND t1.accompaniment_type_id = t5.id
 	    
 	    ORDER BY 
-		t1.accompaniment_date,t5.name");
-		$this->request->data["result"]=$accompaniments;
-		
+		t1.accompaniment_date,t5.name
+	    ");
+
+		//Example define custom Headers
+			// $customHeaders=array(
+			// 	'id_person'=>'id_person',
+			// 	'Usuario Registro'=>'Usuario Registro'
+			// );
+
+		//Set the use of custom header or automatic
+		$autoHeadersControl=true;
+		$date=date('d-m-y');
+ 		$filename='Accompaniments_gen'.$date;
+ 		///Config::Bootsrap function--- Fetch model data into a csv structured array 
+		$preparedData=csv_fetch_data($data,$filename,$autoHeadersControl,$customHeaders=array());
+		$this->request->data=array_merge($this->request->data,$preparedData);
 		$this->layout = null;
-		//$this->autoLayout = false;
-		//Configure::write('debug', '0');
-	
+		$this -> render('/Reports/download');
 	}
+
 
 /**
  * view method

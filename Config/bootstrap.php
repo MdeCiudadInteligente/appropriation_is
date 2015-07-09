@@ -124,6 +124,55 @@ function recursiveSanitize($array){
 	return $newArr;
 }
 
+
+function csv_fetch_data($fecthData,$filename,$autoHeadersControl=true,$customHeaders=array()){
+
+/// Define vars
+		$fetchDataIndex=array();
+		$reportLoopCounter=0;
+
+// Fetch cake model data in correct csv array format
+
+		foreach ($fecthData as $tableAlias => $tableValue) {
+				foreach ($tableValue as $index => $arrayValues) {
+					foreach ($arrayValues as $index => $value) {
+						$fetchData[$reportLoopCounter][$index]=$value;
+					}
+				}
+			$reportLoopCounter++;
+		}
+
+//check header and order configuration if custom exist or automatic.
+
+		if($autoHeadersControl==false && (!empty($customHeaders))){
+///Set fetchData custom and reorder it 
+			$headers=$customHeaders;
+			 $CustomOrderData=array();
+			 foreach ($fetchData as $index => $data) {
+			 	foreach ($headers as $key => $value) {
+			 		$customOrderLine[$key]=$data[$key];
+			 	}
+			 	$CustomOrderData[$index]=$customOrderLine;
+             }
+             $fetchData=$CustomOrderData;
+		
+		}else{
+///Just create headers and order relative to the query column names
+			foreach ($fetchData[1] as $key => $value) {
+				$autoHeaders[$key]=$key;
+			}
+			$headers=$autoHeaders;
+		}
+		$data=array(
+			'headers'=>$headers,
+			'results'=>$fetchData,
+			'filename'=>$filename
+		);
+
+	return $data;	
+}
+
+
 /////Master static lists//////
 
 /////document_type

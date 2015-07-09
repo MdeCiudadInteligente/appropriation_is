@@ -99,30 +99,52 @@ class MeetingsController extends AppController {
      	$this->set(compact('data'));
 		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
 	}
+	
+	// public function download()
+	// {
+	// 	$db = $this->Meeting->getDataSource();
+	// 	$meetings=$db->fetchAll("SELECT 
+	// 	t1.id_meeting,	
+ //     	t1.meeting_date AS Fecha,
+ //    	'Reunion' AS 'Tipo_actividad',
+ //    	t5.name AS 'Tipo_Reunion',
+ //    	t1.meeting_title AS 'Titulo',
+ //    	t1.meeting_description AS 'Descripcion',
+ //    	(SELECT COUNT(t20.meeting_id) FROM meetings_people t20 WHERE t20.meeting_id=t1.id_meeting ) AS 'Numero_Participantes',
+ //    	t1.meeting_commitments as 'Compromisos',
+ //    	t2.site_name AS Sitio,
+ //    	t3.neighborhood_name AS Barrio,
+ //    	t4.commune_name AS Comuna,
+ //    	t1.meeting_adjunct AS 'Adjunto1',
+ //    	t1.meeting_adjunct1 AS 'Adjunto2',
+ //    	t1.meeting_adjunct2 AS 'Adjunto3'
+ //    	FROM
+	// 	meetings t1,
+ //    	sites t2,
+ //    	neighborhoods t3,
+ //    	communes t4,
+ //    	mee_types t5
+    
+ //    	WHERE
+ //    	t1.site_id = t2.id_site
+	// 	AND t2.neighborhood_id = t3.id_neighborhood
+	// 	AND t3.commune_id = t4.id_commune
+ //    	AND t1.meeting_type_id=t5.id
+    	
+    
+ //    	ORDER BY 
+	// 	t1.meeting_date,t5.name");
+	// 	$this->request->data["result"]=$meetings;
+	
+	// 	$this->layout = null;
+	// 	//$this->autoLayout = false;
+	
+	// }
 
-	/*public function download()
-	{
-		$this->Meeting->recursive = 0;
-		$this->set('meetings', $this->Meeting->find('all'));
-		$this->set('sites',$this->Site->find('all'));
-		//$this->set('agents',$this->Agent->find('all'));
-		//$this->set('users',$this->User->find('all'));
-		//$this->set('people',$this->Person->find('all'));
-		$this->set('neighborhoods',$this->Neighborhood->find('all'));
-		$this->set('site_types',$this->SiteType->find('all'));
-		$this->set('communes',$this->Commune->find('all'));
-		//$totalm = $this->Meeting->find('count');
-		
-	
-		$this->layout = null;
-		//$this->autoLayout = false;
-		//Configure::write('debug', '0');
-	}*/
-	
 	public function download()
 	{
-		$db = $this->Meeting->getDataSource();
-		$meetings=$db->fetchAll("SELECT 
+		$db = $this->Person->getDataSource();
+		$data=$db->fetchAll("SELECT 
 		t1.id_meeting,	
      	t1.meeting_date AS Fecha,
     	'Reunion' AS 'Tipo_actividad',
@@ -152,14 +174,28 @@ class MeetingsController extends AppController {
     	
     
     	ORDER BY 
-		t1.meeting_date,t5.name");
-		$this->request->data["result"]=$meetings;
-	
+		t1.meeting_date,t5.name
+	    ");
+		//Example define custom Headers
+			// $customHeaders=array(
+			// 	'id_person'=>'id_person',
+			// 	'Tipo de documento'=>'Tipo de documento'
+			// );
+
+		//Set the use of custom header or automatic
+		$autoHeadersControl=true;
+		$date=date('d-m-y');
+ 		$filename='Reuniones_gen'.$date;
+ 		///Config::Bootsrap function--- Fetch model data into a csv structured array 
+		$preparedData=csv_fetch_data($data,$filename,$autoHeadersControl,$customHeaders=array());
+		$this->request->data=array_merge($this->request->data,$preparedData);
 		$this->layout = null;
-		//$this->autoLayout = false;
-		//Configure::write('debug', '0');
-	
+		$this -> render('/Reports/download');
+
 	}
+
+
+
 	
 /**
  * view method
