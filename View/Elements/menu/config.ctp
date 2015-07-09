@@ -55,7 +55,7 @@
 		         			"user_level"=>'1,2,3',
 							"route"=>Router::url( array('controller' => 'Activities', 'action' => 'download'),true),
 							"label" =>__('Actividades Completas'),
-							"custom-class"=>'report-csv'
+							"custom-class"=>'report-csv date-filter'
 						),
 						array(
 							"user_level"=>'1,2,3',

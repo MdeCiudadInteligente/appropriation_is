@@ -168,6 +168,16 @@ App.prototype.bind=function(){
     $(document).on('click','.fake-input',function(){
         $('#file-input-md').click();
     });
+
+    $(document).on('click','.date-filter a',function(e){
+        e.preventDefault();
+        console.log($(this));
+        var serivce_route=absPath+"Reports/date_filters";;
+        var serviceUrl=$(this).attr('href');
+        var data={service:serviceUrl};
+        var container='#right-content-aside';
+        app.ajaxView(serivce_route,data,container);
+    });
 }
 
 

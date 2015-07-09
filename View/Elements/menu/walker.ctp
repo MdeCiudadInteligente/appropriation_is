@@ -33,7 +33,7 @@
 											$sub_item_icon_flag=(isset($sub_item['icon-class']))?'hasIcon':'';
 											$sub_item_route=(isset($sub_item['route']))?$sub_item['route']:'';
 											if($print){?>
-												<li class="sub-list <?php echo $sub_item_icon_flag ?>">
+												<li class="sub-list <?php echo $sub_custom_class ?> <?php echo $sub_item_icon_flag ?>">
 										 			<?php if($sub_item_icon){ ?>
 										 					<i class="inside-sub-icon <?php echo $sub_item_icon ?> "></i>
 										 			<?php } ?>
