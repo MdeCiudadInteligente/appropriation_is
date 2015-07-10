@@ -25,7 +25,6 @@ $this->Csv->enclosure =' ';
  $this->Csv->addRow($line);
 
  foreach ($Acc as $key => $Acco) { 
-
  	$line['Fecha']=$Acco['t1']['Fecha'];
  	$line['Comuna']=$Acco['t4']['Comuna'];
   $line['Barrio']=$Acco['t3']['Barrio'];
@@ -38,7 +37,6 @@ $this->Csv->enclosure =' ';
   $line['numero_participantes']=$Acco['t1']['numero_participantes'];
   $line=recursiveSanitize($line);
   $this->Csv->addRow($line);
-
  } 
   
 foreach ($Sens as $key => $Sensi) { 

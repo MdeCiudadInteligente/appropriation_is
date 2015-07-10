@@ -9,8 +9,8 @@
 			<fieldset>
 				<legend><?php echo __('Fechas'); ?></legend>
 					<?php
-						echo $this->Form->input('start_date',array ('type'=>'text','class'=>'custom-col datepickerMDE','data-grid'=>'6'));
-						echo $this->Form->input('end_date',array ('type'=>'text','class'=>'custom-col datepickerMDE','data-grid'=>'6'));
+						echo $this->Form->input('start_date',array ('type'=>'text','class'=>'custom-col datepickerMDE','data-grid'=>'6','required'=>'required'));
+						echo $this->Form->input('end_date',array ('type'=>'text','class'=>'custom-col datepickerMDE','data-grid'=>'6','required'=>'required'));
 					?>
 			</fieldset>
 			<?php echo $this->Form->end(__('Generar Informe')); ?>

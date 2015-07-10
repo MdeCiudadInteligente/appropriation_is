@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 	
 	App::uses('AppController', 'Controller');
 	class ActivitiesController extends AppController {
@@ -35,10 +35,24 @@
 
     $start_date=$this->request->data['start_date'];
     $end_date=$this->request->data['end_date'];
+
+    if($start_date&&$end_date){
+      $accompaniments_cond="AND t1.accompaniment_date BETWEEN '".$start_date."' AND '".$end_date."'";
+      $divulgations_cond="AND t1.divulgation_date BETWEEN '".$start_date."' AND '".$end_date."'";
+      $meetiings_cond="AND t1.meeting_date BETWEEN '".$start_date."' AND '".$end_date."'";
+      $trainings_cond="AND t1.end_date BETWEEN '".$start_date."' AND '".$end_date."'";
+    }else{
+      $accompaniments_cond="";
+      $divulgations_cond="";
+      $meetiings_cond="";
+      $trainings_cond="";
+    }
+
+
 		$db = $this->Accompaniment->getDataSource();
 		$accompaniments=$db->fetchAll("SELECT 
       t1.accompaniment_date AS Fecha,
-      'Acompañamiento' AS 'Tipo_actividad',
+      'AcompaÃ±amiento' AS 'Tipo_actividad',
       t5.name AS 'Tipo',
       t1.accompaniment_title AS 'Titulo',
       t1.accompaniment_description AS 'Descripcion',
@@ -60,7 +74,7 @@
       AND t3.commune_id = t4.id_commune
       AND t1.accompaniment_type_id = t5.id
         AND t2.site_type_id=t6.id_site_type
-        AND t1.accompaniment_date BETWEEN '".$start_date."' AND '".$end_date."'
+        ".$accompaniments_cond."
       ORDER BY 
     t1.accompaniment_date,t5.name
     	");
@@ -90,8 +104,7 @@
       AND t3.commune_id = t4.id_commune
       AND t1.divulgation_type_id=t5.id
         AND t2.site_type_id=t6.id_site_type
-        AND t1.divulgation_date BETWEEN '".$start_date."' AND '".$end_date."'
-      
+        ".$divulgations_cond."
       ORDER BY 
     t1.divulgation_date,t5.name
     	");
@@ -124,7 +137,7 @@
         AND t3.commune_id = t4.id_commune
         AND t1.meeting_type_id=t5.id
         AND t2.site_type_id=t6.id_site_type
-        AND t1.meeting_date BETWEEN '".$start_date."' AND '".$end_date."'
+        ".$meetiings_cond."
       ORDER BY 
     t1.meeting_date,t5.name
     	");
@@ -182,7 +195,7 @@
 				WHERE
 				    t1.type_id = t2.id
 				        AND t3.id_user = t1.user_id
-                AND t1.end_date BETWEEN '".$start_date."' AND '".$end_date."' 
+                ".$trainings_cond." 
                 ORDER BY 
 				t1.code,t1.start_date
 				
@@ -232,7 +245,7 @@
    	//obteniedo los datos que trae la variable $divulgation...
    	$this->set('divulgations', $divulgation);
    	
-   	//Se define la configuración del paginador con la variable paginate previamente definida
+   	//Se define la configuraciÃ³n del paginador con la variable paginate previamente definida
    	$this->Paginator->settings = $this->paginate;
    	
    	$this->Paginator->options=array(
@@ -240,16 +253,16 @@
    			'evalScripts' => false
    	);
    	
-   	//Paginación Meeting...
+   	//PaginaciÃ³n Meeting...
    	
    	$this->set('meetings', $this->Paginator->paginate('Meeting'));
      	
    	
-   	//Paginación Agent...
+   	//PaginaciÃ³n Agent...
    	
    	$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
    	
-   	//Paginación Site...
+   	//PaginaciÃ³n Site...
    	
    	$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
    	 
@@ -282,7 +295,7 @@
    	//obteniedo los datos que trae la variable $divulgation...
    	$this->set('divulgations', $divulgation);
    	
-   	//Se define la configuración del paginador con la variable paginate previamente definida
+   	//Se define la configuraciÃ³n del paginador con la variable paginate previamente definida
    	$this->Paginator->settings = $this->paginate;
    	
    	$this->Paginator->options=array(
@@ -290,16 +303,16 @@
    			'evalScripts' => false
    	);
    	
-   	//Paginación Meeting...
+   	//PaginaciÃ³n Meeting...
    	
    	$this->set('meetings', $this->Paginator->paginate('Meeting'));
      	
    	
-   	//Paginación Agent...
+   	//PaginaciÃ³n Agent...
    	
    	$this->set('accompaniments', $this->Paginator->paginate('Accompaniment'));
    	
-   	//Paginación Site...
+   	//PaginaciÃ³n Site...
    	
    	$this->set('divulgations', $this->Paginator->paginate('Divulgation'));
    	 
