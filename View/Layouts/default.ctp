@@ -38,6 +38,7 @@ $cakeDescription = __d('cake_dev', '');
 		echo $this->fetch('script');
 	?>
 
+	<?php if ($usuario_level){?>
 
 	<?php echo $this->Html->script('jquery-1.11.1.min');?>
 	<?php echo $this->Html->script('jquery-ui.min');?>
@@ -46,6 +47,9 @@ $cakeDescription = __d('cake_dev', '');
 	<?php echo $this->Html->script('ext/ext-all-debug-w-comments.js');?>
 	<?php echo $this->Html->script('ext/RowExpander.js');?>
 	<?php echo $this->Html->script('ext/src/locale/ext-lang-es.js');?>
+
+	<?php } ?>
+
 	<?php $body_class=( Configure::read('debug')>0)?'debugging':'production';?>
 </head>
 <body>
@@ -124,10 +128,14 @@ $cakeDescription = __d('cake_dev', '');
 	<?php echo $this->element('sql_dump'); ?>
 </body>
 <footer>
+
+	<?php if ($usuario_level){?>
+
 		<?php echo $this->Html->script('main');?>
 		<?php echo $this->Html->script('bootstrap.min');?>
 		<?php echo $this->Html->script('jquery.waypoints.min');?>
 		<?php echo $this->Html->script('load-image.all.min');?>
 		<?php echo $this->Html->script('owl.carousel.min');?>
+	<?php }  ?>	
 <footer>	
 </html>

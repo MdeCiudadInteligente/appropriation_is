@@ -166,12 +166,19 @@ App.prototype.bind=function(){
         app.showGallery('.'+galleryClass,requestedItemClass);
     });
     $(document).on('click','.fake-input',function(){
-        $('#file-input-md').click();
+        console.log(uploadObject.length);
+        console.log('test');
+        if(uploadObject.length>=3){
+          app.shortNotify('<div class="alter">Lo sentimos, no esta permitido cargar mas de mas de 3 archivos</div>');
+        }else if (uploadObject.length>=1){
+          app.shortNotify('<div class="alter">Lo sentimos, ya tienes archivos seleccionados por favor haz click en el boton guardar e intenta de nuevo </div>');
+        }else{
+          $('#file-input-md').click();
+        }
     });
 
     $(document).on('click','.date-filter a',function(e){
         e.preventDefault();
-        console.log($(this));
         var serivce_route=absPath+"Reports/date_filters";;
         var serviceUrl=$(this).attr('href');
         var data={service:serviceUrl};
@@ -1275,29 +1282,42 @@ App.prototype.ajaxSubmitService=function(formClass,notice,callback){
               }
           });
         }else{
-           app.prepareUploadData(uploadObject,uploadFormData);
-           app.loading();
-           $.ajax({
-              url: serviceUrl,
-              data: uploadFormData,
-              processData: false,
-              contentType:false,
-              dataType:'json',
-              type: 'POST',
-              success:function(data){
-                  if(typeof callback != 'undefined'){
-                      callback(data);
-                  }else{
-                      if(data.actions)
-                          app.serviceResponseCallback(data.actions);
-                      app.removeLoading();  
-                      uploadObject=new Array();
-                      uploadFormData=new FormData();
-                      $('.preview-controller').html('');
-                      $('#file-input-md').val('');
-                  }
-              }      
-            });
+           if(uploadObject.length==0){
+              app.shortNotify('<div class="alter">No se encontraron archivos seleccionados, por favor arrastre o seleccione archivos e intente de nuevo. </div>');
+           }else{
+             app.prepareUploadData(uploadObject,uploadFormData);
+             app.loading();
+             $.ajax({
+                url: serviceUrl,
+                data: uploadFormData,
+                processData: false,
+                contentType:false,
+                dataType:'json',
+                type: 'POST',
+                success:function(data){
+                    if(typeof callback != 'undefined'){
+                        callback(data);
+                    }else{
+                      if(!data.error){
+                        if(data.actions)
+                            app.serviceResponseCallback(data.actions);
+                        app.removeLoading();  
+                        uploadObject=new Array();
+                        uploadFormData=new FormData();
+                        $('.preview-controller').html('');
+                        $('#file-input-md').val('');
+                      }else{
+                        app.removeLoading();  
+                        uploadObject=new Array();
+                        uploadFormData=new FormData();
+                        $('.preview-controller').html('');
+                        $('#file-input-md').val('');
+                        app.shortNotify('<div class="alter">No se ha podido cargar todos los archivos, es posible que seleccionara mas de 3 archivos al mismo tiempo por favor intente de nuevo con menos archivos, de lo contrario comuniquese con el administrador para mas información.</div>');
+                      }
+                    }
+                }      
+              });
+           }
         }
     });
 }
@@ -1480,6 +1500,8 @@ App.prototype.uploaderBind=function(){
 }
 
 App.prototype.handleUpload=function(e){
+    console.log(uploadObject.length);
+
         e.preventDefault();
         e = e.originalEvent;
         var target = e.dataTransfer || e.target,
@@ -1492,7 +1514,9 @@ App.prototype.handleUpload=function(e){
             return;
         }
 
-        if(files.length>3){
+        var currentFiles=uploadObject.length+files.length;
+
+        if(currentFiles>3){
           app.shortNotify('<div class="alter">Lo sentimos, no se permite cargar mas de 3 archivos</div>');
         }else{
           var promise=app.populateUploadData(files,options);
@@ -1529,6 +1553,9 @@ App.prototype.upload_showControllerThumbnails=function(uploadObject,element){
   var htmlObject='<div class="files row">';
   $.each(uploadObject,function(index,value){
     var thumbnail=(value && value.thumbnail)?value.thumbnail['Thumbnail']:value.dataURI;
+    if(!thumbnail|| typeof thumbnail == 'undefined'){
+       thumbnail=absPath+'webroot/img/no-thumbnail.png'; 
+    }
     htmlObject+='<div class="item col-md-2"><img src="'+thumbnail+'" ></div>'; 
   });
     htmlObject+="</div>";
@@ -1571,9 +1598,12 @@ App.prototype.dataURItoBlob=function (dataURI) {
  App.prototype.populateUploadData=function(files,options){
       var deferred=new $.Deferred();
       app.loading();
-      var file_count=files.length;
+      if(uploadObject.length>0){
+        var file_count=uploadObject.length+files.length;
+      }else{
+        var file_count=files.length;
+      }
       var object_start_count=uploadObject.length;
-      console.log(file_count,object_start_count);
       $.each(files,function(index,value){
           var  randomInt=Math.floor((Math.random() * 10000) + 1);
           var thumbnail=null;
@@ -1588,7 +1618,6 @@ App.prototype.dataURItoBlob=function (dataURI) {
                   function(img){
                       var content;
                       if (!(img.src || img instanceof HTMLCanvasElement)) {
-                          console.log('Its not a canvas');
                           file_count=file_count-1;
                       } else {
                             var itemId='item'+randomInt;
@@ -1614,6 +1643,7 @@ App.prototype.dataURItoBlob=function (dataURI) {
         function(){
           var object_count=uploadObject.length;
            if(object_count==file_count){
+              console.log('resolve');
               deferred.resolve(uploadObject);
               clearInterval(seekComplete);      
            }
