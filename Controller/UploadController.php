@@ -291,8 +291,13 @@ class UploadController extends AppController {
 			$fileUrl=$upload['Upload']['url'];
 			$fileUrlParsed=parse_url($fileUrl);
 			$debug['uploadParsed']=$fileUrlParsed;
-			$filePath=$_SERVER['DOCUMENT_ROOT'].substr($fileUrlParsed['path'],1);
+			if(substr($_SERVER['DOCUMENT_ROOT'], -1)=='/'){
+				$filePath=$_SERVER['DOCUMENT_ROOT'].substr($fileUrlParsed['path'],1);
+			}else{
+				$filePath=$_SERVER['DOCUMENT_ROOT'].'/'.substr($fileUrlParsed['path'],1);
+			}
 			$debug['filePath']=$filePath;
+			$debug['SERVER']=$_SERVER;
 			$removeFile=$this->remove_file($filePath);
 			$debug['Remove']=$removeFile;
 			if(!$removeFile){
