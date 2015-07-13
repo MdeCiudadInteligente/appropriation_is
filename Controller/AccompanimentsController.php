@@ -102,7 +102,6 @@ class AccompanimentsController extends AppController {
 		$db = $this->Accompaniment->getDataSource();
 		$data=$db->fetchAll("SELECT 
     	t1.accompaniment_date AS Fecha,
-    	'Acompañamiento' AS 'Tipo_actividad',
     	t5.name AS 'Tipo_acompanamiento',
     	t1.accompaniment_title AS 'Titulo',
 	    t1.accompaniment_description AS 'Descripcion',
