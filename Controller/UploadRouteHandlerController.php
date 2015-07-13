@@ -100,6 +100,7 @@ class UploadRouteHandlerController extends AppController {
         $String = str_replace("Ñ","N",$String);
         $String = str_replace("Ý","Y",$String);
         $String = str_replace("ý","y",$String);
+        $String = str_replace(".","_",$String);
         $String= preg_replace("([^\w\s\d\-_~,;:\[\]\(\).])", '', $String);
 
         return $String;
