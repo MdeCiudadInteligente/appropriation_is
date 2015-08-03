@@ -768,6 +768,7 @@ class TrainingsController extends AppController {
 				        WHERE
 				            t1.id = ta.training_id
 				                AND ta.process_id = a.id) AS Procesos,
+					(SELECT COUNT(t20.training_id) FROM per_participants_training t20 WHERE t20.training_id=t1.id ) AS 'numero_participantes',                                
 				    t3.username AS Usuario
 				FROM
 				    training t1,
