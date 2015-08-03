@@ -157,14 +157,25 @@
 						WHEN t1.current_state='1' THEN 'En curso'
 						ELSE 'Finalizado' 
 						END AS Estado_Actual,
-				 		(SELECT 
-				            site_name
-				        FROM
-				            sites_trainings ta,
-				            sites a
-				        WHERE
-				            t1.id = ta.training_id
-				                AND ta.site_id = a.id_site
+            (SELECT 
+                    st.site_type
+                FROM
+                    sites_trainings ta,
+                    sites a,
+                    site_types st
+                WHERE
+                    t1.id = ta.training_id
+                        AND ta.site_id = a.id_site
+                        AND a.site_type_id=st.id_site_type
+                LIMIT 1 ) AS tipo_sitio,
+            (SELECT 
+                    site_name
+                FROM
+                    sites_trainings ta,
+                    sites a
+                WHERE
+                    t1.id = ta.training_id
+                        AND ta.site_id = a.id_site
                 LIMIT 1 ) AS Sitio,
 						(SELECT 
 						neighborhood_name
