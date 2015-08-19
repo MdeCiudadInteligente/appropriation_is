@@ -60,7 +60,19 @@
 								</div>
 						</div>
 					</div>
-					<?php echo $this->Form->input('PerParticipant.other_population_type');   ?>	
+					<?php echo $this->Form->input('PerParticipant.other_population_type');   ?>
+
+					<div class="terms_check">
+						<?php
+						echo $this->Form->input('terms', array(
+	    				'value' => '1',
+	    				'hiddenField' => '0',
+	    				'type'=>'checkbox',
+	    				'class'=>'input_terminos',
+	    				'label'=>'Aceptó el habeas data'
+	    				));
+	    				?>
+    				</div>
 			</fieldset>
 			<?php echo $this->Form->end(__('Submit')); ?>
 	</div>

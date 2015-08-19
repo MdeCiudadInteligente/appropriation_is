@@ -28,6 +28,19 @@
 		echo $this->Form->input('economic_level',array('type'=>'select','options'=> $GLOBALS['STATIC_LIST_ARRAY']['estrato'],'empty'=>'Seleccione Estrato'));
 		echo $this->Form->input('birthday',array ('id' => 'datepicker','type'=>'text'));
 	?>
+		<div class="input text" id="terms_checkbox">
+			<?php
+			echo $this->Form->input('terms', array(
+	    	'value' => '1',
+	    	'hiddenField' => '0',
+	    	'type'=>'checkbox',
+	    	'class'=>'input_terminos',
+	    	'label'=>'Aceptó el habeas data'
+	    	));
+	    	?>
+	    </div>	
+
+	
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
