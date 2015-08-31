@@ -19,7 +19,7 @@
 					"custom-class"=>'add-person'
 				),
 				array(
-					"user_level"=>'1,2,3',
+					"user_level"=>'1',
 					"icon-class"=>'icon-chart',
 					"label" =>__('Reportes'),
 					"sub-elements"=>array(

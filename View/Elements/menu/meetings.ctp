@@ -19,6 +19,7 @@
 					"custom-class"=>'add-meeting'
 				),	
 				array(
+					"user_level"=>'1',
 					"icon-class"=>'icon-cogs',
 					"route"=>Router::url( array('controller' => 'MeeTypes', 'action' => 'index'),true),
 					"label" =>__('MeeTypes'),
@@ -28,14 +29,13 @@
 									"label"=>__('List MeeTypes')
 								),
 							array(
-									"user_level"=>'1,2,3',
 									"route"=>Router::url( array('controller' => 'MeeTypes', 'action' => 'add'),true),
 									"label"=>__('New MeeType')
 							)
 						)
 					),
 					array(
-						"user_level"=>'1,2,3',
+						"user_level"=>'1',
 						"icon-class"=>'icon-chart',
 						"route"=>Router::url( array('controller' => 'Meetings', 'action' => 'download'),true),
 						"label" =>__('Descargar Reporte'),

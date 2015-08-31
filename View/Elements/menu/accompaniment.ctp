@@ -19,6 +19,7 @@
 					"custom-class"=>'add-accompamiment'
 				  ),
 				array(
+						"user_level"=>'1',
 						"icon-class"=>'icon-cogs',
 						"route"=>Router::url( array('controller' => 'AccTypes', 'action' => 'index'),true),
 						"label" =>__('AccTypes'),
@@ -28,14 +29,13 @@
 								"label"=>__('List AccTypes')
 							),	
 							array(
-								"user_level"=>'1,2,3',
 								"route"=>Router::url( array('controller' => 'AccTypes', 'action' => 'add'),true),
 								"label"=>__('New AccType')
 							)	
 						)
 				),
 				array(
-					"user_level"=>'1,2,3',
+					"user_level"=>'1',
 					"icon-class"=>'icon-chart',
 					"route"=>Router::url( array('controller' => 'Accompaniments', 'action' => 'download'),true),
 					"label" =>__('Descargar Reporte'),

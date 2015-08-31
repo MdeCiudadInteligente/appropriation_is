@@ -34,7 +34,7 @@
 							)	
 						)
 				),array(
-					"user_level"=>'1,2,3',
+					"user_level"=>'1',
 					"icon-class"=>'icon-chart',
 					"route"=>Router::url( array('controller' => 'Divulgations', 'action' => 'download'),true),
 					"label" =>__('Descargar Reporte'),
