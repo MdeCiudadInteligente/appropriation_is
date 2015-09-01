@@ -50,8 +50,9 @@
 	    	'type'=>'checkbox',
 	    	'class'=>'input_terminos',
 	    	'label'=>'Aceptó el habeas data',
+	    	'disabled'=>'true',
 	    	);
-	    	
+
 
 			if($person['Person']['terms']){
 				$options['checked']='checked';	
