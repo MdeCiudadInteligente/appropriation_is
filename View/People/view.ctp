@@ -41,6 +41,26 @@
 			<?php echo h($person['Person']['entity']); ?>
 			&nbsp;
 		</dd>
+
+		<div class="input text" id="terms_checkbox_view">
+			<?php
+
+			$options=array(
+	    	'value' => $person['Person']['terms'],
+	    	'type'=>'checkbox',
+	    	'class'=>'input_terminos',
+	    	'label'=>'Aceptó el habeas data',
+	    	);
+	    	
+
+			if($person['Person']['terms']){
+				$options['checked']='checked';	
+			}
+
+
+			echo $this->Form->input('terms',$options);
+	    	?>
+	    </div>	
 	</dl>
 </div>
 <div class="actions">
