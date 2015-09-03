@@ -25,8 +25,8 @@ $this->Csv->enclosure =' ';
  $this->Csv->addRow($line);
 
  foreach ($Acc as $key => $Acco) { 
- 	$line['Fecha']=$Acco['t1']['Fecha'];
- 	$line['Comuna']=$Acco['t4']['Comuna'];
+  $line['Fecha']=$Acco['t1']['Fecha'];
+  $line['Comuna']=$Acco['t4']['Comuna'];
   $line['Barrio']=$Acco['t3']['Barrio'];
   $line['tipo_sitio']=$Acco['t6']['tipo_sitio'];
   $line['Sitio']=$Acco['t2']['Sitio'];
@@ -40,9 +40,9 @@ $this->Csv->enclosure =' ';
  } 
   
 foreach ($Sens as $key => $Sensi) { 
- 	
- 	$line['Fecha']=$Sensi['t1']['Fecha'];
- 	$line['Comuna']=$Sensi['t4']['Comuna'];
+  
+  $line['Fecha']=$Sensi['t1']['Fecha'];
+  $line['Comuna']=$Sensi['t4']['Comuna'];
   $line['Barrio']=$Sensi['t3']['Barrio'];
   $line['tipo_sitio']=$Sensi['t6']['tipo_sitio'];
   $line['Sitio']=$Sensi['t2']['Sitio'];
@@ -51,15 +51,15 @@ foreach ($Sens as $key => $Sensi) {
   $line['Titulo']=$Sensi['t1']['Titulo'];
   $line['Descripcion']=$Sensi['t1']['Descripcion'];
   $line['numero_participantes']=$Sensi['t1']['numero_participantes'];
- 	
+  
   $line=recursiveSanitize($line);
   $this->Csv->addRow($line);
 
   } 
   
   foreach ($Mee as $key => $Meet) { 
-   	$line['Fecha']=$Meet['t1']['Fecha'];
-   	$line['Comuna']=$Meet['t4']['Comuna'];
+    $line['Fecha']=$Meet['t1']['Fecha'];
+    $line['Comuna']=$Meet['t4']['Comuna'];
     $line['Barrio']=$Meet['t3']['Barrio'];
     $line['tipo_sitio']=$Meet['t6']['tipo_sitio'];
     $line['Sitio']=$Meet['t2']['Sitio'];
@@ -73,17 +73,17 @@ foreach ($Sens as $key => $Sensi) {
   }
   
    foreach ($trai as $key => $train) { 
-   	$line['Fecha']=$train['t1']['Fecha_Final'];
+    $line['Fecha']=$train['t1']['Fecha_Final'];
     $line['Comuna']=$train['0']['Comuna'];
     $line['Barrio']=$train['0']['Barrio'];
-    $line['tipo_sitio']=$train['t6']['tipo_sitio'];
+    $line['tipo_sitio']=$train['0']['tipo_sitio'];
     $line['Sitio']=$train['0']['Sitio'];
     $line['Tipo_actividad']=$train['0']['Tipo_actividad'];
     $line['Tipo']=$train['t2']['Tipo'];
     $line['Titulo']=$train['t1']['Titulo'];
     $line['Descripcion']=$train['t1']['Descripcion'];
     $line['numero_participantes']=$train['0']['numero_participantes'];
-   	
+    
     $line=recursiveSanitize($line);
     $this->Csv->addRow($line);
   }
