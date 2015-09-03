@@ -147,7 +147,6 @@
     $dbt = $this->Meeting->getDataSource();
     $trainings=$dbt->fetchAll("SELECT 
           t1.start_date AS Fecha_Inicio,
-<<<<<<< HEAD
           t1.end_date AS Fecha_Final,
           'Formacion' AS 'Tipo_actividad',
           t2.name AS Tipo, 
@@ -158,18 +157,6 @@
             WHEN t1.current_state='1' THEN 'En curso'
             ELSE 'Finalizado' 
             END AS Estado_Actual,
-=======
-				 	t1.end_date AS Fecha_Final,
-					'Formacion' AS 'Tipo_actividad',
-					t2.name AS Tipo, 
-					t1.code AS Titulo,
-					t1.description AS Descripcion,
-					(SELECT COUNT(t20.training_id) FROM per_participants_training t20 WHERE t20.training_id=t1.id ) AS 'numero_participantes',
-						CASE t1.current_state
-						WHEN t1.current_state='1' THEN 'En curso'
-						ELSE 'Finalizado' 
-						END AS Estado_Actual,
->>>>>>> Release_2.0
             (SELECT 
                     st.site_type
                 FROM
