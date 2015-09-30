@@ -113,6 +113,15 @@ class PeopleController extends AppController {
 						$data['Person']['entity'] = ucwords($data['Person']['entity']);
 						$data['Person']['creation_date']=date('Y-m-d H:i:s');
 						$data['Person']['user_id']=$usuario;
+
+						if(empty($data['Person']['terms']))
+						{
+							$data['Person']['terms']=0;	
+						}
+						else{
+							$data['Person']['terms']=1;	
+						}
+
 						
 						if ($this->Person->save($data)) {
 							$this->Session->setFlash(__('The person has been saved.'));
@@ -143,7 +152,17 @@ class PeopleController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put')))
 		{
-					if ($this->Person->save($this->request->data)) 
+					$data=$this->request->data;
+
+					if(empty($data['Person']['terms']))
+					{
+						$data['Person']['terms']=0;	
+					}
+					else{
+						$data['Person']['terms']=1;	
+					}
+
+					if ($this->Person->save($data)) 
 					{
 						$this->Session->setFlash(__('The person has been saved.'));
 						return $this->redirect(array('action' => 'index'));
