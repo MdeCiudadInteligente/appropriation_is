@@ -162,8 +162,14 @@ App.prototype.bind=function(){
         var galleryClass=$(this).data('galleryclass');
         var currentId=$(this).data('id');
         var requestedItemClass='.item-'+currentId;
-        console.log(requestedItemClass);
-        app.showGallery('.'+galleryClass,requestedItemClass);
+        var ext=$(this).data('ext');
+        var is_image=ext.indexOf("image") > -1;
+        var file_URL=$(this).data('url');
+        if(is_image){
+          app.showGallery('.'+galleryClass,requestedItemClass);
+        }else{
+          window.open(file_URL,'_blank');
+        }
     });
     $(document).on('click','.fake-input',function(){
         console.log(uploadObject.length);
@@ -1283,6 +1289,7 @@ App.prototype.ajaxSubmitService=function(formClass,notice,callback){
           });
         }else{
            if(uploadObject.length==0){
+              console.log(uploadObject);
               app.shortNotify('<div class="alter">No se encontraron archivos seleccionados, por favor arrastre o seleccione archivos e intente de nuevo. </div>');
            }else{
              app.prepareUploadData(uploadObject,uploadFormData);
@@ -1500,7 +1507,6 @@ App.prototype.uploaderBind=function(){
 }
 
 App.prototype.handleUpload=function(e){
-    console.log(uploadObject.length);
 
         e.preventDefault();
         e = e.originalEvent;
@@ -1514,34 +1520,62 @@ App.prototype.handleUpload=function(e){
             return;
         }
 
+
         var currentFiles=uploadObject.length+files.length;
 
         if(currentFiles>3){
           app.shortNotify('<div class="alter">Lo sentimos, no se permite cargar mas de 3 archivos</div>');
         }else{
-          var promise=app.populateUploadData(files,options);
-          promise.done(function(){
-            var promiseShow=app.upload_showControllerThumbnails(uploadObject,'.preview-controller');
-            promiseShow.done(function(){
-              app.removeLoading();
-              $('.preview-controller').addClass('active');
+          var hasPDF=app.hasPdf(files);
+          console.log('isPDF',hasPDF);
+          if(hasPDF){
+            console.log('is pdf');
+            $.each( files, function( key, file ) {
+                uploadObject.push(file);
             });
-          });
+          }else{
+            console.log('is image');
+            ///Processs image (Reduce size)////
+            var promise=app.populateUploadData(files,options);
+            promise.done(function(){
+              var promiseShow=app.upload_showControllerThumbnails(uploadObject,'.preview-controller');
+              promiseShow.done(function(){
+                app.removeLoading();
+                $('.preview-controller').addClass('active');
+              });
+            });
+          }
         }
+}
 
+
+App.prototype.hasPdf=function(files){
+  var isPdf=false;
+  $.each( files, function( key, file ) {
+    console.log(file.type);
+      if(file.type=="application/pdf"){
+        isPdf=true;
+      }
+  });
+  return isPdf;
 }
 
 App.prototype.prepareUploadData=function(uploadObject,uploadFormData){
   $.each(uploadObject,function(index,value){
-        var makeFile="";
-      if (value.file.size>2000000){
-        makeFile=app.dataURItoBlob(value.dataURI);
-        makeFile.name=value.file.name;
-        uploadFormData.append('files[]',makeFile,value.file.name);
+      if(value.type=="application/pdf"){
+        uploadFormData.append('files[]',value);
       }else{
-        makeFile=value.file;
-        uploadFormData.append('files[]',makeFile);
+        var makeFile="";
+        if (value.file.size>2000000){
+          makeFile=app.dataURItoBlob(value.dataURI);
+          makeFile.name=value.file.name;
+          uploadFormData.append('files[]',makeFile,value.file.name);
+        }else{
+          makeFile=value.file;
+          uploadFormData.append('files[]',makeFile);
+        }
       }
+     
   });
   return uploadFormData;
 };

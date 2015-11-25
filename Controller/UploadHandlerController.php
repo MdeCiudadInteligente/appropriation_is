@@ -1077,9 +1077,9 @@ class UploadHandlerController extends AppController {
             }
         }
 
-
         $name_part=$trim_name[0].'_'.$unique_key;
-        return $name_part.$name_part[1];
+
+        return $name_part.'.'.$trim_name[1];
     }
 
     public function readfile($file_path) {

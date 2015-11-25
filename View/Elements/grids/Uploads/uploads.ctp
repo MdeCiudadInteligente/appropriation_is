@@ -50,13 +50,14 @@
 				'vars'=>array(
 					'id'=>NULL,
 					'url'=>NULL,
-					'name'=>NULL
+					'name'=>NULL,
+					'ext'=>NULL
 				),
 				'markup'=>'
 				<div class="custom_render">
 					<i class="icon-trash  remove_session  grid-send-service" data-confirm="true" data-type="confirm" data-message="¿Estás seguro que deseas eliminar completamente este archivo?" data-url="'.$adminUrl.'" data-id="{id}" data-trainingId="{training_id}">
 					</i>
-					<i class="icon-eye  view_file show-full-picture-view-gallery '.$currentGalleryClass.' "  data-id="{id}" data-url={url} data-name={name} data-galleryheader="'.$galleryHeader.'" data-galleryheadlabel="'.$galleryheadlabel.'" data-aside="#left-content-aside" data-galleryClass="'.$currentGalleryClass.'" >
+					<i class="icon-eye  view_file show-full-picture-view-gallery '.$currentGalleryClass.' "  data-id="{id}" data-ext={ext} data-url={url} data-name={name} data-galleryheader="'.$galleryHeader.'" data-galleryheadlabel="'.$galleryheadlabel.'" data-aside="#left-content-aside" data-galleryClass="'.$currentGalleryClass.'" >
 					</i>
 				</div>'
 			))
